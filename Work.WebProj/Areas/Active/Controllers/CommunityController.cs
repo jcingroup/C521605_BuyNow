@@ -31,7 +31,6 @@ namespace DotWeb.Areas.Active.Controllers
         }
         #endregion
 
-
         #region ajax file section
         [HttpPost]
         public string aj_FUpload(string id, string filekind, string fileName)

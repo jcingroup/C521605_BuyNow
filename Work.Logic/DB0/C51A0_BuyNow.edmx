@@ -40,12 +40,9 @@
           <Property Name="user_name_c" Type="nvarchar" MaxLength="32" Nullable="false" />
           <Property Name="sort" Type="int" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'C51A0_BuyNow.dbo.Community' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Community">
           <Key>
             <PropertyRef Name="community_id" />
-            <PropertyRef Name="name" />
           </Key>
           <Property Name="community_id" Type="int" Nullable="false" />
           <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -212,6 +209,7 @@ warning 6002: The table/view 'C51A0_BuyNow.dbo.Community' does not have a primar
           <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Community" EntityType="Self.Community" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="i_Currency" EntityType="Self.i_Currency" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="i_IDX" EntityType="Self.i_IDX" Schema="dbo" store:Type="Tables" />
@@ -221,12 +219,6 @@ warning 6002: The table/view 'C51A0_BuyNow.dbo.Community' does not have a primar
           <EntitySet Name="Menu" EntityType="Self.Menu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MenuRole" EntityType="Self.MenuRole" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="News" EntityType="Self.News" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Community" EntityType="Self.Community" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Community].[community_id] AS [community_id], 
-    [Community].[name] AS [name]
-    FROM [dbo].[Community] AS [Community]</DefiningQuery>
-          </EntitySet>
           <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
             <End Role="AspNetRoles" EntitySet="AspNetRoles" />
             <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
@@ -409,7 +401,6 @@ warning 6002: The table/view 'C51A0_BuyNow.dbo.Community' does not have a primar
         <EntityType Name="Community">
           <Key>
             <PropertyRef Name="community_id" />
-            <PropertyRef Name="name" />
           </Key>
           <Property Name="community_id" Type="Int32" Nullable="false" />
           <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />

@@ -370,4 +370,7 @@
   <data name="Button_ReturnIndex" xml:space="preserve">
     <value>回首頁</value>
   </data>
+  <data name="Log_Err_Delete_NotFind" xml:space="preserve">
+    <value>要刪除的資料不存在。</value>
+  </data>
 </root>

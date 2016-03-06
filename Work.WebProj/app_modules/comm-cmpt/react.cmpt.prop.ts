@@ -32,8 +32,8 @@
             records?: number
         },
         fieldData?: F,
-        searchData?: { UserName?: string },
-        edit_type?: number,
+        searchData?: any,
+        edit_type?: IEditType,
         checkAll?: boolean
     }
 }

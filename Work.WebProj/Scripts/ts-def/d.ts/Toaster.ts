@@ -1,4 +1,4 @@
-﻿const enum ToastrType {
+﻿declare const enum ToastrType {
     info = 0,
     success = 1,
     warning = 2,

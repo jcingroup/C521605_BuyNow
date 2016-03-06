@@ -11,7 +11,7 @@ module.exports = {
         m_change_password: path.resolve(__dirname, 'Scripts/src/tsx/m-change_password.js'),
         m_users: path.resolve(__dirname, 'Scripts/src/tsx/m-users.js'),
         //後台 管理者
-
+        m_community: path.resolve(__dirname, 'Scripts/src/tsx/m-community.js'),
         vendors: ['jquery', 'react', 'react-bootstrap', 'moment']
     },
     output: {
@@ -34,6 +34,6 @@ module.exports = {
     plugins: [
       new webpack.optimize.CommonsChunkPlugin('vendors', 'vendors.js'),
       new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /zh-tw/),
-      new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } })
+      //new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } })
     ]
 };
