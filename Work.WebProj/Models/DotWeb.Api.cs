@@ -46,16 +46,12 @@ namespace DotWeb.Api
                 UserId = aspnet_user.Id;
                 departmentId = aspnet_user.department_id;
                 UserRoles = aspnet_user.Roles.Select(x => x.RoleId);
-
-                var getUserIdCookie = controllerContext.Request.Headers.GetCookies(CommWebSetup.WebCookiesId + ".member_id").SingleOrDefault();
-                UserId = getUserIdCookie == null ? "" :
-                    EncryptString.desDecryptBase64(getUserIdCookie[CommWebSetup.WebCookiesId + ".member_id"].Value);
             }
         }
         protected virtual string getRecMessage(string MsgId)
         {
-            String r = Resources.Res.ResourceManager.GetString(MsgId);
-            return String.IsNullOrEmpty(r) ? MsgId : r;
+            string r = Resources.Res.ResourceManager.GetString(MsgId);
+            return string.IsNullOrEmpty(r) ? MsgId : r;
         }
         protected virtual LogicCenter openLogic()
         {
