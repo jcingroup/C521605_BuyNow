@@ -39,6 +39,18 @@
     }
     var GridCheckDel: GridCheckDelClass;
 
+    //GridCheckDel
+    interface GridButtonDelProps extends React.Props<GridButtonDelClass> {
+        delCheck(p1: any): void,
+        iKey: number,
+        showButton?: boolean
+    }
+    interface GridButtonDel extends React.ReactElement<GridButtonDelProps> { }
+    interface GridButtonDelClass extends React.ComponentClass<GridButtonDelProps> {
+    }
+    var GridButtonDel: GridButtonDelClass;
+
+
     //InputDate
     interface InputDateProps extends React.Props<InputDateClass> {
         id: string,

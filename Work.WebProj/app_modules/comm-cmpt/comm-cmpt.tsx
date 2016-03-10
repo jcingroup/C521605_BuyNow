@@ -6,6 +6,8 @@ import Moment = require('moment');
 import pikaday = require("Pikaday");
 import upload = require("simple-ajax-uploader");
 import DT = require("dt");
+import CommCmpt = require("comm-cmpt");
+
 
 export class GridButtonModify extends React.Component<{ modify(): void, ver?: number }, { className: string }> {
     constructor(props) {
@@ -32,14 +34,13 @@ export class GridButtonModify extends React.Component<{ modify(): void, ver?: nu
     }
 }
 export class GridCheckDel extends React.Component<
-    { delCheck(p1: any, p2: any): void, iKey: number, chd: boolean, showAdd?: boolean, }, any>
+    { delCheck(p1: any, p2: any): void, iKey: number, chd: boolean, showAdd?: boolean }, any>
 {
     constructor() {
         super()
         this.onChange = this.onChange.bind(this);
     }
     onChange(e) {
-        console.log('Test1');
         this.props.delCheck(this.props.iKey, this.props.chd);
     }
     render() {
@@ -49,6 +50,24 @@ export class GridCheckDel extends React.Component<
             </label>
     }
 }
+
+export class GridButtonDel extends React.Component<CommCmpt.GridButtonDelProps, any>
+{
+    constructor() {
+        super()
+        this.onClick = this.onClick.bind(this);
+    }
+    onClick(e) {
+        this.props.delCheck(this.props.iKey);
+    }
+    render() {
+        return <label className="cbox">
+                    <input type="button" onClick={this.onClick} />
+                    <i className="fa-check"></i>
+            </label>
+    }
+}
+
 export class GridNavPage extends React.Component<GridNavPageProps, any> {
     constructor(props) {
         super(props)
