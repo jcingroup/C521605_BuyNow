@@ -8,13 +8,14 @@ import CommFunc = require('comm-func');
 
 namespace Community {
     interface Rows {
-        community_id?: string;
+        community_id?: number;
         check_del?: boolean,
         name?: string;
 
     }
-    interface FormState<G, F> extends BaseDefine.GirdFormStateBase<G, F> {
-        id: number | string
+    interface FormState {
+        id: number | string,
+        edit_type: IEditType
     }
     interface FormResult extends IResultBase {
         ID: string
@@ -33,6 +34,7 @@ namespace Community {
         queryGridData(page: number): void,
         insertType(): void,
         deleteSubmit(): void,
+        delItem(key: number | string): void,
         checkAll(): void
     }
     interface EditFormProps {
@@ -48,7 +50,7 @@ namespace Community {
     interface QueryFormProps {
         updateType(id: number | string): void,
         insertType(): void,
-        apiPath: string,
+        apiPath: string
     }
     interface QueryFormState {
         searchData?: any,
@@ -62,6 +64,16 @@ namespace Community {
             total?: number
         }
     }
+    export interface GridRowProps<R> {
+        key: number,
+        ikey: number,
+        itemData: R,
+        chd?: boolean,
+        delCheck(p1: number, p2: boolean): void,
+        delItem(key: number | string): void,
+        updateType(p1: number | string): void,
+        primKey: number
+    }
 
     class QueryForm extends React.Component<QueryFormProps, QueryFormState>{
 
@@ -74,6 +86,7 @@ namespace Community {
             this.setInputValue = this.setInputValue.bind(this);
             this.handleSearch = this.handleSearch.bind(this);
             this.queryGridData = this.queryGridData.bind(this);
+            this.deleteItemSubmit = this.deleteItemSubmit.bind(this);
             this.state = {
                 gridData: {
                     rows: [], page: 1
@@ -161,6 +174,22 @@ namespace Community {
                     CommFunc.showAjaxError(errorThrown);
                 });
         }
+        deleteItemSubmit(key: string | number) {
+            if (confirm('確定是否刪除此筆資料?')) {
+                CommFunc.jqDelete(this.props.apiPath + '?id=' + key, {})
+                    .done((data, textStatus, jqXHRdata) => {
+                        if (data.result) {
+                            CommFunc.tosMessage(null, '刪除完成', 1);
+                            this.queryGridData(0);
+                        } else {
+                            alert(data.message);
+                        }
+                    })
+                    .fail((jqXHR, textStatus, errorThrown) => {
+                        CommFunc.showAjaxError(errorThrown);
+                    });
+            }
+        }
         setInputValue(name: string, e: React.SyntheticEvent) {
             let input: HTMLInputElement = e.target as HTMLInputElement;
             let obj = this.state['searchData'];
@@ -202,6 +231,7 @@ namespace Community {
                                                     gridData={this.state.gridData}
                                                     checkAll={this.checkAll}
                                                     delCheck={this.delCheck}
+                                                    delItem={this.deleteItemSubmit}
                                                     updateType={this.props.updateType}
                                                     deleteSubmit={this.deleteSubmit}
                                                     insertType = {this.props.insertType}
@@ -210,7 +240,7 @@ namespace Community {
                     </div>);
         }
     }
-    class GridRow extends React.Component<BaseDefine.GridRowPropsBase<Rows>, BaseDefine.GridRowStateBase> {
+    class GridRow extends React.Component<GridRowProps<Rows>, BaseDefine.GridRowStateBase> {
         constructor() {
             super();
             this.delCheck = this.delCheck.bind(this);
@@ -224,14 +254,17 @@ namespace Community {
         delCheck(i, chd) {
             this.props.delCheck(i, chd);
         }
+
         modify() {
             this.props.updateType(this.props.primKey)
         }
         render() {
 
-            return <tr>
+            return (
+                <tr>
+
                        <td className="text-center">
-                           <CommCmpt.GridCheckDel iKey={this.props.ikey} chd={this.props.itemData.check_del} delCheck={this.delCheck} />
+                           <CommCmpt.GridButtonDel primKey={this.props.primKey} delItem={this.props.delItem} />
                            </td>
                        <td className="text-center">
                            <CommCmpt.GridButtonModify modify={this.modify} />
@@ -239,7 +272,7 @@ namespace Community {
                        <td>
                            {this.props.itemData.name}
                            </td>
-                </tr>;
+                    </tr>);
 
         }
     }
@@ -247,7 +280,6 @@ namespace Community {
         constructor() {
             super();
             this.state = {
-                //gridData: { rows: [], page: 1 }
             }
         }
         render() {
@@ -278,6 +310,7 @@ namespace Community {
                                                 primKey={itemData.community_id}
                                                 itemData={itemData}
                                                 delCheck={this.props.delCheck}
+                                                delItem={this.props.delItem}
                                                 updateType={this.props.updateType} />
                                     )
                                     }
@@ -397,10 +430,8 @@ namespace Community {
             );
         }
     }
-    export class GridForm extends React.Component<BaseDefine.GridFormPropsBase, FormState<Rows, server.Community>>{
-
+    export class GridForm extends React.Component<BaseDefine.GridFormPropsBase, FormState>{
         constructor() {
-
             super();
             this.componentDidMount = this.componentDidMount.bind(this);
             this.noneType = this.noneType.bind(this);
@@ -418,6 +449,7 @@ namespace Community {
             gdName: 'searchData',
             apiPath: gb_approot + 'api/Community'
         }
+
         componentDidMount() {
 
         }
@@ -439,11 +471,9 @@ namespace Community {
             //    });
         }
         render() {
-
             var outHtml: JSX.Element = null;
 
             if (this.state.edit_type == IEditType.none) {
-                let searchData = this.state.searchData;
                 outHtml =
                     (
                         <div>
@@ -456,7 +486,7 @@ namespace Community {
                             <QueryForm
                                 insertType = {this.insertType}
                                 updateType={this.updateType}
-                                apiPath={this.props.apiPath}
+                                apiPath={this.props.apiPath}                                
                                 />
 
                             </div>
@@ -464,7 +494,6 @@ namespace Community {
             }
             else if (this.state.edit_type == IEditType.insert || this.state.edit_type == IEditType.update) {
 
-                let fieldData = this.state.fieldData;
                 outHtml = (
                     <div>
     <ul className="breadcrumb">

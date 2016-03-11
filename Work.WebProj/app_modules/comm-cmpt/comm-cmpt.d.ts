@@ -1,4 +1,4 @@
-﻿declare module "comm-cmpt" {
+﻿declare module __comm_cmpt {
 
     //GridNavPage
     interface GridNavPageProps extends React.Props<GridNavPageClass> {
@@ -39,17 +39,17 @@
     }
     var GridCheckDel: GridCheckDelClass;
 
-    //GridCheckDel
+    //GridButtonDel
     interface GridButtonDelProps extends React.Props<GridButtonDelClass> {
-        delCheck(p1: any): void,
-        iKey: number,
-        showButton?: boolean
+        delItem(key: number | string): void,
+        showButton?: boolean,
+        primKey: number | string
     }
-    interface GridButtonDel extends React.ReactElement<GridButtonDelProps> { }
+    class GridButtonDel extends React.Component<GridButtonDelProps, any> {
+
+    }
     interface GridButtonDelClass extends React.ComponentClass<GridButtonDelProps> {
     }
-    var GridButtonDel: GridButtonDelClass;
-
 
     //InputDate
     interface InputDateProps extends React.Props<InputDateClass> {
@@ -149,10 +149,14 @@
 
     //stateforgrid
     interface StateForGirdProps extends React.Props<StateForGirdClass> {
-        stateData: Array<server.StateTemplate>, id: number | string, ver?: number 
+        stateData: Array<server.StateTemplate>, id: number | string, ver?: number
     }
     interface StateForGird extends React.ReactElement<StateForGirdProps> { }
     interface StateForGirdClass extends React.ComponentClass<StateForGirdProps> {
     }
     var StateForGird: StateForGirdClass;
+}
+
+declare module "comm-cmpt" {
+    export = __comm_cmpt;
 }

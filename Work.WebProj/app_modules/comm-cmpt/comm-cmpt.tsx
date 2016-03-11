@@ -6,8 +6,6 @@ import Moment = require('moment');
 import pikaday = require("Pikaday");
 import upload = require("simple-ajax-uploader");
 import DT = require("dt");
-import CommCmpt = require("comm-cmpt");
-
 
 export class GridButtonModify extends React.Component<{ modify(): void, ver?: number }, { className: string }> {
     constructor(props) {
@@ -51,20 +49,24 @@ export class GridCheckDel extends React.Component<
     }
 }
 
-export class GridButtonDel extends React.Component<CommCmpt.GridButtonDelProps, any>
+interface GridButtonDelProps {
+    delItem(key: number | string): void,
+    showButton?: boolean,
+    primKey: number | string
+}
+export class GridButtonDel extends React.Component<GridButtonDelProps, any>
 {
     constructor() {
         super()
         this.onClick = this.onClick.bind(this);
     }
     onClick(e) {
-        this.props.delCheck(this.props.iKey);
+        this.props.delItem(this.props.primKey);
     }
     render() {
-        return <label className="cbox">
-                    <input type="button" onClick={this.onClick} />
-                    <i className="fa-check"></i>
-            </label>
+        return <button type="button" onClick={this.onClick} className="btn-link btn-lg text-danger">
+                        <i className="fa-times"></i>
+            </button>;
     }
 }
 
