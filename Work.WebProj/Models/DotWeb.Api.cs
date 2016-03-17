@@ -270,6 +270,16 @@ namespace DotWeb.Api
     }
 
     [System.Web.Http.Authorize]
+    public abstract class ajaxApi<M> : BaseApiController
+    where M : new()
+    {
+        protected ResultInfo<M> r;
+        protected ResultInfo<M[]> rs;
+        protected M item;
+    }
+
+
+    [System.Web.Http.Authorize]
     public abstract class ajaxBaseApi : BaseApiController
     {
 

@@ -15,7 +15,7 @@ using System.Data.Entity.Infrastructure;
 
 namespace DotWeb.Api
 {
-    public class CommunityController : ajaxApi<Community, q_Community>
+    public class CommunityController : ajaxApi<Community>
     {
         public async Task<IHttpActionResult> Get(int id)
         {
@@ -26,7 +26,7 @@ namespace DotWeb.Api
                 return Ok(r);
             }
         }
-        public async Task<IHttpActionResult> Get([FromUri]q_Community q)
+        public async Task<IHttpActionResult> Get([FromUri]queryParam q)
         {
             #region 連接BusinessLogicLibary資料庫並取得資料
 
@@ -61,14 +61,15 @@ namespace DotWeb.Api
 
             #endregion
         }
-        public async Task<IHttpActionResult> Put([FromBody]Community md)
+        public async Task<IHttpActionResult> Put([FromBody]putBodyParam param)
         {
             ResultInfo rAjaxResult = new ResultInfo();
             try
             {
                 db0 = getDB0();
 
-                item = await db0.Community.FindAsync(md.community_id);
+                item = await db0.Community.FindAsync(param.id);
+                var md = param.md;
                 item.name = md.name;
                 await db0.SaveChangesAsync();
                 rAjaxResult.result = true;
@@ -130,14 +131,14 @@ namespace DotWeb.Api
                 db0.Dispose();
             }
         }
-        public async Task<IHttpActionResult> Delete([FromUri]int id)
+        public async Task<IHttpActionResult> Delete([FromBody]delParam param)
         {
             try
             {
                 db0 = getDB0();
                 r = new ResultInfo<Community>();
 
-                item = await db0.Community.FindAsync(id);
+                item = await db0.Community.FindAsync(param.id);
                 if (item != null)
                 {
                     db0.Community.Remove(item);
@@ -176,10 +177,18 @@ namespace DotWeb.Api
                 db0.Dispose();
             }
         }
-    }
-    public class q_Community : QueryBase
-    {
-        public string name { set; get; }
 
+        public class putBodyParam {
+            public int id { get; set; }
+            public Community md { get; set; }
+        }
+        public class queryParam : QueryBase
+        {
+            public string name { set; get; }
+
+        }
+        public class delParam {
+            public int id { get; set; }
+        }
     }
 }

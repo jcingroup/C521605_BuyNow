@@ -325,8 +325,8 @@ namespace Users {
                         recordCount={this.state.gridData.records}
                         totalPage={this.state.gridData.total}
                         nowPage={this.state.gridData.page}
-                        onQueryGridData={this.queryGridData}
-                        InsertType={this.insertType}
+                        queryGridData={this.queryGridData}
+                        insertType={this.insertType}
                         deleteSubmit={this.deleteSubmit}
                         />
                         </form>

@@ -7,8 +7,18 @@
         chd?: boolean,
         delCheck(p1: number, p2: boolean): void,
         updateType(p1: number | string): void,
-        primKey: number | string
+        primKey: number | string,
     }
+
+    export interface GridRowPropsBase2<R> {
+        key?: number,
+        //ikey: number,
+        itemData: R,
+        updateType(p1: number | string): void,
+        primKey: number | string,
+        removeItemSubmit(primkey: number | string): void
+    }
+
     export interface GridRowStateBase { }
 
     export interface GridFormPropsBase {
@@ -34,6 +44,7 @@
         fieldData?: F,
         searchData?: any,
         edit_type?: IEditType,
-        checkAll?: boolean
+        checkAll?: boolean,
+        editPrimKey?: number | string
     }
 }

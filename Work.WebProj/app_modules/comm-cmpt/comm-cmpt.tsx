@@ -49,11 +49,7 @@ export class GridCheckDel extends React.Component<
     }
 }
 
-interface GridButtonDelProps {
-    delItem(key: number | string): void,
-    showButton?: boolean,
-    primKey: number | string
-}
+
 export class GridButtonDel extends React.Component<GridButtonDelProps, any>
 {
     constructor() {
@@ -61,7 +57,7 @@ export class GridButtonDel extends React.Component<GridButtonDelProps, any>
         this.onClick = this.onClick.bind(this);
     }
     onClick(e) {
-        this.props.delItem(this.props.primKey);
+        this.props.removeItemSubmit(this.props.primKey);
     }
     render() {
         return <button type="button" onClick={this.onClick} className="btn-link btn-lg text-danger">
@@ -69,7 +65,6 @@ export class GridButtonDel extends React.Component<GridButtonDelProps, any>
             </button>;
     }
 }
-
 export class GridNavPage extends React.Component<GridNavPageProps, any> {
     constructor(props) {
         super(props)
@@ -83,19 +78,19 @@ export class GridNavPage extends React.Component<GridNavPageProps, any> {
         showDelete: true
     };
     firstPage() {
-        this.props.onQueryGridData(1);
+        this.props.queryGridData(1);
     }
     lastPage() {
-        this.props.onQueryGridData(this.props.totalPage);
+        this.props.queryGridData(this.props.totalPage);
     }
     nextPage() {
         if (this.props.nowPage < this.props.totalPage) {
-            this.props.onQueryGridData(this.props.nowPage + 1);
+            this.props.queryGridData(this.props.nowPage + 1);
         }
     }
     prvePage() {
         if (this.props.nowPage > 1) {
-            this.props.onQueryGridData(this.props.nowPage - 1);
+            this.props.queryGridData(this.props.nowPage - 1);
         }
     }
     jumpPage() {
@@ -106,7 +101,7 @@ export class GridNavPage extends React.Component<GridNavPageProps, any> {
         if (this.props.showAdd) {
             setAddButton = <button className="btn-link text-success"
                 type="button"
-                onClick={this.props.InsertType}>
+                onClick={this.props.insertType}>
                             <i className="fa-plus-circle"></i> 新增
                 </button>;
         }
@@ -279,18 +274,7 @@ export class InputDate extends React.Component<{
     }
 }
 
-interface GridNavPageProps {
-    onQueryGridData(p1: number): void,
-    InsertType(): void,
-    deleteSubmit(): void,
-    nowPage: number,
-    totalPage: number,
-    startCount: number,
-    endCount: number,
-    recordCount: number,
-    showAdd?: boolean,
-    showDelete?: boolean
-}
+
 
 export class Tips extends React.Component<{ comment: string, children?: any }, any>{
     render() {
@@ -701,22 +685,6 @@ export class MasterFileUpload extends React.Component<FileUpProps, any>{
         );
         return outHtml;
     }
-}
-
-interface TwAddressProps {
-    onChange(fieldName: string, e: React.SyntheticEvent): void,
-    setFDValue(fieldName: string, e: React.SyntheticEvent): void,
-    zip_value: string,
-    zip_field: string,
-    city_value: string,
-    city_field: string,
-    country_value: string,
-    country_field: string,
-    address_value: string,
-    address_field: string,
-    required?: boolean,
-    disabled?: boolean,
-    ver?: number
 }
 export class TwAddress extends React.Component<TwAddressProps, { country_list: Array<any> }>{
     constructor(props) {
