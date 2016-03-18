@@ -1,108 +1,220 @@
 @charset "UTF-8";
 
-// var 變數，需放在 @import "helper/var" 之上才能覆蓋掉
-// ------------------------------------------------------------
-$img-path2:         '../images/index';
-$img-banner:        '../images/index/banner';
 
-$btn-color:         #028BA4;
-$btn-hover-color:   #fff;
-$btn-bg-color:      #fff;
-$btn-bg-hover:      #028BA4;
-$btn-font-size:     13px;
-$btn-padding:       12px 20px;
+// var
+// ------------------------------------------------------------
+$img-path2:             '../images/Index';
 
 
 // import
 // ------------------------------------------------------------
-@import "helper/function";
-@import "helper/var";
+
+// Core variables and mixins
+@import "helper/variables";
+@import "_web/var";
+
 @import "helper/mixins";
+@import "helper/function";
 
-@import "base/basic";
-@import "base/extend";
-@import "base/classes";
+// Reset and dependencies
+@import "base/normalize";
+@import "base/print";
+@import "base/reboot";
 
-@import "layout/layout";
+// Elements
+@import "element/type";
 
-@import "module/hover";
-@import "module/dropdown";
+// Layout
+@import "layout/grid";
+
+// Module
+@import "module/animation";
+@import "module/nav";
+@import "module/navbar";
+
+// Utility classes
+@import "helper/utilities-extends";
+@import "helper/extend";
+@import "helper/classes";
+@import "helper/utilities-responsive";
+
+@import "_web/layout";
 
 
-// layout
+// main
 // ----------------------------------------------------------------------
-
-// == banner
 #banner {
-    background: #F1F1F1;
-    border: 1px solid #E5E5E5;
-    margin: 30px 20px;
+	position: relative;
+	// background: linear-gradient(#81D4CB,#B6DBD8);
 
-    @include mq(wider) {
-        max-width: $max-width;
-        margin: 30px auto;
-    }
+	.animated {position: absolute;}
+
+	.slogan1 {
+
+		.slogan1-1 {
+			width: 173px;
+			height: 175px;
+			left: 300px;
+			top: 95px;
+			background: url(#{$img-path2}/slogan1-1.svg) no-repeat;
+		}
+		.slogan1-2 {
+			width: 206px;
+			height: 206px;
+			left: 436px;
+			top: 75px;
+			background: url(#{$img-path2}/slogan1-2.svg) no-repeat;
+			animation-delay: 0.5s;
+		}
+		.slogan1-3 {
+			width: 168px;
+			height: 168px;
+			left: 600px;
+			top: 123px;
+			background: url(#{$img-path2}/slogan1-3.svg) no-repeat;
+			animation-delay: 1s;
+		}
+		.slogan1-4 {
+			width: 180px;
+			height: 173px;
+			left: 723px;
+			top: 87px;
+			background: url(#{$img-path2}/slogan1-4.svg) no-repeat;
+			animation-delay: 1.5s;
+		}
+	}
+
+	.slogan2 {
+		width: 250px;
+		height: 228px;
+
+		right: 55px;
+		top: 65px;
+		background: url(#{$img-path2}/couple.png) no-repeat center bottom;
+		animation-delay: 2s;
+
+		.text {
+			display: block;
+			
+			position: absolute;
+			top: 183px;
+			left: 2px;
+
+			color: #28615B;
+			font-size: em(27px);
+			font-style: normal;
+			font-weight: bold;
+			transform: rotate(3deg);
+		}
+		.cloud2 {
+			width: 100%;
+			height: 38px;
+			position: absolute;
+			left: 0;
+			top: 42px;
+			background: url(#{$img-path2}/cloud2.svg) no-repeat right top;
+		}
+		.balloon {
+			width: 80px;
+			height: 168px;
+			position: absolute;
+			left: 100px;
+			top: 0;
+			background: url(#{$img-path2}/balloon.svg) no-repeat;
+		}
+	}
+
+	.cloud {
+		width: 100%;
+		height: 75px;
+		position: absolute;
+		left: 0;
+		top: 315px;
+		background: url(#{$img-path2}/cloud.svg) no-repeat;
+	}
 }
-.swiper-wrapper {
-    @extend %list-unstyled;
-    margin-bottom: 0;
-}
-.swiper-slide {
-    text-align: center;
 
-    @include mq-max(tablet) {}
+#content {
+	background: #F1F1E6;
 }
 
-// == main
-.new-product {
-    float: left;
-    display: block;
+.grid-house {
+	@extend .row;
+	margin-bottom: 60px;
+
+	.sell, .rent {
+		@extend .col-xs-6;
+		// margin-top: -239px;
+
+		.h2 {font-size: em(36px);}
+
+		a {
+			display: block;
+			position: relative;
+			padding: 255px $spacer 100px $spacer;
+
+			background: #fff;
+			box-shadow: 0 2px 2px hsla(0,0,0,0.1);
+
+			small {
+				display: block;
+				position: absolute;
+				left: $spacer;
+				bottom: -9px;
+
+				line-height: 1;
+				font-size: em(100px,36px);
+				color: #EBEBEB;
+				text-transform: uppercase;
+			}
+		}
+
+		.thumb {
+			display: block;
+			width: 100%;
+			height: 232px;
+			position: absolute;
+			left: 0;
+			top: 0;
+		}		
+	}
+
+	.sell {
+		a {color: #39AEC6;}
+	}
+
+	.rent {
+		a {color: #F68C2A;}
+	}
 }
 
-#main {
-    ul {
-        float: right;
-        width: cp(769px);
+.grid-contact {
 
-        @include mq(wider) { width: cp(845px); }
+	.h2 {
+		padding-bottom: 20px;
 
-        a {
-            background-attachment: fixed;
-            background: url(#{$img-path2}/infoPic.png) right 30px no-repeat;
+		color: #544125;
+		font-size: em(50px);
+		font-family: $font-family-en;
+		font-weight: 300;
 
-            color: #00987A;
-            font-family: $font-sp;
-            font-size: em(31px);
-            letter-spacing: 2px;
-            text-align: left;
+		border-bottom: 3px solid #E8E5D3;
+	}
 
-            display: block;
-            height: 156px;
-            padding-top: 32px;
-            padding-left: 20px;
+	#map {
+		width: 100%;
+		height: 380px;
+		margin: $spacer*1.5 0;
+		border: 3px solid #fff;
+	}
 
-            &:hover, &:active {
-                color: $brand-primary;
-                box-shadow: 6px 10px 15px rgba(0,0,0,0.2) inset;
-            }
-        }
-    }
-    li {
-        background: url(#{$img-path2}/infoBg.gif) center no-repeat;
-        box-shadow: 1px 1px 0 #CBCBCB;
-        width: 48.6%;
-        margin-bottom: 10px;
+	li {
 
-        @include prefix(transition, all .35s ease, webkit);
+		&:not(:last-child) {margin-right: $spacer*2.5;}	
 
-        &:nth-child(even) { margin-left: 8px; }
+		color: #544125;
+		font-size: em(20px);
 
-        &:hover, &:active {
-            @include prefix(transform, translate(1px,2px))
-        }
-
-        &:nth-of-type(2) a { background-position: right -210px; }
-        &:nth-of-type(3) a { background-position: right -418px; }
-        &:nth-of-type(4) a { background-position: right -650px; }
-    }
+		[class*="ti-"] {margin-right: $spacer*0.6;}
+	}
 }

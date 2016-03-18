@@ -1,3 +1,68 @@
 ﻿@{
+	ViewBag.Title = "首頁";
+    ViewBag.IsFirstPage = true;
+    ViewBag.BodyClass = "Index";
     Layout = "~/Views/Shared/Layout.cshtml";
 }
+
+@section css {
+	<link href="~/Content/css/vendor/animate.css" rel="stylesheet">
+}
+
+<h1 class="sr-only">@ViewBag.Title</h1>
+
+<div class="wrap">
+	<div id="banner">
+		<img class="bg" src="~/Content/images/Index/banner1.jpg">
+		<p class="slogan1">
+			<span class="sr-only">幸福阿珍</span>
+			<i class="slogan1-1 animated fadeInLeft"></i>
+			<i class="slogan1-2 animated fadeInDown"></i>
+			<i class="slogan1-3 animated fadeInUp"></i>
+			<i class="slogan1-4 animated fadeInRight"></i>
+		</p>
+		<p class="slogan2 animated bounceIn">
+			<i class="text">加入我們共創幸福！</i>
+			<i class="cloud2"></i>
+			<i class="balloon"></i>
+		</p>
+		<div class="cloud"></div>
+	</div>
+</div>
+
+<div id="content">
+	<div class="wrap">
+		
+		<div class="grid-house">
+			<section class="sell">
+				<h2 class="h2">
+					<a href="~/Sell">
+						<i class="thumb"><img src="" alt=""></i>
+						優質好宅出售
+						<small>For Sell</small>
+					</a>
+				</h2>
+			</section>
+			<section class="rent">
+				<h2 class="h2">
+					<a href="~/Rent">
+						<i class="thumb"><img src="" alt=""></i>
+						精選房屋出租
+						<small>For Rent</small>
+					</a>
+				</h2>
+			</section>
+		</div>
+
+		<section class="grid-contact">
+			<h2 class="h2">Contacts</h2>
+			<iframe id="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3617.572889805967!2d121.37944231500457!3d24.94661608401328!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34681c740c32b2af%3A0x2ba1a4efce64b775!2zMjM45paw5YyX5biC5qi55p6X5Y2A5a245oiQ6LevNjU16Jmf!5e0!3m2!1szh-TW!2stw!4v1458115457215" frameborder="0" allowfullscreen></iframe>
+			<ul class="list-inline">
+				<li><i class="ti-home"></i><span class="sr-only">地址</span>新北市樹林區學成路655號9樓</li>
+				<li><i class="ti-mobile"></i><span class="sr-only">電話</span>0983-792-107</li>
+				<li><i class="ti-email"></i><span class="sr-only">E-mail</span><a href="test@demo.com">test@demo.com</a></li>
+			</ul>
+		</section>
+
+	</div>
+</div>

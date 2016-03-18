@@ -1,0 +1,121 @@
+@charset "UTF-8";
+
+
+// type
+// ----------------------------------------------------------------------
+.h1 {
+    margin: $spacer*3 0;
+    padding-bottom: $spacer;
+
+    border-bottom: 3px solid #dedede;
+
+    text-align: center;
+    color: #4D4D4D;
+
+    small {
+        display: block;
+        margin-bottom: $spacer*0.5;
+
+        color: $gray;
+        font-size: 0.5em;
+    }
+
+    @include media-breakpoint-down(sm) {
+        margin: $spacer*1.5 0;
+
+        font-size: 2em;
+    }
+}
+
+.h2 {
+    margin-bottom: $spacer*1.5;
+    padding-left: $spacer*0.7;
+    border-left: 3px solid $brand-secondary;
+
+    small {
+        display: block;
+        margin-bottom: $spacer*0.5;
+
+        color: $gray;
+        font-size: 0.5em;
+    }
+
+    a {
+        color: $body-color;
+
+        &:hover {color: darken($brand-primary,15%);}
+    }
+}
+
+
+// table
+// ----------------------------------------------------------------------
+.table {
+	@extend .table-striped;
+
+	background: transparent;
+
+    td {border: $table-border-width solid $table-border-color;}
+
+    thead {
+
+    	th {
+    		background: $thead-bg;
+    		border: $table-border-width solid $table-border-color;
+
+            vertical-align: middle;
+    		color: #3D3935;
+    		font-size: em(18px);
+    		font-weight: normal;
+    	}
+    }
+
+    tbody {
+    	tr {background: $table-bg;}
+    }
+}
+
+
+// buttons
+// ----------------------------------------------------------------------
+.btn {border-radius: $btn-border-radius;}
+
+.btn-primary {
+    background: linear-gradient(#71797e, #cfcfcf);
+    box-shadow: 0 0 3px #686868;
+    letter-spacing: 0.03em;
+    color: #2E2A27;
+    font-weight: bold;
+    text-shadow: 1px 1px 0 #E5E5E5;
+
+    &:hover, &.active {
+        background: linear-gradient(#5f5f5f, #2d2d2d);
+        border-color: #fff;
+
+        color: #fff;
+        text-shadow: 1px 1px 0 #333;
+    }
+}
+
+.btn-secondary {
+    &:hover {background: #544D48;}
+}
+
+.btn-danger {
+    &:hover {background: lighten($btn-danger-bg,10%);}
+}
+
+.btn-muted {@include button-variant($btn-muted-color, $btn-muted-bg, $btn-muted-border);}
+
+.btn-lg {
+    border-radius: $btn-border-radius-lg;
+    font-size: em(17px);
+}
+
+
+// form
+// ----------------------------------------------------------------------
+.form-inline {
+
+    .form-group {margin: 0 $spacer $spacer 0;}
+}
