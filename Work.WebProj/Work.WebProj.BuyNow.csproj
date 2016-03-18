@@ -27,7 +27,7 @@
     <SccProvider>SAK</SccProvider>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
-    <TypeScriptToolsVersion>1.7</TypeScriptToolsVersion>
+    <TypeScriptToolsVersion>1.8</TypeScriptToolsVersion>
     <UseGlobalApplicationHostFile />
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -293,6 +293,7 @@
     <Compile Include="Models\DotWeb.CommSetup.cs" />
     <Compile Include="Models\DotWeb.CrossMessage.cs" />
     <Compile Include="Models\DotWeb.WebPageToImage.cs" />
+    <Compile Include="Models\DynamicLibrary.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\IFileHandle.cs" />
     <Compile Include="Models\IGetDetailNewId.cs" />
@@ -579,7 +580,6 @@
     <TypeScriptCompile Include="app_modules\comm-cmpt\react.cmpt.prop.ts" />
     <TypeScriptCompile Include="app_modules\comm-func\comm-func.d.ts" />
     <TypeScriptCompile Include="app_modules\comm-func\comm-func.tsx" />
-    <None Include="app_modules\comm.r.tsx.bak" />
     <TypeScriptCompile Include="app_modules\comm-typeahead\comm-typeahead.d.ts" />
     <TypeScriptCompile Include="app_modules\comm-typeahead\main.tsx" />
     <TypeScriptCompile Include="app_modules\dt\def-data.d.ts" />

@@ -1,158 +1,127 @@
-﻿declare module "comm-cmpt" {
+﻿interface GridNavPageProps extends React.Props<GridNavPageClass> {
+    queryGridData(page: number): void,
+    insertType(): void,
+    deleteSubmit(): void,
+    nowPage: number,
+    totalPage: number,
+    startCount: number,
+    endCount: number,
+    recordCount: number,
+    showAdd?: boolean,
+    showDelete?: boolean
+}
+interface GridNavPageClass extends React.ComponentClass<GridNavPageProps> {
 
-    //GridNavPage
-    interface GridNavPageProps extends React.Props<GridNavPageClass> {
-        onQueryGridData(p1: number): void,
-        InsertType(): void,
-        deleteSubmit(): void,
-        nowPage: number,
-        totalPage: number,
-        startCount: number,
-        endCount: number,
-        recordCount: number,
-        showAdd?: boolean,
-        showDelete?: boolean
-    }
-    interface GridNavPage extends React.ReactElement<GridNavPageProps> { }
-    interface GridNavPageClass extends React.ComponentClass<GridNavPageProps> {
+}
+interface GridButtonModifyProps extends React.Props<GridButtonModifyClass> {
+    modify(): void
+}
+interface GridButtonModifyClass extends React.ComponentClass<GridButtonModifyProps> {
+
+}
+interface GridCheckDelProps extends React.Props<GridCheckDelClass> {
+    delCheck(p1: any, p2: any): void,
+    iKey: number,
+    chd: boolean,
+    showAdd?: boolean
+}
+interface GridCheckDelClass extends React.ComponentClass<GridCheckDelProps> {
+}
+//GridButtonDel
+interface GridButtonDelProps extends React.Props<GridButtonDelClass> {
+    removeItemSubmit(primkey: number | string): void,
+    showButton?: boolean,
+    primKey: number | string
+}
+interface GridButtonDelClass extends React.ComponentClass<GridButtonDelProps> {
+}
+//InputDate
+interface InputDateProps extends React.Props<InputDateClass> {
+    id: string,
+    value: Date,
+    onChange(field_name: string, date_value: Date): void,
+    field_name: string,
+    required: boolean,
+    disabled: boolean,
+    ver: number
+}
+interface InputDateClass extends React.ComponentClass<InputDateProps> {
+}
+interface TipsProps extends React.Props<TipsClass> {
+    isShow: boolean,
+    fieldSalesNo: string,
+    fieldSalesName: string,
+    setValue?(): void,
+    close(): void
+    updateView(sales_no: string, sales_name: string): void,
+}
+interface TipsClass extends React.ComponentClass<TipsProps> {
+}
+interface MasterImageUploadProps extends React.Props<MasterImageUploadClass> {
+    url_upload?: string,
+    url_list?: string,
+    url_delete?: string,
+    url_download?: string,
+    url_sort?: string,
+    FileKind?: string,
+    MainId: number | string,
+    ParentEditType?: number
+}
+interface MasterImageUploadClass extends React.ComponentClass<MasterImageUploadProps> {
+}
+interface MasterFileUploadProps extends React.Props<MasterFileUploadClass> {
+    url_upload?: string,
+    url_list?: string,
+    url_delete?: string,
+    url_download?: string,
+    url_sort?: string,
+    FileKind?: string,
+    MainId: number | string,
+    ParentEditType?: number
+}
+interface MasterFileUploadClass extends React.ComponentClass<MasterFileUploadProps> {
+}
+interface TwAddressClass extends React.ComponentClass<TwAddressProps> {
+}
+interface TwAddressProps extends React.Props<TwAddressClass> {
+    onChange(fieldName: string, e: React.SyntheticEvent): void,
+    setFDValue(fieldName: string, e: React.SyntheticEvent): void,
+    zip_value: string,
+    zip_field: string,
+    city_value: string,
+    city_field: string,
+    country_value: string,
+    country_field: string,
+    address_value: string,
+    address_field: string,
+    required?: boolean,
+    disabled?: boolean,
+    ver?: number
+}
+interface StateForGirdProps extends React.Props<StateForGirdClass> {
+    stateData: Array<server.StateTemplate>, id: number | string, ver?: number
+}
+interface StateForGirdClass extends React.ComponentClass<StateForGirdProps> {
+}
+declare module __comm_cmpt {
+    class GridNavPage extends React.Component<GridNavPageProps, any> { }
+    class GridButtonModify extends React.Component<GridButtonModifyProps, any> { }
+    class GridCheckDel extends React.Component<GridCheckDelProps, any> { }
+    class GridButtonDel extends React.Component<GridButtonDelProps, any> {
 
     }
-    var GridNavPage: GridNavPageClass;
-    //GridButtonModify
-    interface GridButtonModifyProps extends React.Props<GridButtonModifyClass> {
-        modify(): void
+    class InputDate extends React.Component<InputDateProps, any> {
     }
-    interface GridButtonModify extends React.ReactElement<GridButtonModifyProps> { }
-    interface GridButtonModifyClass extends React.ComponentClass<GridButtonModifyProps> {
+    class Tips extends React.Component<TipsProps, any> {
+        comment: string;
+        children: any;
+    }
+    class MasterImageUpload extends React.Component<MasterImageUploadProps, any> { }
+    class MasterFileUpload extends React.Component<MasterFileUploadProps, any> { }
+    class TwAddress extends React.Component<TwAddressProps, any> { }
+    class StateForGird extends React.Component<StateForGirdProps, any> { }
+}
 
-    }
-    var GridButtonModify: GridButtonModifyClass;
-    //GridCheckDel
-    interface GridCheckDelProps extends React.Props<GridCheckDelClass> {
-        delCheck(p1: any, p2: any): void,
-        iKey: number,
-        chd: boolean,
-        showAdd?: boolean
-    }
-    interface GridCheckDel extends React.ReactElement<GridCheckDelProps> { }
-    interface GridCheckDelClass extends React.ComponentClass<GridCheckDelProps> {
-    }
-    var GridCheckDel: GridCheckDelClass;
-
-    //GridCheckDel
-    interface GridButtonDelProps extends React.Props<GridButtonDelClass> {
-        delCheck(p1: any): void,
-        iKey: number,
-        showButton?: boolean
-    }
-    interface GridButtonDel extends React.ReactElement<GridButtonDelProps> { }
-    interface GridButtonDelClass extends React.ComponentClass<GridButtonDelProps> {
-    }
-    var GridButtonDel: GridButtonDelClass;
-
-
-    //InputDate
-    interface InputDateProps extends React.Props<InputDateClass> {
-        id: string,
-        value: Date,
-        onChange(field_name: string, date_value: Date): void,
-        field_name: string,
-        required: boolean,
-        disabled: boolean,
-        ver: number
-    }
-    interface InputDate extends React.ReactElement<InputDateProps> { }
-    interface InputDateClass extends React.ComponentClass<InputDateProps> {
-    }
-    var InputDate: InputDateClass;
-
-    interface ModalSalesProps extends React.Props<ModalSalesClass> {
-        isShow: boolean,
-        fieldSalesNo: string,
-        fieldSalesName: string,
-        setValue?(): void,
-        close(): void
-        updateView(sales_no: string, sales_name: string): void,
-    }
-    interface ModalSales extends React.ReactElement<ModalSalesProps> { }
-    interface ModalSalesClass extends React.ComponentClass<ModalSalesProps> {
-    }
-    var ModalSales: ModalSalesClass;
-
-    interface TipsProps extends React.Props<TipsClass> {
-        isShow: boolean,
-        fieldSalesNo: string,
-        fieldSalesName: string,
-        setValue?(): void,
-        close(): void
-        updateView(sales_no: string, sales_name: string): void,
-    }
-    interface Tips extends React.ReactElement<TipsProps> {
-        comment: string,
-        children?: any
-    }
-    interface TipsClass extends React.ComponentClass<TipsProps> {
-    }
-    var Tips: TipsClass;
-
-    interface MasterImageUploadProps extends React.Props<MasterImageUploadClass> {
-        url_upload?: string,
-        url_list?: string,
-        url_delete?: string,
-        url_download?: string,
-        url_sort?: string,
-        FileKind?: string,
-        MainId: number | string,
-        ParentEditType?: number
-    }
-    interface MasterImageUpload extends React.ReactElement<MasterImageUploadProps> { }
-    interface MasterImageUploadClass extends React.ComponentClass<MasterImageUploadProps> {
-    }
-    var MasterImageUpload: MasterImageUploadClass;
-
-    //MasterFileUpload
-    interface MasterFileUploadProps extends React.Props<MasterFileUploadClass> {
-        url_upload?: string,
-        url_list?: string,
-        url_delete?: string,
-        url_download?: string,
-        url_sort?: string,
-        FileKind?: string,
-        MainId: number | string,
-        ParentEditType?: number
-    }
-    interface MasterFileUpload extends React.ReactElement<MasterFileUploadProps> { }
-    interface MasterFileUploadClass extends React.ComponentClass<MasterFileUploadProps> {
-    }
-    var MasterFileUpload: MasterFileUploadClass;
-
-    //twaddress
-    interface TwAddressProps extends React.Props<TwAddressClass> {
-        onChange(fieldName: string, e: React.SyntheticEvent): void,
-        setFDValue(fieldName: string, e: React.SyntheticEvent): void,
-        zip_value: string,
-        zip_field: string,
-        city_value: string,
-        city_field: string,
-        country_value: string,
-        country_field: string,
-        address_value: string,
-        address_field: string,
-        required?: boolean,
-        disabled?: boolean,
-        ver?: number
-    }
-    interface TwAddress extends React.ReactElement<TwAddressProps> { }
-    interface TwAddressClass extends React.ComponentClass<TwAddressProps> {
-    }
-    var TwAddress: TwAddressClass;
-
-    //stateforgrid
-    interface StateForGirdProps extends React.Props<StateForGirdClass> {
-        stateData: Array<server.StateTemplate>, id: number | string, ver?: number 
-    }
-    interface StateForGird extends React.ReactElement<StateForGirdProps> { }
-    interface StateForGirdClass extends React.ComponentClass<StateForGirdProps> {
-    }
-    var StateForGird: StateForGirdClass;
+declare module "comm-cmpt" {
+    export = __comm_cmpt;
 }
