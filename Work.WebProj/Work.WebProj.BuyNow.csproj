@@ -327,6 +327,7 @@
     <Content Include="Content\images\bg.jpg" />
     <Content Include="Content\images\Index\banner1.jpg" />
     <Content Include="Content\images\Index\bannerBg.png" />
+    <Content Include="Content\images\Index\bg.jpg" />
     <Content Include="Content\images\Index\couple.png" />
     <Content Include="Content\images\Index\rent.jpg" />
     <Content Include="Content\images\Index\sell.jpg" />
@@ -336,6 +337,7 @@
     <Content Include="Content\images\menuBg.png" />
     <Content Include="Content\images\no-pic.gif" />
     <Content Include="Areas\Base\Views\Menu\Main.cshtml" />
+    <Content Include="Content\images\Partner\dm.jpg" />
     <Content Include="Content\sass\base\_normalize.scss" />
     <Content Include="Content\sass\base\_print.scss" />
     <Content Include="Content\sass\base\_reboot.scss" />
