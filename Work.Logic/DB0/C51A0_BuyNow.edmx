@@ -55,6 +55,23 @@
           <Property Name="department_name" Type="nvarchar" MaxLength="16" Nullable="false" />
           <Property Name="i_Hide" Type="bit" Nullable="false" />
         </EntityType>
+        <EntityType Name="Edit">
+          <Key>
+            <PropertyRef Name="edit_id" />
+          </Key>
+          <Property Name="edit_id" Type="int" Nullable="false" />
+          <Property Name="edit_name" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="edit_content" Type="ntext" />
+          <Property Name="sort" Type="int" Nullable="false" />
+          <Property Name="i_Hide" Type="bit" Nullable="false" />
+          <Property Name="i_InsertUserID" Type="nvarchar" MaxLength="128" />
+          <Property Name="i_InsertDeptID" Type="int" />
+          <Property Name="i_InsertDateTime" Type="datetime" />
+          <Property Name="i_UpdateUserID" Type="nvarchar" MaxLength="128" />
+          <Property Name="i_UpdateDeptID" Type="int" />
+          <Property Name="i_UpdateDateTime" Type="datetime" />
+          <Property Name="i_Lang" Type="char" MaxLength="5" Nullable="false" />
+        </EntityType>
         <EntityType Name="i_Currency">
           <Key>
             <PropertyRef Name="id" />
@@ -211,6 +228,7 @@
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Community" EntityType="Self.Community" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Edit" EntityType="Self.Edit" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="i_Currency" EntityType="Self.i_Currency" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="i_IDX" EntityType="Self.i_IDX" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="i_Lang" EntityType="Self.i_Lang" Schema="dbo" store:Type="Tables" />
@@ -397,6 +415,7 @@
             <End Role="Menu" EntitySet="Menu" />
           </AssociationSet>
           <EntitySet Name="Community" EntityType="C51A0_BuyNowModel.Community" />
+          <EntitySet Name="Edit" EntityType="C51A0_BuyNowModel.Edit" />
         </EntityContainer>
         <EntityType Name="Community">
           <Key>
@@ -404,6 +423,23 @@
           </Key>
           <Property Name="community_id" Type="Int32" Nullable="false" />
           <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Edit">
+          <Key>
+            <PropertyRef Name="edit_id" />
+          </Key>
+          <Property Name="edit_id" Type="Int32" Nullable="false" />
+          <Property Name="edit_name" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="edit_content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="sort" Type="Int32" Nullable="false" />
+          <Property Name="i_Hide" Type="Boolean" Nullable="false" />
+          <Property Name="i_InsertUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="i_InsertDeptID" Type="Int32" />
+          <Property Name="i_InsertDateTime" Type="DateTime" Precision="3" />
+          <Property Name="i_UpdateUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="i_UpdateDeptID" Type="Int32" />
+          <Property Name="i_UpdateDateTime" Type="DateTime" Precision="3" />
+          <Property Name="i_Lang" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -567,6 +603,24 @@
               <MappingFragment StoreEntitySet="Community">
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="community_id" ColumnName="community_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Edit">
+            <EntityTypeMapping TypeName="C51A0_BuyNowModel.Edit">
+              <MappingFragment StoreEntitySet="Edit">
+                <ScalarProperty Name="i_Lang" ColumnName="i_Lang" />
+                <ScalarProperty Name="i_UpdateDateTime" ColumnName="i_UpdateDateTime" />
+                <ScalarProperty Name="i_UpdateDeptID" ColumnName="i_UpdateDeptID" />
+                <ScalarProperty Name="i_UpdateUserID" ColumnName="i_UpdateUserID" />
+                <ScalarProperty Name="i_InsertDateTime" ColumnName="i_InsertDateTime" />
+                <ScalarProperty Name="i_InsertDeptID" ColumnName="i_InsertDeptID" />
+                <ScalarProperty Name="i_InsertUserID" ColumnName="i_InsertUserID" />
+                <ScalarProperty Name="i_Hide" ColumnName="i_Hide" />
+                <ScalarProperty Name="sort" ColumnName="sort" />
+                <ScalarProperty Name="edit_content" ColumnName="edit_content" />
+                <ScalarProperty Name="edit_name" ColumnName="edit_name" />
+                <ScalarProperty Name="edit_id" ColumnName="edit_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
