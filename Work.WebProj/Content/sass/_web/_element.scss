@@ -4,55 +4,51 @@
 // type
 // ----------------------------------------------------------------------
 .h1 {
-    margin: $spacer*3 0;
-    padding-bottom: $spacer;
 
-    border-bottom: 3px solid #dedede;
-
-    text-align: center;
-    color: #4D4D4D;
-
-    small {
-        display: block;
-        margin-bottom: $spacer*0.5;
-
-        color: $gray;
-        font-size: 0.5em;
-    }
-
-    @include media-breakpoint-down(sm) {
-        margin: $spacer*1.5 0;
-
-        font-size: 2em;
-    }
 }
 
 .h2 {
-    margin-bottom: $spacer*1.5;
-    padding-left: $spacer*0.7;
-    border-left: 3px solid $brand-secondary;
+    position: relative;
+    margin-bottom: 30px;
+    padding-bottom: 35px;
 
-    small {
+    text-align: center;
+    letter-spacing: 0.02em;
+    color: #8C6231;
+    font-size: em(60px);
+    font-family: $font-family-en;
+    text-transform: uppercase;
+    text-shadow: 3px 3px 3px hsla(0,0,0,0.2);
+
+    &::before, &::after {
+        content: " ";
         display: block;
-        margin-bottom: $spacer*0.5;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
 
-        color: $gray;
-        font-size: 0.5em;
+        background: #CCB978;
     }
 
-    a {
-        color: $body-color;
+    &::before {
+        width: 210px;
+        height: 2px;
+        bottom: 2px;
+    }
 
-        &:hover {color: darken($brand-primary,15%);}
+    &::after {
+        width: 78px;
+        height: 6px;
+        bottom: 0;
     }
 }
+
+.h3 {font-size: em(36px);}
 
 
 // table
 // ----------------------------------------------------------------------
 .table {
-	@extend .table-striped;
-
 	background: transparent;
 
     td {border: $table-border-width solid $table-border-color;}
@@ -81,20 +77,8 @@
 .btn {border-radius: $btn-border-radius;}
 
 .btn-primary {
-    background: linear-gradient(#71797e, #cfcfcf);
-    box-shadow: 0 0 3px #686868;
-    letter-spacing: 0.03em;
-    color: #2E2A27;
-    font-weight: bold;
-    text-shadow: 1px 1px 0 #E5E5E5;
 
-    &:hover, &.active {
-        background: linear-gradient(#5f5f5f, #2d2d2d);
-        border-color: #fff;
-
-        color: #fff;
-        text-shadow: 1px 1px 0 #333;
-    }
+    &:hover, &.active {}
 }
 
 .btn-secondary {

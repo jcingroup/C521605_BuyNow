@@ -38,6 +38,7 @@ $img-path2:             '../images/Index';
 @import "helper/classes";
 @import "helper/utilities-responsive";
 
+@import "_web/element";
 @import "_web/layout";
 
 
@@ -45,43 +46,17 @@ $img-path2:             '../images/Index';
 // ----------------------------------------------------------------------
 #banner {
 	position: relative;
-	// background: linear-gradient(#81D4CB,#B6DBD8);
+	padding-bottom: 53px;
+	background: url(#{$img-path2}/bannerBg.png) no-repeat center bottom;
 
+	p {margin: 0;}
 	.animated {position: absolute;}
 
 	.slogan1 {
-
-		.slogan1-1 {
-			width: 173px;
-			height: 175px;
-			left: 300px;
-			top: 95px;
-			background: url(#{$img-path2}/slogan1-1.svg) no-repeat;
-		}
-		.slogan1-2 {
-			width: 206px;
-			height: 206px;
-			left: 436px;
-			top: 75px;
-			background: url(#{$img-path2}/slogan1-2.svg) no-repeat;
-			animation-delay: 0.5s;
-		}
-		.slogan1-3 {
-			width: 168px;
-			height: 168px;
-			left: 600px;
-			top: 123px;
-			background: url(#{$img-path2}/slogan1-3.svg) no-repeat;
-			animation-delay: 1s;
-		}
-		.slogan1-4 {
-			width: 180px;
-			height: 173px;
-			left: 723px;
-			top: 87px;
-			background: url(#{$img-path2}/slogan1-4.svg) no-repeat;
-			animation-delay: 1.5s;
-		}
+		.slogan1-1 {width: 173px; height: 175px; left: 300px; top: 95px;}
+		.slogan1-2 {width: 206px; height: 206px; left: 436px; top: 75px; animation-delay: 0.5s;}
+		.slogan1-3 {width: 168px; height: 168px; left: 600px; top: 123px; animation-delay: 1s;}
+		.slogan1-4 {width: 180px; height: 173px; left: 723px; top: 87px; animation-delay: 1.5s;}
 	}
 
 	.slogan2 {
@@ -93,10 +68,11 @@ $img-path2:             '../images/Index';
 		background: url(#{$img-path2}/couple.png) no-repeat center bottom;
 		animation-delay: 2s;
 
+		i, img {position: absolute;}
+
 		.text {
 			display: block;
 			
-			position: absolute;
 			top: 183px;
 			left: 2px;
 
@@ -106,115 +82,130 @@ $img-path2:             '../images/Index';
 			font-weight: bold;
 			transform: rotate(3deg);
 		}
-		.cloud2 {
-			width: 100%;
-			height: 38px;
-			position: absolute;
-			left: 0;
-			top: 42px;
-			background: url(#{$img-path2}/cloud2.svg) no-repeat right top;
+		.cloud2 {width: 191px; height: 38px; right: 0; top: 42px;}
+
+		@keyframes fly {
+			from, 95%, to {opacity: 0;}
+			20%, 40%      {opacity: 1; transform: translateY(0);}
+			from          {transform: translateY(20%)}
+			95%, to       {transform: translate(40%,-120%) scale(0.6)}
 		}
 		.balloon {
-			width: 80px;
-			height: 168px;
+			width: 80px; height: 168px;
 			position: absolute;
-			left: 100px;
-			top: 0;
-			background: url(#{$img-path2}/balloon.svg) no-repeat;
+			left: 100px; top: 0;
+			opacity: 0;
+
+			animation-name: fly;
+			animation-duration: 5s;
+			animation-delay: 2.75s;
+			animation-timing-function: ease-in-out;
+			animation-iteration-count: infinite;
 		}
 	}
 
-	.cloud {
-		width: 100%;
-		height: 75px;
-		position: absolute;
-		left: 0;
-		top: 315px;
-		background: url(#{$img-path2}/cloud.svg) no-repeat;
-	}
+	.cloud {position: absolute; left: 0; top: 315px;}
 }
 
-#content {
-	background: #F1F1E6;
+.intro {
+	margin-bottom: 278px;
+	text-align: center;
+
+	p {
+		width: 500px;
+		margin: 0 auto;
+		color: #8C6231;
+		font-size: em(12px);
+	}
 }
 
 .grid-house {
 	@extend .row;
-	margin-bottom: 60px;
+	margin-bottom: $spacer*4.375;
 
 	.sell, .rent {
 		@extend .col-xs-6;
-		// margin-top: -239px;
-
-		.h2 {font-size: em(36px);}
+		margin-top: -188px;
 
 		a {
 			display: block;
+			width: 100%;
+			height: 375px;
 			position: relative;
-			padding: 255px $spacer 100px $spacer;
 
-			background: #fff;
-			box-shadow: 0 2px 2px hsla(0,0,0,0.1);
+			color: #fff;
+
+			border: 20px solid hsla(0,0,100%,0.3);
+			border-radius: 15px;
+			box-shadow: 0 3px 3px hsla(0,0,0,0.2);
+
+			span, small {
+				position: absolute;
+				right: 7%;
+			}
+
+			span {
+				display: inline-block;
+				top: 30%;
+
+				padding: 15px 35px;
+				background:hsla(0,0,0,0.5);
+			}
 
 			small {
 				display: block;
-				position: absolute;
-				left: $spacer;
-				bottom: -9px;
+				width: 75%;
+				top: 55%;
 
-				line-height: 1;
-				font-size: em(100px,36px);
-				color: #EBEBEB;
+				text-align: right;
+				font-size: em(10px,36px);
 				text-transform: uppercase;
-			}
-		}
 
-		.thumb {
-			display: block;
-			width: 100%;
-			height: 232px;
-			position: absolute;
-			left: 0;
-			top: 0;
+				opacity: 0.7;
+			}
 		}		
 	}
 
-	.sell {
-		a {color: #39AEC6;}
-	}
-
-	.rent {
-		a {color: #F68C2A;}
-	}
+	.sell a {background:url(#{$img-path2}/sell.jpg) no-repeat center center;}
+	.rent a {background:url(#{$img-path2}/rent.jpg) no-repeat center center;}
 }
 
 .grid-contact {
 
-	.h2 {
-		padding-bottom: 20px;
-
-		color: #544125;
-		font-size: em(50px);
-		font-family: $font-family-en;
-		font-weight: 300;
-
-		border-bottom: 3px solid #E8E5D3;
+	.map {
+		height: 380px;
+		position: relative;
 	}
 
 	#map {
 		width: 100%;
-		height: 380px;
-		margin: $spacer*1.5 0;
-		border: 3px solid #fff;
+		height: 100%;
+	}
+
+	ul {
+		width: 370px;
+		margin: 0;
+		padding: 0 25px;
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		background: hsla(46, 41%, 75%, 0.9);
 	}
 
 	li {
-
-		&:not(:last-child) {margin-right: $spacer*2.5;}	
-
-		color: #544125;
+		padding: 15px 0;
 		font-size: em(20px);
+		color: #634F28;
 
-		[class*="ti-"] {margin-right: $spacer*0.6;}
+		&:not(:last-child) {
+			border-bottom: 1px dotted #fff;
+		}
+
+		[class*="icon-"] {margin-right: $spacer*0.6;}
+
+		a {
+			color: #634F28;
+			&:hover {color: $link-hover-color;}
+		}
 	}
 }
