@@ -443,7 +443,6 @@
     <Content Include="Content\font\themify-icons\themify.svg" />
     <Content Include="Content\font\themify-icons\themify.ttf" />
     <Content Include="Content\font\themify-icons\themify.woff" />
-    <None Include="gulpfile.js" />
     <Content Include="Content\images\noIE\bg.gif" />
     <Content Include="Content\images\noIE\brow.gif" />
     <Content Include="Content\images\noIE\brow2.gif" />
