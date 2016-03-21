@@ -1,0 +1,105 @@
+@charset "UTF-8";
+
+
+// type
+// ----------------------------------------------------------------------
+.h1 {
+
+}
+
+.h2 {
+    position: relative;
+    margin-bottom: 30px;
+    padding-bottom: 35px;
+
+    text-align: center;
+    letter-spacing: 0.02em;
+    color: #8C6231;
+    font-size: em(60px);
+    font-family: $font-family-en;
+    text-transform: uppercase;
+    text-shadow: 3px 3px 3px hsla(0,0,0,0.2);
+
+    &::before, &::after {
+        content: " ";
+        display: block;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+
+        background: #CCB978;
+    }
+
+    &::before {
+        width: 210px;
+        height: 2px;
+        bottom: 2px;
+    }
+
+    &::after {
+        width: 78px;
+        height: 6px;
+        bottom: 0;
+    }
+}
+
+.h3 {font-size: em(36px);}
+
+
+// table
+// ----------------------------------------------------------------------
+.table {
+	background: transparent;
+
+    td {border: $table-border-width solid $table-border-color;}
+
+    thead {
+
+    	th {
+    		background: $thead-bg;
+    		border: $table-border-width solid $table-border-color;
+
+            vertical-align: middle;
+    		color: #3D3935;
+    		font-size: em(18px);
+    		font-weight: normal;
+    	}
+    }
+
+    tbody {
+    	tr {background: $table-bg;}
+    }
+}
+
+
+// buttons
+// ----------------------------------------------------------------------
+.btn {border-radius: $btn-border-radius;}
+
+.btn-primary {
+
+    &:hover, &.active {}
+}
+
+.btn-secondary {
+    &:hover {background: #544D48;}
+}
+
+.btn-danger {
+    &:hover {background: lighten($btn-danger-bg,10%);}
+}
+
+.btn-muted {@include button-variant($btn-muted-color, $btn-muted-bg, $btn-muted-border);}
+
+.btn-lg {
+    border-radius: $btn-border-radius-lg;
+    font-size: em(17px);
+}
+
+
+// form
+// ----------------------------------------------------------------------
+.form-inline {
+
+    .form-group {margin: 0 $spacer $spacer 0;}
+}
