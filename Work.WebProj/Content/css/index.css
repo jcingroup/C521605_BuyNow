@@ -3012,6 +3012,7 @@ a:focus {
   border: 20px solid rgba(255, 255, 255, 0.3);
   border-radius: 15px;
   box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+  transition: border 0.5s;
 }
 .grid-house .sell a span, .grid-house .sell a small, .grid-house .rent a span, .grid-house .rent a small {
   position: absolute;
@@ -3031,6 +3032,13 @@ a:focus {
   font-size: 0.27778em;
   text-transform: uppercase;
   opacity: 0.7;
+  transition: top 0.5s;
+}
+.grid-house .sell a:hover, .grid-house .rent a:hover {
+  border-width: 60px;
+}
+.grid-house .sell a:hover small, .grid-house .rent a:hover small {
+  top: 65%;
 }
 .grid-house .sell a {
   background: url(../images/Index/sell.jpg) no-repeat center center;

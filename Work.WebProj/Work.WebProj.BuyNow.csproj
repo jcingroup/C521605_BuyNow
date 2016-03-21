@@ -338,6 +338,7 @@
     <Content Include="Content\images\no-pic.gif" />
     <Content Include="Areas\Base\Views\Menu\Main.cshtml" />
     <Content Include="Content\images\Partner\dm.jpg" />
+    <Content Include="Content\images\VIP\dm.jpg" />
     <Content Include="Content\sass\base\_normalize.scss" />
     <Content Include="Content\sass\base\_print.scss" />
     <Content Include="Content\sass\base\_reboot.scss" />
