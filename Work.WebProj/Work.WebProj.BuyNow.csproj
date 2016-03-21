@@ -274,15 +274,16 @@
     <Compile Include="Controllers\Api\RolesController.cs" />
     <Compile Include="Controllers\Api\CommunityController.cs" />
     <Compile Include="Controllers\Api\UsersController.cs" />
-    <Compile Include="Controllers\ApplyController.cs" />
+    <Compile Include="Controllers\PlanController.cs" />
     <Compile Include="Controllers\BuyController.cs" />
     <Compile Include="Controllers\IndexController.cs" />
     <Compile Include="Controllers\PartnerController.cs" />
     <Compile Include="Controllers\RentController.cs" />
-    <Compile Include="Controllers\ServiceController.cs" />
+    <Compile Include="Controllers\AboutUsController.cs" />
     <Compile Include="Controllers\VendorController.cs" />
+    <Compile Include="Controllers\ShoppingController.cs" />
     <Compile Include="Controllers\VIPController.cs" />
-    <Compile Include="Controllers\WorksController.cs" />
+    <Compile Include="Controllers\NeighborController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -522,29 +523,42 @@
     <Content Include="Scripts\cdn\shadowbox\shadowbox.js" />
     <Content Include="Scripts\cdn\shadowbox\LICENSE" />
     <Content Include="Scripts\cdn\shadowbox\README" />
-    <Content Include="Views\Apply\Apply.cshtml" />
-    <Content Include="Views\Index\Index.cshtml" />
-    <Content Include="Views\Partner\Partner.cshtml" />
-    <Content Include="Views\Rent\Rent.cshtml" />
-    <Content Include="Views\Sell\Sell.cshtml" />
-    <Content Include="Views\Service\Service.cshtml" />
-    <Content Include="Views\Vendor\Vendor.cshtml" />
-    <Content Include="Views\Works\Works.cshtml" />
-    <Content Include="Views\VIP\VIP.cshtml" />
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
     <None Include="webpack.config.js" />
+    <Content Include="Views\AboutUs\AboutUs.cshtml" />
+    <Content Include="Views\Index\Index.cshtml" />
+    <Content Include="Views\Neighbor\Neighbor.cshtml" />
+    <Content Include="Views\Partner\Partner.cshtml" />
+    <Content Include="Views\Plan\Plan.cshtml" />
+    <Content Include="Views\Rent\Rent.cshtml" />
+    <Content Include="Views\Sell\Sell.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\MenuHelperModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapNodeModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapNodeModelList.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapPathHelperModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\TabletMenuHelperModel.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\edit_birthday.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\edit_Date.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\Layout.cshtml" />
+    <Content Include="Views\Shared\Manage\JSGlobalVar.cshtml" />
+    <Content Include="Views\Shared\Manage\RLayout.cshtml" />
+    <Content Include="Views\Shared\Manage\vucFooter.cshtml" />
+    <Content Include="Views\Shared\Manage\vucMenu.cshtml" />
+    <Content Include="Views\Shared\View.cshtml" />
+    <Content Include="Views\Shopping\Shopping.cshtml" />
+    <Content Include="Views\Vendor\Vendor.cshtml" />
+    <Content Include="Views\VIP\VIP.cshtml" />
+    <Content Include="Views\Web.config" />
     <Content Include="_Code\cache\memo.txt" />
     <Content Include="_Code\RPTExcel\DownExcel.xls" />
     <Content Include="_Code\RPTExcel\Equipment.xls" />
     <Content Include="_Code\RPTExcel\Apply.xls" />
     <Content Include="_Code\RPTExcel\Month.xls" />
-    <Content Include="Views\Shared\Manage\RLayout.cshtml" />
-    <Content Include="Views\Shared\View.cshtml" />
     <Content Include="Scripts\src\jsx-inc\c-ImgFileSort.jsx" />
     <None Include="package.json" />
-    <Content Include="Views\Shared\DisplayTemplates\TabletMenuHelperModel.cshtml" />
     <Content Include="_Code\Ashx\ValidateCodeB.ashx" />
     <Content Include="Scripts\src\jsx\m-Users.jsx" />
     <Content Include="Scripts\src\jsx\m-Roles.jsx" />
@@ -573,15 +587,9 @@
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Views\Web.config" />
-    <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="_Code\Log\memo.txt" />
     <Content Include="_Code\SysDoc\Doc.xml" />
     <Content Include="_Code\SysUpFiles\memo.txt" />
-    <Content Include="Views\Shared\DisplayTemplates\SiteMapPathHelperModel.cshtml" />
-    <Content Include="Views\Shared\DisplayTemplates\SiteMapNodeModelList.cshtml" />
-    <Content Include="Views\Shared\DisplayTemplates\SiteMapNodeModel.cshtml" />
-    <Content Include="Views\Shared\DisplayTemplates\MenuHelperModel.cshtml" />
     <TypeScriptCompile Include="app_modules\comm-cmpt\comm-cmpt.d.ts" />
     <TypeScriptCompile Include="app_modules\comm-cmpt\comm-cmpt.tsx" />
     <TypeScriptCompile Include="app_modules\comm-cmpt\react.cmpt.prop.ts" />
@@ -647,12 +655,6 @@
     <Content Include="_Code\Ashx\AjaxDownLoadFile.ashx" />
     <Content Include="_Code\Ashx\ValidateCode.ashx" />
     <Content Include="_Code\SysDoc\資料庫使用說明.docx" />
-    <Content Include="Views\Shared\EditorTemplates\edit_birthday.cshtml" />
-    <Content Include="Views\Shared\EditorTemplates\edit_Date.cshtml" />
-    <Content Include="Views\Shared\Layout.cshtml" />
-    <Content Include="Views\Shared\Manage\JSGlobalVar.cshtml" />
-    <Content Include="Views\Shared\Manage\vucFooter.cshtml" />
-    <Content Include="Views\Shared\Manage\vucMenu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_GlobalResources\Res.resx">

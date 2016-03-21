@@ -326,7 +326,7 @@ body {
   font-family: "Microsoft Jhenghei", \5FAE\8EDF\6B63\9ED1\9AD4, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 1rem;
   line-height: 1.5;
-  color: #404039;
+  color: #574017;
   background-color: #fff;
 }
 
@@ -2507,7 +2507,7 @@ mark,
   letter-spacing: 0.02em;
   color: #8C6231;
   font-size: 3.75em;
-  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, "Microsoft Jhenghei", \5FAE\8EDF\6B63\9ED1\9AD4, sans-serif;
   text-transform: uppercase;
   text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
 }
@@ -2615,7 +2615,7 @@ html, body {
 }
 
 body {
-  background: url(../images/bg.jpg) fixed center top/cover;
+  background: #F5F5E4;
 }
 
 a {
@@ -2631,6 +2631,7 @@ a:focus {
   min-width: 1200px;
   min-height: 100%;
   padding-bottom: 115px;
+  background: #F5F5E4 url(../images/bg.jpg) fixed no-repeat center top;
 }
 
 .wrap {
@@ -2719,6 +2720,9 @@ a:focus {
 #header .topNav a:hover {
   background: #B0A24F;
 }
+#header .topNav a [class*="icon-"] {
+  margin-right: 5px;
+}
 
 #menu {
   padding: 0;
@@ -2748,6 +2752,7 @@ a:focus {
   font-size: 1.125em;
   color: #fff;
   border-bottom: 5px solid rgba(0, 0, 0, 0.2);
+  transition: padding 0.4s;
 }
 #menu a [class*="icon-"] {
   display: block;
@@ -2778,14 +2783,9 @@ a:focus {
 #menu li:last-of-type a {
   background: #AD5238;
 }
-#menu a:hover::after, .Service #menu li:nth-of-type(1) a::after, .Apply #menu li:nth-of-type(2) a::after, .Sell #menu li:nth-of-type(3) a::after, .Rent #menu li:nth-of-type(4) a::after, .Vendor #menu li:nth-of-type(5) a::after, .Works #menu li:nth-of-type(6) a::after, .Partner #menu li:nth-of-type(7) a::after {
-  height: 100%;
-}
-#menu a:hover span, .Service #menu li:nth-of-type(1) a span, .Apply #menu li:nth-of-type(2) a span, .Sell #menu li:nth-of-type(3) a span, .Rent #menu li:nth-of-type(4) a span, .Vendor #menu li:nth-of-type(5) a span, .Works #menu li:nth-of-type(6) a span, .Partner #menu li:nth-of-type(7) a span {
-  color: #735528;
-}
-#menu a:hover [class*="ti-"], .Service #menu li:nth-of-type(1) a [class*="ti-"], .Apply #menu li:nth-of-type(2) a [class*="ti-"], .Sell #menu li:nth-of-type(3) a [class*="ti-"], .Rent #menu li:nth-of-type(4) a [class*="ti-"], .Vendor #menu li:nth-of-type(5) a [class*="ti-"], .Works #menu li:nth-of-type(6) a [class*="ti-"], .Partner #menu li:nth-of-type(7) a [class*="ti-"] {
-  color: #DEB964;
+#menu a:hover, .AboutUs #menu li:nth-of-type(1) a, .Plan #menu li:nth-of-type(2) a, .Sell #menu li:nth-of-type(3) a, .Rent #menu li:nth-of-type(4) a, .Vendor #menu li:nth-of-type(5) a, .Community #menu li:nth-of-type(6) a, .Partner #menu li:nth-of-type(7) a, .VIP #menu li:nth-of-type(8) a {
+  padding-top: 1.5rem;
+  z-index: 100;
 }
 
 #content {
@@ -2826,7 +2826,7 @@ a:focus {
 #footer .copyright {
   margin-bottom: 12px;
   text-align: center;
-  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, "Microsoft Jhenghei", \5FAE\8EDF\6B63\9ED1\9AD4, sans-serif;
   font-weight: 300;
   color: #705B3A;
 }
@@ -2881,6 +2881,10 @@ a:focus {
   top: 50%;
   transform: translate(-50%, -50%);
   font-size: 0.625em;
+}
+
+#wrapper {
+  background: url(../images/Index/bg.jpg) fixed center top/cover;
 }
 
 #banner {
@@ -3067,5 +3071,5 @@ a:focus {
   color: #634F28;
 }
 .grid-contact li a:hover {
-  color: #B0A24F;
+  color: #ED6D39;
 }

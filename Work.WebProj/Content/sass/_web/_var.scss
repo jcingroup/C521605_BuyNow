@@ -5,7 +5,7 @@ $enable-lte7:                   false;
 $enable-rounded:                false;
 $img-path:                      '../images';
 $font-path:                     '../font/';
-$pages:                         'Service' 'Apply' 'Sell' 'Rent' 'Vendor' 'Works' 'Partner';
+$pages:                         'AboutUs' 'Plan' 'Sell' 'Rent' 'Vendor' 'Community' 'Partner' 'VIP';
 
 
 // Colors
@@ -14,7 +14,7 @@ $link-hover-color:              $brand-secondary;
 
 
 // Typography
-$font-family-en:                "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif !default;
+$font-family-en:                "Open Sans", "Helvetica Neue", Helvetica, Arial, 'Microsoft Jhenghei', \5FAE\8EDF\6B63\9ED1\9AD4, sans-serif !default;
 
 
 // Table

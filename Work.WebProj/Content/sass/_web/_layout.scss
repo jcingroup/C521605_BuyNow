@@ -17,9 +17,7 @@ $content-spacing:       50px !default;
 
 html, body { height: 100%; }
 
-body {
-    background: url(#{$img-path}/bg.jpg) fixed center top / cover;
-}
+body {background: #F5F5E4;}
 
 a {
     @include transition(color 0.3s, background 0.3s);
@@ -36,6 +34,7 @@ a {
     min-width: $wrap-min-width;
     min-height: 100%;
     padding-bottom: $footer-height;
+    background: #F5F5E4 url(#{$img-path}/bg.jpg) fixed no-repeat center top;
 }
 
 .wrap {
@@ -92,9 +91,8 @@ a {
             background: $link-color;
             border-radius: 0 0 8px 8px;
 
-            &:hover {
-                background: $link-hover-color;
-            }
+            &:hover {background: $link-hover-color;}
+            [class*="icon-"] {margin-right: 5px;}
         }
     }
 }
@@ -134,6 +132,7 @@ a {
         color: #fff;
 
         border-bottom: 5px solid hsla(0,0,0,0.2);
+        transition: padding 0.4s;
 
         [class*="icon-"] {
             display: block;
@@ -155,9 +154,8 @@ a {
         $selector: append($selector, unquote(".#{$item} & li:nth-of-type(#{$i}) a"), comma);
     }
     a:hover, #{$selector} {
-        &::after {height: 100%;}
-        span {color: #735528;}
-        [class*="ti-"] {color: #DEB964;}
+        padding-top: $spacer*1.5;
+        z-index: 100;
     }
 }
 
@@ -177,12 +175,10 @@ a {
 
         position: absolute;
         left: 0; top: -128px;
-        
+
         background: url(#{$img-path}/mainBg.png) repeat-x;
     }
 }
-
-
 
 
 // footer
