@@ -96,4 +96,10 @@
         community_id?: number;
         name?: string;
     }
+    interface Edit extends BaseEntityTable {
+        edit_id?: number;
+        edit_name?: string;
+        edit_content?: string;
+        sort?: number;
+    }
 } 
