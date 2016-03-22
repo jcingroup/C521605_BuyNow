@@ -17,6 +17,26 @@ namespace DotWeb.Areas.Active.Controllers
             ActionRun();
             return View();
         }
+        public ActionResult Aboutus()
+        {//公司簡介
+            ActionRun();
+            return View();
+        }
+        public ActionResult Program()
+        {//社區收益型專案
+            ActionRun();
+            return View();
+        }
+        public ActionResult Recruit()
+        {//招賢納士
+            ActionRun();
+            return View();
+        }
+        public ActionResult VIP()
+        {//幸福房仲VIP
+            ActionRun();
+            return View();
+        }
         #endregion
 
         #region ajax call section

@@ -10,6 +10,14 @@ namespace DotWeb.Controllers
     {
         public ActionResult Index()
         {
+            Edit item = new Edit();
+            using (var db0 = getDB0())
+            {
+                #region get content
+                item = db0.Edit.Find((int)EditorState.Recruit);
+                #endregion
+            }
+            ViewBag.content = item.edit_content;
             return View("Partner");
         }
     }

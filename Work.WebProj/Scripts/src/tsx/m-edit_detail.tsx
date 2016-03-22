@@ -6,7 +6,7 @@ import ReactBootstrap = require("react-bootstrap");
 import CommCmpt = require('comm-cmpt');
 import CommFunc = require('comm-func');
 
-namespace Edit {
+namespace EditDetail {
     interface Rows {
         check_del: boolean,
         edit_id: number,
@@ -44,13 +44,13 @@ namespace Edit {
                     <CommCmpt.GridButtonDel
                         removeItemSubmit={this.props.removeItemSubmit}
                         primKey={this.props.primKey} />
-                </td>
+                    </td>
                 <td className="text-center">
                     <CommCmpt.GridButtonModify modify={this.modify}/>
                     </td>
                 <td>{this.props.itemData.edit_name}</td>
                 <td>{this.props.itemData.sort}</td>
-            </tr>;
+                </tr>;
         }
     }
     export class GirdForm extends React.Component<BaseDefine.GridFormPropsBase, GirdFormState<Rows, server.Edit>>{
@@ -75,7 +75,7 @@ namespace Edit {
 
             this.insertType = this.insertType.bind(this);
             this.state = {
-                fieldData: null,
+                fieldData: {},
                 gridData: { rows: [], page: 1 },
                 edit_type: 0,
                 searchData: { keyword: null },
@@ -90,13 +90,10 @@ namespace Edit {
             apiPath: gb_approot + 'api/Edit'
         }
         componentDidMount() {
-            this.queryGridData(1);
+            this.updateType(gb_no);
+            CKEDITOR.replace('edit_content', { customConfig: '../ckeditor/inlineConfig.js' });
         }
         componentDidUpdate(prevProps, prevState) {
-            if ((prevState.edit_type == IEditType.none && (this.state.edit_type == IEditType.insert || this.state.edit_type == IEditType.update))) {
-                console.log('CKEDITOR');
-                CKEDITOR.replace('edit_content', { customConfig: '../ckeditor/inlineConfig.js' });
-            }
         }
         componentWillUnmount() {
             //元件被從 DOM 卸載之前執行，通常我們在這個方法清除一些不再需要地物件或 timer。
@@ -283,123 +280,40 @@ namespace Edit {
         render() {
 
             var outHtml: JSX.Element = null;
-            var GridNavPage = CommCmpt.GridNavPage;
 
-            if (this.state.edit_type == IEditType.none) {
-                var searchData = this.state.searchData;
-                outHtml =
-                    (
-                        <div>
-                            <ul className="breadcrumb">
-                                <li><i className="fa-list-alt"></i>
-                                    {this.props.menuName}
-                                </li>
-                            </ul>
-                            <h3 className="title">
-                                {this.props.caption}
-                            </h3>
-                            <form onSubmit={this.handleSearch}>
-                                <div className="table-responsive">
-                                    <div className="table-header">
-                                        <div className="table-filter">
-                                            <div className="form-inline">
-                                                <div className="form-group">
-                                                    <label></label>
-                                                    {}
-                                                    <input type="text" className="form-control" onChange={this.changeGDValue.bind(this, 'keyword') } value={this.state.searchData.keyword} placeholder="名稱" />
-                                                    {}
-                                                    <button className="btn-primary" type="submit"><i className="fa-search"></i> 搜尋</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <table>
-                                        <thead>
-                                            <tr>
-                                                <th className="col-xs-1 text-center">
-                                                    <label className="cbox">
-                                                        <input type="checkbox" checked={this.state.checkAll} onChange={this.checkAll} />
-                                                        <i className="fa-check"></i>
-                                                    </label>
-                                                </th>
-                                                <th className="col-xs-1 text-center">修改</th>
-                                                <th className="col-xs-4">名稱</th>
-                                                <th className="col-xs-4">排序</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            {this.state.gridData.rows.map(
-                                                (itemData, i) =>
-                                                    <GridRow key={i}
-                                                        primKey={itemData.edit_id}
-                                                        itemData={itemData}
-                                                        //delCheck={this.delCheck}
-                                                        removeItemSubmit={this.removeItemSubmit}
-                                                        updateType={this.updateType} />
-                                            ) }
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <GridNavPage
-                                    startCount={this.state.gridData.startcount}
-                                    endCount={this.state.gridData.endcount}
-                                    recordCount={this.state.gridData.records}
-                                    totalPage={this.state.gridData.total}
-                                    nowPage={this.state.gridData.page}
-                                    queryGridData={this.queryGridData}
-                                    insertType={this.insertType}
-                                    deleteSubmit={this.deleteSubmit}
-                                    showDelete={false}
-                                    />
-                            </form>
-                        </div>
-                    );
-            }
-            else if (this.state.edit_type == IEditType.insert || this.state.edit_type == IEditType.update) {
+            let fieldData = this.state.fieldData;
 
-                let fieldData = this.state.fieldData;
-
-                var outHtml = (
-                    <div>
+            var outHtml = (
+                <div>
                         <ul className="breadcrumb">
                             <li>
                                 <i className="fa-list-alt"></i>
                                 {this.props.menuName}
-                            </li>
-                        </ul>
+                                </li>
+                            </ul>
                         <h4 className="title"> {this.props.caption} 基本資料維護</h4>
                         <form className="form-horizontal" onSubmit={this.handleSubmit}>
                             <div className="col-xs-10">
                                 <div className="form-group">
-                                    <label className="col-xs-2 control-label">標題</label>
-                                    <div className="col-xs-8">
-                                        <input type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'edit_name') } value={fieldData.edit_name} maxLength={64}
-                                            required />
-                                    </div>
-                                    <small className="col-xs-2 text-danger">(必填) </small>
-                                </div>
-                                <div className="form-group">
-                                    <label className="col-xs-2 control-label">內容</label>
                                     <div className="col-xs-10">
                                         <textarea type="date" className="form-control" id="edit_content" name="edit_content"
                                             value={fieldData.edit_content} onChange={this.changeFDValue.bind(this, 'edit_content') }/>
                                         </div>
                                     </div>
                                 <div className="form-action">
-                                    <div className="col-xs-4 col-xs-offset-2">
-                                        <button type="submit" className="btn-primary"><i className="fa-check"></i> 儲存</button> { }
-                                        <button type="button" onClick={this.noneType}><i className="fa-times"></i> 回前頁</button>
+                                    <div className="col-xs-4 col-xs-offset-4">
+                                        <button type="submit" className="btn-primary"><i className="fa-check"></i> 儲存</button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </form>
+                            </form>
                     </div>
-                );
-            }
+            );
+
             return outHtml;
         }
     }
 }
 
 var dom = document.getElementById('page_content');
-ReactDOM.render(<Edit.GirdForm caption={gb_caption} menuName={gb_menuname} iconClass="fa-list-alt" />, dom); 
+ReactDOM.render(<EditDetail.GirdForm caption={gb_caption} menuName={gb_menuname} iconClass="fa-list-alt" />, dom); 

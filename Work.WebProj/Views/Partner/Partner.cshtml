@@ -1,5 +1,5 @@
 ﻿@{
-	ViewBag.Title = "招賢納士";
+    ViewBag.Title = "招賢納士";
     ViewBag.BodyClass = "Partner";
     Layout = "~/Views/Shared/Layout.cshtml";
 }
@@ -8,14 +8,10 @@
 
 <div id="content">
 
-	<div class="wrap">
-	
-		<p class="text-xs-center">
-			<a href="~/Content/images/Partner/dm.jpg" target="new">
-				<img src="~/Content/images/Partner/dm.jpg" alt="">
-			</a>
-		</p>
+    <div class="wrap">
 
-	</div>
+        @Html.Raw(ViewBag.content)
+
+    </div>
 
 </div>

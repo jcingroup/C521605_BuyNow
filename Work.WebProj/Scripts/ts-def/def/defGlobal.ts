@@ -12,7 +12,7 @@ var debug_password: string;
 var debug_validate: string;
 
 //前台 payment_reply 匯款末五碼驗證頁
-var gb_no: string;//purchase_no
+var gb_no: number;//purchase_no
 
 var gb_rank: number;
 var gb_sales_no: string;

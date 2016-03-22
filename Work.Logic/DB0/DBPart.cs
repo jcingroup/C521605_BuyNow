@@ -22,7 +22,13 @@ namespace ProcCore.Business.DB0
         finish,
         pause
     }
-
+    public enum EditorState
+    {
+        Aboutus = 1,
+        Program = 2,
+        Recruit = 3,
+        VIP = 4
+    }
     #region set CodeSheet
 
     public static class CodeSheet
