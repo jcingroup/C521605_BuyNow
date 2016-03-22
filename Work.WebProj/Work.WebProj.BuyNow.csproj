@@ -305,11 +305,6 @@
     <Compile Include="Models\IGetMasterNewId.cs" />
     <Compile Include="Models\MenuDef.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Include="Startup.cs" />
     <Compile Include="_Code\Ashx\AjaxDownLoadFile.ashx.cs">
       <DependentUpon>AjaxDownLoadFile.ashx</DependentUpon>
@@ -622,7 +617,6 @@
     <TypeScriptCompile Include="Scripts\ts-def\ConsoleIe8.ts" />
     <TypeScriptCompile Include="Scripts\ts-def\d.ts\Jquery.Ext.d.ts" />
     <TypeScriptCompile Include="Scripts\ts-def\def\defGlobal.ts" />
-    <TypeScriptCompile Include="Scripts\ts-def\d.ts\Toaster.ts" />
     <TypeScriptCompile Include="Scripts\ts-def\d.ts\IAjaxResult.d.ts" />
     <TypeScriptCompile Include="Scripts\ts-def\d.ts\IEditType.d.ts" />
     <TypeScriptCompile Include="Scripts\ts-def\d.ts\IKeyValue.d.ts" />
@@ -686,10 +680,6 @@
     <Content Include="Areas\Base\Views\Menu\App_LocalResources\ChangePassword.cshtml.resx" />
     <Content Include="Areas\Base\Views\Menu\App_LocalResources\Main.cshtml.resx" />
     <Content Include="Areas\Active\Views\Edit\App_LocalResources\Main.cshtml.resx" />
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="_Code\RPTFile\MemeberLabel.rdlc" />
   </ItemGroup>
   <PropertyGroup>
