@@ -48,7 +48,7 @@ h5.colored {
 // ----------------------------------------------------------------------
 .list-underline {
     > li {
-        border-bottom: 1px dotted #aaa;
+        border-bottom: 1px dotted #C8BCAD;
         margin-bottom: 5px;
         padding-bottom: 5px;
     }
@@ -68,7 +68,7 @@ h5.colored {
             height: 0;
 
             border: 5px solid transparent;
-            border-left-color: darken($brand-secondary,5%);
+            border-left-color: $brand-secondary;
 
             margin-left: -10px;
         }
