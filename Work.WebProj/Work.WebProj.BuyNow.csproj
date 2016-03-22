@@ -616,6 +616,7 @@
     <TypeScriptCompile Include="Scripts\ts-def\commwww.ts" />
     <TypeScriptCompile Include="Scripts\ts-def\ConsoleIe8.ts" />
     <TypeScriptCompile Include="Scripts\ts-def\d.ts\Jquery.Ext.d.ts" />
+    <TypeScriptCompile Include="Scripts\ts-def\d.ts\Toastr.d.ts" />
     <TypeScriptCompile Include="Scripts\ts-def\def\defGlobal.ts" />
     <TypeScriptCompile Include="Scripts\ts-def\d.ts\IAjaxResult.d.ts" />
     <TypeScriptCompile Include="Scripts\ts-def\d.ts\IEditType.d.ts" />
