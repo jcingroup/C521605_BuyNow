@@ -5,6 +5,7 @@
 
 CKEDITOR.editorConfig = function (config) {
     // Define changes to default configuration here. For example:
+    config.height = 500
     config.language = 'zh';
     // config.uiColor = '#AADC6E';
     config.extraPlugins = 'youtube';
@@ -57,12 +58,11 @@ CKEDITOR.stylesSet.add('default', [
     // { name: '文字 - 裝飾2', element: 'span', attributes: { 'class': 'arrow-right' } },
 
     // Object Styles
-    { name: '列表 - 樣式1', element: 'ul', attributes: { 'class': 'list-icon list-underline' } },
-    { name: '列表 - 樣式2', element: 'ul', attributes: { 'class': 'list-icon' } },
-    { name: '列表 - 樣式3', element: 'ul', attributes: { 'class': 'list-no-icon list-underline' } },
-    { name: '數字列表 - 樣式1', element: 'ol', attributes: { 'class': 'list-styled list-underline' } },
-    { name: '數字列表 - 樣式2', element: 'ol', attributes: { 'class': 'list-underline' } },
-    { name: '數字列表 - 樣式3', element: 'ol', attributes: { 'class': 'list-styled' } },
-    // { name: '表格 - 樣式1', element: 'table', attributes: { 'class': 'table' } },
+    { name: '列表-圖示&線', element: 'ul', attributes: { 'class': 'list-icon list-underline' } },
+    { name: '列表-圖示', element: 'ul', attributes: { 'class': 'list-icon' } },
+    { name: '列表-線', element: 'ul', attributes: { 'class': 'list-unstyled list-underline' } },
+    { name: '列表-無圖示', element: 'ul', attributes: { 'class': 'list-unstyled' } },
+    { name: '數字列表-線', element: 'ol', attributes: { 'class': 'list-underline' } },
+    { name: '表格樣式', element: 'table', attributes: { 'class': 'table' } },
     // { name: '圖片 - 加框', element: 'img', attributes: { 'class': 'thumb' } }
 ]);

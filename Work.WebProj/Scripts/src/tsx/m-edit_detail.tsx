@@ -293,20 +293,18 @@ namespace EditDetail {
                             </ul>
                         <h4 className="title"> {this.props.caption} 基本資料維護</h4>
                         <form className="form-horizontal" onSubmit={this.handleSubmit}>
-                            <div className="col-xs-10">
-                                <div className="form-group">
-                                    <div className="col-xs-10">
-                                        <textarea type="date" className="form-control" id="edit_content" name="edit_content"
+                            <div className="form-group">
+                                <div className="col-xs-12">
+                                    <textarea type="date" className="form-control" id="edit_content" name="edit_content"
                                             value={fieldData.edit_content} onChange={this.changeFDValue.bind(this, 'edit_content') }/>
-                                        </div>
-                                    </div>
-                                <div className="form-action">
-                                    <div className="col-xs-4 col-xs-offset-4">
-                                        <button type="submit" className="btn-primary"><i className="fa-check"></i> 儲存</button>
-                                        </div>
-                                    </div>
                                 </div>
-                            </form>
+                            </div>
+                            <div className="form-action">
+                                <div className="col-xs-4 col-xs-offset-4">
+                                    <button type="submit" className="btn-primary"><i className="fa-check"></i> 儲存</button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
             );
 
