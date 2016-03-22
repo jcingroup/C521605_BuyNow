@@ -24,23 +24,23 @@
 // ----------------------------------------------------------------------
 .colored {margin-top: $spacer;}
 h2.colored {
-    color: $brand-secondary;
+    color: darken($brand-primary,10%);
     font-size: 1.75em;
 }
 
 h3.colored {
     font-size: 1.5em;
     font-weight: bold;
-    color: darken($brand-primary,10%);
+    color: #C39A0C;
 }
 
 h4.colored {
-    color: #B96200;
+    color: #A16F0A;
     font-size: 1.35em;
 }
 
 h5.colored {
-    color: #4D3B1F;
+    color: #8D7A0A;
 }
 
 
@@ -48,7 +48,7 @@ h5.colored {
 // ----------------------------------------------------------------------
 .list-underline {
     > li {
-        border-bottom: 1px dotted #aaa;
+        border-bottom: 1px dotted #C8BCAD;
         margin-bottom: 5px;
         padding-bottom: 5px;
     }
@@ -68,7 +68,7 @@ h5.colored {
             height: 0;
 
             border: 5px solid transparent;
-            border-left-color: darken($brand-secondary,5%);
+            border-left-color: $brand-secondary;
 
             margin-left: -10px;
         }

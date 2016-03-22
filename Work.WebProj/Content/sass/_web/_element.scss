@@ -45,6 +45,12 @@
 
 .h3 {font-size: em(36px);}
 
+hr {
+    width: 80px;
+    margin: $spacer*2.5 auto;
+    border-top: 2px solid #EADCB0;
+}
+
 
 // table
 // ----------------------------------------------------------------------

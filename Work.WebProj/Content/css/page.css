@@ -388,7 +388,7 @@ a {
   text-decoration: none;
 }
 a:focus, a:hover {
-  color: #B0A24F;
+  color: #B9B440;
   text-decoration: none;
 }
 a:focus {
@@ -2016,7 +2016,7 @@ mark,
 }
 
 .nav-tabs {
-  border-bottom: 1px solid #B0A24F;
+  border-bottom: 1px solid #B9B440;
 }
 .nav-tabs::after {
   content: "";
@@ -2036,7 +2036,7 @@ mark,
   border: 1px solid transparent;
 }
 .nav-tabs .nav-link:focus, .nav-tabs .navbar-nav > li > a:focus, .nav-tabs .nav-link:hover, .nav-tabs .navbar-nav > li > a:hover {
-  border-color: #eceeef #eceeef #B0A24F;
+  border-color: #eceeef #eceeef #B9B440;
 }
 .nav-tabs .nav-link.disabled, .nav-tabs .navbar-nav > li > a.disabled, .nav-tabs .nav-link.disabled:focus, .nav-tabs .navbar-nav > li > a.disabled:focus, .nav-tabs .nav-link.disabled:hover, .nav-tabs .navbar-nav > li > a.disabled:hover {
   color: #818a91;
@@ -2816,6 +2816,12 @@ a.text-danger:focus, a.text-danger:hover {
   font-size: 2.25em;
 }
 
+hr {
+  width: 80px;
+  margin: 2.5rem auto;
+  border-top: 2px solid #EADCB0;
+}
+
 .table {
   background: transparent;
 }
@@ -2899,7 +2905,7 @@ a.text-danger:focus, a.text-danger:hover {
   transition: color 0.35s;
 }
 .editor a:hover {
-  color: #B0A24F;
+  color: #B9B440;
 }
 .editor a:hover img {
   opacity: 0.8;
@@ -2910,27 +2916,27 @@ a.text-danger:focus, a.text-danger:hover {
 }
 
 h2.colored {
-  color: #B0A24F;
+  color: #df4f14;
   font-size: 1.75em;
 }
 
 h3.colored {
   font-size: 1.5em;
   font-weight: bold;
-  color: #df4f14;
+  color: #C39A0C;
 }
 
 h4.colored {
-  color: #B96200;
+  color: #A16F0A;
   font-size: 1.35em;
 }
 
 h5.colored {
-  color: #4D3B1F;
+  color: #8D7A0A;
 }
 
 .list-underline > li {
-  border-bottom: 1px dotted #aaa;
+  border-bottom: 1px dotted #C8BCAD;
   margin-bottom: 5px;
   padding-bottom: 5px;
 }
@@ -2948,7 +2954,7 @@ h5.colored {
   width: 0;
   height: 0;
   border: 5px solid transparent;
-  border-left-color: #9e9247;
+  border-left-color: #B9B440;
   margin-left: -10px;
 }
 
@@ -3062,7 +3068,7 @@ a:focus {
   border-radius: 0 0 8px 8px;
 }
 #header .topNav a:hover {
-  background: #B0A24F;
+  background: #B9B440;
 }
 #header .topNav a [class*="icon-"] {
   margin-right: 5px;
@@ -3186,7 +3192,7 @@ a:focus {
   color: #857762;
 }
 #footer .contact a:hover {
-  color: #B0A24F;
+  color: #B9B440;
 }
 #footer .contact [class*="icon-"] {
   margin-right: 7px;

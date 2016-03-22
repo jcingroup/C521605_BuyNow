@@ -2534,6 +2534,12 @@ mark,
   font-size: 2.25em;
 }
 
+hr {
+  width: 80px;
+  margin: 2.5rem auto;
+  border-top: 2px solid #EADCB0;
+}
+
 .table {
   background: transparent;
 }
