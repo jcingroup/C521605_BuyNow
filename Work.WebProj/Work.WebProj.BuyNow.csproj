@@ -283,7 +283,7 @@
     <Compile Include="Controllers\Api\CommunityController.cs" />
     <Compile Include="Controllers\Api\UsersController.cs" />
     <Compile Include="Controllers\PlanController.cs" />
-    <Compile Include="Controllers\BuyController.cs" />
+    <Compile Include="Controllers\SellController.cs" />
     <Compile Include="Controllers\IndexController.cs" />
     <Compile Include="Controllers\PartnerController.cs" />
     <Compile Include="Controllers\RentController.cs" />
@@ -468,7 +468,6 @@
     <Content Include="Content\font\fontAwesome\fontawesome-webfont.woff" />
     <Content Include="Content\font\fontAwesome\FontAwesome.otf" />
     <None Include="Content\publih.wpp.targets" />
-    <Content Include="Content\sass\vendor\themify-icons.css" />
     <Content Include="index.html" />
     <Content Include="ckeditor\build-config.js" />
     <Content Include="ckeditor\ckeditor.js" />
