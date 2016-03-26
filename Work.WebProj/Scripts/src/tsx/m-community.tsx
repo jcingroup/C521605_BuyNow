@@ -1,6 +1,7 @@
 ﻿import $ = require('jquery');
 import React = require('react');
 import ReactDOM = require('react-dom');
+import update = require('react-addons-update');
 import Moment = require('moment');
 import ReactBootstrap = require("react-bootstrap");
 import CommCmpt = require('comm-cmpt');
@@ -263,16 +264,24 @@ namespace Community {
         }
         setInputValue(collentName: string, name: string, e: React.SyntheticEvent) {
             let input: HTMLInputElement = e.target as HTMLInputElement;
-            let obj = this.state[collentName];
+            let value;
 
             if (input.value == 'true') {
-                obj[name] = true;
+                value = true;
             } else if (input.value == 'false') {
-                obj[name] = false;
+                value = false;
             } else {
-                obj[name] = input.value;
+                value = input.value;
             }
-            this.setState({ fieldData: obj });
+            var objForUpdate = {
+                [collentName]:
+                {
+                    [name]: value
+                }
+            };
+            var newState = update(this.state, objForUpdate);
+
+            this.setState(newState);
         }
 
         render() {

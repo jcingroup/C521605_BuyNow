@@ -747,6 +747,7 @@
     <TypeScriptCompile Include="Scripts\typings\moment\moment.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\react-bootstrap\react-bootstrap.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\react-dom\react-dom.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\react\react-addons-update.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\react\react-global.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\react\react-mixin.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\react\react.d.ts" />
