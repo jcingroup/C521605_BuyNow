@@ -13,7 +13,7 @@ namespace Community {
     interface Rows {
         check_del: boolean,
         community_id: number,
-        name: string
+        community_name: string
     }
     interface GirdFormState<G, F> extends BaseDefine.GirdFormStateBase<G, F> {
         searchData?: {
@@ -51,7 +51,7 @@ namespace Community {
                     <CommCmpt.GridButtonModify modify={this.modify}/>
                 </td>
                 <td>{this.props.itemData.community_id}</td>
-                <td>{this.props.itemData.name}</td>
+                <td>{this.props.itemData.community_name}</td>
             </tr>;
         }
     }
