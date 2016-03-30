@@ -1,5 +1,6 @@
 ﻿import $ = require('jquery');
 import toastr = require('toastr');
+import Moment = require('moment');
 
 export function uniqid() {
     /*
@@ -277,6 +278,12 @@ function DiffDate(start: string, end: string) {
     }
 }
 
+export function MntV(date) {
+    //將日期設定成moment物件
+    var r = date === null || date === undefined ? null : Moment(date);
+    return r;
+}
+
 export var Ajax = {
     /*
     Only javascript ajax call No JQuery
@@ -316,8 +323,3 @@ export var Ajax = {
         self.send();
     },
 };
-interface ParmMealCount {
-    breakfast: number;
-    lunch: number;
-    dinner: number;
-}

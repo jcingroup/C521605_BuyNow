@@ -219,13 +219,13 @@
         </EntityType>
         <Association Name="FK_Community_News_Community">
           <End Role="Community" Type="Self.Community" Multiplicity="1" />
-          <End Role="Community_News" Type="Self.Community_News" Multiplicity="0..1" />
+          <End Role="Community_News" Type="Self.Community_News" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Community">
               <PropertyRef Name="community_id" />
             </Principal>
             <Dependent Role="Community_News">
-              <PropertyRef Name="community_news_id" />
+              <PropertyRef Name="community_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -507,7 +507,7 @@
             <End Role="Community" EntitySet="Community" />
             <End Role="Community_News" EntitySet="Community_News" />
           </AssociationSet>
-        </EntityContainer>
+          </EntityContainer>
         <EntityType Name="Edit">
           <Key>
             <PropertyRef Name="edit_id" />
@@ -569,7 +569,7 @@
           <Property Name="passwd" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Matter" Relationship="C51A0_BuyNowModel.FK_Matter_Community" FromRole="Community" ToRole="Matter" />
           <NavigationProperty Name="Community_News" Relationship="C51A0_BuyNowModel.FK_Community_News_Community" FromRole="Community" ToRole="Community_News" />
-        </EntityType>
+          </EntityType>
         <Association Name="FK_Matter_Community">
           <End Type="C51A0_BuyNowModel.Community" Role="Community" Multiplicity="1" />
           <End Type="C51A0_BuyNowModel.Matter" Role="Matter" Multiplicity="*" />
@@ -597,17 +597,17 @@
         </EntityType>
         <Association Name="FK_Community_News_Community">
           <End Type="C51A0_BuyNowModel.Community" Role="Community" Multiplicity="1" />
-          <End Type="C51A0_BuyNowModel.Community_News" Role="Community_News" Multiplicity="0..1" />
+          <End Type="C51A0_BuyNowModel.Community_News" Role="Community_News" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Community">
               <PropertyRef Name="community_id" />
             </Principal>
             <Dependent Role="Community_News">
-              <PropertyRef Name="community_news_id" />
+              <PropertyRef Name="community_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>

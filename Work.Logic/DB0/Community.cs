@@ -18,6 +18,7 @@ namespace ProcCore.Business.DB0
         public Community()
         {
             this.Matter = new HashSet<Matter>();
+            this.Community_News = new HashSet<Community_News>();
         }
     
         public int community_id { get; set; }
@@ -27,6 +28,7 @@ namespace ProcCore.Business.DB0
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Matter> Matter { get; set; }
-        public virtual Community_News Community_News { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Community_News> Community_News { get; set; }
     }
 }

@@ -43,6 +43,7 @@ namespace DotWeb.Api
             int startRecord = PageCount.PageInfo(page, defPageSize, resultCount);
             var resultItems = await result
                 .OrderBy(x => x.community_id)
+                .Select(x => new { x.community_news_id, x.title, x.start_date, x.end_date, community_name = x.Community.community_name, x.state })
                 .Skip(startRecord)
                 .Take(defPageSize)
                 .ToListAsync();
@@ -72,6 +73,7 @@ namespace DotWeb.Api
                 var md = param.md;
 
                 item.title = md.title;
+                item.community_id = md.community_id;
                 item.start_date = md.start_date;
                 item.end_date = md.end_date;
                 item.context = md.context;

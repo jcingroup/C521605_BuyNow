@@ -13,8 +13,13 @@ import "react-datepicker/dist/react-datepicker.css";
 namespace Matter {
     interface Rows {
         check_del: boolean,
-        matter_id: number,
-        matter_name: string
+        community_news_id: number,
+        title: string,
+        start_date: Date,
+        end_date: Date,
+        state: string,
+        community_name: string
+
     }
     interface GirdFormState<G, F> extends BaseDefine.GirdFormStateBase<G, F> {
         searchData?: {
@@ -52,12 +57,15 @@ namespace Matter {
                 <td className="text-center">
                     <CommCmpt.GridButtonModify modify={this.modify}/>
                 </td>
-                <td>{this.props.itemData.matter_id}</td>
-                <td>{this.props.itemData.matter_name}</td>
+                <td>{this.props.itemData.community_name}</td>
+                <td>{this.props.itemData.title}</td>
+                <td>{this.props.itemData.start_date}</td>
+                <td>{this.props.itemData.end_date}</td>
+                <td>{this.props.itemData.state}</td>
             </tr>;
         }
     }
-    export class GirdForm extends React.Component<BaseDefine.GridFormPropsBase, GirdFormState<Rows, server.Matter>>{
+    export class GirdForm extends React.Component<BaseDefine.GridFormPropsBase, GirdFormState<Rows, server.Community_News>>{
 
         constructor() {
 
@@ -76,7 +84,6 @@ namespace Matter {
             this.componentDidMount = this.componentDidMount.bind(this);
             this.componentDidUpdate = this.componentDidUpdate.bind(this);
             this.componentWillUnmount = this.componentWillUnmount.bind(this);
-            this.changeAddress = this.changeAddress.bind(this);
 
             this.insertType = this.insertType.bind(this);
             this.state = {
@@ -92,15 +99,13 @@ namespace Matter {
         static defaultProps: BaseDefine.GridFormPropsBase = {
             fdName: 'fieldData',
             gdName: 'searchData',
-            apiPath: gb_approot + 'api/Matter'
+            apiPath: gb_approot + 'api/CommunityNews'
         }
         componentDidMount() {
             //init component data
             CommFunc.jqGet(gb_approot + 'Api/GetAction/GetOptionsCommunity', {})
                 .done((data: Array<server.Community>) => {
-                    //console.log(data);
                     this.setState({ options_community: data });
-
                 })
 
             this.queryGridData(1);
@@ -142,9 +147,7 @@ namespace Matter {
         handleSubmit(e: React.FormEvent) {
             e.preventDefault();
 
-            //console.log(this.state.fieldData);
-
-            if (this.state.edit_type == 1) {
+            if (this.state.edit_type == IEditType.insert) {
                 CommFunc.jqPost(this.props.apiPath, this.state.fieldData)
                     .done((data: CallResult, textStatus, jqXHRdata) => {
                         if (data.result) {
@@ -158,7 +161,7 @@ namespace Matter {
                         CommFunc.showAjaxError(errorThrown);
                     });
             }
-            else if (this.state.edit_type == 2) {
+            else if (this.state.edit_type == IEditType.update) {
 
                 var packData = { id: this.state.editPrimKey, md: this.state.fieldData };
 
@@ -184,7 +187,7 @@ namespace Matter {
             var ids = [];
             for (var i in this.state.gridData.rows) {
                 if (this.state.gridData.rows[i].check_del) {
-                    ids.push('ids=' + this.state.gridData.rows[i].matter_id);
+                    ids.push('ids=' + this.state.gridData.rows[i].community_news_id);
                 }
             }
 
@@ -319,22 +322,22 @@ namespace Matter {
             var newState = update(this.state, objForUpdate);
             this.setState(newState);
         }
-        changeAddress(data, e) {
-            console.log(data);
-            if (data.type == 1) {
 
-            }
-            if (data.type == 2) {
-                this.setInputValue(this.props.fdName, 'city', data.city_value);
-            }
-            if (data.type == 3) {
-                this.setInputValueMuti(this.props.fdName, ['zip', 'country'], [data.zip_value, data.country_value]);
-            }
-            if (data.type == 4) {
-                this.setInputValue(this.props.fdName, 'address', data.address_value);
-            }
+        setChangeDate(collentName: string, name: string, date: moment.Moment) {
 
+            var v = date == null ? null : date.format();
+            var objForUpdate = {
+                [collentName]:
+                {
+                    [name]: {
+                        $set: v
+                    }
+                }
+            };
+            var newState = update(this.state, objForUpdate);
+            this.setState(newState);
         }
+
 
         render() {
 
@@ -379,17 +382,19 @@ namespace Matter {
                                                     </label>
                                                 </th>
                                                 <th className="col-xs-1 text-center">修改</th>
-                                                <th className="col-xs-2">編號</th>
-                                                <th className="col-xs-10">社區名稱</th>
+                                                <th className="col-xs-2">社區名稱</th>
+                                                <th className="col-xs-2">標題</th>
+                                                <th className="col-xs-2">啟始日期</th>
+                                                <th className="col-xs-2">結束日期</th>
+                                                <th className="col-xs-2">狀態</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             {this.state.gridData.rows.map(
                                                 (itemData, i) =>
                                                     <GridRow key={i}
-                                                        primKey={itemData.matter_id}
+                                                        primKey={itemData.community_news_id}
                                                         itemData={itemData}
-                                                        //delCheck={this.delCheck}
                                                         removeItemSubmit={this.removeItemSubmit}
                                                         updateType={this.updateType} />
                                             ) }
@@ -415,6 +420,10 @@ namespace Matter {
 
                 let field = this.state.fieldData;
 
+                let mnt_start_date = CommFunc.MntV(field.start_date);
+                let mnt_end_date = CommFunc.MntV(field.end_date);
+                let end_date_disabled: boolean = mnt_start_date == null ? true : false;
+
                 var outHtml = (
                     <div>
                         <ul className="breadcrumb">
@@ -426,11 +435,11 @@ namespace Matter {
                         <form className="form-horizontal" onSubmit={this.handleSubmit}>
                             <div className="col-xs-10">
                                 <div className="form-group">
-                                    <label className="col-xs-1 control-label">物件名稱</label>
+                                    <label className="col-xs-1 control-label">標題</label>
                                     <div className="col-xs-5">
                                         <input type="text" className="form-control"
-                                            onChange={this.changeFDValue.bind(this, 'matter_name') }
-                                            value={field.matter_name}
+                                            onChange={this.changeFDValue.bind(this, 'title') }
+                                            value={field.title}
                                             maxLength={64}
                                             required />
                                     </div>
@@ -452,199 +461,44 @@ namespace Matter {
                                 </div>
 
                                 <div className="form-group">
-                                    <label className="col-xs-1 control-label">物件地址</label>
-                                    <CommCmpt.TwAddress
-                                        identity="AD1"
-                                        city_value={field.city}
-                                        country_value={field.country}
-                                        address_value={field.address}
-                                        zip_value={field.zip}
-                                        onChange={this.changeAddress}
-                                        index={0}
-                                        />
+                                    <label className="col-xs-1 control-label">時間</label>
+                                    <div className="col-xs-5">
+                                        <DatePicker selected={mnt_start_date}
+                                            dateFormat="YYYY-MM-DD"
+                                            isClearable={true}
+                                            required={true}
+                                            locale="zh-TW"
+                                            showYearDropdown
+                                            minDate={Moment() }
+
+                                            onChange={this.setChangeDate.bind(this, this.props.fdName, 'start_date') }
+                                            className="form-control" />
+                                    </div>
+                                    <div className="col-xs-5">
+                                        <DatePicker selected={mnt_end_date}
+                                            dateFormat="YYYY-MM-DD"
+                                            isClearable={true}
+                                            required={true}
+                                            locale="zh-TW"
+                                            showYearDropdown
+                                            onChange={this.setChangeDate.bind(this, this.props.fdName, 'end_date') }
+                                            className="form-control"
+                                            minDate={mnt_start_date}
+                                            disabled={end_date_disabled}
+                                            />
+                                    </div>
                                 </div>
 
                                 <div className="form-group">
-                                    <label className="col-xs-1 control-label">房數</label>
-                                    <div className="col-xs-1">
-                                        <input type="number" className="form-control"
-                                            onChange={this.changeFDValue.bind(this, 'bedrooms') }
-                                            value={field.bedrooms}
-                                            />
-                                    </div>
-
-                                    <label className="col-xs-1 control-label">廳數</label>
-                                    <div className="col-xs-1">
-                                        <input type="number" className="form-control"
-                                            onChange={this.changeFDValue.bind(this, 'livingrooms') }
-                                            value={field.livingrooms}
-                                            />
-                                    </div>
-
-                                    <label className="col-xs-1 control-label">衛浴數</label>
-                                    <div className="col-xs-1">
-                                        <input type="number" className="form-control"
-                                            onChange={this.changeFDValue.bind(this, 'bathrooms') }
-                                            value={field.bathrooms}
-                                            />
-                                    </div>
-
-                                    <label className="col-xs-1 control-label">室</label>
-                                    <div className="col-xs-1">
-                                        <input type="number" className="form-control"
-                                            onChange={this.changeFDValue.bind(this, 'rooms') }
-                                            value={field.rooms}
-                                            />
-                                    </div>
-
-                                </div>
-
-                                <div className="form-group">
-                                    <label className="col-xs-1 control-label">建物登記坪數</label>
-                                    <div className="col-xs-1">
-                                        <input type="number" step="0.01" className="form-control"
-                                            onChange={this.changeFDValue.bind(this, 'build_area') }
-                                            value={field.build_area}
-                                            />
-                                    </div>
-
-                                    <label className="col-xs-1 control-label">土地登記坪數</label>
-                                    <div className="col-xs-1">
-                                        <input type="number" step="0.01" className="form-control"
-                                            onChange={this.changeFDValue.bind(this, 'land_area') }
-                                            value={field.land_area}
-                                            />
-                                    </div>
-
-                                    <label className="col-xs-1 control-label">主建物</label>
-                                    <div className="col-xs-1">
-                                        <input type="number" step="0.01" className="form-control"
-                                            onChange={this.changeFDValue.bind(this, 'house_area') }
-                                            value={field.house_area}
-                                            />
-                                    </div>
-
-                                    <label className="col-xs-1 control-label">陽台</label>
-                                    <div className="col-xs-1">
-                                        <input type="number" step="0.01" className="form-control"
-                                            onChange={this.changeFDValue.bind(this, 'balcony_area') }
-                                            value={field.balcony_area}
-                                            />
-                                    </div>
-
-                                    <label className="col-xs-1 control-label">雨遮</label>
-                                    <div className="col-xs-1">
-                                        <input type="number" step="0.01" className="form-control"
-                                            onChange={this.changeFDValue.bind(this, 'umbrella_aea') }
-                                            value={field.umbrella_aea}
-                                            />
-                                    </div>
-
-                                    <label className="col-xs-1 control-label">公設</label>
-                                    <div className="col-xs-1">
-                                        <input type="number" step="0.01" className="form-control"
-                                            onChange={this.changeFDValue.bind(this, 'public_area') }
-                                            value={field.public_area}
-                                            />
-                                    </div>
-
-                                </div>
-
-                                <div className="form-group">
-                                    <label className="col-xs-1 control-label">屋齡</label>
-                                    <div className="col-xs-1">
-                                        <input type="number" step="0.1" className="form-control"
-                                            onChange={this.changeFDValue.bind(this, 'age') }
-                                            value={field.age}
-                                            />
-                                    </div>
-
-                                    <label className="col-xs-1 control-label">該層戶數</label>
-                                    <div className="col-xs-1">
-                                        <input type="number" step="1" className="form-control"
-                                            onChange={this.changeFDValue.bind(this, 'buildhouses') }
-                                            value={field.buildhouses}
-                                            />
-                                    </div>
-
-                                    <label className="col-xs-1 control-label">類型</label>
-                                    <div className="col-xs-1">
+                                    <label className="col-xs-1 control-label">狀態</label>
+                                    <div className="col-xs-5">
                                         <select className="form-control"
-                                            value={field.typeOfHouse}
-                                            onChange={this.changeFDValue.bind(this, 'typeOfHouse') }>
-                                            <option value=""></option>
-                                            <option value="F">大樓</option>
-                                            <option value="H">成屋</option>
+                                            required
+                                            value={field.state}
+                                            onChange={this.changeFDValue.bind(this, 'state') }>
+                                            <option value="A">前台顯示</option>
+                                            <option value="C">前台關閉</option>
                                         </select>
-                                    </div>
-
-                                    <label className="col-xs-1 control-label">月管理費</label>
-                                    <div className="col-xs-1">
-                                        <input type="number" step="10" className="form-control"
-                                            onChange={this.changeFDValue.bind(this, 'managementFeeOfMonth') }
-                                            value={field.managementFeeOfMonth}
-                                            />
-                                    </div>
-                                </div>
-
-                                <div className="form-group">
-                                    <label className="col-xs-1 control-label">建物結構</label>
-                                    <div className="col-xs-2">
-                                        <input type="text" className="form-control"
-                                            onChange={this.changeFDValue.bind(this, 'architecture') }
-                                            value={field.architecture}
-                                            />
-                                    </div>
-
-                                    <label className="col-xs-1 control-label">車位</label>
-                                    <div className="col-xs-2">
-                                        <input type="text" className="form-control"
-                                            onChange={this.changeFDValue.bind(this, 'parking') }
-                                            value={field.parking}
-                                            />
-                                    </div>
-
-                                    <label className="col-xs-1 control-label">朝向</label>
-                                    <div className="col-xs-2">
-                                        <input type="text" className="form-control"
-                                            onChange={this.changeFDValue.bind(this, 'orientation') }
-                                            value={field.orientation}
-                                            />
-                                    </div>
-
-                                    <label className="col-xs-1 control-label">警衛管理</label>
-                                    <div className="col-xs-2">
-                                        <input type="text" className="form-control"
-                                            onChange={this.changeFDValue.bind(this, 'guard') }
-                                            value={field.guard}
-                                            />
-                                    </div>
-                                </div>
-
-                                <div className="form-group">
-                                    <label className="col-xs-1 control-label">邊間</label>
-                                    <div className="col-xs-2">
-                                        <input type="checkbox" className="form-control"
-                                            onChange={this.setInputValue.bind(this, this.props.fdName, 'is_end', !field.is_end) }
-                                            checked={field.is_end}
-                                            />
-                                    </div>
-
-                                    <label className="col-xs-1 control-label">暗房</label>
-                                    <div className="col-xs-2">
-                                        <input type="checkbox" className="form-control"
-                                            onChange={this.setInputValue.bind(this, this.props.fdName, 'is_darkroom', !field.is_darkroom) }
-                                            checked={field.is_darkroom}
-                                            />
-                                    </div>
-                                </div>
-                                <div className="form-group">
-                                    <label className="col-xs-1 control-label">外牆建材</label>
-                                    <div className="col-xs-2">
-                                        <input type="text" className="form-control"
-                                            onChange={this.changeFDValue.bind(this, 'wall_materials') }
-                                            value={field.wall_materials}
-                                            />
                                     </div>
                                 </div>
 

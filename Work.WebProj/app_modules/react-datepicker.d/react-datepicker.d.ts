@@ -15,7 +15,12 @@
         dateFormat?: string,
         showYearDropdown?: any,
         className?: string,
-        required?: boolean
+        required?: boolean,
+        startDate?: moment.Moment,
+        endDate?: moment.Moment,
+        minDate?: moment.Moment,
+        maxDate?: moment.Moment,
+        disabled?: boolean
     }
     interface ReactDatepicker extends React.ReactElement<ReactDatepickerProps> { }
     interface ReactDatepickerClass extends React.ComponentClass<ReactDatepickerProps> {
