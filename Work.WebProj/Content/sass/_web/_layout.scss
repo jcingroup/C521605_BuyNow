@@ -162,28 +162,13 @@ a {
 
 // main
 // ----------------------------------------------------------------------
-#content {
-    padding-bottom: $content-spacing;
-    position: relative;
-    background: #F5F5E4;
 
-    &::before {
-        content:" ";
-        display: block;
-        width: 100%;
-        height: 128px;
-
-        position: absolute;
-        left: 0; top: -128px;
-
-        background: url(#{$img-path}/mainBg.png) repeat-x;
-    }
-}
 
 
 // footer
 // ----------------------------------------------------------------------
 #footer {
+    min-width: $wrap-min-width;
     height: $footer-height;
     margin-top: -($footer-height);
     padding: 25px 0;

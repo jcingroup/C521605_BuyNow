@@ -12,6 +12,14 @@ namespace DotWeb.Controllers
         {
             return View("Sell");
         }
+        public ActionResult List()
+        {
+            return View("Sell_list");
+        }
+        public ActionResult Content()
+        {
+            return View("Sell_Content");
+        }
     }
 
 }

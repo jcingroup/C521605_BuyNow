@@ -23,21 +23,20 @@
 @import "element/type";
 // @import "element/images";
 // @import "element/tables";
-// @import "element/forms";
-// @import "element/buttons";
+@import "element/forms";
+@import "element/buttons";
 
 // Layout
 @import "layout/grid";
 
 // Module
 @import "module/animation";
-// @import "module/dropdown";
-// @import "module/button-group";
-// @import "module/input-group";
+@import "module/button-group";
+@import "module/input-group";
 // @import "module/custom-forms";
 @import "module/nav";
 @import "module/navbar";
-// @import "module/card";
+@import "module/card";
 // @import "module/breadcrumb";
 // @import "module/pagination";
 // @import "module/pager";
@@ -49,6 +48,7 @@
 // @import "module/close";
 
 // Components w/ JavaScript
+@import "module/dropdown";
 // @import "module/modal";
 // @import "module/tooltip";
 // @import "module/popover";
@@ -60,29 +60,115 @@
 @import "helper/extend";
 @import "helper/classes";
 // @import "helper/utilities-background";
-// @import "helper/utilities-spacing";
+@import "helper/utilities-spacing";
 @import "helper/utilities-responsive";
 
 @import "_web/element";
-// @import "_web/module";
+@import "_web/module";
 @import "_web/editor";
 @import "_web/layout";
 
 
 // Elements
 // ----------------------------------------------------------------------
-#content img {max-width: 100%;}
+.editor img {max-width: 100%;}
 
-.title {margin: 60px 0 80px 0;}
+.title {
+	width: 100%;
+	position: absolute;
+	left: 0;
+	top: -155px;
+	z-index: $zindex-navbar;
+}
 
 
 
 // Layout
 // ----------------------------------------------------------------------
-#content {
+#main {
+    margin-top: 245px;
+    padding-bottom: $content-spacing;
+    position: relative;
+    background: #F5F5E4;
 
+    &::before {
+        content:" ";
+        display: block;
+        width: 100%;
+        height: 128px;
+
+        position: absolute;
+        left: 0; top: -128px;
+
+        background: url(#{$img-path}/mainBg.png) repeat-x;
+    }
+
+    #content {
+        min-height: 300px;
+        margin-top: -25px;
+    }
 }
 
 
-// 
+// Sell / Rent
 // ----------------------------------------------------------------------
+.filter {
+
+	.btn {font-size: em(20px);}
+
+	.dropdown-toggle {
+		background: #fff;
+		border: 1px solid $brand-secondary;
+		border-radius: 0;
+	}
+
+	.dropdown-menu {
+		&.city {
+			width: 500px;
+		}
+	}
+}
+
+.pro {
+	@extend .col-xs-4;
+
+	.card-block {position: relative;}
+
+	.feature {
+		margin-bottom: $spacer*0.3;
+		font-weight: bold;
+
+		li {
+			margin-right: 0;
+
+			&:not(:last-child)::after {
+				content:"／";
+				margin-left: $spacer*0.2;
+			}
+		}
+	}
+
+	.info {
+		margin-bottom: $spacer*0.5;
+		li {margin-right: $spacer*0.8;}
+	}
+
+	.price {
+		font-size: em(26px);
+
+		strong {
+			margin-right: $spacer*0.2;
+			line-height: 1;
+			font-size: em(40px, 26px);
+		}
+	}
+
+	.more {
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		font-size: em(20px);
+		letter-spacing: 0.1em;
+		border-radius: 0;
+	}
+}

@@ -83,19 +83,18 @@ hr {
 .btn {border-radius: $btn-border-radius;}
 
 .btn-primary {
+    background: #E37900;
 
     &:hover, &.active {}
 }
 
 .btn-secondary {
-    &:hover {background: #544D48;}
 }
 
 .btn-danger {
-    &:hover {background: lighten($btn-danger-bg,10%);}
 }
 
-.btn-muted {@include button-variant($btn-muted-color, $btn-muted-bg, $btn-muted-border);}
+.btn-muted {}
 
 .btn-lg {
     border-radius: $btn-border-radius-lg;

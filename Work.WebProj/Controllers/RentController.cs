@@ -12,6 +12,14 @@ namespace DotWeb.Controllers
         {
             return View("Rent");
         }
+        public ActionResult List()
+        {
+            return View("Rent_list");
+        }
+        public ActionResult Content()
+        {
+            return View("Rent_Content");
+        }
     }
 
 }
