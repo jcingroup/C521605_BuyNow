@@ -27,5 +27,6 @@ namespace ProcCore.Business.DB0
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Matter> Matter { get; set; }
+        public virtual Community_News Community_News { get; set; }
     }
 }

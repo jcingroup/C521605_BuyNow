@@ -97,6 +97,9 @@
     <Compile Include="DB0\Community.cs">
       <DependentUpon>C51A0_BuyNow.tt</DependentUpon>
     </Compile>
+    <Compile Include="DB0\Community_News.cs">
+      <DependentUpon>C51A0_BuyNow.tt</DependentUpon>
+    </Compile>
     <Compile Include="DB0\DBPart.cs" />
     <Compile Include="DB0\Department.cs">
       <DependentUpon>C51A0_BuyNow.tt</DependentUpon>
@@ -129,6 +132,7 @@
       <DependentUpon>C51A0_BuyNow.tt</DependentUpon>
     </Compile>
     <Compile Include="LogicCenter.cs" />
+    <Compile Include="Models\Community_News.cs" />
     <Compile Include="Models\Matter.cs" />
     <Compile Include="Models\Community.cs" />
     <Compile Include="Models\Menu.cs" />
@@ -165,6 +169,9 @@
   <ItemGroup>
     <TypeScriptCompile Include="DB0\Community.cs.d.ts">
       <DependentUpon>Community.cs</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="DB0\Community_News.cs.d.ts">
+      <DependentUpon>Community_News.cs</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="DB0\Matter.cs.d.ts">
       <DependentUpon>Matter.cs</DependentUpon>

@@ -49,6 +49,18 @@
           <Property Name="account" Type="varchar" MaxLength="64" />
           <Property Name="passwd" Type="varchar" MaxLength="64" />
         </EntityType>
+        <EntityType Name="Community_News">
+          <Key>
+            <PropertyRef Name="community_news_id" />
+          </Key>
+          <Property Name="community_news_id" Type="int" Nullable="false" />
+          <Property Name="community_id" Type="int" Nullable="false" />
+          <Property Name="title" Type="nvarchar" MaxLength="200" />
+          <Property Name="context" Type="ntext" />
+          <Property Name="start_date" Type="smalldatetime" />
+          <Property Name="end_date" Type="smalldatetime" />
+          <Property Name="state" Type="char" MaxLength="1" />
+        </EntityType>
         <EntityType Name="Department">
           <Key>
             <PropertyRef Name="department_id" />
@@ -149,7 +161,7 @@
           <Property Name="public_area" Type="float" />
           <Property Name="age" Type="float" />
           <Property Name="buildhouses" Type="int" />
-          <Property Name="typeOfHouse" Type="nvarchar" MaxLength="50" />
+          <Property Name="typeOfHouse" Type="varchar" MaxLength="1" />
           <Property Name="managementFeeOfMonth" Type="int" />
           <Property Name="architecture" Type="nvarchar" MaxLength="50" />
           <Property Name="parking" Type="nvarchar" MaxLength="50" />
@@ -205,6 +217,18 @@
           <Property Name="i_UpdateDateTime" Type="datetime" />
           <Property Name="i_Lang" Type="char" MaxLength="5" Nullable="false" />
         </EntityType>
+        <Association Name="FK_Community_News_Community">
+          <End Role="Community" Type="Self.Community" Multiplicity="1" />
+          <End Role="Community_News" Type="Self.Community_News" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Community">
+              <PropertyRef Name="community_id" />
+            </Principal>
+            <Dependent Role="Community_News">
+              <PropertyRef Name="community_news_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
           <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -274,6 +298,7 @@
           <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Community" EntityType="Self.Community" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Community_News" EntityType="Self.Community_News" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Edit" EntityType="Self.Edit" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="i_Currency" EntityType="Self.i_Currency" Schema="dbo" store:Type="Tables" />
@@ -285,6 +310,10 @@
           <EntitySet Name="Menu" EntityType="Self.Menu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MenuRole" EntityType="Self.MenuRole" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="News" EntityType="Self.News" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Community_News_Community" Association="Self.FK_Community_News_Community">
+            <End Role="Community" EntitySet="Community" />
+            <End Role="Community_News" EntitySet="Community_News" />
+          </AssociationSet>
           <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
             <End Role="AspNetRoles" EntitySet="AspNetRoles" />
             <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
@@ -473,6 +502,11 @@
             <End Role="Community" EntitySet="Community" />
             <End Role="Matter" EntitySet="Matter" />
           </AssociationSet>
+          <EntitySet Name="Community_News" EntityType="C51A0_BuyNowModel.Community_News" />
+          <AssociationSet Name="FK_Community_News_Community" Association="C51A0_BuyNowModel.FK_Community_News_Community">
+            <End Role="Community" EntitySet="Community" />
+            <End Role="Community_News" EntitySet="Community_News" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Edit">
           <Key>
@@ -512,7 +546,7 @@
           <Property Name="public_area" Type="Double" />
           <Property Name="age" Type="Double" />
           <Property Name="buildhouses" Type="Int32" />
-          <Property Name="typeOfHouse" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="typeOfHouse" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
           <Property Name="managementFeeOfMonth" Type="Int32" />
           <Property Name="architecture" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="parking" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -534,6 +568,7 @@
           <Property Name="account" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
           <Property Name="passwd" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Matter" Relationship="C51A0_BuyNowModel.FK_Matter_Community" FromRole="Community" ToRole="Matter" />
+          <NavigationProperty Name="Community_News" Relationship="C51A0_BuyNowModel.FK_Community_News_Community" FromRole="Community" ToRole="Community_News" />
         </EntityType>
         <Association Name="FK_Matter_Community">
           <End Type="C51A0_BuyNowModel.Community" Role="Community" Multiplicity="1" />
@@ -544,6 +579,31 @@
             </Principal>
             <Dependent Role="Matter">
               <PropertyRef Name="community_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Community_News">
+          <Key>
+            <PropertyRef Name="community_news_id" />
+          </Key>
+          <Property Name="community_news_id" Type="Int32" Nullable="false" />
+          <Property Name="community_id" Type="Int32" Nullable="false" />
+          <Property Name="title" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="context" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="start_date" Type="DateTime" Precision="0" />
+          <Property Name="end_date" Type="DateTime" Precision="0" />
+          <Property Name="state" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Community" Relationship="C51A0_BuyNowModel.FK_Community_News_Community" FromRole="Community_News" ToRole="Community" />
+        </EntityType>
+        <Association Name="FK_Community_News_Community">
+          <End Type="C51A0_BuyNowModel.Community" Role="Community" Multiplicity="1" />
+          <End Type="C51A0_BuyNowModel.Community_News" Role="Community_News" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Community">
+              <PropertyRef Name="community_id" />
+            </Principal>
+            <Dependent Role="Community_News">
+              <PropertyRef Name="community_news_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -763,6 +823,19 @@
                 <ScalarProperty Name="account" ColumnName="account" />
                 <ScalarProperty Name="community_name" ColumnName="community_name" />
                 <ScalarProperty Name="community_id" ColumnName="community_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Community_News">
+            <EntityTypeMapping TypeName="C51A0_BuyNowModel.Community_News">
+              <MappingFragment StoreEntitySet="Community_News">
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="end_date" ColumnName="end_date" />
+                <ScalarProperty Name="start_date" ColumnName="start_date" />
+                <ScalarProperty Name="context" ColumnName="context" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="community_id" ColumnName="community_id" />
+                <ScalarProperty Name="community_news_id" ColumnName="community_news_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
