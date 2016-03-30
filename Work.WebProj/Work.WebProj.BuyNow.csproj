@@ -480,6 +480,23 @@
     <Content Include="ckeditor\config.js" />
     <Content Include="ckeditor\contents.css" />
     <Content Include="ckeditor\styles.js" />
+    <Content Include="Scripts\build\app\m_aboutus.js" />
+    <Content Include="Scripts\build\app\m_banner.js" />
+    <Content Include="Scripts\build\app\m_change_password.js" />
+    <Content Include="Scripts\build\app\m_community.js" />
+    <Content Include="Scripts\build\app\m_community_news.js" />
+    <Content Include="Scripts\build\app\m_edit.js" />
+    <Content Include="Scripts\build\app\m_edit_detail.js" />
+    <Content Include="Scripts\build\app\m_issue.js" />
+    <Content Include="Scripts\build\app\m_login.js" />
+    <Content Include="Scripts\build\app\m_matter.js" />
+    <Content Include="Scripts\build\app\m_menu.js" />
+    <Content Include="Scripts\build\app\m_menu_set.js" />
+    <Content Include="Scripts\build\app\m_news.js" />
+    <Content Include="Scripts\build\app\m_parm.js" />
+    <Content Include="Scripts\build\app\m_roles.js" />
+    <Content Include="Scripts\build\app\m_users.js" />
+    <Content Include="Scripts\build\app\vendors.js" />
     <Content Include="Scripts\cdn\BootSideMenu.js" />
     <Content Include="Scripts\cdn\bootstrap.min.js" />
     <Content Include="Scripts\cdn\codrops\classie.js" />
@@ -774,7 +791,6 @@
     <Folder Include="Areas\Active\Views\Shared\" />
     <Folder Include="Areas\Base\Views\Shared\" />
     <Folder Include="Properties\PublishProfiles\" />
-    <Folder Include="Scripts\build\app\" />
     <Folder Include="_Code\CReport\" />
   </ItemGroup>
   <ItemGroup>
