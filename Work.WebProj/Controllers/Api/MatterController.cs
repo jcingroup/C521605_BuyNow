@@ -15,14 +15,14 @@ using System.Data.Entity.Infrastructure;
 
 namespace DotWeb.Api
 {
-    public class CommunityController : ajaxApi<Community>
+    public class MatterController : ajaxApi<Matter>
     {
         public async Task<IHttpActionResult> Get(int id)
         {
             using (db0 = getDB0())
             {
-                Community item = await db0.Community.FindAsync(id);
-                var r = new ResultInfo<Community>() { data = item };
+                Matter item = await db0.Matter.FindAsync(id);
+                var r = new ResultInfo<Matter>() { data = item };
                 return Ok(r);
             }
         }
@@ -31,13 +31,13 @@ namespace DotWeb.Api
             #region 連接BusinessLogicLibary資料庫並取得資料
 
             db0 = getDB0();
-            var predicate = PredicateBuilder.True<Community>();
+            var predicate = PredicateBuilder.True<Matter>();
 
             if (q.name != null)
-                predicate = predicate.And(x => x.community_name.Contains(q.name));
+                predicate = predicate.And(x => x.matter_name.Contains(q.name));
 
             int page = (q.page == null ? 1 : (int)q.page);
-            var result = db0.Community.AsExpandable().Where(predicate);
+            var result = db0.Matter.AsExpandable().Where(predicate);
             var resultCount = await result.CountAsync();
 
             int startRecord = PageCount.PageInfo(page, defPageSize, resultCount);
@@ -68,11 +68,37 @@ namespace DotWeb.Api
             {
                 db0 = getDB0();
 
-                item = await db0.Community.FindAsync(param.id);
+                item = await db0.Matter.FindAsync(param.id);
                 var md = param.md;
-                item.community_name = md.community_name;
-                item.account = md.account;
-                item.passwd = md.passwd;
+
+                item.matter_name = md.matter_name;
+
+                item.zip = md.zip;
+                item.city = md.city;
+                item.country = md.country;
+                item.address = md.address;
+                item.bedrooms = md.bedrooms;
+                item.livingrooms = md.livingrooms;
+                item.bathrooms = md.bathrooms;
+                item.rooms = md.rooms;
+                item.build_area = md.build_area;
+                item.land_area = md.land_area;
+                item.house_area = md.house_area;
+                item.balcony_area = md.balcony_area;
+                item.umbrella_aea = md.umbrella_aea;
+                item.public_area = md.public_area;
+                item.age = md.age;
+                item.buildhouses = md.buildhouses;
+                item.typeOfHouse = md.typeOfHouse;
+                item.managementFeeOfMonth = md.managementFeeOfMonth;
+                item.architecture = md.architecture;
+                item.parking = md.parking;
+                item.parking = md.parking;
+                item.orientation = md.orientation;
+                item.guard = md.guard;
+                item.is_end = md.is_end;
+                item.is_darkroom = md.is_darkroom;
+                item.wall_materials = md.wall_materials;
 
                 await db0.SaveChangesAsync();
                 rAjaxResult.result = true;
@@ -88,15 +114,11 @@ namespace DotWeb.Api
             }
             return Ok(rAjaxResult);
         }
-        public async Task<IHttpActionResult> Post([FromBody]Community md)
+        public async Task<IHttpActionResult> Post([FromBody]Matter md)
         {
-            md.community_id = GetNewId(CodeTable.Base);
+            md.matter_id = GetNewId(CodeTable.Base);
 
-            //md.i_InsertDateTime = DateTime.Now;
-            //md.i_InsertDeptID = departmentId;
-            //md.i_InsertUserID = UserId;
-            //md.i_Lang = "zh-TW";
-            r = new ResultInfo<Community>();
+            r = new ResultInfo<Matter>();
             if (!ModelState.IsValid)
             {
                 r.message = ModelStateErrorPack();
@@ -109,11 +131,11 @@ namespace DotWeb.Api
                 #region working
                 db0 = getDB0();
 
-                db0.Community.Add(md);
+                db0.Matter.Add(md);
                 await db0.SaveChangesAsync();
 
                 r.result = true;
-                r.id = md.community_id;
+                r.id = md.matter_id;
                 return Ok(r);
                 #endregion
             }
@@ -139,12 +161,12 @@ namespace DotWeb.Api
             try
             {
                 db0 = getDB0();
-                r = new ResultInfo<Community>();
+                r = new ResultInfo<Matter>();
 
-                item = await db0.Community.FindAsync(param.id);
+                item = await db0.Matter.FindAsync(param.id);
                 if (item != null)
                 {
-                    db0.Community.Remove(item);
+                    db0.Matter.Remove(item);
                     await db0.SaveChangesAsync();
                     r.result = true;
                     return Ok(r);
@@ -184,7 +206,7 @@ namespace DotWeb.Api
         public class putBodyParam
         {
             public int id { get; set; }
-            public Community md { get; set; }
+            public Matter md { get; set; }
         }
         public class queryParam : QueryBase
         {

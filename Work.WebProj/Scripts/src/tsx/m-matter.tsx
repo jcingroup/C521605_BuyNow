@@ -6,19 +6,21 @@ import Moment = require('moment');
 import ReactBootstrap = require("react-bootstrap");
 import CommCmpt = require('comm-cmpt');
 import CommFunc = require('comm-func');
+import dt = require('dt');
 import DatePicker = require('react-datepicker');
 import "react-datepicker/dist/react-datepicker.css";
 
-namespace Community {
+namespace Matter {
     interface Rows {
         check_del: boolean,
-        community_id: number,
-        name: string
+        matter_id: number,
+        matter_name: string
     }
     interface GirdFormState<G, F> extends BaseDefine.GirdFormStateBase<G, F> {
         searchData?: {
             keyword: string
-        }
+        },
+        options_community?: Array<server.Community>
     }
     interface IDName {
         id: number | string //數字型用id 字串型用no
@@ -50,12 +52,12 @@ namespace Community {
                 <td className="text-center">
                     <CommCmpt.GridButtonModify modify={this.modify}/>
                 </td>
-                <td>{this.props.itemData.community_id}</td>
-                <td>{this.props.itemData.name}</td>
+                <td>{this.props.itemData.matter_id}</td>
+                <td>{this.props.itemData.matter_name}</td>
             </tr>;
         }
     }
-    export class GirdForm extends React.Component<BaseDefine.GridFormPropsBase, GirdFormState<Rows, server.Community>>{
+    export class GirdForm extends React.Component<BaseDefine.GridFormPropsBase, GirdFormState<Rows, server.Matter>>{
 
         constructor() {
 
@@ -74,6 +76,7 @@ namespace Community {
             this.componentDidMount = this.componentDidMount.bind(this);
             this.componentDidUpdate = this.componentDidUpdate.bind(this);
             this.componentWillUnmount = this.componentWillUnmount.bind(this);
+            this.changeAddress = this.changeAddress.bind(this);
 
             this.insertType = this.insertType.bind(this);
             this.state = {
@@ -89,9 +92,17 @@ namespace Community {
         static defaultProps: BaseDefine.GridFormPropsBase = {
             fdName: 'fieldData',
             gdName: 'searchData',
-            apiPath: gb_approot + 'api/Community'
+            apiPath: gb_approot + 'api/Matter'
         }
         componentDidMount() {
+            //init component data
+            CommFunc.jqGet(gb_approot + 'Api/GetAction/GetOptionsCommunity', {})
+                .done((data: Array<server.Community>) => {
+                    //console.log(data);
+                    this.setState({ options_community: data });
+
+                })
+
             this.queryGridData(1);
         }
         componentDidUpdate(prevProps, prevState) {
@@ -130,6 +141,9 @@ namespace Community {
         }
         handleSubmit(e: React.FormEvent) {
             e.preventDefault();
+
+            //console.log(this.state.fieldData);
+
             if (this.state.edit_type == 1) {
                 CommFunc.jqPost(this.props.apiPath, this.state.fieldData)
                     .done((data: CallResult, textStatus, jqXHRdata) => {
@@ -170,7 +184,7 @@ namespace Community {
             var ids = [];
             for (var i in this.state.gridData.rows) {
                 if (this.state.gridData.rows[i].check_del) {
-                    ids.push('ids=' + this.state.gridData.rows[i].community_id);
+                    ids.push('ids=' + this.state.gridData.rows[i].matter_id);
                 }
             }
 
@@ -259,12 +273,12 @@ namespace Community {
                 });
         }
         changeFDValue(name: string, e: React.SyntheticEvent) {
-            this.setInputValue(this.props.fdName, name, e);
+            this.setEventValue(this.props.fdName, name, e);
         }
         changeGDValue(name: string, e: React.SyntheticEvent) {
-            this.setInputValue(this.props.gdName, name, e);
+            this.setEventValue(this.props.gdName, name, e);
         }
-        setInputValue(collentName: string, name: string, e: React.SyntheticEvent) {
+        setEventValue(collentName: string, name: string, e: React.SyntheticEvent) {
             let input: HTMLInputElement = e.target as HTMLInputElement;
             let value;
 
@@ -282,8 +296,44 @@ namespace Community {
                 }
             };
             var newState = update(this.state, objForUpdate);
-
             this.setState(newState);
+        }
+        setInputValue(collentName: string, name: string, v: any) {
+            var objForUpdate = {
+                [collentName]:
+                {
+                    [name]: { $set: v }
+                }
+            };
+            var newState = update(this.state, objForUpdate);
+            this.setState(newState);
+        }
+        setInputValueMuti(collentName: string, name: Array<string>, v: Array<any>) {
+
+            var objForUpdate = { [collentName]: {} };
+            for (var i in name) {
+                var item = name[i];
+                var value = v[i];
+                objForUpdate[collentName][item] = { $set: value}
+            }
+            var newState = update(this.state, objForUpdate);
+            this.setState(newState);
+        }
+        changeAddress(data, e) {
+            console.log(data);
+            if (data.type == 1) {
+
+            }
+            if (data.type == 2) {
+                this.setInputValue(this.props.fdName, 'city', data.city_value);
+            }
+            if (data.type == 3) {
+                this.setInputValueMuti(this.props.fdName, ['zip', 'country'], [data.zip_value, data.country_value]);
+            }
+            if (data.type == 4) {
+                this.setInputValue(this.props.fdName, 'address', data.address_value);
+            }
+
         }
 
         render() {
@@ -337,7 +387,7 @@ namespace Community {
                                             {this.state.gridData.rows.map(
                                                 (itemData, i) =>
                                                     <GridRow key={i}
-                                                        primKey={itemData.community_id}
+                                                        primKey={itemData.matter_id}
                                                         itemData={itemData}
                                                         //delCheck={this.delCheck}
                                                         removeItemSubmit={this.removeItemSubmit}
@@ -369,44 +419,48 @@ namespace Community {
                     <div>
                         <ul className="breadcrumb">
                             <li>
-                                <i className="fa-list-alt"></i>
-                                {this.props.menuName}
+                                <i className="fa-list-alt"></i>{this.props.menuName}
                             </li>
                         </ul>
                         <h4 className="title"> {this.props.caption} 基本資料維護</h4>
                         <form className="form-horizontal" onSubmit={this.handleSubmit}>
                             <div className="col-xs-10">
                                 <div className="form-group">
-                                    <label className="col-xs-2 control-label">標題</label>
-                                    <div className="col-xs-8">
-                                        <input type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'community_name') } value={field.community_name} maxLength={64}
-                                            required />
-                                    </div>
-                                    <small className="col-xs-2 text-danger">(必填) </small>
-                                </div>
-
-                                <div className="form-group">
-                                    <label className="col-xs-2 control-label">登錄帳號</label>
-                                    <div className="col-xs-8">
+                                    <label className="col-xs-1 control-label">物件名稱</label>
+                                    <div className="col-xs-5">
                                         <input type="text" className="form-control"
-                                            onChange={this.changeFDValue.bind(this, 'account') }
-                                            value={field.account}
+                                            onChange={this.changeFDValue.bind(this, 'matter_name') }
+                                            value={field.matter_name}
                                             maxLength={64}
                                             required />
                                     </div>
-                                    <small className="col-xs-2 text-danger">(必填) </small>
+                                    <label className="col-xs-1 control-label">來源社區</label>
+                                    <div className="col-xs-3">
+                                        <select className="form-control"
+                                            required
+                                            value={field.community_id}
+                                            onChange={this.changeFDValue.bind(this, 'community_id') }>
+                                            <option value=""></option>
+                                            {
+                                                this.state.options_community.map(function (item, i) {
+                                                    return (
+                                                        <option value={item.community_id} key={item.community_id}>{item.community_name}</option>);
+                                                })
+                                            }
+                                        </select>
+                                    </div>
                                 </div>
 
                                 <div className="form-group">
-                                    <label className="col-xs-2 control-label">登錄密碼</label>
-                                    <div className="col-xs-8">
-                                        <input type="password" className="form-control"
-                                            onChange={this.changeFDValue.bind(this, 'passwd') }
-                                            value={field.passwd}
-                                            maxLength={64}
-                                            required />
-                                    </div>
-                                    <small className="col-xs-2 text-danger">(必填) </small>
+                                    <CommCmpt.TwAddress
+                                        identity="AD1"
+                                        city_value={field.city}
+                                        country_value={field.country}
+                                        address_value={field.address}
+                                        zip_value={field.zip}
+                                        onChange={this.changeAddress}
+                                        index={0}
+                                        />
                                 </div>
 
                                 <div className="form-action">
@@ -416,6 +470,9 @@ namespace Community {
                                     </div>
                                 </div>
                             </div>
+
+
+
                         </form>
                     </div>
                 );
@@ -426,4 +483,4 @@ namespace Community {
 }
 
 var dom = document.getElementById('page_content');
-ReactDOM.render(<Community.GirdForm caption={gb_caption} menuName={gb_menuname} iconClass="fa-list-alt" />, dom); 
+ReactDOM.render(<Matter.GirdForm caption={gb_caption} menuName={gb_menuname} iconClass="fa-list-alt" />, dom); 

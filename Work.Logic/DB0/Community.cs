@@ -14,7 +14,18 @@ namespace ProcCore.Business.DB0
     
     public partial class Community
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Community()
+        {
+            this.Matter = new HashSet<Matter>();
+        }
+    
         public int community_id { get; set; }
-        public string name { get; set; }
+        public string community_name { get; set; }
+        public string account { get; set; }
+        public string passwd { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Matter> Matter { get; set; }
     }
 }

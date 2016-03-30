@@ -10,8 +10,12 @@
         onChange: Function,
         onBlur?: Function,
         onFocus?: Function,
-        selected?: moment.Moment
-        isClearable?: boolean
+        selected?: moment.Moment,
+        isClearable?: boolean,
+        dateFormat?: string,
+        showYearDropdown?: any,
+        className?: string,
+        required?: boolean
     }
     interface ReactDatepicker extends React.ReactElement<ReactDatepickerProps> { }
     interface ReactDatepickerClass extends React.ComponentClass<ReactDatepickerProps> {

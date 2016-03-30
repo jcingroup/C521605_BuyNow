@@ -17,9 +17,11 @@
         <EntityTypeShape EntityType="C51A0_BuyNowModel.News" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
         <AssociationConnector Association="C51A0_BuyNowModel.AspNetUserRoles" ManuallyRouted="false" />
         <AssociationConnector Association="C51A0_BuyNowModel.MenuRole" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="C51A0_BuyNowModel.Community" Width="1.5" PointX="0.75" PointY="10.75" />
         <EntityTypeShape EntityType="C51A0_BuyNowModel.Edit" Width="1.5" PointX="3.375" PointY="10.75" />
-      </Diagram>
+        <EntityTypeShape EntityType="C51A0_BuyNowModel.Matter" Width="1.5" PointX="3" PointY="14.75" />
+        <EntityTypeShape EntityType="C51A0_BuyNowModel.Community" Width="1.5" PointX="0.75" PointY="16.875" />
+        <AssociationConnector Association="C51A0_BuyNowModel.FK_Matter_Community" />
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

@@ -12,6 +12,7 @@ module.exports = {
         m_users: path.resolve(__dirname, 'Scripts/src/tsx/m-users.js'),
         //後台 管理者
         m_community: path.resolve(__dirname, 'Scripts/src/tsx/m-community.js'),
+        m_matter: path.resolve(__dirname, 'Scripts/src/tsx/m-matter.js'),
         m_edit: path.resolve(__dirname, 'Scripts/src/tsx/m-edit.js'),
         m_edit_detail: path.resolve(__dirname, 'Scripts/src/tsx/m-edit_detail.js'),
         vendors: ['jquery', 'react', 'react-bootstrap', 'moment']

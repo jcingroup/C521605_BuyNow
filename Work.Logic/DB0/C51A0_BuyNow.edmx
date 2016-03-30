@@ -45,7 +45,9 @@
             <PropertyRef Name="community_id" />
           </Key>
           <Property Name="community_id" Type="int" Nullable="false" />
-          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="community_name" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="account" Type="varchar" MaxLength="64" />
+          <Property Name="passwd" Type="varchar" MaxLength="64" />
         </EntityType>
         <EntityType Name="Department">
           <Key>
@@ -124,6 +126,39 @@
           <Property Name="w" Type="int" Nullable="false" />
           <Property Name="sn_max" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="Matter">
+          <Key>
+            <PropertyRef Name="matter_id" />
+          </Key>
+          <Property Name="matter_id" Type="int" Nullable="false" />
+          <Property Name="community_id" Type="int" Nullable="false" />
+          <Property Name="matter_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="zip" Type="varchar" MaxLength="5" />
+          <Property Name="city" Type="nvarchar" MaxLength="50" />
+          <Property Name="country" Type="nvarchar" MaxLength="50" />
+          <Property Name="address" Type="nvarchar" MaxLength="100" />
+          <Property Name="bedrooms" Type="int" />
+          <Property Name="livingrooms" Type="int" />
+          <Property Name="bathrooms" Type="int" />
+          <Property Name="rooms" Type="int" />
+          <Property Name="build_area" Type="float" />
+          <Property Name="land_area" Type="float" />
+          <Property Name="house_area" Type="float" />
+          <Property Name="balcony_area" Type="float" />
+          <Property Name="umbrella_aea" Type="float" />
+          <Property Name="public_area" Type="float" />
+          <Property Name="age" Type="float" />
+          <Property Name="buildhouses" Type="int" />
+          <Property Name="typeOfHouse" Type="nvarchar" MaxLength="50" />
+          <Property Name="managementFeeOfMonth" Type="int" />
+          <Property Name="architecture" Type="nvarchar" MaxLength="50" />
+          <Property Name="parking" Type="nvarchar" MaxLength="50" />
+          <Property Name="orientation" Type="nvarchar" MaxLength="50" />
+          <Property Name="guard" Type="nvarchar" MaxLength="50" />
+          <Property Name="is_end" Type="bit" />
+          <Property Name="is_darkroom" Type="bit" />
+          <Property Name="wall_materials" Type="nvarchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="Menu">
           <Key>
             <PropertyRef Name="menu_id" />
@@ -198,6 +233,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Matter_Community">
+          <End Role="Community" Type="Self.Community" Multiplicity="1" />
+          <End Role="Matter" Type="Self.Matter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Community">
+              <PropertyRef Name="community_id" />
+            </Principal>
+            <Dependent Role="Matter">
+              <PropertyRef Name="community_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_MenuRole_AspNetRoles">
           <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1" />
           <End Role="MenuRole" Type="Self.MenuRole" Multiplicity="*" />
@@ -234,6 +281,7 @@
           <EntitySet Name="i_Lang" EntityType="Self.i_Lang" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="i_Parm" EntityType="Self.i_Parm" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="i_SN" EntityType="Self.i_SN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Matter" EntityType="Self.Matter" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Menu" EntityType="Self.Menu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MenuRole" EntityType="Self.MenuRole" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="News" EntityType="Self.News" Schema="dbo" store:Type="Tables" />
@@ -244,6 +292,10 @@
           <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Matter_Community" Association="Self.FK_Matter_Community">
+            <End Role="Community" EntitySet="Community" />
+            <End Role="Matter" EntitySet="Matter" />
           </AssociationSet>
           <AssociationSet Name="FK_MenuRole_AspNetRoles" Association="Self.FK_MenuRole_AspNetRoles">
             <End Role="AspNetRoles" EntitySet="AspNetRoles" />
@@ -414,16 +466,14 @@
             <End Role="AspNetRoles" EntitySet="AspNetRoles" />
             <End Role="Menu" EntitySet="Menu" />
           </AssociationSet>
-          <EntitySet Name="Community" EntityType="C51A0_BuyNowModel.Community" />
           <EntitySet Name="Edit" EntityType="C51A0_BuyNowModel.Edit" />
+          <EntitySet Name="Matter" EntityType="C51A0_BuyNowModel.Matter" />
+          <EntitySet Name="Community" EntityType="C51A0_BuyNowModel.Community" />
+          <AssociationSet Name="FK_Matter_Community" Association="C51A0_BuyNowModel.FK_Matter_Community">
+            <End Role="Community" EntitySet="Community" />
+            <End Role="Matter" EntitySet="Matter" />
+          </AssociationSet>
         </EntityContainer>
-        <EntityType Name="Community">
-          <Key>
-            <PropertyRef Name="community_id" />
-          </Key>
-          <Property Name="community_id" Type="Int32" Nullable="false" />
-          <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-        </EntityType>
         <EntityType Name="Edit">
           <Key>
             <PropertyRef Name="edit_id" />
@@ -441,6 +491,62 @@
           <Property Name="i_UpdateDateTime" Type="DateTime" Precision="3" />
           <Property Name="i_Lang" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
         </EntityType>
+        <EntityType Name="Matter">
+          <Key>
+            <PropertyRef Name="matter_id" />
+          </Key>
+          <Property Name="matter_id" Type="Int32" Nullable="false" />
+          <Property Name="community_id" Type="Int32" Nullable="false" />
+          <Property Name="city" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="bedrooms" Type="Int32" />
+          <Property Name="livingrooms" Type="Int32" />
+          <Property Name="bathrooms" Type="Int32" />
+          <Property Name="rooms" Type="Int32" />
+          <Property Name="build_area" Type="Double" />
+          <Property Name="land_area" Type="Double" />
+          <Property Name="house_area" Type="Double" />
+          <Property Name="balcony_area" Type="Double" />
+          <Property Name="umbrella_aea" Type="Double" />
+          <Property Name="public_area" Type="Double" />
+          <Property Name="age" Type="Double" />
+          <Property Name="buildhouses" Type="Int32" />
+          <Property Name="typeOfHouse" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="managementFeeOfMonth" Type="Int32" />
+          <Property Name="architecture" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="parking" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="orientation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="guard" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="is_end" Type="Boolean" />
+          <Property Name="is_darkroom" Type="Boolean" />
+          <Property Name="wall_materials" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="matter_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Community" Relationship="C51A0_BuyNowModel.FK_Matter_Community" FromRole="Matter" ToRole="Community" />
+          <Property Name="zip" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Community">
+          <Key>
+            <PropertyRef Name="community_id" />
+          </Key>
+          <Property Name="community_id" Type="Int32" Nullable="false" />
+          <Property Name="community_name" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="account" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="passwd" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Matter" Relationship="C51A0_BuyNowModel.FK_Matter_Community" FromRole="Community" ToRole="Matter" />
+        </EntityType>
+        <Association Name="FK_Matter_Community">
+          <End Type="C51A0_BuyNowModel.Community" Role="Community" Multiplicity="1" />
+          <End Type="C51A0_BuyNowModel.Matter" Role="Matter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Community">
+              <PropertyRef Name="community_id" />
+            </Principal>
+            <Dependent Role="Matter">
+              <PropertyRef Name="community_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -598,14 +704,6 @@
               <ScalarProperty Name="menu_id" ColumnName="menu_id" />
             </EndProperty>
           </AssociationSetMapping>
-          <EntitySetMapping Name="Community">
-            <EntityTypeMapping TypeName="C51A0_BuyNowModel.Community">
-              <MappingFragment StoreEntitySet="Community">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="community_id" ColumnName="community_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Edit">
             <EntityTypeMapping TypeName="C51A0_BuyNowModel.Edit">
               <MappingFragment StoreEntitySet="Edit">
@@ -621,6 +719,50 @@
                 <ScalarProperty Name="edit_content" ColumnName="edit_content" />
                 <ScalarProperty Name="edit_name" ColumnName="edit_name" />
                 <ScalarProperty Name="edit_id" ColumnName="edit_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Matter">
+            <EntityTypeMapping TypeName="C51A0_BuyNowModel.Matter">
+              <MappingFragment StoreEntitySet="Matter">
+                <ScalarProperty Name="zip" ColumnName="zip" />
+                <ScalarProperty Name="matter_name" ColumnName="matter_name" />
+                <ScalarProperty Name="wall_materials" ColumnName="wall_materials" />
+                <ScalarProperty Name="is_darkroom" ColumnName="is_darkroom" />
+                <ScalarProperty Name="is_end" ColumnName="is_end" />
+                <ScalarProperty Name="guard" ColumnName="guard" />
+                <ScalarProperty Name="orientation" ColumnName="orientation" />
+                <ScalarProperty Name="parking" ColumnName="parking" />
+                <ScalarProperty Name="architecture" ColumnName="architecture" />
+                <ScalarProperty Name="managementFeeOfMonth" ColumnName="managementFeeOfMonth" />
+                <ScalarProperty Name="typeOfHouse" ColumnName="typeOfHouse" />
+                <ScalarProperty Name="buildhouses" ColumnName="buildhouses" />
+                <ScalarProperty Name="age" ColumnName="age" />
+                <ScalarProperty Name="public_area" ColumnName="public_area" />
+                <ScalarProperty Name="umbrella_aea" ColumnName="umbrella_aea" />
+                <ScalarProperty Name="balcony_area" ColumnName="balcony_area" />
+                <ScalarProperty Name="house_area" ColumnName="house_area" />
+                <ScalarProperty Name="land_area" ColumnName="land_area" />
+                <ScalarProperty Name="build_area" ColumnName="build_area" />
+                <ScalarProperty Name="rooms" ColumnName="rooms" />
+                <ScalarProperty Name="bathrooms" ColumnName="bathrooms" />
+                <ScalarProperty Name="livingrooms" ColumnName="livingrooms" />
+                <ScalarProperty Name="bedrooms" ColumnName="bedrooms" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="country" ColumnName="country" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="community_id" ColumnName="community_id" />
+                <ScalarProperty Name="matter_id" ColumnName="matter_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Community">
+            <EntityTypeMapping TypeName="C51A0_BuyNowModel.Community">
+              <MappingFragment StoreEntitySet="Community">
+                <ScalarProperty Name="passwd" ColumnName="passwd" />
+                <ScalarProperty Name="account" ColumnName="account" />
+                <ScalarProperty Name="community_name" ColumnName="community_name" />
+                <ScalarProperty Name="community_id" ColumnName="community_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

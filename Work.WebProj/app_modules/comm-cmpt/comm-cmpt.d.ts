@@ -81,19 +81,25 @@ interface MasterFileUploadProps extends React.Props<MasterFileUploadClass> {
 }
 interface MasterFileUploadClass extends React.ComponentClass<MasterFileUploadProps> {
 }
+
 interface TwAddressClass extends React.ComponentClass<TwAddressProps> {
 }
 interface TwAddressProps extends React.Props<TwAddressClass> {
-    onChange(fieldName: string, e: React.SyntheticEvent): void,
-    setFDValue(fieldName: string, e: React.SyntheticEvent): void,
+    identity: string, //識別字串
+    index: number,
+    onChange(data: {
+        identity: string,
+        zip_value: string,
+        city_value: string,
+        country_value: string,
+        address_value: string,
+        index: number,
+        type: number //1:zip 2:city 3:country 4:address
+    }, e: React.SyntheticEvent): void,
     zip_value: string,
-    zip_field: string,
     city_value: string,
-    city_field: string,
     country_value: string,
-    country_field: string,
     address_value: string,
-    address_field: string,
     required?: boolean,
     disabled?: boolean,
     ver?: number
