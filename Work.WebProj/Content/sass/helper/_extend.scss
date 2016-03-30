@@ -7,6 +7,7 @@
 ul, ol {
 	&.row {
 		@extend .list-unstyled;
+		@extend .m-b-0;
 	}
 }
 

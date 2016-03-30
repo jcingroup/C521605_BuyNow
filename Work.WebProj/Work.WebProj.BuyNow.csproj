@@ -641,6 +641,10 @@
     <Content Include="Content\sass\_admin\_modules.scss" />
     <Content Include="Content\sass\_admin\_scripts.scss" />
     <Content Include="Content\sass\_admin\_variables.scss" />
+    <Content Include="Views\Rent\Rent_content.cshtml" />
+    <Content Include="Views\Rent\Rent_list.cshtml" />
+    <Content Include="Views\Sell\Sell_content.cshtml" />
+    <Content Include="Views\Sell\Sell_list.cshtml" />
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

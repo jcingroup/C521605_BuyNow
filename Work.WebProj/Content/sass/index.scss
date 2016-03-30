@@ -36,6 +36,7 @@ $img-path2:             '../images/Index';
 @import "helper/utilities-extends";
 @import "helper/extend";
 @import "helper/classes";
+@import "helper/utilities-spacing";
 @import "helper/utilities-responsive";
 
 @import "_web/element";
@@ -45,6 +46,24 @@ $img-path2:             '../images/Index';
 // layout
 // ----------------------------------------------------------------------
 #wrapper {background: url(#{$img-path2}/bg.jpg) fixed center top / cover;}
+#content {
+	position: relative;
+    padding-bottom: $content-spacing;
+    background: #F5F5E4;
+
+    &::before {
+        content:" ";
+        display: block;
+        width: 100%;
+        height: 128px;
+
+        position: absolute;
+        left: 0; top: -128px;
+
+        background: url(#{$img-path}/mainBg.png) repeat-x;
+    }
+}
+
 
 // main
 // ----------------------------------------------------------------------

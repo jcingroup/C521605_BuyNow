@@ -32,13 +32,12 @@ $btn-padding-y:                 .3rem;
 $btn-padding-x-lg:              1.35rem;
 $btn-padding-y-lg:              .6rem;
 
-$btn-border-radius:             .5rem;
-$btn-border-radius-lg:          .625rem;
+$btn-border-radius:             .5em;
 
-$btn-primary-border:            #E5E5E5;
+$btn-primary-border:            transparent;
 
-$btn-secondary-color:           lighten($link-color, 30%);
-$btn-secondary-bg:              #333;
+$btn-secondary-color:           #63632E;
+$btn-secondary-bg:              #EBEBC8;
 $btn-secondary-border:          transparent;
 
 $btn-muted-color:               #fff !default;

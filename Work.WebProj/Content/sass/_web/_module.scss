@@ -3,58 +3,45 @@
 
 // cards
 // ----------------------------------------------------------------------
-.card-list {
-    @extend .list-unstyled;
+.card-img-top {
+    display: block;
+    height: 197px;
+    position: relative;
 
-    .card {
-        background: url(#{$img-path}/bgCard.png) no-repeat center bottom;
-        padding-bottom: 26px;
+    text-align: center;
+    overflow: hidden;
+
+    img {
+        min-width: 100%;
+        min-height: 100%;
+        max-width: 200%;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
     }
+}
 
-    .card-img-top {
-        background: $card-bg;
-        height: 215px;
-        text-align: center;
+.card-block {
+    color: #000;
+}
 
-        overflow: hidden;
-        position: relative;
+.card-title {
+    @include text-truncate;
+    color: #E37900;
+    font-size: em(26px);
 
-        img {
-            height: 100%;
-            position: absolute;
-            left: 50%;
-            top: 0;
-            transform: translateX(-50%);
-        }
-
-        .label {
-            font-size: $font-size-sm;
-            position: absolute;
-            right: 0;
-            top: 0;
-        }
+    a {
+        color: #E37900;
+        &:hover {color: $link-color;}
     }
+}
 
-    .card-block {
-        background: $card-bg;
-        margin-bottom: 0;
-    }
-
-    .card-title {
-        font-size: $font-size-lg;
-        font-weight: bold;
-
-        @include text-truncate;
-    }
-
-    .card-subtitle {
-        height: 2.8em;
-
-        font-size: $font-size-sm;
-        line-height: 1.4;
-
-        overflow: hidden;
-    }
+.card-subtitle {
+    @include text-truncate;
+    margin: $spacer*0.5 0;
+    color: #5E5E5E;
+    font-size: em(20px);
 }
 
 
@@ -214,19 +201,3 @@
 
 // popup
 // ----------------------------------------------------------------------
-.mfp-bg {opacity: 0.9 !important;}
-.mfp-container {
-    padding: $spacer !important;
-}
-.mfp-close {
-    width: 60px !important;
-    height: 60px !important;
-    line-height: 60px !important;
-    color: #fff !important;
-    font-family: 'themify' !important;
-    font-size: 40px !important;
-    text-shadow: 0 0 3px #000;
-}
-.mfp-content {
-    height: 100%;
-}
