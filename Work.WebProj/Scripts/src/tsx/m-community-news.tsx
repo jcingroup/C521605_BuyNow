@@ -48,6 +48,13 @@ namespace Matter {
         }
 
         render() {
+
+            let state = [];
+            state['A'] = <span className="label label-success">前台顯示</span>;
+            state['C'] = <span className="label label-danger">前台關閉</span>;
+
+
+
             return <tr>
                 <td className="text-center">
                     <CommCmpt.GridButtonDel
@@ -59,9 +66,9 @@ namespace Matter {
                 </td>
                 <td>{this.props.itemData.community_name}</td>
                 <td>{this.props.itemData.title}</td>
-                <td>{this.props.itemData.start_date}</td>
-                <td>{this.props.itemData.end_date}</td>
-                <td>{this.props.itemData.state}</td>
+                <td>{Moment(this.props.itemData.start_date).format(dt.dateFT) }</td>
+                <td>{Moment(this.props.itemData.end_date).format(dt.dateFT) }</td>
+                <td>{state[this.props.itemData.state]}</td>
             </tr>;
         }
     }
@@ -111,7 +118,9 @@ namespace Matter {
             this.queryGridData(1);
         }
         componentDidUpdate(prevProps, prevState) {
-
+            if ((prevState.edit_type == IEditType.none && (this.state.edit_type == IEditType.insert || this.state.edit_type == IEditType.update))) {
+                CKEDITOR.replace('news_content', { customConfig: '../ckeditor/inlineConfig.js' });
+            }
         }
         componentWillUnmount() {
             //元件被從 DOM 卸載之前執行，通常我們在這個方法清除一些不再需要地物件或 timer。
@@ -146,6 +155,8 @@ namespace Matter {
         }
         handleSubmit(e: React.FormEvent) {
             e.preventDefault();
+
+            this.state.fieldData.context = CKEDITOR.instances['news_content'].getData();
 
             if (this.state.edit_type == IEditType.insert) {
                 CommFunc.jqPost(this.props.apiPath, this.state.fieldData)
@@ -249,7 +260,11 @@ namespace Matter {
         }
         insertType() {
             this.setState({
-                edit_type: IEditType.insert, fieldData: {}
+                edit_type: IEditType.insert,
+                fieldData: {
+                    start_date: Moment().toDate(),
+                    state: 'A'
+                }
             });
         }
         updateType(id: number | string) {
@@ -423,6 +438,9 @@ namespace Matter {
                 let mnt_start_date = CommFunc.MntV(field.start_date);
                 let mnt_end_date = CommFunc.MntV(field.end_date);
                 let end_date_disabled: boolean = mnt_start_date == null ? true : false;
+                let state_label_class = field.state == 'A' ?
+                    <label className="col-xs-1 control-label text-success">狀態</label> :
+                    <label className="col-xs-1 control-label text-danger">狀態</label>;
 
                 var outHtml = (
                     <div>
@@ -436,7 +454,7 @@ namespace Matter {
                             <div className="col-xs-10">
                                 <div className="form-group">
                                     <label className="col-xs-1 control-label">標題</label>
-                                    <div className="col-xs-5">
+                                    <div className="col-xs-4">
                                         <input type="text" className="form-control"
                                             onChange={this.changeFDValue.bind(this, 'title') }
                                             value={field.title}
@@ -462,9 +480,9 @@ namespace Matter {
 
                                 <div className="form-group">
                                     <label className="col-xs-1 control-label">時間</label>
-                                    <div className="col-xs-5">
+                                    <div className="col-xs-4">
                                         <DatePicker selected={mnt_start_date}
-                                            dateFormat="YYYY-MM-DD"
+                                            dateFormat={dt.dateFT}
                                             isClearable={true}
                                             required={true}
                                             locale="zh-TW"
@@ -474,9 +492,9 @@ namespace Matter {
                                             onChange={this.setChangeDate.bind(this, this.props.fdName, 'start_date') }
                                             className="form-control" />
                                     </div>
-                                    <div className="col-xs-5">
+                                    <div className="col-xs-4">
                                         <DatePicker selected={mnt_end_date}
-                                            dateFormat="YYYY-MM-DD"
+                                            dateFormat={dt.dateFT}
                                             isClearable={true}
                                             required={true}
                                             locale="zh-TW"
@@ -490,18 +508,25 @@ namespace Matter {
                                 </div>
 
                                 <div className="form-group">
-                                    <label className="col-xs-1 control-label">狀態</label>
-                                    <div className="col-xs-5">
+                                    {state_label_class}
+                                    <div className="col-xs-4">
                                         <select className="form-control"
                                             required
                                             value={field.state}
                                             onChange={this.changeFDValue.bind(this, 'state') }>
+                                            <option value=""></option>
                                             <option value="A">前台顯示</option>
                                             <option value="C">前台關閉</option>
                                         </select>
                                     </div>
                                 </div>
-
+                                <div className="form-group">
+                                    <label className="col-xs-1 control-label">內容</label>
+                                    <div className="col-xs-8">
+                                        <textarea type="date" className="form-control" id="news_content" name="news_content"
+                                            value={field.context} onChange={this.changeFDValue.bind(this, 'context') }></textarea>
+                                    </div>
+                                </div>
                                 <div className="form-action">
                                     <div className="col-xs-4 col-xs-offset-2">
                                         <button type="submit" className="btn-primary"><i className="fa-check"></i> 儲存</button>{}
