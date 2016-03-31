@@ -16,7 +16,8 @@ module.exports = {
         m_matter: path.resolve(__dirname, 'Scripts/src/tsx/m-matter.js'),
         m_edit: path.resolve(__dirname, 'Scripts/src/tsx/m-edit.js'),
         m_edit_detail: path.resolve(__dirname, 'Scripts/src/tsx/m-edit_detail.js'),
-        vendors: ['jquery', 'react', 'react-bootstrap', 'moment']
+        vendors: ['jquery', 'react', 'react-dom', 'react-addons-update', 'react-bootstrap', 'moment'],
+        //wwwcomm: ['jquery', 'react']
     },
     output: {
         path: path.resolve(__dirname, 'Scripts/build/app'),
@@ -36,8 +37,9 @@ module.exports = {
         extensions: ['', '.js', 'jsx', '.json']
     },
     plugins: [
-      new webpack.optimize.CommonsChunkPlugin('vendors', 'vendors.js'),
+      new webpack.optimize.CommonsChunkPlugin({ name: 'vendors', filename: 'vendors.js', minChunks: Infinity }),
+      //new webpack.optimize.CommonsChunkPlugin({ name: 'wwwcomm', filename: 'wwwcomm.js', chunks: ['m_community_news'], minChunks: Infinity }),
       new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /zh-tw/),
-      new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } })
+      //new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } })
     ]
 };

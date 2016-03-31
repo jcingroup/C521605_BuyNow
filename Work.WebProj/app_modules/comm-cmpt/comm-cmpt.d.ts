@@ -48,12 +48,8 @@ interface InputDateProps extends React.Props<InputDateClass> {
 interface InputDateClass extends React.ComponentClass<InputDateProps> {
 }
 interface TipsProps extends React.Props<TipsClass> {
-    isShow: boolean,
-    fieldSalesNo: string,
-    fieldSalesName: string,
-    setValue?(): void,
-    close(): void
-    updateView(sales_no: string, sales_name: string): void,
+    comment: string;
+    children?: any;
 }
 interface TipsClass extends React.ComponentClass<TipsProps> {
 }
@@ -119,8 +115,7 @@ declare module __comm_cmpt {
     class InputDate extends React.Component<InputDateProps, any> {
     }
     class Tips extends React.Component<TipsProps, any> {
-        comment: string;
-        children: any;
+
     }
     class MasterImageUpload extends React.Component<MasterImageUploadProps, any> { }
     class MasterFileUpload extends React.Component<MasterFileUploadProps, any> { }
