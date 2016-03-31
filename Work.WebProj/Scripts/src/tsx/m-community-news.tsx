@@ -446,7 +446,7 @@ namespace Matter {
                     tip: field.state == 'A' ?
                         <span className="col-xs-1"></span> :
                         <span className="col-xs-1">
-                            <CommCmpt.Tips comment="前台關閉:即使日期仍在顯示範圍也不會顯示在前台!"  />
+                            <CommCmpt.Tips comment="前台關閉:即使日期目前仍在有效範圍也不會顯示在前台!"  />
                         </span>
                 }
 
