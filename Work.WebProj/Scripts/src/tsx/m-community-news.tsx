@@ -496,7 +496,6 @@ namespace Matter {
                                             locale="zh-TW"
                                             showYearDropdown
                                             minDate={Moment() }
-
                                             onChange={this.setChangeDate.bind(this, this.props.fdName, 'start_date') }
                                             className="form-control" />
                                     </div>
