@@ -875,10 +875,19 @@ mark,
   font-size: 2.25em;
 }
 
+.h6 {
+  color: #ED6D39;
+}
+
 hr {
   width: 80px;
   margin: 2.5rem auto;
   border-top: 2px solid #EADCB0;
+}
+hr.sm {
+  width: 100%;
+  margin: 0.5rem 0;
+  border-top: 1px solid #eceeef;
 }
 
 .table {

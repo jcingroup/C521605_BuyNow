@@ -33,7 +33,7 @@
 @import "module/animation";
 @import "module/button-group";
 @import "module/input-group";
-// @import "module/custom-forms";
+@import "module/custom-forms";
 @import "module/nav";
 @import "module/navbar";
 @import "module/card";
@@ -116,17 +116,52 @@
 
 	.btn {font-size: em(20px);}
 
-	.dropdown-toggle {
+	.btn-secondary {
 		background: #fff;
 		border: 1px solid $brand-secondary;
 		border-radius: 0;
+
+		[class*="ti-"] {
+			margin-left: $spacer*0.3;
+			font-size: $font-size-sm;
+			color: lighten($brand-secondary,10%);
+			opacity: 1;
+			transition: opacity 0.3s;
+		}
+	}
+
+	.open .btn-secondary,
+	.btn-secondary.active {
+		[class*="ti-"] {opacity: 0;}
+	}
+
+	.dropdown-toggle {
+		&::after {display: none;}
 	}
 
 	.dropdown-menu {
-		&.city {
-			width: 500px;
-		}
+		min-height: 100px;
+		padding-left: $spacer*0.5;
+		padding-right: $spacer*0.5;
+
+		&.city {width: 600px;}
+		&.district {width: 600px;}
+		&.price {width: 300px;}
+		&.usage {width: 300px;}
+		&.size {width: 300px;}
 	}
+
+	.card {
+		padding: $spacer*0.5;
+		color: $body-color;
+		border: $dropdown-border-width solid $dropdown-border-color;
+
+		.grid:not(:last-child) {margin-bottom: $spacer;}
+	}
+}
+
+.result {
+	strong {margin: 0 $spacer*0.5;}
 }
 
 .pro {
