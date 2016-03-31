@@ -438,9 +438,17 @@ namespace Matter {
                 let mnt_start_date = CommFunc.MntV(field.start_date);
                 let mnt_end_date = CommFunc.MntV(field.end_date);
                 let end_date_disabled: boolean = mnt_start_date == null ? true : false;
-                let state_label_class = field.state == 'A' ?
-                    <label className="col-xs-1 control-label text-success">狀態</label> :
-                    <label className="col-xs-1 control-label text-danger">狀態</label>;
+
+                let fldState = {
+                    label: field.state == 'A' ?
+                        <label className="col-xs-1 control-label text-success">狀態</label> :
+                        <label className="col-xs-1 control-label text-danger">狀態</label> ,
+                    tip: field.state == 'A' ?
+                        <span className="col-xs-1"></span> :
+                        <span className="col-xs-1">
+                            <CommCmpt.Tips comment="前台關閉:即使日期仍在顯示範圍也不會顯示在前台!"  />
+                        </span>
+                }
 
                 var outHtml = (
                     <div>
@@ -508,17 +516,17 @@ namespace Matter {
                                 </div>
 
                                 <div className="form-group">
-                                    {state_label_class}
+                                    {fldState.label}
                                     <div className="col-xs-4">
                                         <select className="form-control"
                                             required
                                             value={field.state}
                                             onChange={this.changeFDValue.bind(this, 'state') }>
-                                            <option value=""></option>
                                             <option value="A">前台顯示</option>
                                             <option value="C">前台關閉</option>
                                         </select>
                                     </div>
+                                    {fldState.tip}
                                 </div>
                                 <div className="form-group">
                                     <label className="col-xs-1 control-label">內容</label>
