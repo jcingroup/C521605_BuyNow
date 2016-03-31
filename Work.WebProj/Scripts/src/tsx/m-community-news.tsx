@@ -437,7 +437,7 @@ namespace Matter {
 
                 let mnt_start_date = CommFunc.MntV(field.start_date);
                 let mnt_end_date = CommFunc.MntV(field.end_date);
-                let end_date_disabled: boolean = mnt_start_date == null ? true : false;
+                let end_date_disabled: boolean = mnt_start_date == null ? true : false; //1、如啟始日期無值 結束日期不可填 2、另結束日期不可小於開始日期
 
                 let fldState = {
                     label: field.state == 'A' ?
