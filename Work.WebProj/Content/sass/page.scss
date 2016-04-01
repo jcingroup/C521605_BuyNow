@@ -21,8 +21,8 @@
 
 // Elements
 @import "element/type";
-// @import "element/images";
-// @import "element/tables";
+@import "element/images";
+@import "element/tables";
 @import "element/forms";
 @import "element/buttons";
 
@@ -33,14 +33,14 @@
 @import "module/animation";
 @import "module/button-group";
 @import "module/input-group";
-// @import "module/custom-forms";
+@import "module/custom-forms";
 @import "module/nav";
 @import "module/navbar";
 @import "module/card";
-// @import "module/breadcrumb";
+@import "module/breadcrumb";
 // @import "module/pagination";
 // @import "module/pager";
-// @import "module/labels";
+@import "module/labels";
 // @import "module/jumbotron";
 // @import "module/alert";
 // @import "module/list-group";
@@ -81,6 +81,11 @@
 	z-index: $zindex-navbar;
 }
 
+#map {
+	width: 100%;
+	height: 380px;
+	border: 3px solid #fff;
+}
 
 
 // Layout
@@ -115,24 +120,68 @@
 .filter {
 
 	.btn {font-size: em(20px);}
-
-	.dropdown-toggle {
-		background: #fff;
-		border: 1px solid $brand-secondary;
-		border-radius: 0;
-	}
-
-	.dropdown-menu {
-		&.city {
-			width: 500px;
+	.btn-secondary {
+		[class*="ti-"] {
+			margin-left: $spacer*0.3;
+			font-size: $font-size-sm;
+			color: lighten($brand-secondary,10%);
+			opacity: 1;
+			transition: opacity 0.3s;
 		}
 	}
+	.open .btn-secondary, .btn-secondary.active {
+		[class*="ti-"] {opacity: 0;}
+	}
+
+	.dropdown-toggle {
+		&::after {display: none;}
+	}
+	.dropdown-menu {
+		min-height: 100px;
+		padding-left: $spacer*0.5;
+		padding-right: $spacer*0.5;
+
+		&.city {width: 600px;}
+		&.district {width: 600px;}
+		&.price {width: 300px;}
+		&.usage {width: 300px;}
+		&.size {width: 300px;}
+		&.type {width: 300px;}
+		&.other {width: 600px;}
+	}
+
+	.card {
+		padding: $spacer*0.5;
+		color: $body-color;
+		border: $dropdown-border-width solid $dropdown-border-color;
+
+		.grid:not(:last-child) {margin-bottom: $spacer;}
+	}
+}
+
+.result {
+	strong {margin: 0 $spacer*0.5;}
 }
 
 .pro {
 	@extend .col-xs-4;
 
-	.card-block {position: relative;}
+	.card-img-top {
+		opacity:1;
+		transition: opacity 0.35s;
+
+		&:hover {opacity: 0.7}
+	}
+
+	.card-block {
+		height: 250px;
+		position: relative;
+	}
+
+	.feature, .info {
+		max-height: $line-height*2em;
+		overflow: hidden;
+	}
 
 	.feature {
 		margin-bottom: $spacer*0.3;
@@ -170,5 +219,98 @@
 		font-size: em(20px);
 		letter-spacing: 0.1em;
 		border-radius: 0;
+	}
+
+	&.style2 {
+		.card-block {height: 200px;}
+		.feature, .info {max-height: $line-height*1em;}
+		.more {position: static;}
+	}
+}
+
+.grid-pro {
+
+	.thumb, .profile {@extend .col-xs-6;}
+
+	.thumb {
+
+		.img-thumbnail {
+			display: block;
+			margin-bottom: $spacer;
+		}
+	}
+
+	.profile {
+
+		.h4 {
+			padding-bottom: $spacer*0.7;
+			font-size: em(20px);
+			border-bottom: 1px solid #ccc;
+
+			.label {font-weight: normal;}
+		}
+
+		.detail {
+
+			li {
+				padding: $spacer*0.3;
+				border-bottom: 1px dotted #ccc;
+
+				&:last-child {border-bottom-style: solid;}
+
+				.grid {
+					@extend .col-xs-4;
+					+ .grid {@extend .col-xs-8;}
+				}
+
+				.text-secondary {
+					display: inline-block;
+					width: 6em;
+					text-align: right;
+				}
+				.price {
+					margin-right: $spacer*0.3;
+					font-size: $font-size-lg;
+				}
+				
+			}
+		}
+
+		.more-info {
+
+			li {
+				float: left;
+				margin-left: $spacer*0.625;
+			}
+
+			.tel {
+				margin-right: $spacer;
+				strong {
+					color: #CC5520;
+					font-size: em(25px);
+				}
+			}
+
+			.btn {
+				width: 6.5em;
+
+
+			}
+		}
+	}
+}
+
+.grid-info {
+	+ .grid-info {margin-top: $spacer*3;}
+
+	.gallery {
+		li {
+			@extend .col-xs-4;
+			margin-bottom: $grid-gutter-width;
+
+			.img-thumbnail {
+				display: block;
+			}
+		}
 	}
 }

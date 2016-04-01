@@ -218,7 +218,7 @@ a {
     }
 
     .social {
-        right: 0;
+        right: 70px;
         top: 50%;
         font-size: em(38px);
 
@@ -231,14 +231,14 @@ a {
 }
 
 .goTop {
-    @include size(34px);
+    @include size(38px);
 
     position: fixed;
-    right: 0;
-    bottom: 0;
+    right: 50px;
+    bottom: 34px;
 
     color: #fff;
-    background: #A2A37A;
+    background: #E3940B;
     opacity: 0.6;
     
     display: none;
