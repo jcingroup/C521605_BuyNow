@@ -19,6 +19,12 @@
     	$('.dropdown-toggle').click(function(e) {
     		$('#collapse-other').collapse('hide');
     	});
+    	$('#collapse-other').on('show.bs.collapse', function () {
+    		$('.btn[data-toggle="collapse"]').addClass('active');
+    	});
+    	$('#collapse-other').on('hide.bs.collapse', function () {
+    		$('.btn[data-toggle="collapse"]').removeClass('active');
+    	});
     </script>
 }
 
@@ -29,11 +35,11 @@
 	<div class="wrap">
 
 		<div class="filter">
-			<form action="" class="form-inline">
+			<form action="" class="form-inline text-xs-center">
 				<div class="form-group">
 					<label for="" class="sr-only">縣市</label>
 					<div class="btn-group">
-						<button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">縣市<i class="ti-angle-down"></i></button>
+						<button type="button" class="btn btn-secondary style2 dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">縣市<i class="ti-angle-down"></i></button>
 						@* 縣市:單選 *@
 						<div class="dropdown-menu city">
 							<div class="row">
@@ -177,7 +183,7 @@
 				<div class="form-group">
 					<label for="" class="sr-only">行政區</label>
 					<div class="btn-group">
-						<button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">行政區<i class="ti-angle-down"></i></button>
+						<button type="button" class="btn btn-secondary style2 dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">行政區<i class="ti-angle-down"></i></button>
 						@* 行政區: 可複選 *@
 						<div class="dropdown-menu district">
 							@* 沒選縣市就選行政區的警告: *@
@@ -230,7 +236,7 @@
 				<div class="form-group">
 					<label for="" class="sr-only">總價</label>
 					<div class="btn-group">
-						<button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">總價<i class="ti-angle-down"></i></button>
+						<button type="button" class="btn btn-secondary style2 dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">總價<i class="ti-angle-down"></i></button>
 						<div class="dropdown-menu price form-inline p-t-1">
 							<div class="input-group">
 								<select name="" id="" class="form-control form-control-sm">
@@ -257,7 +263,7 @@
 				<div class="form-group">
 					<label for="" class="sr-only">用途</label>
 					<div class="btn-group">
-						<button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">用途<i class="ti-angle-down"></i></button>
+						<button type="button" class="btn btn-secondary style2 dropdown-toggle" data-toggle="dropdown">用途<i class="ti-angle-down"></i></button>
 						<div class="dropdown-menu usage">
 							<span>可複選：</span>
 							<hr class="sm" />
@@ -307,7 +313,7 @@
 				<div class="form-group">
 					<label for="" class="sr-only">坪數</label>
 					<div class="btn-group">
-						<button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">坪數<i class="ti-angle-down"></i></button>
+						<button type="button" class="btn btn-secondary style2 dropdown-toggle" data-toggle="dropdown">坪數<i class="ti-angle-down"></i></button>
 						<div class="dropdown-menu size form-inline">
 							<label for="">計算方式：</label>
 							<select name="" id="" class="form-control form-control-sm">
@@ -369,7 +375,7 @@
 				</div>
 				<div class="form-group">
 					<label for="" class="sr-only">更多條件</label>
-					<button class="btn btn-secondary"data-toggle="collapse" data-target="#collapse-other" aria-expanded="false" aria-controls="collapse-other">更多條件<i class="ti-angle-down"></i></button>
+					<button class="btn btn-secondary style2"data-toggle="collapse" data-target="#collapse-other" aria-expanded="false" aria-controls="collapse-other">更多條件<i class="ti-angle-down"></i></button>
 				</div>
 				<div class="form-group">
 					<label for="" class="sr-only">關鍵字</label>
@@ -710,7 +716,7 @@
 			<li class="pro">
 				<article class="card">
 					<a href="~/Sell/Content" class="card-img-top">
-						<img src="~/Content/images/Index/Sell.jpg" alt="北大稀有輕豪宅">
+						<img src="~/Content/images/Sell/pro1.jpg" alt="北大稀有輕豪宅">
 					</a>
 					<div class="card-block">
 						<h4 class="card-title"><a href="~/Sell/Content">北大稀有輕豪宅</a></h4>
@@ -740,7 +746,7 @@
 						</section>
 						<a href="~/Sell/Content" class="more btn btn-secondary">
 							看更多
-							<i class="icon-angle-right"></i>
+							<i class="ti-angle-right"></i>
 						</a>
 					</div>
 				</article>
@@ -748,7 +754,7 @@
 			<li class="pro">
 				<article class="card">
 					<a href="~/Sell/Content" class="card-img-top">
-						<img src="~/Content/images/Index/Sell.jpg" alt="北大稀有輕豪宅">
+						<img src="~/Content/images/Sell/pro1.jpg" alt="北大稀有輕豪宅">
 					</a>
 					<div class="card-block">
 						<h4 class="card-title"><a href="~/Sell/Content">北大稀有輕豪宅</a></h4>
@@ -778,7 +784,7 @@
 						</section>
 						<a href="~/Sell/Content" class="more btn btn-secondary">
 							看更多
-							<i class="icon-angle-right"></i>
+							<i class="ti-angle-right"></i>
 						</a>
 					</div>
 				</article>

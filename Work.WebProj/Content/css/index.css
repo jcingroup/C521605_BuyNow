@@ -3000,7 +3000,14 @@ mark,
 }
 
 .h3 {
-  font-size: 2.25em;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  font-size: 2.125em;
+  border-bottom: 3px solid #E8E5D3;
+}
+
+.h5 {
+  color: #9E6400;
 }
 
 .h6 {
@@ -3018,22 +3025,32 @@ hr.sm {
   border-top: 1px solid #eceeef;
 }
 
+.text-secondary {
+  color: #938f33;
+}
+
+.img-thumbnail {
+  opacity: 1;
+  transition: opacity 0.35s;
+}
+.img-thumbnail:hover {
+  opacity: 0.7;
+}
+.img-thumbnail img {
+  width: 100%;
+}
+
 .table {
-  background: transparent;
+  color: #404039;
+  border: 1px solid rgba(255, 255, 255, 0.5);
 }
-.table td {
-  border: 1px solid #fff;
-}
-.table thead th {
-  background: #ccc;
-  border: 1px solid #fff;
-  vertical-align: middle;
-  color: #3D3935;
-  font-size: 1.125em;
+.table th {
+  text-align: right;
   font-weight: normal;
+  background: #E8E5D3;
 }
-.table tbody tr {
-  background: #fff;
+.table tbody tr:nth-of-type(odd) th {
+  background-color: #dfdbc2;
 }
 
 .btn {
@@ -3042,6 +3059,16 @@ hr.sm {
 
 .btn-primary {
   background: #E37900;
+}
+
+.btn-secondary.style2 {
+  background: #fff;
+  border: 1px solid #B9B440;
+  border-radius: 0;
+}
+.btn-secondary.style2:active, .btn-secondary.style2.active, .btn-secondary.style2:hover, .btn-secondary.style2:focus, .btn-secondary.style2.focus {
+  background-color: #dddda3;
+  border-color: transparent;
 }
 
 .btn-lg {
@@ -3279,7 +3306,7 @@ a:focus {
   font-size: 1.125em;
 }
 #footer .social {
-  right: 0;
+  right: 70px;
   top: 50%;
   font-size: 2.375em;
 }
@@ -3291,13 +3318,13 @@ a:focus {
 }
 
 .goTop {
-  width: 34px;
-  height: 34px;
+  width: 38px;
+  height: 38px;
   position: fixed;
-  right: 0;
-  bottom: 0;
+  right: 50px;
+  bottom: 34px;
   color: #fff;
-  background: #A2A37A;
+  background: #E3940B;
   opacity: 0.6;
   display: none;
 }

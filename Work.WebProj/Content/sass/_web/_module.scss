@@ -45,6 +45,29 @@
 }
 
 
+// labels
+// ----------------------------------------------------------------------
+.label-sell {background: #2E8F87;}
+
+
+//breadcrumb
+// ----------------------------------------------------------------------
+.breadcrumb {
+    text-align: right;
+    font-size: em(12px);
+
+    li {
+        display: inline-block;
+        float: none;
+    }
+
+    a {
+        color: #998675;
+        &:hover {color: $link-hover-color;}
+    }
+}
+
+
 // navs
 // ----------------------------------------------------------------------
 .nav-tabs {
@@ -102,66 +125,6 @@
     .c-input > input:indeterminate ~ & { background-color: $brand-danger; }
     .c-input > input:focus ~ & {box-shadow: none;}
 }
-
-// .c-input {cursor: text;}
-// .c-radio, .c-checkbox, .c-select {cursor: pointer;}
-
-// .c-indicator {
-//     width: $line-height*1rem;
-//     height: $line-height*1rem;
-//     line-height: $line-height*1rem;
-//     font-size: 80%;
-// }
-
-// .c-checkbox {
-
-//     input:checked ~ .c-indicator { background: $brand-primary; }
-
-//     input:indeterminate ~ .c-indicator {
-//         background: $brand-primary;
-
-//         &::after {content:"■";}
-//     }
-// }
-
-// .c-radio-group, .c-checkbox-group {
-//     .c-indicator {
-//         position: relative;
-//         display: inline-block;
-//         width: auto;
-//         height: auto;
-//         font-size: 100%;
-//         line-height: $line-height;
-//         color: $body-color;
-//         background: #cfcfcf;
-//         border: 1px solid $input-border-color;
-//         border-radius: 0;
-
-//         padding: $input-padding-y $input-padding-x;
-//     }
-
-//     .c-radio, .c-checkbox {
-
-//         margin: 0;
-//         padding: 0;
-
-//         &:first-child {
-//             .c-indicator {border-radius: $border-radius 0 0 $border-radius;}
-//         }
-
-//         &:last-child {
-//             .c-indicator {border-radius: 0 $border-radius $border-radius 0;}
-//         }
-
-//         input:checked ~ .c-indicator {
-//             background: $brand-primary;
-//             border-color: $brand-primary;
-//             color: #fff;
-//         }
-//     }
-
-//     .c-radio + .c-radio, .c-checkbox + .c-checkbox {margin-left: -3px;}
-// }
 
 
 // carousel
