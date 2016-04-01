@@ -297,7 +297,7 @@
     <Compile Include="Controllers\VendorController.cs" />
     <Compile Include="Controllers\ShoppingController.cs" />
     <Compile Include="Controllers\VIPController.cs" />
-    <Compile Include="Controllers\NeighborController.cs" />
+    <Compile Include="Controllers\CommunityController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -673,7 +673,7 @@
     <None Include="webpack.config.js" />
     <Content Include="Views\AboutUs\AboutUs.cshtml" />
     <Content Include="Views\Index\Index.cshtml" />
-    <Content Include="Views\Neighbor\Neighbor.cshtml" />
+    <Content Include="Views\Community\Community.cshtml" />
     <Content Include="Views\Partner\Partner.cshtml" />
     <Content Include="Views\Plan\Plan.cshtml" />
     <Content Include="Views\Rent\Rent.cshtml" />
