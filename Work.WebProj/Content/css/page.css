@@ -5489,7 +5489,7 @@ a:focus {
 #menu li:last-of-type a {
   background: #AD5238;
 }
-#menu a:hover, .AboutUs #menu li:nth-of-type(1) a, .Plan #menu li:nth-of-type(2) a, .Sell #menu li:nth-of-type(3) a, .Rent #menu li:nth-of-type(4) a, .Vendor #menu li:nth-of-type(5) a, .Community #menu li:nth-of-type(6) a, .Partner #menu li:nth-of-type(7) a, .VIP #menu li:nth-of-type(8) a {
+#menu a:hover, .AboutUs #menu li:nth-of-type(1) a, .Plan #menu li:nth-of-type(2) a, .Sell #menu li:nth-of-type(3) a, .Rent #menu li:nth-of-type(4) a, .Vendor #menu li:nth-of-type(5) a, .Neighbor #menu li:nth-of-type(6) a, .Partner #menu li:nth-of-type(7) a, .VIP #menu li:nth-of-type(8) a {
   padding-top: 1.5rem;
   z-index: 100;
 }

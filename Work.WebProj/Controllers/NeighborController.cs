@@ -6,11 +6,11 @@ using System.Linq;
 
 namespace DotWeb.Controllers
 {
-    public class CommunityController : WebUserController
+    public class NeighborController : WebUserController
     {
         public ActionResult Index()
         {
-            return View("Community");
+            return View("Neighbor");
         }
     }
 
