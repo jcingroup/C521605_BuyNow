@@ -12,13 +12,13 @@
     </script>
     @if (ViewBag.IsFirstPage)
     {
-        <link href="~/Content/css/index.css" rel="stylesheet">
+        <link href="~/Content/css/index.css?v=@CommWebSetup.CacheVer" rel="stylesheet">
     }
     else
     {
-        <link href="~/Content/css/page.css" rel="stylesheet">
+        <link href="~/Content/css/page.css?v=@CommWebSetup.CacheVer" rel="stylesheet">
     }
-    <link href="~/Content/css/vendor/icomoon.css" rel="stylesheet">
+    <link href="~/Content/css/vendor/icomoon.css?v=@CommWebSetup.CacheVer" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic' rel='stylesheet' type='text/css'>
     @RenderSection("css", false)
 </head>

@@ -355,6 +355,9 @@
     <Content Include="Content\images\Sell\interior.jpg" />
     <Content Include="Content\images\Sell\pro1.jpg" />
     <Content Include="Content\images\VIP\dm.jpg" />
+    <Content Include="Content\js\bootstrap\collapse.js" />
+    <Content Include="Content\js\bootstrap\dropdown.js" />
+    <Content Include="Content\js\bootstrap\util.js" />
     <Content Include="Content\sass\base\_normalize.scss" />
     <Content Include="Content\sass\base\_print.scss" />
     <Content Include="Content\sass\base\_reboot.scss" />

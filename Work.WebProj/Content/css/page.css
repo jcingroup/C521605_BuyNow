@@ -5613,9 +5613,6 @@ a:focus {
   margin-top: -25px;
 }
 
-.filter .form-group, .filter .card {
-  text-align: left;
-}
 .filter .btn {
   font-size: 1.25em;
 }

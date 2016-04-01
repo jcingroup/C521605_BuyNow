@@ -3,9 +3,6 @@
     ViewBag.BodyClass = "Sell Content";
     Layout = "~/Views/Shared/Layout.cshtml";
 }
-@section Scripts {
-
-}
 
 <h1 class="sr-only">@ViewBag.Title</h1>
 
@@ -24,7 +21,7 @@
 				<i class="img-thumbnail">
 					<img src="~/Content/images/Sell/pro1.jpg" alt="">
 				</i>
-				<a href="" class="btn btn-secondary btn-sm">看更多實景照片</a>
+				<a href="#gallery" class="btn btn-secondary btn-sm scroll">看更多實景照片</a>
 			</dt>
 			<dd class="profile">
 				<article>
@@ -80,13 +77,13 @@
 							<strong>02-8765-4321</strong>
 						</li>
 						<li>
-							<a href="" class="btn btn-lg btn-secondary style2">格局圖</a>
+							<a href="#interior" class="btn btn-lg btn-secondary style2 scroll">格局圖</a>
 						</li>
 						<li>
-							<a href="" class="btn btn-lg btn-secondary style2">地圖</a>
+							<a href="location" class="btn btn-lg btn-secondary style2 scroll">地圖</a>
 						</li>
 						<li>
-							<a href="" class="btn btn-lg btn-secondary style2">生活機能</a>
+							<a href="facility" class="btn btn-lg btn-secondary style2 scroll">生活機能</a>
 						</li>
 					</ul>
 				</article>
@@ -156,7 +153,7 @@
 			</table>
 		</section>
 
-		<section class="grid-info">
+		<section id="gallery" class="grid-info">
 			<h3 class="h3">物件實景照片</h3>
 			<ol class="gallery row">
 				<li><a href="" class="img-thumbnail"><img src="~/Content/images/Sell/pro1.jpg" alt=""></a></li>
@@ -168,14 +165,14 @@
 			</ol>
 		</section>
 
-		<section class="grid-info">
+		<section id="interior" class="grid-info">
 			<h3 class="h3">格局圖</h3>
 			<p class="text-xs-center">
 				<img src="~/Content/images/Sell/interior.jpg" alt="" class="img-thumbnail">
 			</p>
 		</section>
 
-		<section class="grid-info">
+		<section id="facility" class="grid-info">
 			<h3 class="h3">生活機能</h3>
 			<ul class="list-unstyled">
 				<li><strong class="text-secondary">學校：</strong>鄰近大同國小、樹林國中。</li>
@@ -185,7 +182,7 @@
 			</ul>
 		</section>
 
-		<section class="grid-info">
+		<section id="location" class="grid-info">
 			<h3 class="h3">地圖</h3>
 			<iframe id="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3617.572889805967!2d121.37944231500457!3d24.94661608401328!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34681c740c32b2af%3A0x2ba1a4efce64b775!2zMjM45paw5YyX5biC5qi55p6X5Y2A5a245oiQ6LevNjU16Jmf!5e0!3m2!1szh-TW!2stw!4v1458115457215" frameborder="0" allowfullscreen></iframe>
 		</section>
