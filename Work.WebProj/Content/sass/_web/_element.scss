@@ -142,4 +142,8 @@ hr {
 .form-inline {
 
     .form-group {margin: 0 $spacer $spacer 0;}
+    .form-control.center-block {
+        display:block;
+        width: 100%;
+    }
 }

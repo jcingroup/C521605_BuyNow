@@ -116,6 +116,8 @@
 
     & + & {margin-left: 0;}
     &:not(:last-child) {margin-right: $spacer;}
+
+    .input-block-group & {display: block;}
 }
 
 .c-indicator {

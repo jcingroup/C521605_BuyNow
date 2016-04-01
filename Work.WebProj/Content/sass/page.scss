@@ -146,6 +146,8 @@
 		&.price {width: 300px;}
 		&.usage {width: 300px;}
 		&.size {width: 300px;}
+		&.type {width: 300px;}
+		&.other {width: 600px;}
 	}
 
 	.card {
@@ -171,7 +173,15 @@
 		&:hover {opacity: 0.7}
 	}
 
-	.card-block {position: relative;}
+	.card-block {
+		height: 250px;
+		position: relative;
+	}
+
+	.feature, .info {
+		max-height: $line-height*2em;
+		overflow: hidden;
+	}
 
 	.feature {
 		margin-bottom: $spacer*0.3;
@@ -209,6 +219,12 @@
 		font-size: em(20px);
 		letter-spacing: 0.1em;
 		border-radius: 0;
+	}
+
+	&.style2 {
+		.card-block {height: 200px;}
+		.feature, .info {max-height: $line-height*1em;}
+		.more {position: static;}
 	}
 }
 

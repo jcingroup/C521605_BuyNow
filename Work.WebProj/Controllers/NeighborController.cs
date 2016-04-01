@@ -12,6 +12,14 @@ namespace DotWeb.Controllers
         {
             return View("Neighbor");
         }
+        public ActionResult List()
+        {
+            return View("Neighbor_list");
+        }
+        public ActionResult Content()
+        {
+            return View("Neighbor_content");
+        }
     }
 
 }

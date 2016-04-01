@@ -3115,6 +3115,10 @@ hr.sm {
 .form-inline .form-group {
   margin: 0 1rem 1rem 0;
 }
+.form-inline .form-control.center-block {
+  display: block;
+  width: 100%;
+}
 
 /*      config
 -----------------------------------------------------------------------*/

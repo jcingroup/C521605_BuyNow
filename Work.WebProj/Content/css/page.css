@@ -5116,6 +5116,10 @@ hr.sm {
 .form-inline .form-group {
   margin: 0 1rem 1rem 0;
 }
+.form-inline .form-control.center-block {
+  display: block;
+  width: 100%;
+}
 
 .card-img-top {
   display: block;
@@ -5222,6 +5226,9 @@ hr.sm {
 }
 .c-input:not(:last-child) {
   margin-right: 1rem;
+}
+.input-block-group .c-input {
+  display: block;
 }
 
 .c-indicator {
@@ -5649,6 +5656,12 @@ a:focus {
 .filter .dropdown-menu.size {
   width: 300px;
 }
+.filter .dropdown-menu.type {
+  width: 300px;
+}
+.filter .dropdown-menu.other {
+  width: 600px;
+}
 .filter .card {
   padding: 0.5rem;
   color: #574017;
@@ -5670,7 +5683,12 @@ a:focus {
   opacity: 0.7;
 }
 .pro .card-block {
+  height: 250px;
   position: relative;
+}
+.pro .feature, .pro .info {
+  max-height: 3em;
+  overflow: hidden;
 }
 .pro .feature {
   margin-bottom: 0.3rem;
@@ -5704,6 +5722,15 @@ a:focus {
   font-size: 1.25em;
   letter-spacing: 0.1em;
   border-radius: 0;
+}
+.pro.style2 .card-block {
+  height: 200px;
+}
+.pro.style2 .feature, .pro.style2 .info {
+  max-height: 1.5em;
+}
+.pro.style2 .more {
+  position: static;
 }
 
 .grid-pro .thumb .img-thumbnail {
