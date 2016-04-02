@@ -471,6 +471,7 @@ namespace DotWeb.Controller
 
             f.Add(new JsonFileInfo()
             {
+                guid = Guid.NewGuid().ToString(),
                 fileName = file_name,
                 sort = sort
             });
@@ -588,6 +589,7 @@ namespace DotWeb.Controller
                         FileInfo file_info = new FileInfo(get_file);
                         SerializeFile file_object = new SerializeFile()
                         {
+                            guid = m.guid,
                             fileName = file_info.Name,
                             fileKind = file_kind,
                             iconPath = Url.Content(web_path_icon + "/" + file_info.Name),

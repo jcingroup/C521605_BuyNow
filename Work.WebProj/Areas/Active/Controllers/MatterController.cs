@@ -6,6 +6,7 @@ using System;
 using System.IO;
 using System.Web.Mvc;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace DotWeb.Areas.Active.Controllers
 {
@@ -33,20 +34,19 @@ namespace DotWeb.Areas.Active.Controllers
 
         #region ajax file section
         [HttpPost]
-        public string aj_FUpload(string id, string filekind, string fileName)
+        public string axFUpload(string id, string filekind, string filename)
         {
             UpFileInfo r = new UpFileInfo();
             #region
-            string tpl_File = string.Empty;
             try
             {
-                //代表圖片
-                if (filekind == "List")
-                    handleImageSave(fileName, id, ImageFileUpParm.ProductList, filekind, "Active", "News");
-
+                
+                //代表 圖片
+                if (filekind == "Photo1")
+                    handleImageSave(filename, id, ImageFileUpParm.ProductList, filekind, "Albums", "Photo");
 
                 r.result = true;
-                r.file_name = fileName;
+                r.file_name = filename;
             }
             catch (LogicError ex)
             {
@@ -63,22 +63,48 @@ namespace DotWeb.Areas.Active.Controllers
         }
 
         [HttpPost]
-        public string aj_FList(string id, string filekind)
+        public string axFList(string id, string filekind)
         {
             SerializeFileList r = new SerializeFileList();
+            if (filekind == "Photo1")
+                r.files = listImgFiles(id, filekind, "Albums", "Photo");
 
-            r.files = listImgFiles(id, filekind, "Active", "News");
             r.result = true;
             return defJSON(r);
         }
 
         [HttpPost]
-        public string aj_FDelete(string id, string filekind, string filename)
+        public string axFDelete(string id, string filekind, string filename)
         {
             ResultInfo r = new ResultInfo();
-            DeleteSysFile(id, filekind, filename, ImageFileUpParm.NewsBasicSingle, "Active", "News");
+
+            if (filekind == "Photo1")
+                DeleteSysFile(id, filekind, filename, ImageFileUpParm.ProductList, "Albums", "Photo");
+
             r.result = true;
             return defJSON(r);
+        }
+
+        [HttpPost]
+        public string axFSort(int id, string filekind, IList<JsonFileInfo> file_object)
+        {
+            ResultInfo r = new ResultInfo();
+            if (filekind == "Photo1")
+                rewriteJsonFile(id, filekind, "Albums", "Photo", file_object);
+
+            r.result = true;
+            return defJSON(r);
+        }
+
+        [HttpGet]
+        public FileResult axFDown(int id, string filekind, string filename)//下載附件檔案內容用(與圖片上傳無關)
+        {
+            string path_tpl = string.Format(upload_path_tpl_o, "Albums", "Photo", id, filekind, filename);
+            string server_path = Server.MapPath(path_tpl);
+            FileInfo file_info = new FileInfo(server_path);
+            FileStream file_stream = new FileStream(server_path, FileMode.Open, FileAccess.Read);
+            string web_path = Url.Content(path_tpl);
+            return File(file_stream, "application/*", file_info.Name);
         }
         #endregion
     }

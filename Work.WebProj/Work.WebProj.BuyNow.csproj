@@ -123,7 +123,8 @@
     <Reference Include="Owin">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
-    <Reference Include="Proc.Core">
+    <Reference Include="Proc.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Core.Dll\Proc.Core.dll</HintPath>
     </Reference>
     <Reference Include="System" />
@@ -207,6 +208,8 @@
     <Content Include="app_modules\comm-cmpt\package.js" />
     <Content Include="app_modules\comm-func\package.js" />
     <Content Include="app_modules\comm-typeahead\typeahead.css" />
+    <Content Include="app_modules\ImgFileSort\react-sortable-mixin.js" />
+    <Content Include="app_modules\ImgFileSort\Sortable.js" />
     <Content Include="app_modules\Pikaday\css\pikaday.css" />
     <Content Include="app_modules\Pikaday\css\site.css" />
     <Content Include="app_modules\Pikaday\css\theme.css" />
@@ -229,6 +232,8 @@
     <Content Include="Areas\Active\Views\Edit\VIP.cshtml" />
     <Content Include="Areas\Active\Views\Matter\Main.cshtml" />
     <Content Include="Areas\Active\Views\CommunityNews\Main.cshtml" />
+    <Content Include="app_modules\ImgFileSort\package.json" />
+    <Content Include="app_modules\ImgFileSort\c-ImgFileSort.jsx" />
     <None Include="Areas\Base\Controllers\ReportChartController.cs" />
     <Compile Include="Areas\Base\Controllers\RolesController.cs" />
     <Compile Include="Areas\Base\Controllers\MenuController.cs" />
@@ -669,6 +674,7 @@
     <Content Include="Views\Sell\Sell_list.cshtml" />
     <Content Include="Views\Neighbor\Neighbor_list.cshtml" />
     <Content Include="Views\Neighbor\Neighbor_content.cshtml" />
+    <Content Include="Scripts\src\jsx\m-matter.jsx" />
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -788,6 +794,7 @@
     <TypeScriptCompile Include="Scripts\typings\react\react-global.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\react\react-mixin.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\react\react.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\sortablejs.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\toastr\toastr.d.ts" />
   </ItemGroup>
   <ItemGroup>

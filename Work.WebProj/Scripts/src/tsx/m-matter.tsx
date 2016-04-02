@@ -10,6 +10,8 @@ import dt = require('dt');
 import DatePicker = require('react-datepicker');
 import "react-datepicker/dist/react-datepicker.css";
 
+
+
 namespace Matter {
     interface Rows {
         check_del: boolean,
@@ -425,6 +427,20 @@ namespace Matter {
                         <h4 className="title"> {this.props.caption} 基本資料維護</h4>
                         <form className="form-horizontal" onSubmit={this.handleSubmit}>
                             <div className="col-xs-10">
+
+                                <div className="form-group">
+                                    <label className="col-xs-1 control-label">檔案上傳</label>
+                                    <div className="col-xs-5">
+                                        <CommCmpt.MasterImageUpload FileKind="Photo1"
+                                            MainId={field.matter_id}
+                                            ParentEditType={this.state.edit_type}
+                                            url_upload={gb_approot + 'Active/Matter/axFUpload'}
+                                            url_list={gb_approot + 'Active/Matter/axFList'}
+                                            url_delete={gb_approot + 'Active/Matter/axFDelete'}
+                                            url_sort={gb_approot + 'Active/Matter/axFSort'} />
+                                    </div>
+                                </div>
+
                                 <div className="form-group">
                                     <label className="col-xs-1 control-label">物件名稱</label>
                                     <div className="col-xs-5">

@@ -3,9 +3,10 @@ import ReactDOM = require('react-dom');
 import CommFunc = require('comm-func');
 import ReactBootstrap = require('react-bootstrap');
 import Moment = require('moment');
-import pikaday = require("Pikaday");
+import Sortable = require('sortablejs');
 import upload = require("simple-ajax-uploader");
 import DT = require("dt");
+
 
 export class GridButtonModify extends React.Component<{ modify(): void, ver?: number }, { className: string }> {
     constructor(props) {
@@ -161,120 +162,6 @@ export class GridNavPage extends React.Component<GridNavPageProps, any> {
         return oper;
     }
 }
-export class InputDate extends React.Component<{
-    id: string,
-    value: Date,
-    onChange(field_name: string, date_value: Date): void,
-    field_name: string,
-    required: boolean,
-    disabled: boolean,
-    ver: number
-}, { pk?: any }>{
-
-    constructor(props) {
-        super(props)
-        this.componentDidMount = this.componentDidMount.bind(this);
-        //this.onChange = this.onChange.bind(this);
-        this.render = this.render.bind(this);
-
-        this.state = {
-            pk: null
-        }
-    }
-    static defaultProps = {
-        id: null,
-        value: null,
-        onChange: null,
-        field_name: null,
-        required: false,
-        disabled: false,
-        ver: 1
-    }
-
-    componentDidMount() {
-        var ele = document.getElementById(this.props.id);
-        this.state.pk = new pikaday({
-            field: ele,
-            format: 'YYYY-MM-DD',
-            i18n: {
-                previousMonth: '上月',
-                nextMonth: '下月',
-                months: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
-                weekdays: ['日', '一', '二', '三', '四', '五', '六'],
-                weekdaysShort: ['日', '一', '二', '三', '四', '五', '六']
-            },
-            onSelect: function (date) {
-                this.props.onChange(this.props.field_name, date);
-            }.bind(this)
-        });
-    }
-    onChange(e) {
-        //this.props.onChange(this.props.field_name, e);
-    }
-
-    render() {
-        var out_html = null;
-        if (this.props.ver == 1) {
-            out_html = (
-                <div>
-                    <input
-                        type="date"
-                        className="form-control datetimepicker"
-                        id={this.props.id}
-                        name={this.props.field_name}
-                        value={this.props.value != undefined ? Moment(this.props.value).format(DT.dateFT) : ''}
-                        onChange={this.onChange}
-                        required={this.props.required}
-                        disabled={this.props.disabled} />
-                    <i className="fa-calendar form-control-feedback"></i>
-                </div>
-            );
-        } else if (this.props.ver == 2) {
-            out_html = (
-                <div>
-                    <input
-                        type="date"
-                        className="form-control input-sm datetimepicker"
-                        id={this.props.id}
-                        name={this.props.field_name}
-                        value={this.props.value != undefined ? Moment(this.props.value).format(DT.dateFT) : ''}
-                        onChange={this.onChange}
-                        required={this.props.required}
-                        disabled={this.props.disabled} />
-                    <i className="fa-calendar form-control-feedback"></i>
-                </div>
-            );
-        } else if (this.props.ver == 3) {//前台歷史訂單查詢
-            out_html = (
-                <input
-                    type="text"
-                    className="form-element-inline datetimepicker"
-                    id={this.props.id}
-                    name={this.props.field_name}
-                    value={this.props.value != undefined ? Moment(this.props.value).format(DT.dateFT) : ''}
-                    onChange={this.onChange}
-                    required={this.props.required}
-                    disabled={this.props.disabled} />
-            );
-        } else if (this.props.ver == 4) {//前台已付款通知
-            out_html = (
-                <input
-                    type="text"
-                    className="form-element datetimepicker"
-                    id={this.props.id}
-                    name={this.props.field_name}
-                    value={this.props.value != undefined ? Moment(this.props.value).format(DT.dateFT) : ''}
-                    onChange={this.onChange}
-                    required={this.props.required}
-                    disabled={this.props.disabled} />
-            );
-        }
-
-        return out_html;
-    }
-}
-
-
 
 export class Tips extends React.Component<{ comment: string, children?: any }, any>{
     render() {
@@ -299,8 +186,13 @@ interface FileUpProps {
     MainId: number | string,
     ParentEditType?: number
 }
+interface FileUpState {
+    filelist: Array<any>
+}
 //圖片上傳
-export class MasterImageUpload extends React.Component<FileUpProps, any>{
+export class MasterImageUpload extends React.Component<FileUpProps, FileUpState>{
+    _sortable: any;
+    _upload: any;
 
     constructor() {
         super();
@@ -309,10 +201,14 @@ export class MasterImageUpload extends React.Component<FileUpProps, any>{
         this.getFileList = this.getFileList.bind(this);
         this.componentDidMount = this.componentDidMount.bind(this);
         this.componentDidUpdate = this.componentDidUpdate.bind(this);
+        this.sortableGroupDecorator = this.sortableGroupDecorator.bind(this);
         this.render = this.render.bind(this);
         this.state = {
             filelist: []
         }
+
+        this._sortable = null;
+        this._upload = null;
     }
     static defaultProps: FileUpProps = {
         MainId: 0,
@@ -320,31 +216,17 @@ export class MasterImageUpload extends React.Component<FileUpProps, any>{
     }
 
     componentDidMount() {
-        if (typeof this.props.MainId === 'string') {
-            if (this.props.MainId != null) {
-                this.createFileUpLoadObject();
-                this.getFileList();
-            }
-        } else if (typeof this.props.MainId === 'number') {
-            if (this.props.MainId > 0) {
-                this.createFileUpLoadObject();
-                this.getFileList();
-            }
-        }
+        this.createFileUpLoadObject();
+        this.getFileList();
     }
     componentDidUpdate(prevProps, prevState) {
-        if (typeof this.props.MainId === 'string') {
-            if (this.props.MainId != null && prevProps.MainId == null) {
-                this.createFileUpLoadObject();
-                this.getFileList();
-            }
-        } else if (typeof this.props.MainId === 'number') {
-            if (this.props.MainId > 0 && prevProps.MainId == 0) {
-                this.createFileUpLoadObject();
-                this.getFileList();
-            }
-        }
+
     }
+    componentWillUnmount() {
+        this._sortable.destroy();
+        this._upload.destroy();
+    }
+
     deleteFile(filename) {
         CommFunc.jqPost(this.props.url_delete, {
             id: this.props.MainId,
@@ -370,7 +252,7 @@ export class MasterImageUpload extends React.Component<FileUpProps, any>{
         let btn = document.getElementById('upload-btn-' + this.props.MainId + '-' + this.props.FileKind);
         let _this = this;
 
-        var uploader = new upload.SimpleUpload({
+        this._upload = new upload.SimpleUpload({
             button: btn,
             url: this.props.url_upload,
             data: {
@@ -429,6 +311,7 @@ export class MasterImageUpload extends React.Component<FileUpProps, any>{
             }
         });
     }
+
     getFileList() {
         CommFunc.jqPost(this.props.url_list, {
             id: this.props.MainId,
@@ -445,31 +328,88 @@ export class MasterImageUpload extends React.Component<FileUpProps, any>{
                 CommFunc.showAjaxError(errorThrown);
             });
     }
+
+    sortableGroupDecorator(componentBackingInstance) {
+        // check if backing instance not null
+        if (componentBackingInstance) {
+
+            let _this = this;
+
+            let options = {
+                draggable: "span",
+                group: "shared",
+                onSort: function (evt) {
+                    console.log('onSort');
+                    //evt.oldIndex;  // element's old index within parent
+                    //evt.newIndex;  // element's new index within parent
+                    var data_array = _this.state.filelist;
+                    var _temp = data_array[evt.newIndex];
+                    data_array[evt.newIndex] = data_array[evt.oldIndex];
+                    data_array[evt.oldIndex] = _temp;
+
+                    //console.log(data_array);
+                    
+                    var parms = [];
+                    for (var i in _this.state.filelist) {
+                        var item = _this.state.filelist[i];
+
+                        var file_object =
+                            {
+                                fileName: item.fileName,
+                                guid: item.guid,
+                                sort: parseInt(i, 10) + 1
+                            };
+
+                        parms.push(file_object);
+                    }
+
+                    CommFunc.jqPost(_this.props.url_sort, {
+                        id: _this.props.MainId,
+                        fileKind: _this.props.FileKind,
+                        file_object: parms
+                    })
+                        .done(function (data, textStatus, jqXHRdata) {
+                            if (data.result) {
+                                _this.setState({ filelist: [] });
+                                _this.setState({ filelist: data_array });
+
+                            } else {
+                                alert(data.message);
+                            }
+                        })
+                        .fail(function (jqXHR, textStatus, errorThrown) {
+                            showAjaxError(errorThrown);
+                        });
+                },
+                onEnd: function (evt) {
+                    console.log('onEnd');
+                    //_this.setState({});
+                },
+                onUpdate: function (/**Event*/evt) {
+                    var itemEl = evt.item;  // dragged HTMLElement
+                    // + indexes from onEnd
+                    console.log('onUpdate');
+                },
+            };
+
+            this._sortable = Sortable.create(componentBackingInstance, options);
+        }
+    };
+
     render() {
 
         var outHtml = null;
-        var imgButtonHtml = null;
-        if (this.props.ParentEditType == 1) {
-            imgButtonHtml = (
-                <div className="form-control">
-                    <small className="col-xs-6 help-inline">請先按儲存後方可上傳圖片</small>
-                </div>
-            );
-        } else if (this.props.ParentEditType == 2) {
-            imgButtonHtml = (
+        outHtml = (
+            <div>
                 <div className="form-control">
                     <input type="file" id={'upload-btn-' + this.props.MainId + '-' + this.props.FileKind} accept="image/*" />
                 </div>
-            );
-        };
-        outHtml = (
-            <div>
-                {imgButtonHtml}
-                <p className="help-block list-group" ref="SortImage">
+                <p className="help-block group-list" ref={this.sortableGroupDecorator}>
                     {
                         this.state.filelist.map(function (itemData, i) {
+                            //console.log('Map=>', itemData.fileName);
                             var subOutHtml =
-                                <span className="img-upload list-group-item" key={i}>
+                                <span className="img-upload" key={itemData.guid}>
                                     <button type="button"
                                         className="close"
                                         onClick={this.deleteFile.bind(this, itemData.fileName) }
@@ -477,7 +417,7 @@ export class MasterImageUpload extends React.Component<FileUpProps, any>{
                                     <img src={itemData.iconPath} title={CommFunc.formatFileSize(itemData.size) } />
                                 </span>;
                             return subOutHtml;
-                        }, this)
+                        }.bind(this))
                     }
                 </p>
                 <div id={'progressBox-' + this.props.MainId + '-' + this.props.FileKind} className="progress-wrap"></div>
@@ -686,6 +626,7 @@ export class MasterFileUpload extends React.Component<FileUpProps, any>{
         return outHtml;
     }
 }
+
 export class TwAddress extends React.Component<TwAddressProps, any>{
     constructor(props) {
         super(props)
@@ -869,7 +810,6 @@ export class TwAddress extends React.Component<TwAddressProps, any>{
         return out_html;
     }
 }
-
 export class StateForGird extends React.Component<{ stateData: Array<server.StateTemplate>, id: number | string, ver?: number }, { setClass: string, label: string }>{
     constructor() {
 
