@@ -95,7 +95,9 @@ namespace Community {
             this.queryGridData(1);
         }
         componentDidUpdate(prevProps, prevState) {
-
+            if ((prevState.edit_type == IEditType.none && (this.state.edit_type == IEditType.insert || this.state.edit_type == IEditType.update))) {
+                CKEDITOR.replace('intro', { customConfig: '../ckeditor/inlineConfig.js' });
+            }
         }
         componentWillUnmount() {
             //元件被從 DOM 卸載之前執行，通常我們在這個方法清除一些不再需要地物件或 timer。
@@ -130,6 +132,9 @@ namespace Community {
         }
         handleSubmit(e: React.FormEvent) {
             e.preventDefault();
+
+            this.state.fieldData.intro = CKEDITOR.instances['intro'].getData();
+
             if (this.state.edit_type == 1) {
                 CommFunc.jqPost(this.props.apiPath, this.state.fieldData)
                     .done((data: CallResult, textStatus, jqXHRdata) => {
@@ -407,6 +412,14 @@ namespace Community {
                                             required />
                                     </div>
                                     <small className="col-xs-2 text-danger">(必填) </small>
+                                </div>
+
+                                <div className="form-group">
+                                    <label className="col-xs-1 control-label">內容</label>
+                                    <div className="col-xs-8">
+                                        <textarea type="date" className="form-control" id="intro" name="intro"
+                                            value={field.intro} onChange={this.changeFDValue.bind(this, 'intro') }></textarea>
+                                    </div>
                                 </div>
 
                                 <div className="form-action">

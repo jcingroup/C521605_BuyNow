@@ -99,6 +99,10 @@ namespace DotWeb.Api
                 item.is_end = md.is_end;
                 item.is_darkroom = md.is_darkroom;
                 item.wall_materials = md.wall_materials;
+                item.info_type = md.info_type;
+                item.state = md.state;
+                item.start_date = md.start_date;
+                item.end_date = md.end_date;
 
                 await db0.SaveChangesAsync();
                 rAjaxResult.result = true;

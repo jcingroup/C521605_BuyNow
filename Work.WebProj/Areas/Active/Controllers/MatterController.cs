@@ -40,10 +40,10 @@ namespace DotWeb.Areas.Active.Controllers
             #region
             try
             {
-                
+                hdlUpImage(filename, filekind, id, ImageFileUpParm.ProductList);
                 //代表 圖片
-                if (filekind == "Photo1")
-                    handleImageSave(filename, id, ImageFileUpParm.ProductList, filekind, "Albums", "Photo");
+                //if (filekind == "Photo1")
+                //    handleImageSave(filename, id, ImageFileUpParm.ProductList, filekind, "Albums", "Photo");
 
                 r.result = true;
                 r.file_name = filename;
@@ -66,31 +66,27 @@ namespace DotWeb.Areas.Active.Controllers
         public string axFList(string id, string filekind)
         {
             SerializeFileList r = new SerializeFileList();
-            if (filekind == "Photo1")
-                r.files = listImgFiles(id, filekind, "Albums", "Photo");
+            r.files = lstImgFile(filekind, id);
 
             r.result = true;
             return defJSON(r);
         }
 
         [HttpPost]
-        public string axFDelete(string id, string filekind, string filename)
+        public string axFDelete(string id, string filekind, string guid)
         {
             ResultInfo r = new ResultInfo();
-
-            if (filekind == "Photo1")
-                DeleteSysFile(id, filekind, filename, ImageFileUpParm.ProductList, "Albums", "Photo");
+            delUpFile(filekind, id, guid);
 
             r.result = true;
             return defJSON(r);
         }
 
         [HttpPost]
-        public string axFSort(int id, string filekind, IList<JsonFileInfo> file_object)
+        public string axFSort(string id, string filekind, IList<string> guids)
         {
             ResultInfo r = new ResultInfo();
-            if (filekind == "Photo1")
-                rewriteJsonFile(id, filekind, "Albums", "Photo", file_object);
+            srtUpFile(filekind, id, guids);
 
             r.result = true;
             return defJSON(r);
@@ -99,7 +95,8 @@ namespace DotWeb.Areas.Active.Controllers
         [HttpGet]
         public FileResult axFDown(int id, string filekind, string filename)//下載附件檔案內容用(與圖片上傳無關)
         {
-            string path_tpl = string.Format(upload_path_tpl_o, "Albums", "Photo", id, filekind, filename);
+            string up_path_tpl_s = "~/_Code/SysUpFiles/{0}/{1}";
+            string path_tpl = string.Format(up_path_tpl_s, "Albums", "Photo", id, filekind, filename);
             string server_path = Server.MapPath(path_tpl);
             FileInfo file_info = new FileInfo(server_path);
             FileStream file_stream = new FileStream(server_path, FileMode.Open, FileAccess.Read);

@@ -715,7 +715,6 @@
     <Content Include="Scripts\src\jsx\m-Users.jsx" />
     <Content Include="Scripts\src\jsx\m-Roles.jsx" />
     <Content Include="Scripts\src\xformat.jsx" />
-    <Content Include="_Code\SysUpFiles\member_apply.docx" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
@@ -771,6 +770,7 @@
     <TypeScriptCompile Include="Scripts\ts-def\commfunc.ts" />
     <TypeScriptCompile Include="Scripts\ts-def\commwww.ts" />
     <TypeScriptCompile Include="Scripts\ts-def\ConsoleIe8.ts" />
+    <TypeScriptCompile Include="Scripts\ts-def\d.ts\JSExt.d.ts" />
     <TypeScriptCompile Include="Scripts\ts-def\d.ts\Jquery.Ext.d.ts" />
     <TypeScriptCompile Include="Scripts\ts-def\d.ts\Toastr.d.ts" />
     <TypeScriptCompile Include="Scripts\ts-def\def\defGlobal.ts" />

@@ -48,6 +48,7 @@
           <Property Name="community_name" Type="nvarchar" MaxLength="64" Nullable="false" />
           <Property Name="account" Type="varchar" MaxLength="64" />
           <Property Name="passwd" Type="varchar" MaxLength="64" />
+          <Property Name="intro" Type="ntext" />
         </EntityType>
         <EntityType Name="Community_News">
           <Key>
@@ -170,6 +171,10 @@
           <Property Name="is_end" Type="bit" />
           <Property Name="is_darkroom" Type="bit" />
           <Property Name="wall_materials" Type="nvarchar" MaxLength="50" />
+          <Property Name="info_type" Type="char" MaxLength="1" />
+          <Property Name="state" Type="char" MaxLength="1" />
+          <Property Name="start_date" Type="smalldatetime" />
+          <Property Name="end_date" Type="smalldatetime" />
         </EntityType>
         <EntityType Name="Menu">
           <Key>
@@ -558,6 +563,10 @@
           <Property Name="matter_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Community" Relationship="C51A0_BuyNowModel.FK_Matter_Community" FromRole="Matter" ToRole="Community" />
           <Property Name="zip" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="info_type" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="state" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="start_date" Type="DateTime" Precision="0" />
+          <Property Name="end_date" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="Community">
           <Key>
@@ -569,6 +578,7 @@
           <Property Name="passwd" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Matter" Relationship="C51A0_BuyNowModel.FK_Matter_Community" FromRole="Community" ToRole="Matter" />
           <NavigationProperty Name="Community_News" Relationship="C51A0_BuyNowModel.FK_Community_News_Community" FromRole="Community" ToRole="Community_News" />
+          <Property Name="intro" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           </EntityType>
         <Association Name="FK_Matter_Community">
           <End Type="C51A0_BuyNowModel.Community" Role="Community" Multiplicity="1" />
@@ -785,6 +795,10 @@
           <EntitySetMapping Name="Matter">
             <EntityTypeMapping TypeName="C51A0_BuyNowModel.Matter">
               <MappingFragment StoreEntitySet="Matter">
+                <ScalarProperty Name="end_date" ColumnName="end_date" />
+                <ScalarProperty Name="start_date" ColumnName="start_date" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="info_type" ColumnName="info_type" />
                 <ScalarProperty Name="zip" ColumnName="zip" />
                 <ScalarProperty Name="matter_name" ColumnName="matter_name" />
                 <ScalarProperty Name="wall_materials" ColumnName="wall_materials" />
@@ -819,6 +833,7 @@
           <EntitySetMapping Name="Community">
             <EntityTypeMapping TypeName="C51A0_BuyNowModel.Community">
               <MappingFragment StoreEntitySet="Community">
+                <ScalarProperty Name="intro" ColumnName="intro" />
                 <ScalarProperty Name="passwd" ColumnName="passwd" />
                 <ScalarProperty Name="account" ColumnName="account" />
                 <ScalarProperty Name="community_name" ColumnName="community_name" />

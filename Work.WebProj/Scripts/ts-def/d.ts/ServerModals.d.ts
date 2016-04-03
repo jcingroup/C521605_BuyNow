@@ -97,6 +97,7 @@
         community_name?: string;
         account?: string;
         passwd?: string;
+        intro?: string;
     }
     interface Community_News {
         community_news_id?: number;
@@ -143,7 +144,9 @@
         is_darkroom?: boolean;
         wall_materials?: string;
         matter_name?: string;
-        community?: {
-        };
+        info_type?: string;
+        start_date?: Date;
+        end_date?: Date;
+        state?: string;
     }
 } 

@@ -73,6 +73,7 @@ namespace DotWeb.Api
                 item.community_name = md.community_name;
                 item.account = md.account;
                 item.passwd = md.passwd;
+                item.intro = md.intro;
 
                 await db0.SaveChangesAsync();
                 rAjaxResult.result = true;

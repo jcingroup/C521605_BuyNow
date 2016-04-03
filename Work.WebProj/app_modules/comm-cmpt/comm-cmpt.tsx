@@ -7,7 +7,6 @@ import Sortable = require('sortablejs');
 import upload = require("simple-ajax-uploader");
 import DT = require("dt");
 
-
 export class GridButtonModify extends React.Component<{ modify(): void, ver?: number }, { className: string }> {
     constructor(props) {
         super(props)
@@ -209,6 +208,19 @@ export class MasterImageUpload extends React.Component<FileUpProps, FileUpState>
 
         this._sortable = null;
         this._upload = null;
+
+        if (Array.prototype.move === undefined) {
+            Array.prototype.move = function (old_index, new_index) {
+                if (new_index >= this.length) {
+                    var k = new_index - this.length;
+                    while ((k--) + 1) {
+                        this.push(undefined);
+                    }
+                }
+                this.splice(new_index, 0, this.splice(old_index, 1)[0]);
+                return this;
+            };
+        }
     }
     static defaultProps: FileUpProps = {
         MainId: 0,
@@ -227,11 +239,11 @@ export class MasterImageUpload extends React.Component<FileUpProps, FileUpState>
         this._upload.destroy();
     }
 
-    deleteFile(filename) {
+    deleteFile(guid) {
         CommFunc.jqPost(this.props.url_delete, {
             id: this.props.MainId,
             fileKind: this.props.FileKind,
-            filename: filename
+            guid: guid
         })
             .done(function (data, textStatus, jqXHRdata) {
                 if (data.result) {
@@ -339,34 +351,20 @@ export class MasterImageUpload extends React.Component<FileUpProps, FileUpState>
                 draggable: "span",
                 group: "shared",
                 onSort: function (evt) {
-                    console.log('onSort');
-                    //evt.oldIndex;  // element's old index within parent
-                    //evt.newIndex;  // element's new index within parent
+
                     var data_array = _this.state.filelist;
-                    var _temp = data_array[evt.newIndex];
-                    data_array[evt.newIndex] = data_array[evt.oldIndex];
-                    data_array[evt.oldIndex] = _temp;
+                    data_array.move(evt.oldIndex, evt.newIndex);
 
-                    //console.log(data_array);
-                    
                     var parms = [];
-                    for (var i in _this.state.filelist) {
-                        var item = _this.state.filelist[i];
-
-                        var file_object =
-                            {
-                                fileName: item.fileName,
-                                guid: item.guid,
-                                sort: parseInt(i, 10) + 1
-                            };
-
-                        parms.push(file_object);
+                    for (var i in data_array) {
+                        var item = data_array[i];
+                        parms.push(item.guid);
                     }
 
                     CommFunc.jqPost(_this.props.url_sort, {
                         id: _this.props.MainId,
                         fileKind: _this.props.FileKind,
-                        file_object: parms
+                        guids: parms
                     })
                         .done(function (data, textStatus, jqXHRdata) {
                             if (data.result) {
@@ -412,7 +410,7 @@ export class MasterImageUpload extends React.Component<FileUpProps, FileUpState>
                                 <span className="img-upload" key={itemData.guid}>
                                     <button type="button"
                                         className="close"
-                                        onClick={this.deleteFile.bind(this, itemData.fileName) }
+                                        onClick={this.deleteFile.bind(this, itemData.guid) }
                                         title="刪除圖片"> &times; </button>
                                     <img src={itemData.iconPath} title={CommFunc.formatFileSize(itemData.size) } />
                                 </span>;

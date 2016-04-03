@@ -338,6 +338,21 @@ namespace Matter {
 
         }
 
+        setChangeDate(collentName: string, name: string, date: moment.Moment) {
+
+            var v = date == null ? null : date.format();
+            var objForUpdate = {
+                [collentName]:
+                {
+                    [name]: {
+                        $set: v
+                    }
+                }
+            };
+            var newState = update(this.state, objForUpdate);
+            this.setState(newState);
+        }
+
         render() {
 
             var outHtml: JSX.Element = null;
@@ -416,6 +431,10 @@ namespace Matter {
             else if (this.state.edit_type == IEditType.insert || this.state.edit_type == IEditType.update) {
 
                 let field = this.state.fieldData;
+                let mnt_start_date = CommFunc.MntV(field.start_date);
+                let mnt_end_date = CommFunc.MntV(field.end_date);
+                let end_date_disabled: boolean = mnt_start_date == null ? true : false; //1、如啟始日期無值 結束日期不可填 2、另結束日期不可小於開始日期
+
 
                 var outHtml = (
                     <div>
@@ -662,7 +681,59 @@ namespace Matter {
                                             value={field.wall_materials}
                                             />
                                     </div>
+
+                                    <label className="col-xs-1 control-label">租賣型態</label>
+                                    <div className="col-xs-1">
+                                        <select className="form-control"
+                                            value={field.info_type}
+                                            onChange={this.changeFDValue.bind(this, 'info_type') }>
+                                            <option value=""></option>
+                                            <option value="R">租</option>
+                                            <option value="S">賣</option>
+                                        </select>
+                                    </div>
+
+                                    <label className="col-xs-1 control-label">狀態</label>
+                                    <div className="col-xs-1">
+                                        <select className="form-control"
+                                            value={field.state}
+                                            onChange={this.changeFDValue.bind(this, 'state') }>
+                                            <option value=""></option>
+                                            <option value="A">Active</option>
+                                            <option value="C">Close</option>
+                                        </select>
+                                    </div>
+
                                 </div>
+
+                                <div className="form-group">
+                                    <label className="col-xs-1 control-label">時間</label>
+                                    <div className="col-xs-4">
+                                        <DatePicker selected={mnt_start_date}
+                                            dateFormat={dt.dateFT}
+                                            isClearable={true}
+                                            required={true}
+                                            locale="zh-TW"
+                                            showYearDropdown
+                                            minDate={Moment() }
+                                            onChange={this.setChangeDate.bind(this, this.props.fdName, 'start_date') }
+                                            className="form-control" />
+                                    </div>
+                                    <div className="col-xs-4">
+                                        <DatePicker selected={mnt_end_date}
+                                            dateFormat={dt.dateFT}
+                                            isClearable={true}
+                                            required={true}
+                                            locale="zh-TW"
+                                            showYearDropdown
+                                            onChange={this.setChangeDate.bind(this, this.props.fdName, 'end_date') }
+                                            className="form-control"
+                                            minDate={mnt_start_date}
+                                            disabled={end_date_disabled}
+                                            />
+                                    </div>
+                                </div>
+
 
                                 <div className="form-action">
                                     <div className="col-xs-4 col-xs-offset-2">
