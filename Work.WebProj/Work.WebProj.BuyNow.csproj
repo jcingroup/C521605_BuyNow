@@ -490,6 +490,7 @@
     <Content Include="ckeditor\config.js" />
     <Content Include="ckeditor\contents.css" />
     <Content Include="ckeditor\styles.js" />
+    <Content Include="node_modules\bootstrap\dist\js\bootstrap.js" />
     <Content Include="Scripts\build\app\m_aboutus.js" />
     <Content Include="Scripts\build\app\m_banner.js" />
     <Content Include="Scripts\build\app\m_change_password.js" />
@@ -507,6 +508,7 @@
     <Content Include="Scripts\build\app\m_roles.js" />
     <Content Include="Scripts\build\app\m_users.js" />
     <Content Include="Scripts\build\app\vendors.js" />
+    <Content Include="Scripts\build\app\w_sell_list.js" />
     <Content Include="Scripts\cdn\BootSideMenu.js" />
     <Content Include="Scripts\cdn\bootstrap.min.js" />
     <Content Include="Scripts\cdn\codrops\classie.js" />
@@ -755,6 +757,7 @@
     <TypeScriptCompile Include="app_modules\funtest\fun.ts" />
     <TypeScriptCompile Include="Scripts\src\tsx\m-change_password.tsx" />
     <TypeScriptCompile Include="Scripts\src\tsx\m-community-news.tsx" />
+    <TypeScriptCompile Include="Scripts\src\tsx\w-sell-list.tsx" />
     <TypeScriptCompile Include="Scripts\src\tsx\m-matter.tsx" />
     <TypeScriptCompile Include="Scripts\src\tsx\m-edit_detail.tsx" />
     <TypeScriptCompile Include="Scripts\src\tsx\m-edit.tsx" />
@@ -794,6 +797,7 @@
     <TypeScriptCompile Include="Scripts\typings\react\react-global.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\react\react-mixin.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\react\react.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\bootstrap\bootstrap.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\sortablejs.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\toastr\toastr.d.ts" />
   </ItemGroup>
