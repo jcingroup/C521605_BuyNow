@@ -9,7 +9,7 @@
 @section Scripts {
     <script src="~/Content/js/bootstrap/util.js"></script>
     <script src="~/Content/js/bootstrap/dropdown.js"></script>
-    <script src="~/Content/js/bootstrap/collapse.js"></script>
+    @* <script src="~/Content/js/bootstrap/collapse.js"></script> *@
 
     <script>
         // Fix input element click problem
@@ -17,15 +17,15 @@
             e.stopPropagation();
         });
         // click dropdown-toggle & hide collapse area
-        $('.dropdown-toggle').click(function (e) {
-            $('#collapse-other').collapse('hide');
-        });
-        $('#collapse-other').on('show.bs.collapse', function () {
-            $('.btn[data-toggle="collapse"]').addClass('active');
-        });
-        $('#collapse-other').on('hide.bs.collapse', function () {
-            $('.btn[data-toggle="collapse"]').removeClass('active');
-        });
+        // $('.dropdown-toggle').click(function (e) {
+        //     $('#collapse-other').collapse('hide');
+        // });
+        // $('#collapse-other').on('show.bs.collapse', function () {
+        //     $('.btn[data-toggle="collapse"]').addClass('active');
+        // });
+        // $('#collapse-other').on('hide.bs.collapse', function () {
+        //     $('.btn[data-toggle="collapse"]').removeClass('active');
+        // });
     </script>
 }
 <h1 class="h2 title">@ViewBag.Title</h1>
@@ -371,10 +371,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="form-group">
+                @* 更多條件 暫時隱藏 *@
+                @* <div class="form-group">
                     <label for="" class="sr-only">更多條件</label>
                     <button class="btn btn-secondary style2" data-toggle="collapse" data-target="#collapse-other" aria-expanded="false" aria-controls="collapse-other">更多條件<i class="ti-angle-down"></i></button>
-                </div>
+                </div> *@
                 <div class="form-group">
                     <label for="" class="sr-only">關鍵字</label>
                     <input type="text" class="form-control" placeholder="路/街/社區/關鍵字">
@@ -382,7 +383,8 @@
                 <div class="form-group">
                     <button class="btn btn-primary">搜　尋</button>
                 </div>
-                <div class="collapse" id="collapse-other">
+                @* 更多條件 暫時隱藏 *@
+                @* <div class="collapse" id="collapse-other">
                     <div class="card card-block">
                         <div class="row">
                             <div class="col-xs-3">
@@ -689,7 +691,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> *@
             </form>
         </div>
 

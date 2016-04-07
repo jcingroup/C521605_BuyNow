@@ -10,22 +10,22 @@
 @section Scripts {
     <script src="~/Content/js/bootstrap/util.js"></script>
     <script src="~/Content/js/bootstrap/dropdown.js"></script>
-    <script src="~/Content/js/bootstrap/collapse.js"></script>
+    @* <script src="~/Content/js/bootstrap/collapse.js"></script> *@
     <script>
     	// Fix input element click problem
     	$('.dropdown-menu').click(function(e) {
     		e.stopPropagation();
     	});
     	// click dropdown-toggle & hide collapse area
-    	$('.dropdown-toggle').click(function(e) {
-    		$('#collapse-other').collapse('hide');
-    	});
-    	$('#collapse-other').on('show.bs.collapse', function () {
-    		$('.btn[data-toggle="collapse"]').addClass('active');
-    	});
-    	$('#collapse-other').on('hide.bs.collapse', function () {
-    		$('.btn[data-toggle="collapse"]').removeClass('active');
-    	});
+    	// $('.dropdown-toggle').click(function(e) {
+    	// 	$('#collapse-other').collapse('hide');
+    	// });
+    	// $('#collapse-other').on('show.bs.collapse', function () {
+    	// 	$('.btn[data-toggle="collapse"]').addClass('active');
+    	// });
+    	// $('#collapse-other').on('hide.bs.collapse', function () {
+    	// 	$('.btn[data-toggle="collapse"]').removeClass('active');
+    	// });
     </script>
 }
 
@@ -41,7 +41,6 @@
 					<label for="" class="sr-only">縣市</label>
 					<div class="btn-group">
 						<button type="button" class="btn btn-secondary style2 dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">縣市<i class="ti-angle-down"></i></button>
-						@* 縣市:單選 *@
 						<div class="dropdown-menu city">
 							<div class="row">
 								<label for="" class="col-xs-2 form-control-label text-xs-right">北部</label>
@@ -185,10 +184,9 @@
 					<label for="" class="sr-only">行政區</label>
 					<div class="btn-group">
 						<button type="button" class="btn btn-secondary style2 dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">行政區<i class="ti-angle-down"></i></button>
-						@* 行政區: 可複選 *@
 						<div class="dropdown-menu district">
-							@* 沒選縣市就選行政區的警告: *@
-							@* <p class="text-danger">請先選擇縣市！</p> *@
+							<!-- 沒選縣市就選行政區的警告: 
+							 <p class="text-danger">請先選擇縣市！</p> -->
 							<span>可複選：</span>
 							<hr class="sm" />
 							<label class="c-input c-checkbox">
@@ -234,7 +232,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="form-group">
+				@* <div class="form-group">
 					<label for="" class="sr-only">類型</label>
 					<div class="btn-group">
 						<button type="button" class="btn btn-secondary style2 dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">類型<i class="ti-angle-down"></i></button>
@@ -359,7 +357,7 @@
 							</label>
 						</div>
 					</div>
-				</div>
+				</div> *@
 				<div class="form-group">
 					<label for="" class="sr-only">關鍵字</label>
 					<input type="text" class="form-control" placeholder="路/街/關鍵字">
@@ -375,8 +373,8 @@
 			<span class="pull-xs-right form-inline">
 				<label for="">排序方式：</label>
 				<select name="" id="" class="form-control form-control-sm">
-					<option value="">預設排序</option> @* 以後台設定的排序為主 *@
-					<option value="">更新時間新 → 舊</option> @* 以資料建立時間為主 *@
+					<option value="">預設排序</option> <!-- 以後台設定的排序為主 -->
+					<option value="">更新時間新 → 舊</option> <!-- 以資料建立時間為主 -->
 					<option value="">戶數少 → 多</option>
 					<option value="">戶數多 → 少</option>
 					<option value="">屋齡低 → 高</option>
