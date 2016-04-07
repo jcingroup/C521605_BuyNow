@@ -6,7 +6,14 @@ import React = require('react');
 import ReactDOM = require('react-dom');
 
 namespace WWW {
-    export class SellList extends React.Component<any, any>{
+
+    interface WWWState {
+        seacrh: {
+            city: Array<string>
+        }
+    }
+
+    export class SellList extends React.Component<any, WWWState>{
 
         constructor() {
 
@@ -14,20 +21,41 @@ namespace WWW {
             this.componentDidMount = this.componentDidMount.bind(this);
             this.componentDidUpdate = this.componentDidUpdate.bind(this);
             this.componentWillUnmount = this.componentWillUnmount.bind(this);
+            this.setSearchCity = this.setSearchCity.bind(this);
             this.state = {
+                seacrh: {
+                    city: []
+                }
             };
         }
 
         static defaultProps: BaseDefine.GridFormPropsBase = {
         }
         componentDidMount() {
+            //$('.dropdown-menu').click(function (e) {
+            //    e.stopPropagation();
+            //});
 
+            $('.dropdown-toggle').click(function (e) {
+                $('#collapse-other').collapse('hide');
+            });
+            $('#collapse-other').on('show.bs.collapse', function () {
+                $('.btn[data-toggle="collapse"]').addClass('active');
+            });
+            $('#collapse-other').on('hide.bs.collapse', function () {
+                $('.btn[data-toggle="collapse"]').removeClass('active');
+            });
         }
         componentDidUpdate(prevProps, prevState) {
 
         }
         componentWillUnmount() {
-          
+
+        }
+        setSearchCity(e: React.FormEvent) {
+            console.log(e);
+            let input: HTMLInputElement = e.target as HTMLInputElement;
+            alert(input.checked);
         }
 
         render() {
@@ -46,198 +74,43 @@ namespace WWW {
                                             <label className="col-xs-2 form-control-label text-xs-right" htmlFor="">北部</label>
                                             <div className="col-xs-10 input-inline-group">
                                                 <label className="c-input c-radio m-b-0">
-                                                    <input type="radio" />
+                                                    <input type="radio" value="臺北市" onClick={this.setSearchCity} />
                                                     <span className="c-indicator" />
-                                                    北市
+                                                    臺北市
                                                 </label>
                                                 <label className="c-input c-radio m-b-0">
-                                                    <input type="radio" />
+                                                    <input type="radio" onChange={this.setSearchCity} />
                                                     <span className="c-indicator" />
-                                                    新北
+                                                    新北市
                                                 </label>
                                                 <label className="c-input c-radio m-b-0">
-                                                    <input type="radio" />
+                                                    <input type="radio" onChange={this.setSearchCity} />
                                                     <span className="c-indicator" />
-                                                    桃園
+                                                    桃園市
                                                 </label>
                                                 <label className="c-input c-radio m-b-0">
-                                                    <input type="radio" />
+                                                    <input type="radio" onChange={this.setSearchCity} />
                                                     <span className="c-indicator" />
-                                                    竹市
+                                                    新竹市
                                                 </label>
                                                 <label className="c-input c-radio m-b-0">
-                                                    <input type="radio" />
+                                                    <input type="radio" onChange={this.setSearchCity} />
                                                     <span className="c-indicator" />
-                                                    竹縣
-                                                </label>
-                                                <label className="c-input c-radio m-b-0">
-                                                    <input type="radio" />
-                                                    <span className="c-indicator" />
-                                                    基隆
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div className="row">
-                                            <label className="col-xs-2 form-control-label text-xs-right" htmlFor="">中部</label>
-                                            <div className="col-xs-10 input-inline-group">
-                                                <label className="c-input c-radio m-b-0">
-                                                    <input type="radio" />
-                                                    <span className="c-indicator" />
-                                                    台中
-                                                </label>
-                                                <label className="c-input c-radio m-b-0">
-                                                    <input type="radio" />
-                                                    <span className="c-indicator" />
-                                                    彰化
-                                                </label>
-                                                <label className="c-input c-radio m-b-0">
-                                                    <input type="radio" />
-                                                    <span className="c-indicator" />
-                                                    苗栗
-                                                </label>
-                                                <label className="c-input c-radio m-b-0">
-                                                    <input type="radio" />
-                                                    <span className="c-indicator" />
-                                                    南投
-                                                </label>
-                                                <label className="c-input c-radio m-b-0">
-                                                    <input type="radio" />
-                                                    <span className="c-indicator" />
-                                                    雲林
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div className="row">
-                                            <label className="col-xs-2 form-control-label text-xs-right" htmlFor="">南部</label>
-                                            <div className="col-xs-10 input-inline-group">
-                                                <label className="c-input c-radio m-b-0">
-                                                    <input type="radio" />
-                                                    <span className="c-indicator" />
-                                                    高雄
-                                                </label>
-                                                <label className="c-input c-radio m-b-0">
-                                                    <input type="radio" />
-                                                    <span className="c-indicator" />
-                                                    台南
-                                                </label>
-                                                <label className="c-input c-radio m-b-0">
-                                                    <input type="radio" />
-                                                    <span className="c-indicator" />
-                                                    嘉市
-                                                </label>
-                                                <label className="c-input c-radio m-b-0">
-                                                    <input type="radio" />
-                                                    <span className="c-indicator" />
-                                                    嘉縣
-                                                </label>
-                                                <label className="c-input c-radio m-b-0">
-                                                    <input type="radio" />
-                                                    <span className="c-indicator" />
-                                                    屏東
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div className="row">
-                                            <label className="col-xs-2 form-control-label text-xs-right" htmlFor="">東部</label>
-                                            <div className="col-xs-10 input-inline-group">
-                                                <label className="c-input c-radio m-b-0">
-                                                    <input type="radio" />
-                                                    <span className="c-indicator" />
-                                                    宜蘭
-                                                </label>
-                                                <label className="c-input c-radio m-b-0">
-                                                    <input type="radio" />
-                                                    <span className="c-indicator" />
-                                                    花蓮
-                                                </label>
-                                                <label className="c-input c-radio m-b-0">
-                                                    <input type="radio" />
-                                                    <span className="c-indicator" />
-                                                    台東
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div className="row">
-                                            <label className="col-xs-2 form-control-label text-xs-right" htmlFor="">離島</label>
-                                            <div className="col-xs-10 input-inline-group">
-                                                <label className="c-input c-radio m-b-0">
-                                                    <input type="radio" />
-                                                    <span className="c-indicator" />
-                                                    澎湖
-                                                </label>
-                                                <label className="c-input c-radio m-b-0">
-                                                    <input type="radio" />
-                                                    <span className="c-indicator" />
-                                                    金門
-                                                </label>
-                                                <label className="c-input c-radio m-b-0">
-                                                    <input type="radio" />
-                                                    <span className="c-indicator" />
-                                                    馬祖
+                                                    新竹縣
                                                 </label>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div className="form-group">
-                                <label className="sr-only" htmlFor="">行政區</label>
-                                <div className="btn-group">
-                                    <button aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" className="btn btn-secondary style2 dropdown-toggle" type="button">行政區<i className="ti-angle-down" /></button>
 
-                                    <div className="dropdown-menu district">
-                                        <span>可複選：</span>
-                                        <hr className="sm" />
-                                        <label className="c-input c-checkbox">
-                                            <input type="checkbox" />
-                                            <span className="c-indicator" />
-                                            桃園區
-                                        </label>
-                                        <label className="c-input c-checkbox">
-                                            <input type="checkbox" />
-                                            <span className="c-indicator" />
-                                            桃園區
-                                        </label>
-                                        <label className="c-input c-checkbox">
-                                            <input type="checkbox" />
-                                            <span className="c-indicator" />
-                                            桃園區
-                                        </label>
-                                        <label className="c-input c-checkbox">
-                                            <input type="checkbox" />
-                                            <span className="c-indicator" />
-                                            桃園區
-                                        </label>
-                                        <label className="c-input c-checkbox">
-                                            <input type="checkbox" />
-                                            <span className="c-indicator" />
-                                            桃園區
-                                        </label>
-                                        <label className="c-input c-checkbox">
-                                            <input type="checkbox" />
-                                            <span className="c-indicator" />
-                                            桃園區
-                                        </label>
-                                        <label className="c-input c-checkbox">
-                                            <input type="checkbox" />
-                                            <span className="c-indicator" />
-                                            桃園區
-                                        </label>
-                                        <label className="c-input c-checkbox">
-                                            <input type="checkbox" />
-                                            <span className="c-indicator" />
-                                            桃園區
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
                             <div className="form-group">
                                 <label className="sr-only" htmlFor="">總價</label>
                                 <div className="btn-group">
                                     <button aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" className="btn btn-secondary style2 dropdown-toggle" type="button">總價<i className="ti-angle-down" /></button>
                                     <div className="dropdown-menu price form-inline p-t-1">
                                         <div className="input-group">
-                                            <select className="form-control form-control-sm" >
+                                            <select className="form-control form-control-sm">
                                                 <option value>0</option>
                                                 <option value>200</option>
                                                 <option value>400</option>
@@ -247,7 +120,7 @@ namespace WWW {
                                         </div>
                                         ~
                                         <div className="input-group">
-                                            <select className="form-control form-control-sm" >
+                                            <select className="form-control form-control-sm">
                                                 <option value>不限</option>
                                                 <option value>200</option>
                                                 <option value>400</option>
@@ -258,63 +131,14 @@ namespace WWW {
                                     </div>
                                 </div>
                             </div>
-                            <div className="form-group">
-                                <label className="sr-only" htmlFor="">用途</label>
-                                <div className="btn-group">
-                                    <button data-toggle="dropdown" className="btn btn-secondary style2 dropdown-toggle" type="button">用途<i className="ti-angle-down" /></button>
-                                    <div className="dropdown-menu usage">
-                                        <span>可複選：</span>
-                                        <hr className="sm" />
-                                        <label className="c-input c-checkbox">
-                                            <input type="checkbox" />
-                                            <span className="c-indicator" />
-                                            住宅
-                                        </label>
-                                        <label className="c-input c-checkbox">
-                                            <input type="checkbox" />
-                                            <span className="c-indicator" />
-                                            店面
-                                        </label>
-                                        <label className="c-input c-checkbox">
-                                            <input type="checkbox" />
-                                            <span className="c-indicator" />
-                                            辦公
-                                        </label>
-                                        <label className="c-input c-checkbox">
-                                            <input type="checkbox" />
-                                            <span className="c-indicator" />
-                                            廠房
-                                        </label>
-                                        <label className="c-input c-checkbox">
-                                            <input type="checkbox" />
-                                            <span className="c-indicator" />
-                                            別墅
-                                        </label>
-                                        <label className="c-input c-checkbox">
-                                            <input type="checkbox" />
-                                            <span className="c-indicator" />
-                                            倉庫
-                                        </label>
-                                        <label className="c-input c-checkbox">
-                                            <input type="checkbox" />
-                                            <span className="c-indicator" />
-                                            土地
-                                        </label>
-                                        <label className="c-input c-checkbox">
-                                            <input type="checkbox" />
-                                            <span className="c-indicator" />
-                                            其他
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
+
                             <div className="form-group">
                                 <label className="sr-only" htmlFor="">坪數</label>
                                 <div className="btn-group">
                                     <button data-toggle="dropdown" className="btn btn-secondary style2 dropdown-toggle" type="button">坪數<i className="ti-angle-down" /></button>
                                     <div className="dropdown-menu size form-inline">
                                         <label htmlFor="">計算方式：</label>
-                                        <select className="form-control form-control-sm" >
+                                        <select className="form-control form-control-sm">
                                             <option value>建坪</option>
                                             <option value>主+陽</option>
                                             <option value>地坪</option>
@@ -371,14 +195,8 @@ namespace WWW {
                                     </div>
                                 </div>
                             </div>
-                            <div className="form-group">
-                                <label className="sr-only" htmlFor="">更多條件</label>
-                                <button aria-controls="collapse-other" aria-expanded="false" data-target="#collapse-other" data-toggle="collapse" className="btn btn-secondary style2">更多條件<i className="ti-angle-down" /></button>
-                            </div>
-                            <div className="form-group">
-                                <label className="sr-only" htmlFor="">關鍵字</label>
-                                <input type="text" placeholder="路/街/社區/關鍵字" className="form-control" />
-                            </div>
+
+
                             <div className="form-group">
                                 <button className="btn btn-primary">搜　尋</button>
                             </div>
@@ -398,7 +216,7 @@ namespace WWW {
                                                     <input type="radio" />
                                                     <span className="c-indicator" />
                                                     <span className="input-group">
-                                                        <select className="form-control form-control-sm" >
+                                                        <select className="form-control form-control-sm">
                                                             <option value>不限</option>
                                                             <option value>1房</option>
                                                             <option value>2房</option>
@@ -430,7 +248,7 @@ namespace WWW {
                                                 <label className="c-input c-radio">
                                                     <input type="radio" />
                                                     <span className="c-indicator" />
-                                                    <select className="form-control form-control-sm" >
+                                                    <select className="form-control form-control-sm">
                                                         <option value>0~5年</option>
                                                         <option value>6~10年</option>
                                                         <option value>11~20年</option>
@@ -787,7 +605,6 @@ namespace WWW {
                         </li>
                     </ol>
                 </div>
-
             );
             return outHtml;
         }
@@ -795,4 +612,4 @@ namespace WWW {
 }
 
 var dom = document.getElementById('content');
-//ReactDOM.render(<WWW.SellList  />, dom); 
+ReactDOM.render(<WWW.SellList  />, dom); 
