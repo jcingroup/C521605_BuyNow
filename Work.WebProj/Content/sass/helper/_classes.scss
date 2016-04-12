@@ -37,6 +37,8 @@
     $length-x:   map-get($lengths, x);
     $length-y:   map-get($lengths, y);
 
+    .#{$abbrev}-full { #{$prop}: 100% !important; }
+
     .#{$abbrev}-x-#{$size} { #{$prop}: $length-x !important; }
     .#{$abbrev}-y-#{$size} { #{$prop}: $length-y !important; }
   }
