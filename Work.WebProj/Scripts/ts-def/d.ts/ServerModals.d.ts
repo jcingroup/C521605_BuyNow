@@ -150,5 +150,6 @@
         state?: string;
         title?: string;
         price?: number;
+        list_src?: string;
     }
 } 

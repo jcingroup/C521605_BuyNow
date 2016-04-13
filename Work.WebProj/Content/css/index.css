@@ -2428,12 +2428,20 @@ mark,
   margin-bottom: 0.5rem;
 }
 
+.w-full {
+  width: 100% !important;
+}
+
 .w-x-0 {
   width: 0 !important;
 }
 
 .w-y-0 {
   width: 0 !important;
+}
+
+.w-full {
+  width: 100% !important;
 }
 
 .w-x-1 {
@@ -2444,12 +2452,20 @@ mark,
   width: 1rem !important;
 }
 
+.w-full {
+  width: 100% !important;
+}
+
 .w-x-2 {
   width: 1.5rem !important;
 }
 
 .w-y-2 {
   width: 1.5rem !important;
+}
+
+.w-full {
+  width: 100% !important;
 }
 
 .w-x-3 {
@@ -2460,12 +2476,20 @@ mark,
   width: 3rem !important;
 }
 
+.w-full {
+  width: 100% !important;
+}
+
 .w-x-4 {
   width: 4rem !important;
 }
 
 .w-y-4 {
   width: 4rem !important;
+}
+
+.w-full {
+  width: 100% !important;
 }
 
 .w-x-5 {
@@ -2476,12 +2500,20 @@ mark,
   width: 5rem !important;
 }
 
+.h-full {
+  height: 100% !important;
+}
+
 .h-x-0 {
   height: 0 !important;
 }
 
 .h-y-0 {
   height: 0 !important;
+}
+
+.h-full {
+  height: 100% !important;
 }
 
 .h-x-1 {
@@ -2492,12 +2524,20 @@ mark,
   height: 1rem !important;
 }
 
+.h-full {
+  height: 100% !important;
+}
+
 .h-x-2 {
   height: 1.5rem !important;
 }
 
 .h-y-2 {
   height: 1.5rem !important;
+}
+
+.h-full {
+  height: 100% !important;
 }
 
 .h-x-3 {
@@ -2508,12 +2548,20 @@ mark,
   height: 3rem !important;
 }
 
+.h-full {
+  height: 100% !important;
+}
+
 .h-x-4 {
   height: 4rem !important;
 }
 
 .h-y-4 {
   height: 4rem !important;
+}
+
+.h-full {
+  height: 100% !important;
 }
 
 .h-x-5 {
@@ -3069,11 +3117,12 @@ hr.sm {
   opacity: 1;
   transition: opacity 0.35s;
 }
-.img-thumbnail:hover {
-  opacity: 0.7;
-}
 .img-thumbnail img {
   width: 100%;
+}
+
+a.img-thumbnail:hover {
+  opacity: 0.7;
 }
 
 .table {
@@ -3515,6 +3564,11 @@ a:focus {
 }
 .grid-house .sell, .grid-house .rent {
   margin-top: -188px;
+}
+.grid-house .sell .h3, .grid-house .rent .h3 {
+  margin: 0;
+  padding: 0;
+  border: none;
 }
 .grid-house .sell a, .grid-house .rent a {
   display: block;

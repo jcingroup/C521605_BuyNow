@@ -7,7 +7,9 @@ import ReactDOM = require('react-dom');
 import DT = require('dt');
 import update = require('react-addons-update');
 import ReactBootstrap = require('react-bootstrap');
+import ReactLazyLoad = require('react-lazyload');
 
+//import { LazyLoad } from "./react-lazyload";
 namespace WWW {
 
     interface WWWState {
@@ -241,318 +243,8 @@ namespace WWW {
                                     </div>
                                 </div>
                             </div>
-
-
                             <div className="form-group">
                                 <button type="submit" className="btn btn-primary">搜　尋</button>
-                            </div>
-                            <div id="collapse-other" className="collapse">
-                                <div className="card card-block">
-                                    <div className="row">
-                                        <div className="col-xs-3">
-                                            <div className="grid">
-                                                <span className="h6">房數</span>
-                                                <label className="c-input c-checkbox m-b-0 m-l-1">
-                                                    <input type="checkbox" />
-                                                    <span className="c-indicator" />
-                                                    含加蓋
-                                                </label>
-                                                <hr className="sm" />
-                                                <label className="c-input c-radio">
-                                                    <input type="radio" />
-                                                    <span className="c-indicator" />
-                                                    <span className="input-group">
-                                                        <select className="form-control form-control-sm">
-                                                            <option value>不限</option>
-                                                            <option value>1房</option>
-                                                            <option value>2房</option>
-                                                            <option value>3房</option>
-                                                            <option value>4房</option>
-                                                            <option value>5房</option>
-                                                            <option value>6房</option>
-                                                        </select>
-                                                        <span className="input-group-addon form-control-sm">以上</span>
-                                                    </span>
-                                                </label>
-                                                <label className="c-input c-radio">
-                                                    <input type="radio" />
-                                                    <span className="c-indicator" />
-                                                    <span className="input-group">
-                                                        <input type="text" className="form-control form-control-sm w-x-4" />
-                                                        <span className="input-group-addon form-control-sm">房</span>
-                                                    </span>
-                                                    ~
-                                                    <span className="input-group">
-                                                        <input type="text" className="form-control form-control-sm w-x-4" />
-                                                        <span className="input-group-addon form-control-sm">房</span>
-                                                    </span>
-                                                </label>
-                                            </div>
-                                            <div className="grid">
-                                                <span className="h6">屋齡</span>
-                                                <hr className="sm" />
-                                                <label className="c-input c-radio">
-                                                    <input type="radio" />
-                                                    <span className="c-indicator" />
-                                                    <select className="form-control form-control-sm">
-                                                        <option value>0~5年</option>
-                                                        <option value>6~10年</option>
-                                                        <option value>11~20年</option>
-                                                        <option value>21~30年</option>
-                                                        <option value>31~40年</option>
-                                                        <option value>41年以上</option>
-                                                    </select>
-                                                </label>
-                                                <label className="c-input c-radio">
-                                                    <input type="radio" />
-                                                    <span className="c-indicator" />
-                                                    <span className="input-group">
-                                                        <input type="text" className="form-control form-control-sm w-x-4" />
-                                                        <span className="input-group-addon form-control-sm">年</span>
-                                                    </span>
-                                                    ~
-                                                    <span className="input-group">
-                                                        <input type="text" className="form-control form-control-sm w-x-4" />
-                                                        <span className="input-group-addon form-control-sm">年</span>
-                                                    </span>
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div className="col-xs-3">
-                                            <div className="grid">
-                                                <span className="h6">樓層</span>
-                                                <hr className="sm" />
-                                                <label className="c-input c-radio">
-                                                    <input type="radio" />
-                                                    <span className="c-indicator" />
-                                                    <select className="form-control form-control-sm">
-                                                        <option value>1樓</option>
-                                                        <option value>2~7樓</option>
-                                                        <option value>8~10樓</option>
-                                                        <option value>11樓以上</option>
-                                                    </select>
-                                                </label>
-                                                <label className="c-input c-radio">
-                                                    <input type="radio" />
-                                                    <span className="c-indicator" />
-                                                    <span className="input-group">
-                                                        <input type="text" className="form-control form-control-sm w-x-4" />
-                                                        <span className="input-group-addon form-control-sm">樓</span>
-                                                    </span>
-                                                    ~
-                                                    <span className="input-group">
-                                                        <input type="text" className="form-control form-control-sm w-x-4" />
-                                                        <span className="input-group-addon form-control-sm">樓</span>
-                                                    </span>
-                                                </label>
-                                            </div>
-                                            <div className="grid">
-                                                <span className="h6">類型 <small>(可複選) </small></span>
-                                                <hr className="sm" />
-                                                <label className="c-input c-checkbox">
-                                                    <input type="checkbox" />
-                                                    <span className="c-indicator" />
-                                                    公寓
-                                                </label>
-                                                <label className="c-input c-checkbox">
-                                                    <input type="checkbox" />
-                                                    <span className="c-indicator" />
-                                                    電梯華廈大樓
-                                                </label>
-                                                <label className="c-input c-checkbox">
-                                                    <input type="checkbox" />
-                                                    <span className="c-indicator" />
-                                                    多樓層 (樓中樓)
-                                                </label>
-                                                <label className="c-input c-checkbox">
-                                                    <input type="checkbox" />
-                                                    <span className="c-indicator" />
-                                                    透天厝
-                                                </label>
-                                                <label className="c-input c-checkbox">
-                                                    <input type="checkbox" />
-                                                    <span className="c-indicator" />
-                                                    成屋
-                                                </label>
-                                                <label className="c-input c-checkbox">
-                                                    <input type="checkbox" />
-                                                    <span className="c-indicator" />
-                                                    預售屋
-                                                </label>
-                                                <label className="c-input c-checkbox">
-                                                    <input type="checkbox" />
-                                                    <span className="c-indicator" />
-                                                    套房
-                                                </label>
-                                                <label className="c-input c-checkbox">
-                                                    <input type="checkbox" />
-                                                    <span className="c-indicator" />
-                                                    其他
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div className="col-xs-3">
-                                            <div className="grid">
-                                                <span className="h6">特色 <small>(可複選) </small></span>
-                                                <hr className="sm" />
-                                                <label className="c-input c-checkbox">
-                                                    <input type="checkbox" />
-                                                    <span className="c-indicator" />
-                                                    低公設
-                                                </label>
-                                                <label className="c-input c-checkbox">
-                                                    <input type="checkbox" />
-                                                    <span className="c-indicator" />
-                                                    近捷運
-                                                </label>
-                                                <label className="c-input c-checkbox">
-                                                    <input type="checkbox" />
-                                                    <span className="c-indicator" />
-                                                    近學校
-                                                </label>
-                                                <label className="c-input c-checkbox">
-                                                    <input type="checkbox" />
-                                                    <span className="c-indicator" />
-                                                    近公園
-                                                </label>
-                                                <label className="c-input c-checkbox">
-                                                    <input type="checkbox" />
-                                                    <span className="c-indicator" />
-                                                    近市場
-                                                </label>
-                                                <label className="c-input c-checkbox">
-                                                    <input type="checkbox" />
-                                                    <span className="c-indicator" />
-                                                    無障礙空間
-                                                </label>
-                                                <label className="c-input c-checkbox">
-                                                    <input type="checkbox" />
-                                                    <span className="c-indicator" />
-                                                    警衛管理
-                                                </label>
-                                            </div>
-                                            <div className="grid">
-                                                <span className="h6">車位 <small>(可複選) </small></span>
-                                                <hr className="sm" />
-                                                <label className="c-input c-checkbox">
-                                                    <input type="checkbox" />
-                                                    <span className="c-indicator" />
-                                                    坡道平面
-                                                </label>
-                                                <label className="c-input c-checkbox">
-                                                    <input type="checkbox" />
-                                                    <span className="c-indicator" />
-                                                    機械平面
-                                                </label>
-                                                <label className="c-input c-checkbox">
-                                                    <input type="checkbox" />
-                                                    <span className="c-indicator" />
-                                                    坡道機械
-                                                </label>
-                                                <label className="c-input c-checkbox">
-                                                    <input type="checkbox" />
-                                                    <span className="c-indicator" />
-                                                    機械機械
-                                                </label>
-                                                <label className="c-input c-checkbox">
-                                                    <input type="checkbox" />
-                                                    <span className="c-indicator" />
-                                                    庭院
-                                                </label>
-                                                <label className="c-input c-checkbox">
-                                                    <input type="checkbox" />
-                                                    <span className="c-indicator" />
-                                                    另租
-                                                </label>
-                                                <label className="c-input c-checkbox">
-                                                    <input type="checkbox" />
-                                                    <span className="c-indicator" />
-                                                    其他
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div className="col-xs-3">
-                                            <div className="grid">
-                                                <span className="h6">特殊格局 <small>(可複選) </small></span>
-                                                <hr className="sm" />
-                                                <label className="c-input c-checkbox">
-                                                    <input type="checkbox" />
-                                                    <span className="c-indicator" />
-                                                    邊間
-                                                </label>
-                                                <label className="c-input c-checkbox">
-                                                    <input type="checkbox" />
-                                                    <span className="c-indicator" />
-                                                    頂樓
-                                                </label>
-                                                <label className="c-input c-checkbox">
-                                                    <input type="checkbox" />
-                                                    <span className="c-indicator" />
-                                                    頂樓加蓋
-                                                </label>
-                                                <label className="c-input c-checkbox">
-                                                    <input type="checkbox" />
-                                                    <span className="c-indicator" />
-                                                    地下室
-                                                </label>
-                                                <label className="c-input c-checkbox">
-                                                    <input type="checkbox" />
-                                                    <span className="c-indicator" />
-                                                    地下室+1樓
-                                                </label>
-                                            </div>
-                                            <div className="grid">
-                                                <span className="h6">朝向 <small>(可複選) </small></span>
-                                                <select className="form-control form-control-sm">
-                                                    <option value>物件大門</option>
-                                                    <option value>大樓</option>
-                                                    <option value>落地窗</option>
-                                                </select>
-                                                <hr className="sm" />
-                                                <label className="c-input c-checkbox">
-                                                    <input type="checkbox" />
-                                                    <span className="c-indicator" />
-                                                    東
-                                                </label>
-                                                <label className="c-input c-checkbox">
-                                                    <input type="checkbox" />
-                                                    <span className="c-indicator" />
-                                                    南
-                                                </label>
-                                                <label className="c-input c-checkbox">
-                                                    <input type="checkbox" />
-                                                    <span className="c-indicator" />
-                                                    西
-                                                </label>
-                                                <label className="c-input c-checkbox">
-                                                    <input type="checkbox" />
-                                                    <span className="c-indicator" />
-                                                    北
-                                                </label>
-                                                <label className="c-input c-checkbox">
-                                                    <input type="checkbox" />
-                                                    <span className="c-indicator" />
-                                                    東南
-                                                </label>
-                                                <label className="c-input c-checkbox">
-                                                    <input type="checkbox" />
-                                                    <span className="c-indicator" />
-                                                    東北
-                                                </label>
-                                                <label className="c-input c-checkbox">
-                                                    <input type="checkbox" />
-                                                    <span className="c-indicator" />
-                                                    西南
-                                                </label>
-                                                <label className="c-input c-checkbox">
-                                                    <input type="checkbox" />
-                                                    <span className="c-indicator" />
-                                                    西北
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </form>
                     </div>
@@ -561,8 +253,8 @@ namespace WWW {
                         <span className="pull-xs-right form-inline">
                             <label htmlFor="">排序方式：</label>
                             <select className="form-control form-control-sm">
-                                <option value>預設排序</option> @* 以後台設定的排序為主 * @
-                                <option value>更新時間新 → 舊</option> @* 以資料建立時間為主 * @
+                                <option value>預設排序</option>
+                                <option value>更新時間新 → 舊</option>
                                 <option value>總價低 → 高</option>
                                 <option value>總價高 → 低</option>
                                 <option value>坪數低 → 高</option>
@@ -573,17 +265,19 @@ namespace WWW {
                         </span>
                     </p>
                     <ol className="prolist row">
-
                         {
                             this.state.lists.map(function (item, i) {
+
                                 return (
-                                    <li className="pro">
+
+                                    <li className="pro" key={item.matter_id}>
+
                                         <article className="card">
-                                            <a className="card-img-top" href="/Sell/Content">
-                                                <img alt="北大稀有輕豪宅" src="/Content/images/Sell/pro1.jpg" />
+                                            <a className="card-img-top" href={gb_approot + 'Sell/Content?id=' + item.matter_id}>
+                                                <img alt={item.matter_name} src={item.list_src} />
                                             </a>
                                             <div className="card-block">
-                                                <h4 className="card-title"><a href="~/Sell/Content">{item.matter_name}</a></h4>
+                                                <h4 className="card-title"><a href={gb_approot + 'Sell/Content?id=' + item.matter_id}>{item.matter_name}</a></h4>
                                                 <section className="card-text">
                                                     <h5 className="card-subtitle">{item.title}</h5>
                                                     <ul className="feature list-inline">
@@ -608,13 +302,15 @@ namespace WWW {
                                                         <strong className="text-danger">{item.price / 10000}</strong>萬
                                                     </span>
                                                 </section>
-                                                <a className="more btn btn-secondary" href="/Sell/Content">
+                                                <a className="more btn btn-secondary" href={gb_approot + 'Sell/Content?id=' + item.matter_id}>
                                                     看更多
                                                     <i className="ti-angle-right" />
                                                 </a>
                                             </div>
                                         </article>
-                                    </li>);
+
+                                    </li>
+                                );
                             })
                         }
 

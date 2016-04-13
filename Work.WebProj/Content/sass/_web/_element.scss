@@ -79,10 +79,10 @@ hr {
 .img-thumbnail {
     opacity: 1;
     transition: opacity 0.35s;
-    
-    &:hover {opacity:0.7;}
+
     img {width: 100%;}
 }
+a.img-thumbnail:hover {opacity:0.7;}
 
 
 // table

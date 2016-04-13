@@ -905,11 +905,12 @@ hr.sm {
   opacity: 1;
   transition: opacity 0.35s;
 }
-.img-thumbnail:hover {
-  opacity: 0.7;
-}
 .img-thumbnail img {
   width: 100%;
+}
+
+a.img-thumbnail:hover {
+  opacity: 0.7;
 }
 
 .table {

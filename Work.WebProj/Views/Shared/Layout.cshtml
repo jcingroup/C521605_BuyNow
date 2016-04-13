@@ -93,7 +93,11 @@
     </footer><!-- footer -->
 
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="~/Content/js/jquery.lazyload.min.js"></script>
     <script type="text/javascript">
+        // Lazyload
+        $("img.lazy").lazyload({effect : "fadeIn"});
+
         // 回頂端
         $(window).scroll(function () {
             if ($(this).scrollTop() > 100) {

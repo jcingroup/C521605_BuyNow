@@ -20,6 +20,10 @@ namespace DotWeb.Controllers
         {
             return View("Neighbor_content");
         }
+        public ActionResult Notice()
+        {
+            return View("Notice");
+        }
     }
 
 }

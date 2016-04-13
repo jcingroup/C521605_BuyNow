@@ -448,9 +448,19 @@ namespace Matter {
                             <div className="col-xs-10">
 
                                 <div className="form-group">
-                                    <label className="col-xs-1 control-label">檔案上傳</label>
-                                    <div className="col-xs-5">
-                                        <CommCmpt.MasterImageUpload FileKind="Photo1"
+                                    <label className="col-xs-1 control-label">列表圖</label>
+                                    <div className="col-xs-1">
+                                        <CommCmpt.MasterImageUpload FileKind="MatterList"
+                                            MainId={field.matter_id}
+                                            ParentEditType={this.state.edit_type}
+                                            url_upload={gb_approot + 'Active/Matter/axFUpload'}
+                                            url_list={gb_approot + 'Active/Matter/axFList'}
+                                            url_delete={gb_approot + 'Active/Matter/axFDelete'}
+                                            url_sort={gb_approot + 'Active/Matter/axFSort'} />
+                                    </div>
+                                    <label className="col-xs-1 control-label">列表上傳</label>
+                                    <div className="col-xs-1">
+                                        <CommCmpt.MasterImageUpload FileKind="MatterPhoto"
                                             MainId={field.matter_id}
                                             ParentEditType={this.state.edit_type}
                                             url_upload={gb_approot + 'Active/Matter/axFUpload'}

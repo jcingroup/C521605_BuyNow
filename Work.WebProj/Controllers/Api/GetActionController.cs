@@ -169,12 +169,45 @@ namespace DotWeb.Api
             if (q.city != null)
                 predicate = predicate.And(x => x.city == q.city);
 
+            predicate = predicate.And(x => x.state == "A");
 
-            var result = await db0.Matter.AsExpandable().Where(predicate).ToListAsync(); ;
+            var result = await db0.Matter.AsExpandable()
+                .Where(predicate)
+                .Select(x => new SearchMatterObj()
+                {
+                    matter_id = x.matter_id,
+                    matter_name = x.matter_name,
+                    title = x.title,
+                    price = x.price,
+                    age = x.age,
+                    city = x.city,
+                    country = x.country,
+                    address = x.address,
+                    balcony_area = x.balcony_area,
+                    bathrooms = x.bathrooms,
+                    bedrooms = x.bedrooms,
+                    parking = x.parking,
+                    rooms = x.rooms,
+                    livingrooms = x.livingrooms,
+                    build_area = x.build_area,
+                    house_area = x.house_area
+                })
+                .ToListAsync(); ;
+
+            foreach (var item in result)
+            {
+                var imgobj = getImgFirst("MatterList", item.matter_id.ToString(), "origin");
+                item.list_src = imgobj == null ? null : imgobj.src_path;
+            }
+
 
             return Ok(result);
         }
+        public class SearchMatterObj : Matter
+        {
+            public string list_src { get; set; }
 
+        }
 
         public class queryParam
         {

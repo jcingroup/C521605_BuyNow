@@ -335,11 +335,14 @@
     <Content Include="Content\css\editor.css" />
     <Content Include="Content\css\index.css" />
     <Content Include="Content\css\page.css" />
+    <Content Include="Content\css\popup.css" />
     <Content Include="Content\css\vendor\animate.css" />
     <Content Include="Content\css\vendor\bootstrap-datetimepicker-build.css" />
     <Content Include="Content\css\vendor\icomoon.css" />
     <Content Include="Content\css\vendor\jquery.loadmask.css" />
+    <Content Include="Content\css\vendor\magnific-popup.css" />
     <Content Include="Content\css\vendor\mask-load.css" />
+    <Content Include="Content\css\vendor\swiper.min.css" />
     <Content Include="Content\css\vendor\themify-icons.css" />
     <Content Include="Content\css\vendor\toastr.css" />
     <Content Include="Content\css\_admin\page.css" />
@@ -354,6 +357,7 @@
     <Content Include="Content\images\logo_s.gif" />
     <Content Include="Content\images\mainBg.png" />
     <Content Include="Content\images\menuBg.png" />
+    <Content Include="Content\images\Neighbor\pic.jpg" />
     <Content Include="Content\images\no-pic.gif" />
     <Content Include="Areas\Base\Views\Menu\Main.cshtml" />
     <Content Include="Content\images\Partner\dm.jpg" />
@@ -363,6 +367,9 @@
     <Content Include="Content\js\bootstrap\collapse.js" />
     <Content Include="Content\js\bootstrap\dropdown.js" />
     <Content Include="Content\js\bootstrap\util.js" />
+    <Content Include="Content\js\jquery.lazyload.min.js" />
+    <Content Include="Content\js\magnific-popup\jquery.magnific-popup.js" />
+    <Content Include="Content\js\magnific-popup\jquery.magnific-popup.min.js" />
     <Content Include="Content\sass\base\_normalize.scss" />
     <Content Include="Content\sass\base\_print.scss" />
     <Content Include="Content\sass\base\_reboot.scss" />
@@ -672,6 +679,8 @@
     <Content Include="Views\Neighbor\Neighbor_list.cshtml" />
     <Content Include="Views\Neighbor\Neighbor_content.cshtml" />
     <Content Include="Scripts\src\jsx\m-matter.jsx" />
+    <Content Include="Views\Neighbor\Notice.cshtml" />
+    <Content Include="Content\sass\popup.scss" />
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -788,6 +797,8 @@
     <TypeScriptCompile Include="Scripts\typings\moment\moment.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\react-bootstrap\react-bootstrap.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\react-dom\react-dom.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\react-lazyload.ts" />
+    <TypeScriptCompile Include="Scripts\typings\react-lazyload.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\react\react-addons-update.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\react\react-global.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\react\react-mixin.d.ts" />
