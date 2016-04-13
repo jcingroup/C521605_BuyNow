@@ -103,6 +103,8 @@ namespace DotWeb.Api
                 item.state = md.state;
                 item.start_date = md.start_date;
                 item.end_date = md.end_date;
+                item.title = md.title;
+                item.price = md.price;
 
                 await db0.SaveChangesAsync();
                 rAjaxResult.result = true;

@@ -148,5 +148,7 @@
         start_date?: Date;
         end_date?: Date;
         state?: string;
+        title?: string;
+        price?: number;
     }
 } 

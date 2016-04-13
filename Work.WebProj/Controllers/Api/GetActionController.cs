@@ -17,6 +17,7 @@ using DotWeb.CommSetup;
 using System.Web;
 using ProcCore.WebCore;
 using DotWeb.Helpers;
+using LinqKit;
 
 namespace DotWeb.Api
 {
@@ -158,7 +159,27 @@ namespace DotWeb.Api
         }
 
         #endregion
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<IHttpActionResult> SearchMatter([FromUri]queryParam q)
+        {
+            db0 = getDB0();
+            var predicate = PredicateBuilder.True<Matter>();
 
+            if (q.city != null)
+                predicate = predicate.And(x => x.city == q.city);
+
+
+            var result = await db0.Matter.AsExpandable().Where(predicate).ToListAsync(); ;
+
+            return Ok(result);
+        }
+
+
+        public class queryParam
+        {
+            public string city { get; set; }
+        }
     }
     #region Parm
 

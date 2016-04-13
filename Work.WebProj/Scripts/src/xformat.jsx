@@ -1,7 +1,7 @@
 ﻿            outHtml = (
                 <div className="wrap">
                     <div className="filter">
-                        <form className="form-inline">
+                        <form className="form-inline" onSubmit={this.submitSearch}>
                             <div className="form-group">
                                 <label className="sr-only" htmlFor="">縣市</label>
                                 <div className="btn-group">
@@ -10,49 +10,30 @@
                                         <div className="row">
                                             <label className="col-xs-2 form-control-label text-xs-right" htmlFor="">北部</label>
                                             <div className="col-xs-10 input-inline-group">
-                                                <label className="c-input c-radio m-b-0">
-                                                    <input type="radio" />
-                                                    <span className="c-indicator" />
-                                                    北市
-                                                </label>
-                                                <label className="c-input c-radio m-b-0">
-                                                    <input type="radio" />
-                                                    <span className="c-indicator" />
-                                                    新北市
-                                                </label>
-                                                <label className="c-input c-radio m-b-0">
-                                                    <input type="radio" />
-                                                    <span className="c-indicator" />
-                                                    桃園市
-                                                </label>
-                                                <label className="c-input c-radio m-b-0">
-                                                    <input type="radio" />
-                                                    <span className="c-indicator" />
-                                                    竹市
-                                                </label>
-                                                <label className="c-input c-radio m-b-0">
-                                                    <input type="radio" />
-                                                    <span className="c-indicator" />
-                                                    竹縣
-                                                </label>
-                                                <label className="c-input c-radio m-b-0">
-                                                    <input type="radio" />
-                                                    <span className="c-indicator" />
-                                                    基隆
-                                                </label>
+                                                {
+                                                DT.twDistrict.map(function (item, i) {
+                                                    return (
+                                                                <label className="c-input c-radio m-b-0">
+                                                                <input type="radio" name="city"
+                                                                       value={item.city}
+                                                                       checked={this.state.search.city == item.city} />
+                                                                <span className="c-indicator" />{item.city}
+                                                                </label>);
+                                                }.bind(this))
+                                                }
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div className="form-group">
                                 <label className="sr-only" htmlFor="">總價</label>
                                 <div className="btn-group">
                                     <button aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" className="btn btn-secondary style2 dropdown-toggle" type="button">總價<i className="ti-angle-down" /></button>
                                     <div className="dropdown-menu price form-inline p-t-1">
                                         <div className="input-group">
-                                            <select className="form-control form-control-sm">
+                                            <select className="form-control form-control-sm" id="price_low">
                                                 <option value>0</option>
                                                 <option value>200</option>
                                                 <option value>400</option>
@@ -73,7 +54,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div className="form-group">
                                 <label className="sr-only" htmlFor="">坪數</label>
                                 <div className="btn-group">
@@ -137,10 +118,10 @@
                                     </div>
                                 </div>
                             </div>
-                            
-                            
+
+
                             <div className="form-group">
-                                <button className="btn btn-primary">搜　尋</button>
+                                <button type="submit" className="btn btn-primary">搜　尋</button>
                             </div>
                             <div id="collapse-other" className="collapse">
                                 <div className="card card-block">
@@ -469,7 +450,11 @@
                         </span>
                     </p>
                     <ol className="prolist row">
-                        <li className="pro">
+
+                        {
+                        this.state.lists.map(function (item, i) {
+                            return (
+                            <li className="pro">
                             <article className="card">
                                 <a className="card-img-top" href="/Sell/Content">
                                     <img alt="北大稀有輕豪宅" src="/Content/images/Sell/pro1.jpg" />
@@ -496,55 +481,20 @@
                                                 0 <span className="text-muted">室</span>
                                             </li>
                                         </ul>
-                                        <span className="price">
-                                            <strong className="text-danger">2, 980</strong>萬
-                                        </span>
+                    <span className="price">
+                        <strong className="text-danger">2, 980</strong>萬
+                    </span>
                                     </section>
-                                    <a className="more btn btn-secondary" href="/Sell/Content">
-                                        看更多
-                                        <i className="ti-angle-right" />
-                                    </a>
+                <a className="more btn btn-secondary" href="/Sell/Content">
+                    看更多
+                    <i className="ti-angle-right" />
+                </a>
                                 </div>
                             </article>
-                        </li>
-                        <li className="pro">
-                            <article className="card">
-                                <a className="card-img-top" href="/Sell/Content">
-                                    <img alt="北大稀有輕豪宅" src="/Content/images/Sell/pro1.jpg" />
-                                </a>
-                                <div className="card-block">
-                                    <h4 className="card-title"><a href="~/Sell/Content">北大稀有輕豪宅</a></h4>
-                                    <section className="card-text">
-                                        <h5 className="card-subtitle">高樓景觀屋況佳、格局方正採光佳</h5>
-                                        <ul className="feature list-inline">
-                                            <li>新北市樹林區中華路</li>
-                                            <li>電梯大樓</li>
-                                            <li>成屋</li>
-                                            <li>坡道平面車位</li>
-                                        </ul>
-                                        <ul className="info list-inline">
-                                            <li>49.27 <span className="text-muted">建坪</span></li>
-                                            <li>29.11 <span className="text-muted">主+陽</span></li>
-                                            <li>7.3 <span className="text-muted">年</span></li>
-                                            <li>14/16 <span className="text-muted">樓</span></li>
-                                            <li>
-                                                3 <span className="text-muted">房</span>
-                                                2 <span className="text-muted">廳</span>
-                                                2 <span className="text-muted">衛</span>
-                                                0 <span className="text-muted">室</span>
-                                            </li>
-                                        </ul>
-                                        <span className="price">
-                                            <strong className="text-danger">2, 980</strong>萬
-                                        </span>
-                                    </section>
-                                    <a className="more btn btn-secondary" href="~/Sell/Content">
-                                        看更多
-                                        <i className="ti-angle-right" />
-                                    </a>
-                                </div>
-                            </article>
-                        </li>
+                            </li>);
+                        })
+                        }
+
                     </ol>
                 </div>
             );

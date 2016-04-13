@@ -4,13 +4,17 @@ import Bootstrap = require('bootstrap');
 
 import React = require('react');
 import ReactDOM = require('react-dom');
+import DT = require('dt');
+import update = require('react-addons-update');
+import ReactBootstrap = require('react-bootstrap');
 
 namespace WWW {
 
     interface WWWState {
-        seacrh: {
-            city: Array<string>
-        }
+        search?: {
+            city: string
+        },
+        lists?: Array<server.Matter>
     }
 
     export class SellList extends React.Component<any, WWWState>{
@@ -21,30 +25,50 @@ namespace WWW {
             this.componentDidMount = this.componentDidMount.bind(this);
             this.componentDidUpdate = this.componentDidUpdate.bind(this);
             this.componentWillUnmount = this.componentWillUnmount.bind(this);
-            this.setSearchCity = this.setSearchCity.bind(this);
+            this.setSearchEventValue = this.setSearchEventValue.bind(this);
+            this.setSearchValue = this.setSearchValue.bind(this);
+            this.submitSearch = this.submitSearch.bind(this);
             this.state = {
-                seacrh: {
-                    city: []
-                }
+                search: {
+                    city: null
+                },
+                lists: []
             };
         }
 
         static defaultProps: BaseDefine.GridFormPropsBase = {
         }
         componentDidMount() {
-            //$('.dropdown-menu').click(function (e) {
-            //    e.stopPropagation();
-            //});
 
-            $('.dropdown-toggle').click(function (e) {
-                $('#collapse-other').collapse('hide');
+            var _this = this;
+
+            $.get(gb_approot + 'api/GetAction/SearchMatter', {})
+                .done((data, textStatus, jqXHRdata) => {
+                    _this.setState({ lists: data });
+                });
+
+
+            $('.dropdown-menu').click(function (e) {
+                e.stopPropagation();
             });
-            $('#collapse-other').on('show.bs.collapse', function () {
-                $('.btn[data-toggle="collapse"]').addClass('active');
-            });
-            $('#collapse-other').on('hide.bs.collapse', function () {
-                $('.btn[data-toggle="collapse"]').removeClass('active');
-            });
+
+            $('[name=city]').click(function (e) {
+                _this.setSearchValue('city', e);
+            })
+
+            $('#price_low').change(function (e) {
+                _this.setSearchValue('price_low', e);
+            })
+
+            //$('.dropdown-toggle').click(function (e) {
+            //    $('#collapse-other').collapse('hide');
+            //});
+            //$('#collapse-other').on('show.bs.collapse', function () {
+            //    $('.btn[data-toggle="collapse"]').addClass('active');
+            //});
+            //$('#collapse-other').on('hide.bs.collapse', function () {
+            //    $('.btn[data-toggle="collapse"]').removeClass('active');
+            //});
         }
         componentDidUpdate(prevProps, prevState) {
 
@@ -52,19 +76,55 @@ namespace WWW {
         componentWillUnmount() {
 
         }
-        setSearchCity(e: React.FormEvent) {
-            console.log(e);
-            let input: HTMLInputElement = e.target as HTMLInputElement;
-            alert(input.checked);
-        }
 
+        setSearchEventValue(name: string, e: React.SyntheticEvent) {
+            //console.log('Event');
+            let input: HTMLInputElement = e.target as HTMLInputElement;
+            let value;
+
+            if (input.value == 'true') {
+                value = true;
+            } else if (input.value == 'false') {
+                value = false;
+            } else {
+                value = input.value;
+            }
+            var objForUpdate = {
+                search:
+                {
+                    [name]: { $set: value }
+                }
+            };
+            var newState = update(this.state, objForUpdate);
+            this.setState(newState);
+        }
+        setSearchValue(name, e) {
+            var target = $(e.target);
+            var value = target.val();
+
+            var objForUpdate = {
+                search:
+                {
+                    [name]: { $set: value }
+                }
+            };
+            var newState = update(this.state, objForUpdate);
+            this.setState(newState);
+        }
+        submitSearch(e) {
+            e.preventDefault();
+            console.log(this.state.search);
+            return;
+        }
         render() {
 
             var outHtml: JSX.Element = null;
+
+            var DropdownButton = ReactBootstrap.DropdownButton;
             outHtml = (
                 <div className="wrap">
                     <div className="filter">
-                        <form className="form-inline">
+                        <form className="form-inline" onSubmit={this.submitSearch}>
                             <div className="form-group">
                                 <label className="sr-only" htmlFor="">縣市</label>
                                 <div className="btn-group">
@@ -73,31 +133,17 @@ namespace WWW {
                                         <div className="row">
                                             <label className="col-xs-2 form-control-label text-xs-right" htmlFor="">北部</label>
                                             <div className="col-xs-10 input-inline-group">
-                                                <label className="c-input c-radio m-b-0">
-                                                    <input type="radio" value="臺北市" onClick={this.setSearchCity} />
-                                                    <span className="c-indicator" />
-                                                    臺北市
-                                                </label>
-                                                <label className="c-input c-radio m-b-0">
-                                                    <input type="radio" onChange={this.setSearchCity} />
-                                                    <span className="c-indicator" />
-                                                    新北市
-                                                </label>
-                                                <label className="c-input c-radio m-b-0">
-                                                    <input type="radio" onChange={this.setSearchCity} />
-                                                    <span className="c-indicator" />
-                                                    桃園市
-                                                </label>
-                                                <label className="c-input c-radio m-b-0">
-                                                    <input type="radio" onChange={this.setSearchCity} />
-                                                    <span className="c-indicator" />
-                                                    新竹市
-                                                </label>
-                                                <label className="c-input c-radio m-b-0">
-                                                    <input type="radio" onChange={this.setSearchCity} />
-                                                    <span className="c-indicator" />
-                                                    新竹縣
-                                                </label>
+                                                {
+                                                    DT.twDistrict.map(function (item, i) {
+                                                        return (
+                                                            <label className="c-input c-radio m-b-0">
+                                                                <input type="radio" name="city"
+                                                                    value={item.city}
+                                                                    checked={this.state.search.city == item.city} />
+                                                                <span className="c-indicator" />{item.city}
+                                                            </label>);
+                                                    }.bind(this))
+                                                }
                                             </div>
                                         </div>
                                     </div>
@@ -110,7 +156,7 @@ namespace WWW {
                                     <button aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" className="btn btn-secondary style2 dropdown-toggle" type="button">總價<i className="ti-angle-down" /></button>
                                     <div className="dropdown-menu price form-inline p-t-1">
                                         <div className="input-group">
-                                            <select className="form-control form-control-sm">
+                                            <select className="form-control form-control-sm" id="price_low">
                                                 <option value>0</option>
                                                 <option value>200</option>
                                                 <option value>400</option>
@@ -198,7 +244,7 @@ namespace WWW {
 
 
                             <div className="form-group">
-                                <button className="btn btn-primary">搜　尋</button>
+                                <button type="submit" className="btn btn-primary">搜　尋</button>
                             </div>
                             <div id="collapse-other" className="collapse">
                                 <div className="card card-block">
@@ -527,85 +573,55 @@ namespace WWW {
                         </span>
                     </p>
                     <ol className="prolist row">
-                        <li className="pro">
-                            <article className="card">
-                                <a className="card-img-top" href="/Sell/Content">
-                                    <img alt="北大稀有輕豪宅" src="/Content/images/Sell/pro1.jpg" />
-                                </a>
-                                <div className="card-block">
-                                    <h4 className="card-title"><a href="~/Sell/Content">北大稀有輕豪宅</a></h4>
-                                    <section className="card-text">
-                                        <h5 className="card-subtitle">高樓景觀屋況佳、格局方正採光佳</h5>
-                                        <ul className="feature list-inline">
-                                            <li>新北市樹林區中華路</li>
-                                            <li>電梯大樓</li>
-                                            <li>成屋</li>
-                                            <li>坡道平面車位</li>
-                                        </ul>
-                                        <ul className="info list-inline">
-                                            <li>49.27 <span className="text-muted">建坪</span></li>
-                                            <li>29.11 <span className="text-muted">主+陽</span></li>
-                                            <li>7.3 <span className="text-muted">年</span></li>
-                                            <li>14/16 <span className="text-muted">樓</span></li>
-                                            <li>
-                                                3 <span className="text-muted">房</span>
-                                                2 <span className="text-muted">廳</span>
-                                                2 <span className="text-muted">衛</span>
-                                                0 <span className="text-muted">室</span>
-                                            </li>
-                                        </ul>
-                                        <span className="price">
-                                            <strong className="text-danger">2, 980</strong>萬
-                                        </span>
-                                    </section>
-                                    <a className="more btn btn-secondary" href="/Sell/Content">
-                                        看更多
-                                        <i className="ti-angle-right" />
-                                    </a>
-                                </div>
-                            </article>
-                        </li>
-                        <li className="pro">
-                            <article className="card">
-                                <a className="card-img-top" href="/Sell/Content">
-                                    <img alt="北大稀有輕豪宅" src="/Content/images/Sell/pro1.jpg" />
-                                </a>
-                                <div className="card-block">
-                                    <h4 className="card-title"><a href="~/Sell/Content">北大稀有輕豪宅</a></h4>
-                                    <section className="card-text">
-                                        <h5 className="card-subtitle">高樓景觀屋況佳、格局方正採光佳</h5>
-                                        <ul className="feature list-inline">
-                                            <li>新北市樹林區中華路</li>
-                                            <li>電梯大樓</li>
-                                            <li>成屋</li>
-                                            <li>坡道平面車位</li>
-                                        </ul>
-                                        <ul className="info list-inline">
-                                            <li>49.27 <span className="text-muted">建坪</span></li>
-                                            <li>29.11 <span className="text-muted">主+陽</span></li>
-                                            <li>7.3 <span className="text-muted">年</span></li>
-                                            <li>14/16 <span className="text-muted">樓</span></li>
-                                            <li>
-                                                3 <span className="text-muted">房</span>
-                                                2 <span className="text-muted">廳</span>
-                                                2 <span className="text-muted">衛</span>
-                                                0 <span className="text-muted">室</span>
-                                            </li>
-                                        </ul>
-                                        <span className="price">
-                                            <strong className="text-danger">2, 980</strong>萬
-                                        </span>
-                                    </section>
-                                    <a className="more btn btn-secondary" href="~/Sell/Content">
-                                        看更多
-                                        <i className="ti-angle-right" />
-                                    </a>
-                                </div>
-                            </article>
-                        </li>
+
+                        {
+                            this.state.lists.map(function (item, i) {
+                                return (
+                                    <li className="pro">
+                                        <article className="card">
+                                            <a className="card-img-top" href="/Sell/Content">
+                                                <img alt="北大稀有輕豪宅" src="/Content/images/Sell/pro1.jpg" />
+                                            </a>
+                                            <div className="card-block">
+                                                <h4 className="card-title"><a href="~/Sell/Content">{item.matter_name}</a></h4>
+                                                <section className="card-text">
+                                                    <h5 className="card-subtitle">{item.title}</h5>
+                                                    <ul className="feature list-inline">
+                                                        <li>{item.city + item.country + item.address}</li>
+                                                        <li>電梯大樓</li>
+                                                        <li>成屋</li>
+                                                        <li>坡道平面車位</li>
+                                                    </ul>
+                                                    <ul className="info list-inline">
+                                                        <li>{item.build_area} <span className="text-muted">建坪</span></li>
+                                                        <li>{item.house_area + item.balcony_area} <span className="text-muted">主+陽</span></li>
+                                                        <li>{item.age} <span className="text-muted">年</span></li>
+                                                        <li>14/16 <span className="text-muted">樓</span></li>
+                                                        <li>
+                                                            {item.bedrooms} <span className="text-muted">房</span>
+                                                            {item.livingrooms} <span className="text-muted">廳</span>
+                                                            {item.bathrooms} <span className="text-muted">衛</span>
+                                                            {item.rooms} <span className="text-muted">室</span>
+                                                        </li>
+                                                    </ul>
+                                                    <span className="price">
+                                                        <strong className="text-danger">{item.price / 10000}</strong>萬
+                                                    </span>
+                                                </section>
+                                                <a className="more btn btn-secondary" href="/Sell/Content">
+                                                    看更多
+                                                    <i className="ti-angle-right" />
+                                                </a>
+                                            </div>
+                                        </article>
+                                    </li>);
+                            })
+                        }
+
                     </ol>
                 </div>
             );
+
             return outHtml;
         }
     }

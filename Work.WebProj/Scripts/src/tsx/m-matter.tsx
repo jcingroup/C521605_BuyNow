@@ -322,7 +322,7 @@ namespace Matter {
             this.setState(newState);
         }
         changeAddress(data, e) {
-            console.log(data);
+            //console.log(data);
             if (data.type == 1) {
 
             }
@@ -462,13 +462,24 @@ namespace Matter {
 
                                 <div className="form-group">
                                     <label className="col-xs-1 control-label">物件名稱</label>
-                                    <div className="col-xs-5">
+                                    <div className="col-xs-3">
                                         <input type="text" className="form-control"
                                             onChange={this.changeFDValue.bind(this, 'matter_name') }
                                             value={field.matter_name}
                                             maxLength={64}
                                             required />
                                     </div>
+
+                                    <label className="col-xs-1 control-label">副標題</label>
+                                    <div className="col-xs-1">
+                                        <input type="text" className="form-control"
+                                            onChange={this.changeFDValue.bind(this, 'title') }
+                                            value={field.title}
+                                            maxLength={64}
+                                            required />
+                                    </div>
+
+
                                     <label className="col-xs-1 control-label">來源社區</label>
                                     <div className="col-xs-3">
                                         <select className="form-control"
@@ -702,6 +713,16 @@ namespace Matter {
                                             <option value="A">Active</option>
                                             <option value="C">Close</option>
                                         </select>
+                                    </div>
+
+
+
+                                    <label className="col-xs-1 control-label">售價</label>
+                                    <div className="col-xs-2">
+                                        <input type="text" className="form-control"
+                                            onChange={this.changeFDValue.bind(this, 'price') }
+                                            value={field.price}
+                                            />
                                     </div>
 
                                 </div>

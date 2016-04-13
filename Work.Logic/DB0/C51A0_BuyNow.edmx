@@ -146,6 +146,7 @@
           <Property Name="matter_id" Type="int" Nullable="false" />
           <Property Name="community_id" Type="int" Nullable="false" />
           <Property Name="matter_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="title" Type="nvarchar" MaxLength="64" />
           <Property Name="zip" Type="varchar" MaxLength="5" />
           <Property Name="city" Type="nvarchar" MaxLength="50" />
           <Property Name="country" Type="nvarchar" MaxLength="50" />
@@ -175,6 +176,7 @@
           <Property Name="state" Type="char" MaxLength="1" />
           <Property Name="start_date" Type="smalldatetime" />
           <Property Name="end_date" Type="smalldatetime" />
+          <Property Name="price" Type="int" />
         </EntityType>
         <EntityType Name="Menu">
           <Key>
@@ -567,6 +569,8 @@
           <Property Name="state" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
           <Property Name="start_date" Type="DateTime" Precision="0" />
           <Property Name="end_date" Type="DateTime" Precision="0" />
+          <Property Name="title" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="price" Type="Int32" />
         </EntityType>
         <EntityType Name="Community">
           <Key>
@@ -795,6 +799,8 @@
           <EntitySetMapping Name="Matter">
             <EntityTypeMapping TypeName="C51A0_BuyNowModel.Matter">
               <MappingFragment StoreEntitySet="Matter">
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="title" ColumnName="title" />
                 <ScalarProperty Name="end_date" ColumnName="end_date" />
                 <ScalarProperty Name="start_date" ColumnName="start_date" />
                 <ScalarProperty Name="state" ColumnName="state" />
