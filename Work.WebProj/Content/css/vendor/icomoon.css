@@ -1,10 +1,10 @@
 @font-face {
     font-family: 'icomoon';
-    src:    url('../../font/icomoon/icomoon.eot?k6dxeg');
-    src:    url('../../font/icomoon/icomoon.eot?k6dxeg#iefix') format('embedded-opentype'),
-        url('../../font/icomoon/icomoon.ttf?k6dxeg') format('truetype'),
-        url('../../font/icomoon/icomoon.woff?k6dxeg') format('woff'),
-        url('../../font/icomoon/icomoon.svg?k6dxeg#icomoon') format('svg');
+    src:    url('../../font/icomoon/icomoon.eot?ffi8tn');
+    src:    url('../../font/icomoon/icomoon.eot?ffi8tn#iefix') format('embedded-opentype'),
+        url('../../font/icomoon/icomoon.ttf?ffi8tn') format('truetype'),
+        url('../../font/icomoon/icomoon.woff?ffi8tn') format('woff'),
+        url('../../font/icomoon/icomoon.svg?ffi8tn#icomoon') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -24,6 +24,12 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-reading:before {
+    content: "\e90f";
+}
+.icon-view:before {
+    content: "\e910";
+}
 .icon-angle:before {
     content: "\e90e";
 }
@@ -65,6 +71,9 @@
 }
 .icon-vip:before {
     content: "\e90d";
+}
+.icon-book:before {
+    content: "\e911";
 }
 .icon-phone:before {
     content: "\e90b";
