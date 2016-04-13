@@ -1,0 +1,111 @@
+﻿@{
+    ViewBag.Title = "社區待售房屋";
+    ViewBag.BodyClass = "Neighbor Content Sell List";
+    Layout = "~/Views/Shared/Layout2.cshtml";
+}
+@section css {
+    <link rel="stylesheet" href="/Content/css/vendor/themify-icons.css">
+}
+
+<h1 class="h2 title">@ViewBag.Title</h1>
+<div id="content">
+    <div class="wrap">
+
+        <p class="clearfix">
+            <span class="result pull-xs-left">共有<strong class="text-danger">304</strong>間房屋</span>
+            <span class="pull-xs-right form-inline">
+                <label for="">排序方式：</label>
+                <select name="" id="" class="form-control form-control-sm">
+                    <option value="">預設排序</option> @* 以後台設定的排序為主 *@
+                    <option value="">更新時間新 → 舊</option> @* 以資料建立時間為主 *@
+                    <option value="">總價低 → 高</option>
+                    <option value="">總價高 → 低</option>
+                    <option value="">坪數低 → 高</option>
+                    <option value="">坪數高 → 低</option>
+                    <option value="">屋齡低 → 高</option>
+                    <option value="">屋齡高 → 低</option>
+                </select>
+            </span>
+        </p>
+
+        <ol class="prolist row">
+            <li class="pro">
+                <article class="card">
+                    <a href="~/Neighbor/Sell_content" class="card-img-top">
+                        <img data-original="@Url.Content("~/Content/images/Sell/pro1.jpg")" alt="北大稀有輕豪宅" class="lazy">
+                    </a>
+                    <div class="card-block">
+                        <h4 class="card-title"><a href="~/Neighbor/Sell_content">北大稀有輕豪宅</a></h4>
+                        <section class="card-text">
+                            <h5 class="card-subtitle">高樓景觀屋況佳、格局方正採光佳</h5>
+                            <ul class="feature list-inline">
+                                <li>新北市樹林區中華路</li>
+                                <li>電梯大樓</li>
+                                <li>成屋</li>
+                                <li>坡道平面車位</li>
+                            </ul>
+                            <ul class="info list-inline">
+                                <li>49.27 <span class="text-muted">建坪</span></li>
+                                <li>29.11 <span class="text-muted">主+陽</span></li>
+                                <li>7.3 <span class="text-muted">年</span></li>
+                                <li>14/16 <span class="text-muted">樓</span></li>
+                                <li>
+                                    3 <span class="text-muted">房</span>
+                                    2 <span class="text-muted">廳</span>
+                                    2 <span class="text-muted">衛</span>
+                                    0 <span class="text-muted">室</span>
+                                </li>
+                            </ul>
+                            <span class="price">
+                                <strong class="text-danger">2,980</strong>萬
+                            </span>
+                        </section>
+                        <a href="~/Neighbor/Sell_content" class="more btn btn-secondary">
+                            看更多
+                            <i class="ti-angle-right"></i>
+                        </a>
+                    </div>
+                </article>
+            </li>
+            <li class="pro">
+                <article class="card">
+                    <a href="~/Neighbor/Sell_content" class="card-img-top">
+                        <img data-original="@Url.Content("~/Content/images/Sell/pro1.jpg")" alt="北大稀有輕豪宅" class="lazy">
+                    </a>
+                    <div class="card-block">
+                        <h4 class="card-title"><a href="~/Neighbor/Sell_content">北大稀有輕豪宅</a></h4>
+                        <section class="card-text">
+                            <h5 class="card-subtitle">高樓景觀屋況佳、格局方正採光佳</h5>
+                            <ul class="feature list-inline">
+                                <li>新北市樹林區中華路</li>
+                                <li>電梯大樓</li>
+                                <li>成屋</li>
+                                <li>坡道平面車位</li>
+                            </ul>
+                            <ul class="info list-inline">
+                                <li>49.27 <span class="text-muted">建坪</span></li>
+                                <li>29.11 <span class="text-muted">主+陽</span></li>
+                                <li>7.3 <span class="text-muted">年</span></li>
+                                <li>14/16 <span class="text-muted">樓</span></li>
+                                <li>
+                                    3 <span class="text-muted">房</span>
+                                    2 <span class="text-muted">廳</span>
+                                    2 <span class="text-muted">衛</span>
+                                    0 <span class="text-muted">室</span>
+                                </li>
+                            </ul>
+                            <span class="price">
+                                <strong class="text-danger">2,980</strong>萬
+                            </span>
+                        </section>
+                        <a href="~/Neighbor/Sell_content" class="more btn btn-secondary">
+                            看更多
+                            <i class="ti-angle-right"></i>
+                        </a>
+                    </div>
+                </article>
+            </li>
+        </ol>
+
+    </div>
+</div>

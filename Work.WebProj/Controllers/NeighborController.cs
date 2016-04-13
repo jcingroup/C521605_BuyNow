@@ -24,6 +24,14 @@ namespace DotWeb.Controllers
         {
             return View("Notice");
         }
+        public ActionResult Sell_list()
+        {
+            return View("Neighbor_sell_list");
+        }
+        public ActionResult Sell_content()
+        {
+            return View("Neighbor_sell_content");
+        }
     }
 
 }
