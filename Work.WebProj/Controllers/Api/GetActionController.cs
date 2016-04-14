@@ -208,11 +208,24 @@ namespace DotWeb.Api
             public string list_src { get; set; }
 
         }
-
         public class queryParam
         {
             public string city { get; set; }
         }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<IHttpActionResult> GetMatter(int id)
+        {
+            db0 = getDB0();
+            var result = await db0.Matter.FindAsync(id);
+            result.community_name = result.Community.community_name;
+            var r = new ResultInfo<Matter>();
+            r.result = true;
+            r.data = result;
+            return Ok(r);
+        }
+
     }
     #region Parm
 

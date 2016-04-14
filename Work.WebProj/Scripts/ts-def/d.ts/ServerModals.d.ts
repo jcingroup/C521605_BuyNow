@@ -151,5 +151,8 @@
         title?: string;
         price?: number;
         list_src?: string;
+        sn?: string;
+
+        community_name?: string;
     }
 } 

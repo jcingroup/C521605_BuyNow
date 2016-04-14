@@ -283,7 +283,20 @@ export function MntV(date) {
     var r = date === null || date === undefined ? null : Moment(date);
     return r;
 }
-
+export function formatNumber (number) {
+    if (number == undefined || number == null) {
+        return '';
+    }
+    var snumber = number.toFixed(2) + '';
+    var x = snumber.split('.');
+    var x1 = x[0];
+    var x2 = x.length > 1 ? '.' + x[1] : '';
+    var rgx = /(\d+)(\d{3})/;
+    while (rgx.test(x1)) {
+        x1 = x1.replace(rgx, '$1' + ',' + '$2');
+    }
+    return x1;
+}
 export var Ajax = {
     /*
     Only javascript ajax call No JQuery

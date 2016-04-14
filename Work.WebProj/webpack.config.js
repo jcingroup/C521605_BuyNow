@@ -18,6 +18,7 @@ module.exports = {
         m_edit: path.resolve(__dirname, 'Scripts/src/tsx/m-edit.js'),
         m_edit_detail: path.resolve(__dirname, 'Scripts/src/tsx/m-edit_detail.js'),
         w_sell_list: path.resolve(__dirname, 'Scripts/src/tsx/w-sell-list.js'),
+        w_sell_content: path.resolve(__dirname, 'Scripts/src/tsx/w-sell-content.js'),
         vendors: ['jquery', 'react', 'react-dom', 'react-addons-update', 'react-bootstrap', 'moment'],
         //wwwcomm: ['jquery', 'react']
     },

@@ -48,6 +48,7 @@ namespace ProcCore.Business.DB0
         public Nullable<System.DateTime> end_date { get; set; }
         public string title { get; set; }
         public Nullable<int> price { get; set; }
+        public string sn { get; set; }
     
         public virtual Community Community { get; set; }
     }

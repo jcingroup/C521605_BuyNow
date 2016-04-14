@@ -510,6 +510,7 @@
     <Content Include="Scripts\build\app\m_roles.js" />
     <Content Include="Scripts\build\app\m_users.js" />
     <Content Include="Scripts\build\app\vendors.js" />
+    <Content Include="Scripts\build\app\w_sell_content.js" />
     <Content Include="Scripts\build\app\w_sell_list.js" />
     <Content Include="Scripts\cdn\BootSideMenu.js" />
     <Content Include="Scripts\cdn\bootstrap.min.js" />
@@ -764,6 +765,7 @@
     <TypeScriptCompile Include="app_modules\funtest\fun.ts" />
     <TypeScriptCompile Include="Scripts\src\tsx\m-change_password.tsx" />
     <TypeScriptCompile Include="Scripts\src\tsx\m-community-news.tsx" />
+    <TypeScriptCompile Include="Scripts\src\tsx\w-sell-content.tsx" />
     <TypeScriptCompile Include="Scripts\src\tsx\w-sell-list.tsx" />
     <TypeScriptCompile Include="Scripts\src\tsx\m-matter.tsx" />
     <TypeScriptCompile Include="Scripts\src\tsx\m-edit_detail.tsx" />
@@ -800,7 +802,6 @@
     <TypeScriptCompile Include="Scripts\typings\moment\moment.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\react-bootstrap\react-bootstrap.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\react-dom\react-dom.d.ts" />
-    <TypeScriptCompile Include="Scripts\typings\react-lazyload.ts" />
     <TypeScriptCompile Include="Scripts\typings\react-lazyload.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\react\react-addons-update.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\react\react-global.d.ts" />

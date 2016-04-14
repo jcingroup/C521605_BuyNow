@@ -105,7 +105,7 @@ namespace DotWeb.Api
                 item.end_date = md.end_date;
                 item.title = md.title;
                 item.price = md.price;
-
+                item.sn = md.sn;
                 await db0.SaveChangesAsync();
                 rAjaxResult.result = true;
             }

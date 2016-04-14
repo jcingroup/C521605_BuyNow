@@ -1,16 +1,23 @@
-﻿interface ReactLazyloadProps extends React.Props<ReactLazyloadClass> {
+﻿
+declare namespace ReactLazyload {
+    interface ReactLazyloadProps extends React.Props<ReactLazyloadClass> {
 
-}
-interface ReactLazyloadClass extends React.ComponentClass<ReactLazyloadProps> {
+    }
+    interface ReactLazyloadClass extends React.ComponentClass<ReactLazyloadProps> {
+    }
+    class Lazyload extends React.Component<ReactLazyloadProps, any> {
+
+    }
+
+    interface __ReactLazyload {
+        (): any
+        lazyload(): any
+        lazyload(p1: any): any
+    }
 }
 
-declare class ReactLazyload extends React.Component<ReactLazyloadProps, any> {
 
-}
-
-declare class __ReactLazyload {
-    createLazyLoad(): ReactLazyload
-}
 declare module 'react-lazyload' {
-    export = __ReactLazyload;
+    import moment= ReactLazyload.Lazyload;
+    export = moment;
 }

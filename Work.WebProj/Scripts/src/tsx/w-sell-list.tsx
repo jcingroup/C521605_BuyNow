@@ -7,7 +7,7 @@ import ReactDOM = require('react-dom');
 import DT = require('dt');
 import update = require('react-addons-update');
 import ReactBootstrap = require('react-bootstrap');
-import ReactLazyLoad = require('react-lazyload');
+import LazyLoad = require('react-lazyload');
 
 //import { LazyLoad } from "./react-lazyload";
 namespace WWW {
@@ -115,14 +115,17 @@ namespace WWW {
         }
         submitSearch(e) {
             e.preventDefault();
-            console.log(this.state.search);
+            $.get(gb_approot + 'api/GetAction/SearchMatter', this.state.search)
+                .done((data, textStatus, jqXHRdata) => {
+                    this.setState({ lists: data });
+                });
             return;
         }
         render() {
-
+            //console.log(LazyLoad);
             var outHtml: JSX.Element = null;
+            //var LazyLoad = ReactLazyLoad;
 
-            var DropdownButton = ReactBootstrap.DropdownButton;
             outHtml = (
                 <div className="wrap">
                     <div className="filter">

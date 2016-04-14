@@ -144,6 +144,7 @@
             <PropertyRef Name="matter_id" />
           </Key>
           <Property Name="matter_id" Type="int" Nullable="false" />
+          <Property Name="sn" Type="varchar" MaxLength="10" />
           <Property Name="community_id" Type="int" Nullable="false" />
           <Property Name="matter_name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="title" Type="nvarchar" MaxLength="64" />
@@ -571,6 +572,7 @@
           <Property Name="end_date" Type="DateTime" Precision="0" />
           <Property Name="title" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
           <Property Name="price" Type="Int32" />
+          <Property Name="sn" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Community">
           <Key>
@@ -799,6 +801,7 @@
           <EntitySetMapping Name="Matter">
             <EntityTypeMapping TypeName="C51A0_BuyNowModel.Matter">
               <MappingFragment StoreEntitySet="Matter">
+                <ScalarProperty Name="sn" ColumnName="sn" />
                 <ScalarProperty Name="price" ColumnName="price" />
                 <ScalarProperty Name="title" ColumnName="title" />
                 <ScalarProperty Name="end_date" ColumnName="end_date" />
