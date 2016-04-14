@@ -41,6 +41,9 @@ a {
     @include make-container();
     @include make-container-max-widths();
 
+    width: $wrap-min-width;
+    min-width: $wrap-min-width;
+
     position: relative;
 }
 
@@ -57,7 +60,7 @@ a {
     @include reset-text;
     margin: 0;
 
-    a {@include text-pic('logo.gif', 345px, 80px);}
+    > a {@include text-pic('logo.gif', 345px, 80px);}
 }
 
 
@@ -256,4 +259,6 @@ a {
 
         font-size: em(10px);
     }
+
+    @include media-breakpoint-down(xl) {right: 20px;}
 }
