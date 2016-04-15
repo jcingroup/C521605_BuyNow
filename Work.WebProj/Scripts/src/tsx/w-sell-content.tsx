@@ -40,6 +40,7 @@ namespace WWW {
                 .done((data: IResultData<server.Matter>, textStatus, jqXHRdata) => {
                     if (data.result) {
                         _this.setState({ item: data.data });
+                        $("img.lazy").lazyload({ effect: "fadeIn" });
                     } else {
                         alert(data.message);
                     }
@@ -236,18 +237,18 @@ namespace WWW {
                     <section className="grid-info" id="gallery">
                         <h3 className="h3">物件實景照片</h3>
                         <ol className="gallery row">
-                            <li><a className="img-thumbnail" href=""><img className="lazy" alt="" data-original="~/Content/images/Sell/pro1.jpg" /></a></li>
-                            <li><a className="img-thumbnail" href=""><img className="lazy" alt="" data-original="~/Content/images/Sell/pro1.jpg" /></a></li>
-                            <li><a className="img-thumbnail" href=""><img className="lazy" alt="" data-original="~/Content/images/Sell/pro1.jpg" /></a></li>
-                            <li><a className="img-thumbnail" href=""><img className="lazy" alt="" data-original="~/Content/images/Sell/pro1.jpg" /></a></li>
-                            <li><a className="img-thumbnail" href=""><img className="lazy" alt="" data-original="~/Content/images/Sell/pro1.jpg" /></a></li>
-                            <li><a className="img-thumbnail" href=""><img className="lazy" alt="" data-original="~/Content/images/Sell/pro1.jpg" /></a></li>
+                            <li><a className="img-thumbnail" href=""><img className="lazy" alt="" data-original="/Content/images/Sell/pro1.jpg" /></a></li>
+                            <li><a className="img-thumbnail" href=""><img className="lazy" alt="" data-original="/Content/images/Sell/pro1.jpg" /></a></li>
+                            <li><a className="img-thumbnail" href=""><img className="lazy" alt="" data-original="/Content/images/Sell/pro1.jpg" /></a></li>
+                            <li><a className="img-thumbnail" href=""><img className="lazy" alt="" data-original="/Content/images/Sell/pro1.jpg" /></a></li>
+                            <li><a className="img-thumbnail" href=""><img className="lazy" alt="" data-original="/Content/images/Sell/pro1.jpg" /></a></li>
+                            <li><a className="img-thumbnail" href=""><img className="lazy" alt="" data-original="/Content/images/Sell/pro1.jpg" /></a></li>
                         </ol>
                     </section>
                     <section className="grid-info" id="interior">
                         <h3 className="h3">格局圖</h3>
                         <p className="text-xs-center">
-                            <img className="img-thumbnail lazy" alt="" data-original="~/Content/images/Sell/interior.jpg" />
+                            <img className="img-thumbnail lazy" alt="" data-original="/Content/images/Sell/interior.jpg" />
                         </p>
                     </section>
                     <section className="grid-info" id="facility">
