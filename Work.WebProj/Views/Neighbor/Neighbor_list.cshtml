@@ -35,7 +35,7 @@
 
 	<div class="wrap">
 
-		<div class="filter">
+		@* <div class="filter">
 			<form action="" class="form-inline">
 				<div class="form-group">
 					<label for="" class="sr-only">縣市</label>
@@ -197,42 +197,67 @@
 							<label class="c-input c-checkbox">
 								<input type="checkbox">
 								<span class="c-indicator"></span>
-								桃園區
+								中壢區
 							</label>
 							<label class="c-input c-checkbox">
 								<input type="checkbox">
 								<span class="c-indicator"></span>
-								桃園區
+								蘆竹區
 							</label>
 							<label class="c-input c-checkbox">
 								<input type="checkbox">
 								<span class="c-indicator"></span>
-								桃園區
+								平鎮區
 							</label>
 							<label class="c-input c-checkbox">
 								<input type="checkbox">
 								<span class="c-indicator"></span>
-								桃園區
+								楊梅區
 							</label>
 							<label class="c-input c-checkbox">
 								<input type="checkbox">
 								<span class="c-indicator"></span>
-								桃園區
+								八德區
 							</label>
 							<label class="c-input c-checkbox">
 								<input type="checkbox">
 								<span class="c-indicator"></span>
-								桃園區
+								龜山區
 							</label>
 							<label class="c-input c-checkbox">
 								<input type="checkbox">
 								<span class="c-indicator"></span>
-								桃園區
+								大園區
+							</label>
+							<label class="c-input c-checkbox">
+								<input type="checkbox">
+								<span class="c-indicator"></span>
+								龍潭區
+							</label>
+							<label class="c-input c-checkbox">
+								<input type="checkbox">
+								<span class="c-indicator"></span>
+								大溪區
+							</label>
+							<label class="c-input c-checkbox">
+								<input type="checkbox">
+								<span class="c-indicator"></span>
+								新屋區
+							</label>
+							<label class="c-input c-checkbox">
+								<input type="checkbox">
+								<span class="c-indicator"></span>
+								觀音區
+							</label>
+							<label class="c-input c-checkbox">
+								<input type="checkbox">
+								<span class="c-indicator"></span>
+								復興區
 							</label>
 						</div>
 					</div>
 				</div>
-				@* <div class="form-group">
+				<!-- <div class="form-group">
 					<label for="" class="sr-only">類型</label>
 					<div class="btn-group">
 						<button type="button" class="btn btn-secondary style2 dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">類型<i class="ti-angle-down"></i></button>
@@ -357,7 +382,7 @@
 							</label>
 						</div>
 					</div>
-				</div> *@
+				</div> -->
 				<div class="form-group">
 					<label for="" class="sr-only">關鍵字</label>
 					<input type="text" class="form-control" placeholder="路/街/關鍵字">
@@ -369,7 +394,7 @@
 		</div>
 
 		<p class="clearfix">
-			<span class="result pull-xs-left">共有<strong class="text-danger">304</strong>間社區符合條件</span>
+			<span class="result pull-xs-left">共有<strong class="text-danger">2</strong>間社區符合條件</span>
 			<span class="pull-xs-right form-inline">
 				<label for="">排序方式：</label>
 				<select name="" id="" class="form-control form-control-sm">
@@ -381,12 +406,12 @@
 					<option value="">屋齡高 → 低</option>
 				</select>
 			</span>
-		</p>
+		</p> *@
 
 		<ol class="prolist row">
 			<li class="pro style2">
 				<article class="card">
-					<a href="~/Neighbor/Content" class="card-img-top">
+					<a href="~/Neighbor/Content" target="new" class="card-img-top">
 						<img data-original="@Url.Content("~/Content/images/Sell/pro1.jpg")" alt="桃園-國王城堡" class="lazy">
 					</a>
 					<div class="card-block">
@@ -401,10 +426,10 @@
 							<ul class="info list-inline">
 								<li><span class="text-muted">戶數</span> 107戶</li>
 								<li><span class="text-muted">管理方式</span> 警衛</li>
-								<li><span class="text-muted">屋齡</span> 8年</li>
+								<li><span class="text-muted">屋齡</span> 16年</li>
 							</ul>
 						</section>
-						<a href="~/Neighbor/Content" class="more btn btn-secondary btn-block">
+						<a href="~/Neighbor/Content" target="new" class="more btn btn-secondary btn-block">
 							看更多
 							<i class="ti-angle-right"></i>
 						</a>
@@ -413,11 +438,11 @@
 			</li>
 			<li class="pro style2">
 				<article class="card">
-					<a href="~/Neighbor/Content" class="card-img-top">
-						<img data-original="@Url.Content("~/Content/images/Sell/pro1.jpg")" alt="桃園-紐約大時代社區" class="lazy">
+					<a href="~/Neighbor/Content2" target="new" class="card-img-top">
+						<img data-original="@Url.Content("~/Content/images/Sell/pro2.jpg")" alt="桃園-紐約大時代社區" class="lazy">
 					</a>
 					<div class="card-block">
-						<h4 class="card-title"><a href="~/Neighbor/Content">桃園-紐約大時代社區</a></h4>
+						<h4 class="card-title"><a href="~/Neighbor/Content2">桃園-紐約大時代社區</a></h4>
 						<section class="card-text">
 							<h5 class="card-subtitle">桃園市桃園區大興西路二段69巷128號</h5>
 							<ul class="feature list-inline">
@@ -426,12 +451,12 @@
 								<li>近公園</li>
 							</ul>
 							<ul class="info list-inline">
-								<li><span class="text-muted">戶數</span> 436戶</li>
+								<li><span class="text-muted">戶數</span> 435戶</li>
 								<li><span class="text-muted">管理方式</span> 警衛</li>
-								<li><span class="text-muted">屋齡</span> 8年</li>
+								<li><span class="text-muted">屋齡</span> 5年</li>
 							</ul>
 						</section>
-						<a href="~/Neighbor/Content" class="more btn btn-secondary btn-block">
+						<a href="~/Neighbor/Content2" target="new" class="more btn btn-secondary btn-block">
 							看更多
 							<i class="ti-angle-right"></i>
 						</a>

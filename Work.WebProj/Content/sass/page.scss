@@ -386,6 +386,8 @@
 
 			.img-thumbnail {
 				display: block;
+				max-height: 250px;
+				overflow: hidden;
 			}
 		}
 	}

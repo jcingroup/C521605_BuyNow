@@ -9,7 +9,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>桃園-國王城堡-@ViewBag.Title::@Resources.Res.System_FrontName</title>
+    <title>@ViewBag.WebName-@ViewBag.Title::@Resources.Res.System_FrontName</title>
     <script src="~/Scripts/cdn/BrowerInfo.js"></script>
     <script>
         var gb_approot = '@Url.Content("~")';
@@ -29,7 +29,7 @@
 
                 <h1 class="logo">
                     <span class="parent">@Resources.Res.System_FrontName</span>
-                    <span class="child"><a href="~/Neighbor/Content">桃園-國王城堡 社區入口網</a></span>
+                    <span class="child"><a href="~/Neighbor/Content">@ViewBag.WebName 社區入口網</a></span>
                 </h1>
 
                 <ul class="topNav list-inline">
@@ -51,12 +51,22 @@
                         <li>
                             <a href="~/Neighbor/Content/#diary" class="scroll"><i class="icon-book"></i>社區日誌</a>
                         </li>
+                        @if (@ViewBag.BodyClass.IndexOf("pro1") >= 0 ) {
                         <li>
                             <a href="~/Neighbor/Sell_list"><i class="icon-house"></i>社區待售房屋</a>
                         </li>
                         <li>
                             <a href="~/Neighbor/Rent_list"><i class="icon-building"></i>社區待租房屋</a>
                         </li>
+                        }
+                        else if (@ViewBag.BodyClass.IndexOf("pro2") >= 0 ) {
+                        <li>
+                            <a href="~/Neighbor/Sell_list2"><i class="icon-house"></i>社區待售房屋</a>
+                        </li>
+                        <li>
+                            <a href="~/Neighbor/Rent_list2"><i class="icon-building"></i>社區待租房屋</a>
+                        </li>
+                        }
                         <li>
                             <a href="http://www.jojogo168.com/" target="new"><i class="icon-cart"></i>社區好康團購</a>
                         </li>

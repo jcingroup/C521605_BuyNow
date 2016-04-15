@@ -1,6 +1,7 @@
 ﻿@{
+	ViewBag.WebName = "桃園-國王城堡";
 	ViewBag.Title = "社區入口網";
-    ViewBag.BodyClass = "Neighbor Content";
+    ViewBag.BodyClass = "Neighbor Content pro1";
     Layout = "~/Views/Shared/Layout2.cshtml";
 }
 
@@ -53,7 +54,7 @@
 
 		<div id="intro">
 
-			<h2 class="h2 title">桃園-國王城堡</h2>
+			<h2 class="h2 title">@ViewBag.WebName</h2>
 
 			<dl class="grid-pro row m-b-3">
 				<dt class="thumb">
@@ -79,7 +80,7 @@
 							<a href="~/Neighbor/Sell_list" class="btn btn-lg btn-secondary style2">本社區待售房屋</a>
 						</li>
 						<li>
-							<a href="#" class="btn btn-lg btn-secondary style2">本社區待租房屋</a>
+							<a href="~/Neighbor/Rent_list" class="btn btn-lg btn-secondary style2">本社區待租房屋</a>
 						</li>
 						<li>
 							<a href="http://www.jojogo168.com/" target="new" class="btn btn-lg btn-secondary style2">好康團購</a>
@@ -111,14 +112,14 @@
 			<article class="article">
 				<h4 class="h4">迎賓大門</h4>
 				@* 如果有文字： *@
-				<p>本社區管理嚴謹，迎賓廳氣派大方，有美麗小中悅豪宅之稱，環保廚房免用瓦斯，桃園唯一全社區皆用環保式電熱式廚房、衛浴設備；公設有健身房,圖書室,視聽中心,遊戲室,空中花園,撞球室</p>
+				@* <p>本社區管理嚴謹，迎賓廳氣派大方，有美麗小中悅豪宅之稱，環保廚房免用瓦斯，桃園唯一全社區皆用環保式電熱式廚房、衛浴設備；公設有健身房,圖書室,視聽中心,遊戲室,空中花園,撞球室</p> *@
 				@* 如果有圖片(相簿)： *@
 				<ol class="gallery row">
-					<li><a href="~/Content/images/Neighbor/01.jpg" class="img-thumbnail"><img data-original="@Url.Content("~/Content/images/Neighbor/01.jpg")" alt="" class="lazy"></a></li>
-					<li><a href="~/Content/images/Neighbor/02.jpg" class="img-thumbnail"><img data-original="@Url.Content("~/Content/images/Neighbor/02.jpg")" alt="" class="lazy"></a></li>
-					<li><a href="~/Content/images/Neighbor/03.jpg" class="img-thumbnail"><img data-original="@Url.Content("~/Content/images/Neighbor/03.jpg")" alt="" class="lazy"></a></li>
-					<li><a href="~/Content/images/Neighbor/04.jpg" class="img-thumbnail"><img data-original="@Url.Content("~/Content/images/Neighbor/04.jpg")" alt="" class="lazy"></a></li>
-					<li><a href="~/Content/images/Neighbor/05.jpg" class="img-thumbnail"><img data-original="@Url.Content("~/Content/images/Neighbor/05.jpg")" alt="" class="lazy"></a></li>
+					<li><a href="~/Content/images/Neighbor/pro1/01.jpg" class="img-thumbnail"><img data-original="@Url.Content("~/Content/images/Neighbor/pro1/01.jpg")" alt="" class="lazy"></a></li>
+					<li><a href="~/Content/images/Neighbor/pro1/02.jpg" class="img-thumbnail"><img data-original="@Url.Content("~/Content/images/Neighbor/pro1/02.jpg")" alt="" class="lazy"></a></li>
+					<li><a href="~/Content/images/Neighbor/pro1/03.jpg" class="img-thumbnail"><img data-original="@Url.Content("~/Content/images/Neighbor/pro1/03.jpg")" alt="" class="lazy"></a></li>
+					<li><a href="~/Content/images/Neighbor/pro1/04.jpg" class="img-thumbnail"><img data-original="@Url.Content("~/Content/images/Neighbor/pro1/04.jpg")" alt="" class="lazy"></a></li>
+					<li><a href="~/Content/images/Neighbor/pro1/05.jpg" class="img-thumbnail"><img data-original="@Url.Content("~/Content/images/Neighbor/pro1/05.jpg")" alt="" class="lazy"></a></li>
 				</ol>
 			</article>
 
@@ -126,16 +127,16 @@
 				<h4 class="h4">社區公設</h4>
 				<p>本社區管理嚴謹，迎賓廳氣派大方，有美麗小中悅豪宅之稱，環保廚房免用瓦斯，桃園唯一全社區皆用環保式電熱式廚房、衛浴設備；公設有健身房,圖書室,視聽中心,遊戲室,空中花園,撞球室</p>
 				<ol class="gallery row">
-					<li><a href="~/Content/images/Neighbor/12.jpg" class="img-thumbnail"><img data-original="@Url.Content("~/Content/images/Neighbor/12.jpg")" alt="" class="lazy"></a></li>
-					<li><a href="~/Content/images/Neighbor/13.jpg" class="img-thumbnail"><img data-original="@Url.Content("~/Content/images/Neighbor/13.jpg")" alt="" class="lazy"></a></li>
-					<li><a href="~/Content/images/Neighbor/14.jpg" class="img-thumbnail"><img data-original="@Url.Content("~/Content/images/Neighbor/14.jpg")" alt="" class="lazy"></a></li>
-					<li><a href="~/Content/images/Neighbor/15.jpg" class="img-thumbnail"><img data-original="@Url.Content("~/Content/images/Neighbor/15.jpg")" alt="" class="lazy"></a></li>
-					<li><a href="~/Content/images/Neighbor/16.jpg" class="img-thumbnail"><img data-original="@Url.Content("~/Content/images/Neighbor/16.jpg")" alt="" class="lazy"></a></li>
-					<li><a href="~/Content/images/Neighbor/18.jpg" class="img-thumbnail"><img data-original="@Url.Content("~/Content/images/Neighbor/18.jpg")" alt="" class="lazy"></a></li>
-					<li><a href="~/Content/images/Neighbor/19.jpg" class="img-thumbnail"><img data-original="@Url.Content("~/Content/images/Neighbor/19.jpg")" alt="" class="lazy"></a></li>
-					<li><a href="~/Content/images/Neighbor/20.jpg" class="img-thumbnail"><img data-original="@Url.Content("~/Content/images/Neighbor/20.jpg")" alt="" class="lazy"></a></li>
-					<li><a href="~/Content/images/Neighbor/21.jpg" class="img-thumbnail"><img data-original="@Url.Content("~/Content/images/Neighbor/21.jpg")" alt="" class="lazy"></a></li>
-					<li><a href="~/Content/images/Neighbor/22.jpg" class="img-thumbnail"><img data-original="@Url.Content("~/Content/images/Neighbor/22.jpg")" alt="" class="lazy"></a></li>
+					<li><a href="~/Content/images/Neighbor/pro1/12.jpg" class="img-thumbnail"><img data-original="@Url.Content("~/Content/images/Neighbor/pro1/12.jpg")" alt="" class="lazy"></a></li>
+					<li><a href="~/Content/images/Neighbor/pro1/13.jpg" class="img-thumbnail"><img data-original="@Url.Content("~/Content/images/Neighbor/pro1/13.jpg")" alt="" class="lazy"></a></li>
+					<li><a href="~/Content/images/Neighbor/pro1/14.jpg" class="img-thumbnail"><img data-original="@Url.Content("~/Content/images/Neighbor/pro1/14.jpg")" alt="" class="lazy"></a></li>
+					<li><a href="~/Content/images/Neighbor/pro1/15.jpg" class="img-thumbnail"><img data-original="@Url.Content("~/Content/images/Neighbor/pro1/15.jpg")" alt="" class="lazy"></a></li>
+					<li><a href="~/Content/images/Neighbor/pro1/16.jpg" class="img-thumbnail"><img data-original="@Url.Content("~/Content/images/Neighbor/pro1/16.jpg")" alt="" class="lazy"></a></li>
+					<li><a href="~/Content/images/Neighbor/pro1/18.jpg" class="img-thumbnail"><img data-original="@Url.Content("~/Content/images/Neighbor/pro1/18.jpg")" alt="" class="lazy"></a></li>
+					<li><a href="~/Content/images/Neighbor/pro1/19.jpg" class="img-thumbnail"><img data-original="@Url.Content("~/Content/images/Neighbor/pro1/19.jpg")" alt="" class="lazy"></a></li>
+					<li><a href="~/Content/images/Neighbor/pro1/20.jpg" class="img-thumbnail"><img data-original="@Url.Content("~/Content/images/Neighbor/pro1/20.jpg")" alt="" class="lazy"></a></li>
+					<li><a href="~/Content/images/Neighbor/pro1/21.jpg" class="img-thumbnail"><img data-original="@Url.Content("~/Content/images/Neighbor/pro1/21.jpg")" alt="" class="lazy"></a></li>
+					<li><a href="~/Content/images/Neighbor/pro1/22.jpg" class="img-thumbnail"><img data-original="@Url.Content("~/Content/images/Neighbor/pro1/22.jpg")" alt="" class="lazy"></a></li>
 				</ol>
 			</article>
 

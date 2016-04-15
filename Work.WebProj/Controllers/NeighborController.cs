@@ -40,6 +40,20 @@ namespace DotWeb.Controllers
         {
             return View("Neighbor_rent_content");
         }
+
+        // 假資料用
+        public ActionResult Content2()
+        {
+            return View("Neighbor_content2");
+        }
+        public ActionResult Sell_list2()
+        {
+            return View("Neighbor_sell_list2");
+        }
+        public ActionResult Rent_list2()
+        {
+            return View("Neighbor_rent_list2");
+        }
     }
 
 }
