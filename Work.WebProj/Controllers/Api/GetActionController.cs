@@ -220,6 +220,20 @@ namespace DotWeb.Api
             db0 = getDB0();
             var result = await db0.Matter.FindAsync(id);
             result.community_name = result.Community.community_name;
+
+            var imgobj_MatterPhoto = getImgFiles("MatterPhoto", id.ToString(), "origin");
+
+            result.imgurl_MatterPhoto = imgobj_MatterPhoto.Select(x => x.src_path).ToArray();
+            if (imgobj_MatterPhoto.Count() > 0)
+            {
+                result.imgurl_MatterPhoto_1 = imgobj_MatterPhoto.FirstOrDefault().src_path;
+            }
+
+            var imgobj_MatterStyle = getImgFiles("MatterStyle", id.ToString(), "origin");
+            if (imgobj_MatterStyle.Count() > 0) {
+                result.imgurl_MatterStyle = imgobj_MatterStyle.FirstOrDefault().src_path;
+            }
+
             var r = new ResultInfo<Matter>();
             r.result = true;
             r.data = result;

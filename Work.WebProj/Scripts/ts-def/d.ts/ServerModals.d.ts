@@ -154,5 +154,9 @@
         sn?: string;
 
         community_name?: string;
+
+        imgurl_MatterPhoto_1?: string;
+        imgurl_MatterPhoto?: Array<string>;
+        imgurl_MatterStyle?: string;
     }
 } 

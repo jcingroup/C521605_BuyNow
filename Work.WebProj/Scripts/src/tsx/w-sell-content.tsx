@@ -26,7 +26,7 @@ namespace WWW {
             this.setSearchValue = this.setSearchValue.bind(this);
 
             this.state = {
-                item: {}
+                item: { imgurl_MatterPhoto:[] }
             };
         }
 
@@ -102,7 +102,7 @@ namespace WWW {
                     <dl className="grid-pro row">
                         <dt className="thumb">
                             <i className="img-thumbnail">
-                                <img className="lazy" alt="" data-original="~/Content/images/Sell/pro1.jpg" />
+                                <img className="lazy" alt="" data-original={item.imgurl_MatterPhoto_1} />
                             </i>
                             <a className="btn btn-secondary btn-sm scroll" href="#gallery">看更多實景照片</a>
                         </dt>
@@ -237,18 +237,19 @@ namespace WWW {
                     <section className="grid-info" id="gallery">
                         <h3 className="h3">物件實景照片</h3>
                         <ol className="gallery row">
-                            <li><a className="img-thumbnail" href=""><img className="lazy" alt="" data-original="/Content/images/Sell/pro1.jpg" /></a></li>
-                            <li><a className="img-thumbnail" href=""><img className="lazy" alt="" data-original="/Content/images/Sell/pro1.jpg" /></a></li>
-                            <li><a className="img-thumbnail" href=""><img className="lazy" alt="" data-original="/Content/images/Sell/pro1.jpg" /></a></li>
-                            <li><a className="img-thumbnail" href=""><img className="lazy" alt="" data-original="/Content/images/Sell/pro1.jpg" /></a></li>
-                            <li><a className="img-thumbnail" href=""><img className="lazy" alt="" data-original="/Content/images/Sell/pro1.jpg" /></a></li>
-                            <li><a className="img-thumbnail" href=""><img className="lazy" alt="" data-original="/Content/images/Sell/pro1.jpg" /></a></li>
+                            {
+                                this.state.item.imgurl_MatterPhoto.map(function (sub_item, i) {
+                                    return (
+                                        <li key={i}><a className="img-thumbnail" href=""><img className="lazy" alt="" data-original={sub_item} /></a></li>
+                                    );
+                                })
+                            }
                         </ol>
                     </section>
                     <section className="grid-info" id="interior">
                         <h3 className="h3">格局圖</h3>
                         <p className="text-xs-center">
-                            <img className="img-thumbnail lazy" alt="" data-original="/Content/images/Sell/interior.jpg" />
+                            <img className="img-thumbnail lazy" alt="" data-original={item.imgurl_MatterStyle} />
                         </p>
                     </section>
                     <section className="grid-info" id="facility">

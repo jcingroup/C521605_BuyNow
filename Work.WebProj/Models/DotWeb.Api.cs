@@ -261,7 +261,52 @@ namespace DotWeb.Api
 
             return null;
         }
+        protected IList<ApiGetFile> getImgFiles(string file_kind, string id, string size)
+        {
+            string up_path_tpl_o = "~/_Code/SysUpFiles/{0}/{1}/{2}";
+            string up_path_tpl_s = "~/_Code/SysUpFiles/{0}/{1}";
 
+            string web_path_size = string.Format(up_path_tpl_o, file_kind, id, size);
+            string server_path_size = System.Web.Hosting.HostingEnvironment.MapPath(web_path_size);
+
+
+            string file_json_web_path = string.Format(up_path_tpl_s, file_kind, id);
+            string file_json_server_path = System.Web.Hosting.HostingEnvironment.MapPath(file_json_web_path) + "\\file.json";
+
+            string web_path_s = string.Format(up_path_tpl_s, file_kind, id, size);
+            string server_path_s = System.Web.Hosting.HostingEnvironment.MapPath(web_path_s);
+
+            if (File.Exists(file_json_server_path))
+            {
+                var read_json = File.ReadAllText(file_json_server_path);
+                var get_file_json_object = JsonConvert.DeserializeObject<IList<JsonFileInfo>>(read_json).OrderBy(x => x.sort);
+
+                if (get_file_json_object != null)
+                {
+                    IList<ApiGetFile> ilits_file = new List<ApiGetFile>();
+                    foreach (var get_file_object in get_file_json_object)
+                    {
+                        string get_file = server_path_size + "//" + get_file_object.fileName;
+                        if (File.Exists(get_file))
+                        {
+                            FileInfo file_info = new FileInfo(get_file);
+                            ApiGetFile file_object = new ApiGetFile()
+                            {
+                                guid = get_file_object.guid,
+                                src_path = Url.Content(web_path_size + "/" + file_info.Name),
+                                size = file_info.Length,
+                            };
+
+                            ilits_file.Add(file_object);
+
+                        }
+                    }
+                    return ilits_file;
+                }
+            }
+
+            return null;
+        }
         protected class ApiGetFile
         {
             public string guid { get; set; }
