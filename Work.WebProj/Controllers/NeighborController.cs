@@ -32,6 +32,14 @@ namespace DotWeb.Controllers
         {
             return View("Neighbor_sell_content");
         }
+        public ActionResult Rent_list()
+        {
+            return View("Neighbor_rent_list");
+        }
+        public ActionResult Rent_content()
+        {
+            return View("Neighbor_rent_content");
+        }
     }
 
 }
