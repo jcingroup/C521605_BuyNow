@@ -106,6 +106,7 @@ namespace DotWeb.Api
                 item.title = md.title;
                 item.price = md.price;
                 item.sn = md.sn;
+                item.context_life = md.context_life;
                 await db0.SaveChangesAsync();
                 rAjaxResult.result = true;
             }
@@ -177,7 +178,8 @@ namespace DotWeb.Api
                     r.result = true;
                     return Ok(r);
                 }
-                else {
+                else
+                {
                     r.result = false;
                     r.message = Resources.Res.Log_Err_Delete_NotFind;
                     return Ok(r);

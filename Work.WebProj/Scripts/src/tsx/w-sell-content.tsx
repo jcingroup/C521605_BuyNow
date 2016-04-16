@@ -26,7 +26,7 @@ namespace WWW {
             this.setSearchValue = this.setSearchValue.bind(this);
 
             this.state = {
-                item: { imgurl_MatterPhoto:[] }
+                item: { imgurl_MatterPhoto: [] }
             };
         }
 
@@ -263,7 +263,7 @@ namespace WWW {
                     </section>
                     <section className="grid-info" id="location">
                         <h3 className="h3">地圖</h3>
-                        <iframe frameBorder={0} allowFullScreen src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3617.572889805967!2d121.37944231500457!3d24.94661608401328!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34681c740c32b2af%3A0x2ba1a4efce64b775!2zMjM45paw5YyX5biC5qi55p6X5Y2A5a245oiQ6LevNjU16Jmf!5e0!3m2!1szh-TW!2stw!4v1458115457215" id="map" />
+                        <iframe frameBorder={0} allowFullScreen src={'https://www.google.com/maps/embed/v1/place?key=AIzaSyAkdAGlHjUw6nKXSGHjL0HiLATRfCBnB_c&q=' + item.city + item.country + item.address} id="map" />
                     </section>
                 </div>
 

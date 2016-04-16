@@ -152,6 +152,7 @@
         price?: number;
         list_src?: string;
         sn?: string;
+        context_life?: string;
 
         community_name?: string;
 

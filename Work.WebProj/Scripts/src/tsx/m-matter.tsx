@@ -108,7 +108,9 @@ namespace Matter {
             this.queryGridData(1);
         }
         componentDidUpdate(prevProps, prevState) {
-
+            if ((prevState.edit_type == IEditType.none && (this.state.edit_type == IEditType.insert || this.state.edit_type == IEditType.update))) {
+                CKEDITOR.replace('context_life', { customConfig: '../ckeditor/inlineConfig.js' });
+            }
         }
         componentWillUnmount() {
             //元件被從 DOM 卸載之前執行，通常我們在這個方法清除一些不再需要地物件或 timer。
@@ -145,7 +147,7 @@ namespace Matter {
             e.preventDefault();
 
             //console.log(this.state.fieldData);
-
+            this.state.fieldData.context_life = CKEDITOR.instances['context_life'].getData();
             if (this.state.edit_type == 1) {
                 CommFunc.jqPost(this.props.apiPath, this.state.fieldData)
                     .done((data: CallResult, textStatus, jqXHRdata) => {
@@ -775,6 +777,15 @@ namespace Matter {
                                             />
                                     </div>
                                 </div>
+
+                                <div className="form-group">
+                                    <label className="col-xs-1 control-label">生活機能</label>
+                                    <div className="col-xs-11">
+                                        <textarea type="date" className="form-control" id="context_life" name="context_life"
+                                            value={field.context_life} onChange={this.changeFDValue.bind(this, 'context_life') }></textarea>
+                                    </div>
+                                </div>
+
 
 
                                 <div className="form-action">

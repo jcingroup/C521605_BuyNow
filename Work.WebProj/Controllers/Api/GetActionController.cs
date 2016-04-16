@@ -223,15 +223,32 @@ namespace DotWeb.Api
 
             var imgobj_MatterPhoto = getImgFiles("MatterPhoto", id.ToString(), "origin");
 
-            result.imgurl_MatterPhoto = imgobj_MatterPhoto.Select(x => x.src_path).ToArray();
-            if (imgobj_MatterPhoto.Count() > 0)
+            if (imgobj_MatterPhoto != null)
+            {
+                result.imgurl_MatterPhoto = imgobj_MatterPhoto.Select(x => x.src_path).ToArray();
+            }
+            else
+            {
+                result.imgurl_MatterPhoto = new string[] { };
+            }
+
+            if (imgobj_MatterPhoto != null && imgobj_MatterPhoto.Count() > 0)
             {
                 result.imgurl_MatterPhoto_1 = imgobj_MatterPhoto.FirstOrDefault().src_path;
             }
+            else
+            {
+                result.imgurl_MatterPhoto_1 = string.Empty;
+            }
 
             var imgobj_MatterStyle = getImgFiles("MatterStyle", id.ToString(), "origin");
-            if (imgobj_MatterStyle.Count() > 0) {
+            if (imgobj_MatterStyle != null && imgobj_MatterStyle.Count() > 0)
+            {
                 result.imgurl_MatterStyle = imgobj_MatterStyle.FirstOrDefault().src_path;
+            }
+            else
+            {
+                result.imgurl_MatterStyle = string.Empty;
             }
 
             var r = new ResultInfo<Matter>();

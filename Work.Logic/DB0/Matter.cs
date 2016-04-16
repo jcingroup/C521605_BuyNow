@@ -49,6 +49,7 @@ namespace ProcCore.Business.DB0
         public string title { get; set; }
         public Nullable<int> price { get; set; }
         public string sn { get; set; }
+        public string context_life { get; set; }
     
         public virtual Community Community { get; set; }
     }
