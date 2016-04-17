@@ -5957,6 +5957,8 @@ a:focus {
 }
 .grid-info .gallery li .img-thumbnail {
   display: block;
+  max-height: 250px;
+  overflow: hidden;
 }
 .grid-info .bulletin li::after {
   content: "";
