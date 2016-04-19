@@ -107,6 +107,12 @@ namespace DotWeb.Api
                 item.price = md.price;
                 item.sn = md.sn;
                 item.context_life = md.context_life;
+                item.map_iframe = md.map_iframe;
+                item.total_floor = md.total_floor;
+                item.site_floor = md.site_floor;
+                item.is_elevator = md.is_elevator;
+
+
                 await db0.SaveChangesAsync();
                 rAjaxResult.result = true;
             }

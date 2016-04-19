@@ -706,6 +706,14 @@ namespace Matter {
                                             checked={field.is_darkroom}
                                             />
                                     </div>
+
+                                    <label className="col-xs-1 control-label">電梯</label>
+                                    <div className="col-xs-2">
+                                        <input type="checkbox" className="form-control"
+                                            onChange={this.setInputValue.bind(this, this.props.fdName, 'is_elevator', !field.is_elevator) }
+                                            checked={field.is_elevator}
+                                            />
+                                    </div>
                                 </div>
                                 <div className="form-group">
                                     <label className="col-xs-1 control-label">外牆建材</label>
@@ -777,6 +785,37 @@ namespace Matter {
                                             />
                                     </div>
                                 </div>
+
+                                <div className="form-group">
+                                    <label className="col-xs-1 control-label">Map Iframe</label>
+                                    <div className="col-xs-2">
+                                        <input type="text" className="form-control"
+                                            onChange={this.changeFDValue.bind(this, 'map_iframe') }
+                                            value={field.map_iframe}
+                                            maxLength={4000}
+                                            />
+                                    </div>
+
+                                    <label className="col-xs-1 control-label">出售樓層</label>
+                                    <div className="col-xs-2">
+                                        <input type="number" className="form-control"
+                                            onChange={this.changeFDValue.bind(this, 'site_floor') }
+                                            value={field.site_floor}
+                                            />
+                                    </div>
+
+                                    <label className="col-xs-1 control-label">總樓層</label>
+                                    <div className="col-xs-2">
+                                        <input type="number" className="form-control"
+                                            onChange={this.changeFDValue.bind(this, 'total_floor') }
+                                            value={field.total_floor}
+                                            />
+                                    </div>
+
+
+                                </div>
+
+
 
                                 <div className="form-group">
                                     <label className="col-xs-1 control-label">生活機能</label>

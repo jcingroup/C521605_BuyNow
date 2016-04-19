@@ -17,8 +17,8 @@ namespace ProcCore.Business.DB0
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Community()
         {
-            this.Matter = new HashSet<Matter>();
             this.Community_News = new HashSet<Community_News>();
+            this.Matter = new HashSet<Matter>();
         }
     
         public int community_id { get; set; }
@@ -28,8 +28,8 @@ namespace ProcCore.Business.DB0
         public string intro { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Matter> Matter { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Community_News> Community_News { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Matter> Matter { get; set; }
     }
 }

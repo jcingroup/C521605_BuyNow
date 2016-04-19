@@ -767,7 +767,9 @@
     <TypeScriptCompile Include="app_modules\funtest\fun.ts" />
     <TypeScriptCompile Include="Scripts\src\tsx\m-change_password.tsx" />
     <TypeScriptCompile Include="Scripts\src\tsx\m-community-news.tsx" />
+    <TypeScriptCompile Include="Scripts\src\tsx\w-neighbor-content.tsx" />
     <TypeScriptCompile Include="Scripts\src\tsx\w-sell-content.tsx" />
+    <TypeScriptCompile Include="Scripts\src\tsx\w-neighbor-list.tsx" />
     <TypeScriptCompile Include="Scripts\src\tsx\w-sell-list.tsx" />
     <TypeScriptCompile Include="Scripts\src\tsx\m-matter.tsx" />
     <TypeScriptCompile Include="Scripts\src\tsx\m-edit_detail.tsx" />

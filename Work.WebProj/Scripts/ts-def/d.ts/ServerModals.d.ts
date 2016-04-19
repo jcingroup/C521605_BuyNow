@@ -153,6 +153,10 @@
         list_src?: string;
         sn?: string;
         context_life?: string;
+        map_iframe?: string;
+        total_floor?: number;
+        site_floor?: number;
+        is_elevator?: boolean;
 
         community_name?: string;
 

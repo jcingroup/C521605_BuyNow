@@ -103,10 +103,6 @@ namespace WWW {
                 EletypeOfHouse = (<span></span>);
             }
 
-
-            var is_elevator = item.is_elevator ? "有" : "無";
-
-
             outHtml = (
                 <div className="wrap">
                     <h2 className="h2 title">{item.matter_name}</h2>
@@ -158,10 +154,10 @@ namespace WWW {
                                     <li>
                                         <div className="row">
                                             <div className="grid">
-                                                <strong className="text-secondary">電梯：</strong>{is_elevator}
+                                                <strong className="text-secondary">電梯：</strong>有
                                             </div>
                                             <div className="grid">
-                                                <strong className="text-secondary">樓層/樓高：</strong>{item.site_floor}/{item.total_floor}樓
+                                                <strong className="text-secondary">樓層/樓高：</strong>14/16樓
                                             </div>
                                         </div>
                                     </li>
@@ -221,7 +217,7 @@ namespace WWW {
                                     <th scope="row">該層戶數</th>
                                     <td style={{ width: '30%' }}>該層{item.buildhouses}戶；共用2部電梯</td>
                                     <th scope="row" style={{ width: '15%' }}>出售樓層/總樓層</th>
-                                    <td>{item.site_floor}/{item.total_floor}樓</td>
+                                    <td>14/16樓</td>
                                 </tr>
                                 <tr>
                                     <th scope="row">類型</th>
@@ -269,11 +265,16 @@ namespace WWW {
                     </section>
                     <section className="grid-info" id="facility">
                         <h3 className="h3">生活機能</h3>
-                        <span  dangerouslySetInnerHTML={{ __html: item.context_life }}></span>
+                        <ul className="list-unstyled">
+                            <li><strong className="text-secondary">學校：</strong>鄰近大同國小、樹林國中。</li>
+                            <li><strong className="text-secondary">市場：</strong>鄰近彭厝市場</li>
+                            <li><strong className="text-secondary">公園：</strong>鎮前親子公園</li>
+                            <li><strong className="text-secondary">交通：</strong>捷運萬大線(預定) 彭福站步行 6 分鐘</li>
+                        </ul>
                     </section>
                     <section className="grid-info" id="location">
                         <h3 className="h3">地圖</h3>
-                        <span dangerouslySetInnerHTML={{ __html: item.map_iframe }}></span>
+                        <iframe frameBorder={0} allowFullScreen src={'https://www.google.com/maps/embed/v1/place?key=AIzaSyAkdAGlHjUw6nKXSGHjL0HiLATRfCBnB_c&q=' + item.city + item.country + item.address} id="map" />
                     </section>
                 </div>
 

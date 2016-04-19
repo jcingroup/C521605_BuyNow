@@ -15,7 +15,11 @@ namespace ProcCore.Business.DB0
     public partial class Matter
     {
         public int matter_id { get; set; }
+        public string sn { get; set; }
         public int community_id { get; set; }
+        public string matter_name { get; set; }
+        public string title { get; set; }
+        public string zip { get; set; }
         public string city { get; set; }
         public string country { get; set; }
         public string address { get; set; }
@@ -40,16 +44,16 @@ namespace ProcCore.Business.DB0
         public Nullable<bool> is_end { get; set; }
         public Nullable<bool> is_darkroom { get; set; }
         public string wall_materials { get; set; }
-        public string matter_name { get; set; }
-        public string zip { get; set; }
         public string info_type { get; set; }
         public string state { get; set; }
         public Nullable<System.DateTime> start_date { get; set; }
         public Nullable<System.DateTime> end_date { get; set; }
-        public string title { get; set; }
         public Nullable<int> price { get; set; }
-        public string sn { get; set; }
         public string context_life { get; set; }
+        public string map_iframe { get; set; }
+        public Nullable<int> total_floor { get; set; }
+        public Nullable<int> site_floor { get; set; }
+        public Nullable<bool> is_elevator { get; set; }
     
         public virtual Community Community { get; set; }
     }
