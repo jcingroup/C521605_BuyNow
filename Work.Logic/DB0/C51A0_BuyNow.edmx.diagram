@@ -18,10 +18,10 @@
         <AssociationConnector Association="C51A0_BuyNowModel.AspNetUserRoles" ManuallyRouted="false" />
         <AssociationConnector Association="C51A0_BuyNowModel.MenuRole" ManuallyRouted="false" />
         <EntityTypeShape EntityType="C51A0_BuyNowModel.Edit" Width="1.5" PointX="3.375" PointY="10.75" />
-        <EntityTypeShape EntityType="C51A0_BuyNowModel.Community" Width="1.5" PointX="0.75" PointY="16.875" />
-        <EntityTypeShape EntityType="C51A0_BuyNowModel.Community_News" Width="1.5" PointX="3" PointY="22.75" />
-        <AssociationConnector Association="C51A0_BuyNowModel.FK_Community_News_Community" />
         <EntityTypeShape EntityType="C51A0_BuyNowModel.Matter" Width="1.5" PointX="3" PointY="26" />
+        <EntityTypeShape EntityType="C51A0_BuyNowModel.Community_News" Width="1.5" PointX="3" PointY="18.125" />
+        <EntityTypeShape EntityType="C51A0_BuyNowModel.Community" Width="1.5" PointX="0.75" PointY="23.875" />
+        <AssociationConnector Association="C51A0_BuyNowModel.FK_Community_News_Community" />
         <AssociationConnector Association="C51A0_BuyNowModel.FK_Matter_Community" />
         </Diagram>
     </edmx:Diagrams>

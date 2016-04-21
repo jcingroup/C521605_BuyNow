@@ -49,6 +49,21 @@
           <Property Name="account" Type="varchar" MaxLength="64" />
           <Property Name="passwd" Type="varchar" MaxLength="64" />
           <Property Name="intro" Type="ntext" />
+          <Property Name="finish" Type="varchar" MaxLength="50" />
+          <Property Name="address" Type="nvarchar" MaxLength="50" />
+          <Property Name="typeOfBuild" Type="nvarchar" MaxLength="50" />
+          <Property Name="total_floor" Type="int" />
+          <Property Name="holders" Type="int" />
+          <Property Name="perOfHolder" Type="int" />
+          <Property Name="txt_manage" Type="ntext" />
+          <Property Name="txt_company" Type="ntext" />
+          <Property Name="txt_build" Type="ntext" />
+          <Property Name="txt_spot" Type="ntext" />
+          <Property Name="txt_public" Type="ntext" />
+          <Property Name="tel" Type="varchar" MaxLength="50" />
+          <Property Name="email" Type="varchar" MaxLength="50" />
+          <Property Name="contact" Type="nvarchar" MaxLength="50" />
+          <Property Name="age" Type="float" />
         </EntityType>
         <EntityType Name="Community_News">
           <Key>
@@ -509,13 +524,13 @@
             <End Role="Menu" EntitySet="Menu" />
           </AssociationSet>
           <EntitySet Name="Edit" EntityType="C51A0_BuyNowModel.Edit" />
-          <EntitySet Name="Community" EntityType="C51A0_BuyNowModel.Community" />
+          <EntitySet Name="Matter" EntityType="C51A0_BuyNowModel.Matter" />
           <EntitySet Name="Community_News" EntityType="C51A0_BuyNowModel.Community_News" />
+          <EntitySet Name="Community" EntityType="C51A0_BuyNowModel.Community" />
           <AssociationSet Name="FK_Community_News_Community" Association="C51A0_BuyNowModel.FK_Community_News_Community">
             <End Role="Community" EntitySet="Community" />
             <End Role="Community_News" EntitySet="Community_News" />
           </AssociationSet>
-          <EntitySet Name="Matter" EntityType="C51A0_BuyNowModel.Matter" />
           <AssociationSet Name="FK_Matter_Community" Association="C51A0_BuyNowModel.FK_Matter_Community">
             <End Role="Community" EntitySet="Community" />
             <End Role="Matter" EntitySet="Matter" />
@@ -538,43 +553,6 @@
           <Property Name="i_UpdateDateTime" Type="DateTime" Precision="3" />
           <Property Name="i_Lang" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
         </EntityType>
-        <EntityType Name="Community">
-          <Key>
-            <PropertyRef Name="community_id" />
-          </Key>
-          <Property Name="community_id" Type="Int32" Nullable="false" />
-          <Property Name="community_name" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
-          <Property Name="account" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
-          <Property Name="passwd" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Community_News" Relationship="C51A0_BuyNowModel.FK_Community_News_Community" FromRole="Community" ToRole="Community_News" />
-          <Property Name="intro" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Matter" Relationship="C51A0_BuyNowModel.FK_Matter_Community" FromRole="Community" ToRole="Matter" />
-          </EntityType>
-        <EntityType Name="Community_News">
-          <Key>
-            <PropertyRef Name="community_news_id" />
-          </Key>
-          <Property Name="community_news_id" Type="Int32" Nullable="false" />
-          <Property Name="community_id" Type="Int32" Nullable="false" />
-          <Property Name="title" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="context" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="start_date" Type="DateTime" Precision="0" />
-          <Property Name="end_date" Type="DateTime" Precision="0" />
-          <Property Name="state" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
-          <NavigationProperty Name="Community" Relationship="C51A0_BuyNowModel.FK_Community_News_Community" FromRole="Community_News" ToRole="Community" />
-        </EntityType>
-        <Association Name="FK_Community_News_Community">
-          <End Type="C51A0_BuyNowModel.Community" Role="Community" Multiplicity="1" />
-          <End Type="C51A0_BuyNowModel.Community_News" Role="Community_News" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Community">
-              <PropertyRef Name="community_id" />
-            </Principal>
-            <Dependent Role="Community_News">
-              <PropertyRef Name="community_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="Matter">
           <Key>
             <PropertyRef Name="matter_id" />
@@ -616,11 +594,63 @@
           <Property Name="price" Type="Int32" />
           <Property Name="context_life" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="map_iframe" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Community" Relationship="C51A0_BuyNowModel.FK_Matter_Community" FromRole="Matter" ToRole="Community" />
           <Property Name="total_floor" Type="Int32" />
           <Property Name="site_floor" Type="Int32" />
           <Property Name="is_elevator" Type="Boolean" />
+          <NavigationProperty Name="Community" Relationship="C51A0_BuyNowModel.FK_Matter_Community" FromRole="Matter" ToRole="Community" />
         </EntityType>
+        <EntityType Name="Community_News">
+          <Key>
+            <PropertyRef Name="community_news_id" />
+          </Key>
+          <Property Name="community_news_id" Type="Int32" Nullable="false" />
+          <Property Name="community_id" Type="Int32" Nullable="false" />
+          <Property Name="title" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="context" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="start_date" Type="DateTime" Precision="0" />
+          <Property Name="end_date" Type="DateTime" Precision="0" />
+          <Property Name="state" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Community" Relationship="C51A0_BuyNowModel.FK_Community_News_Community" FromRole="Community_News" ToRole="Community" />
+        </EntityType>
+        <EntityType Name="Community">
+          <Key>
+            <PropertyRef Name="community_id" />
+          </Key>
+          <Property Name="community_id" Type="Int32" Nullable="false" />
+          <Property Name="community_name" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="account" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="passwd" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="intro" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="finish" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="typeOfBuild" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="total_floor" Type="Int32" />
+          <Property Name="holders" Type="Int32" />
+          <Property Name="perOfHolder" Type="Int32" />
+          <Property Name="txt_manage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="txt_company" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="txt_build" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="txt_spot" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="txt_public" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="tel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="contact" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Community_News" Relationship="C51A0_BuyNowModel.FK_Community_News_Community" FromRole="Community" ToRole="Community_News" />
+          <NavigationProperty Name="Matter" Relationship="C51A0_BuyNowModel.FK_Matter_Community" FromRole="Community" ToRole="Matter" />
+          <Property Name="age" Type="Double" />
+        </EntityType>
+        <Association Name="FK_Community_News_Community">
+          <End Type="C51A0_BuyNowModel.Community" Role="Community" Multiplicity="1" />
+          <End Type="C51A0_BuyNowModel.Community_News" Role="Community_News" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Community">
+              <PropertyRef Name="community_id" />
+            </Principal>
+            <Dependent Role="Community_News">
+              <PropertyRef Name="community_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Matter_Community">
           <End Type="C51A0_BuyNowModel.Community" Role="Community" Multiplicity="1" />
           <End Type="C51A0_BuyNowModel.Matter" Role="Matter" Multiplicity="*" />
@@ -808,30 +838,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Community">
-            <EntityTypeMapping TypeName="C51A0_BuyNowModel.Community">
-              <MappingFragment StoreEntitySet="Community">
-                <ScalarProperty Name="intro" ColumnName="intro" />
-                <ScalarProperty Name="passwd" ColumnName="passwd" />
-                <ScalarProperty Name="account" ColumnName="account" />
-                <ScalarProperty Name="community_name" ColumnName="community_name" />
-                <ScalarProperty Name="community_id" ColumnName="community_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Community_News">
-            <EntityTypeMapping TypeName="C51A0_BuyNowModel.Community_News">
-              <MappingFragment StoreEntitySet="Community_News">
-                <ScalarProperty Name="state" ColumnName="state" />
-                <ScalarProperty Name="end_date" ColumnName="end_date" />
-                <ScalarProperty Name="start_date" ColumnName="start_date" />
-                <ScalarProperty Name="context" ColumnName="context" />
-                <ScalarProperty Name="title" ColumnName="title" />
-                <ScalarProperty Name="community_id" ColumnName="community_id" />
-                <ScalarProperty Name="community_news_id" ColumnName="community_news_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Matter">
             <EntityTypeMapping TypeName="C51A0_BuyNowModel.Matter">
               <MappingFragment StoreEntitySet="Matter">
@@ -875,6 +881,45 @@
                 <ScalarProperty Name="community_id" ColumnName="community_id" />
                 <ScalarProperty Name="sn" ColumnName="sn" />
                 <ScalarProperty Name="matter_id" ColumnName="matter_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Community_News">
+            <EntityTypeMapping TypeName="C51A0_BuyNowModel.Community_News">
+              <MappingFragment StoreEntitySet="Community_News">
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="end_date" ColumnName="end_date" />
+                <ScalarProperty Name="start_date" ColumnName="start_date" />
+                <ScalarProperty Name="context" ColumnName="context" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="community_id" ColumnName="community_id" />
+                <ScalarProperty Name="community_news_id" ColumnName="community_news_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Community">
+            <EntityTypeMapping TypeName="C51A0_BuyNowModel.Community">
+              <MappingFragment StoreEntitySet="Community">
+                <ScalarProperty Name="age" ColumnName="age" />
+                <ScalarProperty Name="contact" ColumnName="contact" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="tel" ColumnName="tel" />
+                <ScalarProperty Name="txt_public" ColumnName="txt_public" />
+                <ScalarProperty Name="txt_spot" ColumnName="txt_spot" />
+                <ScalarProperty Name="txt_build" ColumnName="txt_build" />
+                <ScalarProperty Name="txt_company" ColumnName="txt_company" />
+                <ScalarProperty Name="txt_manage" ColumnName="txt_manage" />
+                <ScalarProperty Name="perOfHolder" ColumnName="perOfHolder" />
+                <ScalarProperty Name="holders" ColumnName="holders" />
+                <ScalarProperty Name="total_floor" ColumnName="total_floor" />
+                <ScalarProperty Name="typeOfBuild" ColumnName="typeOfBuild" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="finish" ColumnName="finish" />
+                <ScalarProperty Name="intro" ColumnName="intro" />
+                <ScalarProperty Name="passwd" ColumnName="passwd" />
+                <ScalarProperty Name="account" ColumnName="account" />
+                <ScalarProperty Name="community_name" ColumnName="community_name" />
+                <ScalarProperty Name="community_id" ColumnName="community_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

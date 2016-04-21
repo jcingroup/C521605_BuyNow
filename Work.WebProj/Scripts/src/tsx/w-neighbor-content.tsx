@@ -11,10 +11,10 @@ declare var id: number;
 namespace WWW {
 
     interface WWWState {
-        item?: server.Matter
+        item?: server.Community
     }
 
-    export class SellContent extends React.Component<any, WWWState>{
+    export class CommunityContent extends React.Component<any, WWWState>{
 
         constructor() {
 
@@ -26,7 +26,7 @@ namespace WWW {
             this.setSearchValue = this.setSearchValue.bind(this);
 
             this.state = {
-                item: { imgurl_MatterPhoto: [] }
+                item: { imgurl_CommunityDoor: [] }
             };
         }
 
@@ -37,10 +37,45 @@ namespace WWW {
             var _this = this;
 
             $.get(gb_approot + 'api/GetAction/GetMatter', { id: id })
-                .done((data: IResultData<server.Matter>, textStatus, jqXHRdata) => {
+                .done((data: IResultData<server.Community>, textStatus, jqXHRdata) => {
                     if (data.result) {
                         _this.setState({ item: data.data });
                         $("img.lazy").lazyload({ effect: "fadeIn" });
+
+
+                        $(document).ready(function () {
+
+                            $('.gallery').each(function () { // the containers for all your galleries
+                                $(this).magnificPopup({
+                                    delegate: 'a', // the selector for gallery item
+                                    type: 'image',
+                                    gallery: {
+                                        enabled: true
+                                    }
+                                });
+                            });
+                            $('.pop').magnificPopup({
+                                type: 'iframe'
+                            });
+
+                            var swiper = new Swiper('.bulletin', {
+                                nextButton: '.swiper-button-next',
+                                prevButton: '.swiper-button-prev',
+                                speed: 1000,
+                                spaceBetween: 15
+                            });
+
+                        });
+
+                        if (window.location.hash) {
+                            $('html, body').animate({ scrollTop: 0 }, 0);
+                            var hash = window.location.hash;
+                            $('html, body').animate({
+                                scrollTop: $(hash).offset().top - 250
+                            }, 2000);
+                        }
+
+
                     } else {
                         alert(data.message);
                     }
@@ -93,190 +128,136 @@ namespace WWW {
             var outHtml: JSX.Element = null;
             var item = this.state.item;
 
-            var EletypeOfHouse;
-            if (item.typeOfHouse == 'F') {
-                EletypeOfHouse = (<span>大樓</span>);
-            }
-            else if (item.typeOfHouse == 'H') {
-                EletypeOfHouse = (<span>成屋</span>);
-            } else {
-                EletypeOfHouse = (<span></span>);
-            }
-
             outHtml = (
                 <div className="wrap">
-                    <h2 className="h2 title">{item.matter_name}</h2>
-                    <ol className="breadcrumb">
-                        <li><a href="~/Index">HOME</a></li>
-                        <li><a href="~/Sell/List">我要買房</a></li>
-                    </ol>
-                    <dl className="grid-pro row">
-                        <dt className="thumb">
-                            <i className="img-thumbnail">
-                                <img className="lazy" alt="" data-original={item.imgurl_MatterPhoto_1} />
-                            </i>
-                            <a className="btn btn-secondary btn-sm scroll" href="#gallery">看更多實景照片</a>
-                        </dt>
-                        <dd className="profile">
-                            <article>
-                                <h3 className="h4">
-                                    <span className="label label-sell">售</span>
-                                    新北市樹林區中華路
-                                    <small className="text-primary m-l-1">物件編號：{item.sn}</small>
-                                </h3>
+                    <div id="intro">
+                        <h2 className="h2 title">{}</h2>
+                        <dl className="grid-pro row m-b-3">
+                            <dt className="thumb">
+                                <i className="img-thumbnail">
+                                    <img className="lazy" data-original={''} />
+                                </i>
+                                <a className="btn btn-secondary btn-sm scroll" href="#gallery">看更多實景照片</a>
+                            </dt>
+                            <dd className="profile">
                                 <ul className="detail list-unstyled">
-                                    <li><strong className="text-secondary">總價：</strong><strong className="price text-danger">{CommFunc.formatNumber(item.price / 10000) }</strong>萬</li>
-                                    <li><strong className="text-secondary">建物登記：</strong>{item.build_area} 坪</li>
-                                    <li><strong className="text-secondary">每坪單價：</strong>{}24.3 萬</li>
-                                    <li><strong className="text-secondary">類型：</strong>{item.typeOfHouse}大樓、成屋</li>
-                                    <li><strong className="text-secondary">社區名稱：</strong>{item.community_name}</li>
-                                    <li><strong className="text-secondary">格局：</strong>{item.bedrooms}房 / {item.livingrooms}廳 / {item.bathrooms}衛 / {item.rooms}室</li>
-                                    <li>
-                                        <div className="row">
-                                            <div className="grid">
-                                                <strong className="text-secondary">主建物：</strong>{item.house_area} 坪
-                                            </div>
-                                            <div className="grid">
-                                                <strong className="text-secondary">土地登記：</strong>{item.land_area} 坪
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div className="row">
-                                            <div className="grid">
-                                                <strong className="text-secondary">屋齡：</strong>{item.age}年
-                                            </div>
-                                            <div className="grid">
-                                                <strong className="text-secondary">車位：</strong>{item.parking}
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div className="row">
-                                            <div className="grid">
-                                                <strong className="text-secondary">電梯：</strong>有
-                                            </div>
-                                            <div className="grid">
-                                                <strong className="text-secondary">樓層/樓高：</strong>14/16樓
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <p>高樓景觀屋況佳、格局方正採光佳、市場學區交通便利、優質社區平面車位</p>
-                                    </li>
+                                    <li><strong className="text-secondary">完工日期：</strong>{item.finish}</li>
+                                    <li><strong className="text-secondary">建物地址：</strong>桃園市桃園區莊二街1393號</li>
+                                    <li><strong className="text-secondary">建物型態：</strong>大樓</li>
+                                    <li><strong className="text-secondary">建物樓層：</strong>地上 14 層 / 地下 2 層</li>
+                                    <li><strong className="text-secondary">總戶數：</strong>107戶</li>
+                                    <li><strong className="text-secondary">同層戶數：</strong>2戶</li>
+                                    <li><strong className="text-secondary">管理方式：</strong>警衛</li>
+                                    <li><strong className="text-secondary">建設公司：</strong>大睦長昇建設</li>
+                                    <li><strong className="text-secondary">營造公司：</strong>大睦長昇建設</li>
                                 </ul>
                                 <ul className="more-info list-unstyled clearfix">
-                                    <li className="tel">
-                                        <h5 className="h5 m-b-0">來電預約賞屋</h5>
-                                        <strong>02-8765-4321</strong>
+                                    <li>
+                                        <a className="btn btn-lg btn-secondary style2" href="~/Neighbor/Sell_list">本社區待售房屋</a>
                                     </li>
                                     <li>
-                                        <a className="btn btn-lg btn-secondary style2 scroll" href="#interior">格局圖</a>
+                                        <a className="btn btn-lg btn-secondary style2" href="~/Neighbor/Rent_list">本社區待租房屋</a>
                                     </li>
                                     <li>
-                                        <a className="btn btn-lg btn-secondary style2 scroll" href="#location">地圖</a>
-                                    </li>
-                                    <li>
-                                        <a className="btn btn-lg btn-secondary style2 scroll" href="#facility">生活機能</a>
+                                        <a className="btn btn-lg btn-secondary style2" target="new" href="http://www.jojogo168.com/">好康團購</a>
                                     </li>
                                 </ul>
-                            </article>
-                        </dd>
-                    </dl>
-                    <section className="grid-info">
-                        <h3 className="h3">基本資料</h3>
-                        <table className="table table-striped">
-                            <tbody><tr>
-                                <th scope="row">地址</th>
-                                <td colSpan={3}>{item.city + item.country + item.address}</td>
-                            </tr>
-                                <tr>
-                                    <th scope="row">總價</th>
-                                    <td colSpan={3}>{CommFunc.formatNumber(item.price / 10000) } 萬</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">格局</th>
-                                    <td colSpan={3}>{item.bedrooms}房/ {item.livingrooms}廳/ {item.bedrooms}衛/ {item.rooms}室</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">建物登記</th>
-                                    <td colSpan={3}>4{item.build_area} 坪</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">土地登記</th>
-                                    <td colSpan={3}>
-                                        {item.land_area} 坪<br />
-                                        主建物 {item.house_area}坪　陽台 {item.balcony_area}坪　雨遮 {item.umbrella_aea}坪　公共設施 {item.public_area}坪
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">屋齡</th>
-                                    <td colSpan={3}>{item.age} 年</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">該層戶數</th>
-                                    <td style={{ width: '30%' }}>該層{item.buildhouses}戶；共用2部電梯</td>
-                                    <th scope="row" style={{ width: '15%' }}>出售樓層/總樓層</th>
-                                    <td>14/16樓</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">類型</th>
-                                    <td>{EletypeOfHouse}</td>
-                                    <th scope="row">朝向</th>
-                                    <td>{ item.orientation }</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">月管理費</th>
-                                    <td>{item.managementFeeOfMonth} 元</td>
-                                    <th scope="row">警衛管理</th>
-                                    <td>{item.guard}</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">建物結構</th>
-                                    <td>{item.architecture}</td>
-                                    <th scope="row">特殊格局</th>
-                                    <td>{item.is_end}{item.is_darkroom}</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">車位</th>
-                                    <td>{item.parking}</td>
-                                    <th scope="row">外牆建材</th>
-                                    <td>{item.wall_materials}</td>
-                                </tr>
-                            </tbody></table>
+                            </dd>
+                        </dl>
+                    </div>
+                    <section className="grid-info" id="feature">
+                        <h3 className="h3">社區特色</h3>
+                        <p>當代建築的文藝復興 貴族生活的精緻展現 高級住宅的品味、Fragonard 所設計的壯麗十八世紀庭園、加上讓人目不暇給的噴泉水瀑琉璃的裝點，讓千泉宮Tivoli成為羅馬最令人緬懷的繁華盛事。[國王的城堡]融合古典與現代建築美學、重塑 Tivoli 的建築經典，創造精睿的驚世內涵、雕琢傳世不朽的絢麗外觀，歌德式的尖塔式屋頂造型，黃金比例的建築身段，宮廷式露天中庭，[國王的城堡]兼具五星級飯店的尊榮與私人城堡的隱密，打造人人稱羨的21世紀新貴族優質生活。</p>
+                        <article className="article">
+                            <h4 className="h4">生活機能</h4>
+                            <ul className="list-unstyled">
+                                <li><strong className="text-secondary">交通：</strong>近未來五楊高架交流道樞紐，緊接中正路和中正北路，5分鐘上南崁交流道，交通四通八達超便利。</li>
+                                <li><strong className="text-secondary">生活：</strong>位於莊二街與中正路交叉口，尊爵大飯店旁，中正公園旁，樓下就有7-11，離桃園中正藝文特區5分鐘，生活機能性極佳，桃園房屋優質住宅區，交通便利，四面採光，優質生活圈，增值性極高</li>
+                            </ul>
+                        </article>
                     </section>
                     <section className="grid-info" id="gallery">
-                        <h3 className="h3">物件實景照片</h3>
-                        <ol className="gallery row">
-                            {
-                                this.state.item.imgurl_MatterPhoto.map(function (sub_item, i) {
-                                    return (
-                                        <li key={i}><a className="img-thumbnail" href=""><img className="lazy" alt="" data-original={sub_item} /></a></li>
-                                    );
-                                })
-                            }
-                        </ol>
+                        <h3 className="h3">社區實景．公設</h3>
+                        <article className="article">
+                            <h4 className="h4">迎賓大門</h4>
+                            <ol className="gallery row">
+                                <li><a className="img-thumbnail" href="~/Content/images/Neighbor/pro1/01.jpg"><img className="lazy" data-original={item.imgurl_CommunityList} /></a></li>
+                            </ol>
+                        </article>
+                        <article className="article">
+                            <h4 className="h4">社區公設</h4>
+                            <p>本社區管理嚴謹，迎賓廳氣派大方，有美麗小中悅豪宅之稱，環保廚房免用瓦斯，桃園唯一全社區皆用環保式電熱式廚房、衛浴設備；公設有健身房, 圖書室, 視聽中心, 遊戲室, 空中花園, 撞球室</p>
+                            <ol className="gallery row">
+                                <li><a className="img-thumbnail" href="~/Content/images/Neighbor/pro1/12.jpg"><img className="lazy" data-original={item.imgurl_CommunityPublic} /></a></li>
+
+                            </ol>
+                        </article>
                     </section>
-                    <section className="grid-info" id="interior">
-                        <h3 className="h3">格局圖</h3>
-                        <p className="text-xs-center">
-                            <img className="img-thumbnail lazy" alt="" data-original={item.imgurl_MatterStyle} />
-                        </p>
+                    <section className="grid-info" id="diary">
+                        <div className="clearfix">
+                            <ul className="pull-xs-right list-inline m-b-0">
+                                <li className="swiper-button-prev" />
+                                <li className="swiper-button-next" />
+                            </ul>
+                            <h3 className="h3">社區日誌</h3>
+                        </div>
+                        <div className="row">
+                            <div className="col-xs-5">
+                                <img className="img-thumbnail w-full" data-original={item.imgurl_CommunityList} />
+                            </div>
+                            <div className="bulletin col-xs-7 swiper-container">
+                                <div className="swiper-wrapper">
+                                    <ul className="swiper-slide list-unstyled">
+                                        <li>
+                                            <small className="date">2016-01-01</small>
+                                            <a className="pop" href="~/Neighbor/Notice">TitleTitle標題標題</a>
+                                        </li>
+
+                                    </ul>
+                                    <ul className="swiper-slide list-unstyled">
+                                        <li>
+                                            <small className="date">2016-01-01</small>
+                                            <a className="pop" href="~/Neighbor/Notice">TitleTitle標題標題</a>
+                                        </li>
+                                        <li>
+                                            <small className="date">2016-01-01</small>
+                                            <a className="pop" href="~/Neighbor/Notice">TitleTitle標題標題</a>
+                                        </li>
+                                        <li>
+                                            <small className="date">2016-01-01</small>
+                                            <a className="pop" href="~/Neighbor/Notice">TitleTitle標題標題</a>
+                                        </li>
+                                        <li>
+                                            <small className="date">2016-01-01</small>
+                                            <a className="pop" href="~/Neighbor/Notice">TitleTitle標題標題</a>
+                                        </li>
+                                        <li>
+                                            <small className="date">2016-01-01</small>
+                                            <a className="pop" href="~/Neighbor/Notice">TitleTitle標題標題</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
                     </section>
-                    <section className="grid-info" id="facility">
-                        <h3 className="h3">生活機能</h3>
-                        <ul className="list-unstyled">
-                            <li><strong className="text-secondary">學校：</strong>鄰近大同國小、樹林國中。</li>
-                            <li><strong className="text-secondary">市場：</strong>鄰近彭厝市場</li>
-                            <li><strong className="text-secondary">公園：</strong>鎮前親子公園</li>
-                            <li><strong className="text-secondary">交通：</strong>捷運萬大線(預定) 彭福站步行 6 分鐘</li>
-                        </ul>
-                    </section>
-                    <section className="grid-info" id="location">
-                        <h3 className="h3">地圖</h3>
-                        <iframe frameBorder={0} allowFullScreen src={'https://www.google.com/maps/embed/v1/place?key=AIzaSyAkdAGlHjUw6nKXSGHjL0HiLATRfCBnB_c&q=' + item.city + item.country + item.address} id="map" />
+                    <section className="grid-info" id="contact">
+                        <h3 className="h3">聯絡方式</h3>
+                        <div className="row">
+                            <div className="col-xs-5">
+                                <ul className="contact-list list-unstyled">
+                                    <li><strong className="text-secondary">地址：</strong>新北市樹林區學成路655號9樓</li>
+                                    <li><strong className="text-secondary">電話：</strong>02-3501-6715</li>
+                                    <li><strong className="text-secondary">E-mail：</strong>ahagentcom @gmail.com</li>
+                                    <li><strong className="text-secondary">聯絡人：</strong>X先生</li>
+                                </ul>
+                            </div>
+                            <div className="col-xs-7">
+                                <iframe frameBorder={0} allowFullScreen src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3617.572889805967!2d121.37944231500457!3d24.94661608401328!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34681c740c32b2af%3A0x2ba1a4efce64b775!2zMjM45paw5YyX5biC5qi55p6X5Y2A5a245oiQ6LevNjU16Jmf!5e0!3m2!1szh-TW!2stw!4v1458115457215" id="map" />
+                            </div>
+                        </div>
                     </section>
                 </div>
+
 
             );
 
@@ -286,4 +267,4 @@ namespace WWW {
 }
 
 var dom = document.getElementById('content');
-ReactDOM.render(<WWW.SellContent  />, dom); 
+//ReactDOM.render(<WWW.CommunityContent  />, dom); 

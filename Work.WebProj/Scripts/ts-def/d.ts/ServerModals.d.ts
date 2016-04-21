@@ -98,6 +98,26 @@
         account?: string;
         passwd?: string;
         intro?: string;
+        finish?: string;
+        address?: string;
+        typeOfBuild?: string;
+        total_floor?: number;
+        holders?: number;
+        perOfHolder?: number;
+        txt_manage?: string;
+        txt_company?: string;
+        txt_build?: string;
+        txt_spot?: string;
+        txt_public?: string;
+        tel?: string;
+        email?: string;
+        contact?: string;
+        age?: number;
+
+        list_src?: string;
+        imgurl_CommunityList?: string;
+        imgurl_CommunityDoor?: Array<string>;
+        imgurl_CommunityPublic?: Array<string>;
     }
     interface Community_News {
         community_news_id?: number;
@@ -157,11 +177,11 @@
         total_floor?: number;
         site_floor?: number;
         is_elevator?: boolean;
-
         community_name?: string;
-
         imgurl_MatterPhoto_1?: string;
         imgurl_MatterPhoto?: Array<string>;
         imgurl_MatterStyle?: string;
+
+
     }
 } 

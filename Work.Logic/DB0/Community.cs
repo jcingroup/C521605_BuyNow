@@ -26,6 +26,21 @@ namespace ProcCore.Business.DB0
         public string account { get; set; }
         public string passwd { get; set; }
         public string intro { get; set; }
+        public string finish { get; set; }
+        public string address { get; set; }
+        public string typeOfBuild { get; set; }
+        public Nullable<int> total_floor { get; set; }
+        public Nullable<int> holders { get; set; }
+        public Nullable<int> perOfHolder { get; set; }
+        public string txt_manage { get; set; }
+        public string txt_company { get; set; }
+        public string txt_build { get; set; }
+        public string txt_spot { get; set; }
+        public string txt_public { get; set; }
+        public string tel { get; set; }
+        public string email { get; set; }
+        public string contact { get; set; }
+        public Nullable<double> age { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Community_News> Community_News { get; set; }

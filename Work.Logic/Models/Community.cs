@@ -8,6 +8,9 @@ namespace ProcCore.Business.DB0
     [MetadataType(typeof(CommunityMetadata))]
     public partial class Community
     {
+        public string imgurl_CommunityList { get; set; }
+        public string[] imgurl_CommunityDoor { get; set; }
+        public string[] imgurl_CommunityPublic { get; set; }
         private class CommunityMetadata
         {
             [JsonIgnore()]

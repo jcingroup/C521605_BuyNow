@@ -96,7 +96,11 @@ namespace Community {
         }
         componentDidUpdate(prevProps, prevState) {
             if ((prevState.edit_type == IEditType.none && (this.state.edit_type == IEditType.insert || this.state.edit_type == IEditType.update))) {
-                CKEDITOR.replace('intro', { customConfig: '../ckeditor/inlineConfig.js' });
+                CKEDITOR.replace('txt_manage', { customConfig: '../ckeditor/inlineConfig.js' });
+                CKEDITOR.replace('txt_company', { customConfig: '../ckeditor/inlineConfig.js' });
+                CKEDITOR.replace('txt_build', { customConfig: '../ckeditor/inlineConfig.js' });
+                CKEDITOR.replace('txt_spot', { customConfig: '../ckeditor/inlineConfig.js' });
+                CKEDITOR.replace('txt_public', { customConfig: '../ckeditor/inlineConfig.js' });
             }
         }
         componentWillUnmount() {
@@ -133,7 +137,11 @@ namespace Community {
         handleSubmit(e: React.FormEvent) {
             e.preventDefault();
 
-            this.state.fieldData.intro = CKEDITOR.instances['intro'].getData();
+            this.state.fieldData.txt_manage = CKEDITOR.instances['txt_manage'].getData();
+            this.state.fieldData.txt_company = CKEDITOR.instances['txt_company'].getData();
+            this.state.fieldData.txt_build = CKEDITOR.instances['txt_build'].getData();
+            this.state.fieldData.txt_spot = CKEDITOR.instances['txt_spot'].getData();
+            this.state.fieldData.txt_public = CKEDITOR.instances['txt_public'].getData();
 
             if (this.state.edit_type == 1) {
                 CommFunc.jqPost(this.props.apiPath, this.state.fieldData)
@@ -381,6 +389,47 @@ namespace Community {
                         <h4 className="title"> {this.props.caption} 基本資料維護</h4>
                         <form className="form-horizontal" onSubmit={this.handleSubmit}>
                             <div className="col-xs-10">
+
+                                <div className="form-group">
+                                    <label className="col-xs-1 control-label">列表圖</label>
+                                    <div className="col-xs-3">
+                                        <CommCmpt.MasterImageUpload FileKind="CommunityList"
+                                            MainId={field.community_id}
+                                            ParentEditType={this.state.edit_type}
+                                            url_upload={gb_approot + 'Active/Matter/axFUpload'}
+                                            url_list={gb_approot + 'Active/Matter/axFList'}
+                                            url_delete={gb_approot + 'Active/Matter/axFDelete'}
+                                            url_sort={gb_approot + 'Active/Matter/axFSort'} />
+                                    </div>
+                                </div>
+
+                                <div className="form-group">
+                                    <label className="col-xs-1 control-label">迎賓大門</label>
+                                    <div className="col-xs-3">
+                                        <CommCmpt.MasterImageUpload FileKind="CommunityDoor"
+                                            MainId={field.community_id}
+                                            ParentEditType={this.state.edit_type}
+                                            url_upload={gb_approot + 'Active/Matter/axFUpload'}
+                                            url_list={gb_approot + 'Active/Matter/axFList'}
+                                            url_delete={gb_approot + 'Active/Matter/axFDelete'}
+                                            url_sort={gb_approot + 'Active/Matter/axFSort'} />
+                                    </div>
+                                </div>
+
+                                <div className="form-group">
+                                    <label className="col-xs-1 control-label">社區公設</label>
+                                    <div className="col-xs-3">
+                                        <CommCmpt.MasterImageUpload FileKind="CommunityPublic"
+                                            MainId={field.community_id}
+                                            ParentEditType={this.state.edit_type}
+                                            url_upload={gb_approot + 'Active/Matter/axFUpload'}
+                                            url_list={gb_approot + 'Active/Matter/axFList'}
+                                            url_delete={gb_approot + 'Active/Matter/axFDelete'}
+                                            url_sort={gb_approot + 'Active/Matter/axFSort'} />
+                                    </div>
+                                </div>
+
+
                                 <div className="form-group">
                                     <label className="col-xs-2 control-label">標題</label>
                                     <div className="col-xs-8">
@@ -389,6 +438,16 @@ namespace Community {
                                     </div>
                                     <small className="col-xs-2 text-danger">(必填) </small>
                                 </div>
+
+                                <div className="form-group">
+                                    <label className="col-xs-2 control-label">社區名稱</label>
+                                    <div className="col-xs-8">
+                                        <input type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'community_name') } value={field.community_name} maxLength={64}
+                                            required />
+                                    </div>
+                                    <small className="col-xs-2 text-danger">(必填) </small>
+                                </div>
+
 
                                 <div className="form-group">
                                     <label className="col-xs-2 control-label">登錄帳號</label>
@@ -414,11 +473,130 @@ namespace Community {
                                     <small className="col-xs-2 text-danger">(必填) </small>
                                 </div>
 
+
                                 <div className="form-group">
-                                    <label className="col-xs-1 control-label">內容</label>
+                                    <label className="col-xs-2 control-label">完工日期</label>
                                     <div className="col-xs-8">
-                                        <textarea type="date" className="form-control" id="intro" name="intro"
-                                            value={field.intro} onChange={this.changeFDValue.bind(this, 'intro') }></textarea>
+                                        <input type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'finish') } value={field.finish} maxLength={10}
+                                             />
+                                    </div>
+
+                                </div>
+
+                                <div className="form-group">
+                                    <label className="col-xs-2 control-label">建物地址</label>
+                                    <div className="col-xs-8">
+                                        <input type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'address') } value={field.address} maxLength={128}
+                                             />
+                                    </div>
+
+                                </div>
+
+                                <div className="form-group">
+                                    <label className="col-xs-2 control-label">建物樓層</label>
+                                    <div className="col-xs-8">
+                                        <input type="number" className="form-control" onChange={this.changeFDValue.bind(this, 'total_floor') } value={field.total_floor} 
+                                            />
+                                    </div>
+                                </div>
+
+                                <div className="form-group">
+                                    <label className="col-xs-2 control-label">總戶數</label>
+                                    <div className="col-xs-8">
+                                        <input type="number" className="form-control" onChange={this.changeFDValue.bind(this, 'holders') } value={field.holders}
+                                            />
+                                    </div>
+                                </div>
+
+                                <div className="form-group">
+                                    <label className="col-xs-2 control-label">同層戶數</label>
+                                    <div className="col-xs-8">
+                                        <input type="number" className="form-control" onChange={this.changeFDValue.bind(this, 'perOfHolder') } value={field.perOfHolder}
+                                            />
+                                    </div>
+                                </div>
+
+
+                                <div className="form-group">
+                                    <label className="col-xs-2 control-label">電話</label>
+                                    <div className="col-xs-8">
+                                        <input type="tel" className="form-control" onChange={this.changeFDValue.bind(this, 'tel') } value={field.tel}
+                                            />
+                                    </div>
+                                </div>
+
+                                <div className="form-group">
+                                    <label className="col-xs-2 control-label">E-mail</label>
+                                    <div className="col-xs-8">
+                                        <input type="email" className="form-control" onChange={this.changeFDValue.bind(this, 'email') } value={field.email}
+                                            />
+                                    </div>
+                                </div>
+
+                                <div className="form-group">
+                                    <label className="col-xs-2 control-label">聯絡人</label>
+                                    <div className="col-xs-8">
+                                        <input type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'contact') } value={field.contact}
+                                            />
+                                    </div>
+                                </div>
+
+                                <div className="form-group">
+                                    <label className="col-xs-2 control-label">屋齡</label>
+                                    <div className="col-xs-8">
+                                        <input type="number" className="form-control" onChange={this.changeFDValue.bind(this, 'age') } value={field.age}
+                                            />
+                                    </div>
+                                </div>
+
+
+                                <div className="form-group">
+                                    <label className="col-xs-2 control-label">建物型態</label>
+                                    <div className="col-xs-8">
+                                        <input type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'typeOfBuild') } value={field.typeOfBuild} maxLength={128}
+                                            />
+                                    </div>
+
+                                </div>
+
+
+                                <div className="form-group">
+                                    <label className="col-xs-1 control-label">管理方式</label>
+                                    <div className="col-xs-8">
+                                        <textarea className="form-control" id="txt_manage" name="txt_manage"
+                                            value={field.txt_manage} onChange={this.changeFDValue.bind(this, 'txt_manage') }></textarea>
+                                    </div>
+                                </div>
+
+                                <div className="form-group">
+                                    <label className="col-xs-1 control-label">管理方式</label>
+                                    <div className="col-xs-8">
+                                        <textarea className="form-control" id="txt_company" name="txt_company"
+                                            value={field.txt_company} onChange={this.changeFDValue.bind(this, 'txt_company') }></textarea>
+                                    </div>
+                                </div>
+
+                                <div className="form-group">
+                                    <label className="col-xs-1 control-label">管理方式</label>
+                                    <div className="col-xs-8">
+                                        <textarea className="form-control" id="txt_build" name="txt_build"
+                                            value={field.txt_build} onChange={this.changeFDValue.bind(this, 'txt_build') }></textarea>
+                                    </div>
+                                </div>
+
+                                <div className="form-group">
+                                    <label className="col-xs-1 control-label">社區特色</label>
+                                    <div className="col-xs-8">
+                                        <textarea className="form-control" id="txt_spot" name="txt_spot"
+                                            value={field.txt_spot} onChange={this.changeFDValue.bind(this, 'txt_spot') }></textarea>
+                                    </div>
+                                </div>
+
+                                <div className="form-group">
+                                    <label className="col-xs-1 control-label">txt_public</label>
+                                    <div className="col-xs-8">
+                                        <textarea className="form-control" id="txt_public" name="txt_public"
+                                            value={field.txt_public} onChange={this.changeFDValue.bind(this, 'txt_public') }></textarea>
                                     </div>
                                 </div>
 

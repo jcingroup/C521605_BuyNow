@@ -3,4 +3,6 @@
     mask(p: any): JQuery;
     unmask(): JQuery;
     lazyload({ });
+    magnificPopup({}): JQuery;
+
 }

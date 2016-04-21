@@ -510,6 +510,8 @@
     <Content Include="Scripts\build\app\m_roles.js" />
     <Content Include="Scripts\build\app\m_users.js" />
     <Content Include="Scripts\build\app\vendors.js" />
+    <Content Include="Scripts\build\app\w_neighbor_content.js" />
+    <Content Include="Scripts\build\app\w_neighbor_list.js" />
     <Content Include="Scripts\build\app\w_sell_content.js" />
     <Content Include="Scripts\build\app\w_sell_list.js" />
     <Content Include="Scripts\cdn\BootSideMenu.js" />
@@ -813,6 +815,7 @@
     <TypeScriptCompile Include="Scripts\typings\react\react.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\bootstrap\bootstrap.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\sortablejs.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\swiper\swiper.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\toastr\toastr.d.ts" />
   </ItemGroup>
   <ItemGroup>

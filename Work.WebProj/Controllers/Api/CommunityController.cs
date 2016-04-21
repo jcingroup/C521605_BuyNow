@@ -73,7 +73,24 @@ namespace DotWeb.Api
                 item.community_name = md.community_name;
                 item.account = md.account;
                 item.passwd = md.passwd;
-                item.intro = md.intro;
+                //item.intro = md.intro;
+
+                item.contact = md.contact;
+                item.email = md.email;
+                item.finish = md.finish;
+                item.tel = md.tel;
+                item.txt_build = md.txt_build;
+                item.txt_company = md.txt_company;
+                item.txt_manage = md.txt_manage;
+                item.txt_public = md.txt_public;
+                item.txt_spot = md.txt_spot;
+
+                item.address = md.address;
+                item.typeOfBuild = md.typeOfBuild;
+                item.total_floor = md.total_floor;
+                item.holders = md.holders;
+                item.perOfHolder = md.perOfHolder;
+                item.age = md.age;
 
                 await db0.SaveChangesAsync();
                 rAjaxResult.result = true;

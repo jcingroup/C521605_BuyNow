@@ -47,6 +47,7 @@ namespace WWW {
             $.get(gb_approot + 'api/GetAction/SearchMatter', {})
                 .done((data, textStatus, jqXHRdata) => {
                     _this.setState({ lists: data });
+                    $("img.lazy").lazyload({ effect: "fadeIn" });
                 });
 
 
