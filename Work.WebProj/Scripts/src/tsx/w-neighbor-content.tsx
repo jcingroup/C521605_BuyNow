@@ -27,7 +27,7 @@ namespace WWW {
             this.setSearchValue = this.setSearchValue.bind(this);
 
             this.state = {
-                item: { imgurl_CommunityDoor: [] },
+                item: { imgurl_CommunityDoor: [], imgurl_CommunityPublic: [] },
                 news: []
             };
         }
@@ -182,12 +182,28 @@ namespace WWW {
                         <article className="article">
                             <h4 className="h4">迎賓大門</h4>
                             <ol className="gallery row">
-                                <li><a className="img-thumbnail" href="~/Content/images/Neighbor/pro1/01.jpg"><img className="lazy" data-original={item.imgurl_CommunityList} /></a></li>
+                                {
+                                    item.imgurl_CommunityDoor.map(function (item, i) {
+                                        return (<li>
+                                            <a className="img-thumbnail" href={item}>
+                                                <img className="lazy" data-original={item} />
+                                            </a>
+                                        </li>);
+                                    })
+                                }
                             </ol>
                         </article>
                         <article className="article">
                             <h4 className="h4">社區公設</h4>
                             <span dangerouslySetInnerHTML={ { __html: item.txt_public } }></span>
+                            <ol className="gallery row">
+                                {
+                                    item.imgurl_CommunityPublic.map(function (item, i) {
+                                        return (
+                                            <li key={i}><a href={item} className="img-thumbnail"><img data-original={item} alt="" className="lazy" /></a></li>);
+                                    })
+                                }
+                            </ol>
                         </article>
                     </section>
                     <section className="grid-info" id="diary">
