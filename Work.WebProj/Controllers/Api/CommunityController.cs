@@ -79,9 +79,9 @@ namespace DotWeb.Api
                 item.email = md.email;
                 item.finish = md.finish;
                 item.tel = md.tel;
-                item.txt_build = md.txt_build;
-                item.txt_company = md.txt_company;
-                item.txt_manage = md.txt_manage;
+                item.build = md.build;
+                item.company = md.company;
+                item.manage = md.manage;
                 item.txt_public = md.txt_public;
                 item.txt_spot = md.txt_spot;
 
@@ -91,6 +91,11 @@ namespace DotWeb.Api
                 item.holders = md.holders;
                 item.perOfHolder = md.perOfHolder;
                 item.age = md.age;
+
+                item.over_floor = md.over_floor;
+                item.under_floor = md.under_floor;
+
+                item.map_iframe = md.map_iframe;
 
                 await db0.SaveChangesAsync();
                 rAjaxResult.result = true;
@@ -167,7 +172,8 @@ namespace DotWeb.Api
                     r.result = true;
                     return Ok(r);
                 }
-                else {
+                else
+                {
                     r.result = false;
                     r.message = Resources.Res.Log_Err_Delete_NotFind;
                     return Ok(r);

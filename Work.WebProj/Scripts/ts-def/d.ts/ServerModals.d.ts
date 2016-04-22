@@ -104,15 +104,19 @@
         total_floor?: number;
         holders?: number;
         perOfHolder?: number;
-        txt_manage?: string;
-        txt_company?: string;
-        txt_build?: string;
+        manage?: string;
+        company?: string;
+        build?: string;
         txt_spot?: string;
         txt_public?: string;
         tel?: string;
         email?: string;
         contact?: string;
         age?: number;
+
+        under_floor?: number;
+        over_floor?: number;
+        map_iframe?: string;
 
         list_src?: string;
         imgurl_CommunityList?: string;

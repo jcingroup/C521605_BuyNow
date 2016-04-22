@@ -278,7 +278,7 @@ namespace DotWeb.Api
                     community_name = x.community_name,
                     address = x.address,
                     holders = x.holders,
-                    txt_manage = x.txt_manage
+                    manage = x.manage
                 })
                 .ToListAsync(); ;
 
@@ -340,6 +340,31 @@ namespace DotWeb.Api
             r.result = true;
             r.data = result;
             return Ok(r);
+        }
+
+
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<IHttpActionResult> GetNewsList(int id)
+        {
+            db0 = getDB0();
+
+
+            var predicate = PredicateBuilder.True<Community_News>();
+            predicate = predicate.And(x => x.start_date <= DateTime.Now);
+            predicate = predicate.And(x => x.end_date >= DateTime.Now);
+            predicate = predicate.And(x => x.state == "A");
+            predicate = predicate.And(x => x.community_id == id);
+
+            var result = await db0.Community_News.AsExpandable()
+                .OrderByDescending(x => x.community_id)
+                .Where(predicate)
+                .ToListAsync();
+
+            //var r = new ResultInfo<Matter>();
+            //r.result = true;
+            //r.data = result;
+            return Ok(result);
         }
 
     }

@@ -55,15 +55,18 @@
           <Property Name="total_floor" Type="int" />
           <Property Name="holders" Type="int" />
           <Property Name="perOfHolder" Type="int" />
-          <Property Name="txt_manage" Type="ntext" />
-          <Property Name="txt_company" Type="ntext" />
-          <Property Name="txt_build" Type="ntext" />
+          <Property Name="manage" Type="nvarchar" MaxLength="50" />
+          <Property Name="company" Type="nvarchar" MaxLength="50" />
+          <Property Name="build" Type="nvarchar" MaxLength="50" />
           <Property Name="txt_spot" Type="ntext" />
           <Property Name="txt_public" Type="ntext" />
           <Property Name="tel" Type="varchar" MaxLength="50" />
           <Property Name="email" Type="varchar" MaxLength="50" />
           <Property Name="contact" Type="nvarchar" MaxLength="50" />
           <Property Name="age" Type="float" />
+          <Property Name="under_floor" Type="int" />
+          <Property Name="over_floor" Type="int" />
+          <Property Name="map_iframe" Type="varchar" MaxLength="4000" />
         </EntityType>
         <EntityType Name="Community_News">
           <Key>
@@ -627,17 +630,20 @@
           <Property Name="total_floor" Type="Int32" />
           <Property Name="holders" Type="Int32" />
           <Property Name="perOfHolder" Type="Int32" />
-          <Property Name="txt_manage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="txt_company" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="txt_build" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="manage" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="company" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="build" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="txt_spot" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="txt_public" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="tel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="contact" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="age" Type="Double" />
+          <Property Name="under_floor" Type="Int32" />
+          <Property Name="over_floor" Type="Int32" />
           <NavigationProperty Name="Community_News" Relationship="C51A0_BuyNowModel.FK_Community_News_Community" FromRole="Community" ToRole="Community_News" />
           <NavigationProperty Name="Matter" Relationship="C51A0_BuyNowModel.FK_Matter_Community" FromRole="Community" ToRole="Matter" />
-          <Property Name="age" Type="Double" />
+          <Property Name="map_iframe" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK_Community_News_Community">
           <End Type="C51A0_BuyNowModel.Community" Role="Community" Multiplicity="1" />
@@ -900,15 +906,18 @@
           <EntitySetMapping Name="Community">
             <EntityTypeMapping TypeName="C51A0_BuyNowModel.Community">
               <MappingFragment StoreEntitySet="Community">
+                <ScalarProperty Name="map_iframe" ColumnName="map_iframe" />
+                <ScalarProperty Name="over_floor" ColumnName="over_floor" />
+                <ScalarProperty Name="under_floor" ColumnName="under_floor" />
                 <ScalarProperty Name="age" ColumnName="age" />
                 <ScalarProperty Name="contact" ColumnName="contact" />
                 <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="tel" ColumnName="tel" />
                 <ScalarProperty Name="txt_public" ColumnName="txt_public" />
                 <ScalarProperty Name="txt_spot" ColumnName="txt_spot" />
-                <ScalarProperty Name="txt_build" ColumnName="txt_build" />
-                <ScalarProperty Name="txt_company" ColumnName="txt_company" />
-                <ScalarProperty Name="txt_manage" ColumnName="txt_manage" />
+                <ScalarProperty Name="build" ColumnName="build" />
+                <ScalarProperty Name="company" ColumnName="company" />
+                <ScalarProperty Name="manage" ColumnName="manage" />
                 <ScalarProperty Name="perOfHolder" ColumnName="perOfHolder" />
                 <ScalarProperty Name="holders" ColumnName="holders" />
                 <ScalarProperty Name="total_floor" ColumnName="total_floor" />

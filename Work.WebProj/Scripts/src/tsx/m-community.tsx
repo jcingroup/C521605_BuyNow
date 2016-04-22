@@ -96,9 +96,6 @@ namespace Community {
         }
         componentDidUpdate(prevProps, prevState) {
             if ((prevState.edit_type == IEditType.none && (this.state.edit_type == IEditType.insert || this.state.edit_type == IEditType.update))) {
-                CKEDITOR.replace('txt_manage', { customConfig: '../ckeditor/inlineConfig.js' });
-                CKEDITOR.replace('txt_company', { customConfig: '../ckeditor/inlineConfig.js' });
-                CKEDITOR.replace('txt_build', { customConfig: '../ckeditor/inlineConfig.js' });
                 CKEDITOR.replace('txt_spot', { customConfig: '../ckeditor/inlineConfig.js' });
                 CKEDITOR.replace('txt_public', { customConfig: '../ckeditor/inlineConfig.js' });
             }
@@ -136,10 +133,6 @@ namespace Community {
         }
         handleSubmit(e: React.FormEvent) {
             e.preventDefault();
-
-            this.state.fieldData.txt_manage = CKEDITOR.instances['txt_manage'].getData();
-            this.state.fieldData.txt_company = CKEDITOR.instances['txt_company'].getData();
-            this.state.fieldData.txt_build = CKEDITOR.instances['txt_build'].getData();
             this.state.fieldData.txt_spot = CKEDITOR.instances['txt_spot'].getData();
             this.state.fieldData.txt_public = CKEDITOR.instances['txt_public'].getData();
 
@@ -551,38 +544,63 @@ namespace Community {
 
 
                                 <div className="form-group">
+                                    <label className="col-xs-2 control-label">地上層數</label>
+                                    <div className="col-xs-8">
+                                        <input type="number" className="form-control" onChange={this.changeFDValue.bind(this, 'under_floor') } value={field.under_floor}
+                                            />
+                                    </div>
+                                </div>
+
+                                <div className="form-group">
+                                    <label className="col-xs-2 control-label">地下層數</label>
+                                    <div className="col-xs-8">
+                                        <input type="number" className="form-control" onChange={this.changeFDValue.bind(this, 'over_floor') } value={field.over_floor}
+                                            />
+                                    </div>
+                                </div>
+
+
+                                <div className="form-group">
                                     <label className="col-xs-2 control-label">建物型態</label>
                                     <div className="col-xs-8">
                                         <input type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'typeOfBuild') } value={field.typeOfBuild} maxLength={128}
                                             />
                                     </div>
-
                                 </div>
 
 
                                 <div className="form-group">
                                     <label className="col-xs-1 control-label">管理方式</label>
                                     <div className="col-xs-8">
-                                        <textarea className="form-control" id="txt_manage" name="txt_manage"
-                                            value={field.txt_manage} onChange={this.changeFDValue.bind(this, 'txt_manage') }></textarea>
+                                        <input type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'manage') } value={field.manage} maxLength={50}
+                                            />
                                     </div>
                                 </div>
 
                                 <div className="form-group">
-                                    <label className="col-xs-1 control-label">管理方式</label>
+                                    <label className="col-xs-1 control-label">建設公司</label>
                                     <div className="col-xs-8">
-                                        <textarea className="form-control" id="txt_company" name="txt_company"
-                                            value={field.txt_company} onChange={this.changeFDValue.bind(this, 'txt_company') }></textarea>
+                                        <input type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'company') } value={field.company} maxLength={50}
+                                            />
                                     </div>
                                 </div>
 
                                 <div className="form-group">
-                                    <label className="col-xs-1 control-label">管理方式</label>
+                                    <label className="col-xs-1 control-label">營造公司</label>
                                     <div className="col-xs-8">
-                                        <textarea className="form-control" id="txt_build" name="txt_build"
-                                            value={field.txt_build} onChange={this.changeFDValue.bind(this, 'txt_build') }></textarea>
+                                        <input type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'build') } value={field.build} maxLength={50}
+                                            />
                                     </div>
                                 </div>
+
+                                <div className="form-group">
+                                    <label className="col-xs-1 control-label">Map Iframe</label>
+                                    <div className="col-xs-8">
+                                        <input type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'map_iframe') } value={field.map_iframe} maxLength={4000}
+                                            />
+                                    </div>
+                                </div>
+
 
                                 <div className="form-group">
                                     <label className="col-xs-1 control-label">社區特色</label>
@@ -593,7 +611,7 @@ namespace Community {
                                 </div>
 
                                 <div className="form-group">
-                                    <label className="col-xs-1 control-label">txt_public</label>
+                                    <label className="col-xs-1 control-label">社區公設</label>
                                     <div className="col-xs-8">
                                         <textarea className="form-control" id="txt_public" name="txt_public"
                                             value={field.txt_public} onChange={this.changeFDValue.bind(this, 'txt_public') }></textarea>

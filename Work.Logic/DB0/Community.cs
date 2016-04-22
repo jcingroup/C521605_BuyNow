@@ -32,15 +32,18 @@ namespace ProcCore.Business.DB0
         public Nullable<int> total_floor { get; set; }
         public Nullable<int> holders { get; set; }
         public Nullable<int> perOfHolder { get; set; }
-        public string txt_manage { get; set; }
-        public string txt_company { get; set; }
-        public string txt_build { get; set; }
+        public string manage { get; set; }
+        public string company { get; set; }
+        public string build { get; set; }
         public string txt_spot { get; set; }
         public string txt_public { get; set; }
         public string tel { get; set; }
         public string email { get; set; }
         public string contact { get; set; }
         public Nullable<double> age { get; set; }
+        public Nullable<int> under_floor { get; set; }
+        public Nullable<int> over_floor { get; set; }
+        public string map_iframe { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Community_News> Community_News { get; set; }

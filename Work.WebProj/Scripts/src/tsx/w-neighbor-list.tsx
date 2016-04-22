@@ -140,7 +140,7 @@ namespace WWW {
                                                     </ul>
                                                     <ul className="info list-inline">
                                                         <li><span className="text-muted">戶數</span> {item.holders}戶</li>
-                                                        <li><span className="text-muted">管理方式</span> {item.txt_manage}</li>
+                                                        <li><span className="text-muted">管理方式</span> {item.manage}</li>
                                                         <li><span className="text-muted">屋齡</span> {item.age}年</li>
                                                     </ul>
                                                 </section>
