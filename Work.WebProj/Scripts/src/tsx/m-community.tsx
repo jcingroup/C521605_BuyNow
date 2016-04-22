@@ -422,16 +422,6 @@ namespace Community {
                                     </div>
                                 </div>
 
-
-                                <div className="form-group">
-                                    <label className="col-xs-2 control-label">標題</label>
-                                    <div className="col-xs-8">
-                                        <input type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'community_name') } value={field.community_name} maxLength={64}
-                                            required />
-                                    </div>
-                                    <small className="col-xs-2 text-danger">(必填) </small>
-                                </div>
-
                                 <div className="form-group">
                                     <label className="col-xs-2 control-label">社區名稱</label>
                                     <div className="col-xs-8">
@@ -570,7 +560,7 @@ namespace Community {
 
 
                                 <div className="form-group">
-                                    <label className="col-xs-1 control-label">管理方式</label>
+                                    <label className="col-xs-2 control-label">管理方式</label>
                                     <div className="col-xs-8">
                                         <input type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'manage') } value={field.manage} maxLength={50}
                                             />
@@ -578,7 +568,7 @@ namespace Community {
                                 </div>
 
                                 <div className="form-group">
-                                    <label className="col-xs-1 control-label">建設公司</label>
+                                    <label className="col-xs-2 control-label">建設公司</label>
                                     <div className="col-xs-8">
                                         <input type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'company') } value={field.company} maxLength={50}
                                             />
@@ -586,7 +576,7 @@ namespace Community {
                                 </div>
 
                                 <div className="form-group">
-                                    <label className="col-xs-1 control-label">營造公司</label>
+                                    <label className="col-xs-2 control-label">營造公司</label>
                                     <div className="col-xs-8">
                                         <input type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'build') } value={field.build} maxLength={50}
                                             />
@@ -594,7 +584,7 @@ namespace Community {
                                 </div>
 
                                 <div className="form-group">
-                                    <label className="col-xs-1 control-label">Map Iframe</label>
+                                    <label className="col-xs-2 control-label">Map Iframe</label>
                                     <div className="col-xs-8">
                                         <input type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'map_iframe') } value={field.map_iframe} maxLength={4000}
                                             />
@@ -603,7 +593,7 @@ namespace Community {
 
 
                                 <div className="form-group">
-                                    <label className="col-xs-1 control-label">社區特色</label>
+                                    <label className="col-xs-2 control-label">社區特色</label>
                                     <div className="col-xs-8">
                                         <textarea className="form-control" id="txt_spot" name="txt_spot"
                                             value={field.txt_spot} onChange={this.changeFDValue.bind(this, 'txt_spot') }></textarea>
@@ -611,7 +601,7 @@ namespace Community {
                                 </div>
 
                                 <div className="form-group">
-                                    <label className="col-xs-1 control-label">社區公設</label>
+                                    <label className="col-xs-2 control-label">社區公設</label>
                                     <div className="col-xs-8">
                                         <textarea className="form-control" id="txt_public" name="txt_public"
                                             value={field.txt_public} onChange={this.changeFDValue.bind(this, 'txt_public') }></textarea>
