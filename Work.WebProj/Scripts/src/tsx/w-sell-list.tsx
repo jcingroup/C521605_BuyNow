@@ -286,9 +286,6 @@ namespace WWW {
                                                     <h5 className="card-subtitle">{item.title}</h5>
                                                     <ul className="feature list-inline">
                                                         <li>{item.city + item.country + item.address}</li>
-                                                        <li>電梯大樓</li>
-                                                        <li>成屋</li>
-                                                        <li>坡道平面車位</li>
                                                     </ul>
                                                     <ul className="info list-inline">
                                                         <li>{item.build_area} <span className="text-muted">建坪</span></li>

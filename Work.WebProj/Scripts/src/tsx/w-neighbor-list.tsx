@@ -133,11 +133,6 @@ namespace WWW {
                                                 <h4 className="card-title"><a href={gb_approot + 'Neighbor/Content?id=' + item.community_id}>{item.community_name}</a></h4>
                                                 <section className="card-text">
                                                     <h5 className="card-subtitle">{item.address}</h5>
-                                                    <ul className="feature list-inline">
-                                                        <li>低公設</li>
-                                                        <li>近學校</li>
-                                                        <li>近公園</li>
-                                                    </ul>
                                                     <ul className="info list-inline">
                                                         <li><span className="text-muted">戶數</span> {item.holders}戶</li>
                                                         <li><span className="text-muted">管理方式</span> {item.manage}</li>
