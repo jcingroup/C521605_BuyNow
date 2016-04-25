@@ -16,7 +16,7 @@ namespace WWW {
     }
 
     export class CommunityContent extends React.Component<any, WWWState>{
-
+        
         constructor() {
 
             super();
@@ -65,6 +65,14 @@ namespace WWW {
                                 prevButton: '.swiper-button-prev',
                                 speed: 1000,
                                 spaceBetween: 15
+                            });
+
+                            var marquee = new Swiper('#marquee', {
+                                nextButton: '.swiper-button-next',
+                                prevButton: '.swiper-button-prev',
+                                autoplay: 2500,
+                                speed: 2000,
+                                slidesPerView: 'auto',
                             });
 
                         });
@@ -173,12 +181,81 @@ namespace WWW {
                             </dd>
                         </dl>
                     </div>
+                    <section className="grid-info">
+                        <div id="marquee" className="swiper-container">
+                            <ul className="swiper-wrapper list-unstyled">
+                                <li className="swiper-slide">
+                                    <a className="pop" href="/Neighbor/Notice">
+                                        <img src="/Content/images/Neighbor/ad1.jpg" />
+                                        <span className="title">黑枸杞美妍奇蹟飲</span>
+                                    </a>
+                                </li>
+                                <li className="swiper-slide">
+                                    <a className="pop" href="/Neighbor/Notice">
+                                        <img src="/Content/images/Neighbor/ad2.jpg" />
+                                        <span className="title">珪藻土超吸水肥皂盒</span>
+                                    </a>
+                                </li>
+                                <li className="swiper-slide">
+                                    <a className="pop" href="/Neighbor/Notice">
+                                        <img src="/Content/images/Neighbor/ad1.jpg" />
+                                        <span className="title">黑枸杞美妍奇蹟飲</span>
+                                    </a>
+                                </li>
+                                <li className="swiper-slide">
+                                    <a className="pop" href="/Neighbor/Notice">
+                                        <img src="/Content/images/Neighbor/ad2.jpg" />
+                                        <span className="title">珪藻土超吸水肥皂盒</span>
+                                    </a>
+                                </li>
+                                <li className="swiper-slide">
+                                    <a className="pop" href="/Neighbor/Notice">
+                                        <img src="/Content/images/Neighbor/ad1.jpg" />
+                                        <span className="title">黑枸杞美妍奇蹟飲</span>
+                                    </a>
+                                </li>
+                                <li className="swiper-slide">
+                                    <a className="pop" href="/Neighbor/Notice">
+                                        <img src="/Content/images/Neighbor/ad2.jpg" />
+                                        <span className="title">珪藻土超吸水肥皂盒</span>
+                                    </a>
+                                </li>
+                                <li className="swiper-slide">
+                                    <a className="pop" href="/Neighbor/Notice">
+                                        <img src="/Content/images/Neighbor/ad1.jpg" />
+                                        <span className="title">黑枸杞美妍奇蹟飲</span>
+                                    </a>
+                                </li>
+                                <li className="swiper-slide">
+                                    <a className="pop" href="/Neighbor/Notice">
+                                        <img src="/Content/images/Neighbor/ad2.jpg" />
+                                        <span className="title">珪藻土超吸水肥皂盒</span>
+                                    </a>
+                                </li>
+                                <li className="swiper-slide">
+                                    <a className="pop" href="/Neighbor/Notice">
+                                        <img src="/Content/images/Neighbor/ad1.jpg" />
+                                        <span className="title">黑枸杞美妍奇蹟飲</span>
+                                    </a>
+                                </li>
+                                <li className="swiper-slide">
+                                    <a className="pop" href="/Neighbor/Notice">
+                                        <img src="/Content/images/Neighbor/ad2.jpg" />
+                                        <span className="title">珪藻土超吸水肥皂盒</span>
+                                    </a>
+                                </li>
+                            </ul>
+                            <a className="swiper-button-prev" href="#"></a>
+                            <a className="swiper-button-next" href="#"></a>
+                        </div>
+                    </section>
                     <section className="grid-info" id="feature">
                         <h3 className="h3">社區特色</h3>
-                        <span dangerouslySetInnerHTML={ { __html: item.txt_spot } }></span>
+                        <p dangerouslySetInnerHTML={ { __html: item.txt_spot } }></p>
                     </section>
                     <section className="grid-info" id="gallery">
                         <h3 className="h3">社區實景．公設</h3>
+                        <p dangerouslySetInnerHTML={ { __html: item.txt_public } }></p>
                         <article className="article">
                             <h4 className="h4">迎賓大門</h4>
                             <ol className="gallery row">
@@ -195,7 +272,6 @@ namespace WWW {
                         </article>
                         <article className="article">
                             <h4 className="h4">社區公設</h4>
-                            <span dangerouslySetInnerHTML={ { __html: item.txt_public } }></span>
                             <ol className="gallery row">
                                 {
                                     item.imgurl_CommunityPublic.map(function (item, i) {
