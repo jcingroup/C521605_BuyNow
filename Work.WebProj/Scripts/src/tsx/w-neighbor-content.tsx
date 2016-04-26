@@ -16,7 +16,7 @@ namespace WWW {
     }
 
     export class CommunityContent extends React.Component<any, WWWState>{
-        
+
         constructor() {
 
             super();
@@ -42,8 +42,8 @@ namespace WWW {
                 .done((data: IResultData<server.Community>, textStatus, jqXHRdata) => {
                     if (data.result) {
                         _this.setState({ item: data.data });
+                        $('#community_name').text(data.data.community_name);
                         $("img.lazy").lazyload({ effect: "fadeIn" });
-
 
                         $(document).ready(function () {
 

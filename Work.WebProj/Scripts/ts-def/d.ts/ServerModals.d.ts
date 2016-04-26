@@ -174,12 +174,26 @@
         state?: string;
         title?: string;
         price?: number;
+
+        rentOfMonh?: number;
+
+        rent_management?: string;
+        rent_short_date?: string;
+        rent_cook?: string;
+        rent_pet?: string;
+        rent_identity?: string;
+        rent_sex?: string;
+        rent_start_date?: string;
+        rent_furniture?: string;
+        rent_equip?: string;
+
+
         list_src?: string;
         sn?: string;
         context_life?: string;
         map_iframe?: string;
         total_floor?: number;
-        site_floor?: number;
+        site_floor?: string;
         is_elevator?: boolean;
         community_name?: string;
         imgurl_MatterPhoto_1?: string;

@@ -111,7 +111,17 @@ namespace DotWeb.Api
                 item.total_floor = md.total_floor;
                 item.site_floor = md.site_floor;
                 item.is_elevator = md.is_elevator;
+                item.rentOfMonh = md.rentOfMonh;
 
+                item.rent_management = md.rent_management;
+                item.rent_short_date = md.rent_short_date;
+                item.rent_cook = md.rent_cook;
+                item.rent_pet = md.rent_pet;
+                item.rent_identity = md.rent_identity;
+                item.rent_sex = md.rent_sex;
+                item.rent_start_date = md.rent_start_date;
+                item.rent_furniture = md.rent_furniture;
+                item.rent_equip = md.rent_equip;
 
                 await db0.SaveChangesAsync();
                 rAjaxResult.result = true;

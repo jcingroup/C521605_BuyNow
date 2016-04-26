@@ -29,7 +29,7 @@
 
                 <h1 class="logo">
                     <span class="parent">@Resources.Res.System_FrontName</span>
-                    <span class="child"><a href="~/Neighbor/Content">@ViewBag.WebName 社區入口網</a></span>
+                    <span class="child"><a href="~/Neighbor/Content"><span id="community_name"></span> 社區入口網</a></span>
                 </h1>
 
                 <ul class="topNav list-inline">
@@ -80,13 +80,9 @@
         </header><!-- header //-->
 
         <main id="main">
-
-            <h1 class="sr-only">桃園-國王城堡-@ViewBag.Title::@Resources.Res.System_FrontName</h1>
-
+            <h1 class="sr-only">@ViewBag.Title::@Resources.Res.System_FrontName</h1>
             @RenderBody()
-
         </main>
-
     </div><!-- wrapper //-->
 
     <footer id="footer">

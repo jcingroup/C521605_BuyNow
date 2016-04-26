@@ -1,32 +1,26 @@
 ﻿@{
-	ViewBag.Title = "我要租房";
+    ViewBag.Title = "我要租房";
     ViewBag.BodyClass = "Rent";
     Layout = "~/Views/Shared/Layout.cshtml";
 }
-
 @section css {
     <link rel="stylesheet" href="/Content/css/vendor/themify-icons.css">
 }
 @section Scripts {
-    <script src="~/Content/js/bootstrap/util.js"></script>
-    <script src="~/Content/js/bootstrap/dropdown.js"></script>
-    @* <script src="~/Content/js/bootstrap/collapse.js"></script> *@
-
     <script>
-        // Fix input element click problem
-        $('.dropdown-menu').click(function (e) {
-            e.stopPropagation();
-        });
+        var info_type = 'R';
     </script>
+    <script src="~/Scripts/build/app/vendors.js"></script>
+    <script src="~/Scripts/build/app/w_sell_list.js"></script>
 }
 
 <h2 class="h2 title">@ViewBag.Title</h2>
 
 <div id="content">
+    <!--
+    <div class="wrap">
 
-	<div class="wrap">
-
-	<div class="filter">
+        <div class="filter">
             <form action="" class="form-inline">
                 <div class="form-group">
                     <label for="" class="sr-only">縣市</label>
@@ -364,76 +358,76 @@
                 </select>
             </span>
         </p>
-	
-		<ol class="prolist row">
-			<li class="pro">
-				<article class="card">
-					<a href="~/Rent/Content" class="card-img-top">
-						<img src="~/Content/images/Sell/pro1.jpg" alt="北大稀有輕豪宅">
-					</a>
-					<div class="card-block">
-						<h4 class="card-title"><a href="~/Rent/Content">北大稀有輕豪宅</a></h4>
-						<section class="card-text">
-							<h5 class="card-subtitle">高樓景觀屋況佳、格局方正採光佳</h5>
-							<ul class="feature list-inline">
-								<li>新北市樹林區中華路</li>
-							</ul>
-							<ul class="info list-inline">
-								<li>49 <span class="text-muted">坪</span></li>
-								<li>14/16 <span class="text-muted">樓</span></li>
-								<li>
-									3 <span class="text-muted">房</span>
-									2 <span class="text-muted">廳</span>
-									2 <span class="text-muted">衛</span>
-									0 <span class="text-muted">室</span>
-								</li>
-							</ul>
-							<span class="price">
-								<strong class="text-danger">7,000</strong>元/月
-							</span>
-						</section>
-						<a href="~/Rent/Content" class="more btn btn-secondary">
-							看更多
-							<i class="ti-angle-right"></i>
-						</a>
-					</div>
-				</article>
-			</li>
-			<li class="pro">
-				<article class="card">
-					<a href="~/Rent/Content" class="card-img-top">
-						<img src="~/Content/images/Sell/pro1.jpg" alt="北大稀有輕豪宅">
-					</a>
-					<div class="card-block">
-						<h4 class="card-title"><a href="~/Rent/Content">北大稀有輕豪宅</a></h4>
-						<section class="card-text">
-							<h5 class="card-subtitle">高樓景觀屋況佳、格局方正採光佳</h5>
-							<ul class="feature list-inline">
-								<li>新北市樹林區中華路</li>
-							</ul>
-							<ul class="info list-inline">
-								<li>49 <span class="text-muted">坪</span></li>
-								<li>14/16 <span class="text-muted">樓</span></li>
-								<li>
-									3 <span class="text-muted">房</span>
-									2 <span class="text-muted">廳</span>
-									2 <span class="text-muted">衛</span>
-									0 <span class="text-muted">室</span>
-								</li>
-							</ul>
-							<span class="price">
-								<strong class="text-danger">7,000</strong>元/月
-							</span>
-						</section>
-						<a href="~/Rent/Content" class="more btn btn-secondary">
-							看更多
-							<i class="ti-angle-right"></i>
-						</a>
-					</div>
-				</article>
-			</li>
-		</ol>
 
-	</div>
+        <ol class="prolist row">
+            <li class="pro">
+                <article class="card">
+                    <a href="~/Rent/Content" class="card-img-top">
+                        <img src="~/Content/images/Sell/pro1.jpg" alt="北大稀有輕豪宅">
+                    </a>
+                    <div class="card-block">
+                        <h4 class="card-title"><a href="~/Rent/Content">北大稀有輕豪宅</a></h4>
+                        <section class="card-text">
+                            <h5 class="card-subtitle">高樓景觀屋況佳、格局方正採光佳</h5>
+                            <ul class="feature list-inline">
+                                <li>新北市樹林區中華路</li>
+                            </ul>
+                            <ul class="info list-inline">
+                                <li>49 <span class="text-muted">坪</span></li>
+                                <li>14/16 <span class="text-muted">樓</span></li>
+                                <li>
+                                    3 <span class="text-muted">房</span>
+                                    2 <span class="text-muted">廳</span>
+                                    2 <span class="text-muted">衛</span>
+                                    0 <span class="text-muted">室</span>
+                                </li>
+                            </ul>
+                            <span class="price">
+                                <strong class="text-danger">7,000</strong>元/月
+                            </span>
+                        </section>
+                        <a href="~/Rent/Content" class="more btn btn-secondary">
+                            看更多
+                            <i class="ti-angle-right"></i>
+                        </a>
+                    </div>
+                </article>
+            </li>
+            <li class="pro">
+                <article class="card">
+                    <a href="~/Rent/Content" class="card-img-top">
+                        <img src="~/Content/images/Sell/pro1.jpg" alt="北大稀有輕豪宅">
+                    </a>
+                    <div class="card-block">
+                        <h4 class="card-title"><a href="~/Rent/Content">北大稀有輕豪宅</a></h4>
+                        <section class="card-text">
+                            <h5 class="card-subtitle">高樓景觀屋況佳、格局方正採光佳</h5>
+                            <ul class="feature list-inline">
+                                <li>新北市樹林區中華路</li>
+                            </ul>
+                            <ul class="info list-inline">
+                                <li>49 <span class="text-muted">坪</span></li>
+                                <li>14/16 <span class="text-muted">樓</span></li>
+                                <li>
+                                    3 <span class="text-muted">房</span>
+                                    2 <span class="text-muted">廳</span>
+                                    2 <span class="text-muted">衛</span>
+                                    0 <span class="text-muted">室</span>
+                                </li>
+                            </ul>
+                            <span class="price">
+                                <strong class="text-danger">7,000</strong>元/月
+                            </span>
+                        </section>
+                        <a href="~/Rent/Content" class="more btn btn-secondary">
+                            看更多
+                            <i class="ti-angle-right"></i>
+                        </a>
+                    </div>
+                </article>
+            </li>
+        </ol>
 
+    </div>
+    -->
 </div>

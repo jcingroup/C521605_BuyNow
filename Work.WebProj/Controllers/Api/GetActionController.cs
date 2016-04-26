@@ -166,8 +166,8 @@ namespace DotWeb.Api
             db0 = getDB0();
             var predicate = PredicateBuilder.True<Matter>();
 
-            if (q.city != null)
-                predicate = predicate.And(x => x.city == q.city);
+            if (q.info_type != null)
+                predicate = predicate.And(x => x.info_type == q.info_type);
 
             predicate = predicate.And(x => x.state == "A");
 
@@ -190,7 +190,8 @@ namespace DotWeb.Api
                     rooms = x.rooms,
                     livingrooms = x.livingrooms,
                     build_area = x.build_area,
-                    house_area = x.house_area
+                    house_area = x.house_area,
+                    rentOfMonh = x.rentOfMonh
                 })
                 .ToListAsync(); ;
 
@@ -210,7 +211,7 @@ namespace DotWeb.Api
         }
         public class queryParam
         {
-            public string city { get; set; }
+            public string info_type { get; set; }
         }
 
         [HttpGet]
@@ -265,8 +266,8 @@ namespace DotWeb.Api
             db0 = getDB0();
             var predicate = PredicateBuilder.True<Community>();
 
-            if (q.city != null)
-                predicate = predicate.And(x => x.community_name == q.city);
+            //if (q.city != null)
+            //    predicate = predicate.And(x => x.community_name == q.city);
 
             //predicate = predicate.And(x => x.s == "A");
 

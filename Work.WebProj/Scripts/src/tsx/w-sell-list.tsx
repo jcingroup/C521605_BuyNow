@@ -8,9 +8,10 @@ import DT = require('dt');
 import update = require('react-addons-update');
 import ReactBootstrap = require('react-bootstrap');
 import LazyLoad = require('react-lazyload');
-
+import CommFunc = require('comm-func');
 //import { LazyLoad } from "./react-lazyload";
 namespace WWW {
+    declare var info_type: string;
 
     interface WWWState {
         search?: {
@@ -44,7 +45,7 @@ namespace WWW {
 
             var _this = this;
 
-            $.get(gb_approot + 'api/GetAction/SearchMatter', {})
+            $.get(gb_approot + 'api/GetAction/SearchMatter', { info_type: info_type })
                 .done((data, textStatus, jqXHRdata) => {
                     _this.setState({ lists: data });
                     $("img.lazy").lazyload({ effect: "fadeIn" });
@@ -272,9 +273,10 @@ namespace WWW {
                         {
                             this.state.lists.map(function (item, i) {
 
-                                return (
-
-                                    <li className="pro" key={item.matter_id}>
+                                var out_html = null;
+                                //賣
+                                if (info_type == 'S') {
+                                    out_html = <li className="pro" key={item.matter_id}>
 
                                         <article className="card">
                                             <a className="card-img-top" href={gb_approot + 'Sell/Content?id=' + item.matter_id}>
@@ -310,8 +312,47 @@ namespace WWW {
                                             </div>
                                         </article>
 
-                                    </li>
-                                );
+                                    </li>;
+                                }
+
+                                //租
+                                if (info_type == 'R') {
+                                    out_html = <li className="pro">
+                                        <article className="card">
+                                            <a className="card-img-top" href={gb_approot + 'Rent/Content?id=' + item.matter_id}>
+                                                <img alt={item.matter_name} src={item.list_src} />
+                                            </a>
+                                            <div className="card-block">
+                                                <h4 className="card-title"><a href={gb_approot + 'Rent/Content?id=' + item.matter_id}>{item.matter_name}</a></h4>
+                                                <section className="card-text">
+                                                    <h5 className="card-subtitle">{item.title}</h5>
+                                                    <ul className="feature list-inline">
+                                                        <li>{item.city + item.country + item.address}</li>
+                                                    </ul>
+                                                    <ul className="info list-inline">
+                                                        <li>{item.build_area} <span className="text-muted">坪</span></li>
+                                                        <li>14/16 <span className="text-muted">樓</span></li>
+                                                        <li>
+                                                            {item.bedrooms} <span className="text-muted">房</span>
+                                                            {item.livingrooms} <span className="text-muted">廳</span>
+                                                            {item.bathrooms} <span className="text-muted">衛</span>
+                                                            {item.rooms} <span className="text-muted">室</span>
+                                                        </li>
+                                                    </ul>
+                                                    <span className="price">
+                                                        <strong className="text-danger">{CommFunc.formatNumber(item.rentOfMonh) }</strong>元/月
+                                                    </span>
+                                                </section>
+                                                <a href={gb_approot + 'Rent/Content?id=' + item.matter_id} className="more btn btn-secondary">
+                                                    看更多
+                                                    <i className="ti-angle-right"></i>
+                                                </a>
+                                            </div>
+                                        </article>
+                                    </li>;
+                                }
+
+                                return out_html;
                             })
                         }
 

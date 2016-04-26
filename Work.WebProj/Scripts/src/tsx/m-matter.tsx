@@ -10,8 +10,6 @@ import dt = require('dt');
 import DatePicker = require('react-datepicker');
 import "react-datepicker/dist/react-datepicker.css";
 
-
-
 namespace Matter {
     interface Rows {
         check_del: boolean,
@@ -750,11 +748,11 @@ namespace Matter {
 
                                     <label className="col-xs-1 control-label">售價</label>
                                     <div className="col-xs-2">
-                                        <input type="text" className="form-control"
+                                        <input type="number" className="form-control"
                                             onChange={this.changeFDValue.bind(this, 'price') }
-                                            value={field.price}
-                                            />
+                                            value={field.price} />
                                     </div>
+
 
                                 </div>
 
@@ -798,7 +796,8 @@ namespace Matter {
 
                                     <label className="col-xs-1 control-label">出售樓層</label>
                                     <div className="col-xs-2">
-                                        <input type="number" className="form-control"
+                                        <input type="text" className="form-control"
+                                            maxLength={50}
                                             onChange={this.changeFDValue.bind(this, 'site_floor') }
                                             value={field.site_floor}
                                             />
@@ -812,10 +811,126 @@ namespace Matter {
                                             />
                                     </div>
 
+                                    <label className="col-xs-1 control-label">物件編號</label>
+                                    <div className="col-xs-2">
+                                        <input type="text" className="form-control" maxLength={10} required
+                                            onChange={this.changeFDValue.bind(this, 'sn') }
+                                            value={field.sn}
+                                            />
+                                    </div>
+                                </div>
+                                <div className="form-group">
+                                    <label className="col-xs-1 control-label">每月租金</label>
+                                    <div className="col-xs-2">
+                                        <input type="number" className="form-control"
+                                            onChange={this.changeFDValue.bind(this, 'rentOfMonh') }
+                                            value={field.rentOfMonh}
+                                            disabled={field.info_type != 'R'}
+                                            />
+                                    </div>
+
+                                    <label className="col-xs-1 control-label">管理費</label>
+                                    <div className="col-xs-2">
+                                        <input type="text" className="form-control"
+                                            onChange={this.changeFDValue.bind(this, 'rent_management') }
+                                            value={field.rent_management}
+                                            maxLength={50}
+                                            disabled={field.info_type != 'R'}
+                                            />
+                                    </div>
+
+                                    <label className="col-xs-1 control-label">最短租期</label>
+                                    <div className="col-xs-2">
+                                        <input type="text" className="form-control"
+                                            onChange={this.changeFDValue.bind(this, 'rent_short_date') }
+                                            value={field.rent_short_date}
+                                            maxLength={50}
+                                            disabled={field.info_type != 'R'}
+                                            />
+                                    </div>
+
+
+                                    <label className="col-xs-1 control-label">開伙</label>
+                                    <div className="col-xs-2">
+                                        <input type="text" className="form-control"
+                                            onChange={this.changeFDValue.bind(this, 'rent_cook') }
+                                            value={field.rent_cook}
+                                            maxLength={50}
+                                            disabled={field.info_type != 'R'}
+                                            />
+                                    </div>
+
+
 
                                 </div>
 
+                                <div className="form-group">
 
+                                    <label className="col-xs-1 control-label">寵物</label>
+                                    <div className="col-xs-2">
+                                        <input type="text" className="form-control"
+                                            onChange={this.changeFDValue.bind(this, 'rent_pet') }
+                                            value={field.rent_pet}
+                                            maxLength={50}
+                                            disabled={field.info_type != 'R'}
+                                            />
+                                    </div>
+
+                                    <label className="col-xs-1 control-label">身分要求</label>
+                                    <div className="col-xs-2">
+                                        <input type="text" className="form-control"
+                                            onChange={this.changeFDValue.bind(this, 'rent_identity') }
+                                            value={field.rent_identity}
+                                            maxLength={50}
+                                            disabled={field.info_type != 'R'}
+                                            />
+                                    </div>
+
+                                    <label className="col-xs-1 control-label">性別要求</label>
+                                    <div className="col-xs-2">
+                                        <input type="text" className="form-control"
+                                            onChange={this.changeFDValue.bind(this, 'rent_sex') }
+                                            value={field.rent_sex}
+                                            maxLength={50}
+                                            disabled={field.info_type != 'R'}
+                                            />
+                                    </div>
+
+                                    <label className="col-xs-1 control-label">可遷入日</label>
+                                    <div className="col-xs-2">
+                                        <input type="text" className="form-control"
+                                            onChange={this.changeFDValue.bind(this, 'rent_start_date') }
+                                            value={field.rent_start_date}
+                                            maxLength={50}
+                                            disabled={field.info_type != 'R'}
+                                            />
+                                    </div>
+
+                                </div>
+
+                                <div className="form-group">
+                                    <label className="col-xs-1 control-label">家具提供</label>
+                                    <div className="col-xs-2">
+                                        <input type="text" className="form-control"
+                                            onChange={this.changeFDValue.bind(this, 'rent_furniture') }
+                                            value={field.rent_furniture}
+                                            maxLength={50}
+                                            disabled={field.info_type != 'R'}
+                                            />
+                                    </div>
+
+                                    <label className="col-xs-1 control-label">設備提供</label>
+                                    <div className="col-xs-2">
+                                        <input type="text" className="form-control"
+                                            onChange={this.changeFDValue.bind(this, 'rent_equip') }
+                                            value={field.rent_equip}
+                                            maxLength={50}
+                                            disabled={field.info_type != 'R'}
+                                            />
+                                    </div>
+
+
+                                </div>
 
                                 <div className="form-group">
                                     <label className="col-xs-1 control-label">生活機能</label>
@@ -824,8 +939,6 @@ namespace Matter {
                                             value={field.context_life} onChange={this.changeFDValue.bind(this, 'context_life') }></textarea>
                                     </div>
                                 </div>
-
-
 
                                 <div className="form-action">
                                     <div className="col-xs-4 col-xs-offset-2">
