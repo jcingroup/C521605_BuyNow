@@ -3,6 +3,7 @@ using DotWeb.Controller;
 using ProcCore.Business.DB0;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace DotWeb.Controllers
 {
@@ -16,10 +17,51 @@ namespace DotWeb.Controllers
         {
             return View("Neighbor_list");
         }
-        public ActionResult Content()
+
+        public ActionResult Content(int id)
         {
-            return View("Neighbor_content");
+            db0 = getDB0();
+            var task = db0.Community.FindAsync(id);
+            task.Wait();
+            var result = task.Result;
+
+            var imgobj_CommunityList = getImgFiles("CommunityList", id.ToString(), "origin");
+
+            if (imgobj_CommunityList != null)
+            {
+                result.imgurl_CommunityList = imgobj_CommunityList.Select(x => x.src_path).FirstOrDefault();
+            }
+            else
+            {
+                result.imgurl_CommunityList = string.Empty;
+            }
+
+            var imgobj_CommunityDoor = getImgFiles("CommunityDoor", id.ToString(), "origin");
+
+            if (imgobj_CommunityDoor != null && imgobj_CommunityList.Count() > 0)
+            {
+                result.imgurl_CommunityDoor = imgobj_CommunityDoor.Select(x => x.src_path).ToArray();
+            }
+            else
+            {
+                result.imgurl_CommunityDoor = new string[] { };
+            }
+
+            var imgobj_MatterStyle = getImgFiles("CommunityPublic", id.ToString(), "origin");
+            if (imgobj_MatterStyle != null && imgobj_MatterStyle.Count() > 0)
+            {
+                result.imgurl_CommunityPublic = imgobj_MatterStyle.Select(x => x.src_path).ToArray();
+            }
+            else
+            {
+                result.imgurl_CommunityPublic = new string[] { };
+            }
+
+            db0.Dispose();
+
+            return View("Neighbor_content", result);
         }
+
         public ActionResult Notice()
         {
             return View("Notice");

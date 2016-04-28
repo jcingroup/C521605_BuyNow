@@ -8,6 +8,8 @@ import DT = require('dt');
 import update = require('react-addons-update');
 import CommFunc = require('comm-func');
 declare var id: number;
+declare var json_data: server.Community;
+
 namespace WWW {
 
     interface WWWState {
@@ -27,7 +29,7 @@ namespace WWW {
             this.setSearchValue = this.setSearchValue.bind(this);
 
             this.state = {
-                item: { imgurl_CommunityDoor: [], imgurl_CommunityPublic: [] },
+                item: json_data,
                 news: []
             };
         }
@@ -37,59 +39,47 @@ namespace WWW {
         componentDidMount() {
 
             var _this = this;
+            $("img.lazy").lazyload({ effect: "fadeIn" });
 
-            $.get(gb_approot + 'api/GetAction/GetCommunity', { id: id })
-                .done((data: IResultData<server.Community>, textStatus, jqXHRdata) => {
-                    if (data.result) {
-                        _this.setState({ item: data.data });
-                        $('#community_name').text(data.data.community_name);
-                        $("img.lazy").lazyload({ effect: "fadeIn" });
+            $(document).ready(function () {
 
-                        $(document).ready(function () {
-
-                            $('.gallery').each(function () { // the containers for all your galleries
-                                $(this).magnificPopup({
-                                    delegate: 'a', // the selector for gallery item
-                                    type: 'image',
-                                    gallery: {
-                                        enabled: true
-                                    }
-                                });
-                            });
-                            $('.pop').magnificPopup({
-                                type: 'iframe'
-                            });
-
-                            var swiper = new Swiper('.bulletin', {
-                                nextButton: '.swiper-button-next',
-                                prevButton: '.swiper-button-prev',
-                                speed: 1000,
-                                spaceBetween: 15
-                            });
-
-                            var marquee = new Swiper('#marquee', {
-                                nextButton: '.swiper-button-next',
-                                prevButton: '.swiper-button-prev',
-                                autoplay: 2500,
-                                speed: 2000,
-                                slidesPerView: 'auto',
-                            });
-
-                        });
-
-                        if (window.location.hash) {
-                            $('html, body').animate({ scrollTop: 0 }, 0);
-                            var hash = window.location.hash;
-                            $('html, body').animate({
-                                scrollTop: $(hash).offset().top - 250
-                            }, 2000);
+                $('.gallery').each(function () { // the containers for all your galleries
+                    $(this).magnificPopup({
+                        delegate: 'a', // the selector for gallery item
+                        type: 'image',
+                        gallery: {
+                            enabled: true
                         }
-
-
-                    } else {
-                        alert(data.message);
-                    }
+                    });
                 });
+                $('.pop').magnificPopup({
+                    type: 'iframe'
+                });
+
+                var swiper = new Swiper('.bulletin', {
+                    nextButton: '.swiper-button-next',
+                    prevButton: '.swiper-button-prev',
+                    speed: 1000,
+                    spaceBetween: 15
+                });
+
+                var marquee = new Swiper('#marquee', {
+                    nextButton: '.swiper-button-next',
+                    prevButton: '.swiper-button-prev',
+                    autoplay: 2500,
+                    speed: 2000,
+                    slidesPerView: 'auto',
+                });
+
+            });
+
+            if (window.location.hash) {
+                $('html, body').animate({ scrollTop: 0 }, 0);
+                var hash = window.location.hash;
+                $('html, body').animate({
+                    scrollTop: $(hash).offset().top - 250
+                }, 2000);
+            }
 
             $.get(gb_approot + 'api/GetAction/GetNewsList', { id: id })
                 .done((data: Array<server.Community_News>, textStatus, jqXHRdata) => {

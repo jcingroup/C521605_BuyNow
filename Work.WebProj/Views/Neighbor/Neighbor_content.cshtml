@@ -1,8 +1,11 @@
-﻿@{
+﻿@model ProcCore.Business.DB0.Community
+@{
     //ViewBag.WebName = "桃園-國王城堡";
     ViewBag.Title = "社區入口網";
     ViewBag.BodyClass = "Neighbor Content pro1";
+    ViewBag.WebName = Model.community_name;
     Layout = "~/Views/Shared/Layout2.cshtml";
+
 }
 
 @section css {
@@ -13,6 +16,7 @@
 @section Scripts {
     <script>
         var id = @Request.QueryString["id"];
+        var json_data = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model));
     </script>
     <script src="~/Scripts/build/app/vendors.js"></script>
     <script src="~/Scripts/build/app/w_neighbor_content.js"></script>
