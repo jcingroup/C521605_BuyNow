@@ -21,6 +21,7 @@ module.exports = {
         w_sell_content: path.resolve(__dirname, 'Scripts/src/tsx/w-sell-content.js'),
         w_neighbor_list: path.resolve(__dirname, 'Scripts/src/tsx/w-neighbor-list.js'),
         w_neighbor_content: path.resolve(__dirname, 'Scripts/src/tsx/w-neighbor-content.js'),
+        m_community_banner: path.resolve(__dirname, 'Scripts/src/tsx/m-community-banner.js'),
 
         vendors: ['jquery', 'react', 'react-dom', 'react-addons-update', 'react-bootstrap', 'moment'],
         //wwwcomm: ['jquery', 'react']

@@ -97,6 +97,9 @@
     <Compile Include="DB0\Community.cs">
       <DependentUpon>C51A0_BuyNow.tt</DependentUpon>
     </Compile>
+    <Compile Include="DB0\Community_Banner.cs">
+      <DependentUpon>C51A0_BuyNow.tt</DependentUpon>
+    </Compile>
     <Compile Include="DB0\Community_News.cs">
       <DependentUpon>C51A0_BuyNow.tt</DependentUpon>
     </Compile>
@@ -132,6 +135,7 @@
       <DependentUpon>C51A0_BuyNow.tt</DependentUpon>
     </Compile>
     <Compile Include="LogicCenter.cs" />
+    <Compile Include="Models\Community_Community.cs" />
     <Compile Include="Models\Community_News.cs" />
     <Compile Include="Models\Matter.cs" />
     <Compile Include="Models\Community.cs" />

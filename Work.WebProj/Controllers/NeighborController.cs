@@ -57,8 +57,6 @@ namespace DotWeb.Controllers
                 result.imgurl_CommunityPublic = new string[] { };
             }
 
-            db0.Dispose();
-
             return View("Neighbor_content", result);
         }
 

@@ -85,13 +85,6 @@
         val?: number;
         Lname?: string;
     }
-    interface Banner extends BaseEntityTable {
-        banner_id?: number;
-        banner_name?: string;
-        sort?: number;
-        i_Hide?: boolean;
-        i_Lang?: string;
-    }
     interface Community extends BaseEntityTable {
         community_id?: number;
         community_name?: string;
@@ -117,6 +110,7 @@
         under_floor?: number;
         over_floor?: number;
         map_iframe?: string;
+        group_buying_url?: string;
 
         list_src?: string;
         imgurl_CommunityList?: string;
@@ -133,6 +127,19 @@
         state?: string;
         community_name?: string;
     }
+
+    interface Community_Banner {
+        community_banner_id?: number;
+        community_id?: number;
+        title?: string;
+        context?: string;
+        start_date?: string;
+        end_date?: string;
+        state?: string;
+        community_name?: string;
+        imgurl_CommunityBannerPhoto_1?: string;
+    }
+
     interface Edit extends BaseEntityTable {
         edit_id?: number;
         edit_name?: string;

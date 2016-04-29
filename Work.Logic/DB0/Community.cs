@@ -19,6 +19,7 @@ namespace ProcCore.Business.DB0
         {
             this.Community_News = new HashSet<Community_News>();
             this.Matter = new HashSet<Matter>();
+            this.Community_Banner = new HashSet<Community_Banner>();
         }
     
         public int community_id { get; set; }
@@ -44,10 +45,13 @@ namespace ProcCore.Business.DB0
         public Nullable<int> under_floor { get; set; }
         public Nullable<int> over_floor { get; set; }
         public string map_iframe { get; set; }
+        public string group_buying_url { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Community_News> Community_News { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Matter> Matter { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Community_Banner> Community_Banner { get; set; }
     }
 }

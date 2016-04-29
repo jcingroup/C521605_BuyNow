@@ -368,6 +368,51 @@ namespace DotWeb.Api
             return Ok(result);
         }
 
+
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<IHttpActionResult> GetCommunityBannerList(int id)
+        {
+            db0 = getDB0();
+
+            var predicate = PredicateBuilder.True<Community_Banner>();
+            predicate = predicate.And(x => x.start_date <= DateTime.Now);
+            predicate = predicate.And(x => x.end_date >= DateTime.Now);
+            predicate = predicate.And(x => x.state == "A");
+            predicate = predicate.And(x => x.community_id == id);
+
+            var result = await db0.Community_Banner.AsExpandable()
+                .OrderByDescending(x => x.community_id)
+                .Where(predicate)
+                .Select(x => new _Community_Banner
+                {
+                    community_banner_id = x.community_banner_id,
+                    title = x.title
+                })
+                .ToListAsync();
+
+            foreach (var item in result)
+            {
+                var imgobj = getImgFirst("BannerList", item.community_banner_id.ToString(), "origin");
+                item.imgurl_CommunityBannerPhoto_1 = imgobj == null ? null : imgobj.src_path;
+            }
+
+            return Ok(result);
+        }
+
+
+        private class _Community_Banner
+        {
+            public int community_banner_id { get; set; }
+            public int community_id { get; set; }
+            public string title { get; set; }
+            public string context { get; set; }
+            public DateTime? start_date { get; set; }
+            public DateTime? end_date { get; set; }
+            public string state { get; set; }
+            public string imgurl_CommunityBannerPhoto_1 { get; set; }
+
+        }
     }
     #region Parm
 

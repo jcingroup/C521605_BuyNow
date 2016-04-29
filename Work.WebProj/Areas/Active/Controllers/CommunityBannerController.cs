@@ -10,7 +10,7 @@ using System.Collections.Generic;
 
 namespace DotWeb.Areas.Active.Controllers
 {
-    public class CommunityNewsController : AdminController
+    public class CommunityBannerController : AdminController
     {
         #region Action and function section
         public ActionResult Main()

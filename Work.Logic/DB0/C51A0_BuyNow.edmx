@@ -67,6 +67,19 @@
           <Property Name="under_floor" Type="int" />
           <Property Name="over_floor" Type="int" />
           <Property Name="map_iframe" Type="varchar" MaxLength="4000" />
+          <Property Name="group_buying_url" Type="varchar" MaxLength="4000" />
+        </EntityType>
+        <EntityType Name="Community_Banner">
+          <Key>
+            <PropertyRef Name="community_banner_id" />
+          </Key>
+          <Property Name="community_banner_id" Type="int" Nullable="false" />
+          <Property Name="community_id" Type="int" Nullable="false" />
+          <Property Name="title" Type="nvarchar" MaxLength="200" />
+          <Property Name="context" Type="ntext" />
+          <Property Name="start_date" Type="smalldatetime" />
+          <Property Name="end_date" Type="smalldatetime" />
+          <Property Name="state" Type="char" MaxLength="1" />
         </EntityType>
         <EntityType Name="Community_News">
           <Key>
@@ -258,6 +271,18 @@
           <Property Name="i_UpdateDateTime" Type="datetime" />
           <Property Name="i_Lang" Type="char" MaxLength="5" Nullable="false" />
         </EntityType>
+        <Association Name="FK_Community_Banner_Community">
+          <End Role="Community" Type="Self.Community" Multiplicity="1" />
+          <End Role="Community_Banner" Type="Self.Community_Banner" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Community">
+              <PropertyRef Name="community_id" />
+            </Principal>
+            <Dependent Role="Community_Banner">
+              <PropertyRef Name="community_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Community_News_Community">
           <End Role="Community" Type="Self.Community" Multiplicity="1" />
           <End Role="Community_News" Type="Self.Community_News" Multiplicity="*" />
@@ -339,6 +364,7 @@
           <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Community" EntityType="Self.Community" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Community_Banner" EntityType="Self.Community_Banner" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Community_News" EntityType="Self.Community_News" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Edit" EntityType="Self.Edit" Schema="dbo" store:Type="Tables" />
@@ -351,6 +377,10 @@
           <EntitySet Name="Menu" EntityType="Self.Menu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MenuRole" EntityType="Self.MenuRole" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="News" EntityType="Self.News" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Community_Banner_Community" Association="Self.FK_Community_Banner_Community">
+            <End Role="Community" EntitySet="Community" />
+            <End Role="Community_Banner" EntitySet="Community_Banner" />
+          </AssociationSet>
           <AssociationSet Name="FK_Community_News_Community" Association="Self.FK_Community_News_Community">
             <End Role="Community" EntitySet="Community" />
             <End Role="Community_News" EntitySet="Community_News" />
@@ -548,6 +578,11 @@
             <End Role="Community" EntitySet="Community" />
             <End Role="Matter" EntitySet="Matter" />
           </AssociationSet>
+          <EntitySet Name="Community_Banner" EntityType="C51A0_BuyNowModel.Community_Banner" />
+          <AssociationSet Name="FK_Community_Banner_Community" Association="C51A0_BuyNowModel.FK_Community_Banner_Community">
+            <End Role="Community" EntitySet="Community" />
+            <End Role="Community_Banner" EntitySet="Community_Banner" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="Edit">
           <Key>
@@ -608,6 +643,8 @@
           <NavigationProperty Name="Community_News" Relationship="C51A0_BuyNowModel.FK_Community_News_Community" FromRole="Community" ToRole="Community_News" />
           <Property Name="map_iframe" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Matter" Relationship="C51A0_BuyNowModel.FK_Matter_Community" FromRole="Community" ToRole="Matter" />
+          <Property Name="group_buying_url" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Community_Banner" Relationship="C51A0_BuyNowModel.FK_Community_Banner_Community" FromRole="Community" ToRole="Community_Banner" />
         </EntityType>
         <Association Name="FK_Community_News_Community">
           <End Type="C51A0_BuyNowModel.Community" Role="Community" Multiplicity="1" />
@@ -685,6 +722,31 @@
               <PropertyRef Name="community_id" />
             </Principal>
             <Dependent Role="Matter">
+              <PropertyRef Name="community_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Community_Banner">
+          <Key>
+            <PropertyRef Name="community_banner_id" />
+          </Key>
+          <Property Name="community_banner_id" Type="Int32" Nullable="false" />
+          <Property Name="community_id" Type="Int32" Nullable="false" />
+          <Property Name="title" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="context" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="start_date" Type="DateTime" Precision="0" />
+          <Property Name="end_date" Type="DateTime" Precision="0" />
+          <Property Name="state" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Community" Relationship="C51A0_BuyNowModel.FK_Community_Banner_Community" FromRole="Community_Banner" ToRole="Community" />
+        </EntityType>
+        <Association Name="FK_Community_Banner_Community">
+          <End Type="C51A0_BuyNowModel.Community" Role="Community" Multiplicity="1" />
+          <End Type="C51A0_BuyNowModel.Community_Banner" Role="Community_Banner" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Community">
+              <PropertyRef Name="community_id" />
+            </Principal>
+            <Dependent Role="Community_Banner">
               <PropertyRef Name="community_id" />
             </Dependent>
           </ReferentialConstraint>
@@ -880,6 +942,7 @@
           <EntitySetMapping Name="Community">
             <EntityTypeMapping TypeName="C51A0_BuyNowModel.Community">
               <MappingFragment StoreEntitySet="Community">
+                <ScalarProperty Name="group_buying_url" ColumnName="group_buying_url" />
                 <ScalarProperty Name="map_iframe" ColumnName="map_iframe" />
                 <ScalarProperty Name="over_floor" ColumnName="over_floor" />
                 <ScalarProperty Name="under_floor" ColumnName="under_floor" />
@@ -959,6 +1022,19 @@
                 <ScalarProperty Name="community_id" ColumnName="community_id" />
                 <ScalarProperty Name="sn" ColumnName="sn" />
                 <ScalarProperty Name="matter_id" ColumnName="matter_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Community_Banner">
+            <EntityTypeMapping TypeName="C51A0_BuyNowModel.Community_Banner">
+              <MappingFragment StoreEntitySet="Community_Banner">
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="end_date" ColumnName="end_date" />
+                <ScalarProperty Name="start_date" ColumnName="start_date" />
+                <ScalarProperty Name="context" ColumnName="context" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="community_id" ColumnName="community_id" />
+                <ScalarProperty Name="community_banner_id" ColumnName="community_banner_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -15,6 +15,7 @@ namespace WWW {
     interface WWWState {
         item?: server.Community
         news?: Array<server.Community_News>
+        banner?: Array<server.Community_Banner>
     }
 
     export class CommunityContent extends React.Component<any, WWWState>{
@@ -30,7 +31,8 @@ namespace WWW {
 
             this.state = {
                 item: json_data,
-                news: []
+                news: [],
+                banner: []
             };
         }
 
@@ -39,39 +41,6 @@ namespace WWW {
         componentDidMount() {
 
             var _this = this;
-            $("img.lazy").lazyload({ effect: "fadeIn" });
-
-            $(document).ready(function () {
-
-                $('.gallery').each(function () { // the containers for all your galleries
-                    $(this).magnificPopup({
-                        delegate: 'a', // the selector for gallery item
-                        type: 'image',
-                        gallery: {
-                            enabled: true
-                        }
-                    });
-                });
-                $('.pop').magnificPopup({
-                    type: 'iframe'
-                });
-
-                var swiper = new Swiper('.bulletin', {
-                    nextButton: '.swiper-button-next',
-                    prevButton: '.swiper-button-prev',
-                    speed: 1000,
-                    spaceBetween: 15
-                });
-
-                var marquee = new Swiper('#marquee', {
-                    nextButton: '.swiper-button-next',
-                    prevButton: '.swiper-button-prev',
-                    autoplay: 2500,
-                    speed: 2000,
-                    slidesPerView: 'auto',
-                });
-
-            });
 
             if (window.location.hash) {
                 $('html, body').animate({ scrollTop: 0 }, 0);
@@ -84,7 +53,51 @@ namespace WWW {
             $.get(gb_approot + 'api/GetAction/GetNewsList', { id: id })
                 .done((data: Array<server.Community_News>, textStatus, jqXHRdata) => {
                     _this.setState({ news: data });
+
+
+                    $.get(gb_approot + 'api/GetAction/GetCommunityBannerList', { id: id })
+                        .done((data: Array<server.Community_Banner>, textStatus, jqXHRdata) => {
+                            _this.setState({ banner: data });
+
+                            $("img.lazy").lazyload({ effect: "fadeIn" });
+
+                            $(document).ready(function () {
+
+                                $('.gallery').each(function () { // the containers for all your galleries
+                                    $(this).magnificPopup({
+                                        delegate: 'a', // the selector for gallery item
+                                        type: 'image',
+                                        gallery: {
+                                            enabled: true
+                                        }
+                                    });
+                                });
+                                $('.pop').magnificPopup({
+                                    type: 'iframe'
+                                });
+
+                                var swiper = new Swiper('.bulletin', {
+                                    nextButton: '.swiper-button-next',
+                                    prevButton: '.swiper-button-prev',
+                                    speed: 1000,
+                                    spaceBetween: 15
+                                });
+
+                                var marquee = new Swiper('#marquee', {
+                                    nextButton: '.swiper-button-next',
+                                    prevButton: '.swiper-button-prev',
+                                    autoplay: 2500,
+                                    speed: 2000,
+                                    slidesPerView: 'auto',
+                                });
+
+                            });
+
+                        });
+
                 });
+
+
 
         }
         componentDidUpdate(prevProps, prevState) {
@@ -174,66 +187,17 @@ namespace WWW {
                     <section className="grid-info">
                         <div id="marquee" className="swiper-container">
                             <ul className="swiper-wrapper list-unstyled">
-                                <li className="swiper-slide">
-                                    <a className="pop" href="/Neighbor/Notice">
-                                        <img src="/Content/images/Neighbor/ad1.jpg" />
-                                        <span className="title">黑枸杞美妍奇蹟飲</span>
-                                    </a>
-                                </li>
-                                <li className="swiper-slide">
-                                    <a className="pop" href="/Neighbor/Notice">
-                                        <img src="/Content/images/Neighbor/ad2.jpg" />
-                                        <span className="title">珪藻土超吸水肥皂盒</span>
-                                    </a>
-                                </li>
-                                <li className="swiper-slide">
-                                    <a className="pop" href="/Neighbor/Notice">
-                                        <img src="/Content/images/Neighbor/ad1.jpg" />
-                                        <span className="title">黑枸杞美妍奇蹟飲</span>
-                                    </a>
-                                </li>
-                                <li className="swiper-slide">
-                                    <a className="pop" href="/Neighbor/Notice">
-                                        <img src="/Content/images/Neighbor/ad2.jpg" />
-                                        <span className="title">珪藻土超吸水肥皂盒</span>
-                                    </a>
-                                </li>
-                                <li className="swiper-slide">
-                                    <a className="pop" href="/Neighbor/Notice">
-                                        <img src="/Content/images/Neighbor/ad1.jpg" />
-                                        <span className="title">黑枸杞美妍奇蹟飲</span>
-                                    </a>
-                                </li>
-                                <li className="swiper-slide">
-                                    <a className="pop" href="/Neighbor/Notice">
-                                        <img src="/Content/images/Neighbor/ad2.jpg" />
-                                        <span className="title">珪藻土超吸水肥皂盒</span>
-                                    </a>
-                                </li>
-                                <li className="swiper-slide">
-                                    <a className="pop" href="/Neighbor/Notice">
-                                        <img src="/Content/images/Neighbor/ad1.jpg" />
-                                        <span className="title">黑枸杞美妍奇蹟飲</span>
-                                    </a>
-                                </li>
-                                <li className="swiper-slide">
-                                    <a className="pop" href="/Neighbor/Notice">
-                                        <img src="/Content/images/Neighbor/ad2.jpg" />
-                                        <span className="title">珪藻土超吸水肥皂盒</span>
-                                    </a>
-                                </li>
-                                <li className="swiper-slide">
-                                    <a className="pop" href="/Neighbor/Notice">
-                                        <img src="/Content/images/Neighbor/ad1.jpg" />
-                                        <span className="title">黑枸杞美妍奇蹟飲</span>
-                                    </a>
-                                </li>
-                                <li className="swiper-slide">
-                                    <a className="pop" href="/Neighbor/Notice">
-                                        <img src="/Content/images/Neighbor/ad2.jpg" />
-                                        <span className="title">珪藻土超吸水肥皂盒</span>
-                                    </a>
-                                </li>
+                                {
+                                    this.state.banner.map(function (item, i) {
+
+                                        return (<li className="swiper-slide" key={item.community_banner_id}>
+                                            <a className="pop" href={gb_approot + 'Neighbor/Notice?id=' + item.community_banner_id}>
+                                                <img src={item.imgurl_CommunityBannerPhoto_1} />
+                                                <span className="title">{item.title}</span>
+                                            </a>
+                                        </li>);
+                                    })
+                                }
                             </ul>
                             <a className="swiper-button-prev" href="#"></a>
                             <a className="swiper-button-next" href="#"></a>
@@ -252,7 +216,7 @@ namespace WWW {
                                 {
                                     item.imgurl_CommunityDoor.map(function (item, i) {
                                         return (<li>
-                                            <a className="img-thumbnail" href={item}>
+                                            <a className="img-thumbnail" href={item} key={i}>
                                                 <img className="lazy" data-original={item} />
                                             </a>
                                         </li>);

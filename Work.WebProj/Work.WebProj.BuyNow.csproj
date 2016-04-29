@@ -200,6 +200,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Active\ActiveAreaRegistration.cs" />
+    <Compile Include="Areas\Active\Controllers\CommunityBannerController.cs" />
     <Compile Include="Areas\Active\Controllers\CommunityNewsController.cs" />
     <Compile Include="Areas\Active\Controllers\MatterController.cs" />
     <Compile Include="Areas\Active\Controllers\EditController.cs" />
@@ -234,6 +235,7 @@
     <Content Include="Areas\Active\Views\CommunityNews\Main.cshtml" />
     <Content Include="app_modules\ImgFileSort\package.json" />
     <Content Include="app_modules\ImgFileSort\c-ImgFileSort.jsx" />
+    <Content Include="Areas\Active\Views\CommunityBanner\Main.cshtml" />
     <None Include="Areas\Base\Controllers\ReportChartController.cs" />
     <Compile Include="Areas\Base\Controllers\RolesController.cs" />
     <Compile Include="Areas\Base\Controllers\MenuController.cs" />
@@ -285,6 +287,7 @@
     <Content Include="ckfinder\core\connector\aspx\lang\vi.xml" />
     <Content Include="ckfinder\core\connector\aspx\lang\zh-cn.xml" />
     <Content Include="ckfinder\core\connector\aspx\lang\zh-tw.xml" />
+    <Compile Include="Controllers\Api\CommunityBannerController.cs" />
     <Compile Include="Controllers\Api\CommunityNewsController.cs" />
     <Compile Include="Controllers\Api\MatterController.cs" />
     <Compile Include="Controllers\Api\EditController.cs" />
@@ -768,6 +771,7 @@
     <TypeScriptCompile Include="app_modules\simple-ajax-uploader\SimpleAjaxUploader.def.ts" />
     <TypeScriptCompile Include="app_modules\funtest\fun.ts" />
     <TypeScriptCompile Include="Scripts\src\tsx\m-change_password.tsx" />
+    <TypeScriptCompile Include="Scripts\src\tsx\m-community-banner.tsx" />
     <TypeScriptCompile Include="Scripts\src\tsx\m-community-news.tsx" />
     <TypeScriptCompile Include="Scripts\src\tsx\w-neighbor-content.tsx" />
     <TypeScriptCompile Include="Scripts\src\tsx\w-sell-content.tsx" />
@@ -796,7 +800,7 @@
     <TypeScriptCompile Include="Scripts\ts-def\d.ts\IEditType.d.ts" />
     <TypeScriptCompile Include="Scripts\ts-def\d.ts\IKeyValue.d.ts" />
     <TypeScriptCompile Include="Scripts\ts-def\d.ts\PutGetId.d.ts" />
-    <TypeScriptCompile Include="Scripts\ts-def\d.ts\ServerModals.d.ts" />
+    <TypeScriptCompile Include="Scripts\src\tsx\a-Modals.d.ts" />
     <TypeScriptCompile Include="app_modules\dt\def-data.ts" />
     <TypeScriptCompile Include="Scripts\ts-def\widegt\gridInfo.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\bootstrap.v3.datetimepicker\bootstrap.v3.datetimepicker.d.ts" />
@@ -860,6 +864,7 @@
     <Content Include="Areas\Active\Views\Edit\App_LocalResources\Main.cshtml.resx" />
     <Content Include="Areas\Active\Views\Matter\App_LocalResources\Main.cshtml.resx" />
     <Content Include="Areas\Active\Views\CommunityNews\App_LocalResources\Main.cshtml.resx" />
+    <Content Include="Areas\Active\Views\CommunityBanner\App_LocalResources\Main.cshtml.resx" />
     <EmbeddedResource Include="_Code\RPTFile\MemeberLabel.rdlc" />
   </ItemGroup>
   <PropertyGroup>

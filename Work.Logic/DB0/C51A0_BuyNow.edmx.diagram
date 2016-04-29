@@ -23,6 +23,8 @@
         <AssociationConnector Association="C51A0_BuyNowModel.FK_Community_News_Community" />
         <EntityTypeShape EntityType="C51A0_BuyNowModel.Matter" Width="1.5" PointX="3" PointY="22.125" />
         <AssociationConnector Association="C51A0_BuyNowModel.FK_Matter_Community" />
+        <EntityTypeShape EntityType="C51A0_BuyNowModel.Community_Banner" Width="1.5" PointX="3" PointY="33.375" />
+        <AssociationConnector Association="C51A0_BuyNowModel.FK_Community_Banner_Community" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
