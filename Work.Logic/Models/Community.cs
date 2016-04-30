@@ -17,6 +17,8 @@ namespace ProcCore.Business.DB0
             public virtual ICollection<Matter> Matter { get; set; }
             [JsonIgnore()]
             public virtual ICollection<Community_News> Community_News { get; set; }
+            [JsonIgnore()]
+            public virtual ICollection<Community_Banner> Community_Banner { get; set; }
         }
     }
 }

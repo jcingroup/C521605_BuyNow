@@ -503,6 +503,7 @@
     <Content Include="node_modules\bootstrap\dist\js\bootstrap.js" />
     <Content Include="Scripts\build\app\m_change_password.js" />
     <Content Include="Scripts\build\app\m_community.js" />
+    <Content Include="Scripts\build\app\m_community_banner.js" />
     <Content Include="Scripts\build\app\m_community_news.js" />
     <Content Include="Scripts\build\app\m_edit.js" />
     <Content Include="Scripts\build\app\m_edit_detail.js" />

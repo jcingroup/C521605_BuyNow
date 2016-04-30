@@ -146,6 +146,30 @@ namespace WWW {
 
             var outHtml: JSX.Element = null;
             var item = this.state.item;
+            var outBanner = null;
+
+            //如果有廣告
+            if (this.state.banner.length > 0) {
+                outBanner =
+                    <section className="grid-info">
+                        <div id="marquee" className="swiper-container">
+                            <ul className="swiper-wrapper list-unstyled">
+                                {
+                                    this.state.banner.map(function (item, i) {
+                                        return (<li className="swiper-slide" key={item.community_banner_id}>
+                                            <a className="pop" href={gb_approot + 'Neighbor/Notice?id=' + item.community_banner_id}>
+                                                <img src={item.imgurl_CommunityBannerPhoto_1} />
+                                                <span className="title">{item.title}</span>
+                                            </a>
+                                        </li>);
+                                    })
+                                }
+                            </ul>
+                            <a className="swiper-button-prev" href="#"></a>
+                            <a className="swiper-button-next" href="#"></a>
+                        </div>
+                    </section>
+            }
 
             outHtml = (
                 <div className="wrap">
@@ -184,25 +208,7 @@ namespace WWW {
                             </dd>
                         </dl>
                     </div>
-                    <section className="grid-info">
-                        <div id="marquee" className="swiper-container">
-                            <ul className="swiper-wrapper list-unstyled">
-                                {
-                                    this.state.banner.map(function (item, i) {
-
-                                        return (<li className="swiper-slide" key={item.community_banner_id}>
-                                            <a className="pop" href={gb_approot + 'Neighbor/Notice?id=' + item.community_banner_id}>
-                                                <img src={item.imgurl_CommunityBannerPhoto_1} />
-                                                <span className="title">{item.title}</span>
-                                            </a>
-                                        </li>);
-                                    })
-                                }
-                            </ul>
-                            <a className="swiper-button-prev" href="#"></a>
-                            <a className="swiper-button-next" href="#"></a>
-                        </div>
-                    </section>
+                    {outBanner}
                     <section className="grid-info" id="feature">
                         <h3 className="h3">社區特色</h3>
                         <p dangerouslySetInnerHTML={ { __html: item.txt_spot } }></p>
