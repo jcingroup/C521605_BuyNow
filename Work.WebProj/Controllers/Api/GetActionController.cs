@@ -169,6 +169,15 @@ namespace DotWeb.Api
             if (q.info_type != null)
                 predicate = predicate.And(x => x.info_type == q.info_type);
 
+            if (q.city != null)
+                predicate = predicate.And(x => x.city == q.city);
+
+            if (q.price_bottom != null)
+                predicate = predicate.And(x => x.price >= q.price_bottom);
+
+            if (q.price_top != null)
+                predicate = predicate.And(x => x.price <= q.price_top);
+
             predicate = predicate.And(x => x.state == "A");
 
             var result = await db0.Matter.AsExpandable()
@@ -212,6 +221,9 @@ namespace DotWeb.Api
         public class queryParam
         {
             public string info_type { get; set; }
+            public string city { get; set; }
+            public int? price_bottom { get; set; }
+            public int? price_top { get; set; }
         }
 
         [HttpGet]

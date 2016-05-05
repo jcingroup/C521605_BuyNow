@@ -15,7 +15,13 @@ namespace WWW {
 
     interface WWWState {
         search?: {
-            city: string
+            city?: string,
+            footage?: number,
+            info_type: string,
+            price_top?: number,
+            price_bottom?: number,
+            footage_bottom?: number,
+            footage_top?: number
         },
         lists?: Array<server.Matter>
     }
@@ -33,7 +39,8 @@ namespace WWW {
             this.submitSearch = this.submitSearch.bind(this);
             this.state = {
                 search: {
-                    city: null
+                    city: null,
+                    info_type: info_type
                 },
                 lists: []
             };
@@ -60,10 +67,27 @@ namespace WWW {
                 _this.setSearchValue('city', e);
             })
 
-            $('#price_low').change(function (e) {
-                _this.setSearchValue('price_low', e);
+            $('#price_bottom').change(function (e) {
+                _this.setSearchValue('price_bottom', e);
             })
 
+            $('#price_top').change(function (e) {
+                _this.setSearchValue('price_top', e);
+            })
+
+            $('input[name=footage]').click(function (e) {
+                //console.log($(this).val());
+                _this.setSearchValue('footage', e);
+            })
+
+
+            $('#footage_bottom').change(function (e) {
+                _this.setSearchValue('footage_bottom', e);
+            })
+
+            $('#footage_top').change(function (e) {
+                _this.setSearchValue('footage_top', e);
+            })
             //$('.dropdown-toggle').click(function (e) {
             //    $('#collapse-other').collapse('hide');
             //});
@@ -163,21 +187,21 @@ namespace WWW {
                                     <button aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" className="btn btn-secondary style2 dropdown-toggle" type="button">總價<i className="ti-angle-down" /></button>
                                     <div className="dropdown-menu price form-inline p-t-1">
                                         <div className="input-group">
-                                            <select className="form-control form-control-sm" id="price_low">
-                                                <option value>0</option>
-                                                <option value>200</option>
-                                                <option value>400</option>
-                                                <option value>800</option>
+                                            <select className="form-control form-control-sm" id="price_bottom">
+                                                <option value="0">0</option>
+                                                <option value="2000000">200</option>
+                                                <option value="4000000">400</option>
+                                                <option value="8000000">800</option>
                                             </select>
                                             <span className="input-group-addon form-control-sm">萬</span>
                                         </div>
                                         ~
                                         <div className="input-group">
-                                            <select className="form-control form-control-sm">
-                                                <option value>不限</option>
-                                                <option value>200</option>
-                                                <option value>400</option>
-                                                <option value>800</option>
+                                            <select className="form-control form-control-sm" id="price_top">
+                                                <option value="">不限</option>
+                                                <option value="2000000">200</option>
+                                                <option value="4000000">400</option>
+                                                <option value="8000000">800</option>
                                             </select>
                                             <span className="input-group-addon form-control-sm">萬</span>
                                         </div>
@@ -191,44 +215,44 @@ namespace WWW {
                                     <button data-toggle="dropdown" className="btn btn-secondary style2 dropdown-toggle" type="button">坪數<i className="ti-angle-down" /></button>
                                     <div className="dropdown-menu size form-inline">
                                         <label htmlFor="">計算方式：</label>
-                                        <select className="form-control form-control-sm">
-                                            <option value>建坪</option>
-                                            <option value>主+陽</option>
-                                            <option value>地坪</option>
+                                        <select className="form-control form-control-sm" id="footageType">
+                                            <option value="1">建坪</option>
+                                            <option value="2">主+陽</option>
+                                            <option value="3">地坪</option>
                                         </select>
                                         <hr className="sm" />
                                         <label className="c-input c-radio">
-                                            <input type="radio" />
+                                            <input type="radio" name="footage" value="0" />
                                             <span className="c-indicator" />
                                             0坪以上
                                         </label>
                                         <label className="c-input c-radio">
-                                            <input type="radio" />
+                                            <input type="radio" name="footage" value="20" />
                                             <span className="c-indicator" />
                                             20坪以上
                                         </label>
                                         <label className="c-input c-radio">
-                                            <input type="radio" />
+                                            <input type="radio"  name="footage" value="30" />
                                             <span className="c-indicator" />
                                             30坪以上
                                         </label>
                                         <label className="c-input c-radio">
-                                            <input type="radio" />
+                                            <input type="radio" name="footage" value="40" />
                                             <span className="c-indicator" />
                                             40坪以上
                                         </label>
                                         <label className="c-input c-radio">
-                                            <input type="radio" />
+                                            <input type="radio" name="footage" value="50" />
                                             <span className="c-indicator" />
                                             50坪以上
                                         </label>
                                         <label className="c-input c-radio">
-                                            <input type="radio" />
+                                            <input type="radio" name="footage" value="60" />
                                             <span className="c-indicator" />
                                             60坪以上
                                         </label>
                                         <label className="c-input c-radio">
-                                            <input type="radio" />
+                                            <input type="radio" name="footage" value="100" />
                                             <span className="c-indicator" />
                                             100坪以上
                                         </label>
@@ -236,12 +260,12 @@ namespace WWW {
                                             <input type="radio" />
                                             <span className="c-indicator" />
                                             <span className="input-group">
-                                                <input type="text" className="form-control form-control-sm w-x-4" />
+                                                <input type="number" className="form-control form-control-sm w-x-4" id="footage_bottom" />
                                                 <span className="input-group-addon form-control-sm">坪</span>
                                             </span>
                                             ~
                                             <span className="input-group">
-                                                <input type="text" className="form-control form-control-sm w-x-4" />
+                                                <input type="number" className="form-control form-control-sm w-x-4" id="footage_top" />
                                                 <span className="input-group-addon form-control-sm">坪</span>
                                             </span>
                                         </label>
@@ -254,7 +278,7 @@ namespace WWW {
                         </form>
                     </div>
                     <p className="clearfix">
-                        <span className="result pull-xs-left">共有<strong className="text-danger">304</strong>間房屋符合條件</span>
+                        <span className="result pull-xs-left">共有<strong className="text-danger">{this.state.lists.length}</strong>間房屋符合條件</span>
                         <span className="pull-xs-right form-inline">
                             <label htmlFor="">排序方式：</label>
                             <select className="form-control form-control-sm">

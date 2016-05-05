@@ -84,7 +84,8 @@ namespace Matter {
                 gridData: { rows: [], page: 1 },
                 edit_type: 0,
                 searchData: { keyword: null },
-                editPrimKey: null
+                editPrimKey: null,
+                options_community: []
             };
 
         }
@@ -144,7 +145,6 @@ namespace Matter {
         handleSubmit(e: React.FormEvent) {
             e.preventDefault();
 
-            //console.log(this.state.fieldData);
             this.state.fieldData.context_life = CKEDITOR.instances['context_life'].getData();
             if (this.state.edit_type == 1) {
                 CommFunc.jqPost(this.props.apiPath, this.state.fieldData)
@@ -164,8 +164,14 @@ namespace Matter {
 
                 var packData = { id: this.state.editPrimKey, md: this.state.fieldData };
 
-                CommFunc.jqPut(this.props.apiPath, packData)
-                    .done((data, textStatus, jqXHRdata) => {
+                $.ajax(
+                    {
+                        type: "PUT",
+                        url: this.props.apiPath,
+                        data: packData,
+                        dataType: 'json',
+                        cache: false
+                    }).done((data, textStatus, jqXHRdata) => {
                         if (data.result) {
                             CommFunc.tosMessage(null, '修改完成', 1);
                         } else {
@@ -313,16 +319,17 @@ namespace Matter {
         setInputValueMuti(collentName: string, name: Array<string>, v: Array<any>) {
 
             var objForUpdate = { [collentName]: {} };
-            for (var i in name) {
+
+            for (var i = 0; i < name.length; i++) {
                 var item = name[i];
                 var value = v[i];
                 objForUpdate[collentName][item] = { $set: value }
             }
+
             var newState = update(this.state, objForUpdate);
             this.setState(newState);
         }
         changeAddress(data, e) {
-            //console.log(data);
             if (data.type == 1) {
 
             }
@@ -335,7 +342,6 @@ namespace Matter {
             if (data.type == 4) {
                 this.setInputValue(this.props.fdName, 'address', data.address_value);
             }
-
         }
 
         setChangeDate(collentName: string, name: string, date: moment.Moment) {

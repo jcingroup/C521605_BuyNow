@@ -209,8 +209,9 @@ export class MasterImageUpload extends React.Component<FileUpProps, FileUpState>
         this._sortable = null;
         this._upload = null;
 
-        if (Array.prototype.move === undefined) {
-            Array.prototype.move = function (old_index, new_index) {
+        if (Array.prototype.movesort === undefined) {
+            Array.prototype.movesort = function (old_index, new_index) {
+                alert(this)
                 if (new_index >= this.length) {
                     var k = new_index - this.length;
                     while ((k--) + 1) {
@@ -353,7 +354,8 @@ export class MasterImageUpload extends React.Component<FileUpProps, FileUpState>
                 onSort: function (evt) {
 
                     var data_array = _this.state.filelist;
-                    data_array.move(evt.oldIndex, evt.newIndex);
+                    //alert('submit move')
+                    data_array.movesort(evt.oldIndex, evt.newIndex);
 
                     var parms = [];
                     for (var i in data_array) {
