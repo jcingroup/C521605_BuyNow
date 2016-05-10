@@ -343,6 +343,7 @@
     <Content Include="Content\css\vendor\bootstrap-datetimepicker-build.css" />
     <Content Include="Content\css\vendor\icomoon.css" />
     <Content Include="Content\css\vendor\jquery.loadmask.css" />
+    <Content Include="Content\css\vendor\loaders.min.css" />
     <Content Include="Content\css\vendor\magnific-popup.css" />
     <Content Include="Content\css\vendor\mask-load.css" />
     <Content Include="Content\css\vendor\swiper.min.css" />
@@ -366,6 +367,8 @@
     <Content Include="Content\images\Partner\dm.jpg" />
     <Content Include="Content\images\Sell\interior.jpg" />
     <Content Include="Content\images\Sell\pro1.jpg" />
+    <Content Include="Content\images\Vendor\pic1.jpg" />
+    <Content Include="Content\images\Vendor\pic2.jpg" />
     <Content Include="Content\images\VIP\dm.jpg" />
     <Content Include="Content\js\bootstrap\collapse.js" />
     <Content Include="Content\js\bootstrap\dropdown.js" />

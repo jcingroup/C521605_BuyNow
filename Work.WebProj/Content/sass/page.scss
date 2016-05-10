@@ -235,6 +235,9 @@
 
 .pro {
 	@extend .col-xs-4;
+	margin-bottom: $grid-gutter-width;
+
+	.card {margin-bottom: 0;}
 
 	.card-img-top {
 		opacity:1;
@@ -510,6 +513,88 @@
 		}
 		.swiper-button-next {
 			background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%23FFFFFF'%2F%3E%3C%2Fsvg%3E");
+		}
+	}
+}
+
+
+// Vendor
+// ----------------------------------------------------------------------
+.yellowpage {
+	position: relative;
+	margin-bottom: $spacer*2;
+	padding: $spacer;
+	padding-left: 30%;
+	background: #fff;
+
+	.thumb {
+		width: 30%;
+		height: 100%;
+		position: absolute;
+		top: 0; left: 0;
+		vertical-align: middle;
+		overflow: hidden;
+		border: $spacer solid #fff;
+
+		a {
+			display: block;
+			height: 100%;
+		}
+
+		i, img {
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transition: transform 0.8s, opacity 0.5s;
+		}
+
+		i {
+			display: block;
+			@include size(54px);
+			text-align: center;
+			line-height: 54px;
+			color: #fff;
+			font-size: em(24px);
+			background: $brand-secondary;
+			border-radius: 50%;
+			opacity: 0;
+			z-index: 100;
+			transform: translate(-50%, -70%);
+		}
+
+		img {
+			max-width:150%;
+			min-height: 100%;
+			opacity: 1;
+			transform: translate(-50%, -50%);
+		}
+
+		a:hover {
+			i {
+				opacity: 1;
+				transform: translate(-50%, -50%);
+			}
+			img {
+				opacity: 0.7;
+				transform: translate(-50%, -50%) scale(1.2);
+			}
+		}
+	}
+
+	.des {
+		.h4 {color: $brand-primary;}
+
+		.intro {
+			margin-bottom: $spacer*0.5;
+			font-size: $font-size-lg;
+			color: $gray;
+		}
+
+		.info {
+			margin-bottom: 0;
+			padding-top: $spacer*0.5;
+			font-size: em(15px);
+			border-top: 1px solid $gray-lighter;
 		}
 	}
 }

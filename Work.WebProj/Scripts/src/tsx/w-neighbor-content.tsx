@@ -67,13 +67,15 @@ namespace WWW {
                                     $(this).magnificPopup({
                                         delegate: 'a', // the selector for gallery item
                                         type: 'image',
+                                        mainClass: 'mfp-with-fade',
                                         gallery: {
                                             enabled: true
                                         }
                                     });
                                 });
                                 $('.pop').magnificPopup({
-                                    type: 'iframe'
+                                    type: 'iframe',
+                                    mainClass: 'mfp-with-fade'
                                 });
 
                                 var swiper = new Swiper('.bulletin', {

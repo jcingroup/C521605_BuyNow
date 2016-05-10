@@ -4,13 +4,58 @@
     Layout = "~/Views/Shared/Layout.cshtml";
 }
 
+@section css {
+	<link rel="stylesheet" href="/Content/css/vendor/themify-icons.css">
+    <link rel="stylesheet" href="~/Content/css/vendor/magnific-popup.css">
+}
+
+@section Scripts {
+	<script src="~/Content/js/magnific-popup/jquery.magnific-popup.min.js"></script>
+	<script>
+		$('.thumb a').magnificPopup({
+			type: 'image',
+			mainClass: 'mfp-with-fade'
+		});
+	</script>
+}
+
 <h2 class="h2 title">@ViewBag.Title</h2>
 
 <div id="content">
 
 	<div class="wrap">
 	
-		<p class="h3 text-xs-center">網站建置中，敬請期待</p>
+		<dl class="yellowpage">
+			<dt class="thumb">
+				<a href="~/Content/images/Vendor/pic1.jpg">
+					<i class="ti-zoom-in"></i>
+					<img data-original="@Url.Content("~/Content/images/Vendor/pic1.jpg")" alt="全容企業社" class="lazy"> @* 廠商圖片 *@
+                </a>
+			</dt>
+			<dd class="des">
+				<article>
+					<h4 class="h4">全容企業社</h4> @* 廠商名稱 input text *@
+                    <p class="intro">巡更機．對講機．手電筒．門禁卡扣．省油器．輻射器．指紋機．磁扣拷貝</p> @* 廠商簡介 input text *@
+                    <p class="info">聯絡人: 郭宏光／手機: 0963-043-001／Line ID: rorexkuo／地址: 新北市新莊區中榮街126號5樓／電話: 02-2993-6209／電子信箱: rorexkuo@hotmail.com</p> @* 廠商聯絡方式 input text *@
+                </article>
+			</dd>
+        </dl>
+
+        <dl class="yellowpage">
+			<dt class="thumb">
+				<a href="~/Content/images/Vendor/pic2.jpg">
+					<i class="ti-zoom-in"></i>
+					<img data-original="@Url.Content("~/Content/images/Vendor/pic2.jpg")" alt="富基科技開發工程股份有限公司｜宏韋工程股份有限公司" class="lazy">
+                </a>
+			</dt>
+			<dd class="des">
+				<article>
+					<h4 class="h4">富基科技開發工程股份有限公司｜宏韋工程股份有限公司</h4>
+                    <p class="intro">全方位工程專業承包．室內設計裝潢．店鋪櫥窗設計．老屋翻新．木作裝潢．鐵屋鋁窗泥作工程．水電油漆．防水抓漏．各類修繕</p>
+                    <p class="info">聯絡人: 陳福元／手機1: 0910-094-889／手機2: 0983-840774／傳真: 02-2261-1676</p>
+                </article>
+			</dd>
+        </dl>
 
 	</div>
 

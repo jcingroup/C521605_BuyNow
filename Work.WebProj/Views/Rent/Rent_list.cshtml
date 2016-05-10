@@ -4,7 +4,8 @@
     Layout = "~/Views/Shared/Layout.cshtml";
 }
 @section css {
-    <link rel="stylesheet" href="/Content/css/vendor/themify-icons.css">
+    <link rel="stylesheet" href="~/Content/css/vendor/themify-icons.css">
+    <link rel="stylesheet" href="~/Content/css/vendor/loaders.min.css">
 }
 @section Scripts {
     <script>
@@ -17,6 +18,10 @@
 <h2 class="h2 title">@ViewBag.Title</h2>
 
 <div id="content">
+    <div class="loading">
+        <div class="loader" data-loader="circle-side"></div>
+        <p class="h4">資料讀取中……</p>
+    </div>
     <!--
     <div class="wrap">
 

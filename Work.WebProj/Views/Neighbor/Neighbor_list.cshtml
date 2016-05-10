@@ -5,7 +5,8 @@
 }
 
 @section css {
-    <link rel="stylesheet" href="/Content/css/vendor/themify-icons.css">
+    <link rel="stylesheet" href="~/Content/css/vendor/themify-icons.css">
+    <link rel="stylesheet" href="~/Content/css/vendor/loaders.min.css">
 }
 @section Scripts {
     <script src="~/Scripts/build/app/vendors.js"></script>
@@ -15,6 +16,12 @@
 <h1 class="h2 title">@ViewBag.Title</h1>
 
 <div id="content">
+
+    <div class="loading">
+        <div class="loader" data-loader="circle-side"></div>
+        <p class="h4">資料讀取中……</p>
+    </div>
+
     <!--<div class="wrap">
         <ol class="prolist row">
             <li class="pro style2">
