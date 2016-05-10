@@ -41,6 +41,39 @@ namespace WWW {
                     if (data.result) {
                         _this.setState({ item: data.data });
                         $("img.lazy").lazyload({ effect: "fadeIn" });
+
+                        $(document).ready(function () {
+                            $('.gallery').each(function () { // the containers for all your galleries
+                                $(this).magnificPopup({
+                                    delegate: 'a', // the selector for gallery item
+                                    type: 'image',
+                                    mainClass: 'mfp-with-fade',
+                                    gallery: {
+                                        enabled: true
+                                    }
+                                });
+                            });
+                            $('.pop').magnificPopup({
+                                type: 'iframe',
+                                mainClass: 'mfp-with-fade'
+                            });
+
+                            var swiper = new Swiper('.bulletin', {
+                                nextButton: '.swiper-button-next',
+                                prevButton: '.swiper-button-prev',
+                                speed: 1000,
+                                spaceBetween: 15
+                            });
+
+                            var marquee = new Swiper('#marquee', {
+                                nextButton: '.swiper-button-next',
+                                prevButton: '.swiper-button-prev',
+                                autoplay: 2500,
+                                speed: 2000,
+                                slidesPerView: 'auto',
+                            });
+
+                        });
                     } else {
                         alert(data.message);
                     }
@@ -356,8 +389,8 @@ namespace WWW {
                 <div className="wrap">
                     <h2 className="h2 title">{item.matter_name}</h2>
                     <ol className="breadcrumb">
-                        <li><a href="~/Index">HOME</a></li>
-                        <li><a href="~/Sell/List">我要買房</a></li>
+                        <li><a href={gb_approot}>HOME</a></li>
+                        <li><a href={gb_approot + 'Sell/List'}>我要買房</a></li>
                     </ol>
                     {out_info_1}
                     {out_info_2}
@@ -381,7 +414,7 @@ namespace WWW {
                     </section>
                     <section className="grid-info" id="facility">
                         <h3 className="h3">生活機能</h3>
-                        <span  dangerouslySetInnerHTML={{ __html: item.context_life }}></span>
+                        <span dangerouslySetInnerHTML={{ __html: item.context_life }}></span>
                     </section>
                     <section className="grid-info" id="location">
                         <h3 className="h3">地圖</h3>

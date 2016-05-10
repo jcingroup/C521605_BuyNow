@@ -1,14 +1,21 @@
 ﻿@{
-	ViewBag.Title = "我要買房";
+    ViewBag.Title = "我要買房";
     ViewBag.BodyClass = "Sell Content";
     Layout = "~/Views/Shared/Layout.cshtml";
 }
+@section css {
+    <link rel="stylesheet" href="~/Content/css/vendor/magnific-popup.css">
+    <link rel="stylesheet" href="~/Content/css/vendor/swiper.min.css">
+}
+
 @section Scripts {
     <script>
         var id = @Request.QueryString["id"];
     </script>
     <script src="~/Scripts/build/app/vendors.js"></script>
     <script src="~/Scripts/build/app/w_sell_content.js"></script>
+    <script src="~/Content/js/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="~/Content/js/swiper/swiper.min.js"></script>
 }
 <h1 class="sr-only">@ViewBag.Title</h1>
 <div id="content"></div>
