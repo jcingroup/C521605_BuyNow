@@ -21,7 +21,7 @@
 </head>
 
 <body class="@ViewBag.BodyClass">
-    
+
     <div id="wrapper">
 
         <header id="header">
@@ -51,24 +51,26 @@
                         <li>
                             <a href="~/Neighbor/Content/#diary" class="scroll"><i class="icon-book"></i>社區日誌</a>
                         </li>
-                        @if (@ViewBag.BodyClass.IndexOf("pro1") >= 0 ) {
-                        <li>
-                            <a href="~/Neighbor/Sell_list"><i class="icon-house"></i>社區待售房屋</a>
-                        </li>
-                        <li>
-                            <a href="~/Neighbor/Rent_list"><i class="icon-building"></i>社區待租房屋</a>
-                        </li>
+                        @if (@ViewBag.BodyClass.IndexOf("pro1") >= 0)
+                        {
+                            <li>
+                                <a href="~/Neighbor/Sell_list"><i class="icon-house"></i>社區待售房屋</a>
+                            </li>
+                            <li>
+                                <a href="~/Neighbor/Rent_list"><i class="icon-building"></i>社區待租房屋</a>
+                            </li>
                         }
-                        else if (@ViewBag.BodyClass.IndexOf("pro2") >= 0 ) {
-                        <li>
-                            <a href="~/Neighbor/Sell_list2"><i class="icon-house"></i>社區待售房屋</a>
-                        </li>
-                        <li>
-                            <a href="~/Neighbor/Rent_list2"><i class="icon-building"></i>社區待租房屋</a>
-                        </li>
+                        else if (@ViewBag.BodyClass.IndexOf("pro2") >= 0)
+                        {
+                            <li>
+                                <a href="~/Neighbor/Sell_list2"><i class="icon-house"></i>社區待售房屋</a>
+                            </li>
+                            <li>
+                                <a href="~/Neighbor/Rent_list2"><i class="icon-building"></i>社區待租房屋</a>
+                            </li>
                         }
                         <li>
-                            <a href="http://www.jojogo168.com/" target="new"><i class="icon-cart"></i>社區好康團購</a>
+                            <a href="@ViewBag.group_buying_url" target="new"><i class="icon-cart"></i>社區好康團購</a>
                         </li>
                         <li>
                             <a href="~/Neighbor/Content/#contact" class="scroll"><i class="icon-mail"></i>聯絡方式</a>
@@ -106,7 +108,7 @@
     <script src="~/Content/js/jquery.lazyload.min.js"></script>
     <script type="text/javascript">
         // Lazyload
-        $("img.lazy").lazyload({effect : "fadeIn"});
+        $("img.lazy").lazyload({ effect: "fadeIn" });
 
         // 回頂端 & menu fixed
         $(window).scroll(function () {
@@ -122,11 +124,11 @@
             }
         });
         $('.scroll').click(function () {
-          var hash = $(this).attr('href').split('#')[1];
-          $('html, body').animate({
-            scrollTop: $("#"+hash).offset().top - 50
-          }, 2000);
-          return false;
+            var hash = $(this).attr('href').split('#')[1];
+            $('html, body').animate({
+                scrollTop: $("#" + hash).offset().top - 50
+            }, 2000);
+            return false;
         });
     </script>
     @RenderSection("Scripts", required: false)

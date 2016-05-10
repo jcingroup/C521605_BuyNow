@@ -57,6 +57,9 @@ namespace DotWeb.Controllers
                 result.imgurl_CommunityPublic = new string[] { };
             }
 
+            ViewBag.community_id = id;
+            ViewBag.group_buying_url = result.group_buying_url;
+
             return View("Neighbor_content", result);
         }
 
