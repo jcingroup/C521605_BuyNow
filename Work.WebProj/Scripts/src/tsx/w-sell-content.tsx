@@ -367,7 +367,7 @@ namespace WWW {
                             {
                                 this.state.item.imgurl_MatterPhoto.map(function (sub_item, i) {
                                     return (
-                                        <li key={i}><a className="img-thumbnail" href=""><img className="lazy" alt="" data-original={sub_item} /></a></li>
+                                        <li key={i}><a className="img-thumbnail" href={sub_item}><img className="lazy" alt="" data-original={sub_item} /></a></li>
                                     );
                                 })
                             }

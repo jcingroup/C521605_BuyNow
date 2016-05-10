@@ -206,8 +206,11 @@ namespace DotWeb.Api
 
             foreach (var item in result)
             {
-                var imgobj = getImgFirst("MatterList", item.matter_id.ToString(), "origin");
-                item.list_src = imgobj == null ? null : imgobj.src_path;
+                //var imgobj = getImgFirst("MatterList", item.matter_id.ToString(), "origin");
+                var imgobj = getImgFiles("MatterPhoto", item.matter_id.ToString(), "origin").FirstOrDefault();
+                if (imgobj != null) {
+                    item.list_src = imgobj == null ? null : imgobj.src_path;
+                }
             }
 
 
@@ -291,7 +294,8 @@ namespace DotWeb.Api
                     community_name = x.community_name,
                     address = x.address,
                     holders = x.holders,
-                    manage = x.manage
+                    manage = x.manage,
+                    age = x.age
                 })
                 .ToListAsync(); ;
 
