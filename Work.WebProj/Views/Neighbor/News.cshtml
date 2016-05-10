@@ -1,0 +1,24 @@
+﻿@model ProcCore.Business.DB0.Community_News
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>社區日誌:@Resources.Res.System_FrontName</title>
+    <link href="~/Content/css/popup.css?v=@CommWebSetup.CacheVer" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic' rel='stylesheet' type='text/css'>
+    <script src="~/Scripts/cdn/BrowerInfo.js"></script>
+</head>
+<body class="popup">
+    <h1 class="sr-only">社區日誌</h1>
+    <article class="article">
+        <h2 class="h3">
+            <small class="date">@(((DateTime)Model.start_date).ToString("yyyy-MM-dd")) </small>
+            @Model.title
+        </h2>
+        <div class="editor">
+            @Html.Raw(Model.context)
+        </div>
+    </article>
+</body>
+</html>

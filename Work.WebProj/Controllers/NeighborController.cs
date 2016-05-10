@@ -67,6 +67,14 @@ namespace DotWeb.Controllers
 
             return View("Notice", item);
         }
+
+        public ActionResult News(int id)
+        {
+            db0 = getDB0();
+            var item = db0.Community_News.Find(id);
+            return View("News", item);
+        }
+
         public ActionResult Sell_list()
         {
             return View("Neighbor_sell_list");

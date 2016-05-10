@@ -264,7 +264,7 @@ namespace WWW {
                                                 return (
                                                     <li key={item.community_news_id}>
                                                         <small className="date">{item.start_date}</small>
-                                                        <a className="pop" href={gb_approot + 'Neighbor/Notice?id=' + item.community_news_id}>{item.title}</a>
+                                                        <a className="pop" href={gb_approot + 'Neighbor/News?id=' + item.community_news_id}>{item.title}</a>
                                                     </li>);
 
                                             })

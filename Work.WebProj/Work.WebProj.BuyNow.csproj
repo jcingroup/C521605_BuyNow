@@ -696,6 +696,7 @@
     <Content Include="Views\Neighbor\Neighbor_sell_list.cshtml" />
     <Content Include="Views\Neighbor\Neighbor_rent_content.cshtml" />
     <Content Include="Views\Neighbor\Neighbor_rent_list.cshtml" />
+    <Content Include="Views\Neighbor\News.cshtml" />
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
