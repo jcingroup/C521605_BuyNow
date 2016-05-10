@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@model ProcCore.Business.DB0.Community_Banner
+<!DOCTYPE html>
 <html lang="zh-tw">
 <head>
     <meta charset="UTF-8">
@@ -9,46 +10,22 @@
     <script src="~/Scripts/cdn/BrowerInfo.js"></script>
 </head>
 <body class="popup">
-    
+
     <h1 class="sr-only">社區日誌</h1>
 
     <article class="article">
         <h2 class="h3">
-            <small class="date">2016-01-01</small>
-            TitleTitle標題標題
+            <small class="date">@(((DateTime)Model.start_date).ToString("yyyy-MM-dd")) </small>
+            @Model.title
         </h2>
         <div class="editor">
-            <p>內文內文內文內文內文內文內文內文內文內文</p>
-            <p>內文內文內文內文內文內文內文內文內文內文</p>
-            <p>內文內文內文內文內文內文內文內文內文內文</p>
-            <p>內文內文內文內文內文內文內文內文內文內文</p>
-            <p>內文內文內文內文內文內文內文內文內文內文</p>
-            <p>內文內文內文內文內文內文內文內文內文內文</p>
-            <p>內文內文內文內文內文內文內文內文內文內文</p>
-            <p>內文內文內文內文內文內文內文內文內文內文</p>
-            <p>內文內文內文內文內文內文內文內文內文內文</p>
-            <p>內文內文內文內文內文內文內文內文內文內文</p>
-            <p>內文內文內文內文內文內文內文內文內文內文</p>
-            <p>內文內文內文內文內文內文內文內文內文內文</p>
-            <p>內文內文內文內文內文內文內文內文內文內文</p>
-            <p>內文內文內文內文內文內文內文內文內文內文</p>
-            <p>內文內文內文內文內文內文內文內文內文內文</p>
-            <p>內文內文內文內文內文內文內文內文內文內文</p>
-            <p>內文內文內文內文內文內文內文內文內文內文</p>
-            <p>內文內文內文內文內文內文內文內文內文內文</p>
-            <p>內文內文內文內文內文內文內文內文內文內文</p>
-            <p>內文內文內文內文內文內文內文內文內文內文</p>
-            <p>內文內文內文內文內文內文內文內文內文內文</p>
-            <p>內文內文內文內文內文內文內文內文內文內文</p>
-            <p>內文內文內文內文內文內文內文內文內文內文</p>
-            <p>內文內文內文內文內文內文內文內文內文內文</p>
-            <p>內文內文內文內文內文內文內文內文內文內文</p>
+            @Html.Raw(Model.context)
 
-            <ul class="list-inline">
+            <!--ul class="list-inline">
                 <li class="list-inline-item"><strong class="text-primary">檔案下載：</strong></li>
                 <li class="list-inline-item"><a href="" class="btn btn-secondary">文件1.pdf</a></li>
-            </ul>
-
+            </!--ul>
+                -->
         </div>
     </article>
 

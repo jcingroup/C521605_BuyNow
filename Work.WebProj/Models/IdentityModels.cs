@@ -25,9 +25,10 @@ namespace DotWeb
         /// </summary>
         /// 
         [Required(ErrorMessage = "姓名欄位需填寫。")]
-        [MaxLength(32,ErrorMessage ="姓名欄位長度超過32。")]
+        [MaxLength(32, ErrorMessage = "姓名欄位長度超過32。")]
         public string user_name_c { get; set; }
         public int sort { get; set; }
+        public int? community_id { get; set; }
     }
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {

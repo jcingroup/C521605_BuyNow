@@ -60,9 +60,12 @@ namespace DotWeb.Controllers
             return View("Neighbor_content", result);
         }
 
-        public ActionResult Notice()
+        public ActionResult Notice(int id)
         {
-            return View("Notice");
+            db0 = getDB0();
+            var item = db0.Community_Banner.Find(id);
+
+            return View("Notice", item);
         }
         public ActionResult Sell_list()
         {
