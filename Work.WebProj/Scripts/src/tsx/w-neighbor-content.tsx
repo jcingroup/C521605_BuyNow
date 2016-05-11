@@ -7,6 +7,8 @@ import ReactDOM = require('react-dom');
 import DT = require('dt');
 import update = require('react-addons-update');
 import CommFunc = require('comm-func');
+import Moment = require('moment');
+
 declare var id: number;
 declare var json_data: server.Community;
 
@@ -263,7 +265,7 @@ namespace WWW {
                                             this.state.news.map(function (item, i) {
                                                 return (
                                                     <li key={item.community_news_id}>
-                                                        <small className="date">{item.start_date}</small>
+                                                        <small className="date">{ Moment(item.start_date).format(DT.dateFT) }</small>
                                                         <a className="pop" href={gb_approot + 'Neighbor/News?id=' + item.community_news_id}>{item.title}</a>
                                                     </li>);
 
