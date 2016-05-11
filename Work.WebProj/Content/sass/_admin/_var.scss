@@ -1,0 +1,48 @@
+@charset "UTF-8";
+
+// Settiings
+$enable-lte8:                   false;
+$enable-rounded:                false;
+$img-path:                      '../images';
+$font-path:                     '../font/';
+
+
+// Grid columns
+$wrap-min-width:                320px;
+$grid-gutter-width:             0.7rem;
+
+
+// Colors
+$brand-primary:                 #438EB9;
+$brand-secondary:               #F0AE28 !default;
+
+
+// Typography
+$body-color:                    $gray-dark;
+$font-family-en:                "Open Sans", "Helvetica Neue", Helvetica, Arial, 'Microsoft Jhenghei', \5FAE\8EDF\6B63\9ED1\9AD4, sans-serif !default;
+$link-color:                    $brand-primary;
+$link-hover-color:              darken($link-color, 15%);
+
+
+// Tables
+$table-cell-padding:            .5rem ;
+$table-sm-cell-padding:         .2rem;
+
+
+// Buttons
+$btn-secondary-color:            #fff;
+$btn-secondary-bg:               $brand-secondary;
+$btn-secondary-border:           $btn-secondary-bg;
+
+
+// Modal
+$modal-inner-padding:            $grid-gutter-width;
+$modal-title-padding:            $grid-gutter-width;
+
+
+// Navbar
+$navbar-padding-vertical:        0;
+$navbar-dark-color:              #fff;
+$navbar-dark-hover-color:        $navbar-dark-color;
+$navbar-dark-active-color:       $navbar-dark-color;
+$navbar-dark-disabled-color:     $navbar-dark-color;

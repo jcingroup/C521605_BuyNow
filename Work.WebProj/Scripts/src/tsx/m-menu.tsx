@@ -117,73 +117,123 @@ namespace Menu {
 
             return (
                 <div>
-                    <h3 className="title">
-                        <span className="icon">
-                            <i className="fa-square text-success"></i>
-                            <i className="fa-square text-info"></i>
-                            <i className="fa-square text-warning"></i>
-                            <i className="fa-square text-danger"></i>
-                            </span>
-                        功能選單 MENU
-                        </h3>
-                    <div id="submenu">
-                        <ul className="panel">
+                    <h3 className="h3">
+                        <i className="fa-bars"></i>{ } 功能選單 MENU
+                    </h3>
+                    <div id="menu">
+                        <div className="panel">
                         {
                         this.state.menu_data.map((menu, i) => {
                             let out_html = null;
                             let ele_class: string = null;
 
                             if (menu.Checked) {
+                                out_html =
+                                <div className="panel-active" key={menu.Key}>
+                                    <div className="panel-heading">
+                                        <a href="#" onClick={this.onClick.bind(this, menu.Key) } className="panel-title">
+                                            <i className={menu.IconClass}></i> {menu.Title}
+                                        </a>
+                                    </div>
 
-                            } else {
-
-                            }
-                            out_html =
-                            <div key={menu.Key}>
-                                        <li className="panel-heading">
-                                            <a href="#" onClick={this.onClick.bind(this, menu.Key) } className="panel-title">
-                                                <i className={menu.IconClass}></i> {menu.Title}
-                                                </a>
-                                            </li>
-
-                                        <Collapse in={menu.Checked}>
-                                        <li className="panel-collapse">
-                                            <ul className="panel-body">
+                                    <Collapse in={menu.Checked}>
+                                        <div className="panel-collapse">
+                                            <ul className="panel-body list-unstyled">
                                             {
-                                            menu.sub.map((menu_item, j) => {
-                                                let out_html_sub_item = null;
-                                                let active_link = null;
-                                                let link_str = null;
+                                                menu.sub.map((menu_item, j) => {
+                                                    let out_html_sub_item = null;
+                                                    let active_link = null;
+                                                    let link_str = null;
 
-                                                if (menu_item.Action == '') {
-                                                    link_str = gb_approot + menu_item.Area + '/' + menu_item.Controller;
-                                                } else {
-                                                    link_str = gb_approot + menu_item.Area + '/' + menu_item.Controller + '/' + menu_item.Action;
-                                                }
+                                                    if (menu_item.Action == '') {
+                                                        link_str = gb_approot + menu_item.Area + '/' + menu_item.Controller;
+                                                    } else {
+                                                        link_str = gb_approot + menu_item.Area + '/' + menu_item.Controller + '/' + menu_item.Action;
+                                                    }
 
-                                                if (menu_item.Checked) {
-                                                    active_link = <a href={link_str} className="current" title={menu_item.Title}><i></i>{menu_item.Title}</a>
-                                                } else {
-                                                    active_link = <a href={link_str} title={menu_item.Title}><i></i>{menu_item.Title}</a>
-                                                }
+                                                    if (menu_item.Checked) {
+                                                        active_link = 
+                                                        <a href={link_str} className="active" title={menu_item.Title}>
+                                                            <i className="fa-caret-right"></i>
+                                                            {menu_item.Title}
+                                                        </a>
+                                                    } else {
+                                                        active_link = 
+                                                        <a href={link_str} title={menu_item.Title}>
+                                                            <i className="fa-caret-right"></i>
+                                                            {menu_item.Title}
+                                                        </a>
+                                                    }
 
-                                                out_html_sub_item =
-                                                <li key={menu_item.Key}>
-                                                            {active_link}
+                                                    out_html_sub_item =
+                                                    <li key={menu_item.Key}>
+                                                    {active_link}
                                                     </li>;
 
-                                                return out_html_sub_item;
-                                            })
+                                                    return out_html_sub_item;
+                                                })
                                             }
-                                                </ul>
-                                            </li>
-                                            </Collapse>
+                                            </ul>
+                                        </div>
+                                    </Collapse>
+                                    
                                 </div>;
 
+                            } else {
+                                out_html =
+                                <div key={menu.Key}>
+                                    <div className="panel-heading">
+                                        <a href="#" onClick={this.onClick.bind(this, menu.Key) } className="panel-title collapsed">
+                                            <i className={menu.IconClass}></i> {menu.Title}
+                                        </a>
+                                    </div>
+
+                                    <Collapse in={menu.Checked}>
+                                        <div className="panel-collapse">
+                                            <ul className="panel-body list-unstyled">
+                                            {
+                                                menu.sub.map((menu_item, j) => {
+                                                    let out_html_sub_item = null;
+                                                    let active_link = null;
+                                                    let link_str = null;
+
+                                                    if (menu_item.Action == '') {
+                                                        link_str = gb_approot + menu_item.Area + '/' + menu_item.Controller;
+                                                    } else {
+                                                        link_str = gb_approot + menu_item.Area + '/' + menu_item.Controller + '/' + menu_item.Action;
+                                                    }
+
+                                                    if (menu_item.Checked) {
+                                                        active_link = <a href={link_str} className="active" title={menu_item.Title}>
+                                                            <i className="fa-caret-right"></i>
+                                                            {menu_item.Title}
+                                                        </a>
+                                                    } else {
+                                                        active_link = <a href={link_str} title={menu_item.Title}>
+                                                            <i className="fa-caret-right"></i>
+                                                            {menu_item.Title}
+                                                        </a>
+                                                    }
+
+                                                    out_html_sub_item =
+                                                    <li key={menu_item.Key}>
+                                                    {active_link}
+                                                    </li>;
+
+                                                    return out_html_sub_item;
+                                                })
+                                            }
+                                            </ul>
+                                        </div>
+                                    </Collapse>
+                                    
+                                </div>;
+                            }
+                            
                             return out_html;
                         })
                         }
-                            </ul>
+                            </div>
                         </div>
                     </div>
             );
