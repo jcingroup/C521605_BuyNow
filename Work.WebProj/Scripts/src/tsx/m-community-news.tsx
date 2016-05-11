@@ -9,8 +9,8 @@ import CommFunc = require('comm-func');
 import dt = require('dt');
 import DatePicker = require('react-datepicker');
 import "react-datepicker/dist/react-datepicker.css";
-
-namespace Matter {
+declare var community_id: number;
+namespace News {
     interface Rows {
         check_del: boolean,
         community_news_id: number,
@@ -263,7 +263,8 @@ namespace Matter {
                 edit_type: IEditType.insert,
                 fieldData: {
                     start_date: Moment().toDate(),
-                    state: 'A'
+                    state: 'A',
+                    community_id: community_id
                 }
             });
         }
@@ -442,7 +443,7 @@ namespace Matter {
                 let fldState = {
                     label: field.state == 'A' ?
                         <label className="col-xs-1 control-label text-success">狀態</label> :
-                        <label className="col-xs-1 control-label text-danger">狀態</label> ,
+                        <label className="col-xs-1 control-label text-danger">狀態</label>,
                     tip: field.state == 'A' ?
                         <span className="col-xs-1"></span> :
                         <span className="col-xs-1">
@@ -474,7 +475,9 @@ namespace Matter {
                                         <select className="form-control"
                                             required
                                             value={field.community_id}
-                                            onChange={this.changeFDValue.bind(this, 'community_id') }>
+                                            onChange={this.changeFDValue.bind(this, 'community_id') }
+                                            disabled={community_id != null}
+                                            >
                                             <option value=""></option>
                                             {
                                                 this.state.options_community.map(function (item, i) {
@@ -552,4 +555,4 @@ namespace Matter {
 }
 
 var dom = document.getElementById('page_content');
-ReactDOM.render(<Matter.GirdForm caption={gb_caption} menuName={gb_menuname} iconClass="fa-list-alt" />, dom); 
+ReactDOM.render(<News.GirdForm caption={gb_caption} menuName={gb_menuname} iconClass="fa-list-alt" />, dom); 

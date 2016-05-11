@@ -178,6 +178,9 @@ namespace DotWeb.Api
             if (q.price_top != null)
                 predicate = predicate.And(x => x.price <= q.price_top);
 
+            if (q.community_id != null)
+                predicate = predicate.And(x => x.community_id == q.community_id);
+
             predicate = predicate.And(x => x.state == "A");
 
             var result = await db0.Matter.AsExpandable()
@@ -208,7 +211,8 @@ namespace DotWeb.Api
             {
                 //var imgobj = getImgFirst("MatterList", item.matter_id.ToString(), "origin");
                 var imgobj = getImgFiles("MatterPhoto", item.matter_id.ToString(), "origin").FirstOrDefault();
-                if (imgobj != null) {
+                if (imgobj != null)
+                {
                     item.list_src = imgobj == null ? null : imgobj.src_path;
                 }
             }
@@ -227,6 +231,7 @@ namespace DotWeb.Api
             public string city { get; set; }
             public int? price_bottom { get; set; }
             public int? price_top { get; set; }
+            public int? community_id { get; set; }
         }
 
         [HttpGet]

@@ -9,7 +9,7 @@ import CommFunc = require('comm-func');
 import dt = require('dt');
 import DatePicker = require('react-datepicker');
 import "react-datepicker/dist/react-datepicker.css";
-
+declare var community_id: number;
 namespace CommunityBanner {
     interface Rows {
         check_del: boolean,
@@ -267,7 +267,8 @@ namespace CommunityBanner {
                 edit_type: IEditType.insert,
                 fieldData: {
                     start_date: Moment().format(),
-                    state: 'A'
+                    state: 'A',
+                    community_id: community_id
                 }
             });
         }
@@ -445,7 +446,7 @@ namespace CommunityBanner {
                 let fldState = {
                     label: field.state == 'A' ?
                         <label className="col-xs-1 control-label text-success">狀態</label> :
-                        <label className="col-xs-1 control-label text-danger">狀態</label> ,
+                        <label className="col-xs-1 control-label text-danger">狀態</label>,
                     tip: field.state == 'A' ?
                         <span className="col-xs-1"></span> :
                         <span className="col-xs-1">
@@ -492,7 +493,9 @@ namespace CommunityBanner {
                                         <select className="form-control"
                                             required
                                             value={field.community_id}
-                                            onChange={this.changeFDValue.bind(this, 'community_id') }>
+                                            onChange={this.changeFDValue.bind(this, 'community_id') }
+                                            disabled={community_id != null}
+                                            >
                                             <option value=""></option>
                                             {
                                                 this.state.options_community.map(function (item, i) {

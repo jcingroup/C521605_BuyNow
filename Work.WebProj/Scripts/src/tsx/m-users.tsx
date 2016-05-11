@@ -18,7 +18,7 @@ namespace Users {
 
     }
     interface FormResult extends IResultBase {
-        ID:string
+        ID: string
     }
 
     class GridRow extends React.Component<BaseDefine.GridRowPropsBase<Rows>, BaseDefine.GridRowStateBase> {
@@ -41,22 +41,22 @@ namespace Users {
         render() {
 
             return <tr>
-                       <td className="text-center">
-                           <CommCmpt.GridCheckDel iKey={this.props.ikey} chd={this.props.itemData.check_del} delCheck={this.delCheck} />
-                       </td>
-                       <td className="text-center">
-                           <CommCmpt.GridButtonModify modify={this.modify} />
-                       </td>
-                       <td>
-                           {this.props.itemData.UserName}
-                       </td>
-                       <td>
-                           {this.props.itemData.user_name_c}
-                       </td>
-                       <td>
-                           {this.props.itemData.Email}
-                       </td>
-                   </tr>;
+                <td className="text-center">
+                    <CommCmpt.GridCheckDel iKey={this.props.ikey} chd={this.props.itemData.check_del} delCheck={this.delCheck} />
+                </td>
+                <td className="text-center">
+                    <CommCmpt.GridButtonModify modify={this.modify} />
+                </td>
+                <td>
+                    {this.props.itemData.UserName}
+                </td>
+                <td>
+                    {this.props.itemData.user_name_c}
+                </td>
+                <td>
+                    {this.props.itemData.Email}
+                </td>
+            </tr>;
 
         }
     }
@@ -82,7 +82,7 @@ namespace Users {
 
 
             this.state = {
-                fieldData: {  },
+                fieldData: { role_array: [] },
                 gridData: { rows: [], page: 1 },
                 edit_type: 0
             }
@@ -206,7 +206,7 @@ namespace Users {
             this.setState(newState);
         }
         insertType() {
-            this.setState({ edit_type: 1, fieldData: {} });
+            this.setState({ edit_type: 1, fieldData: { role_array: [] } });
         }
         updateType(id: number | string) {
 
@@ -265,137 +265,137 @@ namespace Users {
                 let GridNavPage = CommCmpt.GridNavPage;
 
                 outHtml =
-                (
-                    <div>
+                    (
+                        <div>
 
-                    <ul className="breadcrumb">
-                        <li><i className="fa-list-alt"></i> {this.props.menuName}</li>
-                        </ul>
-                    <h3 className="title">
-                        {this.props.caption}
-                        </h3>
-                    <form onSubmit={this.handleSearch}>
-                        <div className="table-responsive">
-                            <div className="table-header">
-                                <div className="table-filter">
-                                    <div className="form-inline">
-                                        <div className="form-group">
-                                            <label>使用者名稱</label> { }
-                                            <input type="text" className="form-control"
-                                                onChange={this.changeGDValue.bind(this, 'UserName') }
-                                                placeholder="請輸入關鍵字..." /> { }
-                                            <button className="btn-primary" type="submit"><i className="fa-search"></i> 搜尋</button>
+                            <ul className="breadcrumb">
+                                <li><i className="fa-list-alt"></i> {this.props.menuName}</li>
+                            </ul>
+                            <h3 className="title">
+                                {this.props.caption}
+                            </h3>
+                            <form onSubmit={this.handleSearch}>
+                                <div className="table-responsive">
+                                    <div className="table-header">
+                                        <div className="table-filter">
+                                            <div className="form-inline">
+                                                <div className="form-group">
+                                                    <label>使用者名稱</label> { }
+                                                    <input type="text" className="form-control"
+                                                        onChange={this.changeGDValue.bind(this, 'UserName') }
+                                                        placeholder="請輸入關鍵字..." /> { }
+                                                    <button className="btn-primary" type="submit"><i className="fa-search"></i> 搜尋</button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th className="col-xs-1 text-center">
+                                                    <label className="cbox">
+                                                        <input type="checkbox" checked={this.state.checkAll} onChange={this.checkAll} />
+                                                        <i className="fa-check"></i>
+                                                    </label>
+                                                </th>
+                                                <th className="col-xs-1 text-center">修改</th>
+                                                <th className="col-xs-4">UserName</th>
+                                                <th className="col-xs-3">簡稱</th>
+                                                <th className="col-xs-3">Email</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {
+                                                this.state.gridData.rows.map(
+                                                    (itemData, i) =>
+                                                        <GridRow key={i}
+                                                            ikey={i}
+                                                            primKey={itemData.Id}
+                                                            itemData={itemData}
+                                                            delCheck={this.delCheck}
+                                                            updateType={this.updateType} />
+                                                )
+                                            }
+                                        </tbody>
+                                    </table>
                                 </div>
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th className="col-xs-1 text-center">
-                                            <label className="cbox">
-                                                <input type="checkbox" checked={this.state.checkAll} onChange={this.checkAll} />
-                                                <i className="fa-check"></i>
-                                                </label>
-                                            </th>
-                                        <th className="col-xs-1 text-center">修改</th>
-                                        <th className="col-xs-4">UserName</th>
-                                        <th className="col-xs-3">簡稱</th>
-                                        <th className="col-xs-3">Email</th>
-                                         </tr>
-                                    </thead>
-                                <tbody>
-                                    {
-                                    this.state.gridData.rows.map(
-                                        (itemData, i) =>
-                                            <GridRow key={i}
-                                                ikey={i}
-                                                primKey={itemData.Id}
-                                                itemData={itemData}
-                                                delCheck={this.delCheck}
-                                                updateType={this.updateType} />
-                                    )
-                                    }
-                                    </tbody>
-                                </table>
-                            </div>
-                    <GridNavPage
-                        startCount={this.state.gridData.startcount}
-                        endCount={this.state.gridData.endcount}
-                        recordCount={this.state.gridData.records}
-                        totalPage={this.state.gridData.total}
-                        nowPage={this.state.gridData.page}
-                        queryGridData={this.queryGridData}
-                        insertType={this.insertType}
-                        deleteSubmit={this.deleteSubmit}
-                        />
-                        </form>
+                                <GridNavPage
+                                    startCount={this.state.gridData.startcount}
+                                    endCount={this.state.gridData.endcount}
+                                    recordCount={this.state.gridData.records}
+                                    totalPage={this.state.gridData.total}
+                                    nowPage={this.state.gridData.page}
+                                    queryGridData={this.queryGridData}
+                                    insertType={this.insertType}
+                                    deleteSubmit={this.deleteSubmit}
+                                    />
+                            </form>
                         </div>
-                );
+                    );
             }
             else if (this.state.edit_type == 1 || this.state.edit_type == 2) {
                 let fieldData = this.state.fieldData;
-                console.log('role_array',fieldData.role_array);
+                console.log('role_array', fieldData.role_array);
 
                 outHtml = (
-<div>
-    <ul className="breadcrumb">
-        <li><i className="fa-list-alt"></i>
-            {this.props.menuName}
-        </li>
-    </ul>
-    <h4 className="title"> {this.props.caption} 基本資料維護</h4>
-    <form className="form-horizontal" onSubmit={this.handleSubmit}>
-        <div className="col-xs-8">
-            <div className="form-group">
-                <label className="col-xs-2 control-label">登錄帳號</label>
-                <div className="col-xs-8">
-                    <input type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'UserName')} value={fieldData.UserName} maxLength={16} disabled={this.state.edit_type == 2}
-                    required />
-                </div>
-                <small className="col-xs-2 text-danger">(必填)</small>
-            </div>
-            <div className="form-group">
-                <label className="col-xs-2 control-label">中文名稱</label>
-                <div className="col-xs-8">
-                    <input type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'user_name_c')} value={fieldData.user_name_c} maxLength={32} required />
-                </div>
-                <small className="col-xs-2 text-danger">(必填)</small>
-            </div>
+                    <div>
+                        <ul className="breadcrumb">
+                            <li><i className="fa-list-alt"></i>
+                                {this.props.menuName}
+                            </li>
+                        </ul>
+                        <h4 className="title"> {this.props.caption} 基本資料維護</h4>
+                        <form className="form-horizontal" onSubmit={this.handleSubmit}>
+                            <div className="col-xs-8">
+                                <div className="form-group">
+                                    <label className="col-xs-2 control-label">登錄帳號</label>
+                                    <div className="col-xs-8">
+                                        <input type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'UserName') } value={fieldData.UserName} maxLength={16} disabled={this.state.edit_type == 2}
+                                            required />
+                                    </div>
+                                    <small className="col-xs-2 text-danger">(必填) </small>
+                                </div>
+                                <div className="form-group">
+                                    <label className="col-xs-2 control-label">中文名稱</label>
+                                    <div className="col-xs-8">
+                                        <input type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'user_name_c') } value={fieldData.user_name_c} maxLength={32} required />
+                                    </div>
+                                    <small className="col-xs-2 text-danger">(必填) </small>
+                                </div>
 
-            <div className="form-group">
-                <label className="col-xs-2 control-label">角色</label>
-                <div className="col-xs-10">
-                    {fieldData.role_array.map((item,i)=> {
+                                <div className="form-group">
+                                    <label className="col-xs-2 control-label">角色</label>
+                                    <div className="col-xs-10">
+                                        {fieldData.role_array.map((item, i) => {
 
-                        var out_check = <div
-                                             className="checkbox"
-                                             key={ item.role_id }>
-                                          <label>
-                                            <input
-                                                   type="checkbox"
-                                                   checked={ item.role_use }
-                                                   onChange={ this.setRolesCheck.bind(this, i) } />
-                                            {item.role_name}
-                                          </label>
-                                        </div>;
+                                            var out_check = <div
+                                                className="checkbox"
+                                                key={ item.role_id }>
+                                                <label>
+                                                    <input
+                                                        type="checkbox"
+                                                        checked={ item.role_use }
+                                                        onChange={ this.setRolesCheck.bind(this, i) } />
+                                                    {item.role_name}
+                                                </label>
+                                            </div>;
 
-                        return out_check;
+                                            return out_check;
 
-                    })}
-                </div>
-            </div>
+                                        }) }
+                                    </div>
+                                </div>
 
-            <div className="form-action">
-                <div className="col-xs-4 col-xs-offset-2">
-                    <button type="submit" className="btn-primary"><i className="fa-check"></i> 儲存</button>
-                    {}
-                    <button type="button" onClick={this.noneType}><i className="fa-times"></i> 回前頁</button>
-                </div>
-            </div>
-        </div>
-    </form>
-</div>
+                                <div className="form-action">
+                                    <div className="col-xs-4 col-xs-offset-2">
+                                        <button type="submit" className="btn-primary"><i className="fa-check"></i> 儲存</button>
+                                        {}
+                                        <button type="button" onClick={this.noneType}><i className="fa-times"></i> 回前頁</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 );
             }
 

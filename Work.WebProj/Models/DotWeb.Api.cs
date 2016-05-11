@@ -28,6 +28,7 @@ namespace DotWeb.Api
         protected int defPageSize = 10;
         protected string aspUserId;
         protected int departmentId;
+        protected int? community_id;
         protected string UserId;
         protected string LoginUserFlag = string.Empty;
         protected IEnumerable<string> UserRoles;
@@ -48,6 +49,13 @@ namespace DotWeb.Api
                 UserId = aspnet_user.Id;
                 departmentId = aspnet_user.department_id;
                 UserRoles = aspnet_user.Roles.Select(x => x.RoleId);
+            }
+
+            var cki_community_id = controllerContext.Request.Headers.GetCookies("community_id").SingleOrDefault();
+            if (cki_community_id != null)
+            {
+                var c_id = cki_community_id["community_id"].Value;
+                community_id = int.Parse(c_id);
             }
         }
         protected virtual string getRecMessage(string MsgId)
