@@ -5,9 +5,11 @@
 // ----------------------------------------------------------------------
 
 .h3 {
-	margin-bottom: $spacer;
+	margin-bottom: $spacer*0.7;
 	padding-bottom: $spacer*0.5;
-	border-bottom: 3px solid #f3f3f3;
+	font-size: em(22px);
+	color: $brand-primary;
+	border-bottom: 1px dotted #e2e2e2;
 }
 
 
@@ -20,7 +22,12 @@
 	}
 }
 
-.table-rwd {
+.table-sm {
+	font-size: em(15px);
+}
+
+.table-rwd,
+.table-responsive {
 	width: 100%;
 	overflow-x: auto;
 

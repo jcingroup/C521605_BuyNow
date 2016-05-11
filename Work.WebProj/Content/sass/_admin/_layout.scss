@@ -245,6 +245,10 @@ a {
     }
 }
 
+#content {
+    padding: $spacer;
+}
+
 
 // footer
 // ----------------------------------------------------------------------
@@ -252,12 +256,15 @@ a {
     padding-left: $sidebar-width;
 
     .copyright {
+        margin-bottom: 0;
         text-align: center;
-        font-size: $font-size-sm;
+        font-size: em(12px);
+        letter-spacing: 0.1em;
         text-transform: uppercase;
 
         a {
-            color: $gray;
+            color: lighten($link-color,15%);
+            &:hover, &:active, &:focus {}
         }
     }
 }
