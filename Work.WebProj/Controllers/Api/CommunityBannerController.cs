@@ -34,6 +34,9 @@ namespace DotWeb.Api
             if (q.name != null)
                 predicate = predicate.And(x => x.title.Contains(q.name));
 
+            if (community_id != null)
+                predicate = predicate.And(x => x.community_id == community_id);
+
             int page = (q.page == null ? 1 : (int)q.page);
             var result = db0.Community_Banner.AsExpandable().Where(predicate);
             var resultCount = await result.CountAsync();
@@ -148,7 +151,8 @@ namespace DotWeb.Api
                     r.result = true;
                     return Ok(r);
                 }
-                else {
+                else
+                {
                     r.result = false;
                     r.message = Resources.Res.Log_Err_Delete_NotFind;
                     return Ok(r);

@@ -15,6 +15,15 @@ namespace DotWeb.Areas.Active.Controllers
         #region Action and function section
         public ActionResult Main()
         {
+            var cki_community_id = Request.Cookies["community_id"]; //new HttpCookie("community_id", first_item.community_id.ToString());
+            if (cki_community_id != null)
+            {
+                ViewBag.community_id = cki_community_id.Value;
+            }
+            else
+            {
+                ViewBag.community_id = null;
+            }
             ActionRun();
             return View();
         }

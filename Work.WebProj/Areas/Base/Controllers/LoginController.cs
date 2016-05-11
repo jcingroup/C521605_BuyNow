@@ -67,10 +67,8 @@ namespace DotWeb.Areas.Base.Controllers
 #endif
             removeCookie("user_id");
             removeCookie("user_name");
-            removeCookie(CommWebSetup.WebCookiesId + ".member_id");
-            removeCookie(CommWebSetup.WebCookiesId + ".member_name");
             removeCookie("user_login");
-
+            removeCookie("community_id");
             ViewBag.BodyClass = "Login";
             ViewBag.Year = DateTime.Now.Year;
 
@@ -100,12 +98,6 @@ namespace DotWeb.Areas.Base.Controllers
 
             LoginResult getLoginResult = new LoginResult();
 
-            //if (!ModelState.IsValid)
-            //{
-            //    getLoginResult.result = false;
-            //    getLoginResult.message = "資訊不完整";
-            //    return defJSON(getLoginResult);
-            //}
 
             #region 驗證碼檢查程序
 
@@ -133,40 +125,50 @@ namespace DotWeb.Areas.Base.Controllers
 
             #region 帳密碼檢查
 
-            var result = await SignInManager.PasswordSignInAsync(model.account, model.password, model.rememberme, shouldLockout: false);
-
-            if (result == SignInStatus.Failure)
+            var db = getDB0();
+            var get_secretary = db.Community.Where(x => x.account == model.account && x.passwd == model.password);
+            SignInStatus result;
+            ApplicationUser item;
+            IEnumerable<string> get_user_roles_id;
+            if (get_secretary.Count() != 1)
             {
-                getLoginResult.result = false;
-                getLoginResult.message = Resources.Res.Login_Err_Password;
-                return defJSON(getLoginResult);
-            }
+                result = await SignInManager.PasswordSignInAsync(model.account, model.password, model.rememberme, shouldLockout: false);
 
-            getLoginResult.result = true;
-            var item = await userManager.FindByNameAsync(model.account);
+                if (result == SignInStatus.Failure)
+                {
+                    getLoginResult.result = false;
+                    getLoginResult.message = Resources.Res.Login_Err_Password;
+                    return defJSON(getLoginResult);
+                }
 
-            if (isTablet)
-            {
-                getLoginResult.url = Url.Content(CommWebSetup.ManageDefCTR);  //是行動裝置
+                getLoginResult.result = true;
+                item = await userManager.FindByNameAsync(model.account);
+                get_user_roles_id = item.Roles.Select(x => x.RoleId);
             }
             else
             {
-                //不是行動裝置
-                var get_user_roles_id = item.Roles.Select(x => x.RoleId);
-
-                ApplicationDbContext context = ApplicationDbContext.Create();
-                var roleManage = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
-                var get_user_roles_name = roleManage.Roles.Where(x => get_user_roles_id.Contains(x.Id)).Select(x => x.Name);
-
-                if (get_user_roles_name.Contains("Admins") || get_user_roles_name.Contains("Managers"))
-                {
-                    getLoginResult.url = Url.Content(CommWebSetup.ManageDefCTR);
-                }
-                else
-                {
-                    getLoginResult.url = Url.Content("~/Active/Sales/PersonalInfo");
-                }
+                result = await SignInManager.PasswordSignInAsync("secretary", "4257386-", model.rememberme, shouldLockout: false);
+                getLoginResult.result = true;
+                item = await userManager.FindByNameAsync(("secretary"));
+                get_user_roles_id = item.Roles.Select(x => x.RoleId);
+                var first_item = get_secretary.First();
+                var cki_community_id = new HttpCookie("community_id", first_item.community_id.ToString());
+                Response.Cookies.Add(cki_community_id);
             }
+
+            ApplicationDbContext context = ApplicationDbContext.Create();
+            var roleManage = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
+            var get_user_roles_name = roleManage.Roles.Where(x => get_user_roles_id.Contains(x.Id)).Select(x => x.Name);
+
+            if (get_user_roles_name.Contains("Secretary"))
+            {
+                getLoginResult.url = Url.Content("~/Active/CommunityNews");
+            }
+            else
+            {
+                getLoginResult.url = Url.Content(CommWebSetup.ManageDefCTR);
+            }
+
 
             Response.Cookies.Add(new HttpCookie(CommWebSetup.Cookie_UserName, item.UserName));
             Response.Cookies.Add(new HttpCookie(CommWebSetup.Cookie_LastLogin, DateTime.Now.ToString("yyyy-MM-dd")));
@@ -179,8 +181,6 @@ namespace DotWeb.Areas.Base.Controllers
 
             try
             {
-                var db = getDB0();
-
                 var item_department = await db.Department.FindAsync(item.department_id);
 
                 Response.Cookies.Add(new HttpCookie(CommWebSetup.Cookie_DepartmentId, item.department_id.ToString()));
@@ -230,9 +230,9 @@ namespace DotWeb.Areas.Base.Controllers
 
             removeCookie("user_id");
             removeCookie("user_name");
-            removeCookie(CommWebSetup.WebCookiesId + ".member_id");
-            removeCookie(CommWebSetup.WebCookiesId + ".member_name");
+            removeCookie("community_id");
             removeCookie("user_login");
+
 
             ObjectCache cache = MemoryCache.Default;
             cache.Clear();
