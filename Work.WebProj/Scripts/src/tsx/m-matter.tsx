@@ -370,11 +370,16 @@ namespace Matter {
                     (
                         <div>
                             <ul className="breadcrumb">
-                                <li><i className="fa-list-alt"></i>
+                                <li>
+                                    <i className="fa-list-alt"></i> { }
                                     {this.props.menuName}
                                 </li>
+                                <li>
+                                    <i className="fa-list-alt"></i> { }
+                                    {this.props.caption}
+                                </li>
                             </ul>
-                            <h3 className="title">
+                            <h3 className="h3">
                                 {this.props.caption}
                             </h3>
                             <form onSubmit={this.handleSearch}>
@@ -383,11 +388,11 @@ namespace Matter {
                                         <div className="table-filter">
                                             <div className="form-inline">
                                                 <div className="form-group">
-                                                    <label></label>
+                                                    <label className="sr-only">搜尋社區</label>
                                                     {}
-                                                    <input type="text" className="form-control" onChange={this.changeGDValue.bind(this, 'keyword') } value={this.state.searchData.keyword} placeholder="社區名稱" />
+                                                    <input type="text" className="form-control form-control-sm" onChange={this.changeGDValue.bind(this, 'keyword') } value={this.state.searchData.keyword} placeholder="社區名稱" />
                                                     {}
-                                                    <button className="btn-primary" type="submit"><i className="fa-search"></i> 搜尋</button>
+                                                    <button className="btn btn-primary btn-sm" type="submit"><i className="fa-search"></i> 搜尋</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -395,15 +400,10 @@ namespace Matter {
                                     <table className="table table-sm table-bordered table-striped">
                                         <thead>
                                             <tr>
-                                                <th className="text-center">
-                                                    <label className="cbox">
-                                                        <input type="checkbox" checked={this.state.checkAll} onChange={this.checkAll} />
-                                                        <i className="fa-check"></i>
-                                                    </label>
-                                                </th>
-                                                <th className="text-center">修改</th>
-                                                <th>編號</th>
-                                                <th>社區名稱</th>
+                                                <th style={{"width" : "10%"}} className="text-center">刪除</th>
+                                                <th style={{"width" : "10%"}} className="text-center">修改</th>
+                                                <th style={{"width" : "20%"}}>編號</th>
+                                                <th style={{"width" : "60%"}}>社區名稱</th>
                                             </tr>
                                         </thead>
                                         <tbody>
