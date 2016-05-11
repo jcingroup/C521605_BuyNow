@@ -341,8 +341,10 @@
     <Content Include="Content\css\index.css" />
     <Content Include="Content\css\page.css" />
     <Content Include="Content\css\popup.css" />
+    <Content Include="Content\css\sys.css" />
     <Content Include="Content\css\vendor\animate.css" />
     <Content Include="Content\css\vendor\bootstrap-datetimepicker-build.css" />
+    <Content Include="Content\css\vendor\fontAwesome\font-awesome.css" />
     <Content Include="Content\css\vendor\icomoon.css" />
     <Content Include="Content\css\vendor\jquery.loadmask.css" />
     <Content Include="Content\css\vendor\loaders.min.css" />
@@ -606,6 +608,20 @@
     <Content Include="Content\sass\_admin\_module.scss" />
     <Content Include="Content\sass\_admin\_var.scss" />
     <Content Include="Content\sass\sys.scss" />
+    <Content Include="Content\sass\vendor\fontAwesome\font-awesome.scss" />
+    <Content Include="Content\sass\vendor\fontAwesome\_animated.scss" />
+    <Content Include="Content\sass\vendor\fontAwesome\_bordered-pulled.scss" />
+    <Content Include="Content\sass\vendor\fontAwesome\_core.scss" />
+    <Content Include="Content\sass\vendor\fontAwesome\_fixed-width.scss" />
+    <Content Include="Content\sass\vendor\fontAwesome\_icons.scss" />
+    <Content Include="Content\sass\vendor\fontAwesome\_larger.scss" />
+    <Content Include="Content\sass\vendor\fontAwesome\_list.scss" />
+    <Content Include="Content\sass\vendor\fontAwesome\_mixins.scss" />
+    <Content Include="Content\sass\vendor\fontAwesome\_path.scss" />
+    <Content Include="Content\sass\vendor\fontAwesome\_rotated-flipped.scss" />
+    <Content Include="Content\sass\vendor\fontAwesome\_screen-reader.scss" />
+    <Content Include="Content\sass\vendor\fontAwesome\_stacked.scss" />
+    <Content Include="Content\sass\vendor\fontAwesome\_variables.scss" />
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
