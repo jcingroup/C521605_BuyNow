@@ -84,3 +84,29 @@
 
 // 
 // ----------------------------------------------------------------------
+.table-header, .table-footer {
+	padding: $spacer*0.3;
+	background: $brand-primary-light;
+}
+
+.pager {
+	.form-inline {margin: 0 $spacer*0.5;}
+}
+
+.upload-img {
+	li {
+		height: 70px;
+		margin: $spacer*0.3;
+		padding: $spacer*0.3;
+		border: 1px solid #e5e5e5;
+
+		img {
+			width: auto;
+			height: 100%;
+		}
+
+		.close {
+			font-size: 1.2em;
+		}
+	}
+}

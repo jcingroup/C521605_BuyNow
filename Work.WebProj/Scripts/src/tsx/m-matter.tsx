@@ -44,12 +44,12 @@ namespace Matter {
 
         render() {
             return <tr>
-                <td className="text-center">
+                <td className="text-xs-center">
                     <CommCmpt.GridButtonDel
                         removeItemSubmit={this.props.removeItemSubmit}
                         primKey={this.props.primKey} />
                 </td>
-                <td className="text-center">
+                <td className="text-xs-center">
                     <CommCmpt.GridButtonModify modify={this.modify}/>
                 </td>
                 <td>{this.props.itemData.matter_id}</td>
@@ -371,11 +371,11 @@ namespace Matter {
                         <div>
                             <ul className="breadcrumb">
                                 <li>
-                                    <i className="fa-list-alt"></i> { }
+                                    <i className="fa-caret-right"></i> { }
                                     {this.props.menuName}
                                 </li>
                                 <li>
-                                    <i className="fa-list-alt"></i> { }
+                                    <i className="fa-angle-right"></i> { }
                                     {this.props.caption}
                                 </li>
                             </ul>
@@ -389,9 +389,9 @@ namespace Matter {
                                             <div className="form-inline">
                                                 <div className="form-group">
                                                     <label className="sr-only">搜尋社區</label>
-                                                    {}
+                                                    { }
                                                     <input type="text" className="form-control form-control-sm" onChange={this.changeGDValue.bind(this, 'keyword') } value={this.state.searchData.keyword} placeholder="社區名稱" />
-                                                    {}
+                                                    { }
                                                     <button className="btn btn-primary btn-sm" type="submit"><i className="fa-search"></i> 搜尋</button>
                                                 </div>
                                             </div>
@@ -400,9 +400,9 @@ namespace Matter {
                                     <table className="table table-sm table-bordered table-striped">
                                         <thead>
                                             <tr>
-                                                <th style={{"width" : "10%"}} className="text-center">刪除</th>
-                                                <th style={{"width" : "10%"}} className="text-center">修改</th>
-                                                <th style={{"width" : "20%"}}>編號</th>
+                                                <th style={{"width" : "7%"}} className="text-xs-center">刪除</th>
+                                                <th style={{"width" : "7%"}} className="text-xs-center">修改</th>
+                                                <th style={{"width" : "26%"}}>編號</th>
                                                 <th style={{"width" : "60%"}}>社區名稱</th>
                                             </tr>
                                         </thead>
@@ -446,16 +446,26 @@ namespace Matter {
                     <div>
                         <ul className="breadcrumb">
                             <li>
-                                <i className="fa-list-alt"></i>{this.props.menuName}
+                                <i className="fa-caret-right"></i> { }
+                                {this.props.menuName}
+                            </li>
+                            <li>
+                                <i className="fa-angle-right"></i> { }
+                                {this.props.caption}
+                            </li>
+                            <li>
+                                <i className="fa-angle-right"></i> { }
+                                基本資料維護
                             </li>
                         </ul>
-                        <h4 className="title"> {this.props.caption} 基本資料維護</h4>
-                        <form className="form-horizontal" onSubmit={this.handleSubmit}>
-                            <div className="col-xs-10">
-
-                                <div className="form-group">
-                                    <label className="col-xs-1 control-label">列表圖</label>
-                                    <div className="col-xs-3">
+                        <h3 className="h3">
+                            {this.props.caption}
+                            <small className="sub"><i className="fa-angle-double-right"></i> 基本資料維護</small>
+                        </h3>
+                        <form className="form form-sm" onSubmit={this.handleSubmit}>
+                            <div className="form-group row">
+                                <label className="col-xs-2 text-xs-right form-control-label">物件代表圖</label>
+                                <div className="col-xs-6">
                                         <CommCmpt.MasterImageUpload FileKind="MatterList"
                                             MainId={field.matter_id}
                                             ParentEditType={this.state.edit_type}
@@ -463,9 +473,12 @@ namespace Matter {
                                             url_list={gb_approot + 'Active/Matter/axFList'}
                                             url_delete={gb_approot + 'Active/Matter/axFDelete'}
                                             url_sort={gb_approot + 'Active/Matter/axFSort'} />
-                                    </div>
-                                    <label className="col-xs-2 control-label">物件實景照片</label>
-                                    <div className="col-xs-3">
+                                </div>
+                                <small className="col-xs-4 text-muted">最多可上傳 1 張圖片</small>
+                            </div>
+                            <div className="form-group row">
+                                <label className="col-xs-2 text-xs-right form-control-label">物件實景照片</label>
+                                <div className="col-xs-6">
                                         <CommCmpt.MasterImageUpload FileKind="MatterPhoto"
                                             MainId={field.matter_id}
                                             ParentEditType={this.state.edit_type}
@@ -473,10 +486,12 @@ namespace Matter {
                                             url_list={gb_approot + 'Active/Matter/axFList'}
                                             url_delete={gb_approot + 'Active/Matter/axFDelete'}
                                             url_sort={gb_approot + 'Active/Matter/axFSort'} />
-                                    </div>
-
-                                    <label className="col-xs-1 control-label">格局圖</label>
-                                    <div className="col-xs-3">
+                                </div>
+                                <small className="col-xs-4 text-muted">最多可上傳 10 張圖片</small>
+                            </div>
+                            <div className="form-group row">
+                                <label className="col-xs-2 text-xs-right form-control-label">格局圖</label>
+                                <div className="col-xs-6">
                                         <CommCmpt.MasterImageUpload FileKind="MatterStyle"
                                             MainId={field.matter_id}
                                             ParentEditType={this.state.edit_type}
@@ -484,48 +499,45 @@ namespace Matter {
                                             url_list={gb_approot + 'Active/Matter/axFList'}
                                             url_delete={gb_approot + 'Active/Matter/axFDelete'}
                                             url_sort={gb_approot + 'Active/Matter/axFSort'} />
-                                    </div>
                                 </div>
-
-                                <div className="form-group">
-                                    <label className="col-xs-1 control-label">物件名稱</label>
-                                    <div className="col-xs-3">
-                                        <input type="text" className="form-control"
-                                            onChange={this.changeFDValue.bind(this, 'matter_name') }
-                                            value={field.matter_name}
-                                            maxLength={64}
-                                            required />
-                                    </div>
-
-                                    <label className="col-xs-1 control-label">副標題</label>
-                                    <div className="col-xs-1">
-                                        <input type="text" className="form-control"
+                                <small className="col-xs-4 text-muted">最多可上傳 1 張圖片</small>
+                            </div>
+                            <div className="form-group row">
+                                <label className="col-xs-2 text-xs-right form-control-label">物件名稱</label>
+                                <div className="col-xs-3">
+                                    <input type="text" className="form-control"
+                                        onChange={this.changeFDValue.bind(this, 'matter_name') }
+                                        value={field.matter_name}
+                                        maxLength={64}
+                                        required />
+                                </div>
+                                <label className="col-xs-2 text-xs-right form-control-label">物件副標題</label>
+                                <div className="col-xs-3">
+                                    <input type="text" className="form-control"
                                             onChange={this.changeFDValue.bind(this, 'title') }
                                             value={field.title}
                                             maxLength={64}
                                             required />
-                                    </div>
-
-
-                                    <label className="col-xs-1 control-label">來源社區</label>
-                                    <div className="col-xs-3">
-                                        <select className="form-control"
-                                            required
-                                            value={field.community_id}
-                                            onChange={this.changeFDValue.bind(this, 'community_id') }>
-                                            <option value=""></option>
-                                            {
-                                                this.state.options_community.map(function (item, i) {
-                                                    return (
-                                                        <option value={item.community_id} key={item.community_id}>{item.community_name}</option>);
-                                                })
-                                            }
-                                        </select>
-                                    </div>
                                 </div>
-
-                                <div className="form-group">
-                                    <label className="col-xs-1 control-label">物件地址</label>
+                            </div>
+                            <div className="form-group row">
+                                <label className="col-xs-2 text-xs-right form-control-label">物件所屬社區</label>
+                                <div className="col-xs-3">
+                                    <select className="form-control"
+                                        required
+                                        value={field.community_id}
+                                        onChange={this.changeFDValue.bind(this, 'community_id') }>
+                                        <option value=""></option>
+                                        {
+                                            this.state.options_community.map(function (item, i) {
+                                                return (
+                                                    <option value={item.community_id} key={item.community_id}>{item.community_name}</option>);
+                                            })
+                                        }
+                                    </select>
+                                </div>
+                                <label className="col-xs-2 text-xs-right form-control-label">物件地址</label>
+                                <div className="col-xs-3">
                                     <CommCmpt.TwAddress
                                         identity="AD1"
                                         city_value={field.city}
@@ -535,6 +547,15 @@ namespace Matter {
                                         onChange={this.changeAddress}
                                         index={0}
                                         />
+                                </div>
+                            </div>
+
+                            
+
+                            <div className="col-xs-10">
+
+                                <div className="form-group">
+                                    
                                 </div>
 
                                 <div className="form-group">

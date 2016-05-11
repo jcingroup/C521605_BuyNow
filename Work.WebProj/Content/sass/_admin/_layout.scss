@@ -8,7 +8,7 @@
 // 
 $sidebar-width:         220px !default;
 $footer-height:         37px !default;
-$content-spacing:       0 !default;
+$content-spacing:       60px !default;
 
 // base
 //
@@ -27,6 +27,7 @@ a {
 
 #wrapper {
     padding-bottom: $content-spacing;
+    @include clearfix;
 }
 
 .wrap {
@@ -79,11 +80,11 @@ a {
         &:first-of-type .nav-link {background: hsla(0,0,100%,0.2);}
         &:nth-of-type(2) .nav-link {
             background: desaturate(darken($brand-warning,10%),10%);
-            &:hover, &:active {background: darken(desaturate(darken($brand-warning,10%),10%),5%)}
+            @include hover-focus {background: darken(desaturate(darken($brand-warning,10%),10%),5%)}
         }
         &:last-of-type .nav-link {
             background: $brand-success;
-            &:hover, &:active {background: darken($brand-success,10%)}
+            @include hover-focus {background: darken($brand-success,10%)}
         }
     }
 }
@@ -136,7 +137,7 @@ a {
 #menu {
     font-size: em(15px);
 
-    a:hover, a:active, a:focus {color: $link-color;}
+    @include hover-focus {color: $link-color;}
 
     .panel-active {
         border-right: 2px solid $link-color;
@@ -160,7 +161,7 @@ a {
             &.collapsed {
                 color: $gray;
                 background: hsla(0,0,100%,0.4);
-                &:hover, &:active, &:focus {color: $link-color;}
+                @include hover-focus {color: $link-color;}
             }
         }
     }
@@ -219,7 +220,7 @@ a {
 
             &:hover, &:active, &:focus, &.active {
                 color: $link-color;
-                background: lighten($link-color,47%);
+                background: $brand-primary-light;
 
                 .fa-caret-right {opacity: 1;}
                 &::after {display: none;}
@@ -246,7 +247,7 @@ a {
 }
 
 #content {
-    padding: $spacer;
+    padding: $spacer $spacer*0.5;
 }
 
 
@@ -257,6 +258,7 @@ a {
 
     .copyright {
         margin-bottom: 0;
+        padding: 0 $spacer;
         text-align: center;
         font-size: em(12px);
         letter-spacing: 0.1em;
@@ -264,7 +266,13 @@ a {
 
         a {
             color: lighten($link-color,15%);
-            &:hover, &:active, &:focus {}
+            @include hover-focus {color: $link-color;}
+        }
+
+        span {
+            display: block;
+            padding: $spacer 0;
+            border-top: 1px dotted #e5e5e5;
         }
     }
 }
