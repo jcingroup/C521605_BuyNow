@@ -14,6 +14,7 @@ $grid-gutter-width:             0.7rem;
 
 // Colors
 $brand-primary:                 #438EB9;
+$brand-primary-light:           lighten($brand-primary,47%);
 $brand-secondary:               #F0AE28 !default;
 
 
@@ -48,3 +49,9 @@ $navbar-dark-color:              #fff;
 $navbar-dark-hover-color:        $navbar-dark-color;
 $navbar-dark-active-color:       $navbar-dark-color;
 $navbar-dark-disabled-color:     $navbar-dark-color;
+
+
+// Pager
+$pager-hover-bg:                 $brand-primary-light;
+$pager-active-bg:                $brand-primary;
+$pager-active-color:             #fff;

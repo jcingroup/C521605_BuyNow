@@ -242,7 +242,7 @@ $table-bg-hover:                #f5f5f5 !default;
 $table-bg-active:               $table-bg-hover !default;
 
 $table-border-width:            $border-width !default;
-$table-border-color:            $gray-lighter !default;
+$table-border-color:            #ddd !default;
 
 
 // Buttons
@@ -279,8 +279,8 @@ $btn-danger-border:              $btn-danger-bg !default;
 
 $btn-link-disabled-color:        $gray-light !default;
 
-$btn-padding-x-sm:               .75rem !default;
-$btn-padding-y-sm:               .25rem !default;
+$btn-padding-x-sm:               .5rem !default;
+$btn-padding-y-sm:               .2rem !default;
 
 $btn-padding-x-lg:               1.25rem !default;
 $btn-padding-y-lg:               .75rem !default;
@@ -313,8 +313,8 @@ $input-box-shadow-focus:         rgba(102,175,233,.6) !default;
 
 $input-color-placeholder:        #999 !default;
 
-$input-padding-x-sm:             .75rem !default;
-$input-padding-y-sm:             .275rem !default;
+$input-padding-x-sm:             .2rem !default;
+$input-padding-y-sm:             .2rem !default;
 
 $input-padding-x-lg:             1.25rem !default;
 $input-padding-y-lg:             .75rem !default;
@@ -447,7 +447,7 @@ $pagination-disabled-border:           #ddd !default;
 $pager-bg:                             $pagination-bg !default;
 $pager-border-width:                   $border-width !default;
 $pager-border-color:                   $pagination-border-color !default;
-$pager-border-radius:                  15px !default;
+$pager-border-radius:                  0;
 
 $pager-hover-bg:                       $pagination-hover-bg !default;
 

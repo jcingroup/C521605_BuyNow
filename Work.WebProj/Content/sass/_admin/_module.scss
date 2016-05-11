@@ -43,6 +43,18 @@
   z-index: 600;
   padding-left: 230px;
   border-bottom: 1px solid #e5e5e5;
+
+  li {
+    margin-right: $spacer*0.5;
+    color: $gray-light;
+
+    &::before {display: none;}
+    [class*="fa-"] {color: $gray-light;}
+
+    &:last-of-type {
+      &, [class*="fa-"] {color: $brand-primary;}
+    }
+  }
 }
 
 
@@ -97,34 +109,12 @@ input[type="file"] {
 // pager
 // ----------------------------------------------------------------------
 .pager {
+  margin: 0;
+
   li {
     > a,
     > span {
       padding: $pagination-padding-y $pagination-padding-x;
-
-      @include hover-focus {
-        color: $pagination-hover-color;
-        background-color: $pagination-hover-bg;
-        border-color: $pagination-hover-border;
-      }
-    }
-
-    &.active > a,
-    &.active > span {
-      @include plain-hover-focus {
-        color: $pagination-active-color;
-        background-color: $pagination-active-bg;
-        border-color: $pagination-active-border;
-      }
-    }
-
-    &.disabled  > a,
-    &.disabled > span {
-      @include plain-hover-focus {
-        color: $pagination-disabled-color;
-        background-color: $pagination-disabled-bg;
-        border-color: $pagination-disabled-border;
-      }
     }
   }
 }

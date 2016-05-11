@@ -705,14 +705,14 @@ mark,
   padding: 0.5rem;
   line-height: 1.5;
   vertical-align: top;
-  border-top: 1px solid #eceeef;
+  border-top: 1px solid #ddd;
 }
 .table thead th {
   vertical-align: bottom;
-  border-bottom: 2px solid #eceeef;
+  border-bottom: 2px solid #ddd;
 }
 .table tbody + tbody {
-  border-top: 2px solid #eceeef;
+  border-top: 2px solid #ddd;
 }
 .table .table {
   background-color: #fff;
@@ -724,11 +724,11 @@ mark,
 }
 
 .table-bordered {
-  border: 1px solid #eceeef;
+  border: 1px solid #ddd;
 }
 .table-bordered th,
 .table-bordered td {
-  border: 1px solid #eceeef;
+  border: 1px solid #ddd;
 }
 .table-bordered thead th,
 .table-bordered thead td {
@@ -852,12 +852,12 @@ mark,
 }
 .table-reflow th,
 .table-reflow td {
-  border-top: 1px solid #eceeef;
-  border-left: 1px solid #eceeef;
+  border-top: 1px solid #ddd;
+  border-left: 1px solid #ddd;
 }
 .table-reflow th:last-child,
 .table-reflow td:last-child {
-  border-right: 1px solid #eceeef;
+  border-right: 1px solid #ddd;
 }
 .table-reflow thead:last-child tr:last-child th,
 .table-reflow thead:last-child tr:last-child td,
@@ -865,7 +865,7 @@ mark,
 .table-reflow tbody:last-child tr:last-child td,
 .table-reflow tfoot:last-child tr:last-child th,
 .table-reflow tfoot:last-child tr:last-child td {
-  border-bottom: 1px solid #eceeef;
+  border-bottom: 1px solid #ddd;
 }
 .table-reflow tr {
   float: left;
@@ -873,7 +873,7 @@ mark,
 .table-reflow tr th,
 .table-reflow tr td {
   display: block !important;
-  border: 1px solid #eceeef;
+  border: 1px solid #ddd;
 }
 
 .form-control {
@@ -932,7 +932,7 @@ mark,
   input[type="datetime-local"].form-control,
   input[type="month"].input-sm, .input-group-sm
   input[type="month"].form-control {
-    line-height: 1.8625rem;
+    line-height: 1.7125rem;
   }
   input[type="date"].input-lg, .input-group-lg input[type="date"].form-control,
   input[type="time"].input-lg, .input-group-lg
@@ -952,7 +952,7 @@ mark,
 }
 .form-control-static.form-control-sm, .input-group-sm > .form-control-static.form-control,
 .input-group-sm > .form-control-static.input-group-addon,
-.input-group-sm > .input-group-btn > .form-control-static.btn, .form-control-static.form-control-lg, .input-group-lg > .form-control-static.form-control,
+.input-group-sm > .input-group-btn > .form-control-static.btn, .form-sm .form-control-static.form-control, .form-control-static.form-control-lg, .input-group-lg > .form-control-static.form-control,
 .input-group-lg > .form-control-static.input-group-addon,
 .input-group-lg > .input-group-btn > .form-control-static.btn {
   padding-right: 0;
@@ -961,8 +961,8 @@ mark,
 
 .form-control-sm, .input-group-sm > .form-control,
 .input-group-sm > .input-group-addon,
-.input-group-sm > .input-group-btn > .btn {
-  padding: 0.275rem 0.75rem;
+.input-group-sm > .input-group-btn > .btn, .form-sm .form-control {
+  padding: 0.2rem 0.2rem;
   font-size: 0.875rem;
   line-height: 1.5;
 }
@@ -1591,7 +1591,7 @@ fieldset[disabled] a.btn {
 }
 
 .btn-sm, .btn-group-sm > .btn {
-  padding: 0.25rem 0.75rem;
+  padding: 0.2rem 0.5rem;
   font-size: 0.875rem;
   line-height: 1.5;
 }
@@ -3273,8 +3273,8 @@ input[type="button"].btn-block {
 }
 .input-group-addon.form-control-sm,
 .input-group-sm > .input-group-addon,
-.input-group-sm > .input-group-btn > .input-group-addon.btn {
-  padding: 0.275rem 0.75rem;
+.input-group-sm > .input-group-btn > .input-group-addon.btn, .form-sm .input-group-addon.form-control {
+  padding: 0.2rem 0.2rem;
   font-size: 0.875rem;
 }
 .input-group-addon.form-control-lg,
@@ -4015,11 +4015,11 @@ input[type="button"].btn-block {
   padding: 5px 14px;
   background-color: #fff;
   border: 1px solid #ddd;
-  border-radius: 15px;
+  border-radius: 0;
 }
 .pager li > a:focus, .pager li > a:hover {
   text-decoration: none;
-  background-color: #eceeef;
+  background-color: #f2f7fa;
 }
 .pager .disabled > a, .pager .disabled > a:focus, .pager .disabled > a:hover {
   color: #818a91;
@@ -5811,16 +5811,23 @@ a.bg-danger:focus, a.bg-danger:hover {
 }
 
 .h3 {
-  margin-bottom: 0.7rem;
+  margin-bottom: 0.8rem;
   padding-bottom: 0.5rem;
   font-size: 1.375em;
   color: #438EB9;
   border-bottom: 1px dotted #e2e2e2;
 }
+.h3 .sub {
+  margin-left: 1rem;
+  color: #8089A0;
+}
 
-.table th {
-  color: #fff;
-  background: #5c6164;
+.table {
+  margin-bottom: 0;
+}
+.table thead tr {
+  color: #55595c;
+  background: #F2F2F2 linear-gradient(to bottom, #F8F8F8 0px, #ECECEC 100%) repeat-x scroll 0% 0%;
 }
 
 .table-sm {
@@ -5842,8 +5849,8 @@ a.bg-danger:focus, a.bg-danger:hover {
   border: none;
 }
 
-.form-control-label-sm {
-  padding: 0.275rem 0.75rem;
+.form-control-label-sm, .form-sm .form-control-label {
+  padding: 0.2rem 0.2rem;
   font-size: 0.875rem;
   line-height: 1.5;
 }
@@ -5890,6 +5897,19 @@ a.bg-danger:focus, a.bg-danger:hover {
   padding-left: 230px;
   border-bottom: 1px solid #e5e5e5;
 }
+.breadcrumb li {
+  margin-right: 0.5rem;
+  color: #818a91;
+}
+.breadcrumb li::before {
+  display: none;
+}
+.breadcrumb li [class*="fa-"] {
+  color: #818a91;
+}
+.breadcrumb li:last-of-type, .breadcrumb li:last-of-type [class*="fa-"] {
+  color: #438EB9;
+}
 
 .c-input + .c-input[class*="col-"] {
   margin-left: 0;
@@ -5930,26 +5950,12 @@ input[type="file"] {
   content: attr(title);
 }
 
+.pager {
+  margin: 0;
+}
 .pager li > a,
 .pager li > span {
   padding: 0.5rem 0.75rem;
-}
-.pager li > a:focus, .pager li > a:hover,
-.pager li > span:focus,
-.pager li > span:hover {
-  color: #f3a17f;
-  background-color: #eceeef;
-  border-color: #ddd;
-}
-.pager li.active > a, .pager li.active > a:focus, .pager li.active > a:hover, .pager li.active > span, .pager li.active > span:focus, .pager li.active > span:hover {
-  color: #fff;
-  background-color: #ED6D39;
-  border-color: #ED6D39;
-}
-.pager li.disabled > a, .pager li.disabled > a:focus, .pager li.disabled > a:hover, .pager li.disabled > span, .pager li.disabled > span:focus, .pager li.disabled > span:hover {
-  color: #818a91;
-  background-color: #fff;
-  border-color: #ddd;
 }
 
 .pager-sm {
@@ -6008,7 +6014,12 @@ a:focus {
 /*      layout
 -----------------------------------------------------------------------*/
 #wrapper {
-  padding-bottom: 0;
+  padding-bottom: 60px;
+}
+#wrapper::after {
+  content: "";
+  display: table;
+  clear: both;
 }
 
 .wrap {
@@ -6085,13 +6096,13 @@ a:focus {
 .navbar-nav .nav-item:nth-of-type(2) .nav-link, .navbar-nav > li:nth-of-type(2) .nav-link, .navbar-nav .nav-item:nth-of-type(2) .navbar-nav > li > a, .navbar-nav > li:nth-of-type(2) .navbar-nav > li > a {
   background: #e0952b;
 }
-.navbar-nav .nav-item:nth-of-type(2) .nav-link:hover, .navbar-nav > li:nth-of-type(2) .nav-link:hover, .navbar-nav .nav-item:nth-of-type(2) .navbar-nav > li > a:hover, .navbar-nav > li:nth-of-type(2) .navbar-nav > li > a:hover, .navbar-nav .nav-item:nth-of-type(2) .nav-link:active, .navbar-nav > li:nth-of-type(2) .nav-link:active, .navbar-nav .nav-item:nth-of-type(2) .navbar-nav > li > a:active, .navbar-nav > li:nth-of-type(2) .navbar-nav > li > a:active {
+.navbar-nav .nav-item:nth-of-type(2) .nav-link:focus, .navbar-nav > li:nth-of-type(2) .nav-link:focus, .navbar-nav .nav-item:nth-of-type(2) .navbar-nav > li > a:focus, .navbar-nav > li:nth-of-type(2) .navbar-nav > li > a:focus, .navbar-nav .nav-item:nth-of-type(2) .nav-link:hover, .navbar-nav > li:nth-of-type(2) .nav-link:hover, .navbar-nav .nav-item:nth-of-type(2) .navbar-nav > li > a:hover, .navbar-nav > li:nth-of-type(2) .navbar-nav > li > a:hover {
   background: #d3881f;
 }
 .navbar-nav .nav-item:last-of-type .nav-link, .navbar-nav > li:last-of-type .nav-link, .navbar-nav .nav-item:last-of-type .navbar-nav > li > a, .navbar-nav > li:last-of-type .navbar-nav > li > a {
   background: #5cb85c;
 }
-.navbar-nav .nav-item:last-of-type .nav-link:hover, .navbar-nav > li:last-of-type .nav-link:hover, .navbar-nav .nav-item:last-of-type .navbar-nav > li > a:hover, .navbar-nav > li:last-of-type .navbar-nav > li > a:hover, .navbar-nav .nav-item:last-of-type .nav-link:active, .navbar-nav > li:last-of-type .nav-link:active, .navbar-nav .nav-item:last-of-type .navbar-nav > li > a:active, .navbar-nav > li:last-of-type .navbar-nav > li > a:active {
+.navbar-nav .nav-item:last-of-type .nav-link:focus, .navbar-nav > li:last-of-type .nav-link:focus, .navbar-nav .nav-item:last-of-type .navbar-nav > li > a:focus, .navbar-nav > li:last-of-type .navbar-nav > li > a:focus, .navbar-nav .nav-item:last-of-type .nav-link:hover, .navbar-nav > li:last-of-type .nav-link:hover, .navbar-nav .nav-item:last-of-type .navbar-nav > li > a:hover, .navbar-nav > li:last-of-type .navbar-nav > li > a:hover {
   background: #449d44;
 }
 
@@ -6140,7 +6151,7 @@ a:focus {
 #menu {
   font-size: 0.9375em;
 }
-#menu a:hover, #menu a:active, #menu a:focus {
+#menu:focus, #menu:hover {
   color: #438EB9;
 }
 #menu .panel-active {
@@ -6163,7 +6174,7 @@ a:focus {
   color: #55595c;
   background: rgba(255, 255, 255, 0.4);
 }
-#menu .panel-heading .panel-title.collapsed:hover, #menu .panel-heading .panel-title.collapsed:active, #menu .panel-heading .panel-title.collapsed:focus {
+#menu .panel-heading .panel-title.collapsed:focus, #menu .panel-heading .panel-title.collapsed:hover {
   color: #438EB9;
 }
 #menu .panel-body {
@@ -6240,7 +6251,7 @@ a:focus {
 }
 
 #content {
-  padding: 1rem;
+  padding: 1rem 0.5rem;
 }
 
 #footer {
@@ -6248,6 +6259,7 @@ a:focus {
 }
 #footer .copyright {
   margin-bottom: 0;
+  padding: 0 1rem;
   text-align: center;
   font-size: 0.75em;
   letter-spacing: 0.1em;
@@ -6255,6 +6267,14 @@ a:focus {
 }
 #footer .copyright a {
   color: #7ab0cf;
+}
+#footer .copyright a:focus, #footer .copyright a:hover {
+  color: #438EB9;
+}
+#footer .copyright span {
+  display: block;
+  padding: 1rem 0;
+  border-top: 1px dotted #e5e5e5;
 }
 
 .table {
@@ -6267,4 +6287,27 @@ a:focus {
 
 #wrapper {
   min-width: 320px;
+}
+
+.table-header, .table-footer {
+  padding: 0.3rem;
+  background: #f2f7fa;
+}
+
+.pager .form-inline {
+  margin: 0 0.5rem;
+}
+
+.upload-img li {
+  height: 70px;
+  margin: 0.3rem;
+  padding: 0.3rem;
+  border: 1px solid #e5e5e5;
+}
+.upload-img li img {
+  width: auto;
+  height: 100%;
+}
+.upload-img li .close {
+  font-size: 1.2em;
 }

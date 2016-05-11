@@ -99,7 +99,7 @@ export class GridNavPage extends React.Component<GridNavPageProps, any> {
     render() {
         var setAddButton = null, setDeleteButton = null;
         if (this.props.showAdd) {
-            setAddButton = <button className="btn-success"
+            setAddButton = <button className="btn btn-sm btn-success"
                 type="button"
                 onClick={this.props.insertType}>
                 <i className="fa-plus-circle"></i> 新增
@@ -107,7 +107,7 @@ export class GridNavPage extends React.Component<GridNavPageProps, any> {
         }
 
         if (this.props.showDelete) {
-            setDeleteButton = <button className="btn-link text-danger" type="button"
+            setDeleteButton = <button className="btn btn-sm btn-danger" type="button"
                 onClick={this.props.deleteSubmit}>
                 <i className="fa-trash-o"></i> 刪除
             </button>;
@@ -121,9 +121,9 @@ export class GridNavPage extends React.Component<GridNavPageProps, any> {
                     {setAddButton}
                     {setDeleteButton}
                 </div>
-                <small className="pull-right">第{this.props.startCount}-{this.props.endCount}筆，共{this.props.recordCount}筆</small>
+                <small className="pull-xs-right">第{this.props.startCount}-{this.props.endCount}筆，共{this.props.recordCount}筆</small>
 
-                <ul className="pager">
+                <ul className="pager pager-sm">
                     <li>
                         <a href="#" title="移至第一頁" tabIndex={-1} onClick={this.firstPage}>
                             <i className="fa-angle-double-left"></i>
@@ -138,7 +138,7 @@ export class GridNavPage extends React.Component<GridNavPageProps, any> {
                         <div className="form-group">
                             <label>第</label>
                             {' '}
-                            <input style={{"width" : "100px"}} className="form-control text-center" type="number" min="1" tabIndex={-1} value={this.props.nowPage.toString() }
+                            <input style={{"width" : "100px"}} className="form-control form-control-sm text-xs-center" type="number" min="1" tabIndex={-1} value={this.props.nowPage.toString() }
                                 onChange={this.jumpPage} />
                             {' '}
                             <label>頁，共{this.props.totalPage}頁</label>
@@ -404,22 +404,22 @@ export class MasterImageUpload extends React.Component<FileUpProps, FileUpState>
                 <div className="form-control">
                     <input type="file" id={'upload-btn-' + this.props.MainId + '-' + this.props.FileKind} accept="image/*" />
                 </div>
-                <p className="help-block group-list" ref={this.sortableGroupDecorator}>
+                <ol className="upload-img list-inline m-b-0" ref={this.sortableGroupDecorator}>
                     {
                         this.state.filelist.map(function (itemData, i) {
                             //console.log('Map=>', itemData.fileName);
                             var subOutHtml =
-                                <span className="img-upload" key={itemData.guid}>
+                                <li className="list-inline-item" key={itemData.guid}>
                                     <button type="button"
                                         className="close"
                                         onClick={this.deleteFile.bind(this, itemData.guid) }
                                         title="刪除圖片"> &times; </button>
                                     <img src={itemData.iconPath} title={CommFunc.formatFileSize(itemData.size) } />
-                                </span>;
+                                </li>;
                             return subOutHtml;
                         }.bind(this))
                     }
-                </p>
+                </ol>
                 <div id={'progressBox-' + this.props.MainId + '-' + this.props.FileKind} className="progress-wrap"></div>
             </div>
         );
