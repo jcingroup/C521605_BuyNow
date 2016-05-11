@@ -392,18 +392,18 @@ namespace Matter {
                                             </div>
                                         </div>
                                     </div>
-                                    <table>
+                                    <table className="table table-sm table-bordered table-striped">
                                         <thead>
                                             <tr>
-                                                <th className="col-xs-1 text-center">
+                                                <th className="text-center">
                                                     <label className="cbox">
                                                         <input type="checkbox" checked={this.state.checkAll} onChange={this.checkAll} />
                                                         <i className="fa-check"></i>
                                                     </label>
                                                 </th>
-                                                <th className="col-xs-1 text-center">修改</th>
-                                                <th className="col-xs-2">編號</th>
-                                                <th className="col-xs-10">社區名稱</th>
+                                                <th className="text-center">修改</th>
+                                                <th>編號</th>
+                                                <th>社區名稱</th>
                                             </tr>
                                         </thead>
                                         <tbody>

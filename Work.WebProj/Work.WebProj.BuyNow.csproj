@@ -599,6 +599,11 @@
     <Content Include="Views\Neighbor\Neighbor_rent_content.cshtml" />
     <Content Include="Views\Neighbor\Neighbor_rent_list.cshtml" />
     <Content Include="Views\Neighbor\News.cshtml" />
+    <Content Include="Content\sass\_admin\_element.scss" />
+    <Content Include="Content\sass\_admin\_layout.scss" />
+    <Content Include="Content\sass\_admin\_module.scss" />
+    <Content Include="Content\sass\_admin\_var.scss" />
+    <Content Include="Content\sass\sys.scss" />
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

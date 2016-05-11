@@ -1,0 +1,179 @@
+@charset "UTF-8";
+
+
+// cards
+// ----------------------------------------------------------------------
+.card-block {
+  padding: $card-spacer-y $card-spacer-x;
+}
+
+
+// label
+// ----------------------------------------------------------------------
+.label {
+  max-width: 280px;
+  @include text-truncate;
+  margin-bottom: 4px;
+
+  &.label-lg {
+    font-size: 100%;
+  }
+
+  .close {
+    margin-left: $spacer*0.3;
+    font-size: 1rem;
+    text-shadow: none;
+    opacity: 0.4;
+  }
+}
+
+
+// navs
+// ----------------------------------------------------------------------
+
+
+// breadcrumb
+// ----------------------------------------------------------------------
+.breadcrumb {
+  width: 100%;
+  font-size: $font-size-sm;
+  position: fixed;
+  left: 0;
+  top: 48px;
+  z-index: 600;
+  padding-left: 230px;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+
+// custom forms
+// ----------------------------------------------------------------------
+.c-input {
+  & + &[class*="col-"] {margin-left: 0;}
+}
+
+input[type="file"] {
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.file {
+  height: auto;
+
+  input {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .form .row & {width: 100%;}
+}
+.file-custom,
+.file-custom::before {
+  height: $input-height;
+  padding: $input-padding-y $input-padding-x;
+  font-size: $font-size-sm;
+
+  @if $enable-rounded {
+    border-radius: $border-radius;
+  }
+  @else {
+    border-radius: 0;
+  }
+}
+
+.file-custom::before {
+  content:attr(rel);
+  top: -0.06rem;
+  right: -0.06rem;
+  bottom: -0.06rem;
+}
+.file-custom::after {content:attr(title)}
+
+
+// carousel
+// ----------------------------------------------------------------------
+
+
+// pager
+// ----------------------------------------------------------------------
+.pager {
+  li {
+    > a,
+    > span {
+      padding: $pagination-padding-y $pagination-padding-x;
+
+      @include hover-focus {
+        color: $pagination-hover-color;
+        background-color: $pagination-hover-bg;
+        border-color: $pagination-hover-border;
+      }
+    }
+
+    &.active > a,
+    &.active > span {
+      @include plain-hover-focus {
+        color: $pagination-active-color;
+        background-color: $pagination-active-bg;
+        border-color: $pagination-active-border;
+      }
+    }
+
+    &.disabled  > a,
+    &.disabled > span {
+      @include plain-hover-focus {
+        color: $pagination-disabled-color;
+        background-color: $pagination-disabled-bg;
+        border-color: $pagination-disabled-border;
+      }
+    }
+  }
+}
+.pager-sm {
+  font-size: $font-size-sm;
+
+  li {
+    > a,
+    > span {padding: $pagination-padding-y-sm $pagination-padding-x-sm;}
+  }
+}
+.pager-lg {
+  li {
+    > a,
+    > span {padding: $pagination-padding-y-lg $pagination-padding-x-lg;}
+  }
+}
+
+
+// modal
+// ----------------------------------------------------------------------
+.modal-content {
+  @if $enable-rounded {
+    border-radius: $border-radius-lg;
+  }
+  @else {
+    border-radius: 0;
+  }
+}
+
+.modal-dialog {
+    @include media-breakpoint-up(md) {
+        width: 750px;
+    }
+    @include media-breakpoint-down(sm) {
+        width: auto;
+        margin: 10px;
+    }
+}
+
+
+// date-picker
+// ----------------------------------------------------------------------
+.react-datepicker__input-container {
+  .input-group & {position: static;}
+}
+.react-datepicker__close-icon {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  z-index: 100;
+}

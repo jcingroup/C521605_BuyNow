@@ -17,7 +17,8 @@
     <title>@Resources.Res.System_Name</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link href="~/Content/css/_admin/page.css" rel="stylesheet" />
+    <link href="~/Content/css/sys.css" rel="stylesheet" />
+    <link href="~/Content/css/vendor/fontAwesome/font-awesome.css" rel="stylesheet" />
     <link href="~/Content/css/vendor/toastr.css" rel="stylesheet" />
     <link href="~/Content/css/vendor/jquery.loadmask.css" rel="stylesheet" />
     @RenderSection("IncludeCSS", false)
@@ -31,51 +32,40 @@
     </script>
 </head>
 <body>
-    <div id="container">
-        <div id="header">
-            <div class="wrap">
-                <h1>
-                    <a href="#" title="@Resources.Res.Info_Home" tabindex="-1">@Resources.Res.System_Name</a>
-                </h1><!-- logo -->
-                <div id="menu">
-                    <ul class="menu">
-                        <li class="dropdown user">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                @if (ViewBag.user_login == "N")
-                                {
-                                    <i class="fa-user"></i><span>登入身分:</span> @Cookie_UserName.Value
-                                }
-                                else if (ViewBag.user_login == "Y")
-                                {
-                                    <i class="fa-user"></i><span>@ViewBag.RankName:</span> @ViewBag.UserName
-                                }
-                            </a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li>
-                                    <a href="~/Base/Users/ChangePassword" tabindex="-1">
-                                        <i class="fa-lock"></i> @Resources.Res.Button_Change_Password
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="dropdown activity">
-                            <a href="~/index" class="dropdown-toggle">
-                                <i class="fa-home"></i> @Resources.Res.Button_ReturnIndex
-                            </a>
-                        </li>
-                        <li class="dropdown activity">
-                            <a href="~/Login/Logout" class="dropdown-toggle">
-                                <i class="fa-power-off"></i> @Resources.Res.Button_Logout
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div><!-- header //-->
-        <div id="main">
+    <div id="wrapper">
+        <header id="header" class="navbar navbar-fixed-top navbar-dark bg-primary">
+            <h1 class="logo">
+                <a class="navbar-brand" href="#" title="@Resources.Res.Info_Home" tabindex="-1">@Resources.Res.System_Name</a>
+            </h1><!-- logo -->
+            <ul class="nav navbar-nav pull-xs-right">
+                <li class="nav-item">
+                    <span class="nav-link">
+                        @if (ViewBag.user_login == "N")
+                        {
+                            <i class="fa-user"></i> <span>登入身分:</span> @Cookie_UserName.Value
+                        }
+                        else if (ViewBag.user_login == "Y")
+                        {
+                            <i class="fa-user"></i> <span>@ViewBag.RankName:</span> @ViewBag.UserName
+                        }
+                    </span>
+                </li>
+                <li class="nav-item">
+                    <a href="~/index" class="nav-link">
+                        <i class="fa-home"></i> @Resources.Res.Button_ReturnIndex
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="~/Login/Logout" class="nav-link">
+                        <i class="fa-power-off"></i> @Resources.Res.Button_Logout
+                    </a>
+                </li>
+            </ul>
+        </header><!-- header //-->
+        <main id="main">
             <div id="content">
                 <ul class="breadcrumb">
-                    <li><a href=""><i class="fa-home"></i> @Resources.Res.System_Name</a></li>
+                    <li><a href=""><i class="fa fa-home"></i> @Resources.Res.System_Name</a></li>
                     @RenderSection("breadCrumb", required: false)
                 </ul>
                 <div id="page_content"></div>
@@ -84,11 +74,11 @@
             <div id="sidebar">
                 @RenderSection("sidebar", false)
             </div><!-- sidebar //-->
-        </div><!-- main //-->
-    </div><!-- container //-->
-    <div id="footer">
-        <a href="#content" class="goTop"><i class="fa-angle-double-up"></i></a>
-    </div><!-- footer //-->
+        </main><!-- main //-->
+    </div><!-- wrapper //-->
+    <footer id="footer">
+        <p class="copyright text-muted">Powered By <a href="http://www.jcin.com.tw" target="new">JCIN Information Co.</a></p>
+    </footer><!-- footer //-->
     @RenderSection("IncludeScript", false)
 </body>
 </html>
