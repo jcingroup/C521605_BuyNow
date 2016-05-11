@@ -455,7 +455,7 @@ namespace Matter {
 
                                 <div className="form-group">
                                     <label className="col-xs-1 control-label">列表圖</label>
-                                    <div className="col-xs-1">
+                                    <div className="col-xs-3">
                                         <CommCmpt.MasterImageUpload FileKind="MatterList"
                                             MainId={field.matter_id}
                                             ParentEditType={this.state.edit_type}
@@ -464,8 +464,8 @@ namespace Matter {
                                             url_delete={gb_approot + 'Active/Matter/axFDelete'}
                                             url_sort={gb_approot + 'Active/Matter/axFSort'} />
                                     </div>
-                                    <label className="col-xs-1 control-label">物件實景照片</label>
-                                    <div className="col-xs-1">
+                                    <label className="col-xs-2 control-label">物件實景照片</label>
+                                    <div className="col-xs-3">
                                         <CommCmpt.MasterImageUpload FileKind="MatterPhoto"
                                             MainId={field.matter_id}
                                             ParentEditType={this.state.edit_type}
@@ -476,7 +476,7 @@ namespace Matter {
                                     </div>
 
                                     <label className="col-xs-1 control-label">格局圖</label>
-                                    <div className="col-xs-1">
+                                    <div className="col-xs-3">
                                         <CommCmpt.MasterImageUpload FileKind="MatterStyle"
                                             MainId={field.matter_id}
                                             ParentEditType={this.state.edit_type}

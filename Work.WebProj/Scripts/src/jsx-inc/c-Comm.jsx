@@ -140,7 +140,7 @@ var GridNavPage = React.createClass({
 
 		var setAddButton = null,setDeleteButton=null;
 		if(this.props.showAdd){
-			setAddButton = <button className="btn-link text-success"
+			setAddButton = <button className="btn-success"
 			                type="button"
 			                onClick={this.props.InsertType}>
 			            	<i className="fa-plus-circle"></i> 新增
@@ -179,7 +179,7 @@ var GridNavPage = React.createClass({
 			            <div className="form-group">
 			                <label>第</label>
 			                {' '}
-			                <input className="form-control text-center" type="number" min="1" tabIndex="-1" value={this.props.NowPage}
+			                <input style={{"width" : "100px"}} className="form-control text-center" type="number" min="1" tabIndex="-1" value={this.props.NowPage}
 			                       onChange={this.jumpPage} />
 			                {' '}
 			                <label>頁，共{this.props.TotalPage}頁</label>

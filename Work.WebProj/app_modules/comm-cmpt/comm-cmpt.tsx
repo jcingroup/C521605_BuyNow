@@ -99,7 +99,7 @@ export class GridNavPage extends React.Component<GridNavPageProps, any> {
     render() {
         var setAddButton = null, setDeleteButton = null;
         if (this.props.showAdd) {
-            setAddButton = <button className="btn-link text-success"
+            setAddButton = <button className="btn-success"
                 type="button"
                 onClick={this.props.insertType}>
                 <i className="fa-plus-circle"></i> 新增
@@ -138,7 +138,7 @@ export class GridNavPage extends React.Component<GridNavPageProps, any> {
                         <div className="form-group">
                             <label>第</label>
                             {' '}
-                            <input className="form-control text-center" type="number" min="1" tabIndex={-1} value={this.props.nowPage.toString() }
+                            <input style={{"width" : "100px"}} className="form-control text-center" type="number" min="1" tabIndex={-1} value={this.props.nowPage.toString() }
                                 onChange={this.jumpPage} />
                             {' '}
                             <label>頁，共{this.props.totalPage}頁</label>
