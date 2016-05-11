@@ -2,7 +2,6 @@ CKEDITOR.editorConfig = function (config) {
     // Define changes to default configuration here. For example:
     config.language = 'zh';
     // config.uiColor = '#AADC6E';
-
     config.contentsCss = ['../../Content/css/editor.css'];
     config.toolbar = [
         { name: "document", items: ["Source", "-"] },

@@ -15,7 +15,8 @@ $grid-gutter-width:             0.7rem;
 // Colors
 $brand-primary:                 #438EB9;
 $brand-primary-light:           lighten($brand-primary,47%);
-$brand-secondary:               #F0AE28 !default;
+$brand-primary-dark:            darken($brand-primary,10%);
+$brand-secondary:               #ABBAC3 !default;
 
 
 // Typography
@@ -28,6 +29,10 @@ $link-hover-color:              darken($link-color, 15%);
 // Tables
 $table-cell-padding:            .5rem ;
 $table-sm-cell-padding:         .2rem;
+
+
+// Forms
+$form-group-margin-bottom:       $spacer*0.8;
 
 
 // Buttons

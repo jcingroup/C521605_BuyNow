@@ -403,12 +403,12 @@ export class MasterImageUpload extends React.Component<FileUpProps, FileUpState>
                 <div className="form-control">
                     <input type="file" id={'upload-btn-' + this.props.MainId + '-' + this.props.FileKind} accept="image/*" />
                 </div>
-                <ol className="upload-img list-inline m-b-0" ref={this.sortableGroupDecorator}>
+                <ol className="upload-img list-inline" ref={this.sortableGroupDecorator}>
                     {
                         this.state.filelist.map(function (itemData, i) {
                             //console.log('Map=>', itemData.fileName);
                             var subOutHtml =
-                                <li className="list-inline-item" key={itemData.guid}>
+                                <li key={itemData.guid}>
                                     <button type="button"
                                         className="close"
                                         onClick={this.deleteFile.bind(this, itemData.guid) }
@@ -756,8 +756,8 @@ export class TwAddress extends React.Component<TwAddressProps, any>{
 
 
             out_html = (
-                <div>
-                    <div className="col-xs-1">
+                <div className="row">
+                    <div className="col-xs-2">
                         <input type="text"
                             className="form-control"
                             value={this.props.zip_value}
@@ -793,7 +793,7 @@ export class TwAddress extends React.Component<TwAddressProps, any>{
                             }
                         </select>
                     </div>
-                    <div className="col-xs-3">
+                    <div className="col-xs-6">
                         <input 	type="text"
                             className="form-control"
                             value={this.props.address_value}

@@ -17,6 +17,25 @@
 	}
 }
 
+.h4 {
+	margin-bottom: $spacer*0.5;
+	padding-bottom: $spacer*0.3;
+	font-size: em(18px);
+	color: $brand-primary-dark;
+	border-bottom: 1px solid $brand-primary-light;
+}
+
+hr {
+	
+}
+
+
+// list
+// ----------------------------------------------------------------------
+.list-inline-item {
+	&:not(:last-child) {margin-right: $spacer*0.6;}
+}
+
 
 // table
 // ----------------------------------------------------------------------
@@ -65,6 +84,8 @@
 .checkbox-sm {margin-bottom: 0;}
 
 .form-sm {
-	.form-control       {@extend .form-control-sm;}
-	.form-control-label {@extend .form-control-label-sm;}
+	.form-control                {@extend .form-control-sm;}
+	.form-control-label          {@extend .form-control-label-sm;}
+	.checkbox, .checkbox-inline,
+	.radio, .radio-inline        {font-size: $font-size-sm;}
 }
