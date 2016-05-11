@@ -5,31 +5,21 @@
     Layout = "~/Views/Shared/Layout2.cshtml";
 }
 @section css {
-    <link rel="stylesheet" href="/Content/css/vendor/themify-icons.css">
+    <link rel="stylesheet" href="~/Content/css/vendor/themify-icons.css">
+    <link rel="stylesheet" href="~/Content/css/vendor/loaders.min.css">
 }
-
+@section Scripts {
+    <script>
+        var info_type = 'R';
+        var community_id = @ViewBag.community_id;
+    </script>
+    <script src="~/Scripts/build/app/vendors.js"></script>
+    <script src="~/Scripts/build/app/w_sell_list.js"></script>
+}
 <h1 class="h2 title">@ViewBag.Title</h1>
 <div id="content">
-    <div class="wrap">
-
-        <p class="clearfix">
-            <span class="result pull-xs-left">共有<strong class="text-danger">0</strong>間房屋</span>
-            <span class="pull-xs-right form-inline">
-                <label for="">排序方式：</label>
-                <select name="" id="" class="form-control form-control-sm">
-                    <option value="">預設排序</option> @* 以後台設定的排序為主 *@
-                    <option value="">更新時間新 → 舊</option> @* 以資料建立時間為主 *@
-                    <option value="">總價低 → 高</option>
-                    <option value="">總價高 → 低</option>
-                    <option value="">坪數低 → 高</option>
-                    <option value="">坪數高 → 低</option>
-                    <option value="">屋齡低 → 高</option>
-                    <option value="">屋齡高 → 低</option>
-                </select>
-            </span>
-        </p>
-
-        <h3 class="h3">暫無資料</h3>
-
+    <div class="loading">
+        <div class="loader" data-loader="circle-side"></div>
+        <p class="h4">資料讀取中……</p>
     </div>
 </div>

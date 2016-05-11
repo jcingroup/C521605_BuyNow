@@ -9,6 +9,8 @@ import update = require('react-addons-update');
 import ReactBootstrap = require('react-bootstrap');
 import LazyLoad = require('react-lazyload');
 import CommFunc = require('comm-func');
+
+declare var community_id: number;
 //import { LazyLoad } from "./react-lazyload";
 namespace WWW {
     declare var info_type: string;
@@ -52,7 +54,11 @@ namespace WWW {
 
             var _this = this;
 
-            $.get(gb_approot + 'api/GetAction/SearchMatter', { info_type: info_type })
+            var params = { info_type: info_type };
+            if (community_id != null)
+                params['community_id'] = community_id;
+
+            $.get(gb_approot + 'api/GetAction/SearchMatter', params)
                 .done((data, textStatus, jqXHRdata) => {
                     _this.setState({ lists: data });
                     $("img.lazy").lazyload({ effect: "fadeIn" });

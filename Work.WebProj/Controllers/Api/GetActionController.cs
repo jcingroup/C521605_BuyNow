@@ -210,10 +210,10 @@ namespace DotWeb.Api
             foreach (var item in result)
             {
                 //var imgobj = getImgFirst("MatterList", item.matter_id.ToString(), "origin");
-                var imgobj = getImgFiles("MatterPhoto", item.matter_id.ToString(), "origin").FirstOrDefault();
+                var imgobj = getImgFiles("MatterPhoto", item.matter_id.ToString(), "origin");
                 if (imgobj != null)
                 {
-                    item.list_src = imgobj == null ? null : imgobj.src_path;
+                    item.list_src = imgobj == null ? null : imgobj.First().src_path;
                 }
             }
 
