@@ -115,7 +115,6 @@ namespace WWW {
             return;
         }
         render() {
-            //console.log(LazyLoad);
             var outHtml: JSX.Element = null;
 
             outHtml = (

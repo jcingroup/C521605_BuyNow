@@ -40,40 +40,40 @@
                     <h2 class="sr-only">主選單</h2>
                     <ul class="nav navbar-nav">
                         <li>
-                            <a href="~/Neighbor/Content/#intro" class="scroll"><i class="icon-reading"></i>社區簡介</a>
+                            <a href="~/Neighbor/Content?id=@ViewBag.community_id#intro" class="scroll"><i class="icon-reading"></i>社區簡介</a>
                         </li>
                         <li>
-                            <a href="~/Neighbor/Content/#feature" class="scroll"><i class="icon-diamond"></i>社區特色</a>
+                            <a href="~/Neighbor/Content?id=@ViewBag.community_id#feature" class="scroll"><i class="icon-diamond"></i>社區特色</a>
                         </li>
                         <li>
-                            <a href="~/Neighbor/Content/#gallery" class="scroll"><i class="icon-view"></i>社區實景．公設</a>
+                            <a href="~/Neighbor/Content?id=@ViewBag.community_id#gallery" class="scroll"><i class="icon-view"></i>社區實景．公設</a>
                         </li>
                         <li>
-                            <a href="~/Neighbor/Content/#diary" class="scroll"><i class="icon-book"></i>社區日誌</a>
+                            <a href="~/Neighbor/Content?id=@ViewBag.community_id#diary" class="scroll"><i class="icon-book"></i>社區日誌</a>
                         </li>
                         @if (@ViewBag.BodyClass.IndexOf("pro1") >= 0)
                         {
                             <li>
-                                <a href="~/Neighbor/Sell_list"><i class="icon-house"></i>社區待售房屋</a>
+                                <a href="~/Neighbor/Sell_list?community_id=@ViewBag.community_id"><i class="icon-house"></i>社區待售房屋</a>
                             </li>
                             <li>
-                                <a href="~/Neighbor/Rent_list"><i class="icon-building"></i>社區待租房屋</a>
+                                <a href="~/Neighbor/Rent_list?community_id=@ViewBag.community_id"><i class="icon-building"></i>社區待租房屋</a>
                             </li>
                         }
                         else if (@ViewBag.BodyClass.IndexOf("pro2") >= 0)
                         {
                             <li>
-                                <a href="~/Neighbor/Sell_list2"><i class="icon-house"></i>社區待售房屋</a>
+                                <a href="~/Neighbor/Sell_list2?community_id=@ViewBag.community_id"><i class="icon-house"></i>社區待售房屋</a>
                             </li>
                             <li>
-                                <a href="~/Neighbor/Rent_list2"><i class="icon-building"></i>社區待租房屋</a>
+                                <a href="~/Neighbor/Rent_list2?community_id=@ViewBag.community_id"><i class="icon-building"></i>社區待租房屋</a>
                             </li>
                         }
                         <li>
                             <a href="@ViewBag.group_buying_url" target="new"><i class="icon-cart"></i>社區好康團購</a>
                         </li>
                         <li>
-                            <a href="~/Neighbor/Content/#contact" class="scroll"><i class="icon-mail"></i>聯絡方式</a>
+                            <a href="~/Neighbor/Content?id=@ViewBag.community_id#contact" class="scroll"><i class="icon-mail"></i>聯絡方式</a>
                         </li>
                     </ul>
                 </nav>

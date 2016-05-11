@@ -78,16 +78,28 @@ namespace DotWeb.Controllers
             return View("News", item);
         }
 
-        public ActionResult Sell_list()
+        public ActionResult Sell_list(int community_id)
         {
+            db0 = getDB0();
+            var result = db0.Community.Find(community_id);
+
+            ViewBag.community_id = community_id;
+            ViewBag.group_buying_url = result.group_buying_url;
+
             return View("Neighbor_sell_list");
         }
         public ActionResult Sell_content()
         {
             return View("Neighbor_sell_content");
         }
-        public ActionResult Rent_list()
+        public ActionResult Rent_list(int community_id)
         {
+            db0 = getDB0();
+            var result = db0.Community.Find(community_id);
+
+            ViewBag.community_id = community_id;
+            ViewBag.group_buying_url = result.group_buying_url;
+
             return View("Neighbor_rent_list");
         }
         public ActionResult Rent_content()
