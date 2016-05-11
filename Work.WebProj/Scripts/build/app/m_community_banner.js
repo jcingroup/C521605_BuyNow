@@ -1260,7 +1260,6 @@ webpackJsonp([2],{
 	        this._upload = null;
 	        if (Array.prototype.movesort === undefined) {
 	            Array.prototype.movesort = function (old_index, new_index) {
-	                alert(this);
 	                if (new_index >= this.length) {
 	                    var k = new_index - this.length;
 	                    while ((k--) + 1) {
