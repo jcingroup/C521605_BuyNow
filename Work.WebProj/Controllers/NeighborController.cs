@@ -88,8 +88,14 @@ namespace DotWeb.Controllers
 
             return View("Neighbor_sell_list");
         }
-        public ActionResult Sell_content()
+        public ActionResult Sell_content(int id)
         {
+            db0 = getDB0();
+            var result = db0.Matter.Find(id);
+
+            ViewBag.community_id = result.community_id;
+            ViewBag.group_buying_url = result.Community.group_buying_url;
+
             return View("Neighbor_sell_content");
         }
         public ActionResult Rent_list(int community_id)
@@ -102,8 +108,14 @@ namespace DotWeb.Controllers
 
             return View("Neighbor_rent_list");
         }
-        public ActionResult Rent_content()
+        public ActionResult Rent_content(int id)
         {
+            db0 = getDB0();
+            var result = db0.Matter.Find(id);
+
+            ViewBag.community_id = result.community_id;
+            ViewBag.group_buying_url = result.Community.group_buying_url;
+
             return View("Neighbor_rent_content");
         }
     }

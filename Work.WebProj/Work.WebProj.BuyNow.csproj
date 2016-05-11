@@ -206,6 +206,7 @@
     <Compile Include="Areas\Active\Controllers\EditController.cs" />
     <Compile Include="Areas\Active\Controllers\CommunityController.cs" />
     <Compile Include="Areas\Base\Controllers\LoginController.cs" />
+    <Content Include="app_modules\comm-matter\package.js" />
     <Content Include="app_modules\comm-cmpt\package.js" />
     <Content Include="app_modules\comm-func\package.js" />
     <Content Include="app_modules\comm-typeahead\typeahead.css" />
@@ -236,6 +237,7 @@
     <Content Include="app_modules\ImgFileSort\package.json" />
     <Content Include="app_modules\ImgFileSort\c-ImgFileSort.jsx" />
     <Content Include="Areas\Active\Views\CommunityBanner\Main.cshtml" />
+    <Content Include="app_modules\comm-matter\package.json" />
     <None Include="Areas\Base\Controllers\ReportChartController.cs" />
     <Compile Include="Areas\Base\Controllers\RolesController.cs" />
     <Compile Include="Areas\Base\Controllers\MenuController.cs" />
@@ -670,6 +672,8 @@
     <Content Include="_Code\Log\memo.txt" />
     <Content Include="_Code\SysDoc\Doc.xml" />
     <Content Include="_Code\SysUpFiles\memo.txt" />
+    <TypeScriptCompile Include="app_modules\comm-matter\comm-matter.d.ts" />
+    <TypeScriptCompile Include="app_modules\comm-matter\comm-matter.tsx" />
     <TypeScriptCompile Include="app_modules\comm-cmpt\comm-cmpt.d.ts" />
     <TypeScriptCompile Include="app_modules\comm-cmpt\comm-cmpt.tsx" />
     <TypeScriptCompile Include="app_modules\comm-cmpt\react.cmpt.prop.ts" />
