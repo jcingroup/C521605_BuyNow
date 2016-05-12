@@ -14,10 +14,8 @@ $content-spacing:       30px !default;
 // base
 //
 
-html, body {
-    height: 100%;
-    padding-top: $header-height;
-}
+html, body {height: 100%;}
+body {padding-top: $header-height;}
 
 a {
     @include transition(color 0.3s, background 0.3s);

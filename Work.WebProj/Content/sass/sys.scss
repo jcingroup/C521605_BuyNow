@@ -76,6 +76,49 @@
 }
 
 
+// Pages
+// ----------------------------------------------------------------------
+
+// Login
+//
+.Login {
+	padding-top: 0;
+
+	#main {
+		padding: 0;
+		text-align: center;
+	}
+
+	.logo {
+		margin-top: $spacer*1.5;
+		margin-bottom: $spacer*0.5;
+		font-size: em(28px);
+		color: #777;
+
+		.name {
+			margin-right: $spacer*0.5;
+			color: #D9534F;
+		}
+	}
+
+	.copyright {
+		margin-bottom: $spacer*1.5;
+		font-size: em(18px);
+		color: $brand-primary;
+	}
+
+	.login-box {
+		width: 425px;
+		margin: 0 auto;
+		padding: $spacer;
+		text-align: left;
+		background: #f7f7f7;
+		border: 1px solid #AEB3B8;
+		box-shadow: 0 0 10px #ccc;
+	}
+}
+
+
 // Custom elements
 // ----------------------------------------------------------------------
 

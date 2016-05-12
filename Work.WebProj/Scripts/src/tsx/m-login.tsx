@@ -93,10 +93,10 @@ namespace Login {
 
             return (
             <div>
-                <h3>System Login</h3>
-                <form onSubmit={this.handleSubmit}>
+                <h3 className="h3">System Login</h3>
+                <form className="form form-sm" onSubmit={this.handleSubmit}>
                     <div className="form-group has-feedback">
-                        <label className="control-label">帳號 Username</label>
+                        <label>帳號 Username</label>
                         <input className="form-control"
                         type="text"
                         value={this.state.field.account}
@@ -107,7 +107,7 @@ namespace Login {
                         <i className="fa-user form-control-feedback"></i>
                     </div>
                     <div className="form-group has-feedback">
-                        <label className="control-label">密碼 Password</label>
+                        <label>密碼 Password</label>
                         <input className="form-control"
                         type="password"
                         value={this.state.field.password}
@@ -118,7 +118,7 @@ namespace Login {
                         <i className="fa-lock form-control-feedback"></i>
                     </div>
                     <div className="form-group">
-                        <label className="control-label">驗證碼 Code</label>
+                        <label>驗證碼 Code</label>
                         <div className="row">
                             <div className="col-xs-3">
                                 <img alt="驗證碼" src={this.state.validateUrl} />
@@ -142,23 +142,8 @@ namespace Login {
                         </div>
                     </div>
                 </div>
-                <div className="form-action">
-                    <div className="row">
-                        <div className="col-xs-4">
-                            <div className="checkbox">
-                                <label>
-                                    <input type="checkbox" tabIndex={-1} />
-                                    <span>記住</span>
-                                </label>
-                            </div>
-                        </div>
-                        <div className="col-xs-3 col-xs-offset-1">
-                            <button className="btn btn-info" tabIndex={4} type="submit"><i className="fa-key"></i> 登錄</button>
-                        </div>
-                        <div className="col-xs-4">
-                            <button tabIndex={-1} type="button"><i className="fa-question-circle"></i> 忘記密碼</button>
-                        </div>
-                    </div>
+                <div className="form-action text-xs-center">
+                    <button className="btn btn-info" tabIndex={4} type="submit"><i className="fa-key"></i> 登錄</button>
                 </div>
             </form>
         </div>

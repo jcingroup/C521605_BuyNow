@@ -31,49 +31,61 @@
         var gb_def_action = '@get_def_action';
     </script>
 </head>
-<body>
+<body class="@ViewBag.BodyClass">
     <div id="wrapper">
-        <header id="header" class="navbar navbar-fixed-top navbar-dark bg-primary">
-            <h1 class="logo">
-                <a class="navbar-brand" href="#" title="@Resources.Res.Info_Home" tabindex="-1">@Resources.Res.System_Name</a>
-            </h1><!-- logo -->
-            <ul class="nav navbar-nav pull-xs-right">
-                <li class="nav-item">
-                    <span class="nav-link">
-                        @if (ViewBag.user_login == "N")
-                        {
-                            <i class="fa-user"></i> <span>登入身分:</span> @Cookie_UserName.Value
-                        }
-                        else if (ViewBag.user_login == "Y")
-                        {
-                            <i class="fa-user"></i> <span>@ViewBag.RankName:</span> @ViewBag.UserName
-                        }
-                    </span>
-                </li>
-                <li class="nav-item">
-                    <a href="~/index" class="nav-link">
-                        <i class="fa-home"></i> @Resources.Res.Button_ReturnIndex
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="~/Login/Logout" class="nav-link">
-                        <i class="fa-power-off"></i> @Resources.Res.Button_Logout
-                    </a>
-                </li>
-            </ul>
-        </header><!-- header //-->
-        <main id="main">
-            <div id="content">
-                <ul class="breadcrumb">
-                    @* <li><a href=""><i class="fa fa-home"></i> @Resources.Res.System_Name</a></li> *@
-                    @RenderSection("breadCrumb", required: false)
+        @if (ViewBag.IsFirstPage)
+        { }
+        else {
+            <header id="header" class="navbar navbar-fixed-top navbar-dark bg-primary">
+                <h1 class="logo">
+                    <a class="navbar-brand" href="#" title="@Resources.Res.Info_Home" tabindex="-1">@Resources.Res.System_Name</a>
+                </h1><!-- logo -->
+                <ul class="nav navbar-nav pull-xs-right">
+                    <li class="nav-item">
+                        <span class="nav-link">
+                            @if (ViewBag.user_login == "N")
+                            {
+                                <i class="fa-user"></i> <span>登入身分:</span> @Cookie_UserName.Value
+                            }
+                            else if (ViewBag.user_login == "Y")
+                            {
+                                <i class="fa-user"></i> <span>@ViewBag.RankName:</span> @ViewBag.UserName
+                            }
+                        </span>
+                    </li>
+                    <li class="nav-item">
+                        <a href="~/index" class="nav-link">
+                            <i class="fa-home"></i> @Resources.Res.Button_ReturnIndex
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="~/Login/Logout" class="nav-link">
+                            <i class="fa-power-off"></i> @Resources.Res.Button_Logout
+                        </a>
+                    </li>
                 </ul>
-                <div id="page_content"></div>
+            </header><!-- header //-->
+        }
+
+        <main id="main">
+
+            @if (ViewBag.IsFirstPage) {
                 @RenderBody()
-            </div><!-- content //-->
-            <div id="sidebar">
-                @RenderSection("sidebar", false)
-            </div><!-- sidebar //-->
+            }
+            else {
+                <div id="content">
+                    <ul class="breadcrumb">
+                        @* <li><a href=""><i class="fa fa-home"></i> @Resources.Res.System_Name</a></li> *@
+                        @RenderSection("breadCrumb", required: false)
+                    </ul>
+                    @RenderBody()
+                    <div id="page_content"></div>
+                </div><!-- content //-->
+                <div id="sidebar">
+                    @RenderSection("sidebar", false)
+                </div><!-- sidebar //-->
+            }
+
         </main><!-- main //-->
     </div><!-- wrapper //-->
     <footer id="footer">

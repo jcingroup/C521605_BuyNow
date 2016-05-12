@@ -114,6 +114,8 @@ namespace DotWeb.Controller
             var getUserName = Request.Cookies[CommWebSetup.WebCookiesId + ".member_name"];
             UserId = getUserIdCookie == null ? null : EncryptString.desDecryptBase64(Server.UrlDecode(getUserIdCookie.Value));
 
+            ViewBag.IsFirstPage = false; //是否為首頁，請在首頁的Action此值設為True
+
             #region 判斷是管理端、用戶端登入
             var getLoginUserFlag = Request.Cookies["user_login"];
             LoginUserFlag = getLoginUserFlag == null ? "" :
