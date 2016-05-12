@@ -6,14 +6,18 @@
 
 // var
 // 
+$header-height:         48px !default;
 $sidebar-width:         220px !default;
-$footer-height:         37px !default;
-$content-spacing:       60px !default;
+$footer-height:         51px !default;
+$content-spacing:       30px !default;
 
 // base
 //
 
-html, body { height: 100%; }
+html, body {
+    height: 100%;
+    padding-top: $header-height;
+}
 
 a {
     @include transition(color 0.3s, background 0.3s);
@@ -26,7 +30,8 @@ a {
 -----------------------------------------------------------------------*/
 
 #wrapper {
-    padding-bottom: $content-spacing;
+    min-height: 100%;
+    padding-bottom: $footer-height + $content-spacing;
     @include clearfix;
 }
 
@@ -97,8 +102,6 @@ a {
     height: auto;
     min-height: 100%;
     position: relative;
-    margin-top: 48px;
-    padding-top: 46px;
     padding-left: $sidebar-width;
 }
 
@@ -254,6 +257,7 @@ a {
 // footer
 // ----------------------------------------------------------------------
 #footer {
+    margin-top: -$footer-height;
     padding-left: $sidebar-width;
 
     .copyright {

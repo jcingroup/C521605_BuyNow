@@ -6134,6 +6134,7 @@ input[type="file"] {
 -----------------------------------------------------------------------*/
 html, body {
   height: 100%;
+  padding-top: 48px;
 }
 
 a {
@@ -6146,7 +6147,8 @@ a:focus {
 /*      layout
 -----------------------------------------------------------------------*/
 #wrapper {
-  padding-bottom: 60px;
+  min-height: 100%;
+  padding-bottom: 81px;
 }
 #wrapper::after {
   content: "";
@@ -6243,8 +6245,6 @@ a:focus {
   height: auto;
   min-height: 100%;
   position: relative;
-  margin-top: 48px;
-  padding-top: 46px;
   padding-left: 220px;
 }
 
@@ -6387,6 +6387,7 @@ a:focus {
 }
 
 #footer {
+  margin-top: -51px;
   padding-left: 220px;
 }
 #footer .copyright {
