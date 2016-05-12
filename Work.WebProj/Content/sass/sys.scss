@@ -68,12 +68,6 @@
 @import "_admin/layout";
 
 
-// Elements
-// ----------------------------------------------------------------------
-.table {width: 100%;}
-.btn-link {padding: 0;}
-
-
 
 // Layout
 // ----------------------------------------------------------------------
@@ -82,20 +76,24 @@
 }
 
 
-// Table
+// Custom elements
 // ----------------------------------------------------------------------
+
+// Table header & footer
+//
 .table-header, .table-footer {
 	padding: $spacer*0.3;
 	background: $brand-primary-light;
 }
 
+// Pager + inline form
+//
 .pager {
 	.form-inline {margin: 0 $spacer*0.5;}
 }
 
-
-// Form
-// ----------------------------------------------------------------------
+// upload images
+//
 .upload-img {
 	margin-bottom: 0;
 
@@ -119,8 +117,21 @@
 	}
 }
 
+// form submit
+//
 .form-action {
 	padding: $spacer 0;
 	background: hsla(0,0,0,0.05);
 	border-top: 1px solid hsla(0,0,0,0.1);
+}
+
+// tooltip btn
+//
+.label-circle {
+	width: $spacer*1.5;
+	height: $spacer*1.5;
+	text-align: center;
+	border-radius: 50%;
+	border: 3px solid #fff;
+	box-shadow: 0 0 2px hsla(0,0,0,0.2);
 }

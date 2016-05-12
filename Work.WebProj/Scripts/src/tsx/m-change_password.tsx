@@ -76,13 +76,10 @@ namespace ChangePasswrod {
 
             outHtml = (
                 <div>
-    <h4 className="title"> {this.props.caption}</h4>
-    <div className="alert alert-warning"><p>以下皆為 <strong className="text-danger">必填項目</strong> 。</p></div>
-    <form className="form-horizontal" onSubmit={this.handleSubmit}>
-        <div className="col-xs-12">
-
-                        <div className="form-group">
-                            <label className="col-xs-2 control-label">目前密碼</label>
+    <h3 className="h3"> {this.props.caption}</h3>
+    <form className="form form-sm" onSubmit={this.handleSubmit}>
+                        <div className="form-group row">
+                            <label className="col-xs-2 form-control-label text-xs-right"><small className="text-danger">*</small> 目前密碼</label>
                             <div className="col-xs-5">
                                 <input className="form-control" type="password"
                                     value={pram.OldPassword}
@@ -91,8 +88,8 @@ namespace ChangePasswrod {
                                 </div>
                             </div>
 
-                        <div className="form-group">
-                            <label className="col-xs-2 control-label">新密碼</label>
+                        <div className="form-group row">
+                            <label className="col-xs-2 form-control-label text-xs-right"><small className="text-danger">*</small> 新密碼</label>
                             <div className="col-xs-5">
                                 <input className="form-control" type="password"
                                     value={pram.NewPassword}
@@ -101,8 +98,8 @@ namespace ChangePasswrod {
                                 </div>
                             </div>
 
-                        <div className="form-group">
-                            <label className="col-xs-2 control-label">確認新密碼</label>
+                        <div className="form-group row">
+                            <label className="col-xs-2 form-control-label text-xs-right"><small className="text-danger">*</small> 確認新密碼</label>
                             <div className="col-xs-5">
                                 <input className="form-control" type="password"
                                     value={pram.ConfirmPassword}
@@ -112,12 +109,11 @@ namespace ChangePasswrod {
                             </div>
 
 
-            <div className="form-action">
-                <div className="col-xs-4 col-xs-offset-2">
-                    <button type="submit" className="btn-primary"><i className="fa-check"></i> 儲存</button>
+            <div className="form-group row form-action">
+                <div className="col-xs-10 col-xs-offset-2">
+                    <button type="submit" className="btn btn-sm btn-primary"><i className="fa-check"></i> 儲存</button>
                     </div>
                 </div>
-            </div>
         </form>
                     </div>
             );

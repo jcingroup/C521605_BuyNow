@@ -1,33 +1,44 @@
+/**
+ * @license Copyright (c) 2003-2015, CKSource - Frederico Knabben. All rights reserved.
+ * For licensing, see LICENSE.md or http://ckeditor.com/license
+ */
+
 CKEDITOR.editorConfig = function (config) {
     // Define changes to default configuration here. For example:
+    config.height = 500;
     config.language = 'zh';
     // config.uiColor = '#AADC6E';
+    config.extraPlugins = 'youtube';
+    //config.extraAllowedContent = 'ul(*);';
     config.contentsCss = ['../../Content/css/editor.css'];
     config.toolbar = [
-        { name: "document", items: ["Source", "-"] },
-        { name: "tools", items: ["Maximize", "-"] },
-        {
-            name: "clipboard",
-            items: ["Cut", "Copy", "Paste", "PasteText", "PasteFromWord", "Undo", "Redo"]
-        },
-        { name: "links", items: ["Link", "Unlink", "Anchor"] },
-        {
-            name: 'insert',
-            items: ['Image', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak', 'Iframe']
-        },
         {
             name: "basicstyles",
             items: ["FontSize", "Bold", "Underline", "Strike", "-", "JustifyLeft", "JustifyCenter", "JustifyRight", "-", "RemoveFormat"]
         },
-        { name: "paragraph", items: ["NumberedList", "BulletedList", "-", "Outdent", "Indent"] },
         { name: "colors", items: ["TextColor", "BGColor"] },
-        { name: "styles", items: ["Styles", "Format"] },
+        { name: "paragraph", items: ["NumberedList", "BulletedList", "-", "Outdent", "Indent"] },
+        // { name: "styles", items: ["Styles", "Format"] },
+        { name: "styles", items: ["Styles"] },
+        { name: "links", items: ["Link", "Unlink", "Anchor"] },
+        { name: 'insert', items: ['Image', 'Youtube', 'Table', 'Smiley', 'Iframe'] },
+        {
+            name: "clipboard",
+            items: ["Cut", "Copy", "Paste", "PasteText", "PasteFromWord", "Undo", "Redo"]
+        },
+        { name: "document", items: ["Source", "-"] },
+        { name: "tools", items: ["Maximize", "-"] },
         { name: "editing" }
     ];
     config.filebrowserBrowseUrl = "../../ckfinder/ckfinder.html";
     config.filebrowserImageBrowseUrl = "../../ckfinder/ckfinder.html?type=Images";
     config.filebrowserImageUploadUrl = "../../ckfinder/core/connector/aspx/connector.aspx?command=QuickUpload&type=Images";
     config.autoUpdateElement = true;
+
+    //不要轉換htmltag
+    config.allowedContent = true;
+    config.fontSize_sizes = '12px/12px;13/13px;16/16px;18/18px;20/20px;22/22px;24/24px;36/36px;48/48px;';
+    config.font_names = 'Arial;Arial Black;Comic Sans MS;Courier New;Tahoma;Verdana;新細明體;細明體;標楷體;微軟正黑體';
 };
 
 CKEDITOR.stylesSet.add('default', [
@@ -47,13 +58,11 @@ CKEDITOR.stylesSet.add('default', [
     // { name: '文字 - 裝飾2', element: 'span', attributes: { 'class': 'arrow-right' } },
 
     // Object Styles
-    { name: '列表 - 項目符號、分隔線', element: 'ul', attributes: { 'class': 'list-icon list-underline' } },
-    { name: '列表 - 項目符號', element: 'ul', attributes: { 'class': 'list-icon' } },
-    { name: '列表 - 分隔線', element: 'ul', attributes: { 'class': 'list-unstyled list-underline' } },
-    { name: '列表 - 無項目符號', element: 'ul', attributes: { 'class': 'list-unstyled' } },
-    // { name: '列表 - 樣式1', element: 'ol', attributes: { 'class': 'list-styled list-underline' } },
-    { name: '列表 - 分隔線', element: 'ol', attributes: { 'class': 'list-underline' } },
-    // { name: '列表 - 樣式3', element: 'ol', attributes: { 'class': 'list-styled' } },
+    { name: '列表-圖示&線', element: 'ul', attributes: { 'class': 'list-icon list-underline' } },
+    { name: '列表-圖示', element: 'ul', attributes: { 'class': 'list-icon' } },
+    { name: '列表-線', element: 'ul', attributes: { 'class': 'list-unstyled list-underline' } },
+    { name: '列表-無圖示', element: 'ul', attributes: { 'class': 'list-unstyled' } },
+    { name: '數字列表-線', element: 'ol', attributes: { 'class': 'list-underline' } },
     { name: '表格樣式', element: 'table', attributes: { 'class': 'table' } },
     // { name: '圖片 - 加框', element: 'img', attributes: { 'class': 'thumb' } }
 ]);

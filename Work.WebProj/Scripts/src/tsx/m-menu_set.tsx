@@ -51,8 +51,8 @@ namespace MenuSet {
         render() {
             let StateForGird = CommCmpt.StateForGird;
             return <tr>
-                       <td className="text-center"><CommCmpt.GridCheckDel iKey={this.props.ikey} chd={this.props.itemData.check_del} delCheck={this.delCheck} /></td>
-                       <td className="text-center"><CommCmpt.GridButtonModify modify={this.modify} /></td>
+                       <td className="text-xs-center"><CommCmpt.GridCheckDel iKey={this.props.ikey} chd={this.props.itemData.check_del} delCheck={this.delCheck} /></td>
+                       <td className="text-xs-center"><CommCmpt.GridButtonModify modify={this.modify} /></td>
                        <td>{this.props.itemData.menu_id}</td>
                        <td>{this.props.itemData.parent_menu_id}</td>
                        <td>{this.props.itemData.menu_name}</td>
@@ -292,52 +292,53 @@ namespace MenuSet {
                 outHtml =
                     (
                         <div>
-                    <h3 className="title">
+                    <h3 className="h3">
                         {this.props.caption}
-                        </h3>
+                    </h3>
                     <form onSubmit={this.handleSearch}>
                         <div className="table-responsive">
                             <div className="table-header">
                                 <div className="table-filter">
                                     <div className="form-inline">
                                         <div className="form-group">
-                                            <label>menu名稱</label> { }
-                                            <input type="text" className="form-control"
+                                            <label className="sr-only">選單名稱</label> { }
+                                            <input type="text" className="form-control form-control-sm"
                                                 onChange={this.changeGDValue.bind(this, 'keyword') }
                                                 value={searchData.keyword}
-                                                placeholder="請輸入關鍵字..." /> { }
-                                            <label>狀態</label> { }
-                                            <select className="form-control"
+                                                placeholder="選單名稱" /> { }
+                                            <label className="sr-only">型態</label> { }
+                                            <select className="form-control form-control-sm"
                                                 onChange={this.changeGDValue.bind(this, 'is_folder') }
                                                 value={searchData.is_folder} >
-                                                <option value="">全部</option>
+                                                <option value="">全部型態</option>
                                                 <option value="true">父選單</option>
                                                 <option value="false">子選單</option>
                                                 </select> { }
-                                            <button className="btn-primary" type="submit"><i className="fa-search"></i> 搜尋</button>
+                                            <button className="btn btn-sm btn-primary" type="submit"><i className="fa-search"></i> 搜尋</button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            <table>
+                            <table className="table table-sm table-bordered table-striped">
                                 <thead>
                                     <tr>
-                                        <th className="col-xs-1 text-center">
-                                            <label className="cbox">
+                                        <th style={{"width" : "6%"}} className="text-xs-center">
+                                            <label className="c-input c-checkbox">
                                                 <input type="checkbox" checked={this.state.checkAll} onChange={this.checkAll} />
-                                                <i className="fa-check"></i>
-                                                </label>
-                                            </th>
-                                        <th className="col-xs-1 text-center">修改</th>
-                                        <th className="col-xs-1">編號</th>
-                                        <th className="col-xs-1">對應父選單</th>
-                                        <th className="col-xs-2">選單名稱</th>
-                                        <th className="col-xs-1">area</th>
-                                        <th className="col-xs-1">controller</th>
-                                        <th className="col-xs-1">action</th>
-                                        <th className="col-xs-1">icon_class</th>
-                                        <th className="col-xs-1">排序</th>
-                                        <th className="col-xs-1">選單狀態</th>
+                                                <span className="c-indicator"></span>
+                                                全選
+                                            </label>
+                                        </th>
+                                        <th style={{"width" : "6%"}} className="text-xs-center">修改</th>
+                                        <th style={{"width" : "6%"}}>編號</th>
+                                        <th style={{"width" : "14%"}}>對應父選單</th>
+                                        <th style={{"width" : "14%"}}>選單名稱</th>
+                                        <th style={{"width" : "10%"}}>area</th>
+                                        <th style={{"width" : "10%"}}>controller</th>
+                                        <th style={{"width" : "10%"}}>action</th>
+                                        <th style={{"width" : "10%"}}>icon_class</th>
+                                        <th style={{"width" : "6%"}}>排序</th>
+                                        <th style={{"width" : "8%"}}>選單狀態</th>
                                         </tr>
                                     </thead>
                                 <tbody>
@@ -376,11 +377,11 @@ namespace MenuSet {
 
                 outHtml = (
                     <div>
-    <h4 className="title"> {this.props.caption} 基本資料維護</h4>
-    <form className="form-horizontal" onSubmit={this.handleSubmit}>
-        <div className="col-xs-10">
-                    <div className="form-group">
-                        <label className="col-xs-2 control-label">編號</label>
+        <h3 className="h3"> {this.props.caption} <small className="sub"><i className="fa-angle-double-right"></i> 資料維護</small></h3>
+        <form className="form form-sm" onSubmit={this.handleSubmit}>
+
+                    <div className="form-group row">
+                        <label className="col-xs-2 form-control-label text-xs-right">編號</label>
                         <div className="col-xs-4">
                             <input type="number"
                                 className="form-control"
@@ -390,8 +391,8 @@ namespace MenuSet {
                                 disabled={true} />
                             </div>
                         </div>
-                    <div className="form-group">
-                        <label className="col-xs-2 control-label">選擇父選單</label>
+                    <div className="form-group row">
+                        <label className="col-xs-2 form-control-label text-xs-right"><small className="text-danger">*</small> 父選單</label>
                         <div className="col-xs-4">
                             <select className="form-control"
                                 value={fieldData.parent_menu_id}
@@ -404,22 +405,21 @@ namespace MenuSet {
                             }
                                 </select>
                             </div>
-                        <small className="help-inline col-xs-6 text-danger">(必填) </small>
+                        
                         </div>
-                    <div className="form-group">
-                        <label className="col-xs-2 control-label">選單名稱</label>
+                    <div className="form-group row">
+                        <label className="col-xs-2 form-control-label text-xs-right"><small className="text-danger">*</small> 選單名稱</label>
                         <div className="col-xs-4">
                             <input type="text"
                                 className="form-control"
                                 value={fieldData.menu_name}
                                 onChange={this.changeFDValue.bind(this, 'menu_name') }
-                                maxLength={64}
+                                maxLength={128}
                                 required />
                             </div>
-                        <small className="help-inline col-xs-6 text-danger">(必填) </small>
                         </div>
-                    <div className="form-group">
-                        <label className="col-xs-2 control-label">area</label>
+                    <div className="form-group row">
+                        <label className="col-xs-2 form-control-label text-xs-right">area</label>
                         <div className="col-xs-4">
                             <input type="text"
                                 className="form-control"
@@ -428,8 +428,8 @@ namespace MenuSet {
                                 maxLength={64} />
                             </div>
                         </div>
-                    <div className="form-group">
-                        <label className="col-xs-2 control-label">controller</label>
+                    <div className="form-group row">
+                        <label className="col-xs-2 form-control-label text-xs-right">controller</label>
                         <div className="col-xs-4">
                             <input type="text"
                                 className="form-control"
@@ -438,8 +438,8 @@ namespace MenuSet {
                                 maxLength={16} />
                             </div>
                         </div>
-                    <div className="form-group">
-                        <label className="col-xs-2 control-label">action</label>
+                    <div className="form-group row">
+                        <label className="col-xs-2 form-control-label text-xs-right">action</label>
                         <div className="col-xs-4">
                             <input type="text"
                                 className="form-control"
@@ -448,28 +448,27 @@ namespace MenuSet {
                                 maxLength={16} />
                             </div>
                         </div>
-                    <div className="form-group">
-                        <label className="col-xs-2 control-label">icon_class</label>
+                    <div className="form-group row">
+                        <label className="col-xs-2 form-control-label text-xs-right">icon_class</label>
                         <div className="col-xs-4">
                             <input type="text"
                                 className="form-control"
                                 value={fieldData.icon_class}
                                 onChange={this.changeFDValue.bind(this, 'icon_class') }
-                                maxLength={16} />
+                                maxLength={128} />
                             </div>
                         </div>
-            <div className="form-group">
-                <label className="col-xs-2 control-label">排序</label>
+            <div className="form-group row">
+                <label className="col-xs-2 form-control-label text-xs-right">排序</label>
                 <div className="col-xs-4">
                     <input type="number" className="form-control" onChange={this.changeFDValue.bind(this, 'sort') } value={fieldData.sort} required />
-                    </div>
-                <small className="col-xs-6 help-inline">由小到大排序</small>
+                    <small className="text-muted">由小到大排序</small>
                 </div>
-            <div className="form-group">
-                <label className="col-xs-2 control-label">選單狀態</label>
+            </div>
+            <div className="form-group row">
+                <label className="col-xs-2 form-control-label text-xs-right">選單狀態</label>
                 <div className="col-xs-4">
-                   <div className="radio-inline">
-                       <label>
+                   <label className="radio-inline">
                             <input type="radio"
                                 name="is_folder"
                                 value={true}
@@ -478,9 +477,7 @@ namespace MenuSet {
                                 />
                             <span>父選單</span>
                            </label>
-                       </div>
-                   <div className="radio-inline">
-                       <label>
+                   <label className="radio-inline">
                             <input type="radio"
                                 name="is_folder"
                                 value={false}
@@ -489,14 +486,12 @@ namespace MenuSet {
                                 />
                             <span>子選單</span>
                            </label>
-                       </div>
                     </div>
                 </div>
-            <div className="form-group">
-                <label className="col-xs-2 control-label">使用狀態</label>
+            <div className="form-group row">
+                <label className="col-xs-2 form-control-label text-xs-right">使用狀態</label>
                 <div className="col-xs-4">
-                   <div className="radio-inline">
-                       <label>
+                       <label className="radio-inline">
                             <input type="radio"
                                 name="is_use"
                                 value={true}
@@ -504,10 +499,8 @@ namespace MenuSet {
                                 onChange={this.changeFDValue.bind(this, 'is_use') }
                                 />
                             <span>使用中</span>
-                           </label>
-                       </div>
-                   <div className="radio-inline">
-                       <label>
+                        </label>
+                       <label className="radio-inline">
                             <input type="radio"
                                 name="is_use"
                                 value={false}
@@ -516,17 +509,16 @@ namespace MenuSet {
                                 />
                             <span>未使用</span>
                            </label>
-                       </div>
                     </div>
                 </div>
-                    <div className="form-group">
-                        <label className="col-xs-2 control-label">可檢視角色</label>
+                    <div className="form-group row">
+                        <label className="col-xs-2 form-control-label text-xs-right">可檢視角色</label>
                         <div className="col-xs-10">
                         {
                         fieldData.role_array.map((itemData, i) =>
                             <div className="checkbox" key={itemData.role_id}>
                                     <label>
-                                        <input  type="checkbox"
+                                        <input type="checkbox"
                                             checked={itemData.role_use}
                                             onChange={this.setRolesCheck.bind(this, i) }
                                             />
@@ -537,13 +529,12 @@ namespace MenuSet {
                             </div>
                         </div>
 
-            <div className="form-action">
+            <div className="form-group row form-action">
                 <div className="col-xs-4 col-xs-offset-2">
-                    <button type="submit" className="btn-primary"><i className="fa-check"></i> 儲存</button> { }
-                    <button type="button" onClick={this.noneType}><i className="fa-times"></i> 回前頁</button>
+                    <button type="submit" className="btn btn-sm btn-primary"><i className="fa-check"></i> 儲存</button> { }
+                    <button type="button" onClick={this.noneType} className="btn btn-sm btn-secondary"><i className="fa-times"></i> 回前頁</button>
                     </div>
                 </div>
-            </div>
         </form>
                         </div>
                 );

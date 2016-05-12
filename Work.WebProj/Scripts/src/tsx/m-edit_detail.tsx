@@ -91,7 +91,7 @@ namespace EditDetail {
         }
         componentDidMount() {
             this.updateType(gb_no);
-            CKEDITOR.replace('edit_content', { customConfig: '../ckeditor/inlineConfig.js' });
+            CKEDITOR.replace('edit_content', { customConfig: '../ckeditor/config.js' });
         }
         componentDidUpdate(prevProps, prevState) {
         }
@@ -287,22 +287,26 @@ namespace EditDetail {
                 <div>
                         <ul className="breadcrumb">
                             <li>
-                                <i className="fa-list-alt"></i>
+                                <i className="fa-caret-right"></i> { }
                                 {this.props.menuName}
-                                </li>
-                            </ul>
-                        <h4 className="title"> {this.props.caption} 基本資料維護</h4>
-                        <form className="form-horizontal" onSubmit={this.handleSubmit}>
+                            </li>
+                            <li>
+                                <i className="fa-angle-right"></i> { }
+                                {this.props.caption}
+                            </li>
+                            <li>
+                                <i className="fa-angle-right"></i> { }
+                                資料維護
+                            </li>
+                        </ul>
+                        <h3 className="h3">{this.props.caption}<small className="sub"><i className="fa-angle-double-right"></i> 資料維護</small></h3>
+                        <form className="form" onSubmit={this.handleSubmit}>
                             <div className="form-group">
-                                <div className="col-xs-12">
-                                    <textarea type="date" className="form-control" id="edit_content" name="edit_content"
+                                <textarea type="date" className="form-control" id="edit_content" name="edit_content"
                                             value={fieldData.edit_content} onChange={this.changeFDValue.bind(this, 'edit_content') }/>
-                                </div>
                             </div>
-                            <div className="form-action">
-                                <div className="col-xs-4 col-xs-offset-4">
-                                    <button type="submit" className="btn-primary"><i className="fa-check"></i> 儲存</button>
-                                </div>
+                            <div className="form-action text-xs-center">
+                                <button type="submit" className="btn btn-sm btn-primary"><i className="fa-check"></i> 儲存</button>
                             </div>
                         </form>
                     </div>

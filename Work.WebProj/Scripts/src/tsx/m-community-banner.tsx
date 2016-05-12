@@ -19,7 +19,7 @@ namespace CommunityBanner {
         end_date: Date,
         state: string,
         community_name: string
-
+        
     }
     interface GirdFormState<G, F> extends BaseDefine.GirdFormStateBase<G, F> {
         searchData?: {
@@ -50,18 +50,18 @@ namespace CommunityBanner {
         render() {
 
             let state = [];
-            state['A'] = <span className="label label-success">前台顯示</span>;
-            state['C'] = <span className="label label-danger">前台關閉</span>;
+            state['A'] = <span className="label label-success">顯示</span>;
+            state['C'] = <span className="label label-danger">關閉</span>;
 
 
 
             return <tr>
-                <td className="text-center">
+                <td className="text-xs-center">
                     <CommCmpt.GridButtonDel
                         removeItemSubmit={this.props.removeItemSubmit}
                         primKey={this.props.primKey} />
                 </td>
-                <td className="text-center">
+                <td className="text-xs-center">
                     <CommCmpt.GridButtonModify modify={this.modify}/>
                 </td>
                 <td>{this.props.itemData.community_name}</td>
@@ -369,11 +369,14 @@ namespace CommunityBanner {
                     (
                         <div>
                             <ul className="breadcrumb">
-                                <li><i className="fa-list-alt"></i>
+                                <li><i className="fa-caret-right"></i> { } 
                                     {this.props.menuName}
                                 </li>
+                                <li><i className="fa-angle-right"></i> { } 
+                                    {this.props.caption}
+                                </li>
                             </ul>
-                            <h3 className="title">
+                            <h3 className="h3">
                                 {this.props.caption}
                             </h3>
                             <form onSubmit={this.handleSearch}>
@@ -382,30 +385,23 @@ namespace CommunityBanner {
                                         <div className="table-filter">
                                             <div className="form-inline">
                                                 <div className="form-group">
-                                                    <label></label>
-                                                    {}
-                                                    <input type="text" className="form-control" onChange={this.changeGDValue.bind(this, 'keyword') } value={this.state.searchData.keyword} placeholder="社區名稱" />
-                                                    {}
-                                                    <button className="btn-primary" type="submit"><i className="fa-search"></i> 搜尋</button>
+                                                    <label className="sr-only">社區名稱</label> { }
+                                                    <input type="text" className="form-control form-control-sm" onChange={this.changeGDValue.bind(this, 'keyword') } value={this.state.searchData.keyword} placeholder="社區名稱" /> { }
+                                                    <button className="btn btn-sm btn-primary" type="submit"><i className="fa-search"></i> 搜尋</button>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <table>
+                                    <table className="table table-sm table-bordered table-striped">
                                         <thead>
                                             <tr>
-                                                <th className="col-xs-1 text-center">
-                                                    <label className="cbox">
-                                                        <input type="checkbox" checked={this.state.checkAll} onChange={this.checkAll} />
-                                                        <i className="fa-check"></i>
-                                                    </label>
-                                                </th>
-                                                <th className="col-xs-1 text-center">修改</th>
-                                                <th className="col-xs-2">社區名稱</th>
-                                                <th className="col-xs-2">標題</th>
-                                                <th className="col-xs-2">啟始日期</th>
-                                                <th className="col-xs-2">結束日期</th>
-                                                <th className="col-xs-2">狀態</th>
+                                                <th style={{"width" : "7%"}} className="text-xs-center">刪除</th>
+                                                <th style={{"width" : "7%"}} className="text-xs-center">修改</th>
+                                                <th style={{"width" : "16%"}}>社區名稱</th>
+                                                <th style={{"width" : "20%"}}>標題</th>
+                                                <th style={{"width" : "20%"}}>啟始日期</th>
+                                                <th style={{"width" : "20%"}}>結束日期</th>
+                                                <th style={{"width" : "10%"}}>狀態</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -445,28 +441,64 @@ namespace CommunityBanner {
 
                 let fldState = {
                     label: field.state == 'A' ?
-                        <label className="col-xs-1 control-label text-success">狀態</label> :
-                        <label className="col-xs-1 control-label text-danger">狀態</label>,
+                        <label className="col-xs-1 form-control-label text-xs-right">狀態</label> :
+                        <label className="col-xs-1 form-control-label text-xs-right">狀態</label>,
                     tip: field.state == 'A' ?
                         <span className="col-xs-1"></span> :
                         <span className="col-xs-1">
-                            <CommCmpt.Tips comment="前台關閉:即使日期目前仍在有效範圍也不會顯示在前台!"  />
+                            <CommCmpt.Tips comment="關閉說明：即使日期目前仍在有效範圍也不會顯示在前台！"  />
                         </span>
                 }
 
                 var outHtml = (
                     <div>
                         <ul className="breadcrumb">
-                            <li>
-                                <i className="fa-list-alt"></i>{this.props.menuName}
+                            <li><i className="fa-caret-right"></i> { } 
+                                {this.props.menuName}
+                            </li>
+                            <li><i className="fa-angle-right"></i> { } 
+                                {this.props.caption}
+                            </li>
+                            <li><i className="fa-angle-right"></i> { } 
+                                資料維護
                             </li>
                         </ul>
-                        <h4 className="title"> {this.props.caption} 基本資料維護</h4>
-                        <form className="form-horizontal" onSubmit={this.handleSubmit}>
+                        <h3 className="h3"> {this.props.caption} <small className="sub"><i className="fa-angle-double-right"></i> 資料維護</small></h3>
+                        <form className="form form-sm" onSubmit={this.handleSubmit}>
 
-                            <div className="form-group">
-                                <label className="col-xs-1 control-label">列表圖</label>
-                                <div className="col-xs-1">
+                            <div className="form-group row">
+                                <label className="col-xs-1 form-control-label text-xs-right"><small className="text-danger">*</small> 標題</label>
+                                <div className="col-xs-8">
+                                    <input type="text" className="form-control"
+                                        onChange={this.changeFDValue.bind(this, 'title') }
+                                        value={field.title}
+                                        maxLength={64}
+                                        required />
+                                </div>
+                            </div>
+                            <div className="form-group row">
+                                <label className="col-xs-1 form-control-label text-xs-right"><small className="text-danger">*</small> 所屬社區</label>
+                                <div className="col-xs-8">
+                                    <select className="form-control"
+                                        required
+                                        value={field.community_id}
+                                        onChange={this.changeFDValue.bind(this, 'community_id') }
+                                        disabled={community_id != null}
+                                        >
+                                        <option value="請選擇" selected disabled></option>
+                                        {
+                                            this.state.options_community.map(function (item, i) {
+                                                return (
+                                                    <option value={item.community_id} key={item.community_id}>{item.community_name}</option>);
+                                            })
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div className="form-group row">
+                                <label className="col-xs-1 form-control-label text-xs-right">代表圖</label>
+                                <div className="col-xs-8">
                                     <CommCmpt.MasterImageUpload FileKind="BannerList"
                                         MainId={field.community_banner_id}
                                         ParentEditType={this.state.edit_type}
@@ -474,42 +506,15 @@ namespace CommunityBanner {
                                         url_list={gb_approot + 'Active/CommunityBanner/axFList'}
                                         url_delete={gb_approot + 'Active/CommunityBanner/axFDelete'}
                                         url_sort={gb_approot + 'Active/CommunityBanner/axFSort'} />
+                                    <small className="text-muted">最多可上傳 1 張圖片</small>
                                 </div>
                             </div>
 
-
-                            <div className="col-xs-10">
-                                <div className="form-group">
-                                    <label className="col-xs-1 control-label">標題</label>
-                                    <div className="col-xs-4">
-                                        <input type="text" className="form-control"
-                                            onChange={this.changeFDValue.bind(this, 'title') }
-                                            value={field.title}
-                                            maxLength={64}
-                                            required />
-                                    </div>
-                                    <label className="col-xs-1 control-label">來源社區</label>
-                                    <div className="col-xs-3">
-                                        <select className="form-control"
-                                            required
-                                            value={field.community_id}
-                                            onChange={this.changeFDValue.bind(this, 'community_id') }
-                                            disabled={community_id != null}
-                                            >
-                                            <option value=""></option>
-                                            {
-                                                this.state.options_community.map(function (item, i) {
-                                                    return (
-                                                        <option value={item.community_id} key={item.community_id}>{item.community_name}</option>);
-                                                })
-                                            }
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div className="form-group">
-                                    <label className="col-xs-1 control-label">時間</label>
-                                    <div className="col-xs-4">
+                            <div className="form-group row">
+                                <label className="col-xs-1 form-control-label text-xs-right"><small className="text-danger">*</small> 刊登時間</label>
+                                <div className="col-xs-4">
+                                    <div className="input-group input-group-sm">
+                                        <span className="input-group-addon">起</span>
                                         <DatePicker selected={mnt_start_date}
                                             dateFormat={dt.dateFT}
                                             isClearable={true}
@@ -520,7 +525,10 @@ namespace CommunityBanner {
                                             onChange={this.setChangeDate.bind(this, this.props.fdName, 'start_date') }
                                             className="form-control" />
                                     </div>
-                                    <div className="col-xs-4">
+                                </div>
+                                <div className="col-xs-4">
+                                    <div className="input-group input-group-sm">
+                                        <span className="input-group-addon">迄</span>
                                         <DatePicker selected={mnt_end_date}
                                             dateFormat={dt.dateFT}
                                             isClearable={true}
@@ -534,35 +542,33 @@ namespace CommunityBanner {
                                             />
                                     </div>
                                 </div>
-
-                                <div className="form-group">
-                                    {fldState.label}
-                                    <div className="col-xs-4">
-                                        <select className="form-control"
-                                            required
-                                            value={field.state}
-                                            onChange={this.changeFDValue.bind(this, 'state') }>
-                                            <option value="A">前台顯示</option>
-                                            <option value="C">前台關閉</option>
-                                        </select>
-                                    </div>
-                                    {fldState.tip}
+                            </div>
+                            <div className="form-group row">
+                                {fldState.label}
+                                <div className="col-xs-4">
+                                    <select className="form-control"
+                                        required
+                                        value={field.state}
+                                        onChange={this.changeFDValue.bind(this, 'state') }>
+                                        <option value="A">顯示</option>
+                                        <option value="C">關閉</option>
+                                    </select>
                                 </div>
-                                <div className="form-group">
-                                    <label className="col-xs-1 control-label">內容</label>
-                                    <div className="col-xs-8">
-                                        <textarea type="date" className="form-control" id="news_content" name="news_content"
-                                            value={field.context} onChange={this.changeFDValue.bind(this, 'context') }></textarea>
-                                    </div>
-                                </div>
-                                <div className="form-action">
-                                    <div className="col-xs-4 col-xs-offset-2">
-                                        <button type="submit" className="btn-primary"><i className="fa-check"></i> 儲存</button>{}
-                                        <button type="button" onClick={this.noneType}><i className="fa-times"></i> 回前頁</button>
-                                    </div>
+                                {fldState.tip}
+                            </div>
+                            <div className="form-group row">
+                                <label className="col-xs-1 form-control-label text-xs-right">廣告內容</label>
+                                <div className="col-xs-8">
+                                    <textarea type="date" className="form-control" id="news_content" name="news_content"
+                                        value={field.context} onChange={this.changeFDValue.bind(this, 'context') }></textarea>
                                 </div>
                             </div>
-
+                            <div className="form-group row form-action">
+                                <div className="col-xs-8 col-xs-offset-1">
+                                    <button type="submit" className="btn btn-sm btn-primary"><i className="fa-check"></i> 儲存</button> { }
+                                    <button type="button" onClick={this.noneType} className="btn btn-sm btn-secondary"><i className="fa-times"></i> 回前頁</button>
+                                </div>
+                            </div>
                         </form>
                     </div>
                 );

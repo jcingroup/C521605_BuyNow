@@ -583,7 +583,7 @@ namespace Matter {
                                         required
                                         value={field.community_id}
                                         onChange={this.changeFDValue.bind(this, 'community_id') }>
-                                        <option value=""></option>
+                                        <option value="" selected disabled>請選擇</option>
                                         {
                                             this.state.options_community.map(function (item, i) {
                                                 return (
@@ -713,7 +713,7 @@ namespace Matter {
                             <h4 className="h4">物件照片</h4>
                             <div className="form-group row">
                                 <label className="col-xs-2 text-xs-right form-control-label">物件代表圖</label>
-                                <div className="col-xs-7">
+                                <div className="col-xs-8">
                                         <CommCmpt.MasterImageUpload FileKind="MatterList"
                                             MainId={field.matter_id}
                                             ParentEditType={this.state.edit_type}
@@ -726,7 +726,7 @@ namespace Matter {
                             </div>
                             <div className="form-group row">
                                 <label className="col-xs-2 text-xs-right form-control-label">物件實景照片</label>
-                                <div className="col-xs-7">
+                                <div className="col-xs-8">
                                         <CommCmpt.MasterImageUpload FileKind="MatterPhoto"
                                             MainId={field.matter_id}
                                             ParentEditType={this.state.edit_type}
@@ -739,7 +739,7 @@ namespace Matter {
                             </div>
                             <div className="form-group row">
                                 <label className="col-xs-2 text-xs-right form-control-label">格局圖</label>
-                                <div className="col-xs-7">
+                                <div className="col-xs-8">
                                         <CommCmpt.MasterImageUpload FileKind="MatterStyle"
                                             MainId={field.matter_id}
                                             ParentEditType={this.state.edit_type}
@@ -938,6 +938,16 @@ namespace Matter {
                                             />
                                     <small className="text-muted">例如: 隨時</small>
                                 </div>
+                                <label className="col-xs-1 text-xs-right form-control-label">可開伙</label>
+                                <div className="col-xs-2">
+                                    <input type="text" className="form-control"
+                                            onChange={this.changeFDValue.bind(this, 'rent_cook') }
+                                            value={field.rent_cook}
+                                            maxLength={50}
+                                            disabled={field.info_type != 'R'}
+                                            />
+                                    <small className="text-muted">例如: 不可以</small>
+                                </div>
                             </div>
                             <div className="form-group row">
                                 <label className="col-xs-2 text-xs-right form-control-label">身分要求</label>
@@ -960,19 +970,7 @@ namespace Matter {
                                             />
                                     <small className="text-muted">例如: 不拘</small>
                                 </div>
-                            </div>
-                            <div className="form-group row">
-                                <label className="col-xs-2 text-xs-right form-control-label">開伙</label>
-                                <div className="col-xs-2">
-                                    <input type="text" className="form-control"
-                                            onChange={this.changeFDValue.bind(this, 'rent_cook') }
-                                            value={field.rent_cook}
-                                            maxLength={50}
-                                            disabled={field.info_type != 'R'}
-                                            />
-                                    <small className="text-muted">例如: 不可以</small>
-                                </div>
-                                <label className="col-xs-1 text-xs-right form-control-label">寵物</label>
+                                <label className="col-xs-1 text-xs-right form-control-label">可養寵物</label>
                                 <div className="col-xs-2">
                                     <input type="text" className="form-control"
                                             onChange={this.changeFDValue.bind(this, 'rent_pet') }

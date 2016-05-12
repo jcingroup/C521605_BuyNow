@@ -39,10 +39,10 @@ namespace Roles {
         render() {
 
             return <tr>
-                       <td className="text-center">
+                       <td className="text-xs-center">
                            <CommCmpt.GridCheckDel iKey={this.props.ikey} chd={this.props.itemData.check_del} delCheck={this.delCheck} />
                        </td>
-                       <td className="text-center">
+                       <td className="text-xs-center">
                            <CommCmpt.GridButtonModify modify={this.modify} />
                        </td>
                        <td>
@@ -252,37 +252,42 @@ namespace Roles {
                     <div>
 
                     <ul className="breadcrumb">
-                        <li><i className="fa-list-alt"></i> {this.props.menuName}</li>
-                        </ul>
-                    <h3 className="title">
-                        {this.props.caption}
-                        </h3>
+                                <li><i className="fa-caret-right"></i> { } 
+                                    {this.props.menuName}
+                                </li>
+                                <li><i className="fa-angle-right"></i> { } 
+                                    {this.props.caption}
+                                </li>
+                            </ul>
+                            <h3 className="h3">
+                                {this.props.caption}
+                            </h3>
                     <form onSubmit={this.handleSearch}>
                         <div className="table-responsive">
                             <div className="table-header">
                                 <div className="table-filter">
                                     <div className="form-inline">
                                         <div className="form-group">
-                                            <label>角色名稱</label> { }
-                                            <input type="text" className="form-control"
+                                            <input type="text" className="form-control form-control-sm"
                                                 onChange={this.changeGDValue.bind(this, 'UserName') }
-                                                placeholder="請輸入關鍵字..." /> { }
-                                            <button className="btn-primary" type="submit"><i className="fa-search"></i> 搜尋</button>
+                                                placeholder="角色名稱" /> { }
+                                            <button className="btn btn-sm btn-primary" type="submit"><i className="fa-search"></i> 搜尋</button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            <table>
+                            <table className="table table-sm table-bordered table-striped">
                                 <thead>
                                     <tr>
-                                        <th className="col-xs-1 text-center">
-                                            <label className="cbox">
-                                                <input type="checkbox" checked={this.state.checkAll} onChange={this.checkAll} />
-                                                <i className="fa-check"></i>
-                                                </label>
-                                            </th>
-                                        <th className="col-xs-1 text-center">修改</th>
-                                        <th className="col-xs-4">角色名稱</th>
+                                        <th style={{"width" : "7%"}} className="text-xs-center">
+                                            <label className="c-input c-checkbox">
+                                                        <input type="checkbox" checked={this.state.checkAll} onChange={this.checkAll} />
+                                                        <span className="c-indicator"></span>
+                                                        全選
+                                                    </label>
+                                        </th>
+                                        <th style={{"width" : "7%"}} className="text-center">修改</th>
+                                        <th style={{"width" : "86%"}} className="">角色名稱</th>
                                          </tr>
                                     </thead>
                                 <tbody>
@@ -320,30 +325,31 @@ namespace Roles {
                 outHtml = (
 <div>
     <ul className="breadcrumb">
-        <li><i className="fa-list-alt"></i>
-            {this.props.menuName}
+        <li><i className="fa-caret-right"></i> { } 
+        {this.props.menuName}
+        </li>
+        <li><i className="fa-angle-right"></i> { } 
+        {this.props.caption}
+        </li>
+        <li><i className="fa-angle-right"></i> { } 
+        資料維護
         </li>
     </ul>
-    <h4 className="title"> {this.props.caption} 基本資料維護</h4>
-    <form className="form-horizontal" onSubmit={this.handleSubmit}>
-        <div className="col-xs-8">
-            <div className="form-group">
-                <label className="col-xs-2 control-label">角色名稱</label>
+    <h3 className="h3"> {this.props.caption} <small className="sub"><i className="fa-angle-double-right"></i> 資料維護</small></h3>
+    <form className="form form-sm" onSubmit={this.handleSubmit}>
+            <div className="form-group row">
+                <label className="col-xs-1 form-control-label"><small className="text-danger">*</small> 角色名稱</label>
                 <div className="col-xs-8">
                     <input type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'Name') } value={fieldData.Name} maxLength={16} 
                     required />
                 </div>
-                <small className="col-xs-2 text-danger">(必填)</small>
-                </div>
-
-            <div className="form-action">
-                <div className="col-xs-4 col-xs-offset-2">
-                    <button type="submit" className="btn-primary"><i className="fa-check"></i> 儲存</button>
-                    {}
-                    <button type="button" onClick={this.noneType}><i className="fa-times"></i> 回前頁</button>
+            </div>
+            <div className="form-group row form-action">
+                <div className="col-xs-8 col-xs-offset-1">
+                    <button type="submit" className="btn btn-sm btn-primary"><i className="fa-check"></i> 儲存</button> { }
+                    <button type="button" onClick={this.noneType} className="btn btn-sm btn-secondary"><i className="fa-times"></i> 回前頁</button>
                 </div>
             </div>
-        </div>
     </form>
 </div>
                 );

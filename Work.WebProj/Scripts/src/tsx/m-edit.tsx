@@ -40,12 +40,12 @@ namespace Edit {
 
         render() {
             return <tr>
-                <td className="text-center">
+                <td className="text-xs-center">
                     <CommCmpt.GridButtonDel
                         removeItemSubmit={this.props.removeItemSubmit}
                         primKey={this.props.primKey} />
                 </td>
-                <td className="text-center">
+                <td className="text-xs-center">
                     <CommCmpt.GridButtonModify modify={this.modify}/>
                     </td>
                 <td>{this.props.itemData.edit_name}</td>
@@ -291,11 +291,14 @@ namespace Edit {
                     (
                         <div>
                             <ul className="breadcrumb">
-                                <li><i className="fa-list-alt"></i>
+                                <li><i className="fa-caret-right"></i> { } 
                                     {this.props.menuName}
                                 </li>
+                                <li><i className="fa-angle-right"></i> { } 
+                                    {this.props.caption}
+                                </li>
                             </ul>
-                            <h3 className="title">
+                            <h3 className="h3">
                                 {this.props.caption}
                             </h3>
                             <form onSubmit={this.handleSearch}>
@@ -304,27 +307,19 @@ namespace Edit {
                                         <div className="table-filter">
                                             <div className="form-inline">
                                                 <div className="form-group">
-                                                    <label></label>
-                                                    {}
-                                                    <input type="text" className="form-control" onChange={this.changeGDValue.bind(this, 'keyword') } value={this.state.searchData.keyword} placeholder="名稱" />
-                                                    {}
-                                                    <button className="btn-primary" type="submit"><i className="fa-search"></i> 搜尋</button>
+                                                    <input type="text" className="form-control form-control-sm" onChange={this.changeGDValue.bind(this, 'keyword') } value={this.state.searchData.keyword} placeholder="名稱" /> { }
+                                                    <button className="btn btn-sm btn-primary" type="submit"><i className="fa-search"></i> 搜尋</button>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <table>
+                                    <table className="table table-sm table-bordered table-striped">
                                         <thead>
                                             <tr>
-                                                <th className="col-xs-1 text-center">
-                                                    <label className="cbox">
-                                                        <input type="checkbox" checked={this.state.checkAll} onChange={this.checkAll} />
-                                                        <i className="fa-check"></i>
-                                                    </label>
-                                                </th>
-                                                <th className="col-xs-1 text-center">修改</th>
-                                                <th className="col-xs-4">名稱</th>
-                                                <th className="col-xs-4">排序</th>
+                                                <th style={{"width" : "7%"}} className="text-xs-center">刪除</th>
+                                                <th style={{"width" : "7%"}} className="text-xs-center">修改</th>
+                                                <th style={{"width" : "76%"}}>名稱</th>
+                                                <th style={{"width" : "10%"}}>排序</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -362,36 +357,38 @@ namespace Edit {
                 var outHtml = (
                     <div>
                         <ul className="breadcrumb">
-                            <li>
-                                <i className="fa-list-alt"></i>
-                                {this.props.menuName}
-                            </li>
-                        </ul>
-                        <h4 className="title"> {this.props.caption} 基本資料維護</h4>
-                        <form className="form-horizontal" onSubmit={this.handleSubmit}>
-                            <div className="col-xs-10">
-                                <div className="form-group">
-                                    <label className="col-xs-2 control-label">標題</label>
+        <li><i className="fa-caret-right"></i> { } 
+        {this.props.menuName}
+        </li>
+        <li><i className="fa-angle-right"></i> { } 
+        {this.props.caption}
+        </li>
+        <li><i className="fa-angle-right"></i> { } 
+        資料維護
+        </li>
+    </ul>
+    <h3 className="h3"> {this.props.caption} <small className="sub"><i className="fa-angle-double-right"></i> 資料維護</small></h3>
+                        <form className="form form-sm" onSubmit={this.handleSubmit}>
+                                <div className="form-group row">
+                                    <label className="col-xs-1 form-control-label text-xs-right"><small className="text-danger">*</small> 標題</label>
                                     <div className="col-xs-8">
                                         <input type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'edit_name') } value={fieldData.edit_name} maxLength={64}
                                             required />
                                     </div>
-                                    <small className="col-xs-2 text-danger">(必填) </small>
                                 </div>
-                                <div className="form-group">
-                                    <label className="col-xs-2 control-label">內容</label>
-                                    <div className="col-xs-10">
+                                <div className="form-group row">
+                                    <label className="col-xs-1 form-control-label text-xs-right">內容</label>
+                                    <div className="col-xs-8">
                                         <textarea type="date" className="form-control" id="edit_content" name="edit_content"
                                             value={fieldData.edit_content} onChange={this.changeFDValue.bind(this, 'edit_content') }/>
                                         </div>
                                     </div>
-                                <div className="form-action">
-                                    <div className="col-xs-4 col-xs-offset-2">
-                                        <button type="submit" className="btn-primary"><i className="fa-check"></i> 儲存</button> { }
-                                        <button type="button" onClick={this.noneType}><i className="fa-times"></i> 回前頁</button>
+                                <div className="form-group row form-action">
+                                    <div className="col-xs-8 col-xs-offset-1">
+                                        <button type="submit" className="btn btn-sm btn-primary"><i className="fa-check"></i> 儲存</button> { }
+                                        <button type="button" onClick={this.noneType} className="btn btn-sm btn-secondary"><i className="fa-times"></i> 回前頁</button>
                                     </div>
                                 </div>
-                            </div>
                         </form>
                     </div>
                 );

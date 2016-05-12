@@ -5925,6 +5925,7 @@ a.bg-danger:focus, a.bg-danger:hover {
 }
 
 .table {
+  width: 100%;
   margin-bottom: 0;
 }
 .table thead tr {
@@ -5949,6 +5950,7 @@ a.bg-danger:focus, a.bg-danger:hover {
 
 .btn-link {
   border: none;
+  padding: 0;
 }
 
 .form-control-label-sm, .form-sm .form-control-label {
@@ -6018,8 +6020,31 @@ a.bg-danger:focus, a.bg-danger:hover {
   color: #438EB9;
 }
 
-.c-input + .c-input[class*="col-"] {
+.c-input + .c-input {
   margin-left: 0;
+}
+.c-input:not(:last-child) {
+  margin-right: 1rem;
+}
+.input-block-group .c-input {
+  display: block;
+}
+
+.c-indicator {
+  margin-top: 0.2rem;
+  background: #fafafa;
+  border: 1px solid #c8c8c8;
+}
+.c-checkbox .c-indicator {
+  border-radius: 0;
+}
+.c-input > input:checked ~ .c-indicator, .c-input > input:indeterminate ~ .c-indicator {
+  border-color: #f0ad4e;
+  background-color: #f0ad4e;
+}
+.c-input > input:focus ~ .c-indicator, .c-indicator:hover {
+  border-color: #f0ad4e;
+  box-shadow: none;
 }
 
 input[type="file"] {
@@ -6384,14 +6409,6 @@ a:focus {
   border-top: 1px dotted #e5e5e5;
 }
 
-.table {
-  width: 100%;
-}
-
-.btn-link {
-  padding: 0;
-}
-
 #wrapper {
   min-width: 320px;
 }
@@ -6429,4 +6446,13 @@ a:focus {
   padding: 1rem 0;
   background: rgba(0, 0, 0, 0.05);
   border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.label-circle {
+  width: 1.5rem;
+  height: 1.5rem;
+  text-align: center;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
 }

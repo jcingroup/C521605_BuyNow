@@ -42,9 +42,9 @@ export class GridCheckDel extends React.Component<
         this.props.delCheck(this.props.iKey, this.props.chd);
     }
     render() {
-        return <label className="cbox">
+        return <label className="c-input c-checkbox">
             <input type="checkbox" checked={this.props.chd} onChange={this.onChange} />
-            <i className="fa-check"></i>
+            <span className="c-indicator"></span>
         </label>
     }
 }
@@ -116,9 +116,9 @@ export class GridNavPage extends React.Component<GridNavPageProps, any> {
         var oper = null;
 
         oper = (
-            <div className="table-footer">
-                <div className="pull-left">
-                    {setAddButton}
+            <div className="table-footer clearfix">
+                <div className="pull-xs-left">
+                    {setAddButton} { }
                     {setDeleteButton}
                 </div>
                 <small className="pull-xs-right">第{this.props.startCount}-{this.props.endCount}筆，共{this.props.recordCount}筆</small>
@@ -169,7 +169,7 @@ export class Tips extends React.Component<{ comment: string, children?: any }, a
         var OverlayTrigger = ReactBootstrap.OverlayTrigger;
         const tooltipObj = (<Tooltip>{this.props.comment}</Tooltip>);
         var out_html = null;
-        out_html = (<OverlayTrigger placement="top" overlay={tooltipObj}><span className="badge">?</span></OverlayTrigger>);
+        out_html = (<OverlayTrigger placement="top" overlay={tooltipObj}><span className="label label-circle label-info">?</span></OverlayTrigger>);
 
         return out_html;
     }

@@ -60,8 +60,27 @@
 
 // custom forms
 // ----------------------------------------------------------------------
+
 .c-input {
-  & + &[class*="col-"] {margin-left: 0;}
+    & + & {margin-left: 0;}
+    &:not(:last-child) {margin-right: $spacer;}
+
+    .input-block-group & {display: block;}
+}
+
+.c-indicator {
+    margin-top: $spacer*0.2;
+    background: #fafafa;
+    border: 1px solid #c8c8c8;
+
+    .c-checkbox & {border-radius: 0;}
+
+    .c-input > input:checked ~ &,
+    .c-input > input:indeterminate ~ & { border-color: $brand-warning; background-color: $brand-warning; }
+    .c-input > input:focus ~ &, &:hover {
+      border-color: $brand-warning;
+      box-shadow: none;
+    }
 }
 
 input[type="file"] {
