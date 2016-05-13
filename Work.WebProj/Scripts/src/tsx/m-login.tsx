@@ -93,9 +93,11 @@ namespace Login {
 
             return (
             <div>
-                <h3 className="h3">System Login</h3>
                 <form className="form form-sm" onSubmit={this.handleSubmit}>
-                    <div className="form-group has-feedback">
+                    <div className="form-group">
+                        <h3 className="h3">System Login</h3>
+                    </div>
+                    <div className="form-group">
                         <label>帳號 Username</label>
                         <input className="form-control"
                         type="text"
@@ -104,9 +106,8 @@ namespace Login {
                         placeholder="帳號"
                         onChange={this.onChange.bind(this, 'account') }
                         required />
-                        <i className="fa-user form-control-feedback"></i>
                     </div>
-                    <div className="form-group has-feedback">
+                    <div className="form-group">
                         <label>密碼 Password</label>
                         <input className="form-control"
                         type="password"
@@ -115,7 +116,6 @@ namespace Login {
                         placeholder="密碼"
                         onChange={this.onChange.bind(this, 'password') }
                         required />
-                        <i className="fa-lock form-control-feedback"></i>
                     </div>
                     <div className="form-group">
                         <label>驗證碼 Code</label>
@@ -133,7 +133,7 @@ namespace Login {
                                 placeholder="驗證碼" />
                             </div>
                             <div className="col-xs-4">
-                                <button className="btn btn-warning"
+                                <button className="btn btn-sm btn-warning"
                                 type="button"
                                 tabIndex={-1}
                                 onClick={this.reLoadValidateUrl}>
@@ -142,8 +142,8 @@ namespace Login {
                         </div>
                     </div>
                 </div>
-                <div className="form-action text-xs-center">
-                    <button className="btn btn-info" tabIndex={4} type="submit"><i className="fa-key"></i> 登錄</button>
+                <div className="form-group form-action text-xs-center">
+                    <button className="btn btn-sm btn-info" tabIndex={4} type="submit"><i className="fa-key"></i> 登錄</button>
                 </div>
             </form>
         </div>
