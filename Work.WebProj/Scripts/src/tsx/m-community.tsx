@@ -24,7 +24,7 @@ namespace Community {
         id: number | string //數字型用id 字串型用no
     }
     interface CallResult extends IResultBase, IDName { }
-
+    
     class GridRow extends React.Component<BaseDefine.GridRowPropsBase2<Rows>, BaseDefine.GridRowStateBase> {
         constructor() {
             super();
@@ -502,7 +502,7 @@ namespace Community {
                                 </div>
                             </div>
                             <hr className="sm" />
-                            <h4 className="h4">社區聯絡人</h4>
+                            <h4 className="h4">社區聯絡資訊</h4>
                             <div className="form-group row">
                                 <label className="col-xs-1 form-control-label text-xs-right"><small className="text-danger">*</small> 登錄帳號</label>
                                 <div className="col-xs-3">
@@ -540,6 +540,13 @@ namespace Community {
                                 <div className="col-xs-7">
                                     <input type="email" className="form-control" onChange={this.changeFDValue.bind(this, 'email') } value={field.email}
                                         />
+                                </div>
+                            </div>
+                            <div className="form-group row">
+                                <label className="col-xs-1 form-control-label text-xs-right">團購連結</label>
+                                <div className="col-xs-7">
+                                    <input type="text" className="form-control" />
+                                    <small className="text-muted">請輸入完整網址 (包含 http://) </small>
                                 </div>
                             </div>
                             <hr className="sm" />
