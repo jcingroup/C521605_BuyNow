@@ -418,7 +418,7 @@ namespace WWW {
                     </section>
                     <section className="grid-info" id="location">
                         <h3 className="h3">地圖</h3>
-                        <span dangerouslySetInnerHTML={{ __html: item.map_iframe }}></span>
+                        <div id="map" dangerouslySetInnerHTML={{ __html: item.map_iframe }}></div>
                     </section>
                 </div>
 

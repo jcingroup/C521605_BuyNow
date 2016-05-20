@@ -289,7 +289,7 @@ namespace WWW {
                                 </ul>
                             </div>
                             <div className="col-xs-7">
-                                <span dangerouslySetInnerHTML={ { __html: item.map_iframe }}></span>
+                                <div id="map" dangerouslySetInnerHTML={ { __html: item.map_iframe }}></div>
                             </div>
                         </div>
                     </section>
