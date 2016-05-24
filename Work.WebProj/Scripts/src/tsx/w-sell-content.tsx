@@ -163,7 +163,7 @@ namespace WWW {
                                 <li><strong className="text-secondary">建物登記：</strong>{item.build_area} 坪</li>
                                 <li><strong className="text-secondary">每坪單價：</strong>{}24.3 萬</li>
                                 <li><strong className="text-secondary">類型：</strong>{item.typeOfHouse}</li>
-                                <li><strong className="text-secondary">社區名稱：</strong>{item.community_name}</li>
+                                <li><strong className="text-secondary">社區名稱：</strong><a href="#" target="_blank">{item.community_name}</a></li>
                                 <li><strong className="text-secondary">格局：</strong>{item.bedrooms}房 / {item.livingrooms}廳 / {item.bathrooms}衛 / {item.rooms}室</li>
                                 <li>
                                     <div className="row">
@@ -418,7 +418,7 @@ namespace WWW {
                     </section>
                     <section className="grid-info" id="location">
                         <h3 className="h3">地圖</h3>
-                        <span dangerouslySetInnerHTML={{ __html: item.map_iframe }}></span>
+                        <div id="map" dangerouslySetInnerHTML={{ __html: item.map_iframe }}></div>
                     </section>
                 </div>
 

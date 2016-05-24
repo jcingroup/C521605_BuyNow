@@ -373,6 +373,8 @@
     <Content Include="Content\images\Sell\pro1.jpg" />
     <Content Include="Content\images\Vendor\pic1.jpg" />
     <Content Include="Content\images\Vendor\pic2.jpg" />
+    <Content Include="Content\images\Vendor\pic3.jpg" />
+    <Content Include="Content\images\Vendor\pic4.jpg" />
     <Content Include="Content\images\VIP\dm.jpg" />
     <Content Include="Content\js\bootstrap\collapse.js" />
     <Content Include="Content\js\bootstrap\dropdown.js" />

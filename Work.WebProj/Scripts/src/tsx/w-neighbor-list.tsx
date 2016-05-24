@@ -125,11 +125,11 @@ namespace WWW {
                                 return (
                                     <li className="pro style2">
                                         <article className="card">
-                                            <a className="card-img-top" target="new" href={gb_approot + 'Neighbor/Content?id=' + item.community_id}>
+                                            <a className="card-img-top" target="_blank" href={gb_approot + 'Neighbor/Content?id=' + item.community_id}>
                                                 <img className="lazy" alt=""  data-original={item.list_src} />
                                             </a>
                                             <div className="card-block">
-                                                <h4 className="card-title"><a href={gb_approot + 'Neighbor/Content?id=' + item.community_id}>{item.community_name}</a></h4>
+                                                <h4 className="card-title"><a href={gb_approot + 'Neighbor/Content?id=' + item.community_id} target="_blank">{item.community_name}</a></h4>
                                                 <section className="card-text">
                                                     <h5 className="card-subtitle">{item.address}</h5>
                                                     <ul className="info list-inline">
@@ -138,7 +138,7 @@ namespace WWW {
                                                         <li><span className="text-muted">屋齡</span> {item.age}年</li>
                                                     </ul>
                                                 </section>
-                                                <a className="more btn btn-secondary btn-block" target="new" href={gb_approot + 'Neighbor/Content?id=' + item.community_id}>
+                                                <a className="more btn btn-secondary btn-block" target="_blank" href={gb_approot + 'Neighbor/Content?id=' + item.community_id}>
                                                     看更多
                                                     <i className="ti-angle-right" />
                                                 </a>
