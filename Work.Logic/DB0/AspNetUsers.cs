@@ -35,6 +35,7 @@ namespace ProcCore.Business.DB0
         public string UserName { get; set; }
         public string user_name_c { get; set; }
         public int sort { get; set; }
+        public Nullable<int> community_id { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AspNetRoles> AspNetRoles { get; set; }

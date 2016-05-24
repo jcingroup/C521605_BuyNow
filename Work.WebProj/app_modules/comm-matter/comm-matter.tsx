@@ -28,7 +28,8 @@ export class MatterList extends React.Component<MatterListProps, MatterListState
                 city: null,
                 info_type: info_type
             },
-            lists: []
+            lists: [],
+            loading: true
         };
     }
 
@@ -46,7 +47,7 @@ export class MatterList extends React.Component<MatterListProps, MatterListState
 
         $.get(gb_approot + 'api/GetAction/SearchMatter', params)
             .done((data, textStatus, jqXHRdata) => {
-                _this.setState({ lists: data });
+                _this.setState({ lists: data, loading: false });
                 $("img.lazy").lazyload({ effect: "fadeIn" });
             });
 
@@ -133,17 +134,18 @@ export class MatterList extends React.Component<MatterListProps, MatterListState
     }
     submitSearch(e) {
         e.preventDefault();
+        this.setState({ loading: true });
         $.get(gb_approot + 'api/GetAction/SearchMatter', this.state.search)
             .done((data, textStatus, jqXHRdata) => {
-                this.setState({ lists: data });
+                this.setState({ lists: data, loading: false });
             });
         return;
     }
     render() {
-        //console.log(LazyLoad);
+
         var outHtml: JSX.Element = null;
-        //var LazyLoad = ReactLazyLoad;
         var ele_search_form = null;
+
         ele_search_form = <div className="filter">
             <form className="form-inline" onSubmit={this.submitSearch}>
                 <div className="form-group">
@@ -269,122 +271,132 @@ export class MatterList extends React.Component<MatterListProps, MatterListState
         </div>;
 
 
+        if (this.state.loading) { //載入中
+            outHtml = <div className="loading">
+                <div className="loader" data-loader="circle-side"></div>
+                <p className="h4">資料讀取中……</p>
+            </div>;
+        }
+        else {
 
-        outHtml = (
-            <div className="wrap">
-                {ele_search_form}
-                <p className="clearfix">
-                    <span className="result pull-xs-left">共有<strong className="text-danger">{this.state.lists.length}</strong>間房屋符合條件</span>
-                    <span className="pull-xs-right form-inline">
-                        <label htmlFor="">排序方式：</label>
-                        <select className="form-control form-control-sm">
-                            <option value>預設排序</option>
-                            <option value>更新時間新 → 舊</option>
-                            <option value>總價低 → 高</option>
-                            <option value>總價高 → 低</option>
-                            <option value>坪數低 → 高</option>
-                            <option value>坪數高 → 低</option>
-                            <option value>屋齡低 → 高</option>
-                            <option value>屋齡高 → 低</option>
-                        </select>
-                    </span>
-                </p>
-                <ol className="prolist row">
-                    {
-                        this.state.lists.map((item, i) => {
+            outHtml = (
+                <div className="wrap">
+                    {ele_search_form}
+                    <p className="clearfix">
+                        <span className="result pull-xs-left">共有<strong className="text-danger">{this.state.lists.length}</strong>間房屋符合條件</span>
+                        <span className="pull-xs-right form-inline">
+                            <label htmlFor="">排序方式：</label>
+                            <select className="form-control form-control-sm">
+                                <option value>預設排序</option>
+                                <option value>更新時間新 → 舊</option>
+                                <option value>總價低 → 高</option>
+                                <option value>總價高 → 低</option>
+                                <option value>坪數低 → 高</option>
+                                <option value>坪數高 → 低</option>
+                                <option value>屋齡低 → 高</option>
+                                <option value>屋齡高 → 低</option>
+                            </select>
+                        </span>
+                    </p>
+                    <ol className="prolist row">
+                        {
+                            this.state.lists.map((item, i) => {
 
-                            var out_html = null;
-                            //賣
-                            if (this.props.info_type == 'S') {
+                                var out_html = null;
+                                //賣
+                                if (this.props.info_type == 'S') {
 
-                                var link_content = this.props.community_id == null ? gb_approot + 'Sell/Content?id=' : 'Sell_content?id=';
+                                    var link_content = this.props.community_id == null ? gb_approot + 'Sell/Content?id=' : 'Sell_content?id=';
 
-                                out_html = <li className="pro" key={item.matter_id}>
+                                    out_html = <li className="pro" key={item.matter_id}>
 
-                                    <article className="card">
-                                        <a className="card-img-top" href={link_content + item.matter_id}>
-                                            <img alt={item.matter_name} src={item.list_src} />
-                                        </a>
-                                        <div className="card-block">
-                                            <h4 className="card-title"><a href={link_content + item.matter_id}>{item.matter_name}</a></h4>
-                                            <section className="card-text">
-                                                <h5 className="card-subtitle">{item.title}</h5>
-                                                <ul className="feature list-inline">
-                                                    <li>{item.city + item.country + item.address}</li>
-                                                </ul>
-                                                <ul className="info list-inline">
-                                                    <li>{item.build_area} <span className="text-muted">建坪</span></li>
-                                                    <li>{item.house_area + item.balcony_area} <span className="text-muted">主+陽</span></li>
-                                                    <li>{item.age} <span className="text-muted">年</span></li>
-                                                    <li>14/16 <span className="text-muted">樓</span></li>
-                                                    <li>
-                                                        {item.bedrooms} <span className="text-muted">房</span>
-                                                        {item.livingrooms} <span className="text-muted">廳</span>
-                                                        {item.bathrooms} <span className="text-muted">衛</span>
-                                                        {item.rooms} <span className="text-muted">室</span>
-                                                    </li>
-                                                </ul>
-                                                <span className="price">
-                                                    <strong className="text-danger">{item.price / 10000}</strong>萬
-                                                </span>
-                                            </section>
-                                            <a className="more btn btn-secondary" href={link_content + item.matter_id}>
-                                                看更多
-                                                <i className="ti-angle-right" />
+                                        <article className="card">
+                                            <a className="card-img-top" href={link_content + item.matter_id}>
+                                                <img alt={item.matter_name} src={item.list_src} />
                                             </a>
-                                        </div>
-                                    </article>
+                                            <div className="card-block">
+                                                <h4 className="card-title"><a href={link_content + item.matter_id}>{item.matter_name}</a></h4>
+                                                <section className="card-text">
+                                                    <h5 className="card-subtitle">{item.title}</h5>
+                                                    <ul className="feature list-inline">
+                                                        <li>{item.city + item.country + item.address}</li>
+                                                    </ul>
+                                                    <ul className="info list-inline">
+                                                        <li>{item.build_area} <span className="text-muted">建坪</span></li>
+                                                        <li>{ (item.house_area + item.balcony_area).toFixed(2) } <span className="text-muted">主+陽</span></li>
+                                                        <li>{item.age} <span className="text-muted">年</span></li>
+                                                        <li>{item.site_floor}/{item.total_floor} <span className="text-muted">樓</span></li>
+                                                        <li>
+                                                            {item.bedrooms} <span className="text-muted">房</span>
+                                                            {item.livingrooms} <span className="text-muted">廳</span>
+                                                            {item.bathrooms} <span className="text-muted">衛</span>
+                                                            {item.rooms} <span className="text-muted">室</span>
+                                                        </li>
+                                                    </ul>
+                                                    <span className="price">
+                                                        <strong className="text-danger">{item.price / 10000}</strong>萬
+                                                    </span>
+                                                </section>
+                                                <a className="more btn btn-secondary" href={link_content + item.matter_id}>
+                                                    看更多
+                                                    <i className="ti-angle-right" />
+                                                </a>
+                                            </div>
+                                        </article>
 
-                                </li>;
-                            }
+                                    </li>;
+                                }
 
-                            //租
-                            if (this.props.info_type == 'R') {
+                                //租
+                                if (this.props.info_type == 'R') {
 
-                                var link_content = this.props.community_id == null ? gb_approot + 'Rent/Content?id=' : 'Rent_content?id=';
+                                    var link_content = this.props.community_id == null ? gb_approot + 'Rent/Content?id=' : 'Rent_content?id=';
 
-                                out_html = <li className="pro">
-                                    <article className="card">
-                                        <a className="card-img-top" href={link_content + item.matter_id}>
-                                            <img alt={item.matter_name} src={item.list_src} />
-                                        </a>
-                                        <div className="card-block">
-                                            <h4 className="card-title"><a href={link_content + item.matter_id}>{item.matter_name}</a></h4>
-                                            <section className="card-text">
-                                                <h5 className="card-subtitle">{item.title}</h5>
-                                                <ul className="feature list-inline">
-                                                    <li>{item.city + item.country + item.address}</li>
-                                                </ul>
-                                                <ul className="info list-inline">
-                                                    <li>{item.build_area} <span className="text-muted">坪</span></li>
-                                                    <li>14/16 <span className="text-muted">樓</span></li>
-                                                    <li>
-                                                        {item.bedrooms} <span className="text-muted">房</span>
-                                                        {item.livingrooms} <span className="text-muted">廳</span>
-                                                        {item.bathrooms} <span className="text-muted">衛</span>
-                                                        {item.rooms} <span className="text-muted">室</span>
-                                                    </li>
-                                                </ul>
-                                                <span className="price">
-                                                    <strong className="text-danger">{CommFunc.formatNumber(item.rentOfMonh) }</strong>元/月
-                                                </span>
-                                            </section>
-                                            <a href={link_content + item.matter_id} className="more btn btn-secondary">
-                                                看更多
-                                                <i className="ti-angle-right"></i>
+                                    out_html = <li className="pro">
+                                        <article className="card">
+                                            <a className="card-img-top" href={link_content + item.matter_id}>
+                                                <img alt={item.matter_name} src={item.list_src} />
                                             </a>
-                                        </div>
-                                    </article>
-                                </li>;
-                            }
+                                            <div className="card-block">
+                                                <h4 className="card-title"><a href={link_content + item.matter_id}>{item.matter_name}</a></h4>
+                                                <section className="card-text">
+                                                    <h5 className="card-subtitle">{item.title}</h5>
+                                                    <ul className="feature list-inline">
+                                                        <li>{item.city + item.country + item.address}</li>
+                                                    </ul>
+                                                    <ul className="info list-inline">
+                                                        <li>{item.build_area} <span className="text-muted">坪</span></li>
+                                                        <li>{item.site_floor}/{item.total_floor} <span className="text-muted">樓</span></li>
+                                                        <li>
+                                                            {item.bedrooms} <span className="text-muted">房</span>
+                                                            {item.livingrooms} <span className="text-muted">廳</span>
+                                                            {item.bathrooms} <span className="text-muted">衛</span>
+                                                            {item.rooms} <span className="text-muted">室</span>
+                                                        </li>
+                                                    </ul>
+                                                    <span className="price">
+                                                        <strong className="text-danger">{CommFunc.formatNumber(item.rentOfMonh) }</strong>元/月
+                                                    </span>
+                                                </section>
+                                                <a href={link_content + item.matter_id} className="more btn btn-secondary">
+                                                    看更多
+                                                    <i className="ti-angle-right"></i>
+                                                </a>
+                                            </div>
+                                        </article>
+                                    </li>;
+                                }
 
-                            return out_html;
-                        })
-                    }
+                                return out_html;
+                            })
+                        }
 
-                </ol>
-            </div>
-        );
+                    </ol>
+                </div>
+            );
+
+        }
+
 
         return outHtml;
     }

@@ -38,7 +38,7 @@ namespace ProcCore.Business.DB0
         public virtual DbSet<Edit> Edit { get; set; }
         public virtual DbSet<Community_News> Community_News { get; set; }
         public virtual DbSet<Community> Community { get; set; }
-        public virtual DbSet<Matter> Matter { get; set; }
         public virtual DbSet<Community_Banner> Community_Banner { get; set; }
+        public virtual DbSet<Matter> Matter { get; set; }
     }
 }

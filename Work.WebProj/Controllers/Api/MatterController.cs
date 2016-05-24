@@ -72,7 +72,7 @@ namespace DotWeb.Api
                 var md = param.md;
 
                 item.matter_name = md.matter_name;
-
+                item.community_id = md.community_id;
                 item.zip = md.zip;
                 item.city = md.city;
                 item.country = md.country;
@@ -122,6 +122,9 @@ namespace DotWeb.Api
                 item.rent_start_date = md.rent_start_date;
                 item.rent_furniture = md.rent_furniture;
                 item.rent_equip = md.rent_equip;
+
+                item.deposit = md.deposit;
+                item.build_state = md.build_state;
 
                 await db0.SaveChangesAsync();
                 rAjaxResult.result = true;

@@ -207,6 +207,7 @@
         imgurl_MatterPhoto?: Array<string>;
         imgurl_MatterStyle?: string;
 
-
+        deposit?: number;
+        build_state?: string;
     }
 } 

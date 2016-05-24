@@ -8,6 +8,25 @@ import DT = require('dt');
 import update = require('react-addons-update');
 import CommFunc = require('comm-func');
 declare var id: number;
+
+
+var langData = [];
+
+langData['zh-TW'] = {
+    code_typeOfHouse: {
+        H: '住宅大樓',
+        D: '公寓',
+        T: '透天',
+        F: '辦公大樓'
+    },
+    code_build_state: {
+        I: '成屋',
+        S: '預售屋'
+    }
+}
+
+var langItem = langData['zh-TW'];
+
 namespace WWW {
 
     interface WWWState {
@@ -126,17 +145,6 @@ namespace WWW {
             var outHtml: JSX.Element = null;
             var item = this.state.item;
 
-            var EletypeOfHouse;
-            if (item.typeOfHouse == 'F') {
-                EletypeOfHouse = (<span>大樓</span>);
-            }
-            else if (item.typeOfHouse == 'H') {
-                EletypeOfHouse = (<span>成屋</span>);
-            } else {
-                EletypeOfHouse = (<span></span>);
-            }
-
-
             var is_elevator = item.is_elevator ? "有" : "無";
 
             var out_info_1 = null;
@@ -162,7 +170,7 @@ namespace WWW {
                                 <li><strong className="text-secondary">總價：</strong><strong className="price text-danger">{CommFunc.formatNumber(item.price / 10000) }</strong>萬</li>
                                 <li><strong className="text-secondary">建物登記：</strong>{item.build_area} 坪</li>
                                 <li><strong className="text-secondary">每坪單價：</strong>{}24.3 萬</li>
-                                <li><strong className="text-secondary">類型：</strong>{item.typeOfHouse}</li>
+                                <li><strong className="text-secondary">類型：</strong>{langItem.code_typeOfHouse[item.typeOfHouse]}</li>
                                 <li><strong className="text-secondary">社區名稱：</strong><a href="#" target="_blank">{item.community_name}</a></li>
                                 <li><strong className="text-secondary">格局：</strong>{item.bedrooms}房 / {item.livingrooms}廳 / {item.bathrooms}衛 / {item.rooms}室</li>
                                 <li>
@@ -256,7 +264,7 @@ namespace WWW {
                             </tr>
                             <tr>
                                 <th scope="row">類型</th>
-                                <td>{EletypeOfHouse}</td>
+                                <td>{langItem.code_typeOfHouse[item.typeOfHouse]}</td>
                                 <th scope="row">朝向</th>
                                 <td>{ item.orientation }</td>
                             </tr>
@@ -302,7 +310,7 @@ namespace WWW {
                                 <li><strong className="text-secondary">租金：</strong><strong className="price text-danger">{CommFunc.formatNumber(item.rentOfMonh) }</strong>元/月</li>
                                 <li><strong className="text-secondary">押金：</strong>2 個月</li>
                                 <li><strong className="text-secondary">坪數：</strong>{item.build_area} 坪</li>
-                                <li><strong className="text-secondary">類型：</strong>{item.typeOfHouse}</li>
+                                <li><strong className="text-secondary">類型：</strong>{langItem.code_typeOfHouse[item.typeOfHouse]}</li>
                                 <li><strong className="text-secondary">格局：</strong>{item.bedrooms}房 / {item.livingrooms}廳 / {item.bathrooms}衛 / {item.rooms}室</li>
                                 <li><strong className="text-secondary">地址：</strong>{item.address}</li>
                                 <li>

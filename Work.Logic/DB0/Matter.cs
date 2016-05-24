@@ -36,6 +36,7 @@ namespace ProcCore.Business.DB0
         public Nullable<double> age { get; set; }
         public Nullable<int> buildhouses { get; set; }
         public string typeOfHouse { get; set; }
+        public string build_state { get; set; }
         public Nullable<int> managementFeeOfMonth { get; set; }
         public string architecture { get; set; }
         public string parking { get; set; }
@@ -49,12 +50,12 @@ namespace ProcCore.Business.DB0
         public Nullable<System.DateTime> start_date { get; set; }
         public Nullable<System.DateTime> end_date { get; set; }
         public Nullable<int> price { get; set; }
+        public Nullable<int> rentOfMonh { get; set; }
         public string context_life { get; set; }
         public string map_iframe { get; set; }
         public Nullable<int> total_floor { get; set; }
         public string site_floor { get; set; }
         public Nullable<bool> is_elevator { get; set; }
-        public Nullable<int> rentOfMonh { get; set; }
         public string rent_management { get; set; }
         public string rent_short_date { get; set; }
         public string rent_cook { get; set; }
@@ -64,6 +65,7 @@ namespace ProcCore.Business.DB0
         public string rent_start_date { get; set; }
         public string rent_furniture { get; set; }
         public string rent_equip { get; set; }
+        public Nullable<int> deposit { get; set; }
     
         public virtual Community Community { get; set; }
     }

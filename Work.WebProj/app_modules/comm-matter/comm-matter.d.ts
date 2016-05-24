@@ -15,7 +15,8 @@ interface MatterListState {
         footage_bottom?: number,
         footage_top?: number
     },
-    lists?: Array<server.Matter>
+    lists?: Array<server.Matter>,
+    loading?: boolean
 }
 
 declare module __comm_matter {
