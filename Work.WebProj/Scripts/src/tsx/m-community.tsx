@@ -437,7 +437,7 @@ namespace Community {
                                 <div className="col-xs-2">
                                     <div className="input-group input-group-sm">
                                         <span className="input-group-addon">地上</span>
-                                        <input type="number" className="form-control" onChange={this.changeFDValue.bind(this, 'under_floor') } value={field.under_floor}
+                                        <input type="number" className="form-control" onChange={this.changeFDValue.bind(this, 'over_floor') } value={field.over_floor}
                                             />
                                         <span className="input-group-addon">層</span>
                                     </div>
@@ -445,8 +445,8 @@ namespace Community {
                                 <div className="col-xs-2">
                                     <div className="input-group input-group-sm">
                                         <span className="input-group-addon">地下</span>
-                                        <input type="number" className="form-control" onChange={this.changeFDValue.bind(this, 'over_floor') } value={field.over_floor}
-                                        />
+                                        <input type="number" className="form-control" onChange={this.changeFDValue.bind(this, 'under_floor') } value={field.under_floor}
+                                            />
                                         <span className="input-group-addon">層</span>
                                     </div>
                                 </div>
