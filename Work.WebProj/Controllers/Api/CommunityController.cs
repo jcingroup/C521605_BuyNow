@@ -97,6 +97,9 @@ namespace DotWeb.Api
 
                 item.map_iframe = md.map_iframe;
 
+                item.group_buying_url = md.group_buying_url;
+
+
                 await db0.SaveChangesAsync();
                 rAjaxResult.result = true;
             }

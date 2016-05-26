@@ -149,9 +149,13 @@ namespace WWW {
 
             var out_info_1 = null;
             var out_info_2 = null;
+            var bread_link = null;
 
             //賣
             if (item.info_type == 'S') {
+
+                bread_link = <a href={gb_approot + 'Sell/List'}>我要買房</a>;
+
                 out_info_1 = <dl className="grid-pro row">
                     <dt className="thumb">
                         <i className="img-thumbnail">
@@ -171,7 +175,7 @@ namespace WWW {
                                 <li><strong className="text-secondary">建物登記：</strong>{item.build_area} 坪</li>
                                 <li><strong className="text-secondary">每坪單價：</strong>{}24.3 萬</li>
                                 <li><strong className="text-secondary">類型：</strong>{langItem.code_typeOfHouse[item.typeOfHouse]}</li>
-                                <li><strong className="text-secondary">社區名稱：</strong><a href="#" target="_blank">{item.community_name}</a></li>
+                                <li><strong className="text-secondary">社區名稱：</strong><a href={gb_approot + 'Neighbor/Sell_list?community_id=' + item.community_id} target="_blank">{item.community_name}</a></li>
                                 <li><strong className="text-secondary">格局：</strong>{item.bedrooms}房 / {item.livingrooms}廳 / {item.bathrooms}衛 / {item.rooms}室</li>
                                 <li>
                                     <div className="row">
@@ -292,6 +296,9 @@ namespace WWW {
 
             //租
             if (item.info_type == 'R') {
+
+                bread_link = <a href={gb_approot + 'Rent/List'}>我要租屋</a>;
+
                 out_info_1 = <dl className="grid-pro row">
                     <dt className="thumb">
                         <i className="img-thumbnail">
@@ -398,7 +405,7 @@ namespace WWW {
                     <h2 className="h2 title">{item.matter_name}</h2>
                     <ol className="breadcrumb">
                         <li><a href={gb_approot}>HOME</a></li>
-                        <li><a href={gb_approot + 'Sell/List'}>我要買房</a></li>
+                        <li>{bread_link}</li>
                     </ol>
                     {out_info_1}
                     {out_info_2}

@@ -200,10 +200,10 @@ namespace WWW {
                                 </ul>
                                 <ul className="more-info list-unstyled clearfix">
                                     <li>
-                                        <a className="btn btn-lg btn-secondary style2" href={gb_approot + 'Neighbor/Sell_list'}>本社區待售房屋</a>
+                                        <a className="btn btn-lg btn-secondary style2" href={gb_approot + 'Neighbor/Sell_list?community_id=' + item.community_id}>本社區待售房屋</a>
                                     </li>
                                     <li>
-                                        <a className="btn btn-lg btn-secondary style2" href={gb_approot + 'Neighbor/Rent_list'}>本社區待租房屋</a>
+                                        <a className="btn btn-lg btn-secondary style2" href={gb_approot + 'Neighbor/Rent_list?community_id=' + item.community_id}>本社區待租房屋</a>
                                     </li>
                                     <li>
                                         <a className="btn btn-lg btn-secondary style2" target="new" href="http://www.jojogo168.com/">好康團購</a>

@@ -238,7 +238,10 @@ namespace Community {
         }
         insertType() {
             this.setState({
-                edit_type: IEditType.insert, fieldData: {}
+                edit_type: IEditType.insert, fieldData: {
+                    group_buying_url:'http://www.jojogo168.com/'
+
+                }
             });
         }
         updateType(id: number | string) {
@@ -545,7 +548,7 @@ namespace Community {
                             <div className="form-group row">
                                 <label className="col-xs-1 form-control-label text-xs-right">團購連結</label>
                                 <div className="col-xs-7">
-                                    <input type="text" className="form-control" />
+                                    <input type="text" className="form-control"  onChange={this.changeFDValue.bind(this, 'group_buying_url') } value={field.group_buying_url}/>
                                     <small className="text-muted">請輸入完整網址 (包含 http://) </small>
                                 </div>
                             </div>
