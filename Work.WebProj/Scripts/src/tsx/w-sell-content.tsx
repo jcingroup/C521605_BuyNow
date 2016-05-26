@@ -247,7 +247,7 @@ namespace WWW {
                             </tr>
                             <tr>
                                 <th scope="row">建物登記</th>
-                                <td colSpan={3}>4{item.build_area} 坪</td>
+                                <td colSpan={3}>{item.build_area} 坪</td>
                             </tr>
                             <tr>
                                 <th scope="row">土地登記</th>

@@ -203,7 +203,9 @@ namespace DotWeb.Api
                     livingrooms = x.livingrooms,
                     build_area = x.build_area,
                     house_area = x.house_area,
-                    rentOfMonh = x.rentOfMonh
+                    rentOfMonh = x.rentOfMonh,
+                    site_floor = x.site_floor,
+                    total_floor = x.total_floor
                 })
                 .ToListAsync(); ;
 
