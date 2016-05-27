@@ -398,11 +398,18 @@ export class MasterImageUpload extends React.Component<FileUpProps, FileUpState>
     render() {
 
         var outHtml = null;
+        let img_button_html=null;
+        if(this.props.ParentEditType == 1){
+            img_button_html= <small className="text-danger">請先存檔，再上傳檔案</small>;
+        } else {
+            img_button_html= 
+            <div className="form-control">
+                <input type="file" id={'upload-btn-' + this.props.MainId + '-' + this.props.FileKind} accept="image/*" />
+            </div>;
+        }
         outHtml = (
             <div>
-                <div className="form-control">
-                    <input type="file" id={'upload-btn-' + this.props.MainId + '-' + this.props.FileKind} accept="image/*" />
-                </div>
+                {img_button_html}
                 <ol className="upload-img list-inline" ref={this.sortableGroupDecorator}>
                     {
                         this.state.filelist.map(function (itemData, i) {
