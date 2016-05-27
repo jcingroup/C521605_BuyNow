@@ -228,11 +228,30 @@ export class MasterImageUpload extends React.Component<FileUpProps, FileUpState>
     }
 
     componentDidMount() {
-        this.createFileUpLoadObject();
-        this.getFileList();
+        if (typeof this.props.MainId === 'string') {
+            if (this.props.MainId != null) {
+                this.createFileUpLoadObject();
+                this.getFileList();
+            }
+        } else if (typeof this.props.MainId === 'number') {
+            if (this.props.MainId > 0) {
+                this.createFileUpLoadObject();
+                this.getFileList();
+            }
+        }
     }
     componentDidUpdate(prevProps, prevState) {
-
+        if (typeof this.props.MainId === 'string') {
+            if (this.props.MainId != null && prevProps.MainId == null) {
+                this.createFileUpLoadObject();
+                this.getFileList();
+            }
+        } else if (typeof this.props.MainId === 'number') {
+            if (this.props.MainId > 0 && prevProps.MainId == 0) {
+                this.createFileUpLoadObject();
+                this.getFileList();
+            }
+        }
     }
     componentWillUnmount() {
         this._sortable.destroy();
