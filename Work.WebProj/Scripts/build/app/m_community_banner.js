@@ -1272,10 +1272,32 @@ webpackJsonp([2],{
 	        }
 	    }
 	    MasterImageUpload.prototype.componentDidMount = function () {
-	        this.createFileUpLoadObject();
-	        this.getFileList();
+	        if (typeof this.props.MainId === 'string') {
+	            if (this.props.MainId != null) {
+	                this.createFileUpLoadObject();
+	                this.getFileList();
+	            }
+	        }
+	        else if (typeof this.props.MainId === 'number') {
+	            if (this.props.MainId > 0) {
+	                this.createFileUpLoadObject();
+	                this.getFileList();
+	            }
+	        }
 	    };
 	    MasterImageUpload.prototype.componentDidUpdate = function (prevProps, prevState) {
+	        if (typeof this.props.MainId === 'string') {
+	            if (this.props.MainId != null && prevProps.MainId == null) {
+	                this.createFileUpLoadObject();
+	                this.getFileList();
+	            }
+	        }
+	        else if (typeof this.props.MainId === 'number') {
+	            if (this.props.MainId > 0 && prevProps.MainId == 0) {
+	                this.createFileUpLoadObject();
+	                this.getFileList();
+	            }
+	        }
 	    };
 	    MasterImageUpload.prototype.componentWillUnmount = function () {
 	        this._sortable.destroy();

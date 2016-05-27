@@ -501,6 +501,7 @@ namespace Community {
                                 <div className="col-xs-7">
                                     <input type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'map_iframe') } value={field.map_iframe} maxLength={4000}
                                         />
+                                    <small className="text-muted">請使用 Google 地圖 的 內嵌地圖功能，操作方式請看 教學影片1</small>
                                 </div>
                             </div>
                             <div className="form-group row">

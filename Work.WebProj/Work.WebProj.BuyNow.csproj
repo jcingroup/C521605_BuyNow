@@ -756,7 +756,6 @@
     <None Include="packages.config" />
     <Content Include="_Code\Ashx\AjaxDownLoadFile.ashx" />
     <Content Include="_Code\Ashx\ValidateCode.ashx" />
-    <Content Include="_Code\SysDoc\資料庫使用說明.docx" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_GlobalResources\Res.resx">
