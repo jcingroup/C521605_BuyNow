@@ -457,20 +457,26 @@ namespace Community {
                             <div className="form-group row">
                                 <label className="col-xs-1 form-control-label text-xs-right">總戶數</label>
                                 <div className="col-xs-3">
-                                    <input type="number" className="form-control" onChange={this.changeFDValue.bind(this, 'holders') } value={field.holders}
-                                        />
+                                    <div className="input-group input-group-sm">
+                                        <input type="number" className="form-control" onChange={this.changeFDValue.bind(this, 'holders') } value={field.holders} />
+                                        <span className="input-group-addon">戶</span>
+                                    </div>
                                 </div>
                                 <label className="col-xs-1 form-control-label text-xs-right">同層戶數</label>
                                 <div className="col-xs-3">
-                                    <input type="number" className="form-control" onChange={this.changeFDValue.bind(this, 'perOfHolder') } value={field.perOfHolder}
-                                        />
+                                    <div className="input-group input-group-sm">
+                                        <input type="number" className="form-control" onChange={this.changeFDValue.bind(this, 'perOfHolder') } value={field.perOfHolder} />
+                                        <span className="input-group-addon">戶</span>
+                                    </div>
                                 </div>
                             </div>
                             <div className="form-group row">
                                 <label className="col-xs-1 form-control-label text-xs-right">屋齡</label>
                                 <div className="col-xs-3">
-                                    <input type="number" className="form-control" onChange={this.changeFDValue.bind(this, 'age') } value={field.age}
-                                        />
+                                    <div className="input-group input-group-sm">
+                                        <input type="number" className="form-control" onChange={this.changeFDValue.bind(this, 'age') } value={field.age} />
+                                        <span className="input-group-addon">年</span>
+                                    </div>
                                 </div>
                                 <label className="col-xs-1 form-control-label text-xs-right">完工日期</label>
                                 <div className="col-xs-3">
@@ -495,6 +501,7 @@ namespace Community {
                                 <div className="col-xs-7">
                                     <input type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'map_iframe') } value={field.map_iframe} maxLength={4000}
                                         />
+                                    <small className="text-muted">請使用 Google 地圖 的 內嵌地圖功能，操作方式請看 教學影片1</small>
                                 </div>
                             </div>
                             <div className="form-group row">

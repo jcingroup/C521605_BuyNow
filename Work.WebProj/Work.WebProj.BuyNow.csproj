@@ -205,6 +205,7 @@
     <Compile Include="Areas\Active\Controllers\MatterController.cs" />
     <Compile Include="Areas\Active\Controllers\EditController.cs" />
     <Compile Include="Areas\Active\Controllers\CommunityController.cs" />
+    <Compile Include="Areas\Base\Controllers\DocController.cs" />
     <Compile Include="Areas\Base\Controllers\LoginController.cs" />
     <Content Include="app_modules\comm-matter\package.js" />
     <Content Include="app_modules\comm-cmpt\package.js" />
@@ -510,23 +511,6 @@
     <Content Include="ckeditor\contents.css" />
     <Content Include="ckeditor\styles.js" />
     <Content Include="node_modules\bootstrap\dist\js\bootstrap.js" />
-    <Content Include="Scripts\build\app\m_change_password.js" />
-    <Content Include="Scripts\build\app\m_community.js" />
-    <Content Include="Scripts\build\app\m_community_banner.js" />
-    <Content Include="Scripts\build\app\m_community_news.js" />
-    <Content Include="Scripts\build\app\m_edit.js" />
-    <Content Include="Scripts\build\app\m_edit_detail.js" />
-    <Content Include="Scripts\build\app\m_login.js" />
-    <Content Include="Scripts\build\app\m_matter.js" />
-    <Content Include="Scripts\build\app\m_menu.js" />
-    <Content Include="Scripts\build\app\m_menu_set.js" />
-    <Content Include="Scripts\build\app\m_roles.js" />
-    <Content Include="Scripts\build\app\m_users.js" />
-    <Content Include="Scripts\build\app\vendors.js" />
-    <Content Include="Scripts\build\app\w_neighbor_content.js" />
-    <Content Include="Scripts\build\app\w_neighbor_list.js" />
-    <Content Include="Scripts\build\app\w_sell_content.js" />
-    <Content Include="Scripts\build\app\w_sell_list.js" />
     <Content Include="Scripts\cdn\BootSideMenu.js" />
     <Content Include="Scripts\cdn\bootstrap.min.js" />
     <Content Include="Scripts\cdn\codrops\classie.js" />
@@ -688,6 +672,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="_Code\Log\memo.txt" />
+    <Content Include="_Code\SysDoc\Doc_1.xml" />
     <Content Include="_Code\SysDoc\Doc.xml" />
     <Content Include="_Code\SysUpFiles\memo.txt" />
     <TypeScriptCompile Include="app_modules\comm-matter\comm-matter.d.ts" />
@@ -764,13 +749,13 @@
     <Folder Include="Areas\Active\Views\Shared\" />
     <Folder Include="Areas\Base\Views\Shared\" />
     <Folder Include="Properties\PublishProfiles\" />
+    <Folder Include="Scripts\build\app\" />
     <Folder Include="_Code\CReport\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="_Code\Ashx\AjaxDownLoadFile.ashx" />
     <Content Include="_Code\Ashx\ValidateCode.ashx" />
-    <Content Include="_Code\SysDoc\資料庫使用說明.docx" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_GlobalResources\Res.resx">

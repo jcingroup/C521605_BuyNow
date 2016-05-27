@@ -228,11 +228,30 @@ export class MasterImageUpload extends React.Component<FileUpProps, FileUpState>
     }
 
     componentDidMount() {
-        this.createFileUpLoadObject();
-        this.getFileList();
+        if (typeof this.props.MainId === 'string') {
+            if (this.props.MainId != null) {
+                this.createFileUpLoadObject();
+                this.getFileList();
+            }
+        } else if (typeof this.props.MainId === 'number') {
+            if (this.props.MainId > 0) {
+                this.createFileUpLoadObject();
+                this.getFileList();
+            }
+        }
     }
     componentDidUpdate(prevProps, prevState) {
-
+        if (typeof this.props.MainId === 'string') {
+            if (this.props.MainId != null && prevProps.MainId == null) {
+                this.createFileUpLoadObject();
+                this.getFileList();
+            }
+        } else if (typeof this.props.MainId === 'number') {
+            if (this.props.MainId > 0 && prevProps.MainId == 0) {
+                this.createFileUpLoadObject();
+                this.getFileList();
+            }
+        }
     }
     componentWillUnmount() {
         this._sortable.destroy();
@@ -398,11 +417,18 @@ export class MasterImageUpload extends React.Component<FileUpProps, FileUpState>
     render() {
 
         var outHtml = null;
+        let img_button_html=null;
+        if(this.props.ParentEditType == 1){
+            img_button_html= <small className="text-danger">請先存檔，再上傳檔案</small>;
+        } else {
+            img_button_html= 
+            <div className="form-control">
+                <input type="file" id={'upload-btn-' + this.props.MainId + '-' + this.props.FileKind} accept="image/*" />
+            </div>;
+        }
         outHtml = (
             <div>
-                <div className="form-control">
-                    <input type="file" id={'upload-btn-' + this.props.MainId + '-' + this.props.FileKind} accept="image/*" />
-                </div>
+                {img_button_html}
                 <ol className="upload-img list-inline" ref={this.sortableGroupDecorator}>
                     {
                         this.state.filelist.map(function (itemData, i) {

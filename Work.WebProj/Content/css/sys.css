@@ -6150,6 +6150,7 @@ a:focus {
 /*      layout
 -----------------------------------------------------------------------*/
 #wrapper {
+  min-width: 1200px;
   min-height: 100%;
   padding-bottom: 81px;
 }
@@ -6412,10 +6413,6 @@ a:focus {
   display: block;
   padding: 1rem 0;
   border-top: 1px dotted #e5e5e5;
-}
-
-#wrapper {
-  min-width: 320px;
 }
 
 .Login {

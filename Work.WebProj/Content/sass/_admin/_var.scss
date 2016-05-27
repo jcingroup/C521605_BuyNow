@@ -8,7 +8,7 @@ $font-path:                     '../font/';
 
 
 // Grid columns
-$wrap-min-width:                320px;
+$wrapper-min-width:             map-get($container-max-widths, xl);
 $grid-gutter-width:             0.7rem;
 
 
