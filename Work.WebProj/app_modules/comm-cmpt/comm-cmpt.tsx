@@ -167,7 +167,7 @@ export class Tips extends React.Component<{ comment: string, children?: any }, a
         //
         var Tooltip = ReactBootstrap.Tooltip;
         var OverlayTrigger = ReactBootstrap.OverlayTrigger;
-        const tooltipObj = (<Tooltip>{this.props.comment}</Tooltip>);
+        const tooltipObj = (<Tooltip id="abc">{this.props.comment}</Tooltip>);
         var out_html = null;
         out_html = (<OverlayTrigger placement="top" overlay={tooltipObj}><i className="fa-question-circle text-info"></i></OverlayTrigger>);
 

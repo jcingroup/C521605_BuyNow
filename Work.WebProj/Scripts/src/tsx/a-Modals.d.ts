@@ -122,8 +122,8 @@
         community_id?: number;
         title?: string;
         context?: string;
-        start_date?: Date;
-        end_date?: Date;
+        start_date?: string;
+        end_date?: string;
         state?: string;
         community_name?: string;
     }

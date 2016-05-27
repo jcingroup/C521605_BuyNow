@@ -19,7 +19,7 @@ namespace News {
         end_date: Date,
         state: string,
         community_name: string
-        
+
     }
     interface GirdFormState<G, F> extends BaseDefine.GirdFormStateBase<G, F> {
         searchData?: {
@@ -262,7 +262,7 @@ namespace News {
             this.setState({
                 edit_type: IEditType.insert,
                 fieldData: {
-                    start_date: Moment().toDate(),
+                    start_date: Moment().format(dt.dateFT),
                     state: 'A',
                     community_id: community_id
                 }
@@ -394,13 +394,13 @@ namespace News {
                                     <table className="table table-sm table-bordered table-striped">
                                         <thead>
                                             <tr>
-                                                <th style={{"width" : "7%"}} className="text-xs-center">刪除</th>
-                                                <th style={{"width" : "7%"}} className="text-xs-center">修改</th>
-                                                <th style={{"width" : "20%"}}>社區名稱</th>
-                                                <th style={{"width" : "30%"}}>標題</th>
-                                                <th style={{"width" : "13%"}}>啟始日期</th>
-                                                <th style={{"width" : "13%"}}>結束日期</th>
-                                                <th style={{"width" : "10%"}}>狀態</th>
+                                                <th style={{ "width": "7%" }} className="text-xs-center">刪除</th>
+                                                <th style={{ "width": "7%" }} className="text-xs-center">修改</th>
+                                                <th style={{ "width": "20%" }}>社區名稱</th>
+                                                <th style={{ "width": "30%" }}>標題</th>
+                                                <th style={{ "width": "13%" }}>啟始日期</th>
+                                                <th style={{ "width": "13%" }}>結束日期</th>
+                                                <th style={{ "width": "10%" }}>狀態</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -436,6 +436,7 @@ namespace News {
 
                 let mnt_start_date = CommFunc.MntV(field.start_date);
                 let mnt_end_date = CommFunc.MntV(field.end_date);
+
                 let end_date_disabled: boolean = mnt_start_date == null ? true : false; //1、如啟始日期無值 結束日期不可填 2、另結束日期不可小於開始日期
 
                 let fldState = {
@@ -467,97 +468,97 @@ namespace News {
                         </ul>
                         <h3 className="h3"> {this.props.caption} <small className="sub"><i className="fa-angle-double-right"></i> 資料維護</small></h3>
                         <form className="form form-sm" onSubmit={this.handleSubmit}>
-                                <div className="form-group row">
-                                    <label className="col-xs-1 form-control-label text-xs-right"><small className="text-danger">*</small> 標題</label>
-                                    <div className="col-xs-8">
-                                        <input type="text" className="form-control"
-                                            onChange={this.changeFDValue.bind(this, 'title') }
-                                            value={field.title}
-                                            maxLength={128}
-                                            required />
-                                    </div>
+                            <div className="form-group row">
+                                <label className="col-xs-1 form-control-label text-xs-right"><small className="text-danger">*</small> 標題</label>
+                                <div className="col-xs-8">
+                                    <input type="text" className="form-control"
+                                        onChange={this.changeFDValue.bind(this, 'title') }
+                                        value={field.title}
+                                        maxLength={128}
+                                        required />
                                 </div>
-                                <div className="form-group row">
-                                    <label className="col-xs-1 form-control-label text-xs-right"><small className="text-danger">*</small> 所屬社區</label>
-                                    <div className="col-xs-8">
-                                        <select className="form-control"
-                                            required
-                                            value={field.community_id}
-                                            onChange={this.changeFDValue.bind(this, 'community_id') }
-                                            disabled={community_id != null}
-                                            >
-                                            <option value="" selected disabled>請選擇</option>
-                                            {
-                                                this.state.options_community.map(function (item, i) {
-                                                    return (
-                                                        <option value={item.community_id} key={item.community_id}>{item.community_name}</option>);
-                                                })
-                                            }
-                                        </select>
-                                    </div>
+                            </div>
+                            <div className="form-group row">
+                                <label className="col-xs-1 form-control-label text-xs-right"><small className="text-danger">*</small> 所屬社區</label>
+                                <div className="col-xs-8">
+                                    <select className="form-control"
+                                        required
+                                        value={field.community_id}
+                                        onChange={this.changeFDValue.bind(this, 'community_id') }
+                                        disabled={community_id != null}
+                                        >
+                                        <option value="" selected disabled>請選擇</option>
+                                        {
+                                            this.state.options_community.map(function (item, i) {
+                                                return (
+                                                    <option value={item.community_id} key={item.community_id}>{item.community_name}</option>);
+                                            })
+                                        }
+                                    </select>
                                 </div>
+                            </div>
 
-                                <div className="form-group row">
-                                    <label className="col-xs-1 form-control-label text-xs-right"><small className="text-danger">*</small> 刊登時間</label>
-                                    <div className="col-xs-4">
-                                        <div className="input-group input-group-sm">
-                                            <span className="input-group-addon">起</span>
-                                            <DatePicker selected={mnt_start_date}
-                                                dateFormat={dt.dateFT}
-                                                isClearable={true}
-                                                required={true}
-                                                locale="zh-TW"
-                                                showYearDropdown
-                                                minDate={Moment() }
-                                                onChange={this.setChangeDate.bind(this, this.props.fdName, 'start_date') }
-                                                className="form-control" />
-                                        </div>
-                                    </div>
-                                    <div className="col-xs-4">
-                                        <div className="input-group input-group-sm">
-                                            <span className="input-group-addon">迄</span>
-                                            <DatePicker selected={mnt_end_date}
-                                                dateFormat={dt.dateFT}
-                                                isClearable={true}
-                                                required={true}
-                                                locale="zh-TW"
-                                                showYearDropdown
-                                                onChange={this.setChangeDate.bind(this, this.props.fdName, 'end_date') }
-                                                className="form-control"
-                                                minDate={mnt_start_date}
-                                                disabled={end_date_disabled}
-                                                />
-                                        </div>
+                            <div className="form-group row">
+                                <label className="col-xs-1 form-control-label text-xs-right"><small className="text-danger">*</small> 刊登時間</label>
+                                <div className="col-xs-4">
+                                    <div className="input-group input-group-sm">
+                                        <span className="input-group-addon">起</span>
+                                        <DatePicker selected={mnt_start_date}
+                                            dateFormat={dt.dateFT}
+                                            isClearable={true}
+                                            required={true}
+                                            locale="zh-TW"
+                                            showYearDropdown
+                                            minDate={Moment() }
+                                            onChange={this.setChangeDate.bind(this, this.props.fdName, 'start_date') }
+                                            className="form-control" />
                                     </div>
                                 </div>
+                                <div className="col-xs-4">
+                                    <div className="input-group input-group-sm">
+                                        <span className="input-group-addon">迄</span>
+                                        <DatePicker selected={mnt_end_date}
+                                            dateFormat={dt.dateFT}
+                                            isClearable={true}
+                                            required={true}
+                                            locale="zh-TW"
+                                            showYearDropdown
+                                            onChange={this.setChangeDate.bind(this, this.props.fdName, 'end_date') }
+                                            className="form-control"
+                                            minDate={mnt_start_date}
+                                            disabled={end_date_disabled}
+                                            />
+                                    </div>
+                                </div>
+                            </div>
 
-                                <div className="form-group row">
-                                    {fldState.label}
-                                    <div className="col-xs-4">
-                                        <select className="form-control"
-                                            required
-                                            value={field.state}
-                                            onChange={this.changeFDValue.bind(this, 'state') }>
-                                            <option value="A">顯示</option>
-                                            <option value="C">關閉</option>
-                                        </select>
-                                    </div>
-                                    {fldState.tip}
+                            <div className="form-group row">
+                                {fldState.label}
+                                <div className="col-xs-4">
+                                    <select className="form-control"
+                                        required
+                                        value={field.state}
+                                        onChange={this.changeFDValue.bind(this, 'state') }>
+                                        <option value="A">顯示</option>
+                                        <option value="C">關閉</option>
+                                    </select>
                                 </div>
-                                <div className="form-group row">
-                                    <label className="col-xs-1 form-control-label text-xs-right">內容</label>
-                                    <div className="col-xs-8">
-                                        <textarea type="date" className="form-control" id="news_content" name="news_content"
-                                            value={field.context} onChange={this.changeFDValue.bind(this, 'context') }></textarea>
-                                    </div>
+                                {fldState.tip}
+                            </div>
+                            <div className="form-group row">
+                                <label className="col-xs-1 form-control-label text-xs-right">內容</label>
+                                <div className="col-xs-8">
+                                    <textarea type="date" className="form-control" id="news_content" name="news_content"
+                                        value={field.context} onChange={this.changeFDValue.bind(this, 'context') }></textarea>
                                 </div>
-                                <div className="form-group row form-action">
-                                    <div className="col-xs-4 col-xs-offset-1">
-                                        <button type="submit" className="btn btn-sm btn-primary"><i className="fa-check"></i> 儲存</button> { }
-                                        <button type="button" className="btn btn-sm btn-secondary" onClick={this.noneType}><i className="fa-times"></i> 回前頁</button>
-                                    </div>
+                            </div>
+                            <div className="form-group row form-action">
+                                <div className="col-xs-4 col-xs-offset-1">
+                                    <button type="submit" className="btn btn-sm btn-primary"><i className="fa-check"></i> 儲存</button> { }
+                                    <button type="button" className="btn btn-sm btn-secondary" onClick={this.noneType}><i className="fa-times"></i> 回前頁</button>
                                 </div>
-                            
+                            </div>
+
 
                         </form>
                     </div>

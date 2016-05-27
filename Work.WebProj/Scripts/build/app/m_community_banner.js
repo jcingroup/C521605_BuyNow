@@ -1234,7 +1234,7 @@ webpackJsonp([2],{
 	    Tips.prototype.render = function () {
 	        var Tooltip = ReactBootstrap.Tooltip;
 	        var OverlayTrigger = ReactBootstrap.OverlayTrigger;
-	        var tooltipObj = (React.createElement(Tooltip, null, this.props.comment));
+	        var tooltipObj = (React.createElement(Tooltip, {id: "abc"}, this.props.comment));
 	        var out_html = null;
 	        out_html = (React.createElement(OverlayTrigger, {placement: "top", overlay: tooltipObj}, React.createElement("i", {className: "fa-question-circle text-info"})));
 	        return out_html;
