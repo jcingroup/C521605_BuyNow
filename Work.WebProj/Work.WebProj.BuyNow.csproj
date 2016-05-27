@@ -205,6 +205,7 @@
     <Compile Include="Areas\Active\Controllers\MatterController.cs" />
     <Compile Include="Areas\Active\Controllers\EditController.cs" />
     <Compile Include="Areas\Active\Controllers\CommunityController.cs" />
+    <Compile Include="Areas\Base\Controllers\DocController.cs" />
     <Compile Include="Areas\Base\Controllers\LoginController.cs" />
     <Content Include="app_modules\comm-matter\package.js" />
     <Content Include="app_modules\comm-cmpt\package.js" />
@@ -688,6 +689,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="_Code\Log\memo.txt" />
+    <Content Include="_Code\SysDoc\Doc_1.xml" />
     <Content Include="_Code\SysDoc\Doc.xml" />
     <Content Include="_Code\SysUpFiles\memo.txt" />
     <TypeScriptCompile Include="app_modules\comm-matter\comm-matter.d.ts" />
