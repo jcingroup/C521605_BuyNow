@@ -154,6 +154,9 @@ namespace WWW {
             //賣
             if (item.info_type == 'S') {
 
+                let is_end = item.is_end ? "邊間" : "";
+                let is_darkroom = item.is_darkroom ? "暗房" : "";
+
                 bread_link = <a href={gb_approot + 'Sell/List'}>我要買房</a>;
 
                 out_info_1 = <dl className="grid-pro row">
@@ -173,7 +176,7 @@ namespace WWW {
                             <ul className="detail list-unstyled">
                                 <li><strong className="text-secondary">總價：</strong><strong className="price text-danger">{CommFunc.formatNumber(item.price / 10000) }</strong>萬</li>
                                 <li><strong className="text-secondary">建物登記：</strong>{item.build_area} 坪</li>
-                                <li><strong className="text-secondary">每坪單價：</strong>{}24.3 萬</li>
+                                <li><strong className="text-secondary">每坪單價：</strong>{item.unit_area_price } 萬</li>
                                 <li><strong className="text-secondary">類型：</strong>{langItem.code_typeOfHouse[item.typeOfHouse]}</li>
                                 <li><strong className="text-secondary">社區名稱：</strong><a href={gb_approot + 'Neighbor/Sell_list?community_id=' + item.community_id} target="_blank">{item.community_name}</a></li>
                                 <li><strong className="text-secondary">格局：</strong>{item.bedrooms}房 / {item.livingrooms}廳 / {item.bathrooms}衛 / {item.rooms}室</li>
@@ -282,7 +285,7 @@ namespace WWW {
                                 <th scope="row">建物結構</th>
                                 <td>{item.architecture}</td>
                                 <th scope="row">特殊格局</th>
-                                <td>{item.is_end}{item.is_darkroom}</td>
+                                <td>{is_end}{is_darkroom}</td>
                             </tr>
                             <tr>
                                 <th scope="row">車位</th>

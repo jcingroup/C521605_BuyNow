@@ -193,7 +193,7 @@
         rent_start_date?: string;
         rent_furniture?: string;
         rent_equip?: string;
-
+        unit_area_price?: number;
 
         list_src?: string;
         sn?: string;

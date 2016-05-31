@@ -227,6 +227,7 @@
           <Property Name="rent_furniture" Type="nvarchar" MaxLength="50" />
           <Property Name="rent_equip" Type="nvarchar" MaxLength="50" />
           <Property Name="deposit" Type="int" />
+          <Property Name="unit_area_price" Type="float" />
         </EntityType>
         <EntityType Name="Menu">
           <Key>
@@ -744,6 +745,7 @@
           <Property Name="rent_equip" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="deposit" Type="Int32" />
           <NavigationProperty Name="Community" Relationship="C51A0_BuyNowModel.FK_Matter_Community" FromRole="Matter" ToRole="Community" />
+          <Property Name="unit_area_price" Type="Double" />
         </EntityType>
         <Association Name="FK_Matter_Community">
           <End Type="C51A0_BuyNowModel.Community" Role="Community" Multiplicity="1" />
@@ -992,6 +994,7 @@
           <EntitySetMapping Name="Matter">
             <EntityTypeMapping TypeName="C51A0_BuyNowModel.Matter">
               <MappingFragment StoreEntitySet="Matter">
+                <ScalarProperty Name="unit_area_price" ColumnName="unit_area_price" />
                 <ScalarProperty Name="deposit" ColumnName="deposit" />
                 <ScalarProperty Name="rent_equip" ColumnName="rent_equip" />
                 <ScalarProperty Name="rent_furniture" ColumnName="rent_furniture" />

@@ -125,6 +125,7 @@ namespace DotWeb.Api
 
                 item.deposit = md.deposit;
                 item.build_state = md.build_state;
+                item.unit_area_price = md.unit_area_price;
 
                 await db0.SaveChangesAsync();
                 rAjaxResult.result = true;

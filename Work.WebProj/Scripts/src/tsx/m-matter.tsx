@@ -790,6 +790,18 @@ namespace Matter {
                                         <span className="input-group-addon">坪</span>
                                     </div>
                                 </div>
+
+                                <label className="col-xs-1 text-xs-right form-control-label">每坪單價</label>
+                                <div className="col-xs-2">
+                                    <div className="input-group input-group-sm">
+                                        <input type="number" className="form-control"
+                                            onChange={this.changeFDValue.bind(this, 'unit_area_price') }
+                                            value={field.unit_area_price}
+                                            />
+                                       
+                                    </div>
+                                </div>
+
                             </div>
                             <div className="form-group row">
                                 <label className="col-xs-2 text-xs-right form-control-label">主建物實際坪數</label>

@@ -66,6 +66,7 @@ namespace ProcCore.Business.DB0
         public string rent_furniture { get; set; }
         public string rent_equip { get; set; }
         public Nullable<int> deposit { get; set; }
+        public Nullable<double> unit_area_price { get; set; }
     
         public virtual Community Community { get; set; }
     }
