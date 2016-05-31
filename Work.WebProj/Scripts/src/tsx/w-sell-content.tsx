@@ -166,8 +166,8 @@ namespace WWW {
                     <dd className="profile">
                         <article>
                             <h3 className="h4">
-                                <span className="label label-sell">售</span>
-                                新北市樹林區中華路
+                                <span className="label label-sell">售</span> { }
+                                {item.city + item.country + item.address}
                                 <small className="text-primary m-l-1">物件編號：{item.sn}</small>
                             </h3>
                             <ul className="detail list-unstyled">
@@ -203,7 +203,7 @@ namespace WWW {
                                             <strong className="text-secondary">電梯：</strong>{is_elevator}
                                         </div>
                                         <div className="grid">
-                                            <strong className="text-secondary">樓層/樓高：</strong>{item.site_floor}/{item.total_floor}樓
+                                            <strong className="text-secondary">樓層/樓高：</strong>{item.site_floor} { } / { } {item.total_floor}樓
                                         </div>
                                     </div>
                                 </li>
@@ -214,7 +214,7 @@ namespace WWW {
                             <ul className="more-info list-unstyled clearfix">
                                 <li className="tel">
                                     <h5 className="h5 m-b-0">來電預約賞屋</h5>
-                                    <strong>02-8765-4321</strong>
+                                    <strong>02-3501-6715</strong>
                                 </li>
                                 <li>
                                     <a className="btn btn-lg btn-secondary style2 scroll" href="#interior">格局圖</a>
@@ -309,8 +309,8 @@ namespace WWW {
                     <dd className="profile">
                         <article>
                             <h3 className="h4">
-                                <span className="label label-rent">租</span>
-                                {item.address}
+                                <span className="label label-rent">租</span> { }
+                                {item.city + item.country + item.address}
                                 <small className="text-primary m-l-1">物件編號：{item.sn}</small>
                             </h3>
                             <ul className="detail list-unstyled">
@@ -319,7 +319,7 @@ namespace WWW {
                                 <li><strong className="text-secondary">坪數：</strong>{item.build_area} 坪</li>
                                 <li><strong className="text-secondary">類型：</strong>{langItem.code_typeOfHouse[item.typeOfHouse]}</li>
                                 <li><strong className="text-secondary">格局：</strong>{item.bedrooms}房 / {item.livingrooms}廳 / {item.bathrooms}衛 / {item.rooms}室</li>
-                                <li><strong className="text-secondary">地址：</strong>{item.address}</li>
+                                <li><strong className="text-secondary">地址：</strong>{item.city + item.country + item.address}</li>
                                 <li>
                                     <div className="row">
                                         <div className="grid">
@@ -336,7 +336,7 @@ namespace WWW {
                                             <strong className="text-secondary">電梯：</strong>{item.is_elevator}
                                         </div>
                                         <div className="grid">
-                                            <strong className="text-secondary">樓層/樓高：</strong>{item.site_floor}/{item.total_floor}樓
+                                            <strong className="text-secondary">樓層/樓高：</strong>{item.site_floor} { } / { } {item.total_floor}樓
                                         </div>
                                     </div>
                                 </li>
@@ -347,7 +347,7 @@ namespace WWW {
                             <ul className="more-info list-unstyled clearfix">
                                 <li className="tel">
                                     <h5 className="h5 m-b-0">來電預約賞屋</h5>
-                                    <strong>02-8765-4321</strong>
+                                    <strong>02-3501-6715</strong>
                                 </li>
                                 <li>
                                     <a href="#interior" className="btn btn-lg btn-secondary style2 scroll">格局圖</a>
