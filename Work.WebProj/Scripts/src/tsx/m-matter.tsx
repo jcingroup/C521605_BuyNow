@@ -706,6 +706,7 @@ namespace Matter {
                                         value={field.map_iframe}
                                         maxLength={4000}
                                         />
+                                    <small className="text-muted">請使用 Google 地圖 的 內嵌地圖功能，操作方式請看 教學影片4</small>
                                 </div>
                             </div>
                             <div className="form-group row">
@@ -905,7 +906,7 @@ namespace Matter {
                                 </div>
                                 <label className="col-xs-1 text-xs-right form-control-label">押金</label>
                                 <div className="col-xs-2">
-                                    <input type="number" className="form-control"
+                                    <input type="text" className="form-control"
                                         onChange={this.changeFDValue.bind(this, 'deposit') }
                                         value={field.deposit}
                                         disabled={field.info_type != 'R'}

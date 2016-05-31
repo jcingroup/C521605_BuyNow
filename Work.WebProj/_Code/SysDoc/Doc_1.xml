@@ -15,24 +15,18 @@
 
   <file>
     <sort>3</sort>
-    <name>B03_matter.html</name>
-    <memo>【社區物件】新增、修改、刪除</memo>
-  </file>
-
-  <file>
-    <sort>4</sort>
     <name>Z01_editor_text.html</name>
     <memo>【文章編輯】文字段落編排</memo>
   </file>
 
   <file>
-    <sort>5</sort>
+    <sort>4</sort>
     <name>Z02_editor_insert.html</name>
     <memo>【文章編輯】插入圖片/影片</memo>
   </file>
 
   <file>
-    <sort>6</sort>
+    <sort>5</sort>
     <name>Z03_editor_table.html</name>
     <memo>【文章編輯】表格 增加/刪除列</memo>
   </file>
