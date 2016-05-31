@@ -85,6 +85,7 @@ namespace DotWeb.Controllers
 
             ViewBag.community_id = community_id;
             ViewBag.group_buying_url = result.group_buying_url;
+            ViewBag.WebName = result.community_name;
 
             return View("Neighbor_sell_list");
         }
@@ -95,6 +96,7 @@ namespace DotWeb.Controllers
 
             ViewBag.community_id = result.community_id;
             ViewBag.group_buying_url = result.Community.group_buying_url;
+            ViewBag.WebName = result.community_name;
 
             return View("Neighbor_sell_content");
         }
@@ -105,7 +107,7 @@ namespace DotWeb.Controllers
 
             ViewBag.community_id = community_id;
             ViewBag.group_buying_url = result.group_buying_url;
-
+            ViewBag.WebName = result.community_name;
             return View("Neighbor_rent_list");
         }
         public ActionResult Rent_content(int id)
@@ -115,7 +117,7 @@ namespace DotWeb.Controllers
 
             ViewBag.community_id = result.community_id;
             ViewBag.group_buying_url = result.Community.group_buying_url;
-
+            ViewBag.WebName = result.community_name;
             return View("Neighbor_rent_content");
         }
     }
