@@ -166,8 +166,8 @@ namespace WWW {
                     <dd className="profile">
                         <article>
                             <h3 className="h4">
-                                <span className="label label-sell">售</span> { }
-                                {item.city + item.country + item.address}
+                                <span className="label label-sell">售</span>
+                                新北市樹林區中華路
                                 <small className="text-primary m-l-1">物件編號：{item.sn}</small>
                             </h3>
                             <ul className="detail list-unstyled">
@@ -203,7 +203,7 @@ namespace WWW {
                                             <strong className="text-secondary">電梯：</strong>{is_elevator}
                                         </div>
                                         <div className="grid">
-                                            <strong className="text-secondary">樓層/樓高：</strong>{item.site_floor} { } / { } {item.total_floor} { }樓
+                                            <strong className="text-secondary">樓層/樓高：</strong>{item.site_floor}/{item.total_floor}樓
                                         </div>
                                     </div>
                                 </li>
@@ -214,7 +214,7 @@ namespace WWW {
                             <ul className="more-info list-unstyled clearfix">
                                 <li className="tel">
                                     <h5 className="h5 m-b-0">來電預約賞屋</h5>
-                                    <strong>02-3501-6715</strong>
+                                    <strong>02-8765-4321</strong>
                                 </li>
                                 <li>
                                     <a className="btn btn-lg btn-secondary style2 scroll" href="#interior">格局圖</a>
@@ -264,7 +264,7 @@ namespace WWW {
                                 <th scope="row">該層戶數</th>
                                 <td style={{ width: '30%' }}>該層{item.buildhouses}戶；共用2部電梯</td>
                                 <th scope="row" style={{ width: '15%' }}>出售樓層/總樓層</th>
-                                <td>{item.site_floor} { } / { } {item.total_floor} { }樓</td>
+                                <td>{item.site_floor}/{item.total_floor}樓</td>
                             </tr>
                             <tr>
                                 <th scope="row">類型</th>
@@ -309,8 +309,8 @@ namespace WWW {
                     <dd className="profile">
                         <article>
                             <h3 className="h4">
-                                <span className="label label-rent">租</span> { }
-                                {item.city + item.country + item.address}
+                                <span className="label label-rent">租</span>
+                                {item.address}
                                 <small className="text-primary m-l-1">物件編號：{item.sn}</small>
                             </h3>
                             <ul className="detail list-unstyled">
@@ -319,7 +319,7 @@ namespace WWW {
                                 <li><strong className="text-secondary">坪數：</strong>{item.build_area} 坪</li>
                                 <li><strong className="text-secondary">類型：</strong>{langItem.code_typeOfHouse[item.typeOfHouse]}</li>
                                 <li><strong className="text-secondary">格局：</strong>{item.bedrooms}房 / {item.livingrooms}廳 / {item.bathrooms}衛 / {item.rooms}室</li>
-                                <li><strong className="text-secondary">地址：</strong>{item.city + item.country + item.address}</li>
+                                <li><strong className="text-secondary">地址：</strong>{item.address}</li>
                                 <li>
                                     <div className="row">
                                         <div className="grid">
@@ -336,7 +336,7 @@ namespace WWW {
                                             <strong className="text-secondary">電梯：</strong>{item.is_elevator}
                                         </div>
                                         <div className="grid">
-                                            <strong className="text-secondary">樓層/樓高：</strong>{item.site_floor} { } / { } {item.total_floor}樓
+                                            <strong className="text-secondary">樓層/樓高：</strong>{item.site_floor}/{item.total_floor}樓
                                         </div>
                                     </div>
                                 </li>
@@ -347,7 +347,7 @@ namespace WWW {
                             <ul className="more-info list-unstyled clearfix">
                                 <li className="tel">
                                     <h5 className="h5 m-b-0">來電預約賞屋</h5>
-                                    <strong>02-3501-6715</strong>
+                                    <strong>02-8765-4321</strong>
                                 </li>
                                 <li>
                                     <a href="#interior" className="btn btn-lg btn-secondary style2 scroll">格局圖</a>
@@ -367,10 +367,10 @@ namespace WWW {
                     <h3 className="h3">基本資料</h3>
                     <table className="table table-striped">
                         <tr>
-                            <th style={{ width: '25%' }} scope="row">管理費</th>
-                            <td style={{ width: '25%' }}>{item.rent_management}</td>
-                            <th style={{ width: '25%' }} scope="row">最短租期</th>
-                            <td style={{ width: '25%' }}>{item.rent_short_date}</td>
+                            <th scope="row">管理費</th>
+                            <td style={{ width: '30%' }}>{item.rent_management}</td>
+                            <th style={{ width: '15%' }} scope="row">最短租期</th>
+                            <td>{item.rent_short_date}</td>
                         </tr>
                         <tr>
                             <th scope="row">開伙</th>

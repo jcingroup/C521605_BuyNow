@@ -331,15 +331,6 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   查詢類似 幸福阿珍 (happiness agent) 幸福代理人運用現今物聯網的科技技術，創造出符合現今經濟發展趨勢『新型態的不動產獲利模式』及『社區經濟發展』形成一個可以永續經營的產業。 的當地語系化字串。
-        /// </summary>
-        internal static string Description {
-            get {
-                return ResourceManager.GetString("Description", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   查詢類似 1111 的當地語系化字串。
         /// </summary>
         internal static string ePassword {
@@ -507,15 +498,6 @@ namespace Resources {
         internal static string js_Err_System_Failure {
             get {
                 return ResourceManager.GetString("js_Err_System_Failure", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查詢類似 社區買屋,社區租屋,社區管理,社區收益型專案,房屋仲介,不動產,房仲,房地產 的當地語系化字串。
-        /// </summary>
-        internal static string Keywords {
-            get {
-                return ResourceManager.GetString("Keywords", resourceCulture);
             }
         }
         

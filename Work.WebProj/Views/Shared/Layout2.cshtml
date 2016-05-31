@@ -10,8 +10,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>@ViewBag.WebName-@ViewBag.Title::@Resources.Res.System_FrontName</title>
-    <meta name="keywords" content="@Resources.Res.Keywords">
-    <meta name="description" content="@Resources.Res.Description">
     <script src="~/Scripts/cdn/BrowerInfo.js"></script>
     <script>
         var gb_approot = '@Url.Content("~")';
@@ -53,12 +51,24 @@
                         <li>
                             <a href="~/Neighbor/Content?id=@ViewBag.community_id#diary" class="scroll"><i class="icon-book"></i>社區日誌</a>
                         </li>
-                        <li>
-                            <a href="~/Neighbor/Sell_list?community_id=@ViewBag.community_id"><i class="icon-house"></i>社區待售房屋</a>
-                        </li>
-                        <li>
-                            <a href="~/Neighbor/Rent_list?community_id=@ViewBag.community_id"><i class="icon-building"></i>社區待租房屋</a>
-                        </li>
+                        @if (@ViewBag.BodyClass.IndexOf("pro1") >= 0)
+                        {
+                            <li>
+                                <a href="~/Neighbor/Sell_list?community_id=@ViewBag.community_id"><i class="icon-house"></i>社區待售房屋</a>
+                            </li>
+                            <li>
+                                <a href="~/Neighbor/Rent_list?community_id=@ViewBag.community_id"><i class="icon-building"></i>社區待租房屋</a>
+                            </li>
+                        }
+                        else if (@ViewBag.BodyClass.IndexOf("pro2") >= 0)
+                        {
+                            <li>
+                                <a href="~/Neighbor/Sell_list2?community_id=@ViewBag.community_id"><i class="icon-house"></i>社區待售房屋</a>
+                            </li>
+                            <li>
+                                <a href="~/Neighbor/Rent_list2?community_id=@ViewBag.community_id"><i class="icon-building"></i>社區待租房屋</a>
+                            </li>
+                        }
                         <li>
                             <a href="@ViewBag.group_buying_url" target="new"><i class="icon-cart"></i>社區好康團購</a>
                         </li>
