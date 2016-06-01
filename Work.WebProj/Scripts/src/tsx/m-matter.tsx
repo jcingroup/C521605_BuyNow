@@ -443,6 +443,55 @@ namespace Matter {
                 let mnt_end_date = CommFunc.MntV(field.end_date);
                 let end_date_disabled: boolean = mnt_start_date == null ? true : false; //1、如啟始日期無值 結束日期不可填 2、另結束日期不可小於開始日期
 
+                let up_MatterList = null;
+                let up_MatterPhoto = null;
+                let up_MatterStyle = null;
+
+                if (this.state.edit_type == IEditType.update) {
+                    up_MatterList = <div className="form-group row">
+                        <label className="col-xs-2 text-xs-right form-control-label">物件代表圖</label>
+                        <div className="col-xs-8">
+                            <CommCmpt.MasterImageUpload FileKind="MatterList"
+                                MainId={field.matter_id}
+                                ParentEditType={this.state.edit_type}
+                                url_upload={gb_approot + 'Active/Matter/axFUpload'}
+                                url_list={gb_approot + 'Active/Matter/axFList'}
+                                url_delete={gb_approot + 'Active/Matter/axFDelete'}
+                                url_sort={gb_approot + 'Active/Matter/axFSort'} />
+                            <small className="text-muted">最多可上傳 1 張圖片</small>
+                        </div>
+                    </div>;
+
+                    up_MatterPhoto = <div className="form-group row">
+                        <label className="col-xs-2 text-xs-right form-control-label">物件實景照片</label>
+                        <div className="col-xs-8">
+                            <CommCmpt.MasterImageUpload FileKind="MatterPhoto"
+                                MainId={field.matter_id}
+                                ParentEditType={this.state.edit_type}
+                                url_upload={gb_approot + 'Active/Matter/axFUpload'}
+                                url_list={gb_approot + 'Active/Matter/axFList'}
+                                url_delete={gb_approot + 'Active/Matter/axFDelete'}
+                                url_sort={gb_approot + 'Active/Matter/axFSort'} />
+                            <small className="text-muted">最多可上傳 10 張圖片</small>
+                        </div>
+                    </div>;
+
+                    up_MatterStyle = <div className="form-group row">
+                        <label className="col-xs-2 text-xs-right form-control-label">格局圖</label>
+                        <div className="col-xs-8">
+                            <CommCmpt.MasterImageUpload FileKind="MatterStyle"
+                                MainId={field.matter_id}
+                                ParentEditType={this.state.edit_type}
+                                url_upload={gb_approot + 'Active/Matter/axFUpload'}
+                                url_list={gb_approot + 'Active/Matter/axFList'}
+                                url_delete={gb_approot + 'Active/Matter/axFDelete'}
+                                url_sort={gb_approot + 'Active/Matter/axFSort'} />
+                            <small className="text-muted">最多可上傳 10 張圖片</small>
+                        </div>
+                    </div>
+
+                }
+
 
                 var outHtml = (
                     <div>
@@ -717,45 +766,9 @@ namespace Matter {
                             </div>
                             <hr className="sm" />
                             <h4 className="h4">物件照片</h4>
-                            <div className="form-group row">
-                                <label className="col-xs-2 text-xs-right form-control-label">物件代表圖</label>
-                                <div className="col-xs-8">
-                                    <CommCmpt.MasterImageUpload FileKind="MatterList"
-                                        MainId={field.matter_id}
-                                        ParentEditType={this.state.edit_type}
-                                        url_upload={gb_approot + 'Active/Matter/axFUpload'}
-                                        url_list={gb_approot + 'Active/Matter/axFList'}
-                                        url_delete={gb_approot + 'Active/Matter/axFDelete'}
-                                        url_sort={gb_approot + 'Active/Matter/axFSort'} />
-                                    <small className="text-muted">最多可上傳 1 張圖片</small>
-                                </div>
-                            </div>
-                            <div className="form-group row">
-                                <label className="col-xs-2 text-xs-right form-control-label">物件實景照片</label>
-                                <div className="col-xs-8">
-                                    <CommCmpt.MasterImageUpload FileKind="MatterPhoto"
-                                        MainId={field.matter_id}
-                                        ParentEditType={this.state.edit_type}
-                                        url_upload={gb_approot + 'Active/Matter/axFUpload'}
-                                        url_list={gb_approot + 'Active/Matter/axFList'}
-                                        url_delete={gb_approot + 'Active/Matter/axFDelete'}
-                                        url_sort={gb_approot + 'Active/Matter/axFSort'} />
-                                    <small className="text-muted">最多可上傳 10 張圖片</small>
-                                </div>
-                            </div>
-                            <div className="form-group row">
-                                <label className="col-xs-2 text-xs-right form-control-label">格局圖</label>
-                                <div className="col-xs-8">
-                                    <CommCmpt.MasterImageUpload FileKind="MatterStyle"
-                                        MainId={field.matter_id}
-                                        ParentEditType={this.state.edit_type}
-                                        url_upload={gb_approot + 'Active/Matter/axFUpload'}
-                                        url_list={gb_approot + 'Active/Matter/axFList'}
-                                        url_delete={gb_approot + 'Active/Matter/axFDelete'}
-                                        url_sort={gb_approot + 'Active/Matter/axFSort'} />
-                                    <small className="text-muted">最多可上傳 10 張圖片</small>
-                                </div>
-                            </div>
+                            {up_MatterList}
+                            {up_MatterPhoto}
+                            {up_MatterStyle}
                             <hr className="sm" />
                             <h4 className="h4">出售物件詳細資料</h4>
                             <div className="form-group row">

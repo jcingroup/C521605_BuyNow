@@ -371,6 +371,56 @@ namespace Community {
             else if (this.state.edit_type == IEditType.insert || this.state.edit_type == IEditType.update) {
 
                 let field = this.state.fieldData;
+                let up_CommunityList = null;
+                let up_CommunityDoor = null;
+                let up_CommunityPublic = null;
+
+
+
+                if (this.state.edit_type == IEditType.update) {
+                    up_CommunityList = <div className="form-group row">
+                        <label className="col-xs-1 form-control-label text-xs-right">社區代表圖</label>
+                        <div className="col-xs-7">
+                            <CommCmpt.MasterImageUpload FileKind="CommunityList"
+                                MainId={field.community_id}
+                                ParentEditType={this.state.edit_type}
+                                url_upload={gb_approot + 'Active/Matter/axFUpload'}
+                                url_list={gb_approot + 'Active/Matter/axFList'}
+                                url_delete={gb_approot + 'Active/Matter/axFDelete'}
+                                url_sort={gb_approot + 'Active/Matter/axFSort'} />
+                            <small className="text-muted">最多可上傳 1 張圖片</small>
+                        </div>
+                    </div>;
+
+
+                    up_CommunityDoor = <div className="form-group row">
+                        <label className="col-xs-1 form-control-label text-xs-right">迎賓大門</label>
+                        <div className="col-xs-7">
+                            <CommCmpt.MasterImageUpload FileKind="CommunityDoor"
+                                MainId={field.community_id}
+                                ParentEditType={this.state.edit_type}
+                                url_upload={gb_approot + 'Active/Matter/axFUpload'}
+                                url_list={gb_approot + 'Active/Matter/axFList'}
+                                url_delete={gb_approot + 'Active/Matter/axFDelete'}
+                                url_sort={gb_approot + 'Active/Matter/axFSort'} />
+                            <small className="text-muted">最多可上傳 10 張圖片</small>
+                        </div>
+                    </div>;
+
+                    up_CommunityPublic = <div className="form-group row">
+                        <label className="col-xs-1 form-control-label text-xs-right">社區公設</label>
+                        <div className="col-xs-7">
+                            <CommCmpt.MasterImageUpload FileKind="CommunityPublic"
+                                MainId={field.community_id}
+                                ParentEditType={this.state.edit_type}
+                                url_upload={gb_approot + 'Active/Matter/axFUpload'}
+                                url_list={gb_approot + 'Active/Matter/axFList'}
+                                url_delete={gb_approot + 'Active/Matter/axFDelete'}
+                                url_sort={gb_approot + 'Active/Matter/axFSort'} />
+                            <small className="text-muted">最多可上傳 10 張圖片</small>
+                        </div>
+                    </div>;
+                }
 
                 var outHtml = (
                     <div>
@@ -399,19 +449,11 @@ namespace Community {
                                         required />
                                 </div>
                             </div>
-                            <div className="form-group row">
-                                <label className="col-xs-1 form-control-label text-xs-right">社區代表圖</label>
-                                <div className="col-xs-7">
-                                    <CommCmpt.MasterImageUpload FileKind="CommunityList"
-                                        MainId={field.community_id}
-                                        ParentEditType={this.state.edit_type}
-                                        url_upload={gb_approot + 'Active/Matter/axFUpload'}
-                                        url_list={gb_approot + 'Active/Matter/axFList'}
-                                        url_delete={gb_approot + 'Active/Matter/axFDelete'}
-                                        url_sort={gb_approot + 'Active/Matter/axFSort'} />
-                                    <small className="text-muted">最多可上傳 1 張圖片</small>
-                                </div>
-                            </div>
+
+
+                            {up_CommunityList}
+
+
                             <div className="form-group row">
                                 <label className="col-xs-1 form-control-label text-xs-right">建物地址</label>
                                 <div className="col-xs-7">
@@ -568,32 +610,8 @@ namespace Community {
                                         value={field.txt_public} onChange={this.changeFDValue.bind(this, 'txt_public') }></textarea>
                                 </div>
                             </div>
-                            <div className="form-group row">
-                                <label className="col-xs-1 form-control-label text-xs-right">迎賓大門</label>
-                                <div className="col-xs-7">
-                                    <CommCmpt.MasterImageUpload FileKind="CommunityDoor"
-                                        MainId={field.community_id}
-                                        ParentEditType={this.state.edit_type}
-                                        url_upload={gb_approot + 'Active/Matter/axFUpload'}
-                                        url_list={gb_approot + 'Active/Matter/axFList'}
-                                        url_delete={gb_approot + 'Active/Matter/axFDelete'}
-                                        url_sort={gb_approot + 'Active/Matter/axFSort'} />
-                                    <small className="text-muted">最多可上傳 10 張圖片</small>
-                                </div>
-                            </div>
-                            <div className="form-group row">
-                                <label className="col-xs-1 form-control-label text-xs-right">社區公設</label>
-                                <div className="col-xs-7">
-                                    <CommCmpt.MasterImageUpload FileKind="CommunityPublic"
-                                        MainId={field.community_id}
-                                        ParentEditType={this.state.edit_type}
-                                        url_upload={gb_approot + 'Active/Matter/axFUpload'}
-                                        url_list={gb_approot + 'Active/Matter/axFList'}
-                                        url_delete={gb_approot + 'Active/Matter/axFDelete'}
-                                        url_sort={gb_approot + 'Active/Matter/axFSort'} />
-                                    <small className="text-muted">最多可上傳 10 張圖片</small>
-                                </div>
-                            </div>
+                            {up_CommunityDoor}
+                            {up_CommunityPublic}
 
                             <div className="form-group row form-action">
                                 <div className="col-xs-7 col-xs-offset-1">
