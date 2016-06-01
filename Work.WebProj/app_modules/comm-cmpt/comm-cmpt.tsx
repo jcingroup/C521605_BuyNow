@@ -138,7 +138,7 @@ export class GridNavPage extends React.Component<GridNavPageProps, any> {
                         <div className="form-group">
                             <label>第</label>
                             {' '}
-                            <input style={{"width" : "100px"}} className="form-control form-control-sm text-xs-center" type="number" min="1" tabIndex={-1} value={this.props.nowPage.toString() }
+                            <input style={{ "width": "100px" }} className="form-control form-control-sm text-xs-center" type="number" min="1" tabIndex={-1} value={this.props.nowPage.toString() }
                                 onChange={this.jumpPage} />
                             {' '}
                             <label>頁，共{this.props.totalPage}頁</label>
@@ -228,34 +228,42 @@ export class MasterImageUpload extends React.Component<FileUpProps, FileUpState>
     }
 
     componentDidMount() {
-        if (typeof this.props.MainId === 'string') {
-            if (this.props.MainId != null) {
-                this.createFileUpLoadObject();
-                this.getFileList();
-            }
-        } else if (typeof this.props.MainId === 'number') {
-            if (this.props.MainId > 0) {
-                this.createFileUpLoadObject();
-                this.getFileList();
+        if (this.props.ParentEditType == IEditType.update) {
+            if (typeof this.props.MainId === 'string') {
+                if (this.props.MainId != null) {
+                    this.createFileUpLoadObject();
+                    this.getFileList();
+                }
+            } else if (typeof this.props.MainId === 'number') {
+                if (this.props.MainId > 0) {
+                    this.createFileUpLoadObject();
+                    this.getFileList();
+                }
             }
         }
     }
     componentDidUpdate(prevProps, prevState) {
-        if (typeof this.props.MainId === 'string') {
-            if (this.props.MainId != null && prevProps.MainId == null) {
-                this.createFileUpLoadObject();
-                this.getFileList();
-            }
-        } else if (typeof this.props.MainId === 'number') {
-            if (this.props.MainId > 0 && prevProps.MainId == 0) {
-                this.createFileUpLoadObject();
-                this.getFileList();
+
+        if (this.props.ParentEditType == IEditType.update) {
+            if (typeof this.props.MainId === 'string') {
+                if (this.props.MainId != null && prevProps.MainId == null) {
+                    this.createFileUpLoadObject();
+                    this.getFileList();
+                }
+            } else if (typeof this.props.MainId === 'number') {
+                if (this.props.MainId > 0 && prevProps.MainId == 0) {
+                    this.createFileUpLoadObject();
+                    this.getFileList();
+                }
             }
         }
+
     }
     componentWillUnmount() {
-        this._sortable.destroy();
-        this._upload.destroy();
+        if (this.props.ParentEditType == IEditType.update) {
+            this._sortable.destroy();
+            this._upload.destroy();
+        }
     }
 
     deleteFile(guid) {
@@ -417,14 +425,14 @@ export class MasterImageUpload extends React.Component<FileUpProps, FileUpState>
     render() {
 
         var outHtml = null;
-        let img_button_html=null;
-        if(this.props.ParentEditType == 1){
-            img_button_html= <small className="text-danger">請先存檔，再上傳檔案</small>;
+        let img_button_html = null;
+        if (this.props.ParentEditType == IEditType.insert) {
+            img_button_html = <small className="text-danger">請先存檔，再上傳檔案</small>;
         } else {
-            img_button_html= 
-            <div className="form-control">
-                <input type="file" id={'upload-btn-' + this.props.MainId + '-' + this.props.FileKind} accept="image/*" />
-            </div>;
+            img_button_html =
+                <div className="form-control">
+                    <input type="file" id={'upload-btn-' + this.props.MainId + '-' + this.props.FileKind} accept="image/*" />
+                </div>;
         }
         outHtml = (
             <div>

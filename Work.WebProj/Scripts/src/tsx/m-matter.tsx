@@ -447,7 +447,7 @@ namespace Matter {
                 let up_MatterPhoto = null;
                 let up_MatterStyle = null;
 
-                if (this.state.edit_type == IEditType.update) {
+                if (this.state.edit_type == IEditType.update || this.state.edit_type == IEditType.insert) {
                     up_MatterList = <div className="form-group row">
                         <label className="col-xs-2 text-xs-right form-control-label">物件代表圖</label>
                         <div className="col-xs-8">
