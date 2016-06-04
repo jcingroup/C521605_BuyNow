@@ -313,6 +313,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\CaptchaResponse.cs" />
     <Compile Include="Models\DotWeb.Controller.cs" />
     <Compile Include="Models\DotWeb.Api.cs" />
     <Compile Include="Models\DotWeb.cs" />
@@ -565,6 +566,7 @@
     <Content Include="Scripts\cdn\Sortable.min.js" />
     <Content Include="Scripts\cdn\swfobject.js" />
     <Content Include="Scripts\cdn\toastr.js" />
+    <Content Include="Scripts\googleReCAPTCHA.js" />
     <Content Include="Scripts\src\xformat.html" />
     <Content Include="Scripts\cdn\BrowerInfo.js" />
     <Content Include="Scripts\cdn\chart\Chart.js" />
