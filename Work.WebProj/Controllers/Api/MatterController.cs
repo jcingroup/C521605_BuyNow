@@ -1,10 +1,8 @@
-﻿using Microsoft.AspNet.Identity.EntityFramework;
-using ProcCore.Business;
+﻿using ProcCore.Business;
 using ProcCore.Business.DB0;
 using ProcCore.HandleResult;
 using ProcCore.WebCore;
 using System;
-using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
@@ -12,6 +10,7 @@ using System.Web.Http;
 using LinqKit;
 using System.Data.Entity.Validation;
 using System.Data.Entity.Infrastructure;
+using System.Linq.Dynamic;
 
 namespace DotWeb.Api
 {
@@ -46,6 +45,9 @@ namespace DotWeb.Api
                 .Skip(startRecord)
                 .Take(defPageSize)
                 .ToListAsync();
+
+
+            //result.OrderBy()
 
             db0.Dispose();
 

@@ -81,7 +81,12 @@ namespace Matter {
             this.insertType = this.insertType.bind(this);
             this.state = {
                 fieldData: null,
-                gridData: { rows: [], page: 1 },
+                gridData: {
+                    rows: [],
+                    page: 1,
+                    field: null,
+                    sort: 'asc'
+                },
                 edit_type: 0,
                 searchData: { keyword: null },
                 editPrimKey: null,
@@ -117,15 +122,11 @@ namespace Matter {
         gridData(page: number) {
 
             var parms = {
-                page: 0
+                page: page == 0 ? this.state.gridData.page : page,
+                sort: this.state.gridData.sort,
+                type: this.state.gridData.field
             };
-
-            if (page == 0) {
-                parms.page = this.state.gridData.page;
-            } else {
-                parms.page = page;
-            }
-
+            console.log('Hello!')
             $.extend(parms, this.state.searchData);
 
             return CommFunc.jqGet(this.props.apiPath, parms);
@@ -811,7 +812,7 @@ namespace Matter {
                                             onChange={this.changeFDValue.bind(this, 'unit_area_price') }
                                             value={field.unit_area_price}
                                             />
-                                       
+
                                     </div>
                                 </div>
 

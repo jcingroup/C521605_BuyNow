@@ -1,26 +1,8 @@
-﻿using DotWeb.CommSetup;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
-using Microsoft.AspNet.Identity.Owin;
-using Newtonsoft.Json;
-using ProcCore;
-using ProcCore.Business;
-using ProcCore.Business.DB0;
-using ProcCore.Business.LogicConect;
-using ProcCore.HandleResult;
-using ProcCore.NetExtension;
-using ProcCore.WebCore;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Drawing.Imaging;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using System.Transactions;
 using System.Web;
 using System.Web.Mvc;
 
@@ -152,4 +134,6 @@ namespace DotWeb
         public string SubReportName { get; set; }
         public DataTable DataSource { get; set; }
     }
+
+
 }

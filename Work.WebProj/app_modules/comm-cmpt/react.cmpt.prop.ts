@@ -39,7 +39,10 @@
             startcount?: number,
             endcount?: number,
             total?: number,
-            records?: number
+            records?: number,
+            field?: string,
+            sort?: string
+
         },
         fieldData?: F,
         searchData?: any,

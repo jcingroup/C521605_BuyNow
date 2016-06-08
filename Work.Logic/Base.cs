@@ -11,6 +11,10 @@ namespace ProcCore.Business
         }
 
         public int? page { get; set; }
+        public string field { get; set; }
+        public string sort { get; set; }
+
+
     }
     public class SNObject
     {
