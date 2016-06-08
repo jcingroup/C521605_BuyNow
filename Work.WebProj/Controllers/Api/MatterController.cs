@@ -38,16 +38,26 @@ namespace DotWeb.Api
             int page = (q.page == null ? 1 : (int)q.page);
             var result = db0.Matter.AsExpandable().Where(predicate);
             var resultCount = await result.CountAsync();
+            IQueryable<Matter> resultOrderItems = null;
+
+            if (q.field != null)
+            {
+                if (q.sort == "asc")
+                    resultOrderItems = result.OrderBy(q.field);
+
+                if (q.sort == "desc")
+                    resultOrderItems = result.OrderBy(q.field + " descending");
+            }
+            else
+            {
+                resultOrderItems = result.OrderBy(x => x.matter_id);
+            }
 
             int startRecord = PageCount.PageInfo(page, defPageSize, resultCount);
-            var resultItems = await result
-                .OrderBy(x => x.community_id)
-                .Skip(startRecord)
+            var resultItems = await
+                resultOrderItems.Skip(startRecord)
                 .Take(defPageSize)
                 .ToListAsync();
-
-
-            //result.OrderBy()
 
             db0.Dispose();
 
@@ -58,7 +68,9 @@ namespace DotWeb.Api
                 page = PageCount.Page,
                 records = PageCount.RecordCount,
                 startcount = PageCount.StartCount,
-                endcount = PageCount.EndCount
+                endcount = PageCount.EndCount,
+                field = q.field,
+                sort = q.sort
             });
 
             #endregion

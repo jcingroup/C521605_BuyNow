@@ -27,6 +27,54 @@ namespace Matter {
     }
     interface CallResult extends IResultBase, IDName { }
 
+
+    class OrderButton extends React.Component<{
+        title: string,
+        now_field: string,
+        field: string,
+        sort: string,
+        setSort(field: string, sort: string): void
+    }, { now_sort: string }> {
+
+        constructor() {
+            super();
+            this.componentDidMount = this.componentDidMount.bind(this);
+            this.setSort = this.setSort.bind(this);
+            this.state = {
+                now_sort: 'asc'
+            };
+        }
+
+        static defaultProps = {
+            sort: 'asc'
+        }
+
+        setSort() {
+
+            if (this.state.now_sort == 'asc') {
+                this.setState({ now_sort: 'desc' });
+            }
+
+            if (this.state.now_sort == 'desc') {
+                this.setState({ now_sort: 'asc' });
+            }
+
+            this.props.setSort(this.props.field, this.state.now_sort);
+        }
+
+        componentDidMount() {
+            if (this.props.sort != undefined && this.props.sort != null) {
+                this.setState({ now_sort: this.props.sort });
+            }
+        }
+
+        render() {
+            return <div>{this.props.title}
+                <button type="button" onClick={this.setSort}>Click</button>
+            </div>;
+        }
+    }
+
     class GridRow extends React.Component<BaseDefine.GridRowPropsBase2<Rows>, BaseDefine.GridRowStateBase> {
         constructor() {
             super();
@@ -77,14 +125,14 @@ namespace Matter {
             this.componentDidUpdate = this.componentDidUpdate.bind(this);
             this.componentWillUnmount = this.componentWillUnmount.bind(this);
             this.changeAddress = this.changeAddress.bind(this);
-
+            this.setSort = this.setSort.bind(this);
             this.insertType = this.insertType.bind(this);
             this.state = {
                 fieldData: null,
                 gridData: {
                     rows: [],
                     page: 1,
-                    field: null,
+                    field: 'matter_name',
                     sort: 'asc'
                 },
                 edit_type: 0,
@@ -124,13 +172,36 @@ namespace Matter {
             var parms = {
                 page: page == 0 ? this.state.gridData.page : page,
                 sort: this.state.gridData.sort,
-                type: this.state.gridData.field
+                field: this.state.gridData.field
             };
-            console.log('Hello!')
             $.extend(parms, this.state.searchData);
 
             return CommFunc.jqGet(this.props.apiPath, parms);
         }
+
+        setSort(field, sort) {
+
+            var parms = {
+                page: this.state.gridData.page,
+                sort: sort,
+                field: field
+            };
+            $.extend(parms, this.state.searchData);
+
+            return CommFunc.jqGet(this.props.apiPath, parms)
+                .done((data, textStatus, jqXHRdata) => {
+                    if (data.records == 0) {
+                        CommFunc.tosMessage(null, '無任何資料', ToastrType.warning);
+                    }
+
+                    this.setState({ gridData: data });
+                })
+                .fail((jqXHR, textStatus, errorThrown) => {
+                    CommFunc.showAjaxError(errorThrown);
+                });;
+
+        }
+
         queryGridData(page: number) {
             this.gridData(page)
                 .done((data, textStatus, jqXHRdata) => {
@@ -405,7 +476,12 @@ namespace Matter {
                                             <tr>
                                                 <th style={{ "width": "7%" }} className="text-xs-center">刪除</th>
                                                 <th style={{ "width": "7%" }} className="text-xs-center">修改</th>
-                                                <th style={{ "width": "26%" }}>編號</th>
+                                                <th style={{ "width": "26%" }}><OrderButton
+                                                    title="編號"
+                                                    field={'community_id'}
+                                                    now_field={this.state.gridData.field}
+                                                    sort={this.state.gridData.sort}
+                                                    setSort={this.setSort}/></th>
                                                 <th style={{ "width": "60%" }}>社區名稱</th>
                                             </tr>
                                         </thead>
