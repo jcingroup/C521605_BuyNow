@@ -14,7 +14,9 @@ namespace Matter {
     interface Rows {
         check_del: boolean,
         matter_id: number,
-        matter_name: string
+        matter_name: string,
+        sn: string,
+        community_name: string
     }
     interface GirdFormState<G, F> extends BaseDefine.GirdFormStateBase<G, F> {
         searchData?: {
@@ -52,23 +54,27 @@ namespace Matter {
         setSort() {
 
             if (this.state.now_sort == 'asc') {
+                this.props.setSort(this.props.field, 'desc');
                 this.setState({ now_sort: 'desc' });
             }
 
             if (this.state.now_sort == 'desc') {
+                this.props.setSort(this.props.field, 'asc');
                 this.setState({ now_sort: 'asc' });
             }
-
-            this.props.setSort(this.props.field, this.state.now_sort);
         }
 
         componentDidMount() {
+
             if (this.props.sort != undefined && this.props.sort != null) {
                 this.setState({ now_sort: this.props.sort });
             }
         }
 
         render() {
+
+            console.log('now_sort', this.state.now_sort);
+
             return <div>{this.props.title}
                 <button type="button" onClick={this.setSort}>Click</button>
             </div>;
@@ -89,7 +95,6 @@ namespace Matter {
         modify() {
             this.props.updateType(this.props.primKey)
         }
-
         render() {
             return <tr>
                 <td className="text-xs-center">
@@ -100,7 +105,8 @@ namespace Matter {
                 <td className="text-xs-center">
                     <CommCmpt.GridButtonModify modify={this.modify}/>
                 </td>
-                <td>{this.props.itemData.matter_id}</td>
+                <td>{this.props.itemData.sn}</td>
+                <td>{this.props.itemData.community_name}</td>
                 <td>{this.props.itemData.matter_name}</td>
             </tr>;
         }
@@ -464,8 +470,8 @@ namespace Matter {
                                         <div className="table-filter">
                                             <div className="form-inline">
                                                 <div className="form-group">
-                                                    <label className="sr-only">搜尋社區</label> { }
-                                                    <input type="text" className="form-control form-control-sm" onChange={this.changeGDValue.bind(this, 'keyword') } value={this.state.searchData.keyword} placeholder="社區名稱" /> { }
+                                                    <label className="sr-only">搜尋物件</label> { }
+                                                    <input type="text" className="form-control form-control-sm" onChange={this.changeGDValue.bind(this, 'keyword') } value={this.state.searchData.keyword} placeholder="物件名稱" /> { }
                                                     <button className="btn btn-primary btn-sm" type="submit"><i className="fa-search"></i> 搜尋</button>
                                                 </div>
                                             </div>
@@ -474,15 +480,31 @@ namespace Matter {
                                     <table className="table table-sm table-bordered table-striped">
                                         <thead>
                                             <tr>
-                                                <th style={{ "width": "7%" }} className="text-xs-center">刪除</th>
-                                                <th style={{ "width": "7%" }} className="text-xs-center">修改</th>
-                                                <th style={{ "width": "26%" }}><OrderButton
-                                                    title="編號"
-                                                    field={'community_id'}
-                                                    now_field={this.state.gridData.field}
-                                                    sort={this.state.gridData.sort}
-                                                    setSort={this.setSort}/></th>
-                                                <th style={{ "width": "60%" }}>社區名稱</th>
+                                                <th className="text-xs-center">刪除</th>
+                                                <th className="text-xs-center">修改</th>
+                                                <th>
+                                                    <OrderButton
+                                                        title="編號"
+                                                        field={'sn'}
+                                                        sort={this.state.gridData.sort}
+                                                        now_field={this.state.gridData.field}
+                                                        setSort={this.setSort} />
+                                                </th>
+                                                <th>
+                                                    <OrderButton
+                                                        title="社區名稱"
+                                                        field={'Community.community_name'}
+                                                        sort={this.state.gridData.sort}
+                                                        now_field={this.state.gridData.field}
+                                                        setSort={this.setSort} />
+                                                </th>
+                                                <th>
+                                                    <OrderButton
+                                                        title="物件名稱"
+                                                        field={'matter_name'}
+                                                        sort={this.state.gridData.sort}
+                                                        now_field={this.state.gridData.field}
+                                                        setSort={this.setSort} /></th>
                                             </tr>
                                         </thead>
                                         <tbody>

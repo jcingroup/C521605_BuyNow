@@ -32,8 +32,8 @@ namespace DotWeb.Api
             db0 = getDB0();
             var predicate = PredicateBuilder.True<Matter>();
 
-            if (q.name != null)
-                predicate = predicate.And(x => x.matter_name.Contains(q.name));
+            if (q.keyword != null)
+                predicate = predicate.And(x => x.matter_name.Contains(q.keyword));
 
             int page = (q.page == null ? 1 : (int)q.page);
             var result = db0.Matter.AsExpandable().Where(predicate);
@@ -55,8 +55,15 @@ namespace DotWeb.Api
 
             int startRecord = PageCount.PageInfo(page, defPageSize, resultCount);
             var resultItems = await
-                resultOrderItems.Skip(startRecord)
+                resultOrderItems
+                .Skip(startRecord)
                 .Take(defPageSize)
+                .Select(x => new {
+                    x.matter_id,
+                    x.matter_name,
+                    x.sn,
+                    x.Community.community_name
+                })
                 .ToListAsync();
 
             db0.Dispose();
@@ -252,7 +259,7 @@ namespace DotWeb.Api
         }
         public class queryParam : QueryBase
         {
-            public string name { set; get; }
+            public string keyword { set; get; }
 
         }
         public class delParam
