@@ -711,6 +711,7 @@
     <TypeScriptCompile Include="Scripts\src\tsx\m-change_password.tsx" />
     <TypeScriptCompile Include="Scripts\src\tsx\m-community-banner.tsx" />
     <TypeScriptCompile Include="Scripts\src\tsx\m-community-news.tsx" />
+    <TypeScriptCompile Include="Scripts\src\ts-comm\OrderButton.tsx" />
     <TypeScriptCompile Include="Scripts\src\tsx\w-neighbor-content.tsx" />
     <TypeScriptCompile Include="Scripts\src\tsx\w-sell-content.tsx" />
     <TypeScriptCompile Include="Scripts\src\tsx\w-neighbor-list.tsx" />

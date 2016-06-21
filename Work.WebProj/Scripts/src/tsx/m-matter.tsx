@@ -8,6 +8,7 @@ import CommCmpt = require('comm-cmpt');
 import CommFunc = require('comm-func');
 import dt = require('dt');
 import DatePicker = require('react-datepicker');
+import { OrderButton } from '../ts-comm/OrderButton';
 import "react-datepicker/dist/react-datepicker.css";
 
 namespace Matter {
@@ -28,58 +29,6 @@ namespace Matter {
         id: number | string //數字型用id 字串型用no
     }
     interface CallResult extends IResultBase, IDName { }
-
-
-    class OrderButton extends React.Component<{
-        title: string,
-        now_field: string,
-        field: string,
-        sort: string,
-        setSort(field: string, sort: string): void
-    }, { now_sort: string }> {
-
-        constructor() {
-            super();
-            this.componentDidMount = this.componentDidMount.bind(this);
-            this.setSort = this.setSort.bind(this);
-            this.state = {
-                now_sort: 'asc'
-            };
-        }
-
-        static defaultProps = {
-            sort: 'asc'
-        }
-
-        setSort() {
-
-            if (this.state.now_sort == 'asc') {
-                this.props.setSort(this.props.field, 'desc');
-                this.setState({ now_sort: 'desc' });
-            }
-
-            if (this.state.now_sort == 'desc') {
-                this.props.setSort(this.props.field, 'asc');
-                this.setState({ now_sort: 'asc' });
-            }
-        }
-
-        componentDidMount() {
-
-            if (this.props.sort != undefined && this.props.sort != null) {
-                this.setState({ now_sort: this.props.sort });
-            }
-        }
-
-        render() {
-
-            console.log('now_sort', this.state.now_sort);
-
-            return <button type="button" onClick={this.setSort} className="th-sort-toggle">{this.props.title}</button>;
-            {/* 預設(還沒按): className="th-sort-toggle"，遞增: className="th-sort-toggle asc"，遞減: className="th-sort-toggle desc" */ }
-            { /* 如果文字要置中，要另加 className="text-xs-center" */}
-        }
-    }
 
     class GridRow extends React.Component<BaseDefine.GridRowPropsBase2<Rows>, BaseDefine.GridRowStateBase> {
         constructor() {
