@@ -44,6 +44,12 @@
     overflow: hidden;
 }
 
+@mixin make-content($content: " ", $display: block, $position: absolute) {
+    content:$content;
+    display: $display;
+    position: $position;
+}
+
 
 // var Maps
 // -----------------------------------------------------------------

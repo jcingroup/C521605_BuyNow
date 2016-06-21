@@ -75,9 +75,9 @@ namespace Matter {
 
             console.log('now_sort', this.state.now_sort);
 
-            return <div>{this.props.title}
-                <button type="button" onClick={this.setSort}>Click</button>
-            </div>;
+            return <button type="button" onClick={this.setSort} className="th-sort-toggle">{this.props.title}</button>;
+            {/* 預設(還沒按): className="th-sort-toggle"，遞增: className="th-sort-toggle asc"，遞減: className="th-sort-toggle desc" */ }
+            { /* 如果文字要置中，要另加 className="text-xs-center" */}
         }
     }
 
@@ -504,7 +504,8 @@ namespace Matter {
                                                         field={'matter_name'}
                                                         sort={this.state.gridData.sort}
                                                         now_field={this.state.gridData.field}
-                                                        setSort={this.setSort} /></th>
+                                                        setSort={this.setSort} />
+                                                </th>
                                             </tr>
                                         </thead>
                                         <tbody>
