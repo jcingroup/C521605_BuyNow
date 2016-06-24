@@ -21,7 +21,7 @@ CKEDITOR.editorConfig = function (config) {
         { name: "paragraph", items: ["NumberedList", "BulletedList", "-", "Outdent", "Indent"] },
         // { name: "styles", items: ["Styles", "Format"] },
         { name: "styles", items: ["Styles"] },
-        { name: "links", items: ["Link", "Unlink", "Anchor"] },
+        { name: "links", items: ["Link", "Unlink", "Anchor"] },'/',
         { name: 'insert', items: ['Image', 'Youtube', 'Table', 'Smiley', 'Iframe'] },
         {
             name: "clipboard",
