@@ -16,7 +16,9 @@ $content-spacing:       30px !default;
 //
 
 html, body {height: 100%;}
-body {padding-top: $header-height;}
+body {
+    padding-top: $header-height;
+}
 
 a {
     @include transition(color 0.3s, background 0.3s);
@@ -55,11 +57,10 @@ a {
 // header
 // ----------------------------------------------------------------------
 #header {
-    
+    min-width: $wrapper-min-width;
 }
-.topNav {
-    
-}
+
+.topNav {}
 .logo {
     margin: 0;
 
@@ -251,13 +252,14 @@ a {
 }
 
 #content {
-    padding: $spacer $spacer*0.5;
+    padding: $spacer $spacer*0.5 0 $spacer*0.5;
 }
 
 
 // footer
 // ----------------------------------------------------------------------
 #footer {
+    min-width: $wrapper-min-width;
     margin-top: -$footer-height;
     padding-left: $sidebar-width;
 
