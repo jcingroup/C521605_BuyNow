@@ -5,6 +5,7 @@
 
 CKEDITOR.editorConfig = function (config) {
     // Define changes to default configuration here. For example:
+    config.skin = 'bootstrapck';
     config.height = 500;
     config.language = 'zh';
     // config.uiColor = '#AADC6E';
