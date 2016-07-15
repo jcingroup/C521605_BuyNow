@@ -144,7 +144,7 @@ namespace Login {
                             </div>*/}
                         </div>
                         <div className="form-group form-action text-xs-center">
-                            <button className="btn btn-sm btn-info" tabIndex={4} type="submit"><i className="fa-key"></i> 登錄</button>
+                            <button className="btn btn-sm btn-info" tabIndex={4} type="submit">登入 LOGIN</button>
                         </div>
                     </form>
                 </div>

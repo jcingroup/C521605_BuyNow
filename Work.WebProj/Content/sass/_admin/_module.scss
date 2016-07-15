@@ -166,8 +166,9 @@ input[type="file"] {
 .file-custom::after {content:attr(title)}
 
 
-// carousel
+// button group
 // ----------------------------------------------------------------------
+
 
 
 // pager
@@ -198,6 +199,36 @@ input[type="file"] {
 }
 
 
+// tabs
+// ----------------------------------------------------------------------
+.nav-tabs {
+  .nav-item {
+    .nav-link {
+      color: #999;
+      background: #f7f7f7;
+      border-color: $nav-tabs-border-color $nav-tabs-border-color transparent $nav-tabs-border-color;
+      @include hover-focus {
+        color: lighten($brand-primary,5%);
+        background: #fff;
+      }
+
+      &.active {
+        color: $gray;
+        background: #fff;
+        border-top: 2px solid $brand-primary;
+        box-shadow: 0 (-2px) 2px #ddd;
+      }
+    }
+  }
+}
+
+.tab-content {
+  padding: .7em;
+  border: 1px solid $nav-tabs-border-color;
+  border-top: 0;
+}
+
+
 // modal
 // ----------------------------------------------------------------------
 .modal-content {
@@ -210,14 +241,23 @@ input[type="file"] {
 }
 
 .modal-dialog {
-    @include media-breakpoint-up(md) {
-        width: 750px;
-    }
     @include media-breakpoint-down(sm) {
         width: auto;
         margin: 10px;
     }
 }
+
+// modal with pure css
+.no-jq {
+  &.modal, &.modal-backdrop {
+    &.in {display: block;}
+  }
+}
+.modal-backdrop.no-jq {
+  display: none;
+  opacity: $modal-backdrop-opacity;
+}
+
 
 
 // date-picker
@@ -230,4 +270,11 @@ input[type="file"] {
   right: 0;
   top: 50%;
   z-index: 100;
+}
+
+
+// tooltip
+// ----------------------------------------------------------------------
+[data-tip] {
+  @include hover-focus {cursor: pointer;}
 }
