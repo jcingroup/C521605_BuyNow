@@ -16,7 +16,9 @@ $content-spacing:       30px !default;
 //
 
 html, body {height: 100%;}
-body {padding-top: $header-height;}
+body {
+    padding-top: $header-height;
+}
 
 a {
     @include transition(color 0.3s, background 0.3s);
@@ -55,11 +57,10 @@ a {
 // header
 // ----------------------------------------------------------------------
 #header {
-    
+    min-width: $wrapper-min-width;
 }
-.topNav {
-    
-}
+
+.topNav {}
 .logo {
     margin: 0;
 
@@ -83,14 +84,6 @@ a {
 
     .nav-item {
         &:first-of-type .nav-link {background: hsla(0,0,100%,0.2);}
-        &:nth-of-type(2) .nav-link {
-            background: desaturate(darken($brand-warning,10%),10%);
-            @include hover-focus {background: darken(desaturate(darken($brand-warning,10%),10%),5%)}
-        }
-        &:last-of-type .nav-link {
-            background: $brand-success;
-            @include hover-focus {background: darken($brand-success,10%)}
-        }
     }
 }
 
@@ -111,20 +104,14 @@ a {
     position: fixed;
     left: 0;
     bottom: 0;
-    top: 94px;
+    top: 48px;
     background: #F2F2F2;
     border-right: 1px solid #ccc;
     z-index: 700;
-    overflow-x: hidden;
-    overflow-y: auto;
 
     .h3 {
         width: $sidebar-width;
         height: 46px;
-        position: fixed;
-        left: 0;
-        top: 48px;
-        z-index: 800;
         margin: 0;
         padding: 0 10px;
         line-height: 43px;
@@ -139,7 +126,9 @@ a {
 }
 
 #menu {
+    height: calc(100vh - 94px);
     font-size: em(15px);
+    overflow-y: auto;
 
     @include hover-focus {color: $link-color;}
 
@@ -251,13 +240,14 @@ a {
 }
 
 #content {
-    padding: $spacer $spacer*0.5;
+    padding: $spacer $spacer*0.5 0 $spacer*0.5;
 }
 
 
 // footer
 // ----------------------------------------------------------------------
 #footer {
+    min-width: $wrapper-min-width;
     margin-top: -$footer-height;
     padding-left: $sidebar-width;
 

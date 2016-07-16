@@ -344,8 +344,8 @@ namespace Roles {
                     required />
                 </div>
             </div>
-            <div className="form-group row form-action">
-                <div className="col-xs-8 col-xs-offset-1">
+            <div className="form-action">
+                <div className="col-xs-offset-1">
                     <button type="submit" className="btn btn-sm btn-primary"><i className="fa-check"></i> 儲存</button> { }
                     <button type="button" onClick={this.noneType} className="btn btn-sm btn-secondary"><i className="fa-times"></i> 回前頁</button>
                 </div>

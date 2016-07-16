@@ -119,11 +119,9 @@ namespace Login {
                         </div>
                         <div className="form-group">
                             <label>驗證碼 Code</label>
-                            <div className="row">
-                                <div className="col-xs-12">
-                                    <div id="Validate"></div>
-                                </div>
-                                {/*<div className="col-xs-3">
+                            <div id="Validate"></div>
+                            {/*<div className="row">
+                                <div className="col-xs-3">
                                     <img alt="驗證碼" src={this.state.validateUrl} />
                                 </div>
                                 <div className="col-xs-5">
@@ -142,11 +140,11 @@ namespace Login {
                                         onClick={this.reLoadValidateUrl}>
                                         <i className="fa-refresh"></i> 重取
                                     </button>
-                                </div>*/}
-                            </div>
+                                </div>
+                            </div>*/}
                         </div>
                         <div className="form-group form-action text-xs-center">
-                            <button className="btn btn-sm btn-info" tabIndex={4} type="submit"><i className="fa-key"></i> 登錄</button>
+                            <button className="btn btn-sm btn-info" tabIndex={4} type="submit">登入 LOGIN</button>
                         </div>
                     </form>
                 </div>

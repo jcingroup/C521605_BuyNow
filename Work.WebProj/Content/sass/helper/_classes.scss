@@ -4,8 +4,7 @@
 //
 // Background
 //
-.bg {background: #F5F5F5 url(#{$img-path}/bg.jpg) repeat-x left bottom;}
-.bg2 { background: #767D80 url(#{$img-path}/bg2.jpg) repeat-y center top; }
+
 
 
 //
@@ -56,8 +55,15 @@
 //
 
 // Alignment
-
 .text-middle { vertical-align:middle !important; }
+
+// Color
+@include text-emphasis-variant('.text-secondary', $brand-secondary);
+
+
+// Size
+.text-sm {font-size: $font-size-sm !important;}
+.text-lg {font-size: $font-size-lg !important;}
 
 
 

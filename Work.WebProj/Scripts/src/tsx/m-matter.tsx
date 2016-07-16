@@ -1087,8 +1087,8 @@ namespace Matter {
                                     <small className="text-muted">例如: 洗衣機、冰箱、電視、冷氣、熱水器、網路、第四台</small>
                                 </div>
                             </div>
-                            <div className="form-group row form-action">
-                                <div className="col-xs-4 col-xs-offset-2">
+                            <div className="form-action">
+                                <div className="col-xs-offset-2">
                                     <button type="submit" className="btn btn-sm btn-primary"><i className="fa-check"></i> 儲存</button> { }
                                     <button type="button" className="btn btn-sm btn-secondary" onClick={this.noneType}><i className="fa-times"></i> 回前頁</button>
                                 </div>

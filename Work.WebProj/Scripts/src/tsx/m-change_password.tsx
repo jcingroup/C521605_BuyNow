@@ -109,8 +109,8 @@ namespace ChangePasswrod {
                             </div>
 
 
-            <div className="form-group row form-action">
-                <div className="col-xs-10 col-xs-offset-2">
+            <div className="form-action">
+                <div className="col-xs-offset-2">
                     <button type="submit" className="btn btn-sm btn-primary"><i className="fa-check"></i> 儲存</button>
                     </div>
                 </div>

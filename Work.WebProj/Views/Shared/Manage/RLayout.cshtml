@@ -25,6 +25,7 @@
     <script src="~/Scripts/build/app/vendors.js?v=@CommWebSetup.CacheVer"></script>
     <script type="text/javascript">
         var gb_approot = '@Url.Content("~")';
+        var gb_lang = '@ViewBag.lang';
         var gb_area = '@get_now_area';
         var gb_controller = '@get_now_controller';
         var gb_action = '@get_now_action';
@@ -53,12 +54,12 @@
                             }
                         </span>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item bg-warning">
                         <a href="~/index" class="nav-link">
                             <i class="fa-home"></i> @Resources.Res.Button_ReturnIndex
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item bg-success">
                         <a href="~/Login/Logout" class="nav-link">
                             <i class="fa-power-off"></i> @Resources.Res.Button_Logout
                         </a>
@@ -66,7 +67,6 @@
                 </ul>
             </header><!-- header //-->
         }
-
         <main id="main">
 
             @if (ViewBag.IsFirstPage) {
@@ -74,10 +74,6 @@
             }
             else {
                 <div id="content">
-                    <ul class="breadcrumb">
-                        @* <li><a href=""><i class="fa fa-home"></i> @Resources.Res.System_Name</a></li> *@
-                        @RenderSection("breadCrumb", required: false)
-                    </ul>
                     @RenderBody()
                     <div id="page_content"></div>
                 </div><!-- content //-->

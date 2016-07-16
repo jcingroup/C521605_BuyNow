@@ -1,4 +1,4 @@
-@charset "UTF-8";
+﻿@charset "UTF-8";
 
 // var
 // ------------------------------------------------------------
@@ -65,6 +65,7 @@
 
 @import "_admin/element";
 @import "_admin/module";
+@import "_admin/classes";
 @import "_admin/layout";
 
 
@@ -95,14 +96,13 @@
 
 		.name {
 			margin-right: $spacer*0.5;
-			color: #D9534F;
 		}
 	}
 
 	.copyright {
 		margin-bottom: $spacer*1.5;
 		font-size: em(18px);
-		color: $brand-primary;
+		color: lighten($brand-primary,30%);
 	}
 
 	.login-box {
@@ -110,7 +110,7 @@
 		margin: 0 auto;
 		text-align: left;
 		background: #f7f7f7;
-		border: 1px solid #AEB3B8;
+		border: 1px solid #ccc;
 		box-shadow: 0 0 10px #ccc;
 
 		.h3 {
@@ -128,7 +128,7 @@
 		.form-action {
 			margin-bottom: 0;
 			padding: $spacer*0.7 $spacer;
-			background: $brand-primary;
+            background: $brand-primary;
 		}
 	}
 }
@@ -181,6 +181,10 @@
 	padding: $spacer 0;
 	background: hsla(0,0,0,0.05);
 	border-top: 1px solid hsla(0,0,0,0.1);
+
+	&.modal-footer {
+	  padding: $spacer $modal-inner-padding;
+	}
 }
 
 // tooltip btn
