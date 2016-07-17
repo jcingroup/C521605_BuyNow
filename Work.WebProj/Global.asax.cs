@@ -21,9 +21,13 @@ namespace DotWeb.AppStart
             GlobalConfiguration.Configuration.Formatters.XmlFormatter.SupportedMediaTypes.Clear();
 
             //DisplayModeProvider.Instance.Modes.Insert(0, new DefaultDisplayMode("zh-TW")
-            //{
+            //{ //使用狀況條件為 Cookies值 或 QueryString["lang"]
             //    ContextCondition = (C =>
-            //    (C.Request.Cookies[VarCookie + ".Lang"] != null && C.Request.Cookies[VarCookie + ".Lang"].Value.Contains("zh-TW")) ||
+            //    (
+            //    C.Request.Cookies[VarCookie + ".Lang"] != null &&
+            //    C.Request.Cookies[VarCookie + ".Lang"].Value.Contains("zh-TW") &&
+            //    string.IsNullOrEmpty(C.Request.QueryString["lang"])
+            //    ) ||
             //    C.Request.QueryString["lang"] == "zh-TW"
             //    )
             //});
