@@ -98,7 +98,7 @@ namespace ProcCore.Business.LogicConect
         public LogicCenter() { }
         public LogicCenter(string db0_configstring)
         {
-            db0_connectionstring = LogicCenter.GetDB0EntityString(db0_configstring);
+            db0_connectionstring = GetDB0EntityString(db0_configstring);
         }
 
         public static C51A0_BuyNowEntities getDB0

@@ -3,6 +3,7 @@ using DotWeb.Controller;
 using ProcCore.Business.DB0;
 using System.Collections.Generic;
 using System.Linq;
+using Dapper;
 
 namespace DotWeb.Controllers
 {
@@ -10,6 +11,15 @@ namespace DotWeb.Controllers
     {
         public ActionResult Index()
         {
+            //var conn = getDb0Connection();
+            //conn.Open();
+
+            //var sql = "select * from Matter where sn=@p0";
+            //var items = conn.Query<Matter>(sql, new { p0 = "SN001" });
+            //conn.Close();
+
+            //var json = defJSON(items);
+
             return View("Index");
         }
         public RedirectResult Login()

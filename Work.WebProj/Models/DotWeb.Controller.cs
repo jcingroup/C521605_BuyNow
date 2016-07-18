@@ -14,6 +14,7 @@ using ProcCore.WebCore;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
@@ -66,6 +67,12 @@ namespace DotWeb.Controller
         {
             LogicCenter.SetDB0EntityString(CommSetup.CommWebSetup.DB0_CodeString);
             return LogicCenter.getDB0;
+        }
+        protected static SqlConnection getDb0Connection()
+        {
+            string connectionstring = LogicCenter.GetDB0ConnectionString(CommWebSetup.DB0_CodeString); //取得連線字串
+            SqlConnection connection = new SqlConnection(connectionstring);
+            return connection;
         }
     }
     [Authorize]

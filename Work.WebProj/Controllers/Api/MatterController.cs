@@ -11,6 +11,7 @@ using LinqKit;
 using System.Data.Entity.Validation;
 using System.Data.Entity.Infrastructure;
 using System.Linq.Dynamic;
+using Dapper;
 
 namespace DotWeb.Api
 {
@@ -27,6 +28,7 @@ namespace DotWeb.Api
         }
         public async Task<IHttpActionResult> Get([FromUri]queryParam q)
         {
+
             #region 連接BusinessLogicLibary資料庫並取得資料
 
             db0 = getDB0();
@@ -58,7 +60,8 @@ namespace DotWeb.Api
                 resultOrderItems
                 .Skip(startRecord)
                 .Take(defPageSize)
-                .Select(x => new {
+                .Select(x => new
+                {
                     x.matter_id,
                     x.matter_name,
                     x.sn,

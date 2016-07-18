@@ -11,6 +11,7 @@ using ProcCore.HandleResult;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Validation;
+using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
@@ -76,9 +77,17 @@ namespace DotWeb.Api
         }
         protected static C51A0_BuyNowEntities getDB0()
         {
-            LogicCenter.SetDB0EntityString(CommSetup.CommWebSetup.DB0_CodeString);
+            LogicCenter.SetDB0EntityString(CommWebSetup.DB0_CodeString); //取得連線字串
             return LogicCenter.getDB0;
         }
+
+        protected static SqlConnection getDb0Connection()
+        {
+            string connectionstring = LogicCenter.GetDB0ConnectionString(CommWebSetup.DB0_CodeString); //取得連線字串
+            SqlConnection connection = new SqlConnection(connectionstring);
+            return connection;
+        }
+
         protected string ModelStateErrorPack()
         {
             List<string> errMessage = new List<string>();
