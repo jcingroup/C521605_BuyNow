@@ -6087,9 +6087,10 @@ a.bg-danger:focus, a.bg-danger:hover {
 }
 
 .c-indicator {
-  margin-top: 0.2rem;
-  background: #fafafa;
+  background-size: 75%;
+  background-color: #fafafa;
   border: 1px solid #c8c8c8;
+  box-sizing: content-box;
 }
 .c-checkbox .c-indicator {
   border-radius: 0;
@@ -6214,6 +6215,15 @@ input[type="file"] {
 
 [data-tip]:focus, [data-tip]:hover {
   cursor: pointer;
+}
+
+.draggable {
+  cursor: move;
+}
+
+.ghost, .sortable-ghost {
+  border: 3px dashed #777;
+  opacity: 0.4;
 }
 
 .bg-primary-light {
