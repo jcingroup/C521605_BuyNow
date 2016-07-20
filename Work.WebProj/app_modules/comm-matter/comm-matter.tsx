@@ -151,7 +151,7 @@ export class MatterList extends React.Component<MatterListProps, MatterListState
                 <div className="form-group">
                     <label className="sr-only" htmlFor="">縣市</label>
                     <div className="btn-group">
-                        <button aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" className="btn btn-secondary style2 dropdown-toggle" type="button">縣市<i className="ti-angle-down" /></button>
+                        <button aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" className="btn btn-secondary style2 dropdown-toggle" type="button">縣市<i className="icon-angle-down" /></button>
                         <div className="dropdown-menu city">
                             <div className="row">
                                 <label className="col-xs-2 form-control-label text-xs-right" htmlFor="">北部</label>
@@ -176,7 +176,7 @@ export class MatterList extends React.Component<MatterListProps, MatterListState
                 <div className="form-group">
                     <label className="sr-only" htmlFor="">總價</label>
                     <div className="btn-group">
-                        <button aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" className="btn btn-secondary style2 dropdown-toggle" type="button">總價<i className="ti-angle-down" /></button>
+                        <button aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" className="btn btn-secondary style2 dropdown-toggle" type="button">總價<i className="icon-angle-down" /></button>
                         <div className="dropdown-menu price form-inline p-t-1">
                             <div className="input-group">
                                 <select className="form-control form-control-sm" id="price_bottom">
@@ -204,7 +204,7 @@ export class MatterList extends React.Component<MatterListProps, MatterListState
                 <div className="form-group">
                     <label className="sr-only" htmlFor="">坪數</label>
                     <div className="btn-group">
-                        <button data-toggle="dropdown" className="btn btn-secondary style2 dropdown-toggle" type="button">坪數<i className="ti-angle-down" /></button>
+                        <button data-toggle="dropdown" className="btn btn-secondary style2 dropdown-toggle" type="button">坪數<i className="icon-angle-down" /></button>
                         <div className="dropdown-menu size form-inline">
                             <label htmlFor="">計算方式：</label>
                             <select className="form-control form-control-sm" id="footageType">
@@ -339,7 +339,7 @@ export class MatterList extends React.Component<MatterListProps, MatterListState
                                                 </section>
                                                 <a className="more btn btn-secondary" href={link_content + item.matter_id}>
                                                     看更多
-                                                    <i className="ti-angle-right" />
+                                                    <i className="icon-angle-right" />
                                                 </a>
                                             </div>
                                         </article>
@@ -380,7 +380,7 @@ export class MatterList extends React.Component<MatterListProps, MatterListState
                                                 </section>
                                                 <a href={link_content + item.matter_id} className="more btn btn-secondary">
                                                     看更多
-                                                    <i className="ti-angle-right"></i>
+                                                    <i className="icon-angle-right"></i>
                                                 </a>
                                             </div>
                                         </article>

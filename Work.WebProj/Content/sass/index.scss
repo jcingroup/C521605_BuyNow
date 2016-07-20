@@ -144,11 +144,9 @@ $img-path2:             '../images/Index';
 }
 
 .grid-house {
-	@extend .row;
 	margin-bottom: $spacer*4.375;
 
 	.sell, .rent {
-		@extend .col-xs-6;
 		margin-top: -188px;
 
 		.h3 {
@@ -210,38 +208,43 @@ $img-path2:             '../images/Index';
 	.rent a {background:url(#{$img-path2}/rent.jpg) no-repeat center center;}
 }
 
-.grid-contact {
+.grid-about {
 
-	.map {
-		height: 380px;
-		position: relative;
+	.more {
+		display: block;
+		width: 270px;
+		padding: $spacer/2 $spacer;
+		text-align: center;
+		color: #fff;
+		letter-spacing: 0.05em;
+		background: $brand-secondary;
+		border-radius: $spacer/2;
+		[class*="icon-"] {
+			font-size: em(10px);
+			color: darken($brand-secondary,15%);
+		}
+		&:hover {background: darken($brand-secondary,5%);}
 	}
 
-	#map {
-		width: 100%;
-		height: 100%;
-	}
-
-	ul {
-		width: 370px;
-		margin: 0;
-		padding: 0 25px;
-		position: absolute;
-		right: 0;
-		bottom: 0;
-		background: hsla(46, 41%, 75%, 0.9);
+	.h3 {
+		padding-bottom: 10px;
+		letter-spacing: 0.03em;
 	}
 
 	li {
-		padding: 15px 0;
+		margin-bottom: 10px;
+		padding-bottom: 10px;
 		font-size: em(20px);
 		color: #634F28;
 
 		&:not(:last-child) {
-			border-bottom: 1px dotted #fff;
+			border-bottom: 1px dotted hsla(0,0,0,0.2);
 		}
 
-		[class*="icon-"] {margin-right: $spacer*0.6;}
+		[class*="icon-"] {
+			margin-right: $spacer*0.6;
+			color: #8C6231;
+		}
 
 		a {
 			color: #634F28;

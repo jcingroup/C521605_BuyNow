@@ -1,10 +1,10 @@
 @font-face {
     font-family: 'icomoon';
-    src:    url('../../font/icomoon/icomoon.eot?ffi8tn');
-    src:    url('../../font/icomoon/icomoon.eot?ffi8tn#iefix') format('embedded-opentype'),
-        url('../../font/icomoon/icomoon.ttf?ffi8tn') format('truetype'),
-        url('../../font/icomoon/icomoon.woff?ffi8tn') format('woff'),
-        url('../../font/icomoon/icomoon.svg?ffi8tn#icomoon') format('svg');
+    src:    url('../../font/icomoon/icomoon.eot?1r3u9y');
+    src:    url('../../font/icomoon/icomoon.eot?1r3u9y#iefix') format('embedded-opentype'),
+        url('../../font/icomoon/icomoon.ttf?1r3u9y') format('truetype'),
+        url('../../font/icomoon/icomoon.woff?1r3u9y') format('woff'),
+        url('../../font/icomoon/icomoon.svg?1r3u9y#icomoon') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -24,56 +24,56 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-reading:before {
-    content: "\e90f";
-}
-.icon-view:before {
-    content: "\e910";
-}
-.icon-angle:before {
-    content: "\e90e";
-}
-.icon-building:before {
+.icon-angle-double-right:before {
     content: "\e900";
 }
-.icon-cart:before {
+.icon-angle-double-up:before {
     content: "\e901";
 }
-.icon-cooperate:before {
+.icon-angle-right:before {
     content: "\e902";
 }
-.icon-diamond:before {
+.icon-building:before {
     content: "\e903";
 }
-.icon-fb:before {
+.icon-cart:before {
     content: "\e904";
 }
-.icon-gplus:before {
+.icon-diamond:before {
     content: "\e905";
 }
-.icon-home:before {
+.icon-fax:before {
     content: "\e906";
 }
-.icon-house:before {
+.icon-fb:before {
     content: "\e907";
 }
-.icon-joinus:before {
+.icon-form:before {
     content: "\e908";
 }
-.icon-mail:before {
+.icon-gplus:before {
     content: "\e909";
 }
-.icon-members:before {
+.icon-home:before {
     content: "\e90a";
 }
-.icon-money:before {
+.icon-house:before {
     content: "\e90c";
 }
-.icon-vip:before {
+.icon-joinus:before {
     content: "\e90d";
 }
-.icon-book:before {
-    content: "\e911";
+.icon-mail:before {
+    content: "\e90e";
+}
+.icon-members:before {
+    content: "\e90f";
+}
+.icon-money:before {
+    content: "\e910";
+}
+.icon-sale:before {
+    content: "\e912";
 }
 .icon-phone:before {
     content: "\e90b";
