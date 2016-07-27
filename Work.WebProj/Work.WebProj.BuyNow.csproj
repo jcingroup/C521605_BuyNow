@@ -343,6 +343,8 @@
     <Content Include="Content\css\index.css" />
     <Content Include="Content\css\page.css" />
     <Content Include="Content\css\popup.css" />
+    <Content Include="Content\css\react-datepicker.css" />
+    <Content Include="Content\css\react-datepicker.min.css" />
     <Content Include="Content\css\sys.css" />
     <Content Include="Content\css\vendor\animate.css" />
     <Content Include="Content\css\vendor\bootstrap-datetimepicker-build.css" />
@@ -749,9 +751,17 @@
     <TypeScriptCompile Include="Scripts\typings\moment\moment-node.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\moment\moment.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\react-bootstrap\react-bootstrap.d.ts" />
-    <TypeScriptCompile Include="Scripts\typings\react-dom\react-dom.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\react-lazyload.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\react\react-addons-create-fragment.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\react\react-addons-css-transition-group.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\react\react-addons-linked-state-mixin.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\react\react-addons-perf.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\react\react-addons-pure-render-mixin.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\react\react-addons-shallow-compare.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\react\react-addons-test-utils.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\react\react-addons-transition-group.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\react\react-addons-update.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\react\react-dom.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\react\react-global.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\react\react-mixin.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\react\react.d.ts" />

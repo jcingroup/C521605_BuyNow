@@ -243,15 +243,19 @@ export class MasterImageUpload extends React.Component<FileUpProps, FileUpState>
         }
     }
     componentDidUpdate(prevProps, prevState) {
-
+        console.log(this.props.MainId, prevProps.MainId)
         if (this.props.ParentEditType == IEditType.update) {
             if (typeof this.props.MainId === 'string') {
+
                 if (this.props.MainId != null && prevProps.MainId == null) {
+
                     this.createFileUpLoadObject();
                     this.getFileList();
                 }
             } else if (typeof this.props.MainId === 'number') {
+
                 if (this.props.MainId > 0 && prevProps.MainId == 0) {
+
                     this.createFileUpLoadObject();
                     this.getFileList();
                 }
@@ -375,7 +379,7 @@ export class MasterImageUpload extends React.Component<FileUpProps, FileUpState>
             let _this = this;
 
             let options = {
-                draggable: "span",
+                draggable: "li",
                 group: "shared",
                 onSort: function (evt) {
 
