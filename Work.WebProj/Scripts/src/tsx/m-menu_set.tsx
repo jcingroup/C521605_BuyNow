@@ -115,7 +115,7 @@ namespace MenuSet {
                     //載入下拉是選單內容
                 }.bind(this))
                 .fail(function (jqXHR, textStatus, errorThrown) {
-                    showAjaxError(errorThrown);
+                    CommFunc.showAjaxError(errorThrown);
                 });
         }
         gridData(page: number) {

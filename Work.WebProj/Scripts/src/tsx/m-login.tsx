@@ -83,7 +83,7 @@ namespace Login {
                 })
                 .fail((jqXHR, textStatus, errorThrown) => {
                     $("body").unmask();
-                    showAjaxError(errorThrown);
+                    CommFunc.showAjaxError(errorThrown);
                 }
 
                 );

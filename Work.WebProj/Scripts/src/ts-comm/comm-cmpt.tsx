@@ -1,6 +1,6 @@
 ﻿import React = require('react');
 import ReactDOM = require('react-dom');
-import CommFunc = require('comm-func');
+import { jqGet, jqPost, showAjaxError, MntV, tosMessage, formatFileSize, uniqid } from 'comm-func';
 import ReactBootstrap = require('react-bootstrap');
 import Moment = require('moment');
 import Sortable = require('sortablejs');
@@ -271,7 +271,7 @@ export class MasterImageUpload extends React.Component<FileUpProps, FileUpState>
     }
 
     deleteFile(guid) {
-        CommFunc.jqPost(this.props.url_delete, {
+        jqPost(this.props.url_delete, {
             id: this.props.MainId,
             fileKind: this.props.FileKind,
             guid: guid
@@ -284,7 +284,7 @@ export class MasterImageUpload extends React.Component<FileUpProps, FileUpState>
                 }
             }.bind(this))
             .fail(function (jqXHR, textStatus, errorThrown) {
-                CommFunc.showAjaxError(errorThrown);
+                showAjaxError(errorThrown);
             });
     }
     createFileUpLoadObject() {
@@ -356,7 +356,7 @@ export class MasterImageUpload extends React.Component<FileUpProps, FileUpState>
     }
 
     getFileList() {
-        CommFunc.jqPost(this.props.url_list, {
+        jqPost(this.props.url_list, {
             id: this.props.MainId,
             fileKind: this.props.FileKind
         })
@@ -368,7 +368,7 @@ export class MasterImageUpload extends React.Component<FileUpProps, FileUpState>
                 }
             }.bind(this))
             .fail(function (jqXHR, textStatus, errorThrown) {
-                CommFunc.showAjaxError(errorThrown);
+                showAjaxError(errorThrown);
             });
     }
 
@@ -393,7 +393,7 @@ export class MasterImageUpload extends React.Component<FileUpProps, FileUpState>
                         parms.push(item.guid);
                     }
 
-                    CommFunc.jqPost(_this.props.url_sort, {
+                    jqPost(_this.props.url_sort, {
                         id: _this.props.MainId,
                         fileKind: _this.props.FileKind,
                         guids: parms
@@ -408,7 +408,7 @@ export class MasterImageUpload extends React.Component<FileUpProps, FileUpState>
                             }
                         })
                         .fail(function (jqXHR, textStatus, errorThrown) {
-                            CommFunc.showAjaxError(errorThrown);
+                            showAjaxError(errorThrown);
                         });
                 },
                 onEnd: function (evt) {
@@ -451,7 +451,7 @@ export class MasterImageUpload extends React.Component<FileUpProps, FileUpState>
                                         className="close"
                                         onClick={this.deleteFile.bind(this, itemData.guid) }
                                         title="刪除圖片"> &times; </button>
-                                    <img src={itemData.iconPath} title={CommFunc.formatFileSize(itemData.size) } />
+                                    <img src={itemData.iconPath} title={formatFileSize(itemData.size) } />
                                 </li>;
                             return subOutHtml;
                         }.bind(this))
@@ -511,7 +511,7 @@ export class MasterFileUpload extends React.Component<FileUpProps, any>{
         }
     }
     deleteFile(filename) {
-        CommFunc.jqPost(this.props.url_delete, {
+        jqPost(this.props.url_delete, {
             id: this.props.MainId,
             fileKind: this.props.FileKind,
             filename: filename
@@ -524,7 +524,7 @@ export class MasterFileUpload extends React.Component<FileUpProps, any>{
                 }
             }.bind(this))
             .fail(function (jqXHR, textStatus, errorThrown) {
-                CommFunc.showAjaxError(errorThrown);
+                showAjaxError(errorThrown);
             });
     }
     downloadFile(id, filekind, filename) {
@@ -532,7 +532,7 @@ export class MasterFileUpload extends React.Component<FileUpProps, any>{
         parms.push('id=' + id);
         parms.push('filekind=' + filekind);
         parms.push('filename=' + filename);
-        parms.push('tid=' + CommFunc.uniqid());
+        parms.push('tid=' + uniqid());
         var src = this.props.url_download + '?' + parms.join('&');
         this.setState({ download_src: src });
     }
@@ -604,7 +604,7 @@ export class MasterFileUpload extends React.Component<FileUpProps, any>{
         });
     }
     getFileList() {
-        CommFunc.jqPost(this.props.url_list, {
+        jqPost(this.props.url_list, {
             id: this.props.MainId,
             fileKind: this.props.FileKind
         })
@@ -616,7 +616,7 @@ export class MasterFileUpload extends React.Component<FileUpProps, any>{
                 }
             }.bind(this))
             .fail(function (jqXHR, textStatus, errorThrown) {
-                CommFunc.showAjaxError(errorThrown);
+                showAjaxError(errorThrown);
             });
     }
     render() {

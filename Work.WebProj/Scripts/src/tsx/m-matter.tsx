@@ -4,12 +4,12 @@ import ReactDOM = require('react-dom');
 import update = require('react-addons-update');
 import Moment = require('moment');
 import ReactBootstrap = require("react-bootstrap");
-import CommCmpt = require('comm-cmpt');
-import CommFunc = require('comm-func');
 import dt = require('dt');
 import DatePicker = require('react-datepicker');
 import { OrderButton } from '../ts-comm/OrderButton';
-import "react-datepicker/dist/react-datepicker.css";
+import { jqGet, jqPost, jqPut, jqDelete, showAjaxError, MntV, tosMessage } from '../ts-comm/comm-func';
+import { GridButtonModify, GridButtonDel, GridNavPage, GridCheckDel, MasterImageUpload, TwAddress} from '../ts-comm/comm-cmpt';
+import "../../../Content/css/react-datepicker.css";
 
 namespace Matter {
     interface Rows {
@@ -47,12 +47,12 @@ namespace Matter {
         render() {
             return <tr>
                 <td className="text-xs-center">
-                    <CommCmpt.GridButtonDel
+                    <GridButtonDel
                         removeItemSubmit={this.props.removeItemSubmit}
                         primKey={this.props.primKey} />
                 </td>
                 <td className="text-xs-center">
-                    <CommCmpt.GridButtonModify modify={this.modify}/>
+                    <GridButtonModify modify={this.modify}/>
                 </td>
                 <td>{this.props.itemData.sn}</td>
                 <td>{this.props.itemData.community_name}</td>
@@ -105,7 +105,7 @@ namespace Matter {
         }
         componentDidMount() {
             //init component data
-            CommFunc.jqGet(gb_approot + 'Api/GetAction/GetOptionsCommunity', {})
+            jqGet(gb_approot + 'Api/GetAction/GetOptionsCommunity', {})
                 .done((data: Array<server.Community>) => {
                     //console.log(data);
                     this.setState({ options_community: data });
@@ -131,7 +131,7 @@ namespace Matter {
             };
             $.extend(parms, this.state.searchData);
 
-            return CommFunc.jqGet(this.props.apiPath, parms);
+            return jqGet(this.props.apiPath, parms);
         }
 
         setSort(field, sort) {
@@ -143,16 +143,16 @@ namespace Matter {
             };
             $.extend(parms, this.state.searchData);
 
-            return CommFunc.jqGet(this.props.apiPath, parms)
+            return jqGet(this.props.apiPath, parms)
                 .done((data, textStatus, jqXHRdata) => {
                     if (data.records == 0) {
-                        CommFunc.tosMessage(null, '無任何資料', ToastrType.warning);
+                        tosMessage(null, '無任何資料', ToastrType.warning);
                     }
 
                     this.setState({ gridData: data });
                 })
                 .fail((jqXHR, textStatus, errorThrown) => {
-                    CommFunc.showAjaxError(errorThrown);
+                    showAjaxError(errorThrown);
                 });;
 
         }
@@ -161,12 +161,12 @@ namespace Matter {
             this.gridData(page)
                 .done((data, textStatus, jqXHRdata) => {
                     if (data.records == 0) {
-                        CommFunc.tosMessage(null, '無任何資料', ToastrType.warning);
+                        tosMessage(null, '無任何資料', ToastrType.warning);
                     }
                     this.setState({ gridData: data });
                 })
                 .fail((jqXHR, textStatus, errorThrown) => {
-                    CommFunc.showAjaxError(errorThrown);
+                    showAjaxError(errorThrown);
                 });
         }
         handleSubmit(e: React.FormEvent) {
@@ -174,17 +174,17 @@ namespace Matter {
 
             this.state.fieldData.context_life = CKEDITOR.instances['context_life'].getData();
             if (this.state.edit_type == 1) {
-                CommFunc.jqPost(this.props.apiPath, this.state.fieldData)
+                jqPost(this.props.apiPath, this.state.fieldData)
                     .done((data: CallResult, textStatus, jqXHRdata) => {
                         if (data.result) {
-                            CommFunc.tosMessage(null, '新增完成', 1);
+                            tosMessage(null, '新增完成', 1);
                             this.updateType(data.id);
                         } else {
                             alert(data.message);
                         }
                     })
                     .fail((jqXHR, textStatus, errorThrown) => {
-                        CommFunc.showAjaxError(errorThrown);
+                        showAjaxError(errorThrown);
                     });
             }
             else if (this.state.edit_type == 2) {
@@ -200,13 +200,13 @@ namespace Matter {
                         cache: false
                     }).done((data, textStatus, jqXHRdata) => {
                         if (data.result) {
-                            CommFunc.tosMessage(null, '修改完成', 1);
+                            tosMessage(null, '修改完成', 1);
                         } else {
                             alert(data.message);
                         }
                     })
                     .fail((jqXHR, textStatus, errorThrown) => {
-                        CommFunc.showAjaxError(errorThrown);
+                        showAjaxError(errorThrown);
                     });
             };
             return;
@@ -224,21 +224,21 @@ namespace Matter {
             }
 
             if (ids.length == 0) {
-                CommFunc.tosMessage(null, '未選擇刪除項', 2);
+                tosMessage(null, '未選擇刪除項', 2);
                 return;
             }
 
-            CommFunc.jqDelete(this.props.apiPath + '?' + ids.join('&'), {})
+            jqDelete(this.props.apiPath + '?' + ids.join('&'), {})
                 .done(function (data, textStatus, jqXHRdata) {
                     if (data.result) {
-                        CommFunc.tosMessage(null, '刪除完成', 1);
+                        tosMessage(null, '刪除完成', 1);
                         this.queryGridData(0);
                     } else {
                         alert(data.message);
                     }
                 }.bind(this))
                 .fail(function (jqXHR, textStatus, errorThrown) {
-                    CommFunc.showAjaxError(errorThrown);
+                    showAjaxError(errorThrown);
                 });
         }
         removeItemSubmit(primKey) {
@@ -246,17 +246,17 @@ namespace Matter {
                 return;
             }
 
-            CommFunc.jqDelete(this.props.apiPath, { id: primKey })
+            jqDelete(this.props.apiPath, { id: primKey })
                 .done(function (data, textStatus, jqXHRdata) {
                     if (data.result) {
-                        CommFunc.tosMessage(null, '刪除完成', 1);
+                        tosMessage(null, '刪除完成', 1);
                         this.queryGridData(0);
                     } else {
                         alert(data.message);
                     }
                 }.bind(this))
                 .fail(function (jqXHR, textStatus, errorThrown) {
-                    CommFunc.showAjaxError(errorThrown);
+                    showAjaxError(errorThrown);
                 });
         }
 
@@ -290,7 +290,7 @@ namespace Matter {
         }
         updateType(id: number | string) {
             var idPack: IDName = { id: id }
-            CommFunc.jqGet(this.props.apiPath, idPack)
+            jqGet(this.props.apiPath, idPack)
                 .done((data, textStatus, jqXHRdata) => {
                     this.setState({
                         edit_type: IEditType.update,
@@ -299,7 +299,7 @@ namespace Matter {
                     });
                 })
                 .fail((jqXHR, textStatus, errorThrown) => {
-                    CommFunc.showAjaxError(errorThrown);
+                    showAjaxError(errorThrown);
                 });
         }
         noneType() {
@@ -308,7 +308,7 @@ namespace Matter {
                     this.setState({ edit_type: IEditType.none, gridData: data, editPrimKey: null });
                 })
                 .fail((jqXHR, textStatus, errorThrown) => {
-                    CommFunc.showAjaxError(errorThrown);
+                    showAjaxError(errorThrown);
                 });
         }
         changeFDValue(name: string, e: React.SyntheticEvent) {
@@ -393,7 +393,7 @@ namespace Matter {
         render() {
 
             var outHtml: JSX.Element = null;
-            var GridNavPage = CommCmpt.GridNavPage;
+            //var GridNavPage = GridNavPage;
 
             if (this.state.edit_type == IEditType.none) {
                 var search = this.state.searchData;
@@ -488,8 +488,8 @@ namespace Matter {
             else if (this.state.edit_type == IEditType.insert || this.state.edit_type == IEditType.update) {
 
                 let field = this.state.fieldData;
-                let mnt_start_date = CommFunc.MntV(field.start_date);
-                let mnt_end_date = CommFunc.MntV(field.end_date);
+                let mnt_start_date = MntV(field.start_date);
+                let mnt_end_date = MntV(field.end_date);
                 let end_date_disabled: boolean = mnt_start_date == null ? true : false; //1、如啟始日期無值 結束日期不可填 2、另結束日期不可小於開始日期
 
                 let up_MatterList = null;
@@ -500,7 +500,7 @@ namespace Matter {
                     up_MatterList = <div className="form-group row">
                         <label className="col-xs-2 text-xs-right form-control-label">物件代表圖</label>
                         <div className="col-xs-8">
-                            <CommCmpt.MasterImageUpload FileKind="MatterList"
+                            <MasterImageUpload FileKind="MatterList"
                                 MainId={field.matter_id}
                                 ParentEditType={this.state.edit_type}
                                 url_upload={gb_approot + 'Active/Matter/axFUpload'}
@@ -514,7 +514,7 @@ namespace Matter {
                     up_MatterPhoto = <div className="form-group row">
                         <label className="col-xs-2 text-xs-right form-control-label">物件實景照片</label>
                         <div className="col-xs-8">
-                            <CommCmpt.MasterImageUpload FileKind="MatterPhoto"
+                            <MasterImageUpload FileKind="MatterPhoto"
                                 MainId={field.matter_id}
                                 ParentEditType={this.state.edit_type}
                                 url_upload={gb_approot + 'Active/Matter/axFUpload'}
@@ -528,7 +528,7 @@ namespace Matter {
                     up_MatterStyle = <div className="form-group row">
                         <label className="col-xs-2 text-xs-right form-control-label">格局圖</label>
                         <div className="col-xs-8">
-                            <CommCmpt.MasterImageUpload FileKind="MatterStyle"
+                            <MasterImageUpload FileKind="MatterStyle"
                                 MainId={field.matter_id}
                                 ParentEditType={this.state.edit_type}
                                 url_upload={gb_approot + 'Active/Matter/axFUpload'}
@@ -700,7 +700,7 @@ namespace Matter {
                             <div className="form-group row">
                                 <label className="col-xs-2 text-xs-right form-control-label">物件地址</label>
                                 <div className="col-xs-8">
-                                    <CommCmpt.TwAddress
+                                    <TwAddress
                                         identity="AD1"
                                         city_value={field.city}
                                         country_value={field.country}
