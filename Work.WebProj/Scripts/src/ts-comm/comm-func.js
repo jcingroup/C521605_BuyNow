@@ -1,7 +1,7 @@
 "use strict";
-var $ = require('jquery');
-var toastr = require('toastr');
-var Moment = require('moment');
+const $ = require('jquery');
+const toastr = require('toastr');
+const Moment = require('moment');
 function uniqid() {
     var newDate = new Date();
     return newDate.getTime();
@@ -40,7 +40,7 @@ function isValidJSONDate(value, userFormat) {
     return isDate(theDate, theFormat);
 }
 function moneyFormat(n) {
-    var s = n.toString();
+    let s = n.toString();
     return s.replace(/./g, function (c, i, a) {
         return i && c !== "." && ((a.length - i) % 3 === 0) ? ',' + c : c;
     });
@@ -283,7 +283,7 @@ exports.Ajax = {
         if (!this.xhr) {
             this.xhr = new XMLHttpRequest();
         }
-        var self = this.xhr;
+        let self = this.xhr;
         self.onreadystatechange = function () {
             if (self.readyState === 4 && self.status === 200) {
                 var response = JSON.parse(self.responseText);

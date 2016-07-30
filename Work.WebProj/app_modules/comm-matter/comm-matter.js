@@ -1,20 +1,14 @@
 "use strict";
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
-var jQuery = require('jquery');
-var Bootstrap = require('bootstrap');
+const jQuery = require('jquery');
+const Bootstrap = require('bootstrap');
 [jQuery, Bootstrap];
-var React = require('react');
-var DT = require('dt');
-var update = require('react-addons-update');
-var CommFunc = require('comm-func');
-var MatterList = (function (_super) {
-    __extends(MatterList, _super);
-    function MatterList() {
-        _super.call(this);
+const React = require('react');
+const DT = require('dt');
+const update = require('react-addons-update');
+const CommFunc = require('comm-func');
+class MatterList extends React.Component {
+    constructor() {
+        super();
         this.componentDidMount = this.componentDidMount.bind(this);
         this.componentDidUpdate = this.componentDidUpdate.bind(this);
         this.componentWillUnmount = this.componentWillUnmount.bind(this);
@@ -30,13 +24,13 @@ var MatterList = (function (_super) {
             loading: true
         };
     }
-    MatterList.prototype.componentDidMount = function () {
+    componentDidMount() {
         var _this = this;
         var params = { info_type: info_type };
         if (this.props.community_id != null)
             params['community_id'] = community_id;
         $.get(gb_approot + 'api/GetAction/SearchMatter', params)
-            .done(function (data, textStatus, jqXHRdata) {
+            .done((data, textStatus, jqXHRdata) => {
             _this.setState({ lists: data, loading: false });
             $("img.lazy").lazyload({ effect: "fadeIn" });
         });
@@ -61,14 +55,14 @@ var MatterList = (function (_super) {
         $('#footage_top').change(function (e) {
             _this.setSearchValue('footage_top', e);
         });
-    };
-    MatterList.prototype.componentDidUpdate = function (prevProps, prevState) {
-    };
-    MatterList.prototype.componentWillUnmount = function () {
-    };
-    MatterList.prototype.setSearchEventValue = function (name, e) {
-        var input = e.target;
-        var value;
+    }
+    componentDidUpdate(prevProps, prevState) {
+    }
+    componentWillUnmount() {
+    }
+    setSearchEventValue(name, e) {
+        let input = e.target;
+        let value;
         if (input.value == 'true') {
             value = true;
         }
@@ -79,40 +73,34 @@ var MatterList = (function (_super) {
             value = input.value;
         }
         var objForUpdate = {
-            search: (_a = {},
-                _a[name] = { $set: value },
-                _a
-            )
+            search: {
+                [name]: { $set: value }
+            }
         };
         var newState = update(this.state, objForUpdate);
         this.setState(newState);
-        var _a;
-    };
-    MatterList.prototype.setSearchValue = function (name, e) {
+    }
+    setSearchValue(name, e) {
         var target = $(e.target);
         var value = target.val();
         var objForUpdate = {
-            search: (_a = {},
-                _a[name] = { $set: value },
-                _a
-            )
+            search: {
+                [name]: { $set: value }
+            }
         };
         var newState = update(this.state, objForUpdate);
         this.setState(newState);
-        var _a;
-    };
-    MatterList.prototype.submitSearch = function (e) {
-        var _this = this;
+    }
+    submitSearch(e) {
         e.preventDefault();
         this.setState({ loading: true });
         $.get(gb_approot + 'api/GetAction/SearchMatter', this.state.search)
-            .done(function (data, textStatus, jqXHRdata) {
-            _this.setState({ lists: data, loading: false });
+            .done((data, textStatus, jqXHRdata) => {
+            this.setState({ lists: data, loading: false });
         });
         return;
-    };
-    MatterList.prototype.render = function () {
-        var _this = this;
+    }
+    render() {
         var outHtml = null;
         var ele_search_form = null;
         ele_search_form = React.createElement("div", {className: "filter"}, React.createElement("form", {className: "form-inline", onSubmit: this.submitSearch}, React.createElement("div", {className: "form-group"}, React.createElement("label", {className: "sr-only", htmlFor: ""}, "縣市"), React.createElement("div", {className: "btn-group"}, React.createElement("button", {"aria-expanded": "false", "aria-haspopup": "true", "data-toggle": "dropdown", className: "btn btn-secondary style2 dropdown-toggle", type: "button"}, "縣市", React.createElement("i", {className: "icon-angle-down"})), React.createElement("div", {className: "dropdown-menu city"}, React.createElement("div", {className: "row"}, React.createElement("label", {className: "col-xs-2 form-control-label text-xs-right", htmlFor: ""}, "北部"), React.createElement("div", {className: "col-xs-10 input-inline-group"}, DT.twDistrict.map(function (item, i) {
@@ -122,25 +110,24 @@ var MatterList = (function (_super) {
             outHtml = React.createElement("div", {className: "loading"}, React.createElement("div", {className: "loader", "data-loader": "circle-side"}), React.createElement("p", {className: "h4"}, "資料讀取中……"));
         }
         else {
-            outHtml = (React.createElement("div", {className: "wrap"}, ele_search_form, React.createElement("p", {className: "clearfix"}, React.createElement("span", {className: "result pull-xs-left"}, "共有", React.createElement("strong", {className: "text-danger"}, this.state.lists.length), "間房屋符合條件"), React.createElement("span", {className: "pull-xs-right form-inline"}, React.createElement("label", {htmlFor: ""}, "排序方式："), React.createElement("select", {className: "form-control form-control-sm"}, React.createElement("option", {value: true}, "預設排序"), React.createElement("option", {value: true}, "更新時間新 → 舊"), React.createElement("option", {value: true}, "總價低 → 高"), React.createElement("option", {value: true}, "總價高 → 低"), React.createElement("option", {value: true}, "坪數低 → 高"), React.createElement("option", {value: true}, "坪數高 → 低"), React.createElement("option", {value: true}, "屋齡低 → 高"), React.createElement("option", {value: true}, "屋齡高 → 低")))), React.createElement("ol", {className: "prolist row"}, this.state.lists.map(function (item, i) {
+            outHtml = (React.createElement("div", {className: "wrap"}, ele_search_form, React.createElement("p", {className: "clearfix"}, React.createElement("span", {className: "result pull-xs-left"}, "共有", React.createElement("strong", {className: "text-danger"}, this.state.lists.length), "間房屋符合條件"), React.createElement("span", {className: "pull-xs-right form-inline"}, React.createElement("label", {htmlFor: ""}, "排序方式："), React.createElement("select", {className: "form-control form-control-sm"}, React.createElement("option", {value: true}, "預設排序"), React.createElement("option", {value: true}, "更新時間新 → 舊"), React.createElement("option", {value: true}, "總價低 → 高"), React.createElement("option", {value: true}, "總價高 → 低"), React.createElement("option", {value: true}, "坪數低 → 高"), React.createElement("option", {value: true}, "坪數高 → 低"), React.createElement("option", {value: true}, "屋齡低 → 高"), React.createElement("option", {value: true}, "屋齡高 → 低")))), React.createElement("ol", {className: "prolist row"}, this.state.lists.map((item, i) => {
                 var out_html = null;
-                if (_this.props.info_type == 'S') {
-                    var link_content = _this.props.community_id == null ? gb_approot + 'Sell/Content?id=' : 'Sell_content?id=';
+                if (this.props.info_type == 'S') {
+                    var link_content = this.props.community_id == null ? gb_approot + 'Sell/Content?id=' : 'Sell_content?id=';
                     out_html = React.createElement("li", {className: "pro", key: item.matter_id}, React.createElement("article", {className: "card"}, React.createElement("a", {className: "card-img-top", href: link_content + item.matter_id}, React.createElement("img", {alt: item.matter_name, src: item.list_src})), React.createElement("div", {className: "card-block"}, React.createElement("h4", {className: "card-title"}, React.createElement("a", {href: link_content + item.matter_id}, item.matter_name)), React.createElement("section", {className: "card-text"}, React.createElement("h5", {className: "card-subtitle"}, item.title), React.createElement("ul", {className: "feature list-inline"}, React.createElement("li", null, item.city + item.country + item.address)), React.createElement("ul", {className: "info list-inline"}, React.createElement("li", null, item.build_area, " ", React.createElement("span", {className: "text-muted"}, "建坪")), React.createElement("li", null, (item.house_area + item.balcony_area).toFixed(2), " ", React.createElement("span", {className: "text-muted"}, "主+陽")), React.createElement("li", null, item.age, " ", React.createElement("span", {className: "text-muted"}, "年")), React.createElement("li", null, item.site_floor, "/", item.total_floor, " ", React.createElement("span", {className: "text-muted"}, "樓")), React.createElement("li", null, item.bedrooms, " ", React.createElement("span", {className: "text-muted"}, "房"), item.livingrooms, " ", React.createElement("span", {className: "text-muted"}, "廳"), item.bathrooms, " ", React.createElement("span", {className: "text-muted"}, "衛"), item.rooms, " ", React.createElement("span", {className: "text-muted"}, "室"))), React.createElement("span", {className: "price"}, React.createElement("strong", {className: "text-danger"}, item.price / 10000), "萬")), React.createElement("a", {className: "more btn btn-secondary", href: link_content + item.matter_id}, "看更多", React.createElement("i", {className: "icon-angle-right"})))));
                 }
-                if (_this.props.info_type == 'R') {
-                    var link_content = _this.props.community_id == null ? gb_approot + 'Rent/Content?id=' : 'Rent_content?id=';
+                if (this.props.info_type == 'R') {
+                    var link_content = this.props.community_id == null ? gb_approot + 'Rent/Content?id=' : 'Rent_content?id=';
                     out_html = React.createElement("li", {className: "pro"}, React.createElement("article", {className: "card"}, React.createElement("a", {className: "card-img-top", href: link_content + item.matter_id}, React.createElement("img", {alt: item.matter_name, src: item.list_src})), React.createElement("div", {className: "card-block"}, React.createElement("h4", {className: "card-title"}, React.createElement("a", {href: link_content + item.matter_id}, item.matter_name)), React.createElement("section", {className: "card-text"}, React.createElement("h5", {className: "card-subtitle"}, item.title), React.createElement("ul", {className: "feature list-inline"}, React.createElement("li", null, item.city + item.country + item.address)), React.createElement("ul", {className: "info list-inline"}, React.createElement("li", null, item.build_area, " ", React.createElement("span", {className: "text-muted"}, "坪")), React.createElement("li", null, item.site_floor, "/", item.total_floor, " ", React.createElement("span", {className: "text-muted"}, "樓")), React.createElement("li", null, item.bedrooms, " ", React.createElement("span", {className: "text-muted"}, "房"), item.livingrooms, " ", React.createElement("span", {className: "text-muted"}, "廳"), item.bathrooms, " ", React.createElement("span", {className: "text-muted"}, "衛"), item.rooms, " ", React.createElement("span", {className: "text-muted"}, "室"))), React.createElement("span", {className: "price"}, React.createElement("strong", {className: "text-danger"}, CommFunc.formatNumber(item.rentOfMonh)), "元/月")), React.createElement("a", {href: link_content + item.matter_id, className: "more btn btn-secondary"}, "看更多", React.createElement("i", {className: "icon-angle-right"})))));
                 }
                 return out_html;
             }))));
         }
         return outHtml;
-    };
-    MatterList.defaultProps = {
-        community_id: null,
-        info_type: null
-    };
-    return MatterList;
-}(React.Component));
+    }
+}
+MatterList.defaultProps = {
+    community_id: null,
+    info_type: null
+};
 exports.MatterList = MatterList;
