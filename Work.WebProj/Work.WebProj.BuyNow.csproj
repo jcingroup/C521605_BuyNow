@@ -239,6 +239,7 @@
     <Content Include="app_modules\ImgFileSort\c-ImgFileSort.jsx" />
     <Content Include="Areas\Active\Views\CommunityBanner\Main.cshtml" />
     <Content Include="app_modules\comm-matter\package.json" />
+    <Content Include="Areas\Active\Views\Community\Redux.cshtml" />
     <None Include="Areas\Base\Controllers\ReportChartController.cs" />
     <Compile Include="Areas\Base\Controllers\RolesController.cs" />
     <Compile Include="Areas\Base\Controllers\MenuController.cs" />
@@ -533,15 +534,12 @@
     <Content Include="Scripts\build\app\w_sell_list.js" />
     <Content Include="Scripts\GoogleAnalytics.js" />
     <Content Include="Scripts\googleReCAPTCHA.js" />
-    <Content Include="Scripts\src\xformat.html" />
-    <Content Include="Scripts\src\jsx-inc\c-Comm.jsx" />
     <Content Include="Views\Rent\Rent_content.cshtml" />
     <Content Include="Views\Rent\Rent_list.cshtml" />
     <Content Include="Views\Sell\Sell_content.cshtml" />
     <Content Include="Views\Sell\Sell_list.cshtml" />
     <Content Include="Views\Neighbor\Neighbor_list.cshtml" />
     <Content Include="Views\Neighbor\Neighbor_content.cshtml" />
-    <Content Include="Scripts\src\jsx\m-matter.jsx" />
     <Content Include="Views\Neighbor\Notice.cshtml" />
     <Content Include="Content\sass\popup.scss" />
     <Content Include="Views\Shared\Layout2.cshtml" />
@@ -603,12 +601,8 @@
     <Content Include="_Code\RPTExcel\Equipment.xls" />
     <Content Include="_Code\RPTExcel\Apply.xls" />
     <Content Include="_Code\RPTExcel\Month.xls" />
-    <Content Include="Scripts\src\jsx-inc\c-ImgFileSort.jsx" />
     <None Include="package.json" />
     <Content Include="_Code\Ashx\ValidateCodeB.ashx" />
-    <Content Include="Scripts\src\jsx\m-Users.jsx" />
-    <Content Include="Scripts\src\jsx\m-Roles.jsx" />
-    <Content Include="Scripts\src\xformat.jsx" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
@@ -650,6 +644,13 @@
     <TypeScriptCompile Include="app_modules\react-datepicker.d\react-datepicker.d.ts" />
     <TypeScriptCompile Include="app_modules\simple-ajax-uploader\SimpleAjaxUploader.def.ts" />
     <TypeScriptCompile Include="app_modules\funtest\fun.ts" />
+    <TypeScriptCompile Include="Scripts\src\community\actions\index.ts" />
+    <TypeScriptCompile Include="Scripts\src\community\components\SearchFormPart.tsx" />
+    <TypeScriptCompile Include="Scripts\src\community\components\GridFormPart.tsx" />
+    <TypeScriptCompile Include="Scripts\src\community\index.tsx" />
+    <TypeScriptCompile Include="Scripts\src\community\reducers\index.ts" />
+    <TypeScriptCompile Include="Scripts\src\community\reducers\search.ts" />
+    <TypeScriptCompile Include="Scripts\src\community\reducers\visibilityFilter.ts" />
     <TypeScriptCompile Include="Scripts\src\ts-comm\comm-cmpt.tsx" />
     <TypeScriptCompile Include="Scripts\src\ts-comm\comm-func.ts" />
     <TypeScriptCompile Include="Scripts\src\ts-comm\def-data.ts" />
@@ -714,6 +715,7 @@
     <TypeScriptCompile Include="Scripts\typings\sortablejs.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\swiper\swiper.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\toastr\toastr.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\tsd.d.ts" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -723,6 +725,7 @@
     <Folder Include="Areas\Active\Views\Shared\" />
     <Folder Include="Areas\Base\Views\Shared\" />
     <Folder Include="Properties\PublishProfiles\" />
+    <Folder Include="Scripts\src\community\containers\" />
     <Folder Include="_Code\CReport\" />
   </ItemGroup>
   <ItemGroup>

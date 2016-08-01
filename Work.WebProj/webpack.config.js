@@ -23,7 +23,9 @@ module.exports = {
         w_neighbor_content: path.resolve(__dirname, 'Scripts/src/tsx/w-neighbor-content.js'),
         m_community_banner: path.resolve(__dirname, 'Scripts/src/tsx/m-community-banner.js'),
 
-        vendors: ['jquery', 'react', 'react-dom', 'react-addons-update', 'react-bootstrap', 'moment'],
+        community: path.resolve(__dirname, 'Scripts/src/community/index.js'),
+
+        vendors: ['jquery', 'react', 'react-dom', 'react-addons-update', 'react-bootstrap', 'redux', 'react-redux', 'redux-thunk', 'redux-logger', 'moment'],
         //wwwcomm: ['jquery', 'react']
     },
     output: {
