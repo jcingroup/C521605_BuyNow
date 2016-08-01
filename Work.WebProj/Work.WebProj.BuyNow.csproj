@@ -239,6 +239,7 @@
     <Content Include="app_modules\ImgFileSort\c-ImgFileSort.jsx" />
     <Content Include="Areas\Active\Views\CommunityBanner\Main.cshtml" />
     <Content Include="app_modules\comm-matter\package.json" />
+    <Content Include="Areas\Active\Views\Edit\Vendor.cshtml" />
     <None Include="Areas\Base\Controllers\ReportChartController.cs" />
     <Compile Include="Areas\Base\Controllers\RolesController.cs" />
     <Compile Include="Areas\Base\Controllers\MenuController.cs" />
