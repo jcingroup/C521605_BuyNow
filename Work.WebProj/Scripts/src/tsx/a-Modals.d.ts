@@ -106,6 +106,7 @@
         email?: string;
         contact?: string;
         age?: number;
+        info_content?: string;
 
         under_floor?: number;
         over_floor?: number;

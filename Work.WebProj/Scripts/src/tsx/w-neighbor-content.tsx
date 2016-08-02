@@ -187,7 +187,7 @@ namespace WWW {
                                 <a className="btn btn-secondary btn-sm scroll" href="#gallery">看更多實景照片</a>
                             </dt>
                             <dd className="profile">
-                                <ul className="detail list-unstyled">
+                                {/*<ul className="detail list-unstyled">
                                     <li><strong className="text-secondary">完工日期：</strong>{item.finish}</li>
                                     <li><strong className="text-secondary">建物地址：</strong>{item.address}</li>
                                     <li><strong className="text-secondary">建物型態：</strong>{item.typeOfBuild}</li>
@@ -197,7 +197,10 @@ namespace WWW {
                                     <li><strong className="text-secondary">管理方式：</strong>{item.manage}</li>
                                     <li><strong className="text-secondary">建設公司：</strong>{item.company}</li>
                                     <li><strong className="text-secondary">營造公司：</strong>{item.build}</li>
-                                </ul>
+                                </ul>*/}
+                                <span>
+                                    {item.info_content.split('\n').map((tmp,i)=>{return (<span>{tmp} <br /></span>);})}
+                                    </span>
                                 <ul className="more-info list-unstyled clearfix">
                                     <li>
                                         <a className="btn btn-lg btn-secondary style2" href={gb_approot + 'Neighbor/Sell_list?community_id=' + item.community_id}>本社區待售房屋</a>

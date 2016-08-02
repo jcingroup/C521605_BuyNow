@@ -46,6 +46,7 @@ namespace ProcCore.Business.DB0
         public Nullable<int> over_floor { get; set; }
         public string map_iframe { get; set; }
         public string group_buying_url { get; set; }
+        public string info_content { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Community_News> Community_News { get; set; }

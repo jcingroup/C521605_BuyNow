@@ -69,6 +69,7 @@
           <Property Name="over_floor" Type="int" />
           <Property Name="map_iframe" Type="varchar" MaxLength="4000" />
           <Property Name="group_buying_url" Type="varchar" MaxLength="4000" />
+          <Property Name="info_content" Type="ntext" />
         </EntityType>
         <EntityType Name="Community_Banner">
           <Key>
@@ -650,6 +651,7 @@
           <Property Name="group_buying_url" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Community_Banner" Relationship="C51A0_BuyNowModel.FK_Community_Banner_Community" FromRole="Community" ToRole="Community_Banner" />
           <NavigationProperty Name="Matter" Relationship="C51A0_BuyNowModel.FK_Matter_Community" FromRole="Community" ToRole="Matter" />
+          <Property Name="info_content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_Community_News_Community">
           <End Type="C51A0_BuyNowModel.Community" Role="Community" Multiplicity="1" />
@@ -951,6 +953,7 @@
           <EntitySetMapping Name="Community">
             <EntityTypeMapping TypeName="C51A0_BuyNowModel.Community">
               <MappingFragment StoreEntitySet="Community">
+                <ScalarProperty Name="info_content" ColumnName="info_content" />
                 <ScalarProperty Name="group_buying_url" ColumnName="group_buying_url" />
                 <ScalarProperty Name="map_iframe" ColumnName="map_iframe" />
                 <ScalarProperty Name="over_floor" ColumnName="over_floor" />

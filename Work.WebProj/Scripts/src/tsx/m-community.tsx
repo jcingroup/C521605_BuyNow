@@ -454,7 +454,7 @@ namespace Community {
                             {up_CommunityList}
 
 
-                            <div className="form-group row">
+                            {/*<div className="form-group row">
                                 <label className="col-xs-1 form-control-label text-xs-right">建物地址</label>
                                 <div className="col-xs-7">
                                     <input type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'address') } value={field.address} maxLength={128}
@@ -473,6 +473,7 @@ namespace Community {
                                         />
                                 </div>
                             </div>
+                            
                             <div className="form-group row">
                                 <label className="col-xs-1 form-control-label text-xs-right">建物樓層</label>
                                 <div className="col-xs-3">
@@ -512,6 +513,7 @@ namespace Community {
                                     </div>
                                 </div>
                             </div>
+                            */}
                             <div className="form-group row">
                                 <label className="col-xs-1 form-control-label text-xs-right">屋齡</label>
                                 <div className="col-xs-3">
@@ -520,13 +522,13 @@ namespace Community {
                                         <span className="input-group-addon">年</span>
                                     </div>
                                 </div>
-                                <label className="col-xs-1 form-control-label text-xs-right">完工日期</label>
+                                {/*<label className="col-xs-1 form-control-label text-xs-right">完工日期</label>
                                 <div className="col-xs-3">
                                     <input type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'finish') } value={field.finish} maxLength={10}
                                          />
-                                </div>
+                                </div>*/}
                             </div>
-                            <div className="form-group row">
+                            {/*<div className="form-group row">
                                 <label className="col-xs-1 form-control-label text-xs-right">建設公司</label>
                                 <div className="col-xs-3">
                                     <input type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'company') } value={field.company} maxLength={50}
@@ -536,6 +538,14 @@ namespace Community {
                                 <div className="col-xs-3">
                                     <input type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'build') } value={field.build} maxLength={50}
                                         />
+                                </div>
+                            </div>
+                            */}
+                            <div className="form-group row">
+                                <label className="col-xs-1 form-control-label text-xs-right">簡介</label>
+                                <div className="col-xs-7">
+                                    <textarea type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'info_content') } rows={5} value={field.info_content} maxLength={4000}>
+                                        </textarea>               
                                 </div>
                             </div>
                             <div className="form-group row">
