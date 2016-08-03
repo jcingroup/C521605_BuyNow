@@ -151,6 +151,10 @@ namespace WWW {
             var outHtml: JSX.Element = null;
             var item = this.state.item;
             var outBanner = null;
+            var info_content_html: JSX.Element[] = [];
+            if (item.info_content != null) {
+                info_content_html = item.info_content.split('\n').map((tmp, i) => { return (<p>{tmp}</p>); });
+            }
 
             //如果有廣告
             if (this.state.banner.length > 0) {
@@ -199,7 +203,7 @@ namespace WWW {
                                     <li><strong className="text-secondary">營造公司：</strong>{item.build}</li>
                                 </ul>*/}
                                 <div className="detail-text">
-                                    {item.info_content.split('\n').map((tmp,i)=>{return (<p>{tmp}</p>);})}
+                                    {info_content_html}
                                 </div>
                                 <ul className="more-info list-unstyled clearfix">
                                     <li>
