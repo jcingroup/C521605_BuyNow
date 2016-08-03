@@ -129,9 +129,10 @@
 			span {display: block;}
 
 	    	.parent {
-	    		@include text-pic('logo.gif', 216px, 50px);
+	    		@include text-pic('logo.gif', 172px, 50px);
 	    		margin: 0 auto;
 	    		background-size: cover;
+	    		a {@include text-hide;}
 	    	}
 
 	    	.child {
@@ -300,7 +301,7 @@
 	}
 
 	&.style2 {
-		.card-block {height: 170px;}
+		.card-block {height: 110px;}
 		.feature, .info {max-height: $line-height*1em;}
 		.more {position: static;}
 	}
@@ -329,6 +330,7 @@
 		}
 
 		.detail {
+			&, &-text {word-break: break-all;}
 
 			li {
 				padding: $spacer*0.3;
@@ -351,6 +353,16 @@
 					font-size: $font-size-lg;
 				}
 				
+			}
+
+			&-text {
+				p {
+					margin-bottom: 0;
+					padding: $grid-gutter-width/6 $grid-gutter-width/2;
+					border-bottom: 1px dotted #ccc;
+
+					&:last-of-type {margin-bottom: $spacer;}
+				}
 			}
 		}
 
@@ -475,7 +487,13 @@
 			margin: 0 $spacer*0.3;
 			border: 1px solid #fff;
 
-			img {width: 100%; min-height: 100%;}
+			img {
+				width: 100%;
+				min-height: 100%;
+				position: absolute;
+				top: 50%;
+				transform: translateY(-50%);
+			}
 
 			.title {
 				@extend .text-truncate;
