@@ -384,8 +384,8 @@ namespace News {
                                         <div className="table-filter">
                                             <div className="form-inline">
                                                 <div className="form-group">
-                                                    <label className="sr-only">搜尋社區名稱</label> { }
-                                                    <input type="text" className="form-control form-control-sm" onChange={this.changeGDValue.bind(this, 'keyword') } value={this.state.searchData.keyword} placeholder="社區名稱" /> { }
+                                                <label className="sr-only">搜尋商家名稱</label> { }
+                                                <input type="text" className="form-control form-control-sm" onChange={this.changeGDValue.bind(this, 'keyword') } value={this.state.searchData.keyword} placeholder="商家名稱" /> { }
                                                     <button className="btn btn-sm btn-primary" type="submit"><i className="fa-search"></i> 搜尋</button>
                                                 </div>
                                             </div>
@@ -396,7 +396,7 @@ namespace News {
                                             <tr>
                                                 <th style={{ "width": "7%" }} className="text-xs-center">刪除</th>
                                                 <th style={{ "width": "7%" }} className="text-xs-center">修改</th>
-                                                <th style={{ "width": "20%" }}>社區名稱</th>
+                                                <th style={{ "width": "20%" }}>商家名稱</th>
                                                 <th style={{ "width": "30%" }}>標題</th>
                                                 <th style={{ "width": "13%" }}>啟始日期</th>
                                                 <th style={{ "width": "13%" }}>結束日期</th>
@@ -479,7 +479,7 @@ namespace News {
                                 </div>
                             </div>
                             <div className="form-group row">
-                                <label className="col-xs-1 form-control-label text-xs-right"><small className="text-danger">*</small> 所屬社區</label>
+                                <label className="col-xs-1 form-control-label text-xs-right"><small className="text-danger">*</small> 所屬商家</label>
                                 <div className="col-xs-8">
                                     <select className="form-control"
                                         required
