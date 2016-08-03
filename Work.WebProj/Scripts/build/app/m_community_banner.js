@@ -1,6 +1,9 @@
 webpackJsonp([2],{
 
 /***/ 0:
+/*!***********************************************!*\
+  !*** ./Scripts/src/tsx/m-community-banner.js ***!
+  \***********************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -9,16 +12,16 @@ webpackJsonp([2],{
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var $ = __webpack_require__(160);
-	var React = __webpack_require__(1);
-	var ReactDOM = __webpack_require__(158);
-	var update = __webpack_require__(167);
-	var Moment = __webpack_require__(163);
-	var CommCmpt = __webpack_require__(169);
-	var CommFunc = __webpack_require__(159);
-	var dt = __webpack_require__(425);
-	var DatePicker = __webpack_require__(430);
-	__webpack_require__(426);
+	var $ = __webpack_require__(/*! jquery */ 160);
+	var React = __webpack_require__(/*! react */ 1);
+	var ReactDOM = __webpack_require__(/*! react-dom */ 158);
+	var update = __webpack_require__(/*! react-addons-update */ 167);
+	var Moment = __webpack_require__(/*! moment */ 163);
+	var CommCmpt = __webpack_require__(/*! comm-cmpt */ 169);
+	var CommFunc = __webpack_require__(/*! comm-func */ 159);
+	var dt = __webpack_require__(/*! dt */ 425);
+	var DatePicker = __webpack_require__(/*! react-datepicker */ 430);
+	__webpack_require__(/*! react-datepicker/dist/react-datepicker.css */ 426);
 	var CommunityBanner;
 	(function (CommunityBanner) {
 	    var GridRow = (function (_super) {
@@ -355,12 +358,15 @@ webpackJsonp([2],{
 /***/ },
 
 /***/ 159:
+/*!********************************************!*\
+  !*** ./app_modules/comm-func/comm-func.js ***!
+  \********************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var $ = __webpack_require__(160);
-	var toastr = __webpack_require__(161);
-	var Moment = __webpack_require__(163);
+	var $ = __webpack_require__(/*! jquery */ 160);
+	var toastr = __webpack_require__(/*! toastr */ 161);
+	var Moment = __webpack_require__(/*! moment */ 163);
 	function uniqid() {
 	    var newDate = new Date();
 	    return newDate.getTime();
@@ -665,6 +671,9 @@ webpackJsonp([2],{
 /***/ },
 
 /***/ 161:
+/*!****************************!*\
+  !*** ./~/toastr/toastr.js ***!
+  \****************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*
@@ -681,7 +690,7 @@ webpackJsonp([2],{
 	 */
 	/* global define */
 	; (function (define) {
-	    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(160)], __WEBPACK_AMD_DEFINE_RESULT__ = function ($) {
+	    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(/*! jquery */ 160)], __WEBPACK_AMD_DEFINE_RESULT__ = function ($) {
 	        return (function () {
 	            var $container;
 	            var listener;
@@ -692,7 +701,7 @@ webpackJsonp([2],{
 	                success: 'success',
 	                warning: 'warning'
 	            };
-
+	
 	            var toastr = {
 	                clear: clear,
 	                remove: remove,
@@ -705,13 +714,13 @@ webpackJsonp([2],{
 	                version: '2.1.2',
 	                warning: warning
 	            };
-
+	
 	            var previousToast;
-
+	
 	            return toastr;
-
+	
 	            ////////////////
-
+	
 	            function error(message, title, optionsOverride) {
 	                return notify({
 	                    type: toastType.error,
@@ -721,7 +730,7 @@ webpackJsonp([2],{
 	                    title: title
 	                });
 	            }
-
+	
 	            function getContainer(options, create) {
 	                if (!options) { options = getOptions(); }
 	                $container = $('#' + options.containerId);
@@ -733,7 +742,7 @@ webpackJsonp([2],{
 	                }
 	                return $container;
 	            }
-
+	
 	            function info(message, title, optionsOverride) {
 	                return notify({
 	                    type: toastType.info,
@@ -743,11 +752,11 @@ webpackJsonp([2],{
 	                    title: title
 	                });
 	            }
-
+	
 	            function subscribe(callback) {
 	                listener = callback;
 	            }
-
+	
 	            function success(message, title, optionsOverride) {
 	                return notify({
 	                    type: toastType.success,
@@ -757,7 +766,7 @@ webpackJsonp([2],{
 	                    title: title
 	                });
 	            }
-
+	
 	            function warning(message, title, optionsOverride) {
 	                return notify({
 	                    type: toastType.warning,
@@ -767,7 +776,7 @@ webpackJsonp([2],{
 	                    title: title
 	                });
 	            }
-
+	
 	            function clear($toastElement, clearOptions) {
 	                var options = getOptions();
 	                if (!$container) { getContainer(options); }
@@ -775,7 +784,7 @@ webpackJsonp([2],{
 	                    clearContainer(options);
 	                }
 	            }
-
+	
 	            function remove($toastElement) {
 	                var options = getOptions();
 	                if (!$container) { getContainer(options); }
@@ -787,16 +796,16 @@ webpackJsonp([2],{
 	                    $container.remove();
 	                }
 	            }
-
+	
 	            // internal functions
-
+	
 	            function clearContainer (options) {
 	                var toastsToClear = $container.children();
 	                for (var i = toastsToClear.length - 1; i >= 0; i--) {
 	                    clearToast($(toastsToClear[i]), options);
 	                }
 	            }
-
+	
 	            function clearToast ($toastElement, options, clearOptions) {
 	                var force = clearOptions && clearOptions.force ? clearOptions.force : false;
 	                if ($toastElement && (force || $(':focus', $toastElement).length === 0)) {
@@ -809,25 +818,25 @@ webpackJsonp([2],{
 	                }
 	                return false;
 	            }
-
+	
 	            function createContainer(options) {
 	                $container = $('<div/>')
 	                    .attr('id', options.containerId)
 	                    .addClass(options.positionClass)
 	                    .attr('aria-live', 'polite')
 	                    .attr('role', 'alert');
-
+	
 	                $container.appendTo($(options.target));
 	                return $container;
 	            }
-
+	
 	            function getDefaults() {
 	                return {
 	                    tapToDismiss: true,
 	                    toastClass: 'toast',
 	                    containerId: 'toast-container',
 	                    debug: false,
-
+	
 	                    showMethod: 'fadeIn', //fadeIn, slideDown, and show are built into jQuery
 	                    showDuration: 300,
 	                    showEasing: 'swing', //swing and linear are built into jQuery
@@ -839,7 +848,7 @@ webpackJsonp([2],{
 	                    closeMethod: false,
 	                    closeDuration: false,
 	                    closeEasing: false,
-
+	
 	                    extendedTimeOut: 1000,
 	                    iconClasses: {
 	                        error: 'toast-error',
@@ -860,27 +869,27 @@ webpackJsonp([2],{
 	                    progressBar: false
 	                };
 	            }
-
+	
 	            function publish(args) {
 	                if (!listener) { return; }
 	                listener(args);
 	            }
-
+	
 	            function notify(map) {
 	                var options = getOptions();
 	                var iconClass = map.iconClass || options.iconClass;
-
+	
 	                if (typeof (map.optionsOverride) !== 'undefined') {
 	                    options = $.extend(options, map.optionsOverride);
 	                    iconClass = map.optionsOverride.iconClass || iconClass;
 	                }
-
+	
 	                if (shouldExit(options, map)) { return; }
-
+	
 	                toastId++;
-
+	
 	                $container = getContainer(options, true);
-
+	
 	                var intervalId = null;
 	                var $toastElement = $('<div/>');
 	                var $titleElement = $('<div/>');
@@ -899,25 +908,25 @@ webpackJsonp([2],{
 	                    options: options,
 	                    map: map
 	                };
-
+	
 	                personalizeToast();
-
+	
 	                displayToast();
-
+	
 	                handleEvents();
-
+	
 	                publish(response);
-
+	
 	                if (options.debug && console) {
 	                    console.log(response);
 	                }
-
+	
 	                return $toastElement;
-
+	
 	                function escapeHtml(source) {
 	                    if (source == null)
 	                        source = "";
-
+	
 	                    return new String(source)
 	                        .replace(/&/g, '&amp;')
 	                        .replace(/"/g, '&quot;')
@@ -925,7 +934,7 @@ webpackJsonp([2],{
 	                        .replace(/</g, '&lt;')
 	                        .replace(/>/g, '&gt;');
 	                }
-
+	
 	                function personalizeToast() {
 	                    setIcon();
 	                    setTitle();
@@ -934,13 +943,13 @@ webpackJsonp([2],{
 	                    setProgressBar();
 	                    setSequence();
 	                }
-
+	
 	                function handleEvents() {
 	                    $toastElement.hover(stickAround, delayedHideToast);
 	                    if (!options.onclick && options.tapToDismiss) {
 	                        $toastElement.click(hideToast);
 	                    }
-
+	
 	                    if (options.closeButton && $closeElement) {
 	                        $closeElement.click(function (event) {
 	                            if (event.stopPropagation) {
@@ -951,7 +960,7 @@ webpackJsonp([2],{
 	                            hideToast(true);
 	                        });
 	                    }
-
+	
 	                    if (options.onclick) {
 	                        $toastElement.click(function (event) {
 	                            options.onclick(event);
@@ -959,14 +968,14 @@ webpackJsonp([2],{
 	                        });
 	                    }
 	                }
-
+	
 	                function displayToast() {
 	                    $toastElement.hide();
-
+	
 	                    $toastElement[options.showMethod](
 	                        {duration: options.showDuration, easing: options.showEasing, complete: options.onShown}
 	                    );
-
+	
 	                    if (options.timeOut > 0) {
 	                        intervalId = setTimeout(hideToast, options.timeOut);
 	                        progressBar.maxHideTime = parseFloat(options.timeOut);
@@ -976,13 +985,13 @@ webpackJsonp([2],{
 	                        }
 	                    }
 	                }
-
+	
 	                function setIcon() {
 	                    if (map.iconClass) {
 	                        $toastElement.addClass(options.toastClass).addClass(iconClass);
 	                    }
 	                }
-
+	
 	                function setSequence() {
 	                    if (options.newestOnTop) {
 	                        $container.prepend($toastElement);
@@ -990,35 +999,35 @@ webpackJsonp([2],{
 	                        $container.append($toastElement);
 	                    }
 	                }
-
+	
 	                function setTitle() {
 	                    if (map.title) {
 	                        $titleElement.append(!options.escapeHtml ? map.title : escapeHtml(map.title)).addClass(options.titleClass);
 	                        $toastElement.append($titleElement);
 	                    }
 	                }
-
+	
 	                function setMessage() {
 	                    if (map.message) {
 	                        $messageElement.append(!options.escapeHtml ? map.message : escapeHtml(map.message)).addClass(options.messageClass);
 	                        $toastElement.append($messageElement);
 	                    }
 	                }
-
+	
 	                function setCloseButton() {
 	                    if (options.closeButton) {
 	                        $closeElement.addClass('toast-close-button').attr('role', 'button');
 	                        $toastElement.prepend($closeElement);
 	                    }
 	                }
-
+	
 	                function setProgressBar() {
 	                    if (options.progressBar) {
 	                        $progressElement.addClass('toast-progress');
 	                        $toastElement.prepend($progressElement);
 	                    }
 	                }
-
+	
 	                function shouldExit(options, map) {
 	                    if (options.preventDuplicates) {
 	                        if (map.message === previousToast) {
@@ -1029,7 +1038,7 @@ webpackJsonp([2],{
 	                    }
 	                    return false;
 	                }
-
+	
 	                function hideToast(override) {
 	                    var method = override && options.closeMethod !== false ? options.closeMethod : options.hideMethod;
 	                    var duration = override && options.closeDuration !== false ?
@@ -1053,7 +1062,7 @@ webpackJsonp([2],{
 	                        }
 	                    });
 	                }
-
+	
 	                function delayedHideToast() {
 	                    if (options.timeOut > 0 || options.extendedTimeOut > 0) {
 	                        intervalId = setTimeout(hideToast, options.extendedTimeOut);
@@ -1061,7 +1070,7 @@ webpackJsonp([2],{
 	                        progressBar.hideEta = new Date().getTime() + progressBar.maxHideTime;
 	                    }
 	                }
-
+	
 	                function stickAround() {
 	                    clearTimeout(intervalId);
 	                    progressBar.hideEta = 0;
@@ -1069,17 +1078,17 @@ webpackJsonp([2],{
 	                        {duration: options.showDuration, easing: options.showEasing}
 	                    );
 	                }
-
+	
 	                function updateProgress() {
 	                    var percentage = ((progressBar.hideEta - (new Date().getTime())) / progressBar.maxHideTime) * 100;
 	                    $progressElement.width(percentage + '%');
 	                }
 	            }
-
+	
 	            function getOptions() {
 	                return $.extend({}, getDefaults(), toastr.options);
 	            }
-
+	
 	            function removeToast($toastElement) {
 	                if (!$container) { $container = getContainer(); }
 	                if ($toastElement.is(':visible')) {
@@ -1092,15 +1101,18 @@ webpackJsonp([2],{
 	                    previousToast = undefined;
 	                }
 	            }
-
+	
 	        })();
 	    }.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-	}(__webpack_require__(162)));
+	}(__webpack_require__(/*! !webpack amd define */ 162)));
 
 
 /***/ },
 
 /***/ 162:
+/*!***************************************!*\
+  !*** (webpack)/buildin/amd-define.js ***!
+  \***************************************/
 /***/ function(module, exports) {
 
 	module.exports = function() { throw new Error("define cannot be used indirect"); };
@@ -1109,6 +1121,9 @@ webpackJsonp([2],{
 /***/ },
 
 /***/ 169:
+/*!********************************************!*\
+  !*** ./app_modules/comm-cmpt/comm-cmpt.js ***!
+  \********************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -1117,12 +1132,12 @@ webpackJsonp([2],{
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var React = __webpack_require__(1);
-	var CommFunc = __webpack_require__(159);
-	var ReactBootstrap = __webpack_require__(170);
-	var Sortable = __webpack_require__(423);
-	var upload = __webpack_require__(424);
-	var DT = __webpack_require__(425);
+	var React = __webpack_require__(/*! react */ 1);
+	var CommFunc = __webpack_require__(/*! comm-func */ 159);
+	var ReactBootstrap = __webpack_require__(/*! react-bootstrap */ 170);
+	var Sortable = __webpack_require__(/*! sortablejs */ 423);
+	var upload = __webpack_require__(/*! simple-ajax-uploader */ 424);
+	var DT = __webpack_require__(/*! dt */ 425);
 	var GridButtonModify = (function (_super) {
 	    __extends(GridButtonModify, _super);
 	    function GridButtonModify(props) {
@@ -1799,6 +1814,9 @@ webpackJsonp([2],{
 /***/ },
 
 /***/ 423:
+/*!**********************************!*\
+  !*** ./~/sortablejs/Sortable.js ***!
+  \**********************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/**!
@@ -1806,11 +1824,11 @@ webpackJsonp([2],{
 	 * @author	RubaXa   <trash@rubaxa.org>
 	 * @license MIT
 	 */
-
-
+	
+	
 	(function (factory) {
 		"use strict";
-
+	
 		if (true) {
 			!(__WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.call(exports, __webpack_require__, exports, module)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		}
@@ -1826,55 +1844,55 @@ webpackJsonp([2],{
 		}
 	})(function () {
 		"use strict";
-
+	
 		var dragEl,
 			parentEl,
 			ghostEl,
 			cloneEl,
 			rootEl,
 			nextEl,
-
+	
 			scrollEl,
 			scrollParentEl,
-
+	
 			lastEl,
 			lastCSS,
 			lastParentCSS,
-
+	
 			oldIndex,
 			newIndex,
-
+	
 			activeGroup,
 			autoScroll = {},
-
+	
 			tapEvt,
 			touchEvt,
-
+	
 			moved,
-
+	
 			/** @const */
 			RSPACE = /\s+/g,
-
+	
 			expando = 'Sortable' + (new Date).getTime(),
-
+	
 			win = window,
 			document = win.document,
 			parseInt = win.parseInt,
-
+	
 			supportDraggable = !!('draggable' in document.createElement('div')),
 			supportCssPointerEvents = (function (el) {
 				el = document.createElement('x');
 				el.style.cssText = 'pointer-events:auto';
 				return el.style.pointerEvents === 'auto';
 			})(),
-
+	
 			_silent = false,
-
+	
 			abs = Math.abs,
 			slice = [].slice,
-
+	
 			touchDragOverListeners = [],
-
+	
 			_autoScroll = _throttle(function (/**Event*/evt, /**Object*/options, /**HTMLElement*/rootEl) {
 				// Bug: https://bugzilla.mozilla.org/show_bug.cgi?id=505521
 				if (rootEl && options.scroll) {
@@ -1882,25 +1900,25 @@ webpackJsonp([2],{
 						rect,
 						sens = options.scrollSensitivity,
 						speed = options.scrollSpeed,
-
+	
 						x = evt.clientX,
 						y = evt.clientY,
-
+	
 						winWidth = window.innerWidth,
 						winHeight = window.innerHeight,
-
+	
 						vx,
 						vy
 					;
-
+	
 					// Delect scrollEl
 					if (scrollParentEl !== rootEl) {
 						scrollEl = options.scroll;
 						scrollParentEl = rootEl;
-
+	
 						if (scrollEl === true) {
 							scrollEl = rootEl;
-
+	
 							do {
 								if ((scrollEl.offsetWidth < scrollEl.scrollWidth) ||
 									(scrollEl.offsetHeight < scrollEl.scrollHeight)
@@ -1911,31 +1929,31 @@ webpackJsonp([2],{
 							} while (scrollEl = scrollEl.parentNode);
 						}
 					}
-
+	
 					if (scrollEl) {
 						el = scrollEl;
 						rect = scrollEl.getBoundingClientRect();
 						vx = (abs(rect.right - x) <= sens) - (abs(rect.left - x) <= sens);
 						vy = (abs(rect.bottom - y) <= sens) - (abs(rect.top - y) <= sens);
 					}
-
-
+	
+	
 					if (!(vx || vy)) {
 						vx = (winWidth - x <= sens) - (x <= sens);
 						vy = (winHeight - y <= sens) - (y <= sens);
-
+	
 						/* jshint expr:true */
 						(vx || vy) && (el = win);
 					}
-
-
+	
+	
 					if (autoScroll.vx !== vx || autoScroll.vy !== vy || autoScroll.el !== el) {
 						autoScroll.el = el;
 						autoScroll.vx = vx;
 						autoScroll.vy = vy;
-
+	
 						clearInterval(autoScroll.pid);
-
+	
 						if (el) {
 							autoScroll.pid = setInterval(function () {
 								if (el === win) {
@@ -1949,26 +1967,26 @@ webpackJsonp([2],{
 					}
 				}
 			}, 30),
-
+	
 			_prepareGroup = function (options) {
 				var group = options.group;
-
+	
 				if (!group || typeof group != 'object') {
 					group = options.group = {name: group};
 				}
-
+	
 				['pull', 'put'].forEach(function (key) {
 					if (!(key in group)) {
 						group[key] = true;
 					}
 				});
-
+	
 				options.groups = ' ' + group.name + (group.put.join ? ' ' + group.put.join(' ') : '') + ' ';
 			}
 		;
-
-
-
+	
+	
+	
 		/**
 		 * @class  Sortable
 		 * @param  {HTMLElement}  el
@@ -1978,15 +1996,15 @@ webpackJsonp([2],{
 			if (!(el && el.nodeType && el.nodeType === 1)) {
 				throw 'Sortable: `el` must be HTMLElement, and not ' + {}.toString.call(el);
 			}
-
+	
 			this.el = el; // root element
 			this.options = options = _extend({}, options);
-
-
+	
+	
 			// Export instance
 			el[expando] = this;
-
-
+	
+	
 			// Default options
 			var defaults = {
 				group: Math.random(),
@@ -2014,44 +2032,44 @@ webpackJsonp([2],{
 				fallbackClass: 'sortable-fallback',
 				fallbackOnBody: false
 			};
-
-
+	
+	
 			// Set default options
 			for (var name in defaults) {
 				!(name in options) && (options[name] = defaults[name]);
 			}
-
+	
 			_prepareGroup(options);
-
+	
 			// Bind all private methods
 			for (var fn in this) {
 				if (fn.charAt(0) === '_') {
 					this[fn] = this[fn].bind(this);
 				}
 			}
-
+	
 			// Setup drag mode
 			this.nativeDraggable = options.forceFallback ? false : supportDraggable;
-
+	
 			// Bind events
 			_on(el, 'mousedown', this._onTapStart);
 			_on(el, 'touchstart', this._onTapStart);
-
+	
 			if (this.nativeDraggable) {
 				_on(el, 'dragover', this);
 				_on(el, 'dragenter', this);
 			}
-
+	
 			touchDragOverListeners.push(this._onDragOver);
-
+	
 			// Restore sorting
 			options.store && this.sort(options.store.get(this));
 		}
-
-
+	
+	
 		Sortable.prototype = /** @lends Sortable.prototype */ {
 			constructor: Sortable,
-
+	
 			_onTapStart: function (/** Event|TouchEvent */evt) {
 				var _this = this,
 					el = this.el,
@@ -2061,21 +2079,21 @@ webpackJsonp([2],{
 					target = (touch || evt).target,
 					originalTarget = target,
 					filter = options.filter;
-
-
+	
+	
 				if (type === 'mousedown' && evt.button !== 0 || options.disabled) {
 					return; // only left button or enabled
 				}
-
+	
 				target = _closest(target, options.draggable, el);
-
+	
 				if (!target) {
 					return;
 				}
-
+	
 				// get the index of the dragged element within its parent
 				oldIndex = _index(target);
-
+	
 				// Check filter
 				if (typeof filter === 'function') {
 					if (filter.call(this, evt, target, this)) {
@@ -2087,69 +2105,69 @@ webpackJsonp([2],{
 				else if (filter) {
 					filter = filter.split(',').some(function (criteria) {
 						criteria = _closest(originalTarget, criteria.trim(), el);
-
+	
 						if (criteria) {
 							_dispatchEvent(_this, criteria, 'filter', target, el, oldIndex);
 							return true;
 						}
 					});
-
+	
 					if (filter) {
 						evt.preventDefault();
 						return; // cancel dnd
 					}
 				}
-
-
+	
+	
 				if (options.handle && !_closest(originalTarget, options.handle, el)) {
 					return;
 				}
-
-
+	
+	
 				// Prepare `dragstart`
 				this._prepareDragStart(evt, touch, target);
 			},
-
+	
 			_prepareDragStart: function (/** Event */evt, /** Touch */touch, /** HTMLElement */target) {
 				var _this = this,
 					el = _this.el,
 					options = _this.options,
 					ownerDocument = el.ownerDocument,
 					dragStartFn;
-
+	
 				if (target && !dragEl && (target.parentNode === el)) {
 					tapEvt = evt;
-
+	
 					rootEl = el;
 					dragEl = target;
 					parentEl = dragEl.parentNode;
 					nextEl = dragEl.nextSibling;
 					activeGroup = options.group;
-
+	
 					dragStartFn = function () {
 						// Delayed drag has been triggered
 						// we can re-enable the events: touchmove/mousemove
 						_this._disableDelayedDrag();
-
+	
 						// Make the element draggable
 						dragEl.draggable = true;
-
+	
 						// Chosen item
 						_toggleClass(dragEl, _this.options.chosenClass, true);
-
+	
 						// Bind the events: dragstart/dragend
 						_this._triggerDragStart(touch);
 					};
-
+	
 					// Disable "draggable"
 					options.ignore.split(',').forEach(function (criteria) {
 						_find(dragEl, criteria.trim(), _disableDraggable);
 					});
-
+	
 					_on(ownerDocument, 'mouseup', _this._onDrop);
 					_on(ownerDocument, 'touchend', _this._onDrop);
 					_on(ownerDocument, 'touchcancel', _this._onDrop);
-
+	
 					if (options.delay) {
 						// If the user moves the pointer or let go the click or touch
 						// before the delay has been reached:
@@ -2159,17 +2177,17 @@ webpackJsonp([2],{
 						_on(ownerDocument, 'touchcancel', _this._disableDelayedDrag);
 						_on(ownerDocument, 'mousemove', _this._disableDelayedDrag);
 						_on(ownerDocument, 'touchmove', _this._disableDelayedDrag);
-
+	
 						_this._dragStartTimer = setTimeout(dragStartFn, options.delay);
 					} else {
 						dragStartFn();
 					}
 				}
 			},
-
+	
 			_disableDelayedDrag: function () {
 				var ownerDocument = this.el.ownerDocument;
-
+	
 				clearTimeout(this._dragStartTimer);
 				_off(ownerDocument, 'mouseup', this._disableDelayedDrag);
 				_off(ownerDocument, 'touchend', this._disableDelayedDrag);
@@ -2177,7 +2195,7 @@ webpackJsonp([2],{
 				_off(ownerDocument, 'mousemove', this._disableDelayedDrag);
 				_off(ownerDocument, 'touchmove', this._disableDelayedDrag);
 			},
-
+	
 			_triggerDragStart: function (/** Touch */touch) {
 				if (touch) {
 					// Touch device support
@@ -2186,7 +2204,7 @@ webpackJsonp([2],{
 						clientX: touch.clientX,
 						clientY: touch.clientY
 					};
-
+	
 					this._onDragStart(tapEvt, 'touch');
 				}
 				else if (!this.nativeDraggable) {
@@ -2196,7 +2214,7 @@ webpackJsonp([2],{
 					_on(dragEl, 'dragend', this);
 					_on(rootEl, 'dragstart', this._onDragStart);
 				}
-
+	
 				try {
 					if (document.selection) {
 						document.selection.empty();
@@ -2206,37 +2224,37 @@ webpackJsonp([2],{
 				} catch (err) {
 				}
 			},
-
+	
 			_dragStarted: function () {
 				if (rootEl && dragEl) {
 					// Apply effect
 					_toggleClass(dragEl, this.options.ghostClass, true);
-
+	
 					Sortable.active = this;
-
+	
 					// Drag start event
 					_dispatchEvent(this, rootEl, 'start', dragEl, rootEl, oldIndex);
 				}
 			},
-
+	
 			_emulateDragOver: function () {
 				if (touchEvt) {
 					if (this._lastX === touchEvt.clientX && this._lastY === touchEvt.clientY) {
 						return;
 					}
-
+	
 					this._lastX = touchEvt.clientX;
 					this._lastY = touchEvt.clientY;
-
+	
 					if (!supportCssPointerEvents) {
 						_css(ghostEl, 'display', 'none');
 					}
-
+	
 					var target = document.elementFromPoint(touchEvt.clientX, touchEvt.clientY),
 						parent = target,
 						groupName = ' ' + this.options.group.name + '',
 						i = touchDragOverListeners.length;
-
+	
 					if (parent) {
 						do {
 							if (parent[expando] && parent[expando].options.groups.indexOf(groupName) > -1) {
@@ -2248,62 +2266,62 @@ webpackJsonp([2],{
 										rootEl: parent
 									});
 								}
-
+	
 								break;
 							}
-
+	
 							target = parent; // store last element
 						}
 						/* jshint boss:true */
 						while (parent = parent.parentNode);
 					}
-
+	
 					if (!supportCssPointerEvents) {
 						_css(ghostEl, 'display', '');
 					}
 				}
 			},
-
-
+	
+	
 			_onTouchMove: function (/**TouchEvent*/evt) {
 				if (tapEvt) {
 					// only set the status to dragging, when we are actually dragging
 					if (!Sortable.active) {
 						this._dragStarted();
 					}
-
+	
 					// as well as creating the ghost element on the document body
 					this._appendGhost();
-
+	
 					var touch = evt.touches ? evt.touches[0] : evt,
 						dx = touch.clientX - tapEvt.clientX,
 						dy = touch.clientY - tapEvt.clientY,
 						translate3d = evt.touches ? 'translate3d(' + dx + 'px,' + dy + 'px,0)' : 'translate(' + dx + 'px,' + dy + 'px)';
-
+	
 					moved = true;
 					touchEvt = touch;
-
+	
 					_css(ghostEl, 'webkitTransform', translate3d);
 					_css(ghostEl, 'mozTransform', translate3d);
 					_css(ghostEl, 'msTransform', translate3d);
 					_css(ghostEl, 'transform', translate3d);
-
+	
 					evt.preventDefault();
 				}
 			},
-
+	
 			_appendGhost: function () {
 				if (!ghostEl) {
 					var rect = dragEl.getBoundingClientRect(),
 						css = _css(dragEl),
 						options = this.options,
 						ghostRect;
-
+	
 					ghostEl = dragEl.cloneNode(true);
-
+	
 					_toggleClass(ghostEl, options.ghostClass, false);
 					_toggleClass(ghostEl, options.fallbackClass, true);
-
+	
 					_css(ghostEl, 'top', rect.top - parseInt(css.marginTop, 10));
 					_css(ghostEl, 'left', rect.left - parseInt(css.marginLeft, 10));
 					_css(ghostEl, 'width', rect.width);
@@ -2312,30 +2330,30 @@ webpackJsonp([2],{
 					_css(ghostEl, 'position', 'fixed');
 					_css(ghostEl, 'zIndex', '100000');
 					_css(ghostEl, 'pointerEvents', 'none');
-
+	
 					options.fallbackOnBody && document.body.appendChild(ghostEl) || rootEl.appendChild(ghostEl);
-
+	
 					// Fixing dimensions.
 					ghostRect = ghostEl.getBoundingClientRect();
 					_css(ghostEl, 'width', rect.width * 2 - ghostRect.width);
 					_css(ghostEl, 'height', rect.height * 2 - ghostRect.height);
 				}
 			},
-
+	
 			_onDragStart: function (/**Event*/evt, /**boolean*/useFallback) {
 				var dataTransfer = evt.dataTransfer,
 					options = this.options;
-
+	
 				this._offUpEvents();
-
+	
 				if (activeGroup.pull == 'clone') {
 					cloneEl = dragEl.cloneNode(true);
 					_css(cloneEl, 'display', 'none');
 					rootEl.insertBefore(cloneEl, dragEl);
 				}
-
+	
 				if (useFallback) {
-
+	
 					if (useFallback === 'touch') {
 						// Bind touch events
 						_on(document, 'touchmove', this._onTouchMove);
@@ -2346,7 +2364,7 @@ webpackJsonp([2],{
 						_on(document, 'mousemove', this._onTouchMove);
 						_on(document, 'mouseup', this._onDrop);
 					}
-
+	
 					this._loopId = setInterval(this._emulateDragOver, 50);
 				}
 				else {
@@ -2354,12 +2372,12 @@ webpackJsonp([2],{
 						dataTransfer.effectAllowed = 'move';
 						options.setData && options.setData.call(this, dataTransfer, dragEl);
 					}
-
+	
 					_on(document, 'drop', this);
 					setTimeout(this._dragStarted, 0);
 				}
 			},
-
+	
 			_onDragOver: function (/**Event*/evt) {
 				var el = this.el,
 					target,
@@ -2370,14 +2388,14 @@ webpackJsonp([2],{
 					groupPut = group.put,
 					isOwner = (activeGroup === group),
 					canSort = options.sort;
-
+	
 				if (evt.preventDefault !== void 0) {
 					evt.preventDefault();
 					!options.dragoverBubble && evt.stopPropagation();
 				}
-
+	
 				moved = true;
-
+	
 				if (activeGroup && !options.disabled &&
 					(isOwner
 						? canSort || (revert = !rootEl.contains(dragEl)) // Reverting item into the original list
@@ -2390,48 +2408,48 @@ webpackJsonp([2],{
 				) {
 					// Smart auto-scrolling
 					_autoScroll(evt, options, this.el);
-
+	
 					if (_silent) {
 						return;
 					}
-
+	
 					target = _closest(evt.target, options.draggable, el);
 					dragRect = dragEl.getBoundingClientRect();
-
+	
 					if (revert) {
 						_cloneHide(true);
-
+	
 						if (cloneEl || nextEl) {
 							rootEl.insertBefore(dragEl, cloneEl || nextEl);
 						}
 						else if (!canSort) {
 							rootEl.appendChild(dragEl);
 						}
-
+	
 						return;
 					}
-
-
+	
+	
 					if ((el.children.length === 0) || (el.children[0] === ghostEl) ||
 						(el === evt.target) && (target = _ghostIsLast(el, evt))
 					) {
-
+	
 						if (target) {
 							if (target.animated) {
 								return;
 							}
-
+	
 							targetRect = target.getBoundingClientRect();
 						}
-
+	
 						_cloneHide(isOwner);
-
+	
 						if (_onMove(rootEl, el, dragEl, dragRect, target, targetRect) !== false) {
 							if (!dragEl.contains(el)) {
 								el.appendChild(dragEl);
 								parentEl = el; // actualization
 							}
-
+	
 							this._animate(dragRect, dragEl);
 							target && this._animate(targetRect, target);
 						}
@@ -2442,8 +2460,8 @@ webpackJsonp([2],{
 							lastCSS = _css(target);
 							lastParentCSS = _css(target.parentNode);
 						}
-
-
+	
+	
 						var targetRect = target.getBoundingClientRect(),
 							width = targetRect.right - targetRect.left,
 							height = targetRect.bottom - targetRect.top,
@@ -2456,20 +2474,20 @@ webpackJsonp([2],{
 							moveVector = _onMove(rootEl, el, dragEl, dragRect, target, targetRect),
 							after
 						;
-
+	
 						if (moveVector !== false) {
 							_silent = true;
 							setTimeout(_unsilent, 30);
-
+	
 							_cloneHide(isOwner);
-
+	
 							if (moveVector === 1 || moveVector === -1) {
 								after = (moveVector === 1);
 							}
 							else if (floating) {
 								var elTop = dragEl.offsetTop,
 									tgTop = target.offsetTop;
-
+	
 								if (elTop === tgTop) {
 									after = (target.previousElementSibling === dragEl) && !isWide || halfway && isWide;
 								} else {
@@ -2478,7 +2496,7 @@ webpackJsonp([2],{
 							} else {
 								after = (nextSibling !== dragEl) && !isLong || halfway && isLong;
 							}
-
+	
 							if (!dragEl.contains(el)) {
 								if (after && !nextSibling) {
 									el.appendChild(dragEl);
@@ -2486,33 +2504,33 @@ webpackJsonp([2],{
 									target.parentNode.insertBefore(dragEl, after ? nextSibling : target);
 								}
 							}
-
+	
 							parentEl = dragEl.parentNode; // actualization
-
+	
 							this._animate(dragRect, dragEl);
 							this._animate(targetRect, target);
 						}
 					}
 				}
 			},
-
+	
 			_animate: function (prevRect, target) {
 				var ms = this.options.animation;
-
+	
 				if (ms) {
 					var currentRect = target.getBoundingClientRect();
-
+	
 					_css(target, 'transition', 'none');
 					_css(target, 'transform', 'translate3d('
 						+ (prevRect.left - currentRect.left) + 'px,'
 						+ (prevRect.top - currentRect.top) + 'px,0)'
 					);
-
+	
 					target.offsetWidth; // repaint
-
+	
 					_css(target, 'transition', 'all ' + ms + 'ms');
 					_css(target, 'transform', 'translate3d(0,0,0)');
-
+	
 					clearTimeout(target.animated);
 					target.animated = setTimeout(function () {
 						_css(target, 'transition', '');
@@ -2521,64 +2539,64 @@ webpackJsonp([2],{
 					}, ms);
 				}
 			},
-
+	
 			_offUpEvents: function () {
 				var ownerDocument = this.el.ownerDocument;
-
+	
 				_off(document, 'touchmove', this._onTouchMove);
 				_off(ownerDocument, 'mouseup', this._onDrop);
 				_off(ownerDocument, 'touchend', this._onDrop);
 				_off(ownerDocument, 'touchcancel', this._onDrop);
 			},
-
+	
 			_onDrop: function (/**Event*/evt) {
 				var el = this.el,
 					options = this.options;
-
+	
 				clearInterval(this._loopId);
 				clearInterval(autoScroll.pid);
 				clearTimeout(this._dragStartTimer);
-
+	
 				// Unbind events
 				_off(document, 'mousemove', this._onTouchMove);
-
+	
 				if (this.nativeDraggable) {
 					_off(document, 'drop', this);
 					_off(el, 'dragstart', this._onDragStart);
 				}
-
+	
 				this._offUpEvents();
-
+	
 				if (evt) {
 					if (moved) {
 						evt.preventDefault();
 						!options.dropBubble && evt.stopPropagation();
 					}
-
+	
 					ghostEl && ghostEl.parentNode.removeChild(ghostEl);
-
+	
 					if (dragEl) {
 						if (this.nativeDraggable) {
 							_off(dragEl, 'dragend', this);
 						}
-
+	
 						_disableDraggable(dragEl);
-
+	
 						// Remove class's
 						_toggleClass(dragEl, this.options.ghostClass, false);
 						_toggleClass(dragEl, this.options.chosenClass, false);
-
+	
 						if (rootEl !== parentEl) {
 							newIndex = _index(dragEl);
-
+	
 							if (newIndex >= 0) {
 								// drag from one list and drop into another
 								_dispatchEvent(null, parentEl, 'sort', dragEl, rootEl, oldIndex, newIndex);
 								_dispatchEvent(this, rootEl, 'sort', dragEl, rootEl, oldIndex, newIndex);
-
+	
 								// Add event
 								_dispatchEvent(null, parentEl, 'add', dragEl, rootEl, oldIndex, newIndex);
-
+	
 								// Remove event
 								_dispatchEvent(this, rootEl, 'remove', dragEl, rootEl, oldIndex, newIndex);
 							}
@@ -2586,11 +2604,11 @@ webpackJsonp([2],{
 						else {
 							// Remove clone
 							cloneEl && cloneEl.parentNode.removeChild(cloneEl);
-
+	
 							if (dragEl.nextSibling !== nextEl) {
 								// Get the index of the dragged element within its parent
 								newIndex = _index(dragEl);
-
+	
 								if (newIndex >= 0) {
 									// drag & drop within the same list
 									_dispatchEvent(this, rootEl, 'update', dragEl, rootEl, oldIndex, newIndex);
@@ -2598,19 +2616,19 @@ webpackJsonp([2],{
 								}
 							}
 						}
-
+	
 						if (Sortable.active) {
 							if (newIndex === null || newIndex === -1) {
 								newIndex = oldIndex;
 							}
-
+	
 							_dispatchEvent(this, rootEl, 'end', dragEl, rootEl, oldIndex, newIndex);
-
+	
 							// Save sorting
 							this.save();
 						}
 					}
-
+	
 					// Nulling
 					rootEl =
 					dragEl =
@@ -2618,28 +2636,28 @@ webpackJsonp([2],{
 					ghostEl =
 					nextEl =
 					cloneEl =
-
+	
 					scrollEl =
 					scrollParentEl =
-
+	
 					tapEvt =
 					touchEvt =
-
+	
 					moved =
 					newIndex =
-
+	
 					lastEl =
 					lastCSS =
-
+	
 					activeGroup =
 					Sortable.active = null;
 				}
 			},
-
-
+	
+	
 			handleEvent: function (/**Event*/evt) {
 				var type = evt.type;
-
+	
 				if (type === 'dragover' || type === 'dragenter') {
 					if (dragEl) {
 						this._onDragOver(evt);
@@ -2650,8 +2668,8 @@ webpackJsonp([2],{
 					this._onDrop(evt);
 				}
 			},
-
-
+	
+	
 			/**
 			 * Serializes the item into an array of string.
 			 * @returns {String[]}
@@ -2663,33 +2681,33 @@ webpackJsonp([2],{
 					i = 0,
 					n = children.length,
 					options = this.options;
-
+	
 				for (; i < n; i++) {
 					el = children[i];
 					if (_closest(el, options.draggable, this.el)) {
 						order.push(el.getAttribute(options.dataIdAttr) || _generateId(el));
 					}
 				}
-
+	
 				return order;
 			},
-
-
+	
+	
 			/**
 			 * Sorts the elements according to the array.
 			 * @param  {String[]}  order  order of the items
 			 */
 			sort: function (order) {
 				var items = {}, rootEl = this.el;
-
+	
 				this.toArray().forEach(function (id, i) {
 					var el = rootEl.children[i];
-
+	
 					if (_closest(el, this.options.draggable, rootEl)) {
 						items[id] = el;
 					}
 				}, this);
-
+	
 				order.forEach(function (id) {
 					if (items[id]) {
 						rootEl.removeChild(items[id]);
@@ -2697,8 +2715,8 @@ webpackJsonp([2],{
 					}
 				});
 			},
-
-
+	
+	
 			/**
 			 * Save the current sorting
 			 */
@@ -2706,8 +2724,8 @@ webpackJsonp([2],{
 				var store = this.options.store;
 				store && store.set(this);
 			},
-
-
+	
+	
 			/**
 			 * For each element in the set, get the first element that matches the selector by testing the element itself and traversing up through its ancestors in the DOM tree.
 			 * @param   {HTMLElement}  el
@@ -2717,8 +2735,8 @@ webpackJsonp([2],{
 			closest: function (el, selector) {
 				return _closest(el, selector || this.options.draggable, this.el);
 			},
-
-
+	
+	
 			/**
 			 * Set/get option
 			 * @param   {string} name
@@ -2727,49 +2745,49 @@ webpackJsonp([2],{
 			 */
 			option: function (name, value) {
 				var options = this.options;
-
+	
 				if (value === void 0) {
 					return options[name];
 				} else {
 					options[name] = value;
-
+	
 					if (name === 'group') {
 						_prepareGroup(options);
 					}
 				}
 			},
-
-
+	
+	
 			/**
 			 * Destroy
 			 */
 			destroy: function () {
 				var el = this.el;
-
+	
 				el[expando] = null;
-
+	
 				_off(el, 'mousedown', this._onTapStart);
 				_off(el, 'touchstart', this._onTapStart);
-
+	
 				if (this.nativeDraggable) {
 					_off(el, 'dragover', this);
 					_off(el, 'dragenter', this);
 				}
-
+	
 				// Remove draggable attributes
 				Array.prototype.forEach.call(el.querySelectorAll('[draggable]'), function (el) {
 					el.removeAttribute('draggable');
 				});
-
+	
 				touchDragOverListeners.splice(touchDragOverListeners.indexOf(this._onDragOver), 1);
-
+	
 				this._onDrop();
-
+	
 				this.el = el = null;
 			}
 		};
-
-
+	
+	
 		function _cloneHide(state) {
 			if (cloneEl && (cloneEl.state !== state)) {
 				_css(cloneEl, 'display', state ? 'none' : '');
@@ -2777,16 +2795,16 @@ webpackJsonp([2],{
 				cloneEl.state = state;
 			}
 		}
-
-
+	
+	
 		function _closest(/**HTMLElement*/el, /**String*/selector, /**HTMLElement*/ctx) {
 			if (el) {
 				ctx = ctx || document;
 				selector = selector.split('.');
-
+	
 				var tag = selector.shift().toUpperCase(),
 					re = new RegExp('\\s(' + selector.join('|') + ')(?=\\s)', 'g');
-
+	
 				do {
 					if (
 						(tag === '>*' && el.parentNode === ctx) || (
@@ -2799,29 +2817,29 @@ webpackJsonp([2],{
 				}
 				while (el !== ctx && (el = el.parentNode));
 			}
-
+	
 			return null;
 		}
-
-
+	
+	
 		function _globalDragOver(/**Event*/evt) {
 			if (evt.dataTransfer) {
 				evt.dataTransfer.dropEffect = 'move';
 			}
 			evt.preventDefault();
 		}
-
-
+	
+	
 		function _on(el, event, fn) {
 			el.addEventListener(event, fn, false);
 		}
-
-
+	
+	
 		function _off(el, event, fn) {
 			el.removeEventListener(event, fn, false);
 		}
-
-
+	
+	
 		function _toggleClass(el, name, state) {
 			if (el) {
 				if (el.classList) {
@@ -2833,11 +2851,11 @@ webpackJsonp([2],{
 				}
 			}
 		}
-
-
+	
+	
 		function _css(el, prop, val) {
 			var style = el && el.style;
-
+	
 			if (style) {
 				if (val === void 0) {
 					if (document.defaultView && document.defaultView.getComputedStyle) {
@@ -2846,106 +2864,106 @@ webpackJsonp([2],{
 					else if (el.currentStyle) {
 						val = el.currentStyle;
 					}
-
+	
 					return prop === void 0 ? val : val[prop];
 				}
 				else {
 					if (!(prop in style)) {
 						prop = '-webkit-' + prop;
 					}
-
+	
 					style[prop] = val + (typeof val === 'string' ? '' : 'px');
 				}
 			}
 		}
-
-
+	
+	
 		function _find(ctx, tagName, iterator) {
 			if (ctx) {
 				var list = ctx.getElementsByTagName(tagName), i = 0, n = list.length;
-
+	
 				if (iterator) {
 					for (; i < n; i++) {
 						iterator(list[i], i);
 					}
 				}
-
+	
 				return list;
 			}
-
+	
 			return [];
 		}
-
-
-
+	
+	
+	
 		function _dispatchEvent(sortable, rootEl, name, targetEl, fromEl, startIndex, newIndex) {
 			var evt = document.createEvent('Event'),
 				options = (sortable || rootEl[expando]).options,
 				onName = 'on' + name.charAt(0).toUpperCase() + name.substr(1);
-
+	
 			evt.initEvent(name, true, true);
-
+	
 			evt.to = rootEl;
 			evt.from = fromEl || rootEl;
 			evt.item = targetEl || rootEl;
 			evt.clone = cloneEl;
-
+	
 			evt.oldIndex = startIndex;
 			evt.newIndex = newIndex;
-
+	
 			rootEl.dispatchEvent(evt);
-
+	
 			if (options[onName]) {
 				options[onName].call(sortable, evt);
 			}
 		}
-
-
+	
+	
 		function _onMove(fromEl, toEl, dragEl, dragRect, targetEl, targetRect) {
 			var evt,
 				sortable = fromEl[expando],
 				onMoveFn = sortable.options.onMove,
 				retVal;
-
+	
 			evt = document.createEvent('Event');
 			evt.initEvent('move', true, true);
-
+	
 			evt.to = toEl;
 			evt.from = fromEl;
 			evt.dragged = dragEl;
 			evt.draggedRect = dragRect;
 			evt.related = targetEl || toEl;
 			evt.relatedRect = targetRect || toEl.getBoundingClientRect();
-
+	
 			fromEl.dispatchEvent(evt);
-
+	
 			if (onMoveFn) {
 				retVal = onMoveFn.call(sortable, evt);
 			}
-
+	
 			return retVal;
 		}
-
-
+	
+	
 		function _disableDraggable(el) {
 			el.draggable = false;
 		}
-
-
+	
+	
 		function _unsilent() {
 			_silent = false;
 		}
-
-
+	
+	
 		/** @returns {HTMLElement|false} */
 		function _ghostIsLast(el, evt) {
 			var lastEl = el.lastElementChild,
 					rect = lastEl.getBoundingClientRect();
-
+	
 			return ((evt.clientY - (rect.top + rect.height) > 5) || (evt.clientX - (rect.right + rect.width) > 5)) && lastEl; // min delta
 		}
-
-
+	
+	
 		/**
 		 * Generate id
 		 * @param   {HTMLElement} el
@@ -2956,14 +2974,14 @@ webpackJsonp([2],{
 			var str = el.tagName + el.className + el.src + el.href + el.textContent,
 				i = str.length,
 				sum = 0;
-
+	
 			while (i--) {
 				sum += str.charCodeAt(i);
 			}
-
+	
 			return sum.toString(36);
 		}
-
+	
 		/**
 		 * Returns the index of an element within its parent
 		 * @param  {HTMLElement} el
@@ -2971,41 +2989,41 @@ webpackJsonp([2],{
 		 */
 		function _index(el) {
 			var index = 0;
-
+	
 			if (!el || !el.parentNode) {
 				return -1;
 			}
-
+	
 			while (el && (el = el.previousElementSibling)) {
 				if (el.nodeName.toUpperCase() !== 'TEMPLATE') {
 					index++;
 				}
 			}
-
+	
 			return index;
 		}
-
+	
 		function _throttle(callback, ms) {
 			var args, _this;
-
+	
 			return function () {
 				if (args === void 0) {
 					args = arguments;
 					_this = this;
-
+	
 					setTimeout(function () {
 						if (args.length === 1) {
 							callback.call(_this, args[0]);
 						} else {
 							callback.apply(_this, args);
 						}
-
+	
 						args = void 0;
 					}, ms);
 				}
 			};
 		}
-
+	
 		function _extend(dst, src) {
 			if (dst && src) {
 				for (var key in src) {
@@ -3014,11 +3032,11 @@ webpackJsonp([2],{
 					}
 				}
 			}
-
+	
 			return dst;
 		}
-
-
+	
+	
 		// Export utils
 		Sortable.utils = {
 			on: _on,
@@ -3034,8 +3052,8 @@ webpackJsonp([2],{
 			toggleClass: _toggleClass,
 			index: _index
 		};
-
-
+	
+	
 		/**
 		 * Create sortable instance
 		 * @param {HTMLElement}  el
@@ -3044,8 +3062,8 @@ webpackJsonp([2],{
 		Sortable.create = function (el, options) {
 			return new Sortable(el, options);
 		};
-
-
+	
+	
 		// Export
 		Sortable.version = '1.4.2';
 		return Sortable;
@@ -3055,6 +3073,9 @@ webpackJsonp([2],{
 /***/ },
 
 /***/ 424:
+/*!****************************************************************!*\
+  !*** ./app_modules/simple-ajax-uploader/SimpleAjaxUploader.js ***!
+  \****************************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -3065,66 +3086,66 @@ webpackJsonp([2],{
 	 * Copyright 2012-2015 LPology, LLC
 	 * Released under the MIT license
 	 */
-
+	
 	;(function( global, factory ) {
 	    if ( true ) {
 	        !(__WEBPACK_AMD_DEFINE_RESULT__ = function() {
 	            return factory( global );
 	        }.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-
+	
 	    } else if ( typeof module === 'object' && module.exports ) {
 	        module.exports = factory( global );
-
+	
 	    } else {
 	        global.ss = factory( global );
 	    }
-
+	
 	}( typeof window !== 'undefined' ? window : this, function( window ) {
-
+	
 	    var ss = window.ss || {},
-
+	
 	        // ss.trim()
 	        rLWhitespace = /^\s+/,
 	        rTWhitespace = /\s+$/,
-
+	
 	        // ss.getUID
 	        uidReplace = /[xy]/g,
-
+	
 	        // ss.getFilename()
 	        rPath = /.*(\/|\\)/,
-
+	
 	        // ss.getExt()
 	        rExt = /.*[.]/,
-
+	
 	        // ss.hasClass()
 	        rHasClass = /[\t\r\n]/g,
-
+	
 	        // Check for Safari -- it doesn't like multi file uploading. At all.
 	        // http://stackoverflow.com/a/9851769/1091949
 	        isSafari = Object.prototype.toString.call( window.HTMLElement ).indexOf( 'Constructor' ) > 0,
-
+	
 	        isIE7 = ( navigator.userAgent.indexOf('MSIE 7') !== -1 ),
-
+	
 	        // Check whether XHR uploads are supported
 	        input = document.createElement( 'input' ),
-
+	
 	        XhrOk;
-
+	
 	    input.type = 'file';
-
+	
 	    XhrOk = ( 'multiple' in input &&
 	              typeof File !== 'undefined' &&
 	              typeof ( new XMLHttpRequest() ).upload !== 'undefined' );
-
-
+	
+	
 	/**
 	* Converts object to query string
 	*/
 	ss.obj2string = function( obj, prefix ) {
 	    "use strict";
-
+	
 	    var str = [];
-
+	
 	    for ( var prop in obj ) {
 	        if ( obj.hasOwnProperty( prop ) ) {
 	            var k = prefix ? prefix + '[' + prop + ']' : prop, v = obj[prop];
@@ -3133,29 +3154,29 @@ webpackJsonp([2],{
 	                        encodeURIComponent( k ) + '=' + encodeURIComponent( v ) );
 	        }
 	    }
-
+	
 	    return str.join( '&' );
 	};
-
+	
 	/**
 	* Copies all missing properties from second object to first object
 	*/
 	ss.extendObj = function( first, second ) {
 	    "use strict";
-
+	
 	    for ( var prop in second ) {
 	        if ( second.hasOwnProperty( prop ) ) {
 	            first[prop] = second[prop];
 	        }
 	    }
 	};
-
+	
 	ss.addEvent = function( elem, type, fn ) {
 	    "use strict";
-
+	
 	    if ( elem.addEventListener ) {
 	        elem.addEventListener( type, fn, false );
-
+	
 	    } else {
 	        elem.attachEvent( 'on' + type, fn );
 	    }
@@ -3163,7 +3184,7 @@ webpackJsonp([2],{
 	        ss.removeEvent( elem, type, fn );
 	    };
 	};
-
+	
 	ss.removeEvent = document.removeEventListener ?
 	    function( elem, type, fn ) {
 	        if ( elem.removeEventListener ) {
@@ -3172,20 +3193,20 @@ webpackJsonp([2],{
 	    } :
 	    function( elem, type, fn ) {
 	        var name = 'on' + type;
-
+	
 	        if ( typeof elem[ name ] === 'undefined' ) {
 	            elem[ name ] = null;
 	        }
-
+	
 	        elem.detachEvent( name, fn );
 	    };
-
+	
 	ss.newXHR = function() {
 	    "use strict";
-
+	
 	    if ( typeof XMLHttpRequest !== 'undefined' ) {
 	        return new window.XMLHttpRequest();
-
+	
 	    } else if ( window.ActiveXObject ) {
 	        try {
 	            return new window.ActiveXObject( 'Microsoft.XMLHTTP' );
@@ -3194,71 +3215,71 @@ webpackJsonp([2],{
 	        }
 	    }
 	};
-
+	
 	ss.getIFrame = function() {
 	    "use strict";
-
+	
 	    var id = ss.getUID(),
 	        iframe;
-
+	
 	    // IE7 can only create an iframe this way, all others are the other way
 	    if ( isIE7 ) {
 	        iframe = document.createElement('<iframe src="javascript:false;" name="' + id + '">');
-
+	
 	    } else {
 	        iframe = document.createElement('iframe');
 	        /*jshint scripturl:true*/
 	        iframe.src = 'javascript:false;';
 	        iframe.name = id;
 	    }
-
+	
 	    iframe.style.display = 'none';
 	    iframe.id = id;
 	    return iframe;
 	};
-
+	
 	ss.getForm = function( opts ) {
 	    "use strict";
-
+	
 	    var form = document.createElement('form');
-
+	
 	    form.encoding = 'multipart/form-data'; // IE
 	    form.enctype = 'multipart/form-data';
 	    form.style.display = 'none';
-
+	
 	    for ( var prop in opts ) {
 	        if ( opts.hasOwnProperty( prop ) ) {
 	            form[prop] = opts[prop];
 	        }
 	    }
-
+	
 	    return form;
 	};
-
+	
 	ss.getHidden = function( name, value ) {
 	    "use strict";
-
+	
 	    var input = document.createElement( 'input' );
-
+	
 	    input.type = 'hidden';
 	    input.name = name;
 	    input.value = value;
 	    return input;
 	};
-
+	
 	/**
 	* Parses a JSON string and returns a Javascript object
 	* Borrowed from www.jquery.com
 	*/
 	ss.parseJSON = function( data ) {
 	    "use strict";
-
+	
 	    if ( !data ) {
 	        return false;
 	    }
-
+	
 	    data = ss.trim( data + '' );
-
+	
 	    if ( window.JSON && window.JSON.parse ) {
 	        try {
 	            // Support: Android 2.3
@@ -3268,68 +3289,68 @@ webpackJsonp([2],{
 	            return false;
 	        }
 	    }
-
+	
 	    var rvalidtokens = /(,)|(\[|{)|(}|])|"(?:[^"\\\r\n]|\\["\\\/bfnrt]|\\u[\da-fA-F]{4})*"\s*:?|true|false|null|-?(?!0\d)\d+(?:\.\d+|)(?:[eE][+-]?\d+|)/g,
 	        depth = null,
 	        requireNonComma;
-
+	
 	    // Guard against invalid (and possibly dangerous) input by ensuring that nothing remains
 	    // after removing valid tokens
 	    return data && !ss.trim( data.replace( rvalidtokens, function( token, comma, open, close ) {
-
+	
 	        // Force termination if we see a misplaced comma
 	        if ( requireNonComma && comma ) {
 	            depth = 0;
 	        }
-
+	
 	        // Perform no more replacements after returning to outermost depth
 	        if ( depth === 0 ) {
 	            return token;
 	        }
-
+	
 	        // Commas must not follow "[", "{", or ","
 	        requireNonComma = open || comma;
-
+	
 	        // Determine new depth
 	        // array/object open ("[" or "{"): depth += true - false (increment)
 	        // array/object close ("]" or "}"): depth += false - true (decrement)
 	        // other cases ("," or primitive): depth += true - true (numeric cast)
 	        depth += !close - !open;
-
+	
 	        // Remove this token
 	        return '';
 	    }) ) ?
 	        ( Function( 'return ' + data ) )() :
 	        false;
 	};
-
+	
 	ss.getBox = function( elem ) {
 	    "use strict";
-
+	
 	    var box,
 	        docElem,
 	        top = 0,
 	        left = 0;
-
+	
 	    if ( elem.getBoundingClientRect ) {
 	        box = elem.getBoundingClientRect();
 	        docElem = document.documentElement;
 	        top = box.top  + ( window.pageYOffset || docElem.scrollTop )  - ( docElem.clientTop  || 0 );
 	        left = box.left + ( window.pageXOffset || docElem.scrollLeft ) - ( docElem.clientLeft || 0 );
-
+	
 	    } else {
 	        do {
 	            left += elem.offsetLeft;
 	            top += elem.offsetTop;
 	        } while ( ( elem = elem.offsetParent ) );
 	    }
-
+	
 	    return {
 	        top: Math.round( top ),
 	        left: Math.round( left )
 	    };
 	};
-
+	
 	/**
 	* Helper that takes object literal
 	* and add all properties to element.style
@@ -3338,14 +3359,14 @@ webpackJsonp([2],{
 	*/
 	ss.addStyles = function( elem, styles ) {
 	    "use strict";
-
+	
 	    for ( var name in styles ) {
 	        if ( styles.hasOwnProperty( name ) ) {
 	            elem.style[name] = styles[name];
 	        }
 	    }
 	};
-
+	
 	/**
 	* Function places an absolutely positioned
 	* element on top of the specified element
@@ -3353,9 +3374,9 @@ webpackJsonp([2],{
 	*/
 	ss.copyLayout = function( from, to ) {
 	    "use strict";
-
+	
 	    var box = ss.getBox( from );
-
+	
 	    ss.addStyles( to, {
 	        position: 'absolute',
 	        left : box.left + 'px',
@@ -3364,7 +3385,7 @@ webpackJsonp([2],{
 	        height : from.offsetHeight + 'px'
 	    });
 	};
-
+	
 	/**
 	* Generates unique ID
 	* Complies with RFC 4122 version 4
@@ -3373,14 +3394,14 @@ webpackJsonp([2],{
 	*/
 	ss.getUID = function() {
 	    "use strict";
-
+	
 	    /*jslint bitwise: true*/
 	    return 'axxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(uidReplace, function(c) {
 	        var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
 	        return v.toString(16);
 	    });
 	};
-
+	
 	/**
 	* Removes white space from left and right of string
 	*/
@@ -3388,7 +3409,7 @@ webpackJsonp([2],{
 	    "use strict";
 	    return text.toString().replace( rLWhitespace, '' ).replace( rTWhitespace, '' );
 	};
-
+	
 	/**
 	* Extract file name from path
 	*/
@@ -3396,7 +3417,7 @@ webpackJsonp([2],{
 	    "use strict";
 	    return path.replace( rPath, '' );
 	};
-
+	
 	/**
 	* Get file extension
 	*/
@@ -3404,57 +3425,57 @@ webpackJsonp([2],{
 	    "use strict";
 	    return ( -1 !== file.indexOf( '.' ) ) ? file.replace( rExt, '' ) : '';
 	};
-
+	
 	/**
 	* Check whether element has a particular CSS class
 	* Parts borrowed from www.jquery.com
 	*/
 	ss.hasClass = function( elem, name ) {
 	    "use strict";
-
+	
 	    if ( !elem || !name ) {
 	        return false;
 	    }
-
+	
 	    return ( ' ' + elem.className + ' ' ).replace( rHasClass, ' ' ).indexOf( ' ' + name + ' ' ) >= 0;
 	};
-
+	
 	/**
 	* Adds CSS class to an element
 	*/
 	ss.addClass = function( elem, name ) {
 	    "use strict";
-
+	
 	    if ( !elem || !name ) {
 	        return false;
 	    }
-
+	
 	    if ( !ss.hasClass( elem, name ) ) {
 	        elem.className += ' ' + name;
 	    }
 	};
-
+	
 	/**
 	* Removes CSS class from an element
 	*/
 	ss.removeClass = (function() {
 	    "use strict";
-
+	
 	    var c = {}; //cache regexps for performance
-
+	
 	    return function( e, name ) {
 	        if ( !e || !name ) {
 	            return false;
 	        }
-
+	
 	        if ( !c[name] ) {
 	            c[name] = new RegExp('(?:^|\\s)' + name + '(?!\\S)');
 	        }
-
+	
 	        e.className = e.className.replace( c[name], '' );
 	    };
 	})();
-
+	
 	/**
 	* Nulls out event handlers to prevent memory leaks in IE6/IE7
 	* http://javascript.crockford.com/memory/leak.html
@@ -3463,21 +3484,21 @@ webpackJsonp([2],{
 	*/
 	ss.purge = function( d ) {
 	    "use strict";
-
+	
 	    var a = d.attributes, i, l, n;
-
+	
 	    if ( a ) {
 	        for ( i = a.length - 1; i >= 0; i -= 1 ) {
 	            n = a[i].name;
-
+	
 	            if ( typeof d[n] === 'function' ) {
 	                d[n] = null;
 	            }
 	        }
 	    }
-
+	
 	    a = d.childNodes;
-
+	
 	    if ( a ) {
 	        l = a.length;
 	        for ( i = 0; i < l; i += 1 ) {
@@ -3485,13 +3506,13 @@ webpackJsonp([2],{
 	        }
 	    }
 	};
-
+	
 	/**
 	* Removes element from the DOM
 	*/
 	ss.remove = function( elem ) {
 	    "use strict";
-
+	
 	    if ( elem && elem.parentNode ) {
 	        // null out event handlers for IE
 	        ss.purge( elem );
@@ -3499,7 +3520,7 @@ webpackJsonp([2],{
 	    }
 	    elem = null;
 	};
-
+	
 	/**
 	* Accepts either a jQuery object, a string containing an element ID, or an element,
 	* verifies that it exists, and returns the element.
@@ -3508,51 +3529,51 @@ webpackJsonp([2],{
 	*/
 	ss.verifyElem = function( elem ) {
 	    "use strict";
-
+	
 	    if ( typeof jQuery !== 'undefined' && elem instanceof jQuery ) {
 	        elem = elem[0];
-
+	
 	    } else if ( typeof elem === 'string' ) {
 	        if ( elem.charAt( 0 ) == '#' ) {
 	            elem = elem.substr( 1 );
 	        }
 	        elem = document.getElementById( elem );
 	    }
-
+	
 	    if ( !elem || elem.nodeType !== 1 ) {
 	        return false;
 	    }
-
+	
 	    if ( elem.nodeName.toUpperCase() == 'A' ) {
 	        elem.style.cursor = 'pointer';
-
+	
 	        ss.addEvent( elem, 'click', function( e ) {
 	            if ( e && e.preventDefault ) {
 	                e.preventDefault();
-
+	
 	            } else if ( window.event ) {
 	                window.event.returnValue = false;
 	            }
 	        });
 	    }
-
+	
 	    return elem;
 	};
-
+	
 	ss._options = {};
-
+	
 	ss.uploadSetup = function( options ) {
 	    "use strict";
 	    ss.extendObj( ss._options, options );
 	};
-
+	
 	ss.SimpleUpload = function( options ) {
 	    "use strict";
-
+	
 	    var i,
 	        len,
 	        btn;
-
+	
 	    this._opts = {
 	        button: '',
 	        url: '',
@@ -3600,152 +3621,152 @@ webpackJsonp([2],{
 	        startNonXHR: function( filename, uploadBtn ) {},
 	        endNonXHR: function( filename, uploadBtn ) {}
 	    };
-
+	
 	    // Include any setup options
 	    ss.extendObj( this._opts, ss._options );
-
+	
 	    // Then add options for this instance
 	    ss.extendObj( this._opts, options );
-
+	
 	    options = null;
-
+	
 	    this._btns = [];
-
+	
 	    // An array of buttons was passed
 	    if ( this._opts.button instanceof Array ) {
 	        len = this._opts.button.length;
-
+	
 	        for ( i = 0; i < len; i++ ) {
 	            btn = ss.verifyElem( this._opts.button[i] );
-
+	
 	            if ( btn !== false ) {
 	                this._btns.push( this.rerouteClicks( btn ) );
-
+	
 	            } else {
 	                this.log( 'Button with array index ' + i + ' is invalid' );
 	            }
 	        }
-
+	
 	    // A single button was passed
 	    } else {
 	        btn = ss.verifyElem( this._opts.button );
-
+	
 	        if ( btn !== false ) {
 	            this._btns.push( this.rerouteClicks( btn ) );
 	        }
 	    }
-
+	
 	    delete this._opts.button;
 	    this._opts.button = btn = null;
-
+	
 	    // No valid elements were passed to button option
 	    if ( this._opts.dropzone === '' && ( this._btns.length < 1 || this._btns[0] === false ) ) {
 	        throw new Error( "Invalid button. Make sure the element you're passing exists." );
 	    }
-
+	
 	    if ( this._opts.multiple === false ) {
 	        this._opts.maxUploads = 1;
 	    }
-
+	
 	    // An array of objects, each containing two items, a file and a reference
 	    // to the button which triggered the upload: { file: uploadFile, btn: button }
 	    this._queue = [];
-
+	
 	    this._active = 0;
 	    this._disabled = false; // if disabled, clicking on button won't do anything
 	    this._maxFails = 10; // max allowed failed progress updates requests in iframe mode
 	    this._progKeys = {}; // contains the currently active upload ID progress keys
-
+	
 	    if ( !XhrOk ) {
 	        // Cache progress keys after we set sizeBox for fewer trips to the DOM
 	        this._sizeFlags = {};
 	    }
-
+	
 	    if ( XhrOk && this._opts.dropzone !== '' ) {
 	        this._dzone = ss.verifyElem( this._opts.dropzone );
-
+	
 	        if ( !this._dzone ) {
 	            this.log( 'Invalid or nonexistent element passed for drop zone' );
 	        } else {
 	            this.addDropZone( this._dzone );
 	        }
 	    }
-
+	
 	    this._createInput();
-
+	
 	    this._manDisabled = false;
 	    this.enable( true );
 	};
-
+	
 	ss.SimpleUpload.prototype = {
-
+	
 	    _killInput: function() {
 	        "use strict";
-
+	
 	        if ( !this._input ) {
 	            return;
 	        }
-
+	
 	        if ( this._input.turnOff ) {
 	            this._input.turnOff();
 	        }
-
+	
 	        if ( this._input.focusOff ) {
 	            this._input.focusOff();
 	        }
-
+	
 	        if ( this._input.blurOff ) {
 	            this._input.blurOff();
 	        }
-
+	
 	        if ( this._input.parentNode.mouseOverOff ) {
 	            this._input.parentNode.mouseOverOff();
 	        }
-
+	
 	        ss.remove( this._input.parentNode );
 	        delete this._input;
 	        this._input = null;
 	    },
-
+	
 	    destroy: function() {
 	        "use strict";
-
+	
 	        // # of upload buttons
 	        var i = this._btns.length;
-
+	
 	        // Put upload buttons back to the way we found them
 	        while ( i-- ) {
 	            // Remove event listener
 	            if ( this._btns[i].off ) {
 	                this._btns[i].off();
 	            }
-
+	
 	            // Remove any lingering classes
 	            ss.removeClass( this._btns[i], this._opts.hoverClass );
 	            ss.removeClass( this._btns[i], this._opts.focusClass );
 	            ss.removeClass( this._btns[i], this._opts.disabledClass );
-
+	
 	            // In case we disabled it
 	            this._btns[i].disabled = false;
 	        }
-
+	
 	        this._killInput();
-
+	
 	        // Set a flag to be checked in _last()
 	        this._destroy = true;
 	    },
-
+	
 	    /**
 	    * Send data to browser console if debug is set to true
 	    */
 	    log: function( str ) {
 	        "use strict";
-
+	
 	        if ( this._opts && this._opts.debug && window.console && window.console.log ) {
 	            window.console.log( '[Uploader] ' + str );
 	        }
 	    },
-
+	
 	    /**
 	    * Replaces user data
 	    * Note that all previously set data is entirely removed and replaced
@@ -3754,7 +3775,7 @@ webpackJsonp([2],{
 	        "use strict";
 	        this._opts.data = data;
 	    },
-
+	
 	    /**
 	    * Set or change uploader options
 	    * @param {Object} options
@@ -3763,7 +3784,7 @@ webpackJsonp([2],{
 	        "use strict";
 	        ss.extendObj( this._opts, options );
 	    },
-
+	
 	    /**
 	    * Designate an element as a progress bar
 	    * The CSS width % of the element will be updated as the upload progresses
@@ -3772,7 +3793,7 @@ webpackJsonp([2],{
 	        "use strict";
 	        this._progBar = ss.verifyElem( elem );
 	    },
-
+	
 	    /**
 	    * Designate an element to receive a string containing progress % during upload
 	    * Note: Uses innerHTML, so any existing child elements will be wiped out
@@ -3781,7 +3802,7 @@ webpackJsonp([2],{
 	        "use strict";
 	        this._pctBox = ss.verifyElem( elem );
 	    },
-
+	
 	    /**
 	    * Designate an element to receive a string containing file size at start of upload
 	    * Note: Uses innerHTML, so any existing child elements will be wiped out
@@ -3790,7 +3811,7 @@ webpackJsonp([2],{
 	        "use strict";
 	        this._sizeBox = ss.verifyElem( elem );
 	    },
-
+	
 	    /**
 	    * Designate an element to be removed from DOM when upload is completed
 	    * Useful for removing progress bar, file size, etc. after upload
@@ -3799,21 +3820,21 @@ webpackJsonp([2],{
 	        "use strict";
 	        this._progBox = ss.verifyElem( elem );
 	    },
-
+	
 	    /**
 	    * Designate an element to serve as the upload abort button
 	    */
 	    setAbortBtn: function( elem, remove ) {
 	        "use strict";
-
+	
 	        this._abortBtn = ss.verifyElem( elem );
 	        this._removeAbort = false;
-
+	
 	        if ( remove ) {
 	            this._removeAbort = true;
 	        }
 	    },
-
+	
 	    /**
 	    * Returns number of files currently in queue
 	    */
@@ -3821,41 +3842,41 @@ webpackJsonp([2],{
 	        "use strict";
 	        return this._queue.length;
 	    },
-
+	
 	    /**
 	    * Enables uploader and submits next file for upload
 	    */
 	    _cycleQueue: function() {
 	        "use strict";
-
+	
 	        if ( this._queue.length > 0 && this._opts.autoSubmit ) {
 	            this.submit();
 	        }
 	    },
-
+	
 	    /**
 	    * Remove current file from upload queue, reset props, cycle to next upload
 	    */
 	    removeCurrent: function( id ) {
 	        "use strict";
-
+	
 	        if ( id ) {
 	            var i = this._queue.length;
-
+	
 	            while ( i-- ) {
 	                if ( this._queue[i].id === id ) {
 	                    this._queue.splice( i, 1 );
 	                    break;
 	                }
 	            }
-
+	
 	        } else {
 	            this._queue.splice( 0, 1 );
 	        }
-
+	
 	        this._cycleQueue();
 	    },
-
+	
 	    /**
 	    * Clears Queue so only most recent select file is uploaded
 	    */
@@ -3863,102 +3884,102 @@ webpackJsonp([2],{
 	        "use strict";
 	        this._queue.length = 0;
 	    },
-
+	
 	    /**
 	    * Disables upload functionality
 	    */
 	    disable: function( _self ) {
 	        "use strict";
-
+	
 	        var i = this._btns.length,
 	            nodeName;
-
+	
 	        // _self is always true when disable() is called internally
 	        this._manDisabled = !_self || this._manDisabled === true ? true : false;
 	        this._disabled = true;
-
+	
 	        while ( i-- ) {
 	            nodeName = this._btns[i].nodeName.toUpperCase();
-
+	
 	            if ( nodeName == 'INPUT' || nodeName == 'BUTTON' ) {
 	                this._btns[i].disabled = true;
 	            }
-
+	
 	            if ( this._opts.disabledClass !== '' ) {
 	                ss.addClass( this._btns[i], this._opts.disabledClass );
 	            }
 	        }
-
+	
 	        // Hide file input
 	        if ( this._input && this._input.parentNode ) {
 	            this._input.parentNode.style.visibility = 'hidden';
 	        }
 	    },
-
+	
 	    /**
 	    * Enables upload functionality
 	    */
 	    enable: function( _self ) {
 	        "use strict";
-
+	
 	        // _self will always be true when enable() is called internally
 	        if ( !_self ) {
 	            this._manDisabled = false;
 	        }
-
+	
 	        // Don't enable uploader if it was manually disabled
 	        if ( this._manDisabled === true ) {
 	            return;
 	        }
-
+	
 	        var i = this._btns.length;
-
+	
 	        this._disabled = false;
-
+	
 	        while ( i-- ) {
 	            ss.removeClass( this._btns[i], this._opts.disabledClass );
 	            this._btns[i].disabled = false;
 	        }
 	    },
-
+	
 	    /**
 	     * Updates invisible button position
 	     */
 	    updatePosition: function() {
 	        "use strict";
-
+	
 	        if ( this._btns[0] && this._input && this._input.parentNode ) {
 	            this._overBtn = this._btns[0];
 	            ss.copyLayout( this._btns[0], this._input.parentNode );
 	        }
 	    }
-
+	
 	};
-
+	
 	ss.IframeUpload = {
-
+	
 	    /**
 	    * Accepts a URI string and returns the hostname
 	    */
 	    _getHost: function( uri ) {
 	        var a = document.createElement( 'a' );
-
+	
 	        a.href = uri;
-
+	
 	        if ( a.hostname ) {
 	            return a.hostname.toLowerCase();
 	        }
 	        return uri;
 	    },
-
+	
 	    _addFiles: function( file ) {
 	        var filename = ss.getFilename( file.value ),
 	            ext = ss.getExt( filename );
-
+	
 	        if ( false === this._opts.onChange.call( this, filename, ext, this._overBtn ) ) {
 	            return false;
 	        }
-
+	
 	        this._queue.push({
 	            id: ss.getUID(),
 	            file: file,
@@ -3967,16 +3988,16 @@ webpackJsonp([2],{
 	            btn: this._overBtn,
 	            size: null
 	        });
-
+	
 	        return true;
 	    },
-
+	
 	    /**
 	    * Handles uploading with iFrame
 	    */
 	    _uploadIframe: function( fileObj, progBox, sizeBox, progBar, pctBox, abortBtn, removeAbort ) {
 	        "use strict";
-
+	
 	        var self = this,
 	            opts = this._opts,
 	            key = ss.getUID(),
@@ -3988,10 +4009,10 @@ webpackJsonp([2],{
 	            removeMessageListener,
 	            removeLoadListener,
 	            cancel;
-
+	
 	        if ( opts.noParams === true ) {
 	            url = opts.url;
-
+	
 	        } else {
 	            // If we're using Nginx Upload Progress Module, append upload key to the URL
 	            // Also, preserve query string if there is one
@@ -4001,24 +4022,24 @@ webpackJsonp([2],{
 	                          encodeURIComponent( opts.nginxProgressHeader ) +
 	                          '=' + encodeURIComponent( key );
 	        }
-
+	
 	        form = ss.getForm({
 	            action: url,
 	            target: iframe.name,
 	            method: opts.method
 	        });
-
+	
 	        // Begin progress bars at 0%
 	        opts.onProgress.call( this, 0 );
-
+	
 	        if ( pctBox ) {
 	            pctBox.innerHTML = '0%';
 	        }
-
+	
 	        if ( progBar ) {
 	            progBar.style.width = '0%';
 	        }
-
+	
 	        // For CORS, add a listener for the "message" event, which will be
 	        // triggered by the Javascript snippet in the server response
 	        if ( opts.cors ) {
@@ -4028,31 +4049,31 @@ webpackJsonp([2],{
 	                    self.log('Non-matching origin: ' + event.origin);
 	                    return;
 	                }
-
+	
 	                // Set message event success flag to true
 	                msgLoaded = true;
-
+	
 	                // Remove listener for message event
 	                removeMessageListener();
-
+	
 	                opts.endNonXHR.call( self, fileObj.name, fileObj.btn );
-
+	
 	                self._finish( fileObj,  '', '', event.data, sizeBox, progBox, pctBox, abortBtn, removeAbort );
 	            });
 	        }
-
+	
 	        var remove = ss.addEvent( iframe, 'load', function() {
 	            remove();
-
+	
 	            if ( opts.sessionProgressUrl ) {
 	                form.appendChild( ss.getHidden( opts.sessionProgressName, key ) );
 	            }
-
+	
 	            // PHP APC upload progress key field must come before the file field
 	            else if ( opts.progressUrl ) {
 	                form.appendChild( ss.getHidden( opts.keyParamName, key ) );
 	            }
-
+	
 	            // We get any additional data here after startNonXHR()
 	            // in case the data was changed with setData() prior to submitting
 	            for ( var prop in opts.data ) {
@@ -4060,32 +4081,32 @@ webpackJsonp([2],{
 	                    form.appendChild( ss.getHidden( prop, opts.data[prop] ) );
 	                }
 	            }
-
+	
 	            // Add a field (default name: "XHR_CORS_TRARGETORIGIN") to tell server this is a CORS request
 	            // Value of the field is targetOrigin parameter of postMessage(message, targetOrigin)
 	            if ( opts.cors ) {
 	                form.appendChild( ss.getHidden( opts.corsInputName, window.location.href ) );
 	            }
-
+	
 	            form.appendChild( fileObj.file );
-
+	
 	            removeLoadListener = ss.addEvent( iframe, 'load', function() {
 	                if ( !iframe.parentNode || iframeLoaded ) {
 	                    return;
 	                }
-
+	
 	                iframeLoaded = true;
-
+	
 	                delete self._progKeys[key];
 	                delete self._sizeFlags[key];
-
+	
 	                // Remove listener for iframe load event
 	                removeLoadListener();
-
+	
 	                if ( abortBtn ) {
 	                    ss.removeEvent( abortBtn, 'click', cancel );
 	                }
-
+	
 	                // After a CORS response, we wait briefly for the "message" event to finish,
 	                // during which time the msgLoaded var will be set to true, signalling success.
 	                // If iframe loads without "message" event, we assume there was an error
@@ -4093,153 +4114,153 @@ webpackJsonp([2],{
 	                    window.setTimeout(function() {
 	                        ss.remove( form );
 	                        ss.remove( iframe );
-
+	
 	                        // If msgLoaded has not been set to true after "message" event fires, we
 	                        // infer that an error must have occurred and respond accordingly
 	                        if ( !msgLoaded ) {
 	                            self._errorFinish( fileObj, '', '', false, 'error', progBox, sizeBox, pctBox, abortBtn, removeAbort );
 	                        }
-
+	
 	                        opts = key = form = iframe = sizeBox = progBox = pctBox = abortBtn = removeAbort = null;
 	                    }, 600);
 	                }
-
+	
 	                // Ordinary, non-CORS upload
 	                else {
 	                    try {
 	                        var doc = iframe.contentDocument ? iframe.contentDocument : iframe.contentWindow.document,
 	                            response = doc.body.innerHTML;
-
+	
 	                        opts.endNonXHR.call( self, fileObj.name, fileObj.btn );
-
+	
 	                        // No way to get status and statusText for an iframe so return empty strings
 	                        self._finish( fileObj, '', '', response, sizeBox, progBox, pctBox, abortBtn, removeAbort );
-
+	
 	                    } catch ( e ) {
 	                        self._errorFinish( fileObj, '', e.message, false, 'error', progBox, sizeBox, pctBox, abortBtn, removeAbort );
 	                    }
-
+	
 	                    window.setTimeout(function() {
 	                        ss.remove( form );
 	                        ss.remove( iframe );
 	                        form = iframe = null;
 	                    }, 0);
-
+	
 	                    fileObj = opts = key = sizeBox = progBox = pctBox = null;
 	                }
 	            });// end load
-
+	
 	            if ( abortBtn ) {
 	                cancel = function() {
 	                    ss.removeEvent( abortBtn, 'click', cancel );
-
+	
 	                    delete self._progKeys[key];
 	                    delete self._sizeFlags[key];
-
+	
 	                    if ( iframe ) {
 	                        iframeLoaded = true;
 	                        removeLoadListener();
-
+	
 	                        try {
 	                            if ( iframe.contentWindow.document.execCommand ) {
 	                                iframe.contentWindow.document.execCommand('Stop');
 	                            }
 	                        } catch( err ) {}
-
+	
 	                        try {
 	                            iframe.src = 'javascript'.concat(':false;');
 	                        } catch( err ) {}
-
+	
 	                        window.setTimeout(function() {
 	                            ss.remove( form );
 	                            ss.remove( iframe );
 	                            form = iframe = null;
 	                        }, 0);
 	                    }
-
+	
 	                    self.log('Upload aborted');
 	                    opts.onAbort.call( self, fileObj.name, fileObj.btn, fileObj.size );
 	                    self._last( sizeBox, progBox, pctBox, abortBtn, removeAbort );
 	                };
-
+	
 	                ss.addEvent( abortBtn, 'click', cancel );
 	            }
-
+	
 	            self.log( 'Commencing upload using iframe' );
 	            form.submit();
-
+	
 	            if ( self._hasProgUrl ) {
 	                // Add progress key to active key array
 	                self._progKeys[key] = 1;
-
+	
 	                // Start timer for first progress update
 	                window.setTimeout( function() {
 	                    self._getProg( key, progBar, sizeBox, pctBox, 1 );
 	                    progBar = sizeBox = pctBox = null;
 	                }, 600 );
 	            }
-
+	
 	            // Remove this file from the queue and begin next upload
 	            window.setTimeout(function() {
 	                self.removeCurrent( fileObj.id );
 	            }, 0);
-
+	
 	        });// end load
-
+	
 	        document.body.appendChild( form );
 	        document.body.appendChild( iframe );
 	    },
-
+	
 	    /**
 	    * Retrieves upload progress updates from the server
 	    * (For fallback upload progress support)
 	    */
 	    _getProg: function( key, progBar, sizeBox, pctBox, counter ) {
 	        "use strict";
-
+	
 	        var self = this,
 	            opts = this._opts,
 	            time = new Date().getTime(),
 	            xhr,
 	            url,
 	            callback;
-
+	
 	        if ( !key ) {
 	            return;
 	        }
-
+	
 	        // Nginx Upload Progress Module
 	        if ( opts.nginxProgressUrl ) {
 	            url = opts.nginxProgressUrl + '?' +
 	                  encodeURIComponent( opts.nginxProgressHeader ) + '=' + encodeURIComponent( key ) +
 	                  '&_=' + time;
 	        }
-
+	
 	        else if ( opts.sessionProgressUrl ) {
 	            url = opts.sessionProgressUrl;
 	        }
-
+	
 	        // PHP APC upload progress
 	        else if ( opts.progressUrl ) {
 	            url = opts.progressUrl +
 	            '?progresskey=' + encodeURIComponent( key ) +
 	            '&_=' + time;
 	        }
-
+	
 	        callback = function() {
 	            var response,
 	                size,
 	                pct,
 	                status,
 	                statusText;
-
+	
 	            try {
 	                // XDomainRequest doesn't have readyState so we
 	                // just assume that it finished correctly
 	                if ( callback && ( opts.cors || xhr.readyState === 4 ) ) {
 	                    callback = undefined;
 	                    xhr.onreadystatechange = function() {};
-
+	
 	                    try {
 	                        statusText = xhr.statusText;
 	                        status = xhr.status;
@@ -4248,36 +4269,36 @@ webpackJsonp([2],{
 	                        statusText = '';
 	                        status = '';
 	                    }
-
+	
 	                    // XDomainRequest also doesn't have status, so we
 	                    // again just assume that everything is fine
 	                    if ( opts.cors || ( status >= 200 && status < 300 ) ) {
 	                        response = ss.parseJSON( xhr.responseText );
-
+	
 	                        if ( response === false ) {
 	                            self.log( 'Error parsing progress response (expecting JSON)' );
 	                            return;
 	                        }
-
+	
 	                        // Handle response if using Nginx Upload Progress Module
 	                        if ( opts.nginxProgressUrl ) {
-
+	
 	                            if ( response.state == 'uploading' ) {
 	                                size = parseInt( response.size, 10 );
 	                                if ( size > 0 ) {
 	                                    pct = Math.round( ( parseInt( response.received, 10 ) / size ) * 100 );
 	                                    size = Math.round( size / 1024 ); // convert to kilobytes
 	                                }
-
+	
 	                            } else if ( response.state == 'done' ) {
 	                                pct = 100;
-
+	
 	                            } else if ( response.state == 'error' ) {
 	                                self.log( 'Error requesting upload progress: ' + response.status );
 	                                return;
 	                            }
 	                        }
-
+	
 	                        // Handle response if using PHP APC
 	                        else if ( opts.sessionProgressUrl || opts.progressUrl ) {
 	                            if ( response.success === true ) {
@@ -4285,29 +4306,29 @@ webpackJsonp([2],{
 	                                pct = parseInt( response.pct, 10 );
 	                            }
 	                        }
-
+	
 	                        // Update progress bar width
 	                        if ( pct ) {
 	                            if ( pctBox ) {
 	                                pctBox.innerHTML = pct + '%';
 	                            }
-
+	
 	                            if ( progBar ) {
 	                                progBar.style.width = pct + '%';
 	                            }
-
+	
 	                            opts.onProgress.call( self, pct );
 	                        }
-
+	
 	                        if ( size && !self._sizeFlags[key] ) {
 	                            if ( sizeBox ) {
 	                                sizeBox.innerHTML = size + 'K';
 	                            }
-
+	
 	                            self._sizeFlags[key] = 1;
 	                            opts.onUpdateFileSize.call( self, size );
 	                        }
-
+	
 	                        // Stop attempting progress checks if we keep failing
 	                        if ( !pct &&
 	                             !size &&
@@ -4317,120 +4338,120 @@ webpackJsonp([2],{
 	                            self.log( 'Failed progress request limit reached. Count: ' + counter );
 	                            return;
 	                        }
-
+	
 	                        // Begin countdown until next progress update check
 	                        if ( pct < 100 && self._progKeys[key] ) {
 	                            window.setTimeout( function() {
 	                                self._getProg( key, progBar, sizeBox, pctBox, counter );
-
+	
 	                                key = progBar = sizeBox = pctBox = counter = null;
 	                            }, opts.checkProgressInterval );
 	                        }
-
+	
 	                        // We didn't get a 2xx status so don't continue sending requests
 	                    } else {
 	                        delete self._progKeys[key];
 	                        self.log( 'Error requesting upload progress: ' + status + ' ' + statusText );
 	                    }
-
+	
 	                    xhr = size = pct = status = statusText = response = null;
 	                }
-
+	
 	            } catch( e ) {
 	                self.log( 'Error requesting upload progress: ' + e.message );
 	            }
 	        };
-
+	
 	        // CORS requests in IE8 and IE9 must use XDomainRequest
 	        if ( opts.cors && !opts.sessionProgressUrl ) {
-
+	
 	            if ( window.XDomainRequest ) {
 	                xhr = new window.XDomainRequest();
 	                xhr.open( 'GET', url, true );
 	                xhr.onprogress = xhr.ontimeout = function() {};
 	                xhr.onload = callback;
-
+	
 	                xhr.onerror = function() {
 	                    delete self._progKeys[key];
 	                    key = null;
 	                    self.log('Error requesting upload progress');
 	                };
-
+	
 	                // IE7 or some other dinosaur -- just give up
 	            } else {
 	                return;
 	            }
-
+	
 	        } else {
 	            var method = !opts.sessionProgressUrl ? 'GET' : 'POST',
 	                params;
-
+	
 	            xhr = ss.newXHR();
 	            xhr.onreadystatechange = callback;
 	            xhr.open( method, url, true );
-
+	
 	            // PHP session progress updates must be a POST request
 	            if ( opts.sessionProgressUrl ) {
 	                params = encodeURIComponent( opts.sessionProgressName ) + '=' + encodeURIComponent( key );
 	                xhr.setRequestHeader( 'Content-type', 'application/x-www-form-urlencoded' );
 	            }
-
+	
 	            // Set the upload progress header for Nginx
 	            if ( opts.nginxProgressUrl ) {
 	                xhr.setRequestHeader( opts.nginxProgressHeader, key );
 	            }
-
+	
 	            xhr.setRequestHeader( 'X-Requested-With', 'XMLHttpRequest' );
 	            xhr.setRequestHeader( 'Accept', 'application/json, text/javascript, */*; q=0.01' );
-
+	
 	           xhr.send( ( opts.sessionProgressUrl &&  params ) || null );
 	        }
 	    },
-
+	
 	    _initUpload: function( fileObj ) {
 	        if ( false === this._opts.startNonXHR.call( this, fileObj.name, fileObj.btn ) ) {
-
+	
 	            if ( this._disabled ) {
 	                this.enable( true );
 	            }
-
+	
 	            this._active--;
 	            return;
 	        }
-
+	
 	        this._hasProgUrl = ( this._opts.progressUrl ||
 	                             this._opts.sessionProgressUrl ||
 	                             this._opts.nginxProgressUrl ) ?
 	                             true : false;
-
+	
 	        this._uploadIframe( fileObj, this._progBox, this._sizeBox, this._progBar, this._pctBox, this._abortBtn, this._removeAbort );
-
+	
 	        this._progBox = this._sizeBox = this._progBar = this._pctBox = this._abortBtn = this._removeAbort = null;
 	    }
 	};
-
+	
 	ss.XhrUpload = {
-
+	
 	    _addFiles: function( files ) {
 	        var total = files.length,
 	            filename,
 	            ext,
 	            size,
 	            i;
-
+	
 	        if ( !this._opts.multiple ) {
 	            total = 1;
 	        }
-
+	
 	        for ( i = 0; i < total; i++ ) {
 	            filename = ss.getFilename( files[i].name );
 	            ext = ss.getExt( filename );
 	            size = Math.round( files[i].size / 1024 );
-
+	
 	            if ( false === this._opts.onChange.call( this, filename, ext, this._overBtn, size ) ) {
 	                return false;
 	            }
-
+	
 	            this._queue.push({
 	                id: ss.getUID(),
 	                file: files[i],
@@ -4440,91 +4461,91 @@ webpackJsonp([2],{
 	                size: size
 	            });
 	        }
-
+	
 	        return true;
 	    },
-
+	
 	    /**
 	    * Handles uploading with XHR
 	    */
 	    _uploadXhr: function( fileObj, url, params, headers, sizeBox, progBar, progBox, pctBox, abortBtn, removeAbort ) {
 	        "use strict";
-
+	
 	        var self = this,
 	            opts = this._opts,
 	            xhr = ss.newXHR(),
 	            callback,
 	            cancel;
-
+	
 	        // Inject file size into size box
 	        if ( sizeBox ) {
 	            sizeBox.innerHTML = fileObj.size + 'K';
 	        }
-
+	
 	        // Begin progress bars at 0%
 	        if ( pctBox ) {
 	            pctBox.innerHTML = '0%';
 	        }
-
+	
 	        if ( progBar ) {
 	            progBar.style.width = '0%';
 	        }
-
+	
 	        opts.onProgress.call( this, 0 );
-
+	
 	        // Borrows heavily from jQuery ajax transport
 	        callback = function( _, isAbort ) {
 	            var status,
 	                statusText;
-
+	
 	            // Firefox throws exceptions when accessing properties
 	            // of an xhr when a network error occurred
 	            try {
 	                // Was never called and is aborted or complete
 	                if ( callback && ( isAbort || xhr.readyState === 4 ) ) {
-
+	
 	                    callback = undefined;
 	                    xhr.onreadystatechange = function() {};
-
+	
 	                    // If it's an abort
 	                    if ( isAbort ) {
-
+	
 	                        // Abort it manually if needed
 	                        if ( xhr.readyState !== 4 ) {
 	                            xhr.abort();
 	                        }
-
+	
 	                        opts.onAbort.call( self, fileObj.name, fileObj.btn, fileObj.size );
 	                        self._last( sizeBox, progBox, pctBox, abortBtn, removeAbort );
-
+	
 	                    } else {
 	                        if ( abortBtn ) {
 	                            ss.removeEvent( abortBtn, 'click', cancel );
 	                        }
-
+	
 	                        status = xhr.status;
-
+	
 	                        // Firefox throws an exception when accessing
 	                        // statusText for faulty cross-domain requests
 	                        try {
 	                            statusText = xhr.statusText;
-
+	
 	                        } catch( e ) {
 	                            // We normalize with Webkit giving an empty statusText
 	                            statusText = '';
 	                        }
-
+	
 	                        if ( status >= 200 && status < 300 ) {
 	                            opts.endXHR.call( self, fileObj.name, fileObj.size, fileObj.btn );
 	                            self._finish( fileObj, status, statusText, xhr.responseText, sizeBox, progBox, pctBox, abortBtn, removeAbort );
-
+	
 	                            // We didn't get a 2xx status so throw an error
 	                        } else {
 	                            self._errorFinish( fileObj, status, statusText, xhr.responseText, 'error', progBox, sizeBox, pctBox, abortBtn, removeAbort );
 	                        }
 	                    }
 	                }
-
+	
 	            }
 	            catch ( e ) {
 	                if ( !isAbort ) {
@@ -4532,24 +4553,24 @@ webpackJsonp([2],{
 	                }
 	            }
 	        };
-
+	
 	        if ( abortBtn ) {
 	            cancel = function() {
 	                ss.removeEvent( abortBtn, 'click', cancel );
-
+	
 	                if ( callback ) {
 	                    callback( undefined, true );
 	                }
 	            };
-
+	
 	            ss.addEvent( abortBtn, 'click', cancel );
 	        }
-
+	
 	        xhr.onreadystatechange = callback;
 	        xhr.open( opts.method.toUpperCase(), url, true );
-
+	
 	        ss.extendObj( headers, opts.customHeaders );
-
+	
 	        for ( var i in headers ) {
 	            if ( headers.hasOwnProperty( i ) ) {
 	                if ( opts.encodeCustomHeaders && opts.customHeaders.hasOwnProperty( i ) ) {
@@ -4559,116 +4580,116 @@ webpackJsonp([2],{
 	                }
 	            }
 	        }
-
+	
 	        ss.addEvent( xhr.upload, 'progress', function( event ) {
 	            if ( event.lengthComputable ) {
 	                var pct = Math.round( ( event.loaded / event.total ) * 100 );
-
+	
 	                opts.onProgress.call( self, pct );
-
+	
 	                if ( pctBox ) {
 	                    pctBox.innerHTML = pct + '%';
 	                }
-
+	
 	                if ( progBar ) {
 	                    progBar.style.width = pct + '%';
 	                }
 	            }
 	        });
-
+	
 	        if ( opts.multipart === true ) {
 	            var formData = new FormData();
-
+	
 	            for ( var prop in params ) {
 	                if ( params.hasOwnProperty( prop ) ) {
 	                    formData.append( prop, params[prop] );
 	                }
 	            }
-
+	
 	            formData.append( opts.name, fileObj.file );
 	            this.log( 'Commencing upload using multipart form' );
 	            xhr.send( formData );
-
+	
 	        } else {
 	            this.log( 'Commencing upload using binary stream' );
 	            xhr.send( fileObj.file );
 	        }
-
+	
 	        // Remove file from upload queue and begin next upload
 	        this.removeCurrent( fileObj.id );
 	    },
-
+	
 	    _initUpload: function( fileObj ) {
 	        "use strict";
-
+	
 	        var params = {},
 	            headers = {},
 	            url;
-
+	
 	        // Call the startXHR() callback and stop upload if it returns false
 	        // We call it before _uploadXhr() in case setProgressBar, setPctBox, etc., is called
 	        if ( false === this._opts.startXHR.call( this, fileObj.name, fileObj.size, fileObj.btn ) ) {
-
+	
 	            if ( this._disabled ) {
 	                this.enable( true );
 	            }
-
+	
 	            this._active--;
 	            return;
 	        }
-
+	
 	        params[this._opts.name] = fileObj.name;
-
+	
 	        headers['X-Requested-With'] = 'XMLHttpRequest';
 	        headers['X-File-Name'] = !this._opts.encodeCustomHeaders ? fileObj.name : encodeURIComponent( fileObj.name );
-
+	
 	        if ( this._opts.responseType.toLowerCase() == 'json' ) {
 	            headers['Accept'] = 'application/json, text/javascript, */*; q=0.01';
 	        }
-
+	
 	        if ( !this._opts.multipart ) {
 	            headers['Content-Type'] = 'application/octet-stream';
 	        }
-
+	
 	        // We get the any additional data here after startXHR()
 	        ss.extendObj( params, this._opts.data );
-
+	
 	        // Build query string while preserving any existing parameters
 	        url = this._opts.noParams === true ?
 	                this._opts.url :
 	                this._opts.url + ( ( this._opts.url.indexOf( '?' ) > -1 ) ? '&' : '?' ) +ss.obj2string( params );
-
+	
 	        this._uploadXhr( fileObj, url, params, headers, this._sizeBox, this._progBar, this._progBox, this._pctBox, this._abortBtn, this._removeAbort );
-
+	
 	        this._sizeBox = this._progBar = this._progBox = this._pctBox = this._abortBtn = this._removeAbort = null;
 	    }
-
+	
 	};
-
+	
 	(function(){
 	    ss.extendObj( ss.SimpleUpload.prototype, {
-
+	
 	        _createInput: function() {
 	            "use strict";
-
+	
 	            var self = this,
 	                div = document.createElement( 'div' );
-
+	
 	            this._input = document.createElement( 'input' );
 	            this._input.type = 'file';
 	            this._input.name = this._opts.name;
-
+	
 	            // Don't allow multiple file selection in Safari -- it has a nasty bug
 	            // http://stackoverflow.com/q/7231054/1091949
 	            if ( XhrOk && !isSafari && this._opts.multiple ) {
 	                this._input.multiple = true;
 	            }
-
+	
 	            // Check support for file input accept attribute
 	            if ( 'accept' in this._input && this._opts.accept !== '' ) {
 	                this._input.accept = this._opts.accept;
 	            }
-
+	
 	            ss.addStyles( div, {
 	                'display' : 'block',
 	                'position' : 'absolute',
@@ -4679,7 +4700,7 @@ webpackJsonp([2],{
 	                'direction' : 'ltr',
 	                'zIndex': 2147483582
 	            });
-
+	
 	            ss.addStyles( this._input, {
 	                'position' : 'absolute',
 	                'right' : 0,
@@ -4690,119 +4711,119 @@ webpackJsonp([2],{
 	                'cursor' : 'pointer',
 	                'height' : '100%'
 	            });
-
+	
 	            if ( div.style.opacity !== '0' ) {
 	                div.style.filter = 'alpha(opacity=0)';
 	            }
-
+	
 	            this._input.turnOff = ss.addEvent( this._input, 'change', function() {
 	                if ( !self._input || self._input.value === '' ) {
 	                    return;
 	                }
-
+	
 	                if ( false === self._addFiles( XhrOk ? self._input.files : self._input ) ) {
 	                    return;
 	                }
-
+	
 	                ss.removeClass( self._overBtn, self._opts.hoverClass );
 	                ss.removeClass( self._overBtn, self._opts.focusClass );
-
+	
 	                self._killInput();
-
+	
 	                // Then create a new file input
 	                self._createInput();
-
+	
 	                // Submit if autoSubmit option is true
 	                if ( self._opts.autoSubmit ) {
 	                    self.submit();
 	                }
 	            });
-
+	
 	            if ( self._opts.hoverClass !== '' ) {
 	                div.mouseOverOff = ss.addEvent( div, 'mouseover', function() {
 	                    ss.addClass( self._overBtn, self._opts.hoverClass );
 	                });
 	            }
-
+	
 	            div.mouseOutOff = ss.addEvent( div, 'mouseout', function() {
 	                self._input.parentNode.style.visibility = 'hidden';
-
+	
 	                if ( self._opts.hoverClass !== '' ) {
 	                    ss.removeClass( self._overBtn, self._opts.hoverClass );
 	                    ss.removeClass( self._overBtn, self._opts.focusClass );
 	                }
 	            });
-
+	
 	            if ( self._opts.focusClass !== '' ) {
 	                this._input.focusOff = ss.addEvent( this._input, 'focus', function() {
 	                    ss.addClass( self._overBtn, self._opts.focusClass );
 	                });
-
+	
 	                this._input.blurOff = ss.addEvent( this._input, 'blur', function() {
 	                    ss.removeClass( self._overBtn, self._opts.focusClass );
 	                });
 	            }
-
+	
 	            document.body.appendChild( div );
 	            div.appendChild( this._input );
 	            div = null;
 	        },
-
+	
 	        rerouteClicks: function( elem ) {
 	            "use strict";
-
+	
 	            var self = this;
-
+	
 	            // ss.addEvent() returns a function to detach, which
 	            // allows us to call elem.off() to remove mouseover listener
 	            elem.off = ss.addEvent( elem, 'mouseover', function() {
 	                if ( self._disabled ) {
 	                    return;
 	                }
-
+	
 	                if ( !self._input ) {
 	                    self._createInput();
 	                }
-
+	
 	                self._overBtn = elem;
 	                ss.copyLayout( elem, self._input.parentNode );
 	                self._input.parentNode.style.visibility = 'visible';
 	            });
-
+	
 	            return elem;
 	        },
-
+	
 	        /**
 	        * Final cleanup function after upload ends
 	        */
 	        _last: function( sizeBox, progBox, pctBox, abortBtn, removeAbort ) {
 	            "use strict";
-
+	
 	            if ( sizeBox ) {
 	               sizeBox.innerHTML = '';
 	            }
-
+	
 	            if ( pctBox ) {
 	                pctBox.innerHTML = '';
 	            }
-
+	
 	            if ( abortBtn && removeAbort ) {
 	                ss.remove( abortBtn );
 	            }
-
+	
 	            if ( progBox ) {
 	                ss.remove( progBox );
 	            }
-
+	
 	            // Decrement the active upload counter
 	            this._active--;
-
+	
 	            sizeBox = progBox = pctBox = abortBtn = removeAbort = null;
-
+	
 	            if ( this._disabled ) {
 	                this.enable( true );
 	            }
-
+	
 	            // Burn it all down if destroy() was called
 	            // We have to do it here after everything is finished to avoid any errors
 	            if ( this._destroy &&
@@ -4814,59 +4835,59 @@ webpackJsonp([2],{
 	                        delete this[ prop ];
 	                    }
 	                }
-
+	
 	            // Otherwise just go to the next upload as usual
 	            } else {
 	                this._cycleQueue();
 	            }
 	        },
-
+	
 	        /**
 	        * Completes upload request if an error is detected
 	        */
 	        _errorFinish: function( fileObj, status, statusText, response, errorType, progBox, sizeBox, pctBox, abortBtn, removeAbort ) {
 	            "use strict";
-
+	
 	            this.log( 'Upload failed: ' + status + ' ' + statusText );
 	            this._opts.onError.call( this, fileObj.name, errorType, status, statusText, response, fileObj.btn, fileObj.size );
 	            this._last( sizeBox, progBox, pctBox, abortBtn, removeAbort );
-
+	
 	            fileObj = status = statusText = response = errorType = sizeBox = progBox = pctBox = abortBtn = removeAbort = null;
 	        },
-
+	
 	        /**
 	        * Completes upload request if the transfer was successful
 	        */
 	        _finish: function( fileObj, status, statusText, response, sizeBox, progBox, pctBox, abortBtn, removeAbort ) {
 	            "use strict";
-
+	
 	            this.log( 'Server response: ' + response );
-
+	
 	            if ( this._opts.responseType.toLowerCase() == 'json' ) {
 	                response = ss.parseJSON( response );
-
+	
 	                if ( response === false ) {
 	                    this._errorFinish( fileObj, status, statusText, false, 'parseerror', progBox, sizeBox, abortBtn, removeAbort );
 	                    return;
 	                }
 	            }
-
+	
 	            this._opts.onComplete.call( this, fileObj.name, response, fileObj.btn, fileObj.size );
 	            this._last( sizeBox, progBox, pctBox, abortBtn, removeAbort );
-
+	
 	            fileObj = status = statusText = response = sizeBox = progBox = pctBox = abortBtn = removeAbort = null;
 	        },
-
+	
 	        /**
 	        * Verifies that file is allowed
 	        * Checks file extension and file size if limits are set
 	        */
 	        _checkFile: function( fileObj ) {
 	            "use strict";
-
+	
 	            var extOk = false,
 	                i = this._opts.allowedExtensions.length;
-
+	
 	            // Only file extension if allowedExtensions is set
 	            if ( i > 0 ) {
 	                while ( i-- ) {
@@ -4875,7 +4896,7 @@ webpackJsonp([2],{
 	                        break;
 	                    }
 	                }
-
+	
 	                if ( !extOk ) {
 	                    this.removeCurrent( fileObj.id );
 	                    this.log( 'File extension not permitted' );
@@ -4883,7 +4904,7 @@ webpackJsonp([2],{
 	                    return false;
 	                }
 	            }
-
+	
 	            if ( fileObj.size &&
 	                this._opts.maxSize !== false &&
 	                fileObj.size > this._opts.maxSize )
@@ -4893,37 +4914,37 @@ webpackJsonp([2],{
 	                this._opts.onSizeError.call( this, fileObj.name, fileObj.size );
 	                return false;
 	            }
-
+	
 	            fileObj = null;
-
+	
 	            return true;
 	        },
-
+	
 	        /**
 	        * Validates input and directs to either XHR method or iFrame method
 	        */
 	        submit: function() {
 	            "use strict";
-
+	
 	            if ( this._disabled ||
 	                this._active >= this._opts.maxUploads ||
 	                this._queue.length < 1 )
 	            {
 	                return;
 	            }
-
+	
 	            if ( !this._checkFile( this._queue[0] ) ) {
 	                return;
 	            }
-
+	
 	            // User returned false to cancel upload
 	            if ( false === this._opts.onSubmit.call( this, this._queue[0].name, this._queue[0].ext, this._queue[0].btn, this._queue[0].size ) ) {
 	                return;
 	            }
-
+	
 	            // Increment the active upload counter
 	            this._active++;
-
+	
 	            // Disable uploading if multiple file uploads are not enabled
 	            // or if queue is disabled and we've reached max uploads
 	            if ( this._opts.multiple === false ||
@@ -4931,22 +4952,22 @@ webpackJsonp([2],{
 	            {
 	                this.disable( true );
 	            }
-
+	
 	            this._initUpload( this._queue[0] );
 	        }
 	    });
-
+	
 	    if ( XhrOk ) {
 	        ss.extendObj( ss.SimpleUpload.prototype, ss.XhrUpload );
-
+	
 	    } else {
 	        ss.extendObj( ss.SimpleUpload.prototype, ss.IframeUpload );
 	    }
-
+	
 	}());
-
+	
 	ss.extendObj(ss.SimpleUpload.prototype, {
-
+	
 	    _dragFileCheck: function( e ) {
 	        if ( e.dataTransfer.types ) {
 	            for ( var i = 0; i < e.dataTransfer.types.length; i++ ) {
@@ -4955,17 +4976,17 @@ webpackJsonp([2],{
 	                }
 	            }
 	        }
-
+	
 	        return false;
 	    },
-
+	
 	    addDropZone: function( elem ) {
 	        var self = this;
-
+	
 	        ss.addStyles( elem, {
 	            'zIndex': 2147483583
 	        });
-
+	
 	        elem.ondragenter = function( e ) {
 	            if ( !self._dragFileCheck( e ) ) {
 	                return false;
@@ -4973,44 +4994,47 @@ webpackJsonp([2],{
 	            ss.addClass( this, self._opts.dragClass );
 	            return false;
 	        };
-
+	
 	        elem.ondragover = function() {
 	            return false;
 	        };
-
+	
 	        elem.ondragend = function() {
 	            ss.removeClass( this, self._opts.dragClass );
 	            return false;
 	        };
-
+	
 	        elem.ondragleave = function() {
 	            ss.removeClass( this, self._opts.dragClass );
 	            return false;
 	        };
-
+	
 	        elem.ondrop = function( e ) {
 	            e.preventDefault();
-
+	
 	            ss.removeClass( this, self._opts.dragClass );
-
+	
 	            if ( !self._dragFileCheck( e ) ) {
 	                return false;
 	            }
-
+	
 	            self._addFiles( e.dataTransfer.files );
 	            self._cycleQueue();
 	        };
 	    }
 	});
-
+	
 	return ss;
-
+	
 	}));
 
 
 /***/ },
 
 /***/ 425:
+/*!************************************!*\
+  !*** ./app_modules/dt/def-data.js ***!
+  \************************************/
 /***/ function(module, exports) {
 
 	"use strict";
@@ -5507,15 +5531,18 @@ webpackJsonp([2],{
 /***/ },
 
 /***/ 426:
+/*!******************************************************!*\
+  !*** ./~/react-datepicker/dist/react-datepicker.css ***!
+  \******************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
-
+	
 	// load the styles
-	var content = __webpack_require__(427);
+	var content = __webpack_require__(/*! !./../../css-loader!./react-datepicker.css */ 427);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(429)(content, {});
+	var update = __webpack_require__(/*! ./../../style-loader/addStyles.js */ 429)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -5534,21 +5561,27 @@ webpackJsonp([2],{
 /***/ },
 
 /***/ 427:
+/*!*********************************************************************!*\
+  !*** ./~/css-loader!./~/react-datepicker/dist/react-datepicker.css ***!
+  \*********************************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(428)();
+	exports = module.exports = __webpack_require__(/*! ./../../css-loader/lib/css-base.js */ 428)();
 	// imports
-
-
+	
+	
 	// module
 	exports.push([module.id, ".react-datepicker__tether-element-attached-top .react-datepicker__triangle, .react-datepicker__tether-element-attached-bottom .react-datepicker__triangle, .react-datepicker__year-read-view--down-arrow {\n  margin-left: -8px;\n  position: absolute;\n}\n.react-datepicker__tether-element-attached-top .react-datepicker__triangle, .react-datepicker__tether-element-attached-bottom .react-datepicker__triangle, .react-datepicker__year-read-view--down-arrow, .react-datepicker__tether-element-attached-top .react-datepicker__triangle::before, .react-datepicker__tether-element-attached-bottom .react-datepicker__triangle::before, .react-datepicker__year-read-view--down-arrow::before {\n  box-sizing: content-box;\n  position: absolute;\n  border: 8px solid transparent;\n  height: 0;\n  width: 1px;\n}\n.react-datepicker__tether-element-attached-top .react-datepicker__triangle::before, .react-datepicker__tether-element-attached-bottom .react-datepicker__triangle::before, .react-datepicker__year-read-view--down-arrow::before {\n  content: \"\";\n  z-index: -1;\n  border-width: 8px;\n  left: -8px;\n  border-bottom-color: #aeaeae;\n}\n\n.react-datepicker__tether-element-attached-top .react-datepicker__triangle {\n  top: 0;\n  margin-top: -8px;\n}\n.react-datepicker__tether-element-attached-top .react-datepicker__triangle, .react-datepicker__tether-element-attached-top .react-datepicker__triangle::before {\n  border-top: none;\n  border-bottom-color: #f0f0f0;\n}\n.react-datepicker__tether-element-attached-top .react-datepicker__triangle::before {\n  top: -1px;\n  border-bottom-color: #aeaeae;\n}\n\n.react-datepicker__tether-element-attached-bottom .react-datepicker__triangle, .react-datepicker__year-read-view--down-arrow {\n  bottom: 0;\n  margin-bottom: -8px;\n}\n.react-datepicker__tether-element-attached-bottom .react-datepicker__triangle, .react-datepicker__year-read-view--down-arrow, .react-datepicker__tether-element-attached-bottom .react-datepicker__triangle::before, .react-datepicker__year-read-view--down-arrow::before {\n  border-bottom: none;\n  border-top-color: #fff;\n}\n.react-datepicker__tether-element-attached-bottom .react-datepicker__triangle::before, .react-datepicker__year-read-view--down-arrow::before {\n  bottom: -1px;\n  border-top-color: #aeaeae;\n}\n\n.react-datepicker {\n  font-family: \"Helvetica Neue\", Helvetica, Arial, sans-serif;\n  font-size: 11px;\n  background-color: #fff;\n  color: #000;\n  border: 1px solid #aeaeae;\n  border-radius: 4px;\n  display: inline-block;\n  position: relative;\n}\n\n.react-datepicker__triangle {\n  position: absolute;\n  left: 50px;\n}\n\n.react-datepicker__tether-element-attached-bottom.react-datepicker__tether-element {\n  margin-top: -20px;\n}\n\n.react-datepicker__header {\n  text-align: center;\n  background-color: #f0f0f0;\n  border-bottom: 1px solid #aeaeae;\n  border-top-left-radius: 4px;\n  border-top-right-radius: 4px;\n  padding-top: 8px;\n  position: relative;\n}\n\n.react-datepicker__current-month {\n  margin-top: 0;\n  color: #000;\n  font-weight: bold;\n  font-size: 13px;\n}\n.react-datepicker__current-month--hasYearDropdown {\n  margin-bottom: 16px;\n}\n\n.react-datepicker__navigation {\n  line-height: 24px;\n  text-align: center;\n  cursor: pointer;\n  position: absolute;\n  top: 10px;\n  width: 0;\n  border: 6px solid transparent;\n}\n.react-datepicker__navigation--previous {\n  left: 10px;\n  border-right-color: #ccc;\n}\n.react-datepicker__navigation--previous:hover {\n  border-right-color: #b3b3b3;\n}\n.react-datepicker__navigation--next {\n  right: 10px;\n  border-left-color: #ccc;\n}\n.react-datepicker__navigation--next:hover {\n  border-left-color: #b3b3b3;\n}\n.react-datepicker__navigation--years {\n  position: relative;\n  top: 0;\n  display: block;\n  margin-left: auto;\n  margin-right: auto;\n}\n.react-datepicker__navigation--years-previous {\n  top: 4px;\n  border-top-color: #ccc;\n}\n.react-datepicker__navigation--years-previous:hover {\n  border-top-color: #b3b3b3;\n}\n.react-datepicker__navigation--years-upcoming {\n  top: -4px;\n  border-bottom-color: #ccc;\n}\n.react-datepicker__navigation--years-upcoming:hover {\n  border-bottom-color: #b3b3b3;\n}\n\n.react-datepicker__week-day {\n  color: #ccc;\n  display: inline-block;\n  width: 28px;\n  line-height: 24px;\n}\n\n.react-datepicker__month {\n  margin: 5px;\n  text-align: center;\n}\n\n.react-datepicker__day {\n  color: #000;\n  display: inline-block;\n  width: 24px;\n  line-height: 24px;\n  text-align: center;\n  margin: 2px;\n  cursor: pointer;\n}\n.react-datepicker__day:hover {\n  border-radius: 4px;\n  background-color: #f0f0f0;\n}\n.react-datepicker__day--today {\n  font-weight: bold;\n}\n.react-datepicker__day--selected, .react-datepicker__day--in-range {\n  border-radius: 4px;\n  background-color: #216ba5;\n  color: #fff;\n}\n.react-datepicker__day--selected:hover, .react-datepicker__day--in-range:hover {\n  background-color: #1d5d90;\n}\n.react-datepicker__day--disabled {\n  cursor: default;\n  color: #ccc;\n}\n.react-datepicker__day--disabled:hover {\n  background-color: transparent;\n}\n\n.react-datepicker__input-container {\n  position: relative;\n}\n\n.react-datepicker__year-read-view {\n  width: 50%;\n  left: 25%;\n  position: absolute;\n  bottom: 25px;\n  border: 1px solid transparent;\n  border-radius: 4px;\n}\n.react-datepicker__year-read-view:hover {\n  cursor: pointer;\n}\n.react-datepicker__year-read-view:hover .react-datepicker__year-read-view--down-arrow {\n  border-top-color: #b3b3b3;\n}\n.react-datepicker__year-read-view--down-arrow {\n  border-top-color: #ccc;\n  margin-bottom: 3px;\n  left: 5px;\n  top: 9px;\n  position: relative;\n  border-width: 6px;\n}\n.react-datepicker__year-read-view--selected-year {\n  right: 6px;\n  position: relative;\n}\n\n.react-datepicker__year-dropdown {\n  background-color: #f0f0f0;\n  position: absolute;\n  width: 50%;\n  left: 25%;\n  top: 30px;\n  text-align: center;\n  border-radius: 4px;\n  border: 1px solid #aeaeae;\n}\n.react-datepicker__year-dropdown:hover {\n  cursor: pointer;\n}\n\n.react-datepicker__year-option {\n  line-height: 20px;\n  width: 100%;\n  display: block;\n  margin-left: auto;\n  margin-right: auto;\n}\n.react-datepicker__year-option:first-of-type {\n  border-top-left-radius: 4px;\n  border-top-right-radius: 4px;\n}\n.react-datepicker__year-option:last-of-type {\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none;\n  border-bottom-left-radius: 4px;\n  border-bottom-right-radius: 4px;\n}\n.react-datepicker__year-option:hover {\n  background-color: #ccc;\n}\n.react-datepicker__year-option:hover .react-datepicker__navigation--years-upcoming {\n  border-bottom-color: #b3b3b3;\n}\n.react-datepicker__year-option:hover .react-datepicker__navigation--years-previous {\n  border-top-color: #b3b3b3;\n}\n.react-datepicker__year-option--selected {\n  position: absolute;\n  left: 30px;\n}\n\n.react-datepicker__close-icon {\n  background-color: transparent;\n  border: 0;\n  cursor: pointer;\n  display: inline-block;\n  height: 0;\n  outline: 0;\n  padding: 0;\n  vertical-align: middle;\n}\n.react-datepicker__close-icon::after {\n  background-color: #216ba5;\n  border-radius: 50%;\n  bottom: 0;\n  box-sizing: border-box;\n  color: #fff;\n  content: \"\\D7\";\n  cursor: pointer;\n  font-size: 12px;\n  height: 16px;\n  width: 16px;\n  line-height: 1;\n  margin: -8px auto 0;\n  padding: 2px;\n  position: absolute;\n  right: 7px;\n  text-align: center;\n  top: 50%;\n}\n\n.react-datepicker__today-button {\n  background: #f0f0f0;\n  border-top: 1px solid #aeaeae;\n  cursor: pointer;\n  text-align: center;\n  font-weight: bold;\n  padding: 5px 0;\n}\n\n.react-datepicker__tether-element {\n  z-index: 2147483647;\n}\n", ""]);
-
+	
 	// exports
 
 
 /***/ },
 
 /***/ 428:
+/*!**************************************!*\
+  !*** ./~/css-loader/lib/css-base.js ***!
+  \**************************************/
 /***/ function(module, exports) {
 
 	/*
@@ -5558,7 +5591,7 @@ webpackJsonp([2],{
 	// css base code, injected by the css-loader
 	module.exports = function() {
 		var list = [];
-
+	
 		// return the list of modules as css string
 		list.toString = function toString() {
 			var result = [];
@@ -5572,7 +5605,7 @@ webpackJsonp([2],{
 			}
 			return result.join("");
 		};
-
+	
 		// import a list of modules into the list
 		list.i = function(modules, mediaQuery) {
 			if(typeof modules === "string")
@@ -5606,6 +5639,9 @@ webpackJsonp([2],{
 /***/ },
 
 /***/ 429:
+/*!*************************************!*\
+  !*** ./~/style-loader/addStyles.js ***!
+  \*************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -5629,23 +5665,23 @@ webpackJsonp([2],{
 		singletonElement = null,
 		singletonCounter = 0,
 		styleElementsInsertedAtTop = [];
-
+	
 	module.exports = function(list, options) {
-		if(false) {
+		if(true) {
 			if(typeof document !== "object") throw new Error("The style-loader cannot be used in a non-browser environment");
 		}
-
+	
 		options = options || {};
 		// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
 		// tags it will allow on a page
 		if (typeof options.singleton === "undefined") options.singleton = isOldIE();
-
+	
 		// By default, add <style> tags to the bottom of <head>.
 		if (typeof options.insertAt === "undefined") options.insertAt = "bottom";
-
+	
 		var styles = listToStyles(list);
 		addStylesToDom(styles, options);
-
+	
 		return function update(newList) {
 			var mayRemove = [];
 			for(var i = 0; i < styles.length; i++) {
@@ -5668,7 +5704,7 @@ webpackJsonp([2],{
 			}
 		};
 	}
-
+	
 	function addStylesToDom(styles, options) {
 		for(var i = 0; i < styles.length; i++) {
 			var item = styles[i];
@@ -5690,7 +5726,7 @@ webpackJsonp([2],{
 			}
 		}
 	}
-
+	
 	function listToStyles(list) {
 		var styles = [];
 		var newStyles = {};
@@ -5708,7 +5744,7 @@ webpackJsonp([2],{
 		}
 		return styles;
 	}
-
+	
 	function insertStyleElement(options, styleElement) {
 		var head = getHeadElement();
 		var lastStyleElementInsertedAtTop = styleElementsInsertedAtTop[styleElementsInsertedAtTop.length - 1];
@@ -5727,7 +5763,7 @@ webpackJsonp([2],{
 			throw new Error("Invalid value for parameter 'insertAt'. Must be 'top' or 'bottom'.");
 		}
 	}
-
+	
 	function removeStyleElement(styleElement) {
 		styleElement.parentNode.removeChild(styleElement);
 		var idx = styleElementsInsertedAtTop.indexOf(styleElement);
@@ -5735,24 +5771,24 @@ webpackJsonp([2],{
 			styleElementsInsertedAtTop.splice(idx, 1);
 		}
 	}
-
+	
 	function createStyleElement(options) {
 		var styleElement = document.createElement("style");
 		styleElement.type = "text/css";
 		insertStyleElement(options, styleElement);
 		return styleElement;
 	}
-
+	
 	function createLinkElement(options) {
 		var linkElement = document.createElement("link");
 		linkElement.rel = "stylesheet";
 		insertStyleElement(options, linkElement);
 		return linkElement;
 	}
-
+	
 	function addStyle(obj, options) {
 		var styleElement, update, remove;
-
+	
 		if (options.singleton) {
 			var styleIndex = singletonCounter++;
 			styleElement = singletonElement || (singletonElement = createStyleElement(options));
@@ -5778,9 +5814,9 @@ webpackJsonp([2],{
 				removeStyleElement(styleElement);
 			};
 		}
-
+	
 		update(obj);
-
+	
 		return function updateStyle(newObj) {
 			if(newObj) {
 				if(newObj.css === obj.css && newObj.media === obj.media && newObj.sourceMap === obj.sourceMap)
@@ -5791,19 +5827,19 @@ webpackJsonp([2],{
 			}
 		};
 	}
-
+	
 	var replaceText = (function () {
 		var textStore = [];
-
+	
 		return function (index, replacement) {
 			textStore[index] = replacement;
 			return textStore.filter(Boolean).join('\n');
 		};
 	})();
-
+	
 	function applyToSingletonTag(styleElement, index, remove, obj) {
 		var css = remove ? "" : obj.css;
-
+	
 		if (styleElement.styleSheet) {
 			styleElement.styleSheet.cssText = replaceText(index, css);
 		} else {
@@ -5817,15 +5853,15 @@ webpackJsonp([2],{
 			}
 		}
 	}
-
+	
 	function applyToTag(styleElement, obj) {
 		var css = obj.css;
 		var media = obj.media;
-
+	
 		if(media) {
 			styleElement.setAttribute("media", media)
 		}
-
+	
 		if(styleElement.styleSheet) {
 			styleElement.styleSheet.cssText = css;
 		} else {
@@ -5835,22 +5871,22 @@ webpackJsonp([2],{
 			styleElement.appendChild(document.createTextNode(css));
 		}
 	}
-
+	
 	function updateLink(linkElement, obj) {
 		var css = obj.css;
 		var sourceMap = obj.sourceMap;
-
+	
 		if(sourceMap) {
 			// http://stackoverflow.com/a/26603875
 			css += "\n/*# sourceMappingURL=data:application/json;base64," + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + " */";
 		}
-
+	
 		var blob = new Blob([css], { type: "text/css" });
-
+	
 		var oldSrc = linkElement.href;
-
+	
 		linkElement.href = URL.createObjectURL(blob);
-
+	
 		if(oldSrc)
 			URL.revokeObjectURL(oldSrc);
 	}
@@ -5859,9 +5895,12 @@ webpackJsonp([2],{
 /***/ },
 
 /***/ 430:
+/*!*********************************************************!*\
+  !*** ./~/react-datepicker/dist/react-datepicker.min.js ***!
+  \*********************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	!function(t,e){ true?module.exports=e(__webpack_require__(163),__webpack_require__(1),__webpack_require__(431),__webpack_require__(158)):"function"==typeof define&&define.amd?define(["moment","react","react-onclickoutside","react-dom"],e):"object"==typeof exports?exports.DatePicker=e(require("moment"),require("react"),require("react-onclickoutside"),require("react-dom")):t.DatePicker=e(t.moment,t.React,t.OnClickOutside,t.ReactDOM)}(this,function(t,e,n,r){return function(t){function e(r){if(n[r])return n[r].exports;var o=n[r]={exports:{},id:r,loaded:!1};return t[r].call(o.exports,o,o.exports,e),o.loaded=!0,o.exports}var n={};return e.m=t,e.c=n,e.p="",e(0)}([function(t,e,n){"use strict";function r(t){return t&&t.__esModule?t:{"default":t}}var o=n(1),a=r(o),i=n(5),s=r(i),l=n(3),d=r(l),p=n(13),u=r(p),f=n(12),c=r(f),h=n(4),m=d["default"].createClass({displayName:"DatePicker",propTypes:{className:d["default"].PropTypes.string,dateFormat:d["default"].PropTypes.string,dateFormatCalendar:d["default"].PropTypes.string,disabled:d["default"].PropTypes.bool,endDate:d["default"].PropTypes.object,excludeDates:d["default"].PropTypes.array,filterDate:d["default"].PropTypes.func,id:d["default"].PropTypes.string,includeDates:d["default"].PropTypes.array,isClearable:d["default"].PropTypes.bool,locale:d["default"].PropTypes.string,maxDate:d["default"].PropTypes.object,minDate:d["default"].PropTypes.object,name:d["default"].PropTypes.string,onBlur:d["default"].PropTypes.func,onChange:d["default"].PropTypes.func.isRequired,onFocus:d["default"].PropTypes.func,placeholderText:d["default"].PropTypes.string,popoverAttachment:d["default"].PropTypes.string,popoverTargetAttachment:d["default"].PropTypes.string,popoverTargetOffset:d["default"].PropTypes.string,readOnly:d["default"].PropTypes.bool,renderCalendarTo:d["default"].PropTypes.any,required:d["default"].PropTypes.bool,selected:d["default"].PropTypes.object,showYearDropdown:d["default"].PropTypes.bool,startDate:d["default"].PropTypes.object,tabIndex:d["default"].PropTypes.number,tetherConstraints:d["default"].PropTypes.array,title:d["default"].PropTypes.string,todayButton:d["default"].PropTypes.string},getDefaultProps:function(){return{dateFormatCalendar:"MMMM YYYY",onChange:function(){},disabled:!1,onFocus:function(){},onBlur:function(){},popoverAttachment:"top left",popoverTargetAttachment:"bottom left",popoverTargetOffset:"10px 0",tetherConstraints:[{to:"window",attachment:"together"}]}},getInitialState:function(){return{open:!1}},setOpen:function(t){this.setState({open:t})},handleFocus:function(t){this.props.onFocus(t),this.setOpen(!0)},handleBlur:function(t){this.state.open?this.refs.input.focus():this.props.onBlur(t)},handleCalendarClickOutside:function(t){this.setOpen(!1)},handleSelect:function(t){this.setSelected(t),this.setOpen(!1)},setSelected:function(t){(0,h.isSameDay)(this.props.selected,t)||this.props.onChange(t)},onInputClick:function(){this.setOpen(!0)},onInputKeyDown:function(t){"Enter"===t.key||"Escape"===t.key?(t.preventDefault(),this.setOpen(!1)):"Tab"===t.key&&this.setOpen(!1)},onClearClick:function(t){t.preventDefault(),this.props.onChange(null)},renderCalendar:function(){return!this.state.open||this.props.disabled?null:d["default"].createElement(s["default"],{ref:"calendar",locale:this.props.locale,dateFormat:this.props.dateFormatCalendar,selected:this.props.selected,onSelect:this.handleSelect,minDate:this.props.minDate,maxDate:this.props.maxDate,startDate:this.props.startDate,endDate:this.props.endDate,excludeDates:this.props.excludeDates,filterDate:this.props.filterDate,onClickOutside:this.handleCalendarClickOutside,includeDates:this.props.includeDates,showYearDropdown:this.props.showYearDropdown,todayButton:this.props.todayButton})},renderDateInput:function(){var t=(0,c["default"])(this.props.className,{"ignore-react-onclickoutside":this.state.open});return d["default"].createElement(a["default"],{ref:"input",id:this.props.id,name:this.props.name,date:this.props.selected,locale:this.props.locale,minDate:this.props.minDate,maxDate:this.props.maxDate,excludeDates:this.props.excludeDates,includeDates:this.props.includeDates,filterDate:this.props.filterDate,dateFormat:this.props.dateFormat,onFocus:this.handleFocus,onBlur:this.handleBlur,onClick:this.onInputClick,onKeyDown:this.onInputKeyDown,onChangeDate:this.setSelected,placeholder:this.props.placeholderText,disabled:this.props.disabled,className:t,title:this.props.title,readOnly:this.props.readOnly,required:this.props.required,tabIndex:this.props.tabIndex})},renderClearButton:function(){return this.props.isClearable&&null!=this.props.selected?d["default"].createElement("a",{className:"react-datepicker__close-icon",href:"#",onClick:this.onClearClick}):null},render:function(){return d["default"].createElement(u["default"],{classPrefix:"react-datepicker__tether",attachment:this.props.popoverAttachment,targetAttachment:this.props.popoverTargetAttachment,targetOffset:this.props.popoverTargetOffset,renderElementTo:this.props.renderCalendarTo,constraints:this.props.tetherConstraints},d["default"].createElement("div",{className:"react-datepicker__input-container"},this.renderDateInput(),this.renderClearButton()),this.renderCalendar())}});t.exports=m},function(t,e,n){"use strict";function r(t){return t&&t.__esModule?t:{"default":t}}var o=Object.assign||function(t){for(var e=1;e<arguments.length;e++){var n=arguments[e];for(var r in n)Object.prototype.hasOwnProperty.call(n,r)&&(t[r]=n[r])}return t},a=n(2),i=r(a),s=n(3),l=r(s),d=n(4),p=l["default"].createClass({displayName:"DateInput",propTypes:{date:l["default"].PropTypes.object,dateFormat:l["default"].PropTypes.string,disabled:l["default"].PropTypes.bool,excludeDates:l["default"].PropTypes.array,filterDate:l["default"].PropTypes.func,includeDates:l["default"].PropTypes.array,locale:l["default"].PropTypes.string,maxDate:l["default"].PropTypes.object,minDate:l["default"].PropTypes.object,onBlur:l["default"].PropTypes.func,onChange:l["default"].PropTypes.func,onChangeDate:l["default"].PropTypes.func},getDefaultProps:function(){return{dateFormat:"L"}},getInitialState:function(){return{maybeDate:this.safeDateFormat(this.props)}},componentWillReceiveProps:function(t){(0,d.isSameDay)(t.date,this.props.date)&&t.locale===this.props.locale&&t.dateFormat===this.props.dateFormat||this.setState({maybeDate:this.safeDateFormat(t)})},handleChange:function(t){this.props.onChange&&this.props.onChange(t),t.isDefaultPrevented()||this.handleChangeDate(t.target.value)},handleChangeDate:function(t){if(this.props.onChangeDate){var e=(0,i["default"])(t,this.props.dateFormat,this.props.locale||i["default"].locale(),!0);e.isValid()&&!(0,d.isDayDisabled)(e,this.props)?this.props.onChangeDate(e):""===t&&this.props.onChangeDate(null)}this.setState({maybeDate:t})},safeDateFormat:function(t){return t.date&&t.date.clone().locale(t.locale||i["default"].locale()).format(t.dateFormat)},handleBlur:function(t){this.setState({maybeDate:this.safeDateFormat(this.props)}),this.props.onBlur&&this.props.onBlur(t)},focus:function(){this.refs.input.focus()},render:function(){return l["default"].createElement("input",o({ref:"input",type:"text"},this.props,{value:this.state.maybeDate,onBlur:this.handleBlur,onChange:this.handleChange}))}});t.exports=p},function(e,n){e.exports=t},function(t,n){t.exports=e},function(t,e){"use strict";function n(t,e){return t&&e?t.isSame(e,"day"):!t&&!e}function r(t){var e=arguments.length<=1||void 0===arguments[1]?{}:arguments[1],r=e.minDate,o=e.maxDate,a=e.excludeDates,i=e.includeDates,s=e.filterDate;return r&&t.isBefore(r,"day")||o&&t.isAfter(o,"day")||a&&a.some(function(e){return n(t,e)})||i&&!i.some(function(e){return n(t,e)})||s&&!s(t.clone())||!1}function o(t,e){var n=arguments.length<=2||void 0===arguments[2]?{}:arguments[2],r=n.minDate,o=n.includeDates,a=t.clone().subtract(1,e);return r&&a.isBefore(r,e)||o&&o.every(function(t){return a.isBefore(t,e)})||!1}function a(t,e){var n=arguments.length<=2||void 0===arguments[2]?{}:arguments[2],r=n.maxDate,o=n.includeDates,a=t.clone().add(1,e);return r&&a.isAfter(r,e)||o&&o.every(function(t){return a.isAfter(t,e)})||!1}Object.defineProperty(e,"__esModule",{value:!0}),e.isSameDay=n,e.isDayDisabled=r,e.allDaysDisabledBefore=o,e.allDaysDisabledAfter=a},function(t,e,n){"use strict";function r(t){return t&&t.__esModule?t:{"default":t}}var o=n(2),a=r(o),i=n(6),s=r(i),l=n(9),d=r(l),p=n(3),u=r(p),f=n(4),c=u["default"].createClass({displayName:"Calendar",propTypes:{dateFormat:u["default"].PropTypes.string.isRequired,endDate:u["default"].PropTypes.object,excludeDates:u["default"].PropTypes.array,filterDate:u["default"].PropTypes.func,includeDates:u["default"].PropTypes.array,locale:u["default"].PropTypes.string,maxDate:u["default"].PropTypes.object,minDate:u["default"].PropTypes.object,onClickOutside:u["default"].PropTypes.func.isRequired,onSelect:u["default"].PropTypes.func.isRequired,selected:u["default"].PropTypes.object,showYearDropdown:u["default"].PropTypes.bool,startDate:u["default"].PropTypes.object,todayButton:u["default"].PropTypes.string},mixins:[n(8)],getInitialState:function(){return{date:this.localizeMoment(this.getDateInView())}},componentWillReceiveProps:function(t){t.selected&&!(0,f.isSameDay)(t.selected,this.props.selected)&&this.setState({date:this.localizeMoment(t.selected)})},handleClickOutside:function(t){this.props.onClickOutside(t)},getDateInView:function(){var t=this.props,e=t.selected,n=t.minDate,r=t.maxDate,o=(0,a["default"])();return e?e:n&&n.isAfter(o)?n:r&&r.isBefore(o)?r:o},localizeMoment:function(t){return t.clone().locale(this.props.locale||a["default"].locale())},increaseMonth:function(){this.setState({date:this.state.date.clone().add(1,"month")})},decreaseMonth:function(){this.setState({date:this.state.date.clone().subtract(1,"month")})},handleDayClick:function(t){this.props.onSelect(t)},changeYear:function(t){this.setState({date:this.state.date.clone().set("year",t)})},header:function(){var t=this.state.date.clone().startOf("week");return[0,1,2,3,4,5,6].map(function(e){var n=t.clone().add(e,"days");return u["default"].createElement("div",{key:e,className:"react-datepicker__day"},n.localeData().weekdaysMin(n))})},renderPreviousMonthButton:function(){return(0,f.allDaysDisabledBefore)(this.state.date,"month",this.props)?void 0:u["default"].createElement("a",{className:"react-datepicker__navigation react-datepicker__navigation--previous",onClick:this.decreaseMonth})},renderNextMonthButton:function(){return(0,f.allDaysDisabledAfter)(this.state.date,"month",this.props)?void 0:u["default"].createElement("a",{className:"react-datepicker__navigation react-datepicker__navigation--next",onClick:this.increaseMonth})},renderCurrentMonth:function(){var t=["react-datepicker__current-month"];return this.props.showYearDropdown&&t.push("react-datepicker__current-month--hasYearDropdown"),u["default"].createElement("div",{className:t.join(" ")},this.state.date.format(this.props.dateFormat))},renderYearDropdown:function(){return this.props.showYearDropdown?u["default"].createElement(s["default"],{onChange:this.changeYear,year:this.state.date.year()}):void 0},renderTodayButton:function(){var t=this;if(this.props.todayButton)return u["default"].createElement("div",{className:"react-datepicker__today-button",onClick:function(){return t.props.onSelect((0,a["default"])())}},this.props.todayButton)},render:function(){return u["default"].createElement("div",{className:"react-datepicker"},u["default"].createElement("div",{className:"react-datepicker__triangle"}),u["default"].createElement("div",{className:"react-datepicker__header"},this.renderPreviousMonthButton(),this.renderCurrentMonth(),this.renderYearDropdown(),this.renderNextMonthButton(),u["default"].createElement("div",null,this.header())),u["default"].createElement(d["default"],{day:this.state.date,onDayClick:this.handleDayClick,minDate:this.props.minDate,maxDate:this.props.maxDate,excludeDates:this.props.excludeDates,includeDates:this.props.includeDates,filterDate:this.props.filterDate,selected:this.props.selected,startDate:this.props.startDate,endDate:this.props.endDate}),this.renderTodayButton())}});t.exports=c},function(t,e,n){"use strict";function r(t){return t&&t.__esModule?t:{"default":t}}var o=n(3),a=r(o),i=n(7),s=r(i),l=a["default"].createClass({displayName:"YearDropdown",propTypes:{onChange:a["default"].PropTypes.func.isRequired,year:a["default"].PropTypes.number.isRequired},getInitialState:function(){return{dropdownVisible:!1}},renderReadView:function(){return a["default"].createElement("div",{className:"react-datepicker__year-read-view",onClick:this.toggleDropdown},a["default"].createElement("span",{className:"react-datepicker__year-read-view--selected-year"},this.props.year),a["default"].createElement("span",{className:"react-datepicker__year-read-view--down-arrow"}))},renderDropdown:function(){return a["default"].createElement(s["default"],{ref:"options",year:this.props.year,onChange:this.onChange,onCancel:this.toggleDropdown})},onChange:function(t){this.toggleDropdown(),t!==this.props.year&&this.props.onChange(t)},toggleDropdown:function(){this.setState({dropdownVisible:!this.state.dropdownVisible})},render:function(){return a["default"].createElement("div",null,this.state.dropdownVisible?this.renderDropdown():this.renderReadView())}});t.exports=l},function(t,e,n){"use strict";function r(t){return t&&t.__esModule?t:{"default":t}}function o(t){for(var e=[],n=0;5>n;n++)e.push(t-n);return e}var a=n(3),i=r(a),s=i["default"].createClass({displayName:"YearDropdownOptions",propTypes:{onCancel:i["default"].PropTypes.func.isRequired,onChange:i["default"].PropTypes.func.isRequired,year:i["default"].PropTypes.number.isRequired},mixins:[n(8)],getInitialState:function(){return{yearsList:o(this.props.year)}},renderOptions:function(){var t=this,e=this.props.year,n=this.state.yearsList.map(function(n){return i["default"].createElement("div",{className:"react-datepicker__year-option",key:n,onClick:t.onChange.bind(t,n)},e===n?i["default"].createElement("span",{className:"react-datepicker__year-option--selected"},"✓"):"",n)});return n.unshift(i["default"].createElement("div",{className:"react-datepicker__year-option",ref:"upcoming",key:"upcoming",onClick:this.incrementYears},i["default"].createElement("a",{className:"react-datepicker__navigation react-datepicker__navigation--years react-datepicker__navigation--years-upcoming"}))),n.push(i["default"].createElement("div",{className:"react-datepicker__year-option",ref:"previous",key:"previous",onClick:this.decrementYears},i["default"].createElement("a",{className:"react-datepicker__navigation react-datepicker__navigation--years react-datepicker__navigation--years-previous"}))),n},onChange:function(t){this.props.onChange(t)},handleClickOutside:function(){this.props.onCancel()},shiftYears:function(t){var e=this.state.yearsList.map(function(e){return e+t});this.setState({yearsList:e})},incrementYears:function(){return this.shiftYears(1)},decrementYears:function(){return this.shiftYears(-1)},render:function(){return i["default"].createElement("div",{className:"react-datepicker__year-dropdown"},this.renderOptions())}});t.exports=s},function(t,e){t.exports=n},function(t,e,n){"use strict";function r(t){return t&&t.__esModule?t:{"default":t}}var o=n(3),a=r(o),i=n(10),s=r(i),l=a["default"].createClass({displayName:"Month",propTypes:{day:a["default"].PropTypes.object.isRequired,endDate:a["default"].PropTypes.object,excludeDates:a["default"].PropTypes.array,filterDate:a["default"].PropTypes.func,includeDates:a["default"].PropTypes.array,maxDate:a["default"].PropTypes.object,minDate:a["default"].PropTypes.object,onDayClick:a["default"].PropTypes.func,selected:a["default"].PropTypes.object,startDate:a["default"].PropTypes.object},handleDayClick:function(t){this.props.onDayClick&&this.props.onDayClick(t)},isWeekInMonth:function(t){var e=this.props.day,n=t.clone().add(6,"days");return t.isSame(e,"month")||n.isSame(e,"month")},renderWeeks:function(){var t=this,e=this.props.day.clone().startOf("month").startOf("week");return[0,1,2,3,4,5].map(function(t){return e.clone().add(t,"weeks")}).filter(function(e){return t.isWeekInMonth(e)}).map(function(e,n){return a["default"].createElement(s["default"],{key:n,day:e,month:t.props.day.month(),onDayClick:t.handleDayClick,minDate:t.props.minDate,maxDate:t.props.maxDate,excludeDates:t.props.excludeDates,includeDates:t.props.includeDates,filterDate:t.props.filterDate,selected:t.props.selected,startDate:t.props.startDate,endDate:t.props.endDate})})},render:function(){return a["default"].createElement("div",{className:"react-datepicker__month"},this.renderWeeks())}});t.exports=l},function(t,e,n){"use strict";function r(t){return t&&t.__esModule?t:{"default":t}}var o=n(3),a=r(o),i=n(11),s=r(i),l=a["default"].createClass({displayName:"Week",propTypes:{day:a["default"].PropTypes.object.isRequired,endDate:a["default"].PropTypes.object,excludeDates:a["default"].PropTypes.array,filterDate:a["default"].PropTypes.func,includeDates:a["default"].PropTypes.array,maxDate:a["default"].PropTypes.object,minDate:a["default"].PropTypes.object,month:a["default"].PropTypes.number,onDayClick:a["default"].PropTypes.func,selected:a["default"].PropTypes.object,startDate:a["default"].PropTypes.object},handleDayClick:function(t){this.props.onDayClick&&this.props.onDayClick(t)},renderDays:function(){var t=this,e=this.props.day.clone().startOf("week");return[0,1,2,3,4,5,6].map(function(n){var r=e.clone().add(n,"days");return a["default"].createElement(s["default"],{key:n,day:r,month:t.props.month,onClick:t.handleDayClick.bind(t,r),minDate:t.props.minDate,maxDate:t.props.maxDate,excludeDates:t.props.excludeDates,includeDates:t.props.includeDates,filterDate:t.props.filterDate,selected:t.props.selected,startDate:t.props.startDate,endDate:t.props.endDate})})},render:function(){return a["default"].createElement("div",{className:"react-datepicker__week"},this.renderDays())}});t.exports=l},function(t,e,n){"use strict";function r(t){return t&&t.__esModule?t:{"default":t}}var o=n(2),a=r(o),i=n(3),s=r(i),l=n(12),d=r(l),p=n(4),u=s["default"].createClass({displayName:"Day",propTypes:{day:s["default"].PropTypes.object.isRequired,endDate:s["default"].PropTypes.object,excludeDates:s["default"].PropTypes.array,filterDate:s["default"].PropTypes.func,includeDates:s["default"].PropTypes.array,maxDate:s["default"].PropTypes.object,minDate:s["default"].PropTypes.object,month:s["default"].PropTypes.number,onClick:s["default"].PropTypes.func,selected:s["default"].PropTypes.object,startDate:s["default"].PropTypes.object},handleClick:function(t){!this.isDisabled()&&this.props.onClick&&this.props.onClick(t)},isSameDay:function(t){return(0,p.isSameDay)(this.props.day,t)},isDisabled:function(){return(0,p.isDayDisabled)(this.props.day,this.props)},isInRange:function(){var t=this.props,e=t.day,n=t.startDate,r=t.endDate;if(!n||!r)return!1;var o=n.clone().startOf("day").subtract(1,"seconds"),a=r.clone().startOf("day").add(1,"seconds");return e.clone().startOf("day").isBetween(o,a)},isWeekend:function(){var t=this.props.day.day();return 0===t||6===t},isOutsideMonth:function(){return void 0!==this.props.month&&this.props.month!==this.props.day.month()},getClassNames:function(){return(0,d["default"])("react-datepicker__day",{"react-datepicker__day--disabled":this.isDisabled(),"react-datepicker__day--selected":this.isSameDay(this.props.selected),"react-datepicker__day--in-range":this.isInRange(),"react-datepicker__day--today":this.isSameDay((0,a["default"])()),"react-datepicker__day--weekend":this.isWeekend(),"react-datepicker__day--outside-month":this.isOutsideMonth()})},render:function(){return s["default"].createElement("div",{className:this.getClassNames(),onClick:this.handleClick},this.props.day.date())}});t.exports=u},function(t,e,n){var r,o;/*!
+	!function(t,e){ true?module.exports=e(__webpack_require__(/*! moment */ 163),__webpack_require__(/*! react */ 1),__webpack_require__(/*! react-onclickoutside */ 431),__webpack_require__(/*! react-dom */ 158)):"function"==typeof define&&define.amd?define(["moment","react","react-onclickoutside","react-dom"],e):"object"==typeof exports?exports.DatePicker=e(require("moment"),require("react"),require("react-onclickoutside"),require("react-dom")):t.DatePicker=e(t.moment,t.React,t.OnClickOutside,t.ReactDOM)}(this,function(t,e,n,r){return function(t){function e(r){if(n[r])return n[r].exports;var o=n[r]={exports:{},id:r,loaded:!1};return t[r].call(o.exports,o,o.exports,e),o.loaded=!0,o.exports}var n={};return e.m=t,e.c=n,e.p="",e(0)}([function(t,e,n){"use strict";function r(t){return t&&t.__esModule?t:{"default":t}}var o=n(1),a=r(o),i=n(5),s=r(i),l=n(3),d=r(l),p=n(13),u=r(p),f=n(12),c=r(f),h=n(4),m=d["default"].createClass({displayName:"DatePicker",propTypes:{className:d["default"].PropTypes.string,dateFormat:d["default"].PropTypes.string,dateFormatCalendar:d["default"].PropTypes.string,disabled:d["default"].PropTypes.bool,endDate:d["default"].PropTypes.object,excludeDates:d["default"].PropTypes.array,filterDate:d["default"].PropTypes.func,id:d["default"].PropTypes.string,includeDates:d["default"].PropTypes.array,isClearable:d["default"].PropTypes.bool,locale:d["default"].PropTypes.string,maxDate:d["default"].PropTypes.object,minDate:d["default"].PropTypes.object,name:d["default"].PropTypes.string,onBlur:d["default"].PropTypes.func,onChange:d["default"].PropTypes.func.isRequired,onFocus:d["default"].PropTypes.func,placeholderText:d["default"].PropTypes.string,popoverAttachment:d["default"].PropTypes.string,popoverTargetAttachment:d["default"].PropTypes.string,popoverTargetOffset:d["default"].PropTypes.string,readOnly:d["default"].PropTypes.bool,renderCalendarTo:d["default"].PropTypes.any,required:d["default"].PropTypes.bool,selected:d["default"].PropTypes.object,showYearDropdown:d["default"].PropTypes.bool,startDate:d["default"].PropTypes.object,tabIndex:d["default"].PropTypes.number,tetherConstraints:d["default"].PropTypes.array,title:d["default"].PropTypes.string,todayButton:d["default"].PropTypes.string},getDefaultProps:function(){return{dateFormatCalendar:"MMMM YYYY",onChange:function(){},disabled:!1,onFocus:function(){},onBlur:function(){},popoverAttachment:"top left",popoverTargetAttachment:"bottom left",popoverTargetOffset:"10px 0",tetherConstraints:[{to:"window",attachment:"together"}]}},getInitialState:function(){return{open:!1}},setOpen:function(t){this.setState({open:t})},handleFocus:function(t){this.props.onFocus(t),this.setOpen(!0)},handleBlur:function(t){this.state.open?this.refs.input.focus():this.props.onBlur(t)},handleCalendarClickOutside:function(t){this.setOpen(!1)},handleSelect:function(t){this.setSelected(t),this.setOpen(!1)},setSelected:function(t){(0,h.isSameDay)(this.props.selected,t)||this.props.onChange(t)},onInputClick:function(){this.setOpen(!0)},onInputKeyDown:function(t){"Enter"===t.key||"Escape"===t.key?(t.preventDefault(),this.setOpen(!1)):"Tab"===t.key&&this.setOpen(!1)},onClearClick:function(t){t.preventDefault(),this.props.onChange(null)},renderCalendar:function(){return!this.state.open||this.props.disabled?null:d["default"].createElement(s["default"],{ref:"calendar",locale:this.props.locale,dateFormat:this.props.dateFormatCalendar,selected:this.props.selected,onSelect:this.handleSelect,minDate:this.props.minDate,maxDate:this.props.maxDate,startDate:this.props.startDate,endDate:this.props.endDate,excludeDates:this.props.excludeDates,filterDate:this.props.filterDate,onClickOutside:this.handleCalendarClickOutside,includeDates:this.props.includeDates,showYearDropdown:this.props.showYearDropdown,todayButton:this.props.todayButton})},renderDateInput:function(){var t=(0,c["default"])(this.props.className,{"ignore-react-onclickoutside":this.state.open});return d["default"].createElement(a["default"],{ref:"input",id:this.props.id,name:this.props.name,date:this.props.selected,locale:this.props.locale,minDate:this.props.minDate,maxDate:this.props.maxDate,excludeDates:this.props.excludeDates,includeDates:this.props.includeDates,filterDate:this.props.filterDate,dateFormat:this.props.dateFormat,onFocus:this.handleFocus,onBlur:this.handleBlur,onClick:this.onInputClick,onKeyDown:this.onInputKeyDown,onChangeDate:this.setSelected,placeholder:this.props.placeholderText,disabled:this.props.disabled,className:t,title:this.props.title,readOnly:this.props.readOnly,required:this.props.required,tabIndex:this.props.tabIndex})},renderClearButton:function(){return this.props.isClearable&&null!=this.props.selected?d["default"].createElement("a",{className:"react-datepicker__close-icon",href:"#",onClick:this.onClearClick}):null},render:function(){return d["default"].createElement(u["default"],{classPrefix:"react-datepicker__tether",attachment:this.props.popoverAttachment,targetAttachment:this.props.popoverTargetAttachment,targetOffset:this.props.popoverTargetOffset,renderElementTo:this.props.renderCalendarTo,constraints:this.props.tetherConstraints},d["default"].createElement("div",{className:"react-datepicker__input-container"},this.renderDateInput(),this.renderClearButton()),this.renderCalendar())}});t.exports=m},function(t,e,n){"use strict";function r(t){return t&&t.__esModule?t:{"default":t}}var o=Object.assign||function(t){for(var e=1;e<arguments.length;e++){var n=arguments[e];for(var r in n)Object.prototype.hasOwnProperty.call(n,r)&&(t[r]=n[r])}return t},a=n(2),i=r(a),s=n(3),l=r(s),d=n(4),p=l["default"].createClass({displayName:"DateInput",propTypes:{date:l["default"].PropTypes.object,dateFormat:l["default"].PropTypes.string,disabled:l["default"].PropTypes.bool,excludeDates:l["default"].PropTypes.array,filterDate:l["default"].PropTypes.func,includeDates:l["default"].PropTypes.array,locale:l["default"].PropTypes.string,maxDate:l["default"].PropTypes.object,minDate:l["default"].PropTypes.object,onBlur:l["default"].PropTypes.func,onChange:l["default"].PropTypes.func,onChangeDate:l["default"].PropTypes.func},getDefaultProps:function(){return{dateFormat:"L"}},getInitialState:function(){return{maybeDate:this.safeDateFormat(this.props)}},componentWillReceiveProps:function(t){(0,d.isSameDay)(t.date,this.props.date)&&t.locale===this.props.locale&&t.dateFormat===this.props.dateFormat||this.setState({maybeDate:this.safeDateFormat(t)})},handleChange:function(t){this.props.onChange&&this.props.onChange(t),t.isDefaultPrevented()||this.handleChangeDate(t.target.value)},handleChangeDate:function(t){if(this.props.onChangeDate){var e=(0,i["default"])(t,this.props.dateFormat,this.props.locale||i["default"].locale(),!0);e.isValid()&&!(0,d.isDayDisabled)(e,this.props)?this.props.onChangeDate(e):""===t&&this.props.onChangeDate(null)}this.setState({maybeDate:t})},safeDateFormat:function(t){return t.date&&t.date.clone().locale(t.locale||i["default"].locale()).format(t.dateFormat)},handleBlur:function(t){this.setState({maybeDate:this.safeDateFormat(this.props)}),this.props.onBlur&&this.props.onBlur(t)},focus:function(){this.refs.input.focus()},render:function(){return l["default"].createElement("input",o({ref:"input",type:"text"},this.props,{value:this.state.maybeDate,onBlur:this.handleBlur,onChange:this.handleChange}))}});t.exports=p},function(e,n){e.exports=t},function(t,n){t.exports=e},function(t,e){"use strict";function n(t,e){return t&&e?t.isSame(e,"day"):!t&&!e}function r(t){var e=arguments.length<=1||void 0===arguments[1]?{}:arguments[1],r=e.minDate,o=e.maxDate,a=e.excludeDates,i=e.includeDates,s=e.filterDate;return r&&t.isBefore(r,"day")||o&&t.isAfter(o,"day")||a&&a.some(function(e){return n(t,e)})||i&&!i.some(function(e){return n(t,e)})||s&&!s(t.clone())||!1}function o(t,e){var n=arguments.length<=2||void 0===arguments[2]?{}:arguments[2],r=n.minDate,o=n.includeDates,a=t.clone().subtract(1,e);return r&&a.isBefore(r,e)||o&&o.every(function(t){return a.isBefore(t,e)})||!1}function a(t,e){var n=arguments.length<=2||void 0===arguments[2]?{}:arguments[2],r=n.maxDate,o=n.includeDates,a=t.clone().add(1,e);return r&&a.isAfter(r,e)||o&&o.every(function(t){return a.isAfter(t,e)})||!1}Object.defineProperty(e,"__esModule",{value:!0}),e.isSameDay=n,e.isDayDisabled=r,e.allDaysDisabledBefore=o,e.allDaysDisabledAfter=a},function(t,e,n){"use strict";function r(t){return t&&t.__esModule?t:{"default":t}}var o=n(2),a=r(o),i=n(6),s=r(i),l=n(9),d=r(l),p=n(3),u=r(p),f=n(4),c=u["default"].createClass({displayName:"Calendar",propTypes:{dateFormat:u["default"].PropTypes.string.isRequired,endDate:u["default"].PropTypes.object,excludeDates:u["default"].PropTypes.array,filterDate:u["default"].PropTypes.func,includeDates:u["default"].PropTypes.array,locale:u["default"].PropTypes.string,maxDate:u["default"].PropTypes.object,minDate:u["default"].PropTypes.object,onClickOutside:u["default"].PropTypes.func.isRequired,onSelect:u["default"].PropTypes.func.isRequired,selected:u["default"].PropTypes.object,showYearDropdown:u["default"].PropTypes.bool,startDate:u["default"].PropTypes.object,todayButton:u["default"].PropTypes.string},mixins:[n(8)],getInitialState:function(){return{date:this.localizeMoment(this.getDateInView())}},componentWillReceiveProps:function(t){t.selected&&!(0,f.isSameDay)(t.selected,this.props.selected)&&this.setState({date:this.localizeMoment(t.selected)})},handleClickOutside:function(t){this.props.onClickOutside(t)},getDateInView:function(){var t=this.props,e=t.selected,n=t.minDate,r=t.maxDate,o=(0,a["default"])();return e?e:n&&n.isAfter(o)?n:r&&r.isBefore(o)?r:o},localizeMoment:function(t){return t.clone().locale(this.props.locale||a["default"].locale())},increaseMonth:function(){this.setState({date:this.state.date.clone().add(1,"month")})},decreaseMonth:function(){this.setState({date:this.state.date.clone().subtract(1,"month")})},handleDayClick:function(t){this.props.onSelect(t)},changeYear:function(t){this.setState({date:this.state.date.clone().set("year",t)})},header:function(){var t=this.state.date.clone().startOf("week");return[0,1,2,3,4,5,6].map(function(e){var n=t.clone().add(e,"days");return u["default"].createElement("div",{key:e,className:"react-datepicker__day"},n.localeData().weekdaysMin(n))})},renderPreviousMonthButton:function(){return(0,f.allDaysDisabledBefore)(this.state.date,"month",this.props)?void 0:u["default"].createElement("a",{className:"react-datepicker__navigation react-datepicker__navigation--previous",onClick:this.decreaseMonth})},renderNextMonthButton:function(){return(0,f.allDaysDisabledAfter)(this.state.date,"month",this.props)?void 0:u["default"].createElement("a",{className:"react-datepicker__navigation react-datepicker__navigation--next",onClick:this.increaseMonth})},renderCurrentMonth:function(){var t=["react-datepicker__current-month"];return this.props.showYearDropdown&&t.push("react-datepicker__current-month--hasYearDropdown"),u["default"].createElement("div",{className:t.join(" ")},this.state.date.format(this.props.dateFormat))},renderYearDropdown:function(){return this.props.showYearDropdown?u["default"].createElement(s["default"],{onChange:this.changeYear,year:this.state.date.year()}):void 0},renderTodayButton:function(){var t=this;if(this.props.todayButton)return u["default"].createElement("div",{className:"react-datepicker__today-button",onClick:function(){return t.props.onSelect((0,a["default"])())}},this.props.todayButton)},render:function(){return u["default"].createElement("div",{className:"react-datepicker"},u["default"].createElement("div",{className:"react-datepicker__triangle"}),u["default"].createElement("div",{className:"react-datepicker__header"},this.renderPreviousMonthButton(),this.renderCurrentMonth(),this.renderYearDropdown(),this.renderNextMonthButton(),u["default"].createElement("div",null,this.header())),u["default"].createElement(d["default"],{day:this.state.date,onDayClick:this.handleDayClick,minDate:this.props.minDate,maxDate:this.props.maxDate,excludeDates:this.props.excludeDates,includeDates:this.props.includeDates,filterDate:this.props.filterDate,selected:this.props.selected,startDate:this.props.startDate,endDate:this.props.endDate}),this.renderTodayButton())}});t.exports=c},function(t,e,n){"use strict";function r(t){return t&&t.__esModule?t:{"default":t}}var o=n(3),a=r(o),i=n(7),s=r(i),l=a["default"].createClass({displayName:"YearDropdown",propTypes:{onChange:a["default"].PropTypes.func.isRequired,year:a["default"].PropTypes.number.isRequired},getInitialState:function(){return{dropdownVisible:!1}},renderReadView:function(){return a["default"].createElement("div",{className:"react-datepicker__year-read-view",onClick:this.toggleDropdown},a["default"].createElement("span",{className:"react-datepicker__year-read-view--selected-year"},this.props.year),a["default"].createElement("span",{className:"react-datepicker__year-read-view--down-arrow"}))},renderDropdown:function(){return a["default"].createElement(s["default"],{ref:"options",year:this.props.year,onChange:this.onChange,onCancel:this.toggleDropdown})},onChange:function(t){this.toggleDropdown(),t!==this.props.year&&this.props.onChange(t)},toggleDropdown:function(){this.setState({dropdownVisible:!this.state.dropdownVisible})},render:function(){return a["default"].createElement("div",null,this.state.dropdownVisible?this.renderDropdown():this.renderReadView())}});t.exports=l},function(t,e,n){"use strict";function r(t){return t&&t.__esModule?t:{"default":t}}function o(t){for(var e=[],n=0;5>n;n++)e.push(t-n);return e}var a=n(3),i=r(a),s=i["default"].createClass({displayName:"YearDropdownOptions",propTypes:{onCancel:i["default"].PropTypes.func.isRequired,onChange:i["default"].PropTypes.func.isRequired,year:i["default"].PropTypes.number.isRequired},mixins:[n(8)],getInitialState:function(){return{yearsList:o(this.props.year)}},renderOptions:function(){var t=this,e=this.props.year,n=this.state.yearsList.map(function(n){return i["default"].createElement("div",{className:"react-datepicker__year-option",key:n,onClick:t.onChange.bind(t,n)},e===n?i["default"].createElement("span",{className:"react-datepicker__year-option--selected"},"✓"):"",n)});return n.unshift(i["default"].createElement("div",{className:"react-datepicker__year-option",ref:"upcoming",key:"upcoming",onClick:this.incrementYears},i["default"].createElement("a",{className:"react-datepicker__navigation react-datepicker__navigation--years react-datepicker__navigation--years-upcoming"}))),n.push(i["default"].createElement("div",{className:"react-datepicker__year-option",ref:"previous",key:"previous",onClick:this.decrementYears},i["default"].createElement("a",{className:"react-datepicker__navigation react-datepicker__navigation--years react-datepicker__navigation--years-previous"}))),n},onChange:function(t){this.props.onChange(t)},handleClickOutside:function(){this.props.onCancel()},shiftYears:function(t){var e=this.state.yearsList.map(function(e){return e+t});this.setState({yearsList:e})},incrementYears:function(){return this.shiftYears(1)},decrementYears:function(){return this.shiftYears(-1)},render:function(){return i["default"].createElement("div",{className:"react-datepicker__year-dropdown"},this.renderOptions())}});t.exports=s},function(t,e){t.exports=n},function(t,e,n){"use strict";function r(t){return t&&t.__esModule?t:{"default":t}}var o=n(3),a=r(o),i=n(10),s=r(i),l=a["default"].createClass({displayName:"Month",propTypes:{day:a["default"].PropTypes.object.isRequired,endDate:a["default"].PropTypes.object,excludeDates:a["default"].PropTypes.array,filterDate:a["default"].PropTypes.func,includeDates:a["default"].PropTypes.array,maxDate:a["default"].PropTypes.object,minDate:a["default"].PropTypes.object,onDayClick:a["default"].PropTypes.func,selected:a["default"].PropTypes.object,startDate:a["default"].PropTypes.object},handleDayClick:function(t){this.props.onDayClick&&this.props.onDayClick(t)},isWeekInMonth:function(t){var e=this.props.day,n=t.clone().add(6,"days");return t.isSame(e,"month")||n.isSame(e,"month")},renderWeeks:function(){var t=this,e=this.props.day.clone().startOf("month").startOf("week");return[0,1,2,3,4,5].map(function(t){return e.clone().add(t,"weeks")}).filter(function(e){return t.isWeekInMonth(e)}).map(function(e,n){return a["default"].createElement(s["default"],{key:n,day:e,month:t.props.day.month(),onDayClick:t.handleDayClick,minDate:t.props.minDate,maxDate:t.props.maxDate,excludeDates:t.props.excludeDates,includeDates:t.props.includeDates,filterDate:t.props.filterDate,selected:t.props.selected,startDate:t.props.startDate,endDate:t.props.endDate})})},render:function(){return a["default"].createElement("div",{className:"react-datepicker__month"},this.renderWeeks())}});t.exports=l},function(t,e,n){"use strict";function r(t){return t&&t.__esModule?t:{"default":t}}var o=n(3),a=r(o),i=n(11),s=r(i),l=a["default"].createClass({displayName:"Week",propTypes:{day:a["default"].PropTypes.object.isRequired,endDate:a["default"].PropTypes.object,excludeDates:a["default"].PropTypes.array,filterDate:a["default"].PropTypes.func,includeDates:a["default"].PropTypes.array,maxDate:a["default"].PropTypes.object,minDate:a["default"].PropTypes.object,month:a["default"].PropTypes.number,onDayClick:a["default"].PropTypes.func,selected:a["default"].PropTypes.object,startDate:a["default"].PropTypes.object},handleDayClick:function(t){this.props.onDayClick&&this.props.onDayClick(t)},renderDays:function(){var t=this,e=this.props.day.clone().startOf("week");return[0,1,2,3,4,5,6].map(function(n){var r=e.clone().add(n,"days");return a["default"].createElement(s["default"],{key:n,day:r,month:t.props.month,onClick:t.handleDayClick.bind(t,r),minDate:t.props.minDate,maxDate:t.props.maxDate,excludeDates:t.props.excludeDates,includeDates:t.props.includeDates,filterDate:t.props.filterDate,selected:t.props.selected,startDate:t.props.startDate,endDate:t.props.endDate})})},render:function(){return a["default"].createElement("div",{className:"react-datepicker__week"},this.renderDays())}});t.exports=l},function(t,e,n){"use strict";function r(t){return t&&t.__esModule?t:{"default":t}}var o=n(2),a=r(o),i=n(3),s=r(i),l=n(12),d=r(l),p=n(4),u=s["default"].createClass({displayName:"Day",propTypes:{day:s["default"].PropTypes.object.isRequired,endDate:s["default"].PropTypes.object,excludeDates:s["default"].PropTypes.array,filterDate:s["default"].PropTypes.func,includeDates:s["default"].PropTypes.array,maxDate:s["default"].PropTypes.object,minDate:s["default"].PropTypes.object,month:s["default"].PropTypes.number,onClick:s["default"].PropTypes.func,selected:s["default"].PropTypes.object,startDate:s["default"].PropTypes.object},handleClick:function(t){!this.isDisabled()&&this.props.onClick&&this.props.onClick(t)},isSameDay:function(t){return(0,p.isSameDay)(this.props.day,t)},isDisabled:function(){return(0,p.isDayDisabled)(this.props.day,this.props)},isInRange:function(){var t=this.props,e=t.day,n=t.startDate,r=t.endDate;if(!n||!r)return!1;var o=n.clone().startOf("day").subtract(1,"seconds"),a=r.clone().startOf("day").add(1,"seconds");return e.clone().startOf("day").isBetween(o,a)},isWeekend:function(){var t=this.props.day.day();return 0===t||6===t},isOutsideMonth:function(){return void 0!==this.props.month&&this.props.month!==this.props.day.month()},getClassNames:function(){return(0,d["default"])("react-datepicker__day",{"react-datepicker__day--disabled":this.isDisabled(),"react-datepicker__day--selected":this.isSameDay(this.props.selected),"react-datepicker__day--in-range":this.isInRange(),"react-datepicker__day--today":this.isSameDay((0,a["default"])()),"react-datepicker__day--weekend":this.isWeekend(),"react-datepicker__day--outside-month":this.isOutsideMonth()})},render:function(){return s["default"].createElement("div",{className:this.getClassNames(),onClick:this.handleClick},this.props.day.date())}});t.exports=u},function(t,e,n){var r,o;/*!
 		  Copyright (c) 2016 Jed Watson.
 		  Licensed under the MIT License (MIT), see
 		  http://jedwatson.github.io/classnames
@@ -5872,6 +5911,9 @@ webpackJsonp([2],{
 /***/ },
 
 /***/ 431:
+/*!************************************************************!*\
+  !*** ./~/react-datepicker/~/react-onclickoutside/index.js ***!
+  \************************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -5891,7 +5933,7 @@ webpackJsonp([2],{
 	(function (root, factory) {
 	  if (true) {
 	    // AMD. Register as an anonymous module.
-	    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(158)], __WEBPACK_AMD_DEFINE_RESULT__ = function(reactDom) {
+	    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(/*! react-dom */ 158)], __WEBPACK_AMD_DEFINE_RESULT__ = function(reactDom) {
 	      return factory(root, reactDom);
 	    }.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 	  } else if (typeof exports === 'object') {
@@ -5905,14 +5947,14 @@ webpackJsonp([2],{
 	  }
 	}(this, function (root, ReactDOM) {
 	  "use strict";
-
+	
 	  // Use a parallel array because we can't use
 	  // objects as keys, they get toString-coerced
 	  var registeredComponents = [];
 	  var handlers = [];
-
+	
 	  var IGNORE_CLASS = 'ignore-react-onclickoutside';
-
+	
 	  var isSourceFound = function(source, localNode, ignoreClass) {
 	    if (source === localNode) {
 	      return true;
@@ -5928,12 +5970,12 @@ webpackJsonp([2],{
 	    }
 	    return source.classList.contains(ignoreClass);
 	  };
-
+	
 	  return {
 	    componentDidMount: function() {
 	      if(typeof this.handleClickOutside !== "function")
 	        throw new Error("Component lacks a handleClickOutside(event) function for processing outside click events.");
-
+	
 	      var fn = this.__outsideClickHandler = (function(localNode, eventHandler, ignoreClass) {
 	        return function(evt) {
 	          evt.stopPropagation();
@@ -5955,18 +5997,18 @@ webpackJsonp([2],{
 	          eventHandler(evt);
 	        }
 	      }(ReactDOM.findDOMNode(this), this.handleClickOutside, this.props.outsideClickIgnoreClass || IGNORE_CLASS));
-
+	
 	      var pos = registeredComponents.length;
 	      registeredComponents.push(this);
 	      handlers[pos] = fn;
-
+	
 	      // If there is a truthy disableOnClickOutside property for this
 	      // component, don't immediately start listening for outside events.
 	      if (!this.props.disableOnClickOutside) {
 	        this.enableOnClickOutside();
 	      }
 	    },
-
+	
 	    componentWillUnmount: function() {
 	      this.disableOnClickOutside();
 	      this.__outsideClickHandler = false;
@@ -5979,7 +6021,7 @@ webpackJsonp([2],{
 	        }
 	      }
 	    },
-
+	
 	    /**
 	     * Can be called to explicitly enable event listening
 	     * for clicks and touches outside of this element.
@@ -5991,7 +6033,7 @@ webpackJsonp([2],{
 	        document.addEventListener("touchstart", fn);
 	      }
 	    },
-
+	
 	    /**
 	     * Can be called to explicitly disable event listening
 	     * for clicks and touches outside of this element.
@@ -6004,10 +6046,11 @@ webpackJsonp([2],{
 	      }
 	    }
 	  };
-
+	
 	}));
 
 
 /***/ }
 
 });
+//# sourceMappingURL=m_community_banner.js.map

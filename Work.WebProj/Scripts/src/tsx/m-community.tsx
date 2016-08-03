@@ -394,7 +394,7 @@ namespace Community {
 
 
                     up_CommunityDoor = <div className="form-group row">
-                        <label className="col-xs-1 form-control-label text-xs-right">迎賓大門</label>
+                        <label className="col-xs-1 form-control-label text-xs-right">相簿</label>
                         <div className="col-xs-7">
                             <CommCmpt.MasterImageUpload FileKind="CommunityDoor"
                                 MainId={field.community_id}
@@ -621,7 +621,7 @@ namespace Community {
                                 </div>
                             </div>
                             {up_CommunityDoor}
-                            {up_CommunityPublic}
+                            {/*up_CommunityPublic*/}
 
                             <div className="form-action">
                                 <div className="col-xs-offset-1">

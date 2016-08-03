@@ -38,7 +38,7 @@ namespace DotWeb.Controllers
 
             var imgobj_CommunityDoor = getImgFiles("CommunityDoor", id.ToString(), "origin");
 
-            if (imgobj_CommunityDoor != null && imgobj_CommunityList.Count() > 0)
+            if (imgobj_CommunityDoor != null && imgobj_CommunityList?.Count() > 0)
             {
                 result.imgurl_CommunityDoor = imgobj_CommunityDoor.Select(x => x.src_path).ToArray();
             }
@@ -47,15 +47,17 @@ namespace DotWeb.Controllers
                 result.imgurl_CommunityDoor = new string[] { };
             }
 
-            var imgobj_MatterStyle = getImgFiles("CommunityPublic", id.ToString(), "origin");
-            if (imgobj_MatterStyle != null && imgobj_MatterStyle.Count() > 0)
-            {
-                result.imgurl_CommunityPublic = imgobj_MatterStyle.Select(x => x.src_path).ToArray();
-            }
-            else
-            {
-                result.imgurl_CommunityPublic = new string[] { };
-            }
+            //var imgobj_MatterStyle = getImgFiles("CommunityPublic", id.ToString(), "origin");
+            //if (imgobj_MatterStyle != null && imgobj_MatterStyle.Count() > 0)
+            //{
+            //    result.imgurl_CommunityPublic = imgobj_MatterStyle.Select(x => x.src_path).ToArray();
+            //}
+            //else
+            //{
+            //    result.imgurl_CommunityPublic = new string[] { };
+            //}
+
+            result.imgurl_CommunityPublic = new string[] { };
 
             ViewBag.community_id = id;
             ViewBag.group_buying_url = result.group_buying_url;
