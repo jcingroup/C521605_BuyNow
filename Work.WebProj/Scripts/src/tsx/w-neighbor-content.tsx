@@ -151,6 +151,10 @@ namespace WWW {
             var outHtml: JSX.Element = null;
             var item = this.state.item;
             var outBanner = null;
+            var info_content_html: JSX.Element[] = [];
+            if (item.info_content != null) {
+                info_content_html = item.info_content.split('\n').map((tmp, i) => { return (<p>{tmp}</p>); });
+            }
 
             //如果有廣告
             if (this.state.banner.length > 0) {
@@ -187,7 +191,7 @@ namespace WWW {
                                 <a className="btn btn-secondary btn-sm scroll" href="#gallery">看更多實景照片</a>
                             </dt>
                             <dd className="profile">
-                                <ul className="detail list-unstyled">
+                                {/*<ul className="detail list-unstyled">
                                     <li><strong className="text-secondary">完工日期：</strong>{item.finish}</li>
                                     <li><strong className="text-secondary">建物地址：</strong>{item.address}</li>
                                     <li><strong className="text-secondary">建物型態：</strong>{item.typeOfBuild}</li>
@@ -197,13 +201,16 @@ namespace WWW {
                                     <li><strong className="text-secondary">管理方式：</strong>{item.manage}</li>
                                     <li><strong className="text-secondary">建設公司：</strong>{item.company}</li>
                                     <li><strong className="text-secondary">營造公司：</strong>{item.build}</li>
-                                </ul>
+                                </ul>*/}
+                                <div className="detail-text">
+                                    {info_content_html}
+                                </div>
                                 <ul className="more-info list-unstyled clearfix">
                                     <li>
-                                        <a className="btn btn-lg btn-secondary style2" href={gb_approot + 'Neighbor/Sell_list?community_id=' + item.community_id}>本社區待售房屋</a>
+                                        <a className="btn btn-lg btn-secondary style2" href={gb_approot + 'Neighbor/Sell_list?community_id=' + item.community_id}>我要買房</a>
                                     </li>
                                     <li>
-                                        <a className="btn btn-lg btn-secondary style2" href={gb_approot + 'Neighbor/Rent_list?community_id=' + item.community_id}>本社區待租房屋</a>
+                                        <a className="btn btn-lg btn-secondary style2" href={gb_approot + 'Neighbor/Rent_list?community_id=' + item.community_id}>我要租屋</a>
                                     </li>
                                     <li>
                                         <a className="btn btn-lg btn-secondary style2" target="new" href="http://www.jojogo168.com/">好康團購</a>
@@ -214,14 +221,14 @@ namespace WWW {
                     </div>
                     {outBanner}
                     <section className="grid-info" id="feature">
-                        <h3 className="h3">社區特色</h3>
+                        <h3 className="h3">商家特色</h3>
                         <p dangerouslySetInnerHTML={ { __html: item.txt_spot } }></p>
                     </section>
                     <section className="grid-info" id="gallery">
-                        <h3 className="h3">社區實景．公設</h3>
+                        <h3 className="h3">商家實景</h3>
                         <p dangerouslySetInnerHTML={ { __html: item.txt_public } }></p>
                         <article className="article">
-                            <h4 className="h4">迎賓大門</h4>
+                            {/*<h4 className="h4">迎賓大門</h4>*/}
                             <ol className="gallery row">
                                 {
                                     item.imgurl_CommunityDoor.map(function (item, i) {
@@ -234,7 +241,7 @@ namespace WWW {
                                 }
                             </ol>
                         </article>
-                        <article className="article">
+                        {/*<article className="article">
                             <h4 className="h4">社區公設</h4>
                             <ol className="gallery row">
                                 {
@@ -244,7 +251,7 @@ namespace WWW {
                                     })
                                 }
                             </ol>
-                        </article>
+                        </article>*/}
                     </section>
                     <section className="grid-info" id="diary">
                         <div className="clearfix">
@@ -252,7 +259,7 @@ namespace WWW {
                                 <li className="swiper-button-prev" />
                                 <li className="swiper-button-next" />
                             </ul>
-                            <h3 className="h3">社區日誌</h3>
+                            <h3 className="h3">商家日誌</h3>
                         </div>
                         <div className="row">
                             <div className="col-xs-5">

@@ -92,6 +92,8 @@ namespace DotWeb.Api
                 item.perOfHolder = md.perOfHolder;
                 item.age = md.age;
 
+                item.info_content = md.info_content;
+
                 item.over_floor = md.over_floor;
                 item.under_floor = md.under_floor;
 

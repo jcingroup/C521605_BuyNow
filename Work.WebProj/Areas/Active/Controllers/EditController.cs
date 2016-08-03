@@ -37,6 +37,11 @@ namespace DotWeb.Areas.Active.Controllers
             ActionRun();
             return View();
         }
+        public ActionResult Vendor()
+        {//特惠商品
+            ActionRun();
+            return View();
+        }
         #endregion
 
         #region ajax call section

@@ -316,26 +316,26 @@ export class MasterImageUpload extends React.Component<FileUpProps, FileUpState>
                 }
 
                 var progress = document.createElement('div'), // container for progress bar
-                    bar = document.createElement('div'), // actual progress bar
-                    fileSize = document.createElement('div'), // container for upload file size
+                    // bar = document.createElement('div'), // actual progress bar
+                    fileSize = document.createElement('span'), // container for upload file size
                     wrapper = document.createElement('div'), // container for this progress bar
                     progressBox = document.getElementById('progressBox-' + _this.props.MainId + '-' + _this.props.FileKind); // on page container for progress bars
 
                 // Assign each element its corresponding class
-                progress.className = 'progress';
-                bar.className = 'progress-bar progress-bar-success progress-bar-striped active';
-                fileSize.className = 'size';
-                wrapper.className = 'wrapper';
+                progress.className = 'progress progress-success';
+                // bar.className = 'progress-bar progress-bar-success progress-bar-striped active';
+                fileSize.className = 'text-sm text-muted m-l-1';
+                wrapper.className = 'progress-wrap';
                 // Assemble the progress bar and add it to the page
 
-                progress.appendChild(bar);
-                wrapper.innerHTML = '<div class="name">' + filename + '</div>'; // filename is passed to onSubmit()
+                // progress.appendChild(bar);
+                wrapper.innerHTML = '<span class="text-sm text-muted">' + filename + '</span>'; // filename is passed to onSubmit()
                 wrapper.appendChild(fileSize);
                 wrapper.appendChild(progress);
                 progressBox.appendChild(wrapper); // just an element on the page to hold the progress bars    
 
                 // Assign roles to the elements of the progress bar
-                this.setProgressBar(bar); // will serve as the actual progress bar
+                // this.setProgressBar(bar); // will serve as the actual progress bar
                 this.setFileSizeBox(fileSize); // display file size beside progress bar
                 this.setProgressContainer(wrapper); // designate the containing div to be removed after upload	
             },
@@ -457,7 +457,7 @@ export class MasterImageUpload extends React.Component<FileUpProps, FileUpState>
                         }.bind(this))
                     }
                 </ol>
-                <div id={'progressBox-' + this.props.MainId + '-' + this.props.FileKind} className="progress-wrap"></div>
+                <div id={'progressBox-' + this.props.MainId + '-' + this.props.FileKind}></div>
             </div>
         );
         return outHtml;
@@ -565,26 +565,26 @@ export class MasterFileUpload extends React.Component<FileUpProps, any>{
                 }
 
                 var progress = document.createElement('div'), // container for progress bar
-                    bar = document.createElement('div'), // actual progress bar
-                    fileSize = document.createElement('div'), // container for upload file size
+                    // bar = document.createElement('div'), // actual progress bar
+                    fileSize = document.createElement('span'), // container for upload file size
                     wrapper = document.createElement('div'), // container for this progress bar
                     progressBox = document.getElementById('progressBox-' + _this.props.MainId); // on page container for progress bars
 
                 // Assign each element its corresponding class
-                progress.className = 'progress';
-                bar.className = 'progress-bar progress-bar-success progress-bar-striped active';
-                fileSize.className = 'size';
-                wrapper.className = 'wrapper';
+                progress.className = 'progress progress-success';
+                // bar.className = 'progress-bar progress-bar-success progress-bar-striped active';
+                fileSize.className = 'text-sm text-muted m-l-1';
+                wrapper.className = 'progress-wrap';
 
                 // Assemble the progress bar and add it to the page
-                progress.appendChild(bar);
-                wrapper.innerHTML = '<div class="name">' + filename + '</div>'; // filename is passed to onSubmit()
+                // progress.appendChild(bar);
+                wrapper.innerHTML = '<span class="text-sm text-muted">' + filename + '</span>'; // filename is passed to onSubmit()
                 wrapper.appendChild(fileSize);
                 wrapper.appendChild(progress);
                 progressBox.appendChild(wrapper); // just an element on the page to hold the progress bars    
 
                 // Assign roles to the elements of the progress bar
-                this.setProgressBar(bar); // will serve as the actual progress bar
+                // this.setProgressBar(bar); // will serve as the actual progress bar
                 this.setFileSizeBox(fileSize); // display file size beside progress bar
                 this.setProgressContainer(wrapper); // designate the containing div to be removed after upload	
             },
@@ -656,7 +656,7 @@ export class MasterFileUpload extends React.Component<FileUpProps, any>{
                         }, this)
                     }
                 </p>
-                <div id={'progressBox-' + this.props.MainId} className="progress-wrap"></div>
+                <div id={'progressBox-' + this.props.MainId}></div>
                 <iframe src={this.state.download_src} style={ { visibility: 'hidden', display: 'none' } } />
             </div>
         );

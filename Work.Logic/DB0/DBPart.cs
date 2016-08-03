@@ -27,7 +27,8 @@ namespace ProcCore.Business.DB0
         Aboutus = 1,
         Program = 2,
         Recruit = 3,
-        VIP = 4
+        VIP = 4,
+        Vendor = 5
     }
     #region set CodeSheet
 

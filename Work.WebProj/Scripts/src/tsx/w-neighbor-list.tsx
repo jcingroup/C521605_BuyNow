@@ -22,7 +22,7 @@ namespace WWW {
     export class SellList extends React.Component<any, WWWState>{
 
         constructor() {
-
+            
             super();
             this.componentDidMount = this.componentDidMount.bind(this);
             this.componentDidUpdate = this.componentDidUpdate.bind(this);
@@ -125,20 +125,20 @@ namespace WWW {
                                 return (
                                     <li className="pro style2">
                                         <article className="card">
-                                            <a className="card-img-top" target="_blank" href={gb_approot + 'Neighbor/Content?id=' + item.community_id}>
+                                            <a className="card-img-top" href={gb_approot + 'Neighbor/Content?id=' + item.community_id}>
                                                 <img className="lazy" alt=""  data-original={item.list_src} />
                                             </a>
                                             <div className="card-block">
-                                                <h4 className="card-title"><a href={gb_approot + 'Neighbor/Content?id=' + item.community_id} target="_blank">{item.community_name}</a></h4>
+                                                <h4 className="card-title"><a href={gb_approot + 'Neighbor/Content?id=' + item.community_id}>{item.community_name}</a></h4>
                                                 <section className="card-text">
-                                                    <h5 className="card-subtitle">{item.address}</h5>
+                                                    {/*<h5 className="card-subtitle">{item.address}</h5>
                                                     <ul className="info list-inline">
                                                         <li><span className="text-muted">戶數</span> {item.holders}戶</li>
                                                         <li><span className="text-muted">管理方式</span> {item.manage}</li>
                                                         <li><span className="text-muted">屋齡</span> {item.age}年</li>
-                                                    </ul>
+                                                    </ul>*/}
                                                 </section>
-                                                <a className="more btn btn-secondary btn-block" target="_blank" href={gb_approot + 'Neighbor/Content?id=' + item.community_id}>
+                                                <a className="more btn btn-secondary btn-block" href={gb_approot + 'Neighbor/Content?id=' + item.community_id}>
                                                     看更多
                                                     <i className="ti-angle-right" />
                                                 </a>

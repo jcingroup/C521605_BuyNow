@@ -441,7 +441,7 @@ namespace Matter {
                                                 </th>
                                                 <th>
                                                     <OrderButton
-                                                        title="社區名稱"
+                                                        title="商家名稱"
                                                         field={'Community.community_name'}
                                                         sort={this.state.gridData.sort}
                                                         now_field={this.state.gridData.field}
@@ -681,7 +681,7 @@ namespace Matter {
                                 </div>
                             </div>
                             <div className="form-group row">
-                                <label className="col-xs-2 text-xs-right form-control-label"><span className="text-danger">*</span> 物件所屬社區</label>
+                                <label className="col-xs-2 text-xs-right form-control-label"><span className="text-danger">*</span> 物件所屬商家</label>
                                 <div className="col-xs-8">
                                     <select className="form-control"
                                         required

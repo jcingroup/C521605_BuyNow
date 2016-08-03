@@ -217,7 +217,7 @@ namespace WWW {
                             <ul className="more-info list-unstyled clearfix">
                                 <li className="tel">
                                     <h5 className="h5 m-b-0">來電預約賞屋</h5>
-                                    <strong>02-3501-6715</strong>
+                                    <strong>03-318-0692</strong>
                                 </li>
                                 <li>
                                     <a className="btn btn-lg btn-secondary style2 scroll" href="#interior">格局圖</a>

@@ -324,8 +324,8 @@ namespace Community {
                                         <div className="table-filter">
                                             <div className="form-inline">
                                                 <div className="form-group">
-                                                    <label className="sr-only">搜尋社區名稱</label> { }
-                                                    <input type="text" className="form-control form-control-sm" onChange={this.changeGDValue.bind(this, 'keyword') } value={this.state.searchData.keyword} placeholder="社區名稱" /> { }
+                                                    <label className="sr-only">搜尋商家名稱</label> { }
+                                                    <input type="text" className="form-control form-control-sm" onChange={this.changeGDValue.bind(this, 'keyword') } value={this.state.searchData.keyword} placeholder="商家名稱" /> { }
                                                     <button className="btn btn-sm btn-primary" type="submit"><i className="fa-search"></i> 搜尋</button>
                                                 </div>
                                             </div>
@@ -337,7 +337,7 @@ namespace Community {
                                                 <th style={{"width" : "7%"}} className="text-xs-center">刪除</th>
                                                 <th style={{"width" : "7%"}} className="text-xs-center">修改</th>
                                                 <th style={{"width" : "26%"}}>編號</th>
-                                                <th style={{"width" : "60%"}}>社區名稱</th>
+                                                <th style={{ "width": "60%" }}>商家名稱</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -379,7 +379,7 @@ namespace Community {
 
                 if (this.state.edit_type == IEditType.update) {
                     up_CommunityList = <div className="form-group row">
-                        <label className="col-xs-1 form-control-label text-xs-right">社區代表圖</label>
+                        <label className="col-xs-1 form-control-label text-xs-right">商家代表圖</label>
                         <div className="col-xs-7">
                             <CommCmpt.MasterImageUpload FileKind="CommunityList"
                                 MainId={field.community_id}
@@ -394,7 +394,7 @@ namespace Community {
 
 
                     up_CommunityDoor = <div className="form-group row">
-                        <label className="col-xs-1 form-control-label text-xs-right">迎賓大門</label>
+                        <label className="col-xs-1 form-control-label text-xs-right">商家相簿</label>
                         <div className="col-xs-7">
                             <CommCmpt.MasterImageUpload FileKind="CommunityDoor"
                                 MainId={field.community_id}
@@ -441,9 +441,9 @@ namespace Community {
                         <h3 className="h3"> {this.props.caption} <small className="sub"><i className="fa-angle-double-right"></i> 資料維護</small></h3>
                         <form className="form form-sm" onSubmit={this.handleSubmit}>
 
-                            <h4 className="h4">社區基本資料</h4>
+                            <h4 className="h4">商家基本資料</h4>
                             <div className="form-group row">
-                                <label className="col-xs-1 form-control-label text-xs-right"><small className="text-danger">*</small>  社區名稱</label>
+                                <label className="col-xs-1 form-control-label text-xs-right"><small className="text-danger">*</small>  商家名稱</label>
                                 <div className="col-xs-7">
                                     <input type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'community_name') } value={field.community_name} maxLength={64}
                                         required />
@@ -454,7 +454,7 @@ namespace Community {
                             {up_CommunityList}
 
 
-                            <div className="form-group row">
+                            {/*<div className="form-group row">
                                 <label className="col-xs-1 form-control-label text-xs-right">建物地址</label>
                                 <div className="col-xs-7">
                                     <input type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'address') } value={field.address} maxLength={128}
@@ -473,6 +473,7 @@ namespace Community {
                                         />
                                 </div>
                             </div>
+                            
                             <div className="form-group row">
                                 <label className="col-xs-1 form-control-label text-xs-right">建物樓層</label>
                                 <div className="col-xs-3">
@@ -538,6 +539,14 @@ namespace Community {
                                         />
                                 </div>
                             </div>
+                            */}
+                            <div className="form-group row">
+                                <label className="col-xs-1 form-control-label text-xs-right">簡介</label>
+                                <div className="col-xs-7">
+                                    <textarea type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'info_content') } rows={5} value={field.info_content} maxLength={4000}>
+                                        </textarea>               
+                                </div>
+                            </div>
                             <div className="form-group row">
                                 <label className="col-xs-1 form-control-label text-xs-right">地圖嵌入</label>
                                 <div className="col-xs-7">
@@ -547,14 +556,14 @@ namespace Community {
                                 </div>
                             </div>
                             <div className="form-group row">
-                                <label className="col-xs-1 form-control-label text-xs-right">社區特色</label>
+                                <label className="col-xs-1 form-control-label text-xs-right">商家特色</label>
                                 <div className="col-xs-7">
                                     <textarea className="form-control" id="txt_spot" name="txt_spot"
                                         value={field.txt_spot} onChange={this.changeFDValue.bind(this, 'txt_spot') }></textarea>
                                 </div>
                             </div>
                             <hr className="sm" />
-                            <h4 className="h4">社區聯絡資訊</h4>
+                            <h4 className="h4">商家聯絡資訊</h4>
                             <div className="form-group row">
                                 <label className="col-xs-1 form-control-label text-xs-right"><small className="text-danger">*</small> 登錄帳號</label>
                                 <div className="col-xs-3">
@@ -602,16 +611,16 @@ namespace Community {
                                 </div>
                             </div>
                             <hr className="sm" />
-                            <h4 className="h4">社區實景/公設</h4>
+                            <h4 className="h4">商家實景</h4>
                             <div className="form-group row">
-                                <label className="col-xs-1 form-control-label text-xs-right">設施介紹</label>
+                                <label className="col-xs-1 form-control-label text-xs-right">內容介紹</label>
                                 <div className="col-xs-7">
                                     <textarea className="form-control" id="txt_public" name="txt_public"
                                         value={field.txt_public} onChange={this.changeFDValue.bind(this, 'txt_public') }></textarea>
                                 </div>
                             </div>
                             {up_CommunityDoor}
-                            {up_CommunityPublic}
+                            {/*up_CommunityPublic*/}
 
                             <div className="form-action">
                                 <div className="col-xs-offset-1">
