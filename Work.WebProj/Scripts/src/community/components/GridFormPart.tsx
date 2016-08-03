@@ -23,13 +23,15 @@ export class GridForm extends React.Component<any, any>{
 
     }
     componentDidMount() {
-
+        //dispatch();
+        console.log('componentDidMount')
     }
     componentDidUpdate(prevProps, prevState) {
-        alert('Update');
+        console.log('componentDidUpdate')
     }
     componentWillUnmount() {
         //元件被從 DOM 卸載之前執行，通常我們在這個方法清除一些不再需要地物件或 timer。
+        console.log('componentWillUnmount')
     }
 
     render() {

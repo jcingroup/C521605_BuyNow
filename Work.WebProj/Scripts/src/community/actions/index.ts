@@ -1,4 +1,6 @@
-﻿let nextTodoId = 0
+﻿import $ = require('jquery');
+
+let nextTodoId = 0
 export const addTodo = (text) => {
     return {
         type: 'ADD_TODO',
@@ -25,11 +27,28 @@ export const toggleTodo = (id) => {
     }
 }
 
-
 export const setInputValue = (name, value) => {
     return {
         type: 'setInputValue',
         value,
         name
+    }
+}
+
+export const ajaxGridItem = () => {
+
+    return dispatch => {
+        //dispatch(requestPosts(subreddit))
+        return $.get('/api/Community?page=1')
+            .done((data, textStatus, jqXHRdata) => {
+                dispatch(getGridItem(data));
+            })
+    }
+}
+
+const getGridItem = (data) => {
+    return {
+        type: 'load',
+        items: data.rows
     }
 }

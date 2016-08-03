@@ -2,6 +2,7 @@
 const React = require('react');
 const react_redux_1 = require('react-redux');
 const actions_1 = require("../actions");
+const GridTablePart_1 = require("./GridTablePart");
 require("react-datepicker/dist/react-datepicker.css");
 class SearchForm extends React.Component {
     constructor() {
@@ -24,7 +25,7 @@ class SearchForm extends React.Component {
         let search = this.props.search;
         console.log('Props', this.props);
         out_html =
-            (React.createElement("form", null, React.createElement("div", {className: "table-responsive"}, React.createElement("div", {className: "table-header"}, React.createElement("div", {className: "table-filter"}, React.createElement("div", {className: "form-inline"}, React.createElement("div", {className: "form-group"}, React.createElement("label", {className: "sr-only"}, "搜尋社區名稱"), " ", React.createElement("input", {type: "text", className: "form-control form-control-sm", value: search.key, onChange: this.props.onChange.bind(this, 'key'), placeholder: "社區名稱"}), " ", React.createElement("button", {className: "btn btn-sm btn-primary", type: "submit"}, React.createElement("i", {className: "fa-search"}), " 搜尋"))))))));
+            (React.createElement("form", null, React.createElement("div", {className: "table-responsive"}, React.createElement("div", {className: "table-header"}, React.createElement("div", {className: "table-filter"}, React.createElement("div", {className: "form-inline"}, React.createElement("div", {className: "form-group"}, React.createElement("label", {className: "sr-only"}, "搜尋社區名稱"), " ", React.createElement("input", {type: "text", className: "form-control form-control-sm", value: search.key, onChange: this.props.onChange.bind(this, 'key'), placeholder: "社區名稱"}), " ", React.createElement("button", {className: "btn btn-sm btn-primary", type: "submit"}, React.createElement("i", {className: "fa-search"}), " 搜尋")))))), React.createElement(GridTablePart_1.default, null)));
         return out_html;
     }
 }
@@ -43,7 +44,6 @@ function makeInputValue(name, e) {
     return value;
 }
 const mapStateToProps = (state, ownProps) => {
-    console.log('SearchForm mapStateToProps', state);
     return {
         search: state.search
     };

@@ -534,6 +534,7 @@
     <Content Include="Scripts\build\app\w_sell_list.js" />
     <Content Include="Scripts\GoogleAnalytics.js" />
     <Content Include="Scripts\googleReCAPTCHA.js" />
+    <Content Include="Content\css\typeahead.css" />
     <Content Include="Views\Rent\Rent_content.cshtml" />
     <Content Include="Views\Rent\Rent_list.cshtml" />
     <Content Include="Views\Sell\Sell_content.cshtml" />
@@ -645,15 +646,17 @@
     <TypeScriptCompile Include="app_modules\simple-ajax-uploader\SimpleAjaxUploader.def.ts" />
     <TypeScriptCompile Include="app_modules\funtest\fun.ts" />
     <TypeScriptCompile Include="Scripts\src\community\actions\index.ts" />
+    <TypeScriptCompile Include="Scripts\src\community\components\GridTablePart.tsx" />
     <TypeScriptCompile Include="Scripts\src\community\components\SearchFormPart.tsx" />
     <TypeScriptCompile Include="Scripts\src\community\components\GridFormPart.tsx" />
     <TypeScriptCompile Include="Scripts\src\community\index.tsx" />
     <TypeScriptCompile Include="Scripts\src\community\reducers\index.ts" />
-    <TypeScriptCompile Include="Scripts\src\community\reducers\search.ts" />
+    <TypeScriptCompile Include="Scripts\src\community\reducers\comm.ts" />
     <TypeScriptCompile Include="Scripts\src\community\reducers\visibilityFilter.ts" />
     <TypeScriptCompile Include="Scripts\src\ts-comm\comm-cmpt.tsx" />
     <TypeScriptCompile Include="Scripts\src\ts-comm\comm-func.ts" />
     <TypeScriptCompile Include="Scripts\src\ts-comm\def-data.ts" />
+    <TypeScriptCompile Include="Scripts\src\ts-comm\ReactTypeahead.tsx" />
     <TypeScriptCompile Include="Scripts\src\tsx\m-change_password.tsx" />
     <TypeScriptCompile Include="Scripts\src\tsx\m-community-banner.tsx" />
     <TypeScriptCompile Include="Scripts\src\tsx\m-community-news.tsx" />

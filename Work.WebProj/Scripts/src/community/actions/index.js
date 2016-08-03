@@ -1,4 +1,5 @@
 "use strict";
+const $ = require('jquery');
 let nextTodoId = 0;
 exports.addTodo = (text) => {
     return {
@@ -25,5 +26,19 @@ exports.setInputValue = (name, value) => {
         type: 'setInputValue',
         value: value,
         name: name
+    };
+};
+exports.ajaxGridItem = () => {
+    return dispatch => {
+        return $.get('/api/Community?page=1')
+            .done((data, textStatus, jqXHRdata) => {
+            dispatch(getGridItem(data));
+        });
+    };
+};
+const getGridItem = (data) => {
+    return {
+        type: 'load',
+        items: data.rows
     };
 };

@@ -15,11 +15,13 @@ class GridForm extends React.Component {
         };
     }
     componentDidMount() {
+        console.log('componentDidMount');
     }
     componentDidUpdate(prevProps, prevState) {
-        alert('Update');
+        console.log('componentDidUpdate');
     }
     componentWillUnmount() {
+        console.log('componentWillUnmount');
     }
     render() {
         var out_html = null;

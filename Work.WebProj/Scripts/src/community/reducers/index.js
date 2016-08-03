@@ -1,10 +1,11 @@
 "use strict";
 const redux_1 = require('redux');
-const search_1 = require('./search');
+const comm_1 = require('./comm');
 const visibilityFilter_1 = require('./visibilityFilter');
 const stateApp = redux_1.combineReducers({
-    search: search_1.search,
-    edit_type: search_1.edit_type,
+    search: comm_1.search,
+    edit_type: comm_1.edit_type,
+    grid_items: comm_1.grid_items,
     visibilityFilter: visibilityFilter_1.default
 });
 Object.defineProperty(exports, "__esModule", { value: true });

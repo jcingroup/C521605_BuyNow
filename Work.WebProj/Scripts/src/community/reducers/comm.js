@@ -25,7 +25,6 @@ exports.edit_type = (state = 0, action) => {
 exports.grid_items = (state = [], action) => {
     switch (action.type) {
         case 'load':
-            console.log('state', 'grid_items', 'load', action.items);
             return action.items;
         default:
             return state;

@@ -6,6 +6,7 @@ import { createStore, applyMiddleware  } from 'redux';
 
 import GridFormPart from './components/GridFormPart';
 import Reducers from './reducers';
+import {ajaxGridItem} from './actions';
 import thunkMiddleware from 'redux-thunk';
 import * as createLogger from 'redux-logger';
 
@@ -17,8 +18,7 @@ const store = createStore(
         loggerMiddleware
     ));
 
-
-
+store.dispatch(ajaxGridItem());
 
 var dom = document.getElementById('page_content');
 render(<Provider store={store}><GridFormPart /></Provider>, dom);

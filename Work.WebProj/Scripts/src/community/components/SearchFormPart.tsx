@@ -7,6 +7,7 @@ import Moment = require('moment');
 
 import DatePicker = require('react-datepicker');
 import {setVisibilityFilter, setInputValue} from "../actions";
+import GridTablePart from "./GridTablePart";
 import "react-datepicker/dist/react-datepicker.css";
 
 
@@ -56,6 +57,7 @@ class SearchForm extends React.Component<any, any>{
                             </div>
                         </div>
                     </div>
+                    <GridTablePart />
                 </form>
 
             );
@@ -89,7 +91,7 @@ function makeInputValue(name: string, e: React.SyntheticEvent) {
 }
 
 const mapStateToProps = (state, ownProps) => {
-    console.log('SearchForm mapStateToProps', state);
+    //console.log('SearchForm mapStateToProps', state);
     return {
         search: state.search
     };
