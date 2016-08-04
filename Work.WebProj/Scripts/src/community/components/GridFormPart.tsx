@@ -24,14 +24,14 @@ export class GridForm extends React.Component<any, any>{
     }
     componentDidMount() {
         //dispatch();
-        console.log('componentDidMount')
+        //console.log('componentDidMount')
     }
     componentDidUpdate(prevProps, prevState) {
-        console.log('componentDidUpdate')
+        //console.log('componentDidUpdate')
     }
     componentWillUnmount() {
         //元件被從 DOM 卸載之前執行，通常我們在這個方法清除一些不再需要地物件或 timer。
-        console.log('componentWillUnmount')
+        //console.log('componentWillUnmount')
     }
 
     render() {
@@ -63,23 +63,18 @@ export class GridForm extends React.Component<any, any>{
 }
 
 const mapStateToProps = (state, ownProps) => {
-
-    console.log('GridForm mapStateToProps', state);
-
+    //console.log('GridForm mapStateToProps', state);
     return {
-        active: ownProps.filter === state.visibilityFilter,
-        myage: 6
+
     }
 }
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         onClick: () => {
-            console.log(1, 'Event')
-            dispatch(setVisibilityFilter(ownProps.filter))
+            //dispatch(setVisibilityFilter(ownProps.filter))
         }
     }
 }
 const GridFormPart = connect(mapStateToProps, mapDispatchToProps)(GridForm)
-
 
 export default GridFormPart;

@@ -14,8 +14,7 @@ const loggerMiddleware = createLogger();
 const store = createStore(
     Reducers,
     applyMiddleware(
-        thunkMiddleware,
-        loggerMiddleware
+        thunkMiddleware
     ));
 
 store.dispatch(ajaxGridItem());

@@ -18,6 +18,8 @@ exports.search = (state = search_state, action) => {
 exports.edit_type = (state = 0, action) => {
     switch (action.type) {
         case 'setInputValue':
+        case 'load':
+            return 0;
         default:
             return state;
     }
@@ -26,6 +28,8 @@ exports.grid_items = (state = [], action) => {
     switch (action.type) {
         case 'load':
             return action.items;
+        case 'clear':
+            return [];
         default:
             return state;
     }

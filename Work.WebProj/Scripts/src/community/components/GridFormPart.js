@@ -1,7 +1,6 @@
 "use strict";
 const React = require('react');
 const react_redux_1 = require('react-redux');
-const actions_1 = require("../actions");
 require("react-datepicker/dist/react-datepicker.css");
 const SearchFormPart_1 = require("./SearchFormPart");
 class GridForm extends React.Component {
@@ -15,13 +14,10 @@ class GridForm extends React.Component {
         };
     }
     componentDidMount() {
-        console.log('componentDidMount');
     }
     componentDidUpdate(prevProps, prevState) {
-        console.log('componentDidUpdate');
     }
     componentWillUnmount() {
-        console.log('componentWillUnmount');
     }
     render() {
         var out_html = null;
@@ -32,17 +28,11 @@ class GridForm extends React.Component {
 }
 exports.GridForm = GridForm;
 const mapStateToProps = (state, ownProps) => {
-    console.log('GridForm mapStateToProps', state);
-    return {
-        active: ownProps.filter === state.visibilityFilter,
-        myage: 6
-    };
+    return {};
 };
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         onClick: () => {
-            console.log(1, 'Event');
-            dispatch(actions_1.setVisibilityFilter(ownProps.filter));
         }
     };
 };

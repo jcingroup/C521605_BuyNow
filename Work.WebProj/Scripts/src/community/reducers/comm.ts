@@ -23,6 +23,9 @@ export const edit_type = (state = IEditType.none, action: Redux.Action): IEditTy
     switch (action.type) {
         case 'setInputValue':
 
+        case 'load':
+            return IEditType.none
+
         default:
             return state
     }
@@ -34,6 +37,9 @@ export const grid_items = (state = [], action): Array<server.Community> => {
         case 'load':
             //console.log('state', 'grid_items', 'load', action.items);
             return action.items;
+        case 'clear':
+            return [];
+
         default:
             return state
     }

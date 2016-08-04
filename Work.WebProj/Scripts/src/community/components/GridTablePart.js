@@ -2,6 +2,9 @@
 const React = require('react');
 const react_redux_1 = require('react-redux');
 require("react-datepicker/dist/react-datepicker.css");
+const Rows = ({ item, onClick }) => {
+    return (React.createElement("tr", null, React.createElement("td", null, "Del"), React.createElement("td", null, "Modify"), React.createElement("td", null, item.community_name), React.createElement("td", null, React.createElement("button", {type: "button", onClick: onClick}, "Click"))));
+};
 class GridTable extends React.Component {
     constructor() {
         super();
@@ -21,7 +24,7 @@ class GridTable extends React.Component {
     render() {
         var out_html = null;
         out_html =
-            (React.createElement("table", {className: "table table-sm table-bordered table-striped"}, React.createElement("thead", null, React.createElement("tr", null, React.createElement("th", {style: { "width": "7%" }, className: "text-xs-center"}, "刪除"), React.createElement("th", {style: { "width": "7%" }, className: "text-xs-center"}, "修改"), React.createElement("th", {style: { "width": "26%" }}, "編號"), React.createElement("th", {style: { "width": "60%" }}, "社區名稱"))), React.createElement("tbody", null, this.props.grid_items.map((item, i) => React.createElement("tr", {key: item.community_id}, React.createElement("td", null), React.createElement("td", null), React.createElement("td", {className: "text-xs-center"}, item.community_name), React.createElement("td", {className: "text-xs-center"}, item.company))))));
+            (React.createElement("table", {className: "table table-sm table-bordered table-striped"}, React.createElement("thead", null, React.createElement("tr", null, React.createElement("th", {style: { "width": "7%" }, className: "text-xs-center"}, "刪除"), React.createElement("th", {style: { "width": "7%" }, className: "text-xs-center"}, "修改"), React.createElement("th", {style: { "width": "26%" }}, "編號"), React.createElement("th", {style: { "width": "60%" }}, "社區名稱"))), React.createElement("tbody", null, this.props.grid_items.map((item, i) => React.createElement(Rows, {key: item.community_id, item: item, onClick: this.props.onClick})))));
         return out_html;
     }
 }
@@ -34,6 +37,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         onClick: () => {
+            alert('1');
         }
     };
 };

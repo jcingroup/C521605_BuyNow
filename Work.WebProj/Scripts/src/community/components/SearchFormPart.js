@@ -23,9 +23,8 @@ class SearchForm extends React.Component {
     render() {
         let out_html = null;
         let search = this.props.search;
-        console.log('Props', this.props);
         out_html =
-            (React.createElement("form", null, React.createElement("div", {className: "table-responsive"}, React.createElement("div", {className: "table-header"}, React.createElement("div", {className: "table-filter"}, React.createElement("div", {className: "form-inline"}, React.createElement("div", {className: "form-group"}, React.createElement("label", {className: "sr-only"}, "搜尋社區名稱"), " ", React.createElement("input", {type: "text", className: "form-control form-control-sm", value: search.key, onChange: this.props.onChange.bind(this, 'key'), placeholder: "社區名稱"}), " ", React.createElement("button", {className: "btn btn-sm btn-primary", type: "submit"}, React.createElement("i", {className: "fa-search"}), " 搜尋")))))), React.createElement(GridTablePart_1.default, null)));
+            (React.createElement("form", null, React.createElement("div", {className: "table-responsive"}, React.createElement("div", {className: "table-header"}, React.createElement("div", {className: "table-filter"}, React.createElement("div", {className: "form-inline"}, React.createElement("div", {className: "form-group"}, React.createElement("label", {className: "sr-only"}, "搜尋社區名稱"), " ", React.createElement("input", {type: "text", className: "form-control form-control-sm", value: search.key, onChange: this.props.onChange.bind(this, 'key'), placeholder: "社區名稱"}), React.createElement("button", {className: "btn btn-sm btn-primary", type: "button", onClick: this.props.onClick}, React.createElement("i", {className: "fa-search"}), " 搜尋")))))), React.createElement(GridTablePart_1.default, null)));
         return out_html;
     }
 }
@@ -45,7 +44,8 @@ function makeInputValue(name, e) {
 }
 const mapStateToProps = (state, ownProps) => {
     return {
-        search: state.search
+        search: state.search,
+        count: state.grid_items.length
     };
 };
 const mapDispatchToProps = (dispatch, ownProps) => {
@@ -53,6 +53,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         onChange: (name, e) => {
             let value = makeInputValue(name, e);
             dispatch(actions_1.setInputValue(name, value));
+        },
+        onClick: (e) => {
+            dispatch(actions_1.clearGridItem());
         }
     };
     return r;

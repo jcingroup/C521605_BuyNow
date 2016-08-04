@@ -222,3 +222,15 @@ Work.WebProj/app_modules/dt/def-data.js
 Work.WebProj/app_modules/Pikaday/pikadaydef.js
 Work.WebProj/app_modules/simple-ajax-uploader/SimpleAjaxUploader.def.js
 /Work.WebProj/ckeditor/skins/bootstrapck
+
+
+Work.WebProj/Scripts/src/tsx/*.js
+Work.WebProj/Scripts/src/ts-comm/*.js
+Work.WebProj/Scripts/build/app/
+Work.WebProj/_Code/SysUpFiles/
+
+Work.WebProj/app_modules/dt/def-data.js
+Work.WebProj/app_modules/comm-func/comm-func.js
+Work.WebProj/app_modules/comm-typeahead/main.js
+Work.WebProj/app_modules/dt/def-data.js
+Work.WebProj/Scripts/src/community/actions/index.js

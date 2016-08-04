@@ -8,6 +8,18 @@ import DatePicker = require('react-datepicker');
 import {setVisibilityFilter} from "../actions";
 import "react-datepicker/dist/react-datepicker.css";
 
+
+const Rows = ({ item, onClick }) => {
+    return (
+        <tr>
+            <td>Del</td>
+            <td>Modify</td>
+            <td>{item.community_name}</td>
+            <td><button type="button" onClick={onClick}>Click</button></td>
+        </tr>
+    )
+}
+
 export class GridTable extends React.Component<any, any>{
 
     constructor() {
@@ -30,7 +42,6 @@ export class GridTable extends React.Component<any, any>{
     }
 
     render() {
-
         var out_html: JSX.Element = null;
 
         out_html =
@@ -47,12 +58,7 @@ export class GridTable extends React.Component<any, any>{
                     <tbody>
                         {this.props.grid_items.map(
                             (item, i) =>
-                                <tr key={item.community_id}>
-                                    <td>{ }</td>
-                                    <td>{ }</td>
-                                    <td className="text-xs-center">{item.community_name}</td>
-                                    <td className="text-xs-center">{item.company}</td>
-                                </tr>
+                                <Rows key={item.community_id} item={item} onClick={this.props.onClick} />
                         ) }
                     </tbody>
                 </table>
@@ -61,8 +67,8 @@ export class GridTable extends React.Component<any, any>{
         return out_html;
     }
 }
-
 const mapStateToProps = (state, ownProps) => {
+    //console.log('=>', state)
     return {
         grid_items: state.grid_items
     }
@@ -70,6 +76,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         onClick: () => {
+            alert('1')
             //dispatch(setVisibilityFilter(ownProps.filter))
         }
     }

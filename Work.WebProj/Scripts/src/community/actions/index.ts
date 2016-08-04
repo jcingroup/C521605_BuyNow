@@ -38,7 +38,6 @@ export const setInputValue = (name, value) => {
 export const ajaxGridItem = () => {
 
     return dispatch => {
-        //dispatch(requestPosts(subreddit))
         return $.get('/api/Community?page=1')
             .done((data, textStatus, jqXHRdata) => {
                 dispatch(getGridItem(data));
@@ -50,5 +49,11 @@ const getGridItem = (data) => {
     return {
         type: 'load',
         items: data.rows
+    }
+}
+
+export const clearGridItem = () => {
+    return {
+        type: 'clear'
     }
 }

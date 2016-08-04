@@ -42,3 +42,8 @@ const getGridItem = (data) => {
         items: data.rows
     };
 };
+exports.clearGridItem = () => {
+    return {
+        type: 'clear'
+    };
+};

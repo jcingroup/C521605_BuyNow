@@ -6,7 +6,7 @@ import { bindActionCreators } from 'redux';
 import Moment = require('moment');
 
 import DatePicker = require('react-datepicker');
-import {setVisibilityFilter, setInputValue} from "../actions";
+import {setVisibilityFilter, setInputValue, clearGridItem} from "../actions";
 import GridTablePart from "./GridTablePart";
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -37,10 +37,10 @@ class SearchForm extends React.Component<any, any>{
 
         let out_html: JSX.Element = null;
         let search = this.props.search;
-        console.log('Props', this.props);
+        //console.log('Props', this.props);
         out_html =
             (
-                <form >
+                <form>
                     <div className="table-responsive">
                         <div className="table-header">
                             <div className="table-filter">
@@ -50,8 +50,10 @@ class SearchForm extends React.Component<any, any>{
                                         <input type="text" className="form-control form-control-sm"
                                             value={search.key}
                                             onChange={this.props.onChange.bind(this, 'key') }
-                                            placeholder="社區名稱" /> { }
-                                        <button className="btn btn-sm btn-primary" type="submit"><i className="fa-search"></i> 搜尋</button>
+                                            placeholder="社區名稱" />
+                                        <button className="btn btn-sm btn-primary" type="button" onClick={this.props.onClick}>
+                                            <i className="fa-search"></i> 搜尋
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -93,7 +95,8 @@ function makeInputValue(name: string, e: React.SyntheticEvent) {
 const mapStateToProps = (state, ownProps) => {
     //console.log('SearchForm mapStateToProps', state);
     return {
-        search: state.search
+        search: state.search,
+        count: state.grid_items.length
     };
 }
 const mapDispatchToProps = (dispatch, ownProps) => {
@@ -102,6 +105,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         onChange: (name: string, e: React.SyntheticEvent) => {
             let value = makeInputValue(name, e);
             dispatch(setInputValue(name, value));
+        },
+        onClick: (e: React.SyntheticEvent) => {
+            dispatch(clearGridItem());
         }
     };
 
