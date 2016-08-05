@@ -1,5 +1,6 @@
 "use strict";
-const visibilityFilter = (state = 'SHOW_ALL', action) => {
+var visibilityFilter = function (state, action) {
+    if (state === void 0) { state = 'SHOW_ALL'; }
     switch (action.type) {
         case 'SET_VISIBILITY_FILTER':
             return action.filter;

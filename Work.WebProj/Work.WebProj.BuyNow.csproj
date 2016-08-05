@@ -569,6 +569,7 @@
     <Content Include="Content\sass\vendor\fontAwesome\_screen-reader.scss" />
     <Content Include="Content\sass\vendor\fontAwesome\_stacked.scss" />
     <Content Include="Content\sass\vendor\fontAwesome\_variables.scss" />
+    <Content Include="Views\VIP\Email.cshtml" />
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
