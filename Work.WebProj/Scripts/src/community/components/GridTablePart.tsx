@@ -12,10 +12,10 @@ import "react-datepicker/dist/react-datepicker.css";
 const Rows = ({ item, onClick }) => {
     return (
         <tr>
-            <td>Del</td>
+            <td><button type="button" onClick={onClick}>Click</button></td>
             <td>Modify</td>
             <td>{item.community_name}</td>
-            <td><button type="button" onClick={onClick}>Click</button></td>
+            <td>{item.address}</td>
         </tr>
     )
 }
@@ -58,7 +58,12 @@ export class GridTable extends React.Component<any, any>{
                     <tbody>
                         {this.props.grid_items.map(
                             (item, i) =>
-                                <Rows key={item.community_id} item={item} onClick={this.props.onClick} />
+                                <Rows
+                                    key={item.community_id}
+                                    item={item}
+                                    onClick={this.props.onClick}
+
+                                    />
                         ) }
                     </tbody>
                 </table>

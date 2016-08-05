@@ -8,8 +8,6 @@ const GridFormPart_1 = require('./components/GridFormPart');
 const reducers_1 = require('./reducers');
 const actions_1 = require('./actions');
 const redux_thunk_1 = require('redux-thunk');
-const createLogger = require('redux-logger');
-const loggerMiddleware = createLogger();
 const store = redux_1.createStore(reducers_1.default, redux_1.applyMiddleware(redux_thunk_1.default));
 store.dispatch(actions_1.ajaxGridItem());
 var dom = document.getElementById('page_content');

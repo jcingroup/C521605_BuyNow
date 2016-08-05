@@ -8,9 +8,9 @@ import GridFormPart from './components/GridFormPart';
 import Reducers from './reducers';
 import {ajaxGridItem} from './actions';
 import thunkMiddleware from 'redux-thunk';
-import * as createLogger from 'redux-logger';
+//import * as createLogger from 'redux-logger';
 
-const loggerMiddleware = createLogger();
+//const loggerMiddleware = createLogger();
 const store = createStore(
     Reducers,
     applyMiddleware(

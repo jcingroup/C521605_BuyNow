@@ -3,7 +3,7 @@ const React = require('react');
 const react_redux_1 = require('react-redux');
 require("react-datepicker/dist/react-datepicker.css");
 const Rows = ({ item, onClick }) => {
-    return (React.createElement("tr", null, React.createElement("td", null, "Del"), React.createElement("td", null, "Modify"), React.createElement("td", null, item.community_name), React.createElement("td", null, React.createElement("button", {type: "button", onClick: onClick}, "Click"))));
+    return (React.createElement("tr", null, React.createElement("td", null, React.createElement("button", {type: "button", onClick: onClick}, "Click")), React.createElement("td", null, "Modify"), React.createElement("td", null, item.community_name), React.createElement("td", null, item.address)));
 };
 class GridTable extends React.Component {
     constructor() {
