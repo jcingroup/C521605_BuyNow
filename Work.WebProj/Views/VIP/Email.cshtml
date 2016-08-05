@@ -1,4 +1,5 @@
-﻿@{
+﻿@model DotWeb.Controllers.VipEmail
+@{
     ViewBag.Title = "Email";
 }
 
@@ -16,60 +17,67 @@
 
         <tr>
             <td style="width:25%; color:#8C6231; padding:5px; border:1px solid #ccc">申請人姓名</td>
-            <td style="width:75%; padding:5px; border:1px solid #ccc">name</td>
+            <td style="width:75%; padding:5px; border:1px solid #ccc">@Model.name</td>
         </tr>
         <tr>
             <td style="width:25%; color:#8C6231; padding:5px; border:1px solid #ccc">性別</td>
-            <td style="width:75%; padding:5px; border:1px solid #ccc">gender</td>
+            <td style="width:75%; padding:5px; border:1px solid #ccc">
+                @if (Model.gender)
+                {
+                    <span>男</span>
+                }
+                else
+                {
+                    <span>女</span>
+                }
+            </td>
         </tr>
         <tr>
             <td style="width:25%; color:#8C6231; padding:5px; border:1px solid #ccc">LINE ID</td>
-            <td style="width:75%; padding:5px; border:1px solid #ccc">line</td>
+            <td style="width:75%; padding:5px; border:1px solid #ccc">@Model.line_id</td>
         </tr>
         <tr>
             <td style="width:25%; color:#8C6231; padding:5px; border:1px solid #ccc">生日</td>
-            <td style="width:75%; padding:5px; border:1px solid #ccc">birth</td>
+            <td style="width:75%; padding:5px; border:1px solid #ccc">@Model.birthday_y / @Model.birthday_m / @Model.birthday_d</td>
         </tr>
         <tr>
             <td style="width:25%; color:#8C6231; padding:5px; border:1px solid #ccc">聯絡電話</td>
             <td style="width:75%; padding:5px; border:1px solid #ccc">
-                手機：mobile<br>
-                市話：tel
+                手機：@Model.mobile<br>
+                市話：@Model.tel
             </td>
         </tr>
         <tr>
             <td style="width:25%; color:#8C6231; padding:5px; border:1px solid #ccc">聯絡地址</td>
-            <td style="width:75%; padding:5px; border:1px solid #ccc">addr</td>
+            <td style="width:75%; padding:5px; border:1px solid #ccc">@Model.address</td>
         </tr>
         <tr>
             <td style="width:25%; color:#8C6231; padding:5px; border:1px solid #ccc">工作概況</td>
             <td style="width:75%; padding:5px; border:1px solid #ccc">
-                自營業：自營業內容 @* 自營業 *@
-                就業中 @* 其他狀況 *@
-                待業中
-                有兼職
+                @Model.job_type
+                @if (Model.job_type == "自營業") {
+                    @Model.job_name
+                }
             </td>
         </tr>
         <tr>
             <td style="width:25%; color:#8C6231; padding:5px; border:1px solid #ccc">加入後想賣…？</td>
             <td style="width:75%; height:100px; word-break:break-all; padding:5px; border:1px solid #ccc">
-                sell
                 @Html.Raw(Model.content.Replace("\n", "<br/>"))
             </td>
         </tr>
         <tr>
             <td style="width:25%; color:#8C6231; padding:5px; border:1px solid #ccc">個人專長</td>
-            <td style="width:75%; padding:5px; border:1px solid #ccc">skill</td>
+            <td style="width:75%; padding:5px; border:1px solid #ccc">@Model.skill</td>
         </tr>
         <tr>
             <td style="width:25%; color:#8C6231; padding:5px; border:1px solid #ccc">證照</td>
-            <td style="width:75%; padding:5px; border:1px solid #ccc">certificate</td>
+            <td style="width:75%; padding:5px; border:1px solid #ccc">@Model.licenses</td>
         </tr>
         <tr>
             <td style="width:25%; color:#8C6231; padding:5px; border:1px solid #ccc">其他事項</td>
             <td style="width:75%; height:100px; word-break:break-all; padding:5px; border:1px solid #ccc">
-                note
-                @Html.Raw(Model.content.Replace("\n", "<br/>"))
+                @Html.Raw(Model.other_content.Replace("\n", "<br/>"))
             </td>
         </tr>
     </table>

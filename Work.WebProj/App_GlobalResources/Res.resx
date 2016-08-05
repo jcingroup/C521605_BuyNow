@@ -379,4 +379,10 @@
   <data name="Keywords" xml:space="preserve">
     <value>社區買屋,社區租屋,社區管理,房屋仲介,不動產,房仲,房地產</value>
   </data>
+  <data name="Log_Err_SendMailFail" xml:space="preserve">
+    <value>信箱號碼不正確導致送信失敗，請確認信箱是否正確。</value>
+  </data>
+  <data name="Log_Success_SendMail" xml:space="preserve">
+    <value>Email已送出，我們會儘快與您聯絡!</value>
+  </data>
 </root>
