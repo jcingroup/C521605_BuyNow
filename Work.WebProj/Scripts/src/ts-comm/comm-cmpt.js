@@ -1,88 +1,100 @@
 "use strict";
-const React = require('react');
-const comm_func_1 = require('comm-func');
-const ReactBootstrap = require('react-bootstrap');
-const Sortable = require('sortablejs');
-const upload = require("simple-ajax-uploader");
-const DT = require("dt");
-class GridButtonModify extends React.Component {
-    constructor(props) {
-        super(props);
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
+var React = require('react');
+var comm_func_1 = require('comm-func');
+var ReactBootstrap = require('react-bootstrap');
+var Sortable = require('sortablejs');
+var upload = require("simple-ajax-uploader");
+var DT = require("dt");
+var GridButtonModify = (function (_super) {
+    __extends(GridButtonModify, _super);
+    function GridButtonModify(props) {
+        _super.call(this, props);
         this.onClick = this.onClick.bind(this);
         this.componentDidMount = this.componentDidMount.bind(this);
         this.state = {
             className: 'fa-pencil'
         };
     }
-    componentDidMount() {
+    GridButtonModify.prototype.componentDidMount = function () {
         if (this.props.ver == 2) {
             this.setState({ className: 'fa-search-plus' });
         }
-    }
-    onClick() {
+    };
+    GridButtonModify.prototype.onClick = function () {
         this.props.modify();
-    }
-    render() {
+    };
+    GridButtonModify.prototype.render = function () {
         return React.createElement("button", {type: "button", className: "btn-link btn-lg", onClick: this.onClick}, React.createElement("i", {className: this.state.className}));
-    }
-}
-GridButtonModify.defaultProps = {
-    ver: 1
-};
+    };
+    GridButtonModify.defaultProps = {
+        ver: 1
+    };
+    return GridButtonModify;
+}(React.Component));
 exports.GridButtonModify = GridButtonModify;
-class GridCheckDel extends React.Component {
-    constructor() {
-        super();
+var GridCheckDel = (function (_super) {
+    __extends(GridCheckDel, _super);
+    function GridCheckDel() {
+        _super.call(this);
         this.onChange = this.onChange.bind(this);
     }
-    onChange(e) {
+    GridCheckDel.prototype.onChange = function (e) {
         this.props.delCheck(this.props.iKey, this.props.chd);
-    }
-    render() {
+    };
+    GridCheckDel.prototype.render = function () {
         return React.createElement("label", {className: "c-input c-checkbox"}, React.createElement("input", {type: "checkbox", checked: this.props.chd, onChange: this.onChange}), React.createElement("span", {className: "c-indicator"}));
-    }
-}
+    };
+    return GridCheckDel;
+}(React.Component));
 exports.GridCheckDel = GridCheckDel;
-class GridButtonDel extends React.Component {
-    constructor() {
-        super();
+var GridButtonDel = (function (_super) {
+    __extends(GridButtonDel, _super);
+    function GridButtonDel() {
+        _super.call(this);
         this.onClick = this.onClick.bind(this);
     }
-    onClick(e) {
+    GridButtonDel.prototype.onClick = function (e) {
         this.props.removeItemSubmit(this.props.primKey);
-    }
-    render() {
+    };
+    GridButtonDel.prototype.render = function () {
         return React.createElement("button", {type: "button", onClick: this.onClick, className: "btn-link btn-lg text-danger"}, React.createElement("i", {className: "fa-times"}));
-    }
-}
+    };
+    return GridButtonDel;
+}(React.Component));
 exports.GridButtonDel = GridButtonDel;
-class GridNavPage extends React.Component {
-    constructor(props) {
-        super(props);
+var GridNavPage = (function (_super) {
+    __extends(GridNavPage, _super);
+    function GridNavPage(props) {
+        _super.call(this, props);
         this.nextPage = this.nextPage.bind(this);
         this.prvePage = this.prvePage.bind(this);
         this.firstPage = this.firstPage.bind(this);
         this.lastPage = this.lastPage.bind(this);
     }
-    firstPage() {
+    GridNavPage.prototype.firstPage = function () {
         this.props.queryGridData(1);
-    }
-    lastPage() {
+    };
+    GridNavPage.prototype.lastPage = function () {
         this.props.queryGridData(this.props.totalPage);
-    }
-    nextPage() {
+    };
+    GridNavPage.prototype.nextPage = function () {
         if (this.props.nowPage < this.props.totalPage) {
             this.props.queryGridData(this.props.nowPage + 1);
         }
-    }
-    prvePage() {
+    };
+    GridNavPage.prototype.prvePage = function () {
         if (this.props.nowPage > 1) {
             this.props.queryGridData(this.props.nowPage - 1);
         }
-    }
-    jumpPage() {
-    }
-    render() {
+    };
+    GridNavPage.prototype.jumpPage = function () {
+    };
+    GridNavPage.prototype.render = function () {
         var setAddButton = null, setDeleteButton = null;
         if (this.props.showAdd) {
             setAddButton = React.createElement("button", {className: "btn btn-sm btn-success", type: "button", onClick: this.props.insertType}, React.createElement("i", {className: "fa-plus-circle"}), " 新增");
@@ -93,27 +105,34 @@ class GridNavPage extends React.Component {
         var oper = null;
         oper = (React.createElement("div", {className: "table-footer clearfix"}, React.createElement("div", {className: "pull-xs-left"}, setAddButton, " ", setDeleteButton), React.createElement("small", {className: "pull-xs-right"}, "第", this.props.startCount, "-", this.props.endCount, "筆，共", this.props.recordCount, "筆"), React.createElement("ul", {className: "pager pager-sm"}, React.createElement("li", null, React.createElement("a", {href: "#", title: "移至第一頁", tabIndex: -1, onClick: this.firstPage}, React.createElement("i", {className: "fa-angle-double-left"}))), " ", React.createElement("li", null, React.createElement("a", {href: "#", title: "上一頁", tabIndex: -1, onClick: this.prvePage}, React.createElement("i", {className: "fa-angle-left"}))), " ", React.createElement("li", {className: "form-inline"}, React.createElement("div", {className: "form-group"}, React.createElement("label", null, "第"), ' ', React.createElement("input", {style: { "width": "100px" }, className: "form-control form-control-sm text-xs-center", type: "number", min: "1", tabIndex: -1, value: this.props.nowPage.toString(), onChange: this.jumpPage}), ' ', React.createElement("label", null, "頁，共", this.props.totalPage, "頁"))), " ", React.createElement("li", null, React.createElement("a", {href: "#", title: "@Resources.Res.NextPage", tabIndex: -1, onClick: this.nextPage}, React.createElement("i", {className: "fa-angle-right"}))), " ", React.createElement("li", null, React.createElement("a", {href: "#", title: "移至最後一頁", tabIndex: -1, onClick: this.lastPage}, React.createElement("i", {className: "fa-angle-double-right"}))))));
         return oper;
-    }
-}
-GridNavPage.defaultProps = {
-    showAdd: true,
-    showDelete: true
-};
+    };
+    GridNavPage.defaultProps = {
+        showAdd: true,
+        showDelete: true
+    };
+    return GridNavPage;
+}(React.Component));
 exports.GridNavPage = GridNavPage;
-class Tips extends React.Component {
-    render() {
+var Tips = (function (_super) {
+    __extends(Tips, _super);
+    function Tips() {
+        _super.apply(this, arguments);
+    }
+    Tips.prototype.render = function () {
         var Tooltip = ReactBootstrap.Tooltip;
         var OverlayTrigger = ReactBootstrap.OverlayTrigger;
-        const tooltipObj = (React.createElement(Tooltip, {id: "abc"}, this.props.comment));
+        var tooltipObj = (React.createElement(Tooltip, {id: "abc"}, this.props.comment));
         var out_html = null;
         out_html = (React.createElement(OverlayTrigger, {placement: "top", overlay: tooltipObj}, React.createElement("i", {className: "fa-question-circle text-info"})));
         return out_html;
-    }
-}
+    };
+    return Tips;
+}(React.Component));
 exports.Tips = Tips;
-class MasterImageUpload extends React.Component {
-    constructor() {
-        super();
+var MasterImageUpload = (function (_super) {
+    __extends(MasterImageUpload, _super);
+    function MasterImageUpload() {
+        _super.call(this);
         this.createFileUpLoadObject = this.createFileUpLoadObject.bind(this);
         this.deleteFile = this.deleteFile.bind(this);
         this.getFileList = this.getFileList.bind(this);
@@ -139,7 +158,7 @@ class MasterImageUpload extends React.Component {
             };
         }
     }
-    componentDidMount() {
+    MasterImageUpload.prototype.componentDidMount = function () {
         if (this.props.ParentEditType == 2) {
             if (typeof this.props.MainId === 'string') {
                 if (this.props.MainId != null) {
@@ -154,8 +173,8 @@ class MasterImageUpload extends React.Component {
                 }
             }
         }
-    }
-    componentDidUpdate(prevProps, prevState) {
+    };
+    MasterImageUpload.prototype.componentDidUpdate = function (prevProps, prevState) {
         console.log(this.props.MainId, prevProps.MainId);
         if (this.props.ParentEditType == 2) {
             if (typeof this.props.MainId === 'string') {
@@ -171,14 +190,14 @@ class MasterImageUpload extends React.Component {
                 }
             }
         }
-    }
-    componentWillUnmount() {
+    };
+    MasterImageUpload.prototype.componentWillUnmount = function () {
         if (this.props.ParentEditType == 2) {
             this._sortable.destroy();
             this._upload.destroy();
         }
-    }
-    deleteFile(guid) {
+    };
+    MasterImageUpload.prototype.deleteFile = function (guid) {
         comm_func_1.jqPost(this.props.url_delete, {
             id: this.props.MainId,
             fileKind: this.props.FileKind,
@@ -195,12 +214,12 @@ class MasterImageUpload extends React.Component {
             .fail(function (jqXHR, textStatus, errorThrown) {
             comm_func_1.showAjaxError(errorThrown);
         });
-    }
-    createFileUpLoadObject() {
+    };
+    MasterImageUpload.prototype.createFileUpLoadObject = function () {
         if (this.props.ParentEditType == 1)
             return;
-        let btn = document.getElementById('upload-btn-' + this.props.MainId + '-' + this.props.FileKind);
-        let _this = this;
+        var btn = document.getElementById('upload-btn-' + this.props.MainId + '-' + this.props.FileKind);
+        var _this = this;
         this._upload = new upload.SimpleUpload({
             button: btn,
             url: this.props.url_upload,
@@ -247,8 +266,8 @@ class MasterImageUpload extends React.Component {
                 }
             }
         });
-    }
-    getFileList() {
+    };
+    MasterImageUpload.prototype.getFileList = function () {
         comm_func_1.jqPost(this.props.url_list, {
             id: this.props.MainId,
             fileKind: this.props.FileKind
@@ -264,30 +283,30 @@ class MasterImageUpload extends React.Component {
             .fail(function (jqXHR, textStatus, errorThrown) {
             comm_func_1.showAjaxError(errorThrown);
         });
-    }
-    sortableGroupDecorator(componentBackingInstance) {
+    };
+    MasterImageUpload.prototype.sortableGroupDecorator = function (componentBackingInstance) {
         if (componentBackingInstance) {
-            let _this = this;
-            let options = {
+            var _this_1 = this;
+            var options = {
                 draggable: "li",
                 group: "shared",
                 onSort: function (evt) {
-                    var data_array = _this.state.filelist;
+                    var data_array = _this_1.state.filelist;
                     data_array.movesort(evt.oldIndex, evt.newIndex);
                     var parms = [];
                     for (var i in data_array) {
                         var item = data_array[i];
                         parms.push(item.guid);
                     }
-                    comm_func_1.jqPost(_this.props.url_sort, {
-                        id: _this.props.MainId,
-                        fileKind: _this.props.FileKind,
+                    comm_func_1.jqPost(_this_1.props.url_sort, {
+                        id: _this_1.props.MainId,
+                        fileKind: _this_1.props.FileKind,
                         guids: parms
                     })
                         .done(function (data, textStatus, jqXHRdata) {
                         if (data.result) {
-                            _this.setState({ filelist: [] });
-                            _this.setState({ filelist: data_array });
+                            _this_1.setState({ filelist: [] });
+                            _this_1.setState({ filelist: data_array });
                         }
                         else {
                             alert(data.message);
@@ -307,11 +326,11 @@ class MasterImageUpload extends React.Component {
             };
             this._sortable = Sortable.create(componentBackingInstance, options);
         }
-    }
+    };
     ;
-    render() {
+    MasterImageUpload.prototype.render = function () {
         var outHtml = null;
-        let img_button_html = null;
+        var img_button_html = null;
         if (this.props.ParentEditType == 1) {
             img_button_html = React.createElement("small", {className: "text-danger"}, "請先存檔，再上傳檔案");
         }
@@ -324,16 +343,18 @@ class MasterImageUpload extends React.Component {
             return subOutHtml;
         }.bind(this))), React.createElement("div", {id: 'progressBox-' + this.props.MainId + '-' + this.props.FileKind, className: "progress-wrap"})));
         return outHtml;
-    }
-}
-MasterImageUpload.defaultProps = {
-    MainId: 0,
-    FileKind: 'F'
-};
+    };
+    MasterImageUpload.defaultProps = {
+        MainId: 0,
+        FileKind: 'F'
+    };
+    return MasterImageUpload;
+}(React.Component));
 exports.MasterImageUpload = MasterImageUpload;
-class MasterFileUpload extends React.Component {
-    constructor() {
-        super();
+var MasterFileUpload = (function (_super) {
+    __extends(MasterFileUpload, _super);
+    function MasterFileUpload() {
+        _super.call(this);
         this.createFileUpLoadObject = this.createFileUpLoadObject.bind(this);
         this.deleteFile = this.deleteFile.bind(this);
         this.getFileList = this.getFileList.bind(this);
@@ -345,7 +366,7 @@ class MasterFileUpload extends React.Component {
             download_src: ''
         };
     }
-    componentDidMount() {
+    MasterFileUpload.prototype.componentDidMount = function () {
         if (typeof this.props.MainId === 'string') {
             if (this.props.MainId != null) {
                 this.createFileUpLoadObject();
@@ -358,8 +379,8 @@ class MasterFileUpload extends React.Component {
                 this.getFileList();
             }
         }
-    }
-    componentDidUpdate(prevProps, prevState) {
+    };
+    MasterFileUpload.prototype.componentDidUpdate = function (prevProps, prevState) {
         if (typeof this.props.MainId === 'string') {
             if (this.props.MainId != null && prevProps.MainId == null) {
                 this.createFileUpLoadObject();
@@ -372,8 +393,8 @@ class MasterFileUpload extends React.Component {
                 this.getFileList();
             }
         }
-    }
-    deleteFile(filename) {
+    };
+    MasterFileUpload.prototype.deleteFile = function (filename) {
         comm_func_1.jqPost(this.props.url_delete, {
             id: this.props.MainId,
             fileKind: this.props.FileKind,
@@ -390,8 +411,8 @@ class MasterFileUpload extends React.Component {
             .fail(function (jqXHR, textStatus, errorThrown) {
             comm_func_1.showAjaxError(errorThrown);
         });
-    }
-    downloadFile(id, filekind, filename) {
+    };
+    MasterFileUpload.prototype.downloadFile = function (id, filekind, filename) {
         var parms = [];
         parms.push('id=' + id);
         parms.push('filekind=' + filekind);
@@ -399,12 +420,12 @@ class MasterFileUpload extends React.Component {
         parms.push('tid=' + comm_func_1.uniqid());
         var src = this.props.url_download + '?' + parms.join('&');
         this.setState({ download_src: src });
-    }
-    createFileUpLoadObject() {
+    };
+    MasterFileUpload.prototype.createFileUpLoadObject = function () {
         if (this.props.ParentEditType == 1)
             return;
-        let btn = document.getElementById('upload-btn-' + this.props.MainId + '-' + this.props.FileKind);
-        let _this = this;
+        var btn = document.getElementById('upload-btn-' + this.props.MainId + '-' + this.props.FileKind);
+        var _this = this;
         var uploader = new upload.SimpleUpload({
             button: btn,
             url: this.props.url_upload,
@@ -451,8 +472,8 @@ class MasterFileUpload extends React.Component {
                 }
             }
         });
-    }
-    getFileList() {
+    };
+    MasterFileUpload.prototype.getFileList = function () {
         comm_func_1.jqPost(this.props.url_list, {
             id: this.props.MainId,
             fileKind: this.props.FileKind
@@ -468,8 +489,8 @@ class MasterFileUpload extends React.Component {
             .fail(function (jqXHR, textStatus, errorThrown) {
             comm_func_1.showAjaxError(errorThrown);
         });
-    }
-    render() {
+    };
+    MasterFileUpload.prototype.render = function () {
         var outHtml = null;
         var fileButtonHtml = null;
         if (this.props.ParentEditType == 1) {
@@ -484,16 +505,18 @@ class MasterFileUpload extends React.Component {
             return subOutHtml;
         }, this)), React.createElement("div", {id: 'progressBox-' + this.props.MainId, className: "progress-wrap"}), React.createElement("iframe", {src: this.state.download_src, style: { visibility: 'hidden', display: 'none' }})));
         return outHtml;
-    }
-}
-MasterFileUpload.defaultProps = {
-    MainId: 0,
-    FileKind: 'F'
-};
+    };
+    MasterFileUpload.defaultProps = {
+        MainId: 0,
+        FileKind: 'F'
+    };
+    return MasterFileUpload;
+}(React.Component));
 exports.MasterFileUpload = MasterFileUpload;
-class TwAddress extends React.Component {
-    constructor(props) {
-        super(props);
+var TwAddress = (function (_super) {
+    __extends(TwAddress, _super);
+    function TwAddress(props) {
+        _super.call(this, props);
         this.componentDidMount = this.componentDidMount.bind(this);
         this.componentDidUpdate = this.componentDidUpdate.bind(this);
         this.onZipChange = this.onZipChange.bind(this);
@@ -506,18 +529,18 @@ class TwAddress extends React.Component {
             country_list: []
         };
     }
-    componentDidMount() {
+    TwAddress.prototype.componentDidMount = function () {
         if (this.props.city_value != null) {
             this.listCountry(this.props.city_value);
         }
-    }
-    componentDidUpdate(prevProps, prevState) {
+    };
+    TwAddress.prototype.componentDidUpdate = function (prevProps, prevState) {
         if (this.props.city_value != null && this.props.city_value != prevProps.city_value) {
             this.listCountry(this.props.city_value);
         }
-    }
-    onZipChange(e) {
-        let input = e.target;
+    };
+    TwAddress.prototype.onZipChange = function (e) {
+        var input = e.target;
         var data = {
             identity: this.props.identity,
             zip_value: input.value,
@@ -528,9 +551,9 @@ class TwAddress extends React.Component {
             type: 1
         };
         this.props.onChange(data, e);
-    }
-    onCityChange(e) {
-        let input = e.target;
+    };
+    TwAddress.prototype.onCityChange = function (e) {
+        var input = e.target;
         var data = {
             identity: this.props.identity,
             zip_value: this.props.zip_value,
@@ -542,10 +565,10 @@ class TwAddress extends React.Component {
         };
         this.listCountry(input.value);
         this.props.onChange(data, e);
-    }
-    onCountryChange(e) {
-        let input = e.target;
-        let zip_value = null;
+    };
+    TwAddress.prototype.onCountryChange = function (e) {
+        var input = e.target;
+        var zip_value = null;
         for (var i in this.state.country_list) {
             var item = this.state.country_list[i];
             if (item.county == input.value) {
@@ -563,9 +586,9 @@ class TwAddress extends React.Component {
             type: 3
         };
         this.props.onChange(data, e);
-    }
-    onAddressChange(e) {
-        let input = e.target;
+    };
+    TwAddress.prototype.onAddressChange = function (e) {
+        var input = e.target;
         var data = {
             identity: this.props.identity,
             zip_value: this.props.zip_value,
@@ -576,8 +599,8 @@ class TwAddress extends React.Component {
             type: 4
         };
         this.props.onChange(data, e);
-    }
-    listCountry(value) {
+    };
+    TwAddress.prototype.listCountry = function (value) {
         if (value == null || value == undefined || value == '') {
             this.setState({ country_list: [] });
         }
@@ -590,8 +613,8 @@ class TwAddress extends React.Component {
                 }
             }
         }
-    }
-    render() {
+    };
+    TwAddress.prototype.render = function () {
         var out_html = null;
         if (this.props.ver == 1) {
             out_html = (React.createElement("div", {className: "row"}, React.createElement("div", {className: "col-xs-2"}, React.createElement("input", {type: "text", className: "form-control", value: this.props.zip_value, onChange: this.onZipChange, maxLength: 5, required: true, disabled: true})), React.createElement("div", {className: "col-xs-2"}, React.createElement("select", {className: "form-control", value: this.props.city_value, onChange: this.onCityChange, required: this.props.required, disabled: this.props.disabled}, React.createElement("option", {value: ""}), DT.twDistrict.map(function (itemData, i) {
@@ -601,22 +624,24 @@ class TwAddress extends React.Component {
             }))), React.createElement("div", {className: "col-xs-6"}, React.createElement("input", {type: "text", className: "form-control", value: this.props.address_value, onChange: this.onAddressChange, maxLength: 128, required: this.props.required, disabled: this.props.disabled}))));
         }
         return out_html;
-    }
-}
-TwAddress.defaultProps = {
-    onChange: null,
-    zip_value: null,
-    city_value: null,
-    country_value: null,
-    address_value: null,
-    required: false,
-    disabled: false,
-    ver: 1
-};
+    };
+    TwAddress.defaultProps = {
+        onChange: null,
+        zip_value: null,
+        city_value: null,
+        country_value: null,
+        address_value: null,
+        required: false,
+        disabled: false,
+        ver: 1
+    };
+    return TwAddress;
+}(React.Component));
 exports.TwAddress = TwAddress;
-class StateForGird extends React.Component {
-    constructor() {
-        super();
+var StateForGird = (function (_super) {
+    __extends(StateForGird, _super);
+    function StateForGird() {
+        _super.call(this);
         this.componentDidMount = this.componentDidMount.bind(this);
         this.componentWillReceiveProps = this.componentWillReceiveProps.bind(this);
         this.render = this.render.bind(this);
@@ -625,7 +650,7 @@ class StateForGird extends React.Component {
             label: null
         };
     }
-    componentWillReceiveProps(nextProps) {
+    StateForGird.prototype.componentWillReceiveProps = function (nextProps) {
         for (var i in this.props.stateData) {
             var item = this.props.stateData[i];
             if (item.id == nextProps.id) {
@@ -633,8 +658,8 @@ class StateForGird extends React.Component {
                 break;
             }
         }
-    }
-    componentDidMount() {
+    };
+    StateForGird.prototype.componentDidMount = function () {
         for (var i in this.props.stateData) {
             var item = this.props.stateData[i];
             if (item.id == this.props.id) {
@@ -642,16 +667,17 @@ class StateForGird extends React.Component {
                 break;
             }
         }
-    }
-    render() {
-        let outHtml = null;
+    };
+    StateForGird.prototype.render = function () {
+        var outHtml = null;
         outHtml = React.createElement("span", {className: this.state.setClass}, this.state.label);
         return outHtml;
-    }
-}
-StateForGird.defaultProps = {
-    stateData: [],
-    id: null,
-    ver: 1
-};
+    };
+    StateForGird.defaultProps = {
+        stateData: [],
+        id: null,
+        ver: 1
+    };
+    return StateForGird;
+}(React.Component));
 exports.StateForGird = StateForGird;

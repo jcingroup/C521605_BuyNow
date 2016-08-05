@@ -634,3 +634,42 @@
 		}
 	}
 }
+
+
+// VIP
+// ----------------------------------------------------------------------
+.apply {
+	.row {
+		margin-left: -$grid-gutter-width/4;
+		margin-right: -$grid-gutter-width/4;
+	}
+	[class*="col-"] {
+		padding: 0 $grid-gutter-width/4;
+	}
+}
+.alert-striped {
+	margin-bottom: $spacer;
+	padding: $grid-gutter-width/2;
+	color: #666;
+	background: #fff;
+	border-left: 4px solid #ccc;
+	.alert-title {font-weight: bold;}
+
+	&.alert-primary {
+		border-left-color: $brand-primary;	
+		.alert-title {color: $brand-primary;}
+	}
+	&.alert-success {
+		border-left-color: $brand-success;	
+		.alert-title {color: $brand-success;}
+	}
+	&.alert-info {
+		border-left-color: $brand-info;	
+		.alert-title {color: $brand-info;}
+	}
+}
+.term {
+	padding: $grid-gutter-width/2;
+	background: #fff;
+	border: 1px solid hsla(0,0,0,0.2);
+}

@@ -1,0 +1,86 @@
+﻿@model DotWeb.Controllers.VipEmail
+@{
+    ViewBag.Title = "Email";
+}
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>幸福阿珍 - 申請加入百業達人</title>
+</head>
+<body style="font: 1em/140% '微軟正黑體', 'Microsoft JhengHei', Helvetica, sans-serif;">
+    <h1 style="font-size:1.5em; color:#8C6231;">幸福阿珍 - 申請加入百業達人</h1>
+    <table border="1" bordercolor="#ddd" style="width:600px; border:1px solid #ccc">
+        <caption style="background:#DF4F14; color:#fff; font-size:1.2em; font-weight:bold; padding:5px; text-align:center;">
+            申請加入百業達人
+        </caption>
+
+        <tr>
+            <td style="width:25%; color:#8C6231; padding:5px; border:1px solid #ccc">申請人姓名</td>
+            <td style="width:75%; padding:5px; border:1px solid #ccc">@Model.name</td>
+        </tr>
+        <tr>
+            <td style="width:25%; color:#8C6231; padding:5px; border:1px solid #ccc">性別</td>
+            <td style="width:75%; padding:5px; border:1px solid #ccc">
+                @if (Model.gender)
+                {
+                    <span>男</span>
+                }
+                else
+                {
+                    <span>女</span>
+                }
+            </td>
+        </tr>
+        <tr>
+            <td style="width:25%; color:#8C6231; padding:5px; border:1px solid #ccc">LINE ID</td>
+            <td style="width:75%; padding:5px; border:1px solid #ccc">@Model.line_id</td>
+        </tr>
+        <tr>
+            <td style="width:25%; color:#8C6231; padding:5px; border:1px solid #ccc">生日</td>
+            <td style="width:75%; padding:5px; border:1px solid #ccc">@Model.birthday_y / @Model.birthday_m / @Model.birthday_d</td>
+        </tr>
+        <tr>
+            <td style="width:25%; color:#8C6231; padding:5px; border:1px solid #ccc">聯絡電話</td>
+            <td style="width:75%; padding:5px; border:1px solid #ccc">
+                手機：@Model.mobile<br>
+                市話：@Model.tel
+            </td>
+        </tr>
+        <tr>
+            <td style="width:25%; color:#8C6231; padding:5px; border:1px solid #ccc">聯絡地址</td>
+            <td style="width:75%; padding:5px; border:1px solid #ccc">@Model.address</td>
+        </tr>
+        <tr>
+            <td style="width:25%; color:#8C6231; padding:5px; border:1px solid #ccc">工作概況</td>
+            <td style="width:75%; padding:5px; border:1px solid #ccc">
+                @Model.job_type
+                @if (Model.job_type == "自營業") {
+                    @Model.job_name
+                }
+            </td>
+        </tr>
+        <tr>
+            <td style="width:25%; color:#8C6231; padding:5px; border:1px solid #ccc">加入後想賣…？</td>
+            <td style="width:75%; height:100px; word-break:break-all; padding:5px; border:1px solid #ccc">
+                @Html.Raw(Model.content.Replace("\n", "<br/>"))
+            </td>
+        </tr>
+        <tr>
+            <td style="width:25%; color:#8C6231; padding:5px; border:1px solid #ccc">個人專長</td>
+            <td style="width:75%; padding:5px; border:1px solid #ccc">@Model.skill</td>
+        </tr>
+        <tr>
+            <td style="width:25%; color:#8C6231; padding:5px; border:1px solid #ccc">證照</td>
+            <td style="width:75%; padding:5px; border:1px solid #ccc">@Model.licenses</td>
+        </tr>
+        <tr>
+            <td style="width:25%; color:#8C6231; padding:5px; border:1px solid #ccc">其他事項</td>
+            <td style="width:75%; height:100px; word-break:break-all; padding:5px; border:1px solid #ccc">
+                @Html.Raw(Model.other_content.Replace("\n", "<br/>"))
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
+

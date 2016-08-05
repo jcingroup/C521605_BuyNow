@@ -1,17 +1,190 @@
 ﻿@{
-	ViewBag.Title = "加入百業達人";
+    ViewBag.Title = "加入百業達人";
     ViewBag.BodyClass = "VIP";
     Layout = "~/Views/Shared/Layout.cshtml";
+}
+@section Scripts{
+    <script src="~/Scripts/src/tsx/w-vip-email.js"></script>
 }
 
 <h2 class="h2 title">@ViewBag.Title</h2>
 
 <section id="content">
 
-	<div class="wrap"><div class="editor">
-	
-        @Html.Raw(ViewBag.content)
+    <div class="wrap">
 
-	</div></div>
+        @* <div class="editor">
+                @Html.Raw(ViewBag.content)
+            </div> *@
+
+        <h2 class="colored">跨出第一步</h2>
+
+        <h3 class="colored">申請加入幸福阿珍零元投資方案邁向財源第二管道</h3>
+
+        <h4 class="colored">請填寫下列申請加入表格</h4>
+        <hr class="sm m-b-1">
+        <form class="form apply" id="VipEmail">
+            <div class="form-group row">
+                <label class="form-control-label col-xs-2 text-xs-right"><span class="text-danger">*</span> 申請人姓名</label>
+                <div class="col-xs-4">
+                    <input type="text" class="form-control" id="m_name" required>
+                </div>
+                <label class="form-control-label col-xs-1 text-xs-right"><span class="text-danger">*</span> 性別</label>
+                <div class="form-control-label col-xs-2">
+                    <label class="c-input c-radio m-b-0">
+                        <input type="radio" name="gender" value="false" required>
+                        <span class="c-indicator"></span>女
+                    </label>
+                    <label class="c-input c-radio m-b-0">
+                        <input type="radio" name="gender" value="true">
+                        <span class="c-indicator"></span>男
+                    </label>
+                </div>
+                <label class="form-control-label col-xs-1 text-xs-right">LINE ID</label>
+                <div class="col-xs-2">
+                    <input type="text" class="form-control" id="m_line_id" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="form-control-label col-xs-2 text-xs-right"><span class="text-danger">*</span> 生日</label>
+                <div class="col-xs-4">
+                    <div class="input-group">
+                        <input type="number" class="form-control" id="m_birthday_y" required  min="1" >
+                        <span class="input-group-addon">年</span>
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <div class="input-group">
+                        <input type="number" class="form-control" id="m_birthday_m" required min="1" max="12">
+                        <span class="input-group-addon">月</span>
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <div class="input-group">
+                        <input type="number" class="form-control" id="m_birthday_d" required min="1" max="31">
+                        <span class="input-group-addon">日</span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="form-control-label col-xs-2 text-xs-right">聯絡電話</label>
+                <div class="col-xs-4">
+                    <div class="input-group">
+                        <span class="input-group-addon">手機</span>
+                        <input type="text" class="form-control" id="m_mobile">
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <div class="input-group">
+                        <span class="input-group-addon">市話</span>
+                        <input type="text" class="form-control" id="m_tel">
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <small class="text-muted">手機 / 市話 請至少填寫一項</small>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="form-control-label col-xs-2 text-xs-right">聯絡地址</label>
+                <div class="col-xs-10">
+                    <input type="text" class="form-control" id="m_address">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="form-control-label col-xs-2 text-xs-right"><span class="text-danger">*</span> 工作概況</label>
+                <div class="col-xs-4">
+                    <select name="" id="m_job_type" class="form-control" required>
+                        <option value="自營業">自營業</option>
+                        <option value="就業中">就業中</option>
+                        <option value="待業中">待業中</option>
+                        <option value="有兼職">有兼職</option>
+                    </select>
+                </div>
+                <div class="col-xs-3">
+                    <input type="text" class="form-control" id="m_job_name" required>
+                </div>
+                <div class="col-xs-3">
+                    <small class="text-muted">若為自營業 請填寫公司名稱或營業項目</small>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="form-control-label col-xs-2 text-xs-right"><span class="text-danger">*</span> 加入後想賣…？</label>
+                <div class="col-xs-10">
+                    <textarea name="" id="m_content" rows="3" class="form-control" required></textarea>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="form-control-label col-xs-2 text-xs-right">個人專長</label>
+                <div class="col-xs-10">
+                    <input type="text" class="form-control" id="m_skill">
+                    <small class="text-danger">※ 可開闢第二收入</small>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="form-control-label col-xs-2 text-xs-right">證照</label>
+                <div class="col-xs-10">
+                    <input type="text" class="form-control" id="m_licenses">
+                    <small class="text-danger">※ 符合商業規定</small>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="form-control-label col-xs-2 text-xs-right">其他事項</label>
+                <div class="col-xs-10">
+                    <textarea name="" id="m_other_content" rows="3" class="form-control"></textarea>
+                </div>
+            </div>
+
+
+            <hr>
+
+            <h3 class="colored">歡迎妳（你）加入幸福阿珍</h3>
+            <h4 class="colored">你想要做什麼？</h4>
+
+            <div class="alert-striped alert-success">
+                <h4 class="alert-title">賣商品</h4>
+                <p class="m-b-0">我們需要妳(你)的商品詳細情況、規格、照片或網址說明，以及售價，請事先整理及規劃。請另備妥商品型錄及商品物件相片。</p>
+            </div>
+
+            <div class="alert-striped alert-info">
+                <h4 class="alert-title">發揮專長或興趣</h4>
+                <p class="m-b-0">請妳(你)明確描述想要提供的課程或商業服務品項，並準備相關資料及相片。如有任何疑問敬請儘管<a href="~/Index#contact-info">聯絡我們</a>。</p>
+            </div>
+
+            <div class="alert-striped alert-primary">
+                <h4 class="alert-title">請記得：</h4>
+                <p class="m-b-0">幸福阿珍互聯網內有各個小眾族群(社區)的連結加入後都會屬於妳(你)，我們都會想辦法幫你把東西賣掉，並將妳(你)的專長發揚光大讓大家都知道。</p>
+            </div>
+
+            <hr>
+
+            <h4 class="colored">網站使用條款及個資同意</h4>
+
+            <div class="term">
+
+                <h5 class="colored">網站使用條款</h5>
+
+                <p>謝謝您造訪幸福阿珍之百業達人網站！請您在開始使用本網站及網頁內容前先充分、仔細閱讀以下使用條款與條件（下稱「本條款」）。本條款為您使用 幸福阿珍之百業達人 Inc.、及其關係企業與/或子公司（以下統稱為「幸福阿珍之百業達人」）所提供的本網站及網頁內容時，所需遵守的規定。<strong class="text-primary">您須瞭解，當您開始使用本網站的同時，即表示您已同意本條款的內容。如您不同意本條款，請勿使用本網站。</strong></p>
+
+                <p>您僅在符合本網站及本條款載明之特定目的下，才有使用本網站及網頁內容的權限。</p>
+
+                <p>您不得：</p>
+
+                <ol>
+                    <li>張貼包含裸露、色情、性暗示、暴力、歧視、詆毀、中傷、憎恨或侵權內容的資訊。</li>
+                    <li>挑選、徵求或以其他方式蒐集其他使用者的憑證，或濫用自己的憑證。</li>
+                    <li>刺探或測試本網站或任何連結至本網站的網路的漏洞，或違背本網站或任何連結至本網站的安全或認證機制。</li>
+                    <li>基於非法或未經授權之目的使用本網站。</li>
+                </ol>
+
+                <h5 class="colored">使用資格</h5>
+
+                <p>您須自行確保本條款符合所有您應適用的法令規定。若本條款或您就本網站或網站內容的存取有違反或牴觸任何您應適用的法令規定時，您存取本網站及網頁內容的權限將被自動撤回。本網站及網頁內容係供您個人開闢第二收入營利使用，您不得將其提供予任何第三人使用。</p>
+            </div>
+
+            <hr>
+
+            <p class="text-xs-center"><button class="btn btn-success btn-lg">我已閱讀並了解相關規定，確認送出資料</button></p>
+        </form>
+    </div>
 
 </section>
