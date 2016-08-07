@@ -7,8 +7,7 @@ var __extends = (this && this.__extends) || function (d, b) {
 var React = require('react');
 var react_redux_1 = require('react-redux');
 require("react-datepicker/dist/react-datepicker.css");
-var Rows = function (_a) {
-    var item = _a.item, onClick = _a.onClick;
+const Rows = ({ item, onClick }) => {
     return (React.createElement("tr", null, React.createElement("td", null, "Del"), React.createElement("td", null, "Modify"), React.createElement("td", null, item.community_name), React.createElement("td", null, React.createElement("button", {type: "button", onClick: onClick}, "Click"))));
 };
 var GridTable = (function (_super) {
