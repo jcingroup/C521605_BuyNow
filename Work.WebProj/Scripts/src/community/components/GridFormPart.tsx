@@ -3,12 +3,9 @@ import ReactDOM = require('react-dom');
 import update = require('react-addons-update');
 import { connect } from 'react-redux';
 import Moment = require('moment');
-
-import DatePicker = require('react-datepicker');
-import {setVisibilityFilter} from "../actions";
-import "react-datepicker/dist/react-datepicker.css";
+import { bindActionCreators } from 'redux';
 import SearchFormPart from "./SearchFormPart";
-
+import DataFormPart from "./DataFormPart";
 export class GridForm extends React.Component<any, any>{
 
     constructor() {
@@ -35,9 +32,16 @@ export class GridForm extends React.Component<any, any>{
     }
 
     render() {
+        let out_html: JSX.Element = null;
+        let operator_view = null;
+        //console.log('OperatorType', this.props.oper_type);
+        if (this.props.oper_type == OperatorType.grid) {
+            operator_view = <SearchFormPart />
+        }
 
-        var out_html: JSX.Element = null;
-
+        if (this.props.oper_type == OperatorType.edit) {
+            operator_view = <DataFormPart />
+        }
         out_html =
             (
                 <div>
@@ -54,7 +58,7 @@ export class GridForm extends React.Component<any, any>{
                     <h3 className="h3">
                         {this.props.caption}
                     </h3>
-                    <SearchFormPart />
+                    {operator_view}
                 </div>
             );
 
@@ -65,16 +69,23 @@ export class GridForm extends React.Component<any, any>{
 const mapStateToProps = (state, ownProps) => {
     //console.log('GridForm mapStateToProps', state);
     return {
-
+        oper_type: state.oper_type
     }
 }
 const mapDispatchToProps = (dispatch, ownProps) => {
+    //console.log('GridForm', 'mapStateToProps', ownProps);
     return {
         onClick: () => {
             //dispatch(setVisibilityFilter(ownProps.filter))
         }
     }
+
+    //let r = bindActionCreators({
+    //    clickChangePage: ajaxGridItem,
+    //    clickEditInsert: operatorInsert
+    //}, dispatch);
+
 }
 const GridFormPart = connect(mapStateToProps, mapDispatchToProps)(GridForm)
-
+//const GridFormPart = connect()(GridForm)
 export default GridFormPart;

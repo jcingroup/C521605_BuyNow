@@ -9,7 +9,6 @@ import Reducers from './reducers';
 import {ajaxGridItem} from './actions';
 import thunkMiddleware from 'redux-thunk';
 //import * as createLogger from 'redux-logger';
-
 //const loggerMiddleware = createLogger();
 const store = createStore(
     Reducers,
@@ -17,7 +16,7 @@ const store = createStore(
         thunkMiddleware
     ));
 
-store.dispatch(ajaxGridItem());
+store.dispatch(ajaxGridItem(null));
 
 var dom = document.getElementById('page_content');
 render(<Provider store={store}><GridFormPart /></Provider>, dom);

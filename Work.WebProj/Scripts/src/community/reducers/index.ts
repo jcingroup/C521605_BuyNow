@@ -1,12 +1,13 @@
 import { combineReducers } from 'redux'
-import {search, edit_type, grid_items} from './comm'
-import visibilityFilter from './visibilityFilter'
-
+import {search, edit_type, grid_items, page_operator, oper_type} from './comm'
+import {field} from './field'
 const stateApp = combineReducers({
     search,
     edit_type,
     grid_items,
-    visibilityFilter
+    page_operator,
+    oper_type,
+    field
 })
 
 export default stateApp

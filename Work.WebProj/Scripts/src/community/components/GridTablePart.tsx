@@ -5,22 +5,35 @@ import { connect } from 'react-redux';
 import Moment = require('moment');
 
 import DatePicker = require('react-datepicker');
-import {setVisibilityFilter} from "../actions";
+import {delItemOne, ajaxOperatorEdit} from "../actions";
 import "react-datepicker/dist/react-datepicker.css";
 
+const ButtonItemDel = ({ clickItemDel, prim_key }: { clickItemDel: Function, prim_key?: string | number }) => {
+    return <button type="button" onClick={clickItemDel.bind(this, prim_key) }>Click</button>;
+}
 
-const Rows = ({ item, onClick }) => {
+const ButtonItemEdit = ({ clickItemDel, prim_key }: { clickItemDel: Function, prim_key?: string | number }) => {
+    return <button type="button" onClick={clickItemDel.bind(this, prim_key) }>Edit</button>;
+}
+
+const Rows = ({ item, clickItemDel, clickItemEdit}: { item: server.Community, clickItemDel: Function, clickItemEdit: Function }) => {
+
     return (
         <tr>
-            <td><button type="button" onClick={onClick}>Click</button></td>
-            <td>Modify</td>
+            <td><ButtonItemDel clickItemDel={clickItemDel} prim_key={item.community_id} /></td>
+            <td><ButtonItemEdit clickItemDel={clickItemEdit} prim_key={item.community_id} /></td>
             <td>{item.community_name}</td>
             <td>{item.address}</td>
         </tr>
     )
 }
 
-export class GridTable extends React.Component<any, any>{
+export class GridTable extends React.Component<{
+    grid_items: Array<server.Community>,
+    page_operator: any,
+    clickItemDel: any,
+    clickItemEdit: any
+}, any>{
 
     constructor() {
         super();
@@ -42,7 +55,8 @@ export class GridTable extends React.Component<any, any>{
     }
 
     render() {
-        var out_html: JSX.Element = null;
+        let out_html: JSX.Element = null;
+        //this.props;
 
         out_html =
             (
@@ -61,8 +75,8 @@ export class GridTable extends React.Component<any, any>{
                                 <Rows
                                     key={item.community_id}
                                     item={item}
-                                    onClick={this.props.onClick}
-
+                                    clickItemDel={this.props.clickItemDel}
+                                    clickItemEdit={this.props.clickItemEdit}
                                     />
                         ) }
                     </tbody>
@@ -72,21 +86,26 @@ export class GridTable extends React.Component<any, any>{
         return out_html;
     }
 }
-const mapStateToProps = (state, ownProps) => {
-    //console.log('=>', state)
+const mapStateToProps = (state: { grid_items: Array<server.Community>, page_operator: any }, ownProps) => {
+    //console.log('GridTable mapStateToProps', state)
     return {
-        grid_items: state.grid_items
+        grid_items: state.grid_items,
+        page_operator: state.page_operator
     }
 }
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        onClick: () => {
-            alert('1')
-            //dispatch(setVisibilityFilter(ownProps.filter))
+        clickItemDel: (id: number) => {
+            //console.log(id);
+            dispatch(delItemOne(id))
+        },
+
+        clickItemEdit: (id: number) => {
+            //console.log(id);
+            dispatch(ajaxOperatorEdit(id))
         }
     }
 }
 const GridTablePart = connect(mapStateToProps, mapDispatchToProps)(GridTable)
-
 
 export default GridTablePart;

@@ -6,8 +6,8 @@ var __extends = (this && this.__extends) || function (d, b) {
 };
 var React = require('react');
 var react_redux_1 = require('react-redux');
-require("react-datepicker/dist/react-datepicker.css");
 var SearchFormPart_1 = require("./SearchFormPart");
+var DataFormPart_1 = require("./DataFormPart");
 var GridForm = (function (_super) {
     __extends(GridForm, _super);
     function GridForm() {
@@ -27,15 +27,24 @@ var GridForm = (function (_super) {
     };
     GridForm.prototype.render = function () {
         var out_html = null;
+        var operator_view = null;
+        if (this.props.oper_type == 0) {
+            operator_view = React.createElement(SearchFormPart_1.default, null);
+        }
+        if (this.props.oper_type == 1) {
+            operator_view = React.createElement(DataFormPart_1.default, null);
+        }
         out_html =
-            (React.createElement("div", null, React.createElement("ul", {className: "breadcrumb"}, React.createElement("li", null, React.createElement("i", {className: "fa-caret-right"}), " ", this.props.menuName), React.createElement("li", null, React.createElement("i", {className: "fa-angle-right"}), " ", this.props.caption)), React.createElement("h3", {className: "h3"}, this.props.caption), React.createElement(SearchFormPart_1.default, null)));
+            (React.createElement("div", null, React.createElement("ul", {className: "breadcrumb"}, React.createElement("li", null, React.createElement("i", {className: "fa-caret-right"}), " ", this.props.menuName), React.createElement("li", null, React.createElement("i", {className: "fa-angle-right"}), " ", this.props.caption)), React.createElement("h3", {className: "h3"}, this.props.caption), operator_view));
         return out_html;
     };
     return GridForm;
 }(React.Component));
 exports.GridForm = GridForm;
 var mapStateToProps = function (state, ownProps) {
-    return {};
+    return {
+        oper_type: state.oper_type
+    };
 };
 var mapDispatchToProps = function (dispatch, ownProps) {
     return {

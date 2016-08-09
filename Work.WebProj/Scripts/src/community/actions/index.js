@@ -1,36 +1,15 @@
 "use strict";
-var $ = require('jquery');
-var nextTodoId = 0;
-exports.addTodo = function (text) {
+var ajax_1 = require('../../ts-comm/ajax');
+exports.setInputValue = function (type, name, value) {
     return {
-        type: 'ADD_TODO',
-        id: nextTodoId++,
-        text: text
-    };
-};
-exports.setVisibilityFilter = function (filter) {
-    var r = {
-        type: 'SET_VISIBILITY_FILTER',
-        filter: filter
-    };
-    return r;
-};
-exports.toggleTodo = function (id) {
-    return {
-        type: 'TOGGLE_TODO',
-        id: id
-    };
-};
-exports.setInputValue = function (name, value) {
-    return {
-        type: 'setInputValue',
+        type: type,
         value: value,
         name: name
     };
 };
-exports.ajaxGridItem = function () {
+exports.ajaxGridItem = function (search) {
     return function (dispatch) {
-        return $.get('/api/Community?page=1')
+        return ajax_1.callGet('/api/Community', search)
             .done(function (data, textStatus, jqXHRdata) {
             dispatch(getGridItem(data));
         });
@@ -39,11 +18,52 @@ exports.ajaxGridItem = function () {
 var getGridItem = function (data) {
     return {
         type: 'load',
-        items: data.rows
+        items: data.rows,
+        pageinfo: {
+            total: data.total,
+            page: data.page,
+            records: data.records,
+            startcount: data.startcount,
+            endcount: data.endcount
+        }
     };
 };
 exports.clearGridItem = function () {
     return {
         type: 'clear'
+    };
+};
+exports.delItemOne = function (id) {
+    return {
+        type: 'delItemOne'
+    };
+};
+exports.queryGridData = function (search) {
+    return {
+        type: 'query'
+    };
+};
+exports.operatorInsert = function () {
+    return {
+        type: 'insert'
+    };
+};
+exports.ajaxOperatorEdit = function (id) {
+    return function (dispatch) {
+        return ajax_1.callGet('/api/Community', { id: id })
+            .done(function (data, textStatus, jqXHRdata) {
+            dispatch(getEditData(data));
+        });
+    };
+};
+var getEditData = function (data) {
+    return {
+        type: 'edit',
+        field: data.data
+    };
+};
+exports.operatorGrid = function () {
+    return {
+        type: 'grid'
     };
 };

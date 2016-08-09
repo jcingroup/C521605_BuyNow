@@ -33,8 +33,8 @@ namespace DotWeb.Api
             db0 = getDB0();
             var predicate = PredicateBuilder.True<Community>();
 
-            if (q.name != null)
-                predicate = predicate.And(x => x.community_name.Contains(q.name));
+            if (q.community_name != null)
+                predicate = predicate.And(x => x.community_name.Contains(q.community_name));
 
             int page = (q.page == null ? 1 : (int)q.page);
             var result = db0.Community.AsExpandable().Where(predicate);
@@ -217,7 +217,7 @@ namespace DotWeb.Api
         }
         public class queryParam : QueryBase
         {
-            public string name { set; get; }
+            public string community_name { set; get; }
 
         }
         public class delParam

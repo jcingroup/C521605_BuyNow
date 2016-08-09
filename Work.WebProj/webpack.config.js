@@ -25,7 +25,7 @@ module.exports = {
 
         community: path.resolve(__dirname, 'Scripts/src/community/index.js'),
 
-        vendors: ['jquery', 'react', 'react-dom', 'react-addons-update', 'react-bootstrap', 'redux', 'react-redux', 'redux-thunk', 'redux-logger', 'moment'],
+        vendors: ['jquery', 'react', 'react-dom', 'react-addons-update', 'react-bootstrap', 'redux', 'react-redux', 'redux-thunk', 'moment'],
         //wwwcomm: ['jquery', 'react']
     },
     output: {
@@ -34,7 +34,7 @@ module.exports = {
     },
     module: {
         loaders: [
-          { test: /\.jsx$/, loader: 'babel', query: { presets: ['react', 'es2015'] } },
+          { test: /\.jsx$/, exclude: [/node_modules/, /app_modules/], loader: 'babel', query: { presets: ['es2015', 'react'] } },
           { test: /\.css$/, loader: "style-loader!css-loader" }
         ]
     },

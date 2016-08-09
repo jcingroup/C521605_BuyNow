@@ -6,69 +6,14 @@ import { bindActionCreators } from 'redux';
 import Moment = require('moment');
 
 import DatePicker = require('react-datepicker');
-import {setVisibilityFilter, setInputValue, clearGridItem} from "../actions";
+import {clearGridItem, setInputValue, ajaxGridItem } from "../actions";
+import * as actionCreate from "../actions";
+
 import GridTablePart from "./GridTablePart";
+import NavPart from "./NavPart";
 import "react-datepicker/dist/react-datepicker.css";
 
-
-class SearchForm extends React.Component<any, any>{
-
-    constructor() {
-        super();
-        this.componentDidMount = this.componentDidMount.bind(this);
-        this.componentDidUpdate = this.componentDidUpdate.bind(this);
-        this.componentWillUnmount = this.componentWillUnmount.bind(this);
-
-        this.state = {
-            searchData: null
-        };
-    }
-    componentDidMount() {
-
-    }
-    componentDidUpdate(prevProps, prevState) {
-
-    }
-    componentWillUnmount() {
-
-    }
-
-    render() {
-
-        let out_html: JSX.Element = null;
-        let search = this.props.search;
-        //console.log('Props', this.props);
-        out_html =
-            (
-                <form>
-                    <div className="table-responsive">
-                        <div className="table-header">
-                            <div className="table-filter">
-                                <div className="form-inline">
-                                    <div className="form-group">
-                                        <label className="sr-only">搜尋社區名稱</label> { }
-                                        <input type="text" className="form-control form-control-sm"
-                                            value={search.key}
-                                            onChange={this.props.onChange.bind(this, 'key') }
-                                            placeholder="社區名稱" />
-                                        <button className="btn btn-sm btn-primary" type="button" onClick={this.props.onClick}>
-                                            <i className="fa-search"></i> 搜尋
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <GridTablePart />
-                </form>
-
-            );
-
-        return out_html;
-    }
-}
-
-function makeInputValue(name: string, e: React.SyntheticEvent) {
+function makeInputValue(e: React.SyntheticEvent) {
     let input: HTMLInputElement = e.target as HTMLInputElement;
     let value;
 
@@ -80,41 +25,118 @@ function makeInputValue(name: string, e: React.SyntheticEvent) {
         value = input.value;
     }
 
-    //var objForUpdate = {
-    //    [collentName]:
-    //    {
-    //        [name]: { $set: value }
-    //    }
-    //};
-    //var newState = update(this.state, objForUpdate);
-
-    //this.setState(newState);
     return value;
 }
 
+interface MyProps {
+    chgValue?: Function,
+    submitQuery?: Function
+}
+
+class SearchForm extends React.Component<any, any>{
+
+    constructor() {
+        super();
+        this.componentDidMount = this.componentDidMount.bind(this);
+        this.componentDidUpdate = this.componentDidUpdate.bind(this);
+        this.componentWillUnmount = this.componentWillUnmount.bind(this);
+        //---
+        this.submitQuery = this.submitQuery.bind(this);
+        this.changeValue = this.changeValue.bind(this);
+        //--state
+        this.state = {};
+    }
+    componentDidMount() {
+
+    }
+    componentDidUpdate(prevProps, prevState) {
+
+    }
+    componentWillUnmount() {
+
+    }
+
+    submitQuery(e: React.SyntheticEvent) {
+        e.preventDefault();
+
+        let params = this.props.search;
+        params['page'] = this.props.page;
+
+        this.props.submitQuery(params);
+        return;
+    }
+    changeValue(name: string, e: React.SyntheticEvent) {
+        let value = makeInputValue(e);
+        this.props.changeValue('change_search',name, value);
+    }
+    render() {
+
+        let out_html: JSX.Element = null;
+        let pp = this.props;
+        let search = pp.search;
+        //console.log('Check search', this.props);
+        out_html =
+            (
+                <form onSubmit={this.submitQuery}>
+                    <div className="table-responsive">
+                        <div className="table-header">
+                            <div className="table-filter">
+                                <div className="form-inline">
+                                    <div className="form-group">
+                                        <label className="sr-only">搜尋社區名稱</label> { }
+                                        <input type="text" className="form-control form-control-sm"
+                                            value={search.community_name}
+                                            onChange= {this.changeValue.bind(this, 'community_name') }
+                                            placeholder="社區名稱" />
+                                        <button className="btn btn-sm btn-primary" type="submit">
+                                            <i className="fa-search"></i> 搜尋
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <GridTablePart />
+                    <NavPart showAdd={true} />
+                </form>
+
+            );
+
+        return out_html;
+    }
+}
+
+
+
 const mapStateToProps = (state, ownProps) => {
-    //console.log('SearchForm mapStateToProps', state);
+    //console.log('SearchForm mapStateToProps search', state.search);
     return {
         search: state.search,
-        count: state.grid_items.length
+        count: state.grid_items.length,
+        page: state.page_operator.page
     };
 }
 const mapDispatchToProps = (dispatch, ownProps) => {
 
-    let r = {
-        onChange: (name: string, e: React.SyntheticEvent) => {
-            let value = makeInputValue(name, e);
-            dispatch(setInputValue(name, value));
-        },
-        onClick: (e: React.SyntheticEvent) => {
-            dispatch(clearGridItem());
-        }
-    };
+    //console.log('Check mapDispatchToProps', ownProps);
+    //let r = {
+    //    chgValue: (name: string, e: React.SyntheticEvent) => {
+    //        let value = makeInputValue(e);
+    //        //console.log('value', value);
+    //        dispatch(setInputValue(name, value));
+    //        //console.log('Check ownProps', ownProps);
+    //    },
+    //    submitQuery: (search: any) => {
+    //        //console.log('submit', search, ownProps);
+    //    }
+    //};
 
-    //let bind = bindActionCreators(
-    //    {
-    //        onChange: setInputValue
-    //    }, dispatch)
+    let r = bindActionCreators({
+        changeValue: setInputValue,
+        submitQuery: ajaxGridItem
+    }, dispatch);
+
+    //let r = bindActionCreators<any>(actionCreate, dispatch);
 
     return r;
 }

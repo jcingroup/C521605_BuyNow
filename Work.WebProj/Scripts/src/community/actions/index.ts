@@ -1,59 +1,79 @@
-﻿import $ = require('jquery');
+﻿import {callGet, callPost, callDelete, callPut} from '../../ts-comm/ajax';
 
-let nextTodoId = 0
-export const addTodo = (text) => {
+export const setInputValue = (type, name, value) => {
     return {
-        type: 'ADD_TODO',
-        id: nextTodoId++,
-        text
-    }
-}
-
-export const setVisibilityFilter = (filter) => {
-
-    let r = {
-        type: 'SET_VISIBILITY_FILTER',
-        filter
-    }
-
-    //console.log('check r', r);
-    return r;
-}
-
-export const toggleTodo = (id) => {
-    return {
-        type: 'TOGGLE_TODO',
-        id
-    }
-}
-
-export const setInputValue = (name, value) => {
-    return {
-        type: 'setInputValue',
+        type: type,
         value,
         name
     }
 }
 
-export const ajaxGridItem = () => {
-
+export const ajaxGridItem = (search: any) => {
+    //console.log('queryGridData', search);
     return dispatch => {
-        return $.get('/api/Community?page=1')
+        return callGet('/api/Community', search)
             .done((data, textStatus, jqXHRdata) => {
                 dispatch(getGridItem(data));
             })
     }
 }
-
 const getGridItem = (data) => {
     return {
         type: 'load',
-        items: data.rows
+        items: data.rows,
+        pageinfo: {
+            total: data.total,
+            page: data.page,
+            records: data.records,
+            startcount: data.startcount,
+            endcount: data.endcount
+        }
     }
 }
 
 export const clearGridItem = () => {
     return {
         type: 'clear'
+    }
+}
+export const delItemOne = (id: number | string) => {
+    return {
+        type: 'delItemOne'
+    }
+
+}
+export const queryGridData = (search) => {
+
+    return {
+        type: 'query'
+    }
+}
+
+export const operatorInsert = () => {
+    return {
+        type: 'insert'
+    }
+}
+
+export const ajaxOperatorEdit = (id: number | string) => {
+
+    return dispatch => {
+        return callGet('/api/Community', { id: id })
+            .done((data, textStatus, jqXHRdata) => {
+                dispatch(getEditData(data));
+            })
+    }
+}
+const getEditData = (data) => {
+    return {
+        type: 'edit',
+        field: data.data
+    }
+}
+
+
+export const operatorGrid = () => {
+    return {
+        type: 'grid'
     }
 }
