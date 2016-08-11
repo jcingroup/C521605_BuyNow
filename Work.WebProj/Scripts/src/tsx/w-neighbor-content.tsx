@@ -178,7 +178,7 @@ namespace WWW {
                         </div>
                     </section>
             }
-            let group_buying_url = item.group_buying_url != null ? item.group_buying_url : "http://www.jojogo168.com";
+            let group_buying_url = item.group_buying_url != null ? item.group_buying_url : " http://www.jojogo168.com/42700981_001";
 
             outHtml = (
                 <div className="wrap">
