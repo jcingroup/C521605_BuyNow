@@ -178,6 +178,7 @@ namespace WWW {
                         </div>
                     </section>
             }
+            let group_buying_url = item.group_buying_url != null ? item.group_buying_url : "http://www.jojogo168.com";
 
             outHtml = (
                 <div className="wrap">
@@ -213,7 +214,7 @@ namespace WWW {
                                         <a className="btn btn-lg btn-secondary style2" href={gb_approot + 'Neighbor/Rent_list?community_id=' + item.community_id}>我要租屋</a>
                                     </li>
                                     <li>
-                                        <a className="btn btn-lg btn-secondary style2" target="new" href="http://www.jojogo168.com/">好康團購</a>
+                                        <a className="btn btn-lg btn-secondary style2" target="new" href={group_buying_url}>好康團購</a>
                                     </li>
                                 </ul>
                             </dd>
