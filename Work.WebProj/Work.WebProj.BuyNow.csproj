@@ -351,7 +351,6 @@
     <Content Include="Content\css\vendor\animate.css" />
     <Content Include="Content\css\vendor\bootstrap-datetimepicker-build.css" />
     <Content Include="Content\css\vendor\fontAwesome\font-awesome.css" />
-    <Content Include="Content\css\vendor\icomoon.css" />
     <Content Include="Content\css\vendor\jquery.loadmask.css" />
     <Content Include="Content\css\vendor\loaders.min.css" />
     <Content Include="Content\css\vendor\magnific-popup.css" />
@@ -483,7 +482,6 @@
     <Content Include="Content\images\Index\slogan1-2.svg" />
     <Content Include="Content\images\Index\slogan1-3.svg" />
     <Content Include="Content\images\Index\slogan1-4.svg" />
-    <Content Include="Content\font\icomoon\icomoon.eot" />
     <Content Include="Content\font\icomoon\icomoon.svg" />
     <Content Include="Content\font\icomoon\icomoon.ttf" />
     <Content Include="Content\font\icomoon\icomoon.woff" />
