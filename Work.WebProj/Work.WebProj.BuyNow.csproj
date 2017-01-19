@@ -577,8 +577,6 @@
     <Content Include="Views\Neighbor\Neighbor.cshtml" />
     <Content Include="Views\Partner\Partner.cshtml" />
     <Content Include="Views\Plan\Plan.cshtml" />
-    <Content Include="Views\Rent\Rent.cshtml" />
-    <Content Include="Views\Sell\Sell.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\MenuHelperModel.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\SiteMapNodeModel.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\SiteMapNodeModelList.cshtml" />
