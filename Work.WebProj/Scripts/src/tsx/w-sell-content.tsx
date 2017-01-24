@@ -344,7 +344,7 @@ namespace WWW {
                                     </div>
                                 </li>
                                 <li>
-                                    <p>高樓景觀屋況佳、格局方正採光佳、市場學區交通便利、優質社區平面車位</p>
+                                    <p>{item.title /*物件副標題*/}</p>
                                 </li>
                             </ul>
                             <ul className="more-info list-unstyled clearfix">
