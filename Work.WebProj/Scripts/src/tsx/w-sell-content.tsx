@@ -211,13 +211,13 @@ namespace WWW {
                                     </div>
                                 </li>
                                 <li>
-                                    <p>高樓景觀屋況佳、格局方正採光佳、市場學區交通便利、優質社區平面車位</p>
+                                    <p>{item.title /*物件副標題*/}</p>
                                 </li>
                             </ul>
                             <ul className="more-info list-unstyled clearfix">
                                 <li className="tel">
                                     <h5 className="h5 m-b-0">來電預約賞屋</h5>
-                                    <strong>03-318-0692</strong>
+                                    <strong>{item.contact_tel}</strong>
                                 </li>
                                 <li>
                                     <a className="btn btn-lg btn-secondary style2 scroll" href="#interior">格局圖</a>
@@ -350,7 +350,7 @@ namespace WWW {
                             <ul className="more-info list-unstyled clearfix">
                                 <li className="tel">
                                     <h5 className="h5 m-b-0">來電預約賞屋</h5>
-                                    <strong>02-3501-6715</strong>
+                                    <strong>{item.contact_tel}</strong>
                                 </li>
                                 <li>
                                     <a href="#interior" className="btn btn-lg btn-secondary style2 scroll">格局圖</a>

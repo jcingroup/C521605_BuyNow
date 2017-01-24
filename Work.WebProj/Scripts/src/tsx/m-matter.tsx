@@ -8,7 +8,7 @@ import dt = require('dt');
 import DatePicker = require('react-datepicker');
 import { OrderButton } from '../ts-comm/OrderButton';
 import { jqGet, jqPost, jqPut, jqDelete, showAjaxError, MntV, tosMessage } from '../ts-comm/comm-func';
-import { GridButtonModify, GridButtonDel, GridNavPage, GridCheckDel, MasterImageUpload, TwAddress} from '../ts-comm/comm-cmpt';
+import { GridButtonModify, GridButtonDel, GridNavPage, GridCheckDel, MasterImageUpload, TwAddress } from '../ts-comm/comm-cmpt';
 import "../../../Content/css/react-datepicker.css";
 
 namespace Matter {
@@ -52,7 +52,7 @@ namespace Matter {
                         primKey={this.props.primKey} />
                 </td>
                 <td className="text-xs-center">
-                    <GridButtonModify modify={this.modify}/>
+                    <GridButtonModify modify={this.modify} />
                 </td>
                 <td>{this.props.itemData.sn}</td>
                 <td>{this.props.itemData.community_name}</td>
@@ -402,11 +402,11 @@ namespace Matter {
                         <div>
                             <ul className="breadcrumb">
                                 <li>
-                                    <i className="fa-caret-right"></i> { }
+                                    <i className="fa-caret-right"></i> {}
                                     {this.props.menuName}
                                 </li>
                                 <li>
-                                    <i className="fa-angle-right"></i> { }
+                                    <i className="fa-angle-right"></i> {}
                                     {this.props.caption}
                                 </li>
                             </ul>
@@ -419,8 +419,8 @@ namespace Matter {
                                         <div className="table-filter">
                                             <div className="form-inline">
                                                 <div className="form-group">
-                                                    <label className="sr-only">搜尋物件</label> { }
-                                                    <input type="text" className="form-control form-control-sm" onChange={this.changeGDValue.bind(this, 'keyword') } value={this.state.searchData.keyword} placeholder="物件名稱" /> { }
+                                                    <label className="sr-only">搜尋物件</label> {}
+                                                    <input type="text" className="form-control form-control-sm" onChange={this.changeGDValue.bind(this, 'keyword')} value={this.state.searchData.keyword} placeholder="物件名稱" /> {}
                                                     <button className="btn btn-primary btn-sm" type="submit"><i className="fa-search"></i> 搜尋</button>
                                                 </div>
                                             </div>
@@ -466,7 +466,7 @@ namespace Matter {
                                                         //delCheck={this.delCheck}
                                                         removeItemSubmit={this.removeItemSubmit}
                                                         updateType={this.updateType} />
-                                            ) }
+                                            )}
                                         </tbody>
                                     </table>
                                 </div>
@@ -546,15 +546,15 @@ namespace Matter {
                     <div>
                         <ul className="breadcrumb">
                             <li>
-                                <i className="fa-caret-right"></i> { }
+                                <i className="fa-caret-right"></i> {}
                                 {this.props.menuName}
                             </li>
                             <li>
-                                <i className="fa-angle-right"></i> { }
+                                <i className="fa-angle-right"></i> {}
                                 {this.props.caption}
                             </li>
                             <li>
-                                <i className="fa-angle-right"></i> { }
+                                <i className="fa-angle-right"></i> {}
                                 資料維護
                             </li>
                         </ul>
@@ -568,7 +568,7 @@ namespace Matter {
                                 <label className="col-xs-2 text-xs-right form-control-label"><span className="text-danger">*</span> 物件編號</label>
                                 <div className="col-xs-4">
                                     <input type="text" className="form-control" maxLength={10} required
-                                        onChange={this.changeFDValue.bind(this, 'sn') }
+                                        onChange={this.changeFDValue.bind(this, 'sn')}
                                         value={field.sn}
                                         />
                                 </div>
@@ -576,7 +576,7 @@ namespace Matter {
                                 <div className="col-xs-3">
                                     <select className="form-control"
                                         value={field.info_type}
-                                        onChange={this.changeFDValue.bind(this, 'info_type') } required>
+                                        onChange={this.changeFDValue.bind(this, 'info_type')} required>
                                         <option value="" selected disabled>請選擇</option>
                                         <option value="S">出售</option>
                                         <option value="R">出租</option>
@@ -588,7 +588,7 @@ namespace Matter {
                                 <div className="col-xs-1">
                                     <select className="form-control"
                                         value={field.state}
-                                        onChange={this.changeFDValue.bind(this, 'state') }>
+                                        onChange={this.changeFDValue.bind(this, 'state')}>
                                         <option value="A">刊登中</option>
                                         <option value="C">關閉</option>
                                     </select>
@@ -604,7 +604,7 @@ namespace Matter {
                                             locale="zh-TW"
                                             showYearDropdown
 
-                                            onChange={this.setChangeDate.bind(this, this.props.fdName, 'start_date') }
+                                            onChange={this.setChangeDate.bind(this, this.props.fdName, 'start_date')}
                                             className="form-control" />
                                     </div>
                                 </div>
@@ -617,7 +617,7 @@ namespace Matter {
                                             required={true}
                                             locale="zh-TW"
                                             showYearDropdown
-                                            onChange={this.setChangeDate.bind(this, this.props.fdName, 'end_date') }
+                                            onChange={this.setChangeDate.bind(this, this.props.fdName, 'end_date')}
                                             className="form-control"
                                             minDate={mnt_start_date}
                                             disabled={end_date_disabled}
@@ -629,7 +629,7 @@ namespace Matter {
                                 <label className="col-xs-2 text-xs-right form-control-label"><span className="text-danger">*</span> 物件名稱</label>
                                 <div className="col-xs-8">
                                     <input type="text" className="form-control"
-                                        onChange={this.changeFDValue.bind(this, 'matter_name') }
+                                        onChange={this.changeFDValue.bind(this, 'matter_name')}
                                         value={field.matter_name}
                                         maxLength={64}
                                         required />
@@ -639,7 +639,7 @@ namespace Matter {
                                 <label className="col-xs-2 text-xs-right form-control-label"><span className="text-danger">*</span> 物件副標題</label>
                                 <div className="col-xs-8">
                                     <input type="text" className="form-control"
-                                        onChange={this.changeFDValue.bind(this, 'title') }
+                                        onChange={this.changeFDValue.bind(this, 'title')}
                                         value={field.title}
                                         maxLength={64}
                                         required />
@@ -651,7 +651,7 @@ namespace Matter {
                                 <div className="col-xs-2">
                                     <select className="form-control"
                                         value={field.typeOfHouse}
-                                        onChange={this.changeFDValue.bind(this, 'typeOfHouse') }>
+                                        onChange={this.changeFDValue.bind(this, 'typeOfHouse')}>
                                         <option value="" selected disabled>請選擇</option>
                                         <option value="H">住宅大樓</option>
                                         <option value="D">公寓</option>
@@ -663,7 +663,7 @@ namespace Matter {
                                 <div className="col-xs-2">
                                     <select className="form-control"
                                         value={field.build_state}
-                                        onChange={this.changeFDValue.bind(this, 'build_state') }>
+                                        onChange={this.changeFDValue.bind(this, 'build_state')}>
                                         <option value="" selected disabled>請選擇</option>
                                         <option value="I">成屋</option>
                                         <option value="S">預售屋</option>
@@ -673,7 +673,7 @@ namespace Matter {
                                 <div className="col-xs-2">
                                     <div className="input-group input-group-sm">
                                         <input type="number" step="0.1" className="form-control"
-                                            onChange={this.changeFDValue.bind(this, 'age') }
+                                            onChange={this.changeFDValue.bind(this, 'age')}
                                             value={field.age}
                                             />
                                         <span className="input-group-addon">年</span>
@@ -686,7 +686,7 @@ namespace Matter {
                                     <select className="form-control"
                                         required
                                         value={field.community_id}
-                                        onChange={this.changeFDValue.bind(this, 'community_id') }>
+                                        onChange={this.changeFDValue.bind(this, 'community_id')}>
                                         <option value="" selected disabled>請選擇</option>
                                         {
                                             this.state.options_community.map(function (item, i) {
@@ -716,7 +716,7 @@ namespace Matter {
                                 <div className="col-xs-2">
                                     <div className="input-group input-group-sm">
                                         <input type="number" className="form-control"
-                                            onChange={this.changeFDValue.bind(this, 'bedrooms') }
+                                            onChange={this.changeFDValue.bind(this, 'bedrooms')}
                                             value={field.bedrooms}
                                             />
                                         <span className="input-group-addon">房</span>
@@ -725,7 +725,7 @@ namespace Matter {
                                 <div className="col-xs-2">
                                     <div className="input-group input-group-sm">
                                         <input type="number" className="form-control"
-                                            onChange={this.changeFDValue.bind(this, 'livingrooms') }
+                                            onChange={this.changeFDValue.bind(this, 'livingrooms')}
                                             value={field.livingrooms}
                                             />
                                         <span className="input-group-addon">廳</span>
@@ -734,7 +734,7 @@ namespace Matter {
                                 <div className="col-xs-2">
                                     <div className="input-group input-group-sm">
                                         <input type="number" className="form-control"
-                                            onChange={this.changeFDValue.bind(this, 'bathrooms') }
+                                            onChange={this.changeFDValue.bind(this, 'bathrooms')}
                                             value={field.bathrooms}
                                             />
                                         <span className="input-group-addon">衛</span>
@@ -743,7 +743,7 @@ namespace Matter {
                                 <div className="col-xs-2">
                                     <div className="input-group input-group-sm">
                                         <input type="number" className="form-control"
-                                            onChange={this.changeFDValue.bind(this, 'rooms') }
+                                            onChange={this.changeFDValue.bind(this, 'rooms')}
                                             value={field.rooms}
                                             />
                                         <span className="input-group-addon">室</span>
@@ -754,7 +754,7 @@ namespace Matter {
                                 <label className="col-xs-2 text-xs-right form-control-label">車位</label>
                                 <div className="col-xs-2">
                                     <input type="text" className="form-control"
-                                        onChange={this.changeFDValue.bind(this, 'parking') }
+                                        onChange={this.changeFDValue.bind(this, 'parking')}
                                         value={field.parking}
                                         />
                                     <small className="text-muted">例如: 坡道平面</small>
@@ -763,10 +763,19 @@ namespace Matter {
                                 <div className="col-xs-2">
                                     <label className="checkbox-inline">
                                         <input type="checkbox"
-                                            onChange={this.setInputValue.bind(this, this.props.fdName, 'is_elevator', !field.is_elevator) }
+                                            onChange={this.setInputValue.bind(this, this.props.fdName, 'is_elevator', !field.is_elevator)}
                                             checked={field.is_elevator}
                                             /> 有
                                     </label>
+                                </div>
+                                <label className="col-xs-1 text-xs-right form-control-label">聯絡電話</label>
+                                <div className="col-xs-2">
+                                    <input type="text" className="form-control"
+                                        onChange={this.changeFDValue.bind(this, 'contact_tel')}
+                                        value={field.contact_tel}
+                                        maxLength={16}
+                                        />
+                                    <small className="text-muted"></small>
                                 </div>
                             </div>
                             <div className="form-group row">
@@ -774,7 +783,7 @@ namespace Matter {
                                 <div className="col-xs-2">
                                     <div className="input-group input-group-sm">
                                         <input type="number" step="0.01" className="form-control"
-                                            onChange={this.changeFDValue.bind(this, 'build_area') }
+                                            onChange={this.changeFDValue.bind(this, 'build_area')}
                                             value={field.build_area}
                                             />
                                         <span className="input-group-addon">坪</span>
@@ -784,14 +793,14 @@ namespace Matter {
                                 <div className="col-xs-2">
                                     <input type="text" className="form-control"
                                         maxLength={50}
-                                        onChange={this.changeFDValue.bind(this, 'site_floor') }
+                                        onChange={this.changeFDValue.bind(this, 'site_floor')}
                                         value={field.site_floor}
                                         />
                                 </div>
                                 <label className="col-xs-1 text-xs-right form-control-label">總樓層</label>
                                 <div className="col-xs-2">
                                     <input type="number" className="form-control"
-                                        onChange={this.changeFDValue.bind(this, 'total_floor') }
+                                        onChange={this.changeFDValue.bind(this, 'total_floor')}
                                         value={field.total_floor}
                                         />
                                 </div>
@@ -800,7 +809,7 @@ namespace Matter {
                                 <label className="col-xs-2 text-xs-right form-control-label">Google 地圖嵌入</label>
                                 <div className="col-xs-8">
                                     <input type="text" className="form-control"
-                                        onChange={this.changeFDValue.bind(this, 'map_iframe') }
+                                        onChange={this.changeFDValue.bind(this, 'map_iframe')}
                                         value={field.map_iframe}
                                         maxLength={4000}
                                         />
@@ -810,7 +819,7 @@ namespace Matter {
                                 <label className="col-xs-2 text-xs-right form-control-label">生活機能</label>
                                 <div className="col-xs-8">
                                     <textarea type="date" className="form-control" id="context_life" name="context_life"
-                                        value={field.context_life} onChange={this.changeFDValue.bind(this, 'context_life') }></textarea>
+                                        value={field.context_life} onChange={this.changeFDValue.bind(this, 'context_life')}></textarea>
                                 </div>
                             </div>
                             <hr className="sm" />
@@ -825,7 +834,7 @@ namespace Matter {
                                 <div className="col-xs-2">
                                     <div className="input-group input-group-sm">
                                         <input type="number" className="form-control"
-                                            onChange={this.changeFDValue.bind(this, 'price') }
+                                            onChange={this.changeFDValue.bind(this, 'price')}
                                             value={field.price} />
                                         <span className="input-group-addon">元</span>
                                     </div>
@@ -834,7 +843,7 @@ namespace Matter {
                                 <div className="col-xs-2">
                                     <div className="input-group input-group-sm">
                                         <input type="number" step="10" className="form-control"
-                                            onChange={this.changeFDValue.bind(this, 'managementFeeOfMonth') }
+                                            onChange={this.changeFDValue.bind(this, 'managementFeeOfMonth')}
                                             value={field.managementFeeOfMonth}
                                             />
                                         <span className="input-group-addon">元</span>
@@ -846,7 +855,7 @@ namespace Matter {
                                 <div className="col-xs-2">
                                     <div className="input-group input-group-sm">
                                         <input type="number" step="0.01" className="form-control"
-                                            onChange={this.changeFDValue.bind(this, 'land_area') }
+                                            onChange={this.changeFDValue.bind(this, 'land_area')}
                                             value={field.land_area}
                                             />
                                         <span className="input-group-addon">坪</span>
@@ -857,7 +866,7 @@ namespace Matter {
                                 <div className="col-xs-2">
                                     <div className="input-group input-group-sm">
                                         <input type="number" className="form-control"
-                                            onChange={this.changeFDValue.bind(this, 'unit_area_price') }
+                                            onChange={this.changeFDValue.bind(this, 'unit_area_price')}
                                             value={field.unit_area_price}
                                             />
 
@@ -870,7 +879,7 @@ namespace Matter {
                                 <div className="col-xs-2">
                                     <div className="input-group input-group-sm">
                                         <input type="number" step="0.01" className="form-control"
-                                            onChange={this.changeFDValue.bind(this, 'house_area') }
+                                            onChange={this.changeFDValue.bind(this, 'house_area')}
                                             value={field.house_area}
                                             />
                                         <span className="input-group-addon">坪</span>
@@ -880,7 +889,7 @@ namespace Matter {
                                     <div className="input-group input-group-sm">
                                         <span className="input-group-addon">陽台</span>
                                         <input type="number" step="0.01" className="form-control"
-                                            onChange={this.changeFDValue.bind(this, 'balcony_area') }
+                                            onChange={this.changeFDValue.bind(this, 'balcony_area')}
                                             value={field.balcony_area}
                                             />
                                         <span className="input-group-addon">坪</span>
@@ -890,7 +899,7 @@ namespace Matter {
                                     <div className="input-group input-group-sm">
                                         <span className="input-group-addon">雨遮</span>
                                         <input type="number" step="0.01" className="form-control"
-                                            onChange={this.changeFDValue.bind(this, 'umbrella_aea') }
+                                            onChange={this.changeFDValue.bind(this, 'umbrella_aea')}
                                             value={field.umbrella_aea}
                                             />
                                         <span className="input-group-addon">坪</span>
@@ -900,7 +909,7 @@ namespace Matter {
                                     <div className="input-group input-group-sm">
                                         <span className="input-group-addon">公設</span>
                                         <input type="number" step="0.01" className="form-control"
-                                            onChange={this.changeFDValue.bind(this, 'public_area') }
+                                            onChange={this.changeFDValue.bind(this, 'public_area')}
                                             value={field.public_area}
                                             />
                                         <span className="input-group-addon">坪</span>
@@ -911,27 +920,27 @@ namespace Matter {
                                 <label className="col-xs-2 text-xs-right form-control-label">該層戶數</label>
                                 <div className="col-xs-2">
                                     <input type="number" step="1" className="form-control"
-                                        onChange={this.changeFDValue.bind(this, 'buildhouses') }
+                                        onChange={this.changeFDValue.bind(this, 'buildhouses')}
                                         value={field.buildhouses}
                                         />
                                 </div>
                                 <label className="col-xs-1 text-xs-right form-control-label">朝向</label>
                                 <div className="col-xs-2">
                                     <input type="text" className="form-control"
-                                        onChange={this.changeFDValue.bind(this, 'orientation') }
+                                        onChange={this.changeFDValue.bind(this, 'orientation')}
                                         value={field.orientation}
                                         />
                                 </div>
                                 <div className="col-xs-3">
                                     <label className="checkbox-inline">
                                         <input type="checkbox"
-                                            onChange={this.setInputValue.bind(this, this.props.fdName, 'is_end', !field.is_end) }
+                                            onChange={this.setInputValue.bind(this, this.props.fdName, 'is_end', !field.is_end)}
                                             checked={field.is_end}
                                             /> 邊間
                                     </label>
                                     <label className="checkbox-inline">
                                         <input type="checkbox"
-                                            onChange={this.setInputValue.bind(this, this.props.fdName, 'is_darkroom', !field.is_darkroom) }
+                                            onChange={this.setInputValue.bind(this, this.props.fdName, 'is_darkroom', !field.is_darkroom)}
                                             checked={field.is_darkroom}
                                             /> 暗房
                                     </label>
@@ -941,7 +950,7 @@ namespace Matter {
                                 <label className="col-xs-2 text-xs-right form-control-label">警衛管理</label>
                                 <div className="col-xs-2">
                                     <input type="text" className="form-control"
-                                        onChange={this.changeFDValue.bind(this, 'guard') }
+                                        onChange={this.changeFDValue.bind(this, 'guard')}
                                         value={field.guard}
                                         />
                                     <small className="text-muted">例如: 有，全天候</small>
@@ -949,7 +958,7 @@ namespace Matter {
                                 <label className="col-xs-1 text-xs-right form-control-label">建物結構</label>
                                 <div className="col-xs-2">
                                     <input type="text" className="form-control"
-                                        onChange={this.changeFDValue.bind(this, 'architecture') }
+                                        onChange={this.changeFDValue.bind(this, 'architecture')}
                                         value={field.architecture}
                                         />
                                     <small className="text-muted">例如: 鋼筋混凝土</small>
@@ -957,7 +966,7 @@ namespace Matter {
                                 <label className="col-xs-1 text-xs-right form-control-label">外牆建材</label>
                                 <div className="col-xs-2">
                                     <input type="text" className="form-control"
-                                        onChange={this.changeFDValue.bind(this, 'wall_materials') }
+                                        onChange={this.changeFDValue.bind(this, 'wall_materials')}
                                         value={field.wall_materials}
                                         />
                                     <small className="text-muted">例如: 方塊磚</small>
@@ -970,7 +979,7 @@ namespace Matter {
                                 <div className="col-xs-2">
                                     <div className="input-group input-group-sm">
                                         <input type="number" className="form-control"
-                                            onChange={this.changeFDValue.bind(this, 'rentOfMonh') }
+                                            onChange={this.changeFDValue.bind(this, 'rentOfMonh')}
                                             value={field.rentOfMonh}
                                             disabled={field.info_type != 'R'}
                                             />
@@ -980,7 +989,7 @@ namespace Matter {
                                 <label className="col-xs-1 text-xs-right form-control-label">押金</label>
                                 <div className="col-xs-2">
                                     <input type="number" className="form-control"
-                                        onChange={this.changeFDValue.bind(this, 'deposit') }
+                                        onChange={this.changeFDValue.bind(this, 'deposit')}
                                         value={field.deposit}
                                         disabled={field.info_type != 'R'}
                                         />
@@ -990,7 +999,7 @@ namespace Matter {
                                 <div className="col-xs-2">
                                     <div className="input-group input-group-sm">
                                         <input type="text" className="form-control"
-                                            onChange={this.changeFDValue.bind(this, 'rent_management') }
+                                            onChange={this.changeFDValue.bind(this, 'rent_management')}
                                             value={field.rent_management}
                                             maxLength={50}
                                             disabled={field.info_type != 'R'}
@@ -1003,7 +1012,7 @@ namespace Matter {
                                 <label className="col-xs-2 text-xs-right form-control-label">最短租期</label>
                                 <div className="col-xs-2">
                                     <input type="text" className="form-control"
-                                        onChange={this.changeFDValue.bind(this, 'rent_short_date') }
+                                        onChange={this.changeFDValue.bind(this, 'rent_short_date')}
                                         value={field.rent_short_date}
                                         maxLength={50}
                                         disabled={field.info_type != 'R'}
@@ -1013,7 +1022,7 @@ namespace Matter {
                                 <label className="col-xs-1 text-xs-right form-control-label">可遷入日</label>
                                 <div className="col-xs-2">
                                     <input type="text" className="form-control"
-                                        onChange={this.changeFDValue.bind(this, 'rent_start_date') }
+                                        onChange={this.changeFDValue.bind(this, 'rent_start_date')}
                                         value={field.rent_start_date}
                                         maxLength={50}
                                         disabled={field.info_type != 'R'}
@@ -1023,7 +1032,7 @@ namespace Matter {
                                 <label className="col-xs-1 text-xs-right form-control-label">可開伙</label>
                                 <div className="col-xs-2">
                                     <input type="text" className="form-control"
-                                        onChange={this.changeFDValue.bind(this, 'rent_cook') }
+                                        onChange={this.changeFDValue.bind(this, 'rent_cook')}
                                         value={field.rent_cook}
                                         maxLength={50}
                                         disabled={field.info_type != 'R'}
@@ -1035,7 +1044,7 @@ namespace Matter {
                                 <label className="col-xs-2 text-xs-right form-control-label">身分要求</label>
                                 <div className="col-xs-2">
                                     <input type="text" className="form-control"
-                                        onChange={this.changeFDValue.bind(this, 'rent_identity') }
+                                        onChange={this.changeFDValue.bind(this, 'rent_identity')}
                                         value={field.rent_identity}
                                         maxLength={50}
                                         disabled={field.info_type != 'R'}
@@ -1045,7 +1054,7 @@ namespace Matter {
                                 <label className="col-xs-1 text-xs-right form-control-label">性別要求</label>
                                 <div className="col-xs-2">
                                     <input type="text" className="form-control"
-                                        onChange={this.changeFDValue.bind(this, 'rent_sex') }
+                                        onChange={this.changeFDValue.bind(this, 'rent_sex')}
                                         value={field.rent_sex}
                                         maxLength={50}
                                         disabled={field.info_type != 'R'}
@@ -1055,7 +1064,7 @@ namespace Matter {
                                 <label className="col-xs-1 text-xs-right form-control-label">可養寵物</label>
                                 <div className="col-xs-2">
                                     <input type="text" className="form-control"
-                                        onChange={this.changeFDValue.bind(this, 'rent_pet') }
+                                        onChange={this.changeFDValue.bind(this, 'rent_pet')}
                                         value={field.rent_pet}
                                         maxLength={50}
                                         disabled={field.info_type != 'R'}
@@ -1067,7 +1076,7 @@ namespace Matter {
                                 <label className="col-xs-2 text-xs-right form-control-label">家具提供</label>
                                 <div className="col-xs-8">
                                     <input type="text" className="form-control"
-                                        onChange={this.changeFDValue.bind(this, 'rent_furniture') }
+                                        onChange={this.changeFDValue.bind(this, 'rent_furniture')}
                                         value={field.rent_furniture}
                                         maxLength={50}
                                         disabled={field.info_type != 'R'}
@@ -1079,7 +1088,7 @@ namespace Matter {
                                 <label className="col-xs-2 text-xs-right form-control-label">設備提供</label>
                                 <div className="col-xs-8">
                                     <input type="text" className="form-control"
-                                        onChange={this.changeFDValue.bind(this, 'rent_equip') }
+                                        onChange={this.changeFDValue.bind(this, 'rent_equip')}
                                         value={field.rent_equip}
                                         maxLength={50}
                                         disabled={field.info_type != 'R'}
@@ -1089,7 +1098,7 @@ namespace Matter {
                             </div>
                             <div className="form-action">
                                 <div className="col-xs-offset-2">
-                                    <button type="submit" className="btn btn-sm btn-primary"><i className="fa-check"></i> 儲存</button> { }
+                                    <button type="submit" className="btn btn-sm btn-primary"><i className="fa-check"></i> 儲存</button> {}
                                     <button type="button" className="btn btn-sm btn-secondary" onClick={this.noneType}><i className="fa-times"></i> 回前頁</button>
                                 </div>
                             </div>

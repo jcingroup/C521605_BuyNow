@@ -229,6 +229,7 @@
           <Property Name="rent_equip" Type="nvarchar" MaxLength="50" />
           <Property Name="deposit" Type="int" />
           <Property Name="unit_area_price" Type="float" />
+          <Property Name="contact_tel" Type="varchar" MaxLength="16" />
         </EntityType>
         <EntityType Name="Menu">
           <Key>
@@ -748,6 +749,7 @@
           <Property Name="deposit" Type="Int32" />
           <NavigationProperty Name="Community" Relationship="C51A0_BuyNowModel.FK_Matter_Community" FromRole="Matter" ToRole="Community" />
           <Property Name="unit_area_price" Type="Double" />
+          <Property Name="contact_tel" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK_Matter_Community">
           <End Type="C51A0_BuyNowModel.Community" Role="Community" Multiplicity="1" />
@@ -997,6 +999,7 @@
           <EntitySetMapping Name="Matter">
             <EntityTypeMapping TypeName="C51A0_BuyNowModel.Matter">
               <MappingFragment StoreEntitySet="Matter">
+                <ScalarProperty Name="contact_tel" ColumnName="contact_tel" />
                 <ScalarProperty Name="unit_area_price" ColumnName="unit_area_price" />
                 <ScalarProperty Name="deposit" ColumnName="deposit" />
                 <ScalarProperty Name="rent_equip" ColumnName="rent_equip" />
