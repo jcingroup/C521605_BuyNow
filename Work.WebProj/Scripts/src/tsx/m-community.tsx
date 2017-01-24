@@ -454,7 +454,7 @@ namespace Community {
                             {up_CommunityList}
 
 
-                            {/*<div className="form-group row">
+                            <div className="form-group row">
                                 <label className="col-xs-1 form-control-label text-xs-right">建物地址</label>
                                 <div className="col-xs-7">
                                     <input type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'address') } value={field.address} maxLength={128}
@@ -539,7 +539,7 @@ namespace Community {
                                         />
                                 </div>
                             </div>
-                            */}
+                            
                             <div className="form-group row">
                                 <label className="col-xs-1 form-control-label text-xs-right">簡介</label>
                                 <div className="col-xs-7">

@@ -210,5 +210,6 @@
 
         deposit?: number;
         build_state?: string;
+        contact_tel?: string;
     }
 } 
